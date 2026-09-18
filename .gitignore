@@ -4,4 +4,5 @@ test-results/
 playwright-report/
 output/
 run_data/
+exports/
 *.log

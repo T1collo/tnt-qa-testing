@@ -1,0 +1,18 @@
+[
+  {
+    "id": "P08",
+    "title": "Malformed SGTIN is rejected",
+    "rule": "§6.1.1 INVALID_GS1_IDENTIFIER",
+    "then": "202 accepted on manufacturer route (7 Sep)",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "INVALID_LOT",
+      "NO_REGULATORY_APPROVAL"
+    ],
+    "message": "EPCIS events accepted",
+    "conforms": false,
+    "ms": 320,
+    "prefix": "urn:epc:id:sgtin:0614141.000111"
+  }
+]

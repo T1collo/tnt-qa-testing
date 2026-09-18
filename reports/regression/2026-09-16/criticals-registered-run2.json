@@ -1,0 +1,62 @@
+[
+  {
+    "id": "P05",
+    "title": "Dispensing a destroyed serial is refused or flagged",
+    "rule": "§3.3.3 prior disposition must be active",
+    "then": "201, no flag (14 Sep Critical)",
+    "status": 502,
+    "codes": [],
+    "message": "<html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>open",
+    "conforms": true,
+    "ms": 3113,
+    "prefix": "urn:epc:id:sgtin:8904179.170218"
+  },
+  {
+    "id": "P07",
+    "title": "Batch with one bad event is partially accepted (207)",
+    "rule": "§6.2 PARTIALLY_ACCEPTED 207",
+    "then": "400, nothing stored (14 & 16 Sep)",
+    "status": 502,
+    "codes": [],
+    "message": "<html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>open",
+    "conforms": false,
+    "ms": 35,
+    "prefix": "urn:epc:id:sgtin:8904179.170218"
+  },
+  {
+    "id": "P08",
+    "title": "Malformed SGTIN is rejected",
+    "rule": "§6.1.1 INVALID_GS1_IDENTIFIER",
+    "then": "202 accepted on manufacturer route (7 Sep)",
+    "status": 502,
+    "codes": [],
+    "message": "<html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>open",
+    "conforms": false,
+    "ms": 25,
+    "prefix": "urn:epc:id:sgtin:8904179.170218"
+  },
+  {
+    "id": "P10",
+    "title": "Event with no eventTime is rejected",
+    "rule": "§6.1.1 MISSING_NEEDED_FIELDS",
+    "then": "202 accepted on manufacturer route (7 Sep)",
+    "status": 502,
+    "codes": [],
+    "message": "<html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>open",
+    "conforms": false,
+    "ms": 19,
+    "prefix": "urn:epc:id:sgtin:8904179.170218"
+  },
+  {
+    "id": "P14",
+    "title": "Uppercase URN does not create a second identity",
+    "rule": "Identity normalisation (RFC 8141)",
+    "then": "202 - second identity created (14 Sep, EC-D07 High)",
+    "status": 502,
+    "codes": [],
+    "message": "<html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>open",
+    "conforms": false,
+    "ms": 2045,
+    "prefix": "urn:epc:id:sgtin:8904179.170218"
+  }
+]

@@ -1,0 +1,267 @@
+[
+  {
+    "id": "P01",
+    "title": "Valid async event returns 202",
+    "rule": "§6.2 ACCEPTED 202",
+    "then": "202 (14 Sep, EC-G05)",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "INVALID_LOT",
+      "NO_REGULATORY_APPROVAL"
+    ],
+    "message": "EPCIS events accepted",
+    "conforms": true,
+    "ms": 335,
+    "prefix": "urn:epc:id:sgtin:0614141.000111"
+  },
+  {
+    "id": "P02",
+    "title": "Valid dispense returns 201 synchronously",
+    "rule": "§2.6.1 / §3.3.3",
+    "then": "201 (14 Sep, EC-E04)",
+    "status": 201,
+    "codes": [],
+    "message": "",
+    "conforms": true,
+    "ms": 219,
+    "prefix": "urn:epc:id:sgtin:0614141.000111"
+  },
+  {
+    "id": "P11",
+    "title": "Future eventTime is rejected",
+    "rule": "§6.1.1 FUTURE_EVENT_TIME",
+    "then": "400 FUTURE_EVENT_TIME (7 Sep)",
+    "status": 400,
+    "codes": [
+      "FUTURE_EVENT_TIME"
+    ],
+    "message": "Event time 2026-09-17T10:13:55.745Z is more than 5 minutes in the future (reference time: 2026-09-16T10:13:54.703Z)",
+    "conforms": true,
+    "ms": 158,
+    "prefix": "urn:epc:id:sgtin:0614141.000111"
+  },
+  {
+    "id": "P12",
+    "title": "SSCC with 16 digits is rejected",
+    "rule": "§6.1.1 INVALID_GS1_IDENTIFIER",
+    "then": "400 INVALID_GS1_IDENTIFIER (7 Sep)",
+    "status": 400,
+    "codes": [
+      "INVALID_GS1_IDENTIFIER"
+    ],
+    "message": "SSCC EPC URI urn:epc:id:sscc:0614141.000000001 at parentID is malformed: GCP + SerialRef digit count must equal 17",
+    "conforms": true,
+    "ms": 107,
+    "prefix": "urn:epc:id:sgtin:0614141.000111"
+  },
+  {
+    "id": "P13",
+    "title": "Resubmitting the same eventID is rejected",
+    "rule": "§6.1.1 DUPLICATE_EVENT_ID",
+    "then": "409 DUPLICATE_EVENT_ID (7 Sep)",
+    "status": 409,
+    "codes": [
+      "DUPLICATE_EVENT_ID"
+    ],
+    "message": "Event ID urn:uuid:3155192f-8f9c-49d6-8fcb-1a0c6c9c7a4f was already ingested",
+    "conforms": true,
+    "ms": 1813,
+    "prefix": "urn:epc:id:sgtin:0614141.000111"
+  },
+  {
+    "id": "P15",
+    "title": "Whitespace-padded serial resolves to the same identity",
+    "rule": "Identity normalisation",
+    "then": "409 on resubmit (14 Sep, EC-D08)",
+    "status": 409,
+    "codes": [
+      "DUPLICATE_EVENT_PAYLOAD"
+    ],
+    "message": "Duplicate matrix key EPC+bizStep:3deea0413060c4f9a99708cd26b506e839d1ce69ed54e23d69960f79958c7a1b for bizStep=commissioning disposition=active",
+    "conforms": true,
+    "ms": 2369,
+    "prefix": "urn:epc:id:sgtin:0614141.000111"
+  },
+  {
+    "id": "P18",
+    "title": "Commissioning with lot + expiry together is accepted",
+    "rule": "§3.1.1 ILMD",
+    "then": "500 on manufacturer route (7 Sep); 202 by 14 Sep",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "INVALID_LOT",
+      "NO_REGULATORY_APPROVAL"
+    ],
+    "message": "EPCIS events accepted",
+    "conforms": true,
+    "ms": 271,
+    "prefix": "urn:epc:id:sgtin:0614141.000111"
+  },
+  {
+    "id": "P04",
+    "title": "Dispense with no API key is refused",
+    "rule": "§2.5.1 / §6.2 UNAUTHORIZED 401",
+    "then": "401 (14 Sep, EC-G11)",
+    "status": 401,
+    "codes": [],
+    "message": "API key required. Please provide X-API-Key header.",
+    "conforms": true,
+    "ms": 19,
+    "prefix": "urn:epc:id:sgtin:0614141.000111"
+  },
+  {
+    "id": "P03",
+    "title": "Dispense with an invalid API key is refused",
+    "rule": "§2.5.1 / §6.2 UNAUTHORIZED 401",
+    "then": "201 CREATED - event accepted with a bad key (7 Sep audit)",
+    "status": 401,
+    "codes": [],
+    "message": "Invalid API key",
+    "conforms": true,
+    "ms": 34,
+    "prefix": "urn:epc:id:sgtin:0614141.000111"
+  },
+  {
+    "id": "P19",
+    "title": "Invalid API key on an async route is refused",
+    "rule": "§6.2 UNAUTHORIZED 401",
+    "then": "500 (7 Sep); 401 by 14 Sep (EC-G12)",
+    "status": 401,
+    "codes": [],
+    "message": "Invalid API key",
+    "conforms": true,
+    "ms": 25,
+    "prefix": "urn:epc:id:sgtin:0614141.000111"
+  },
+  {
+    "id": "P05",
+    "title": "Dispensing a destroyed serial is refused or flagged",
+    "rule": "§3.3.3 prior disposition must be active",
+    "then": "201, no flag (14 Sep Critical)",
+    "status": 201,
+    "codes": [],
+    "message": "",
+    "conforms": false,
+    "ms": 3306,
+    "prefix": "urn:epc:id:sgtin:0614141.000111"
+  },
+  {
+    "id": "P06",
+    "title": "Dispensing the same serial twice is refused or flagged",
+    "rule": "§6.1.2 SERIAL_ALREADY_DISPENSED",
+    "then": "see 14 Sep error-code TC-S1-032",
+    "status": 409,
+    "codes": [
+      "DUPLICATE_EVENT_PAYLOAD"
+    ],
+    "message": "Duplicate matrix key EPC+bizStep:d8a9ba0472822daaf79dce30e567c34da2ea77a01c9892fc56ba3cf22e44a4d0 for bizStep=dispensing disposition=dispensed",
+    "conforms": true,
+    "ms": 3315,
+    "prefix": "urn:epc:id:sgtin:0614141.000111"
+  },
+  {
+    "id": "P07",
+    "title": "Batch with one bad event is partially accepted (207)",
+    "rule": "§6.2 PARTIALLY_ACCEPTED 207",
+    "then": "400, nothing stored (14 & 16 Sep)",
+    "status": 400,
+    "codes": [
+      "FUTURE_EVENT_TIME"
+    ],
+    "message": "Event time 2026-09-17T10:14:07.163Z is more than 5 minutes in the future (reference time: 2026-09-16T10:14:06.220Z)",
+    "conforms": false,
+    "ms": 256,
+    "prefix": "urn:epc:id:sgtin:0614141.000111"
+  },
+  {
+    "id": "P08",
+    "title": "Malformed SGTIN is rejected",
+    "rule": "§6.1.1 INVALID_GS1_IDENTIFIER",
+    "then": "202 accepted on manufacturer route (7 Sep)",
+    "status": 409,
+    "codes": [
+      "DUPLICATE_EVENT_PAYLOAD"
+    ],
+    "message": "Duplicate matrix key EPC+bizStep:8ab2c61f373762ea213ae52de6ba60baeadb9b0b8ab97a5c265ca34de7ccf9f6 for bizStep=commissioning disposition=active",
+    "conforms": false,
+    "ms": 123,
+    "prefix": "urn:epc:id:sgtin:0614141.000111"
+  },
+  {
+    "id": "P09",
+    "title": "Malformed SGLN is rejected",
+    "rule": "§6.1.1 INVALID_GS1_IDENTIFIER",
+    "then": "202 accepted on manufacturer route (7 Sep)",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "INVALID_LOT",
+      "NO_REGULATORY_APPROVAL"
+    ],
+    "message": "EPCIS events accepted",
+    "conforms": false,
+    "ms": 186,
+    "prefix": "urn:epc:id:sgtin:0614141.000111"
+  },
+  {
+    "id": "P10",
+    "title": "Event with no eventTime is rejected",
+    "rule": "§6.1.1 MISSING_NEEDED_FIELDS",
+    "then": "202 accepted on manufacturer route (7 Sep)",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "INVALID_LOT",
+      "NO_REGULATORY_APPROVAL"
+    ],
+    "message": "EPCIS events accepted",
+    "conforms": false,
+    "ms": 497,
+    "prefix": "urn:epc:id:sgtin:0614141.000111"
+  },
+  {
+    "id": "P14",
+    "title": "Uppercase URN does not create a second identity",
+    "rule": "Identity normalisation (RFC 8141)",
+    "then": "202 - second identity created (14 Sep, EC-D07 High)",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "INVALID_LOT"
+    ],
+    "message": "EPCIS events accepted",
+    "conforms": false,
+    "ms": 2433,
+    "prefix": "urn:epc:id:sgtin:0614141.000111"
+  },
+  {
+    "id": "P16",
+    "title": "Over 50,000 serials in one message is rejected",
+    "rule": "§6.1.1 TOO_MANY_SERIALS",
+    "then": "API-MFG-COMM-EDGE-008 - never executed",
+    "status": 400,
+    "codes": [
+      "TOO_MANY_SERIALS"
+    ],
+    "message": "Message contains 50,001 serials, exceeding the 50,000 serial limit per message",
+    "conforms": true,
+    "ms": 360,
+    "prefix": "urn:epc:id:sgtin:0614141.000111"
+  },
+  {
+    "id": "P17",
+    "title": "Async message over 10 MB is rejected",
+    "rule": "§6.1.1 MESSAGE_SIZE_EXCEEDED / §6.2 413",
+    "then": "API-MFG-COMM-EDGE-009 - never executed",
+    "status": 400,
+    "codes": [
+      "MESSAGE_SIZE_EXCEEDED"
+    ],
+    "message": "Payload size 10.50 MB exceeds the 10 MB asynchronous limit",
+    "conforms": true,
+    "ms": 827,
+    "prefix": "urn:epc:id:sgtin:0614141.000111"
+  }
+]

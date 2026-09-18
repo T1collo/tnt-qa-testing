@@ -7,6 +7,7 @@
 // If the app's navigation changes, update the lists below.
 const { test, expect } = require('@playwright/test');
 const { loginAs } = require('./helpers/auth');
+const { qtest } = require('./helpers/qtest');
 
 async function expectHealthyPage(page, path) {
   await page.goto(path, { waitUntil: 'load' });
@@ -50,7 +51,7 @@ test.describe('Admin (PPB / Regulatory Authority) - page inventory', () => {
     });
   }
 
-  test('admin is blocked from the Manufacturer module (RBAC)', async ({ page }) => {
+  qtest('AUTH-RBAC-001', 'admin is blocked from the Manufacturer module (RBAC)', async ({ page }) => {
     await page.goto('/manufacturer/batches', { waitUntil: 'load' });
     await expect(page.getByText('Authentication Required')).toBeVisible();
     await expect(page.getByText(/requires\s+Manufacturer\s+access/i)).toBeVisible();
@@ -97,14 +98,14 @@ test.describe('Manufacturer - page inventory', () => {
     });
   }
 
-  test('manufacturer is blocked from the Regulatory Authority module (RBAC)', async ({ page }) => {
+  qtest('AUTH-RBAC-002', 'manufacturer is blocked from the Regulatory Authority module (RBAC)', async ({ page }) => {
     await page.goto('/regulator', { waitUntil: 'load' });
     await expect(page.getByText('Authentication Required')).toBeVisible();
   });
 });
 
 test.describe('Public app - no auth required', () => {
-  test('barcode scanner page loads without login', async ({ page }) => {
+  qtest('AUTH-RBAC-007', 'barcode scanner page loads without login', async ({ page }) => {
     await page.goto('/scanner', { waitUntil: 'load' });
     await expect(page.getByRole('heading', { name: 'GS1 Barcode Scanner' })).toBeVisible();
   });

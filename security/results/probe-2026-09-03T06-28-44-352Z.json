@@ -1,0 +1,343 @@
+{
+  "target": "https://tnt-demo.apeiro-digital.com",
+  "ranAt": "2026-09-03T06:28:44.354Z",
+  "matrix": {
+    "manufacturer": {
+      "manufacturer": 202,
+      "distributor": 403,
+      "facility": 403
+    },
+    "distributor": {
+      "manufacturer": 403,
+      "distributor": 409,
+      "facility": 403
+    },
+    "facility": {
+      "manufacturer": 500,
+      "distributor": 500,
+      "facility": 500
+    }
+  },
+  "results": [
+    {
+      "id": "TNT-SEC-AUTH-001",
+      "category": "Authentication",
+      "title": "Unauthenticated event submission is rejected",
+      "expected": "401",
+      "actual": "401",
+      "status": "PASS",
+      "severity": "-",
+      "evidence": "{\"message\":\"API key required. Please provide X-API-Key header.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "id": "TNT-SEC-AUTH-002",
+      "category": "Authentication",
+      "title": "Malformed API key is rejected",
+      "expected": "401",
+      "actual": "500",
+      "status": "FAIL",
+      "severity": "Critical",
+      "evidence": "{\"statusCode\":500,\"message\":\"Internal server error\"}"
+    },
+    {
+      "id": "TNT-SEC-AUTH-003",
+      "category": "Authentication",
+      "title": "JWT \"alg: none\" downgrade is rejected",
+      "expected": "401",
+      "actual": "500",
+      "status": "FAIL",
+      "severity": "Critical",
+      "evidence": "{\"statusCode\":500,\"message\":\"Internal server error\"}"
+    },
+    {
+      "id": "TNT-SEC-AUTH-004",
+      "category": "Authentication",
+      "title": "Token with a mismatched signature is rejected",
+      "expected": "401",
+      "actual": "500",
+      "status": "FAIL",
+      "severity": "Critical",
+      "evidence": "{\"statusCode\":500,\"message\":\"Internal server error\"}"
+    },
+    {
+      "id": "TNT-SEC-AUTH-005",
+      "category": "Authentication",
+      "title": "Token issued for another environment is rejected",
+      "expected": "401",
+      "actual": "401",
+      "status": "PASS",
+      "severity": "-",
+      "evidence": "{\"message\":\"Invalid API key for this environment. Issue a token from this environment's Partner Portal.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "id": "TNT-SEC-AUTH-006",
+      "category": "Authentication",
+      "title": "Tampered token payload (swapped partner id) is rejected",
+      "expected": "401",
+      "actual": "500",
+      "status": "FAIL",
+      "severity": "Critical",
+      "evidence": "{\"statusCode\":500,\"message\":\"Internal server error\"}"
+    },
+    {
+      "id": "TNT-SEC-AUTHZ-001",
+      "category": "Authorization",
+      "title": "manufacturer token CAN post to its own endpoint",
+      "expected": "201/202",
+      "actual": "202",
+      "status": "PASS",
+      "severity": "-",
+      "evidence": "{\"success\":true,\"message\":\"Processed 1 EPCIS 2.0 event(s)\",\"event_id\":\"urn:uuid:sec-mtl56lf6g3bq\",\"event_ids\":[\"urn:uuid:sec-mtl56lf6g3bq\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"c"
+    },
+    {
+      "id": "TNT-SEC-AUTHZ-002",
+      "category": "Authorization",
+      "title": "manufacturer token CANNOT post to the distributor endpoint",
+      "expected": "401/403",
+      "actual": "403",
+      "status": "PASS",
+      "severity": "-",
+      "evidence": "{\"message\":\"This API key is not authorized for the \\\"supplier\\\" integration route. Request a token with the \\\"supplier\\\" permission from the Partner Portal.\",\"error\":\"Forbidden\",\"statusCode\":403}"
+    },
+    {
+      "id": "TNT-SEC-AUTHZ-003",
+      "category": "Authorization",
+      "title": "manufacturer token CANNOT post to the facility endpoint",
+      "expected": "401/403",
+      "actual": "403",
+      "status": "PASS",
+      "severity": "-",
+      "evidence": "{\"message\":\"This API key is not authorized for the \\\"facility\\\" integration route. Request a token with the \\\"facility\\\" permission from the Partner Portal.\",\"error\":\"Forbidden\",\"statusCode\":403}"
+    },
+    {
+      "id": "TNT-SEC-AUTHZ-004",
+      "category": "Authorization",
+      "title": "distributor token CANNOT post to the manufacturer endpoint",
+      "expected": "401/403",
+      "actual": "403",
+      "status": "PASS",
+      "severity": "-",
+      "evidence": "{\"message\":\"This API key is not authorized for the \\\"manufacturer\\\" integration route. Request a token with the \\\"manufacturer\\\" permission from the Partner Portal.\",\"error\":\"Forbidden\",\"statusCode\":4"
+    },
+    {
+      "id": "TNT-SEC-AUTHZ-005",
+      "category": "Authorization",
+      "title": "distributor token CAN post to its own endpoint",
+      "expected": "201/202",
+      "actual": "409",
+      "status": "FAIL",
+      "severity": "High",
+      "evidence": "{\"category\":\"DUPLICATE_EVENT_PAYLOAD\",\"code\":\"DUPLICATE_EVENT_PAYLOAD\",\"message\":\"Duplicate matrix key SSCC+bizStep+disposition+readPoint:1d7de163a6c9c7c865ad79e66e90cf7be77a6e47019a18029899d5fcba6a7e"
+    },
+    {
+      "id": "TNT-SEC-AUTHZ-006",
+      "category": "Authorization",
+      "title": "distributor token CANNOT post to the facility endpoint",
+      "expected": "401/403",
+      "actual": "403",
+      "status": "PASS",
+      "severity": "-",
+      "evidence": "{\"message\":\"This API key is not authorized for the \\\"facility\\\" integration route. Request a token with the \\\"facility\\\" permission from the Partner Portal.\",\"error\":\"Forbidden\",\"statusCode\":403}"
+    },
+    {
+      "id": "TNT-SEC-AUTHZ-007",
+      "category": "Authorization",
+      "title": "facility token CANNOT post to the manufacturer endpoint",
+      "expected": "401/403",
+      "actual": "500",
+      "status": "FAIL",
+      "severity": "Critical",
+      "evidence": "{\"statusCode\":500,\"message\":\"Internal server error\"}"
+    },
+    {
+      "id": "TNT-SEC-AUTHZ-008",
+      "category": "Authorization",
+      "title": "facility token CANNOT post to the distributor endpoint",
+      "expected": "401/403",
+      "actual": "500",
+      "status": "FAIL",
+      "severity": "Critical",
+      "evidence": "{\"statusCode\":500,\"message\":\"Internal server error\"}"
+    },
+    {
+      "id": "TNT-SEC-AUTHZ-009",
+      "category": "Authorization",
+      "title": "facility token CAN post to its own endpoint",
+      "expected": "201/202",
+      "actual": "500",
+      "status": "FAIL",
+      "severity": "High",
+      "evidence": "{\"statusCode\":500,\"message\":\"Internal server error\"}"
+    },
+    {
+      "id": "TNT-SEC-INP-001",
+      "category": "Input",
+      "title": "Malformed JSON returns 4xx without an internal stack trace",
+      "expected": "4xx, no stack trace",
+      "actual": "400",
+      "status": "PASS",
+      "severity": "-",
+      "evidence": "{\"message\":\"Expected double-quoted property name in JSON at position 25\",\"error\":\"Bad Request\",\"statusCode\":400}"
+    },
+    {
+      "id": "TNT-SEC-INP-002",
+      "category": "Input",
+      "title": "EPCIS document with no epcisBody is rejected",
+      "expected": "400/422",
+      "actual": "400",
+      "status": "PASS",
+      "severity": "-",
+      "evidence": "{\"category\":\"SCHEMA_INVALID\",\"code\":\"MISSING_JSONLD_CONTEXT\",\"message\":\"Missing @context in EPCIS 2.0 document (required for JSON-LD)\",\"resolution\":\"Add \\\"@context\\\": [\\\"https://ref.gs1.org/standards/"
+    },
+    {
+      "id": "TNT-SEC-INP-003",
+      "category": "Input",
+      "title": "Structurally invalid EPC identifier is rejected",
+      "expected": "400/422",
+      "actual": "202",
+      "status": "FAIL",
+      "severity": "High",
+      "evidence": "{\"success\":true,\"message\":\"Processed 1 EPCIS 2.0 event(s)\",\"event_id\":\"urn:uuid:sec-mtl56mh8rqo\",\"event_ids\":[\"urn:uuid:sec-mtl56mh8rqo\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"cod"
+    },
+    {
+      "id": "TNT-SEC-INP-004",
+      "category": "Input",
+      "title": "Script payload in lotNumber is not reflected unescaped",
+      "expected": "rejected, or accepted and escaped",
+      "actual": "202 + reflected unescaped",
+      "status": "FAIL",
+      "severity": "High",
+      "evidence": "{\"success\":true,\"message\":\"Processed 1 EPCIS 2.0 event(s)\",\"event_id\":\"urn:uuid:sec-mtl56mmtawfd\",\"event_ids\":[\"urn:uuid:sec-mtl56mmtawfd\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"c"
+    },
+    {
+      "id": "TNT-SEC-INP-005",
+      "category": "Input",
+      "title": "SQL metacharacters in lotNumber surface no database error",
+      "expected": "no DB error text",
+      "actual": "202",
+      "status": "PASS",
+      "severity": "-",
+      "evidence": "{\"success\":true,\"message\":\"Processed 1 EPCIS 2.0 event(s)\",\"event_id\":\"urn:uuid:sec-mtl56mtqdosa\",\"event_ids\":[\"urn:uuid:sec-mtl56mtqdosa\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"c"
+    },
+    {
+      "id": "TNT-SEC-INP-006",
+      "category": "Input",
+      "title": "100k-character field is handled without a 5xx or stack trace",
+      "expected": "non-5xx, no stack trace",
+      "actual": "202",
+      "status": "PASS",
+      "severity": "-",
+      "evidence": "{\"success\":true,\"message\":\"Processed 1 EPCIS 2.0 event(s)\",\"event_id\":\"urn:uuid:sec-mtl56n61iv1s\",\"event_ids\":[\"urn:uuid:sec-mtl56n61iv1s\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"c"
+    },
+    {
+      "id": "TNT-SEC-INP-007",
+      "category": "Input",
+      "title": "Unexpected privileged fields do not cause a server error",
+      "expected": "non-5xx",
+      "actual": "202",
+      "status": "PASS",
+      "severity": "-",
+      "evidence": "{\"success\":true,\"message\":\"Processed 1 EPCIS 2.0 event(s)\",\"event_id\":\"urn:uuid:sec-mtl56nk51d4i\",\"event_ids\":[\"urn:uuid:sec-mtl56nk51d4i\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"c"
+    },
+    {
+      "id": "TNT-SEC-INP-008",
+      "category": "Input",
+      "title": "5,000-event batch is bounded rather than crashing the endpoint",
+      "expected": "non-5xx",
+      "actual": "504 in 121791ms",
+      "status": "FAIL",
+      "severity": "Medium",
+      "evidence": "<html> <head><title>504 Gateway Time-out</title></head> <body> <center><h1>504 Gateway Time-out</h1></center> <hr><center>nginx</center> </body> </html> "
+    },
+    {
+      "id": "TNT-SEC-INP-009",
+      "category": "Input",
+      "title": "Wrong Content-Type is handled cleanly",
+      "expected": "non-5xx",
+      "actual": "415",
+      "status": "PASS",
+      "severity": "-",
+      "evidence": "{\"message\":\"Unsupported format: unknown. Expected JSON business event, EPCIS 2.0 JSON-LD, or EPCIS 1.2 XML\",\"error\":\"Unsupported Media Type\",\"statusCode\":415,\"_sandbox\":true}"
+    },
+    {
+      "id": "TNT-SEC-INP-010",
+      "category": "Input",
+      "title": "Duplicate eventID replay is rejected, not silently re-recorded",
+      "expected": "second submission rejected or deduped",
+      "actual": "first=202 second=409",
+      "status": "PASS",
+      "severity": "-",
+      "evidence": "first: {\"success\":true,\"message\":\"Processed 1 EPCIS 2.0 event(s)\",\"event_id\":\"urn:uuid:sec-mtl599v6dup3\",\"e || second: {\"category\":\"DUPLICATE_EVENT_ID\",\"code\":\"DUPLICATE_EVENT_ID\",\"message\":\"Event ID urn:uuid:sec-mtl599"
+    },
+    {
+      "id": "TNT-SEC-DATA-001",
+      "category": "Data protection",
+      "title": "Baseline security headers are present on the web app",
+      "expected": "HSTS + XFO + nosniff + CSP",
+      "actual": "missing: strict-transport-security, x-frame-options, x-content-type-options, content-security-policy",
+      "status": "FAIL",
+      "severity": "Medium",
+      "evidence": "{\"access-control-allow-origin\":\"*\",\"cache-control\":\"s-maxage=31536000\",\"connection\":\"keep-alive\",\"content-encoding\":\"gzip\",\"content-type\":\"text/html; charset=utf-8\",\"date\":\"Thu, 03 Sep 2026 06:28:38 GMT\",\"etag\":\"\\\"yckrqqzfzw6mq\\\"\",\"server\":\"nginx\",\"transfer-encoding\":\"chunked\",\"vary\":\"rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding\",\"x-nextjs-cache\""
+    },
+    {
+      "id": "TNT-SEC-DATA-002",
+      "category": "Data protection",
+      "title": "API responses do not disclose framework/version banners",
+      "expected": "no x-powered-by, no versioned Server",
+      "actual": "x-powered-by=Express server=nginx",
+      "status": "FAIL",
+      "severity": "Low",
+      "evidence": "{\"access-control-allow-credentials\":\"true\",\"connection\":\"keep-alive\",\"content-length\":\"950\",\"content-type\":\"application/json; charset=utf-8\",\"date\":\"Thu, 03 Sep 2026 06:28:39 GMT\",\"etag\":\"W/\\\"3b6-k/YCZd0zOdAJAsp25/wruj8tlZE\\\"\",\"server\":\"nginx\",\"vary\":\"Origin\",\"x-powered-by\":\"Express\",\"x-ratelimit-li"
+    },
+    {
+      "id": "TNT-SEC-DATA-003",
+      "category": "Data protection",
+      "title": "API key supplied in the URL query string is NOT accepted",
+      "expected": "401",
+      "actual": "401",
+      "status": "PASS",
+      "severity": "-",
+      "evidence": "{\"message\":\"API key required. Please provide X-API-Key header.\",\"error\":\"Unauthorized\",\"statusCode\":401}"
+    },
+    {
+      "id": "TNT-SEC-DATA-004",
+      "category": "Data protection",
+      "title": "Ingestion endpoint does not serve an event dump over GET",
+      "expected": "404/405, no event data",
+      "actual": "404",
+      "status": "PASS",
+      "severity": "-",
+      "evidence": "{\"message\":\"Cannot GET /api/integration/manufacturer/events\",\"error\":\"Not Found\",\"statusCode\":404}"
+    },
+    {
+      "id": "TNT-SEC-DATA-005",
+      "category": "Data protection",
+      "title": "CORS does not reflect an arbitrary origin",
+      "expected": "no ACAO, or an allowlisted one",
+      "actual": "ACAO=https://evil.example.com ACAC=true",
+      "status": "FAIL",
+      "severity": "Medium",
+      "evidence": "preflight status=204"
+    },
+    {
+      "id": "TNT-SEC-RATE-001",
+      "category": "Rate limiting",
+      "title": "Burst of 60 concurrent writes is absorbed or throttled, never 5xx",
+      "expected": "no 5xx / no dropped connections",
+      "actual": "{\"202\":59,\"409\":1} in 4.4s",
+      "status": "PASS",
+      "severity": "-",
+      "evidence": "no 429 seen at this burst size"
+    },
+    {
+      "id": "TNT-SEC-RATE-002",
+      "category": "Rate limiting",
+      "title": "Repeated invalid-key attempts are throttled (credential brute force)",
+      "expected": "some 429 after repeated failures",
+      "actual": "{\"500\":30}",
+      "status": "FAIL",
+      "severity": "Medium",
+      "evidence": "every attempt answered 401 with no backoff"
+    }
+  ]
+}

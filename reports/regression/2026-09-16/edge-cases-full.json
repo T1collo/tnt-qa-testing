@@ -1,0 +1,1276 @@
+[
+  {
+    "id": "EC-A01",
+    "cat": "Identity & lot binding",
+    "role": "Manufacturer",
+    "title": "One SGTIN, two lots, two sequential commissioning events",
+    "steps": "Commission SGTIN with LOT-A. Wait. Commission the SAME SGTIN with LOT-B.",
+    "rule": "§6.3 duplicate payloads blocked by hashing key immutable fields per event type",
+    "expect": "Second event must not silently create a second lot binding. Either reject, or record a lot correction.",
+    "status": 409,
+    "codes": [
+      "DUPLICATE_EVENT_PAYLOAD"
+    ],
+    "message": "Duplicate matrix key EPC+bizStep:d81327ffd6105853a5bdca939b1889ee7886023bfdad44375c62949cdfb4e62d for bizStep=commissioning disposition=active",
+    "body": "{\"category\":\"DUPLICATE_EVENT_PAYLOAD\",\"code\":\"DUPLICATE_EVENT_PAYLOAD\",\"message\":\"Duplicate matrix key EPC+bizStep:d81327ffd6105853a5bdca939b1889ee7886023bfdad44375c62949cdfb4e62d for bizStep=commissioning disposition=active\",\"resolution\":\"Review the partner technical onboarding guide for this error code. Contact support if the issue persists.\",\"_sandbox\":true}",
+    "ms": 2060
+  },
+  {
+    "id": "EC-A02",
+    "cat": "Identity & lot binding",
+    "role": "Manufacturer",
+    "title": "One SGTIN, two lots, both events in a single document",
+    "steps": "One EPCIS document containing two commissioning events for the same SGTIN with different lots.",
+    "rule": "§3.1.1.1 Lot Integrity Rule - one lot per commissioning event",
+    "expect": "Rejected, or partially accepted with the conflict reported.",
+    "status": 409,
+    "codes": [
+      "DUPLICATE_EVENT_PAYLOAD"
+    ],
+    "message": "Duplicate matrix key EPC+bizStep:439903058682402d727fea098f44037fd32c2da8d70a565b78b44b3de122306a for bizStep=commissioning disposition=active",
+    "body": "{\"category\":\"DUPLICATE_EVENT_PAYLOAD\",\"code\":\"DUPLICATE_EVENT_PAYLOAD\",\"message\":\"Duplicate matrix key EPC+bizStep:439903058682402d727fea098f44037fd32c2da8d70a565b78b44b3de122306a for bizStep=commissioning disposition=active\",\"resolution\":\"Review the partner technical onboarding guide for this error code. Contact support if the issue persists.\",\"_sandbox\":true}",
+    "ms": 364
+  },
+  {
+    "id": "EC-A03",
+    "cat": "Identity & lot binding",
+    "role": "Manufacturer",
+    "title": "Exact re-submission of the same commissioning event (idempotency)",
+    "steps": "Submit one commissioning event, then submit the byte-identical document again.",
+    "rule": "§6.3 Idempotency - duplicate payloads automatically rejected",
+    "expect": "409 DUPLICATE, first event unchanged.",
+    "status": 409,
+    "codes": [
+      "DUPLICATE_EVENT_ID"
+    ],
+    "message": "Event ID urn:uuid:2f96b928-180a-44f2-a401-3faf96ecb8ba was already ingested",
+    "body": "{\"category\":\"DUPLICATE_EVENT_ID\",\"code\":\"DUPLICATE_EVENT_ID\",\"message\":\"Event ID urn:uuid:2f96b928-180a-44f2-a401-3faf96ecb8ba was already ingested\",\"resolution\":\"This event_id has already been ingested. This is idempotent � no action needed. If this is a different event, assign a new UUID.\",\"event_id\":\"urn:uuid:2f96b928-180a-44f2-a401-3faf96ecb8ba\",\"_sandbox\":true}",
+    "ms": 2007
+  },
+  {
+    "id": "EC-A04",
+    "cat": "Identity & lot binding",
+    "role": "Manufacturer",
+    "title": "Two SGTINs sharing one lot in a single event (documented happy path)",
+    "steps": "One commissioning event, epcList with two distinct SGTINs, one ILMD lot.",
+    "rule": "§3.1.1.1 single lot per event is the supported shape",
+    "expect": "Accepted. Control case proving the rule permits multi-serial single-lot events.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "INVALID_LOT"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:b3a942db-5b04-46fb-bc86-02ea45636900\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"LOT-1718\\\" is not registered i",
+    "ms": 345
+  },
+  {
+    "id": "EC-A05",
+    "cat": "Identity & lot binding",
+    "role": "Manufacturer",
+    "title": "Re-commission a serial that has already shipped",
+    "steps": "Commission, ship, then submit a fresh commissioning event for the same SGTIN.",
+    "rule": "§6.3 Event Immutability; lifecycle state machine",
+    "expect": "Rejected or flagged - a shipped serial cannot be re-born.",
+    "status": 409,
+    "codes": [
+      "DUPLICATE_EVENT_PAYLOAD"
+    ],
+    "message": "Duplicate matrix key EPC+bizStep:cf396a2137bb5e6c10e15777ef5d6e2cc8cb83cf21d128378bcdd3f1afc6c4b0 for bizStep=commissioning disposition=active",
+    "body": "{\"category\":\"DUPLICATE_EVENT_PAYLOAD\",\"code\":\"DUPLICATE_EVENT_PAYLOAD\",\"message\":\"Duplicate matrix key EPC+bizStep:cf396a2137bb5e6c10e15777ef5d6e2cc8cb83cf21d128378bcdd3f1afc6c4b0 for bizStep=commissioning disposition=active\",\"resolution\":\"Review the partner technical onboarding guide for this error code. Contact support if the issue persists.\",\"_sandbox\":true}",
+    "ms": 3581
+  },
+  {
+    "id": "EC-A06",
+    "cat": "Identity & lot binding",
+    "role": "Manufacturer",
+    "title": "Shipping event declares a different lot than commissioning",
+    "steps": "Commission with LOT-A, then ship the same serial carrying ILMD LOT-Z.",
+    "rule": "Guide is silent on ILMD on non-commissioning events",
+    "expect": "Contradictory lot data should be flagged rather than silently stored.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "UNKNOWN_SGTIN",
+      "INVALID_LOT",
+      "NO_REGULATORY_APPROVAL"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:3f89885b-c400-486b-8a57-fef2ef7a1a04\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"UNKNOWN_SGTIN\",\"message\":\"SGTIN urn:epc:id:sgtin:0614141.000111.3898279 (s",
+    "ms": 1995
+  },
+  {
+    "id": "EC-A07",
+    "cat": "Identity & lot binding",
+    "role": "Manufacturer",
+    "title": "Same serial number under two different GTINs",
+    "steps": "Commission serial 0000001 under item ref 000111, then under item ref 000222.",
+    "rule": "GS1: serial is only unique within a GTIN",
+    "expect": "Both accepted - they are genuinely different SGTINs. Confirms dedupe is not keyed on bare serial.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "INVALID_LOT"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:2523b031-91fa-42b1-a40a-d48728ccfd92\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"LOT-7906\\\" is not registered i",
+    "ms": 1996
+  },
+  {
+    "id": "EC-B01",
+    "cat": "Missing & malformed fields",
+    "role": "Manufacturer",
+    "title": "Commissioning with no ILMD block at all",
+    "steps": "Commissioning event with the ilmd key omitted entirely.",
+    "rule": "§3.1.1 commissioning mandatory fields",
+    "expect": "Rejected - guide makes lot and expiry mandatory at commissioning.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:6ebdae4f-56db-4edd-9927-33f7c57ef891\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true}",
+    "ms": 256
+  },
+  {
+    "id": "EC-B02",
+    "cat": "Missing & malformed fields",
+    "role": "Manufacturer",
+    "title": "Commissioning with an empty ILMD object",
+    "steps": "ilmd present but {}.",
+    "rule": "§3.1.1 commissioning mandatory fields",
+    "expect": "Rejected - same mandatory-field rule.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:bfcf171c-5123-47d5-957a-f7e898a75d08\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true}",
+    "ms": 259
+  },
+  {
+    "id": "EC-B03",
+    "cat": "Missing & malformed fields",
+    "role": "Manufacturer",
+    "title": "Lot number present but empty string",
+    "steps": "ilmd.lotNumber = \"\".",
+    "rule": "§3.1.1 commissioning mandatory fields",
+    "expect": "Rejected or flagged - an empty lot is not a lot.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:a609b368-0dbb-48e5-b9a7-917db0df4bf5\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true}",
+    "ms": 322
+  },
+  {
+    "id": "EC-B04",
+    "cat": "Missing & malformed fields",
+    "role": "Manufacturer",
+    "title": "Lot number explicitly null",
+    "steps": "ilmd.lotNumber = null.",
+    "rule": "§3.1.1 commissioning mandatory fields",
+    "expect": "Rejected or flagged; must behave the same as omitted.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:9803e1f5-d970-4da8-92b6-e24cb5e749a5\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true}",
+    "ms": 231
+  },
+  {
+    "id": "EC-B05",
+    "cat": "Missing & malformed fields",
+    "role": "Manufacturer",
+    "title": "Expiry date missing, lot present",
+    "steps": "ilmd carries lotNumber only.",
+    "rule": "§3.1.1 commissioning mandatory fields",
+    "expect": "Rejected - expiry is mandatory at commissioning.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "INVALID_LOT"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:c0926179-127f-4de1-8af1-ba8c26e3eeb7\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"LOT-6961\\\" is not registered i",
+    "ms": 301
+  },
+  {
+    "id": "EC-B06",
+    "cat": "Missing & malformed fields",
+    "role": "Manufacturer",
+    "title": "countryOfOrigin absent",
+    "steps": "Commissioning with no cbvmda:countryOfOrigin.",
+    "rule": "§3.1.1 commissioning mandatory fields",
+    "expect": "Accepted for a domestic MAH; must be rejected/flagged for a foreign MAH product.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "INVALID_LOT"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:60d5c5e0-eb87-46b0-b8ac-926af3bff662\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"LOT-6491\\\" is not registered i",
+    "ms": 244
+  },
+  {
+    "id": "EC-B07",
+    "cat": "Missing & malformed fields",
+    "role": "Manufacturer",
+    "title": "countryOfOrigin is not a valid ISO country code",
+    "steps": "cbvmda:countryOfOrigin = \"ZZ9\".",
+    "rule": "§3.1.1 commissioning mandatory fields",
+    "expect": "Rejected or flagged - origin declaration is a regulatory field.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "INVALID_LOT"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:b6e524f3-a358-4f01-b45a-f49fcd631e5e\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"LOT-2670\\\" is not registered i",
+    "ms": 361
+  },
+  {
+    "id": "EC-B08",
+    "cat": "Missing & malformed fields",
+    "role": "Manufacturer",
+    "title": "bizLocation omitted",
+    "steps": "Event with no bizLocation.",
+    "rule": "§3 \"Every event must declare bizLocation\"",
+    "expect": "Rejected - guide calls bizLocation operationally mandatory on every event.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "INVALID_LOT"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:c6d108e9-8b5c-4774-a975-d7fad8f301f4\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"LOT-7808\\\" is not registered i",
+    "ms": 259
+  },
+  {
+    "id": "EC-B09",
+    "cat": "Missing & malformed fields",
+    "role": "Manufacturer",
+    "title": "readPoint omitted",
+    "steps": "Event with no readPoint.",
+    "rule": "§3 readPoint optional by GS1 schema",
+    "expect": "Accepted - readPoint is optional per the guide.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "INVALID_LOT"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:8cbcf447-d5fd-4ce0-97b0-9416ded1fcc4\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"LOT-6630\\\" is not registered i",
+    "ms": 279
+  },
+  {
+    "id": "EC-B10",
+    "cat": "Missing & malformed fields",
+    "role": "Manufacturer",
+    "title": "disposition omitted",
+    "steps": "Commissioning with no disposition.",
+    "rule": "§3.1.1 commissioning mandatory fields",
+    "expect": "Accepted or flagged; disposition drives the lifecycle engine.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "INVALID_LOT"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:7118c1f2-5400-4a7f-9c77-9a29d0c4f4d4\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"LOT-0358\\\" is not registered i",
+    "ms": 324
+  },
+  {
+    "id": "EC-B11",
+    "cat": "Missing & malformed fields",
+    "role": "Manufacturer",
+    "title": "eventTimeZoneOffset omitted",
+    "steps": "Mandatory per §3.1.1 field list.",
+    "rule": "§3.1.1 commissioning mandatory fields",
+    "expect": "Rejected - it is listed as mandatory.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "INVALID_LOT"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:e7d4824a-a0a0-444e-b36b-d1211b6fc883\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"LOT-1076\\\" is not registered i",
+    "ms": 294
+  },
+  {
+    "id": "EC-B12",
+    "cat": "Missing & malformed fields",
+    "role": "Manufacturer",
+    "title": "Unknown extension field present",
+    "steps": "An unrecognised vendor field added to the event.",
+    "rule": "§3.1.1 commissioning mandatory fields",
+    "expect": "Accepted and ignored - forward compatibility.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "INVALID_LOT"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:d76bd91e-dc3d-4c37-8583-b072eae03324\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"LOT-4586\\\" is not registered i",
+    "ms": 336
+  },
+  {
+    "id": "EC-B13",
+    "cat": "Missing & malformed fields",
+    "role": "Manufacturer",
+    "title": "epcList present but empty",
+    "steps": "epcList = [].",
+    "rule": "§3.1.1 commissioning mandatory fields",
+    "expect": "Rejected - an event with no subject is meaningless.",
+    "status": 400,
+    "codes": [
+      "MISSING_NEEDED_FIELDS"
+    ],
+    "message": "Event urn:uuid:a501b081-2a40-4af2-9fc2-016b5d9b6347: ObjectEvent must contain at least one entry in epcList or quantityList, or for inspecting events a non-empty parentID (package logistics unit)",
+    "body": "{\"category\":\"SCHEMA_INVALID\",\"code\":\"MISSING_NEEDED_FIELDS\",\"message\":\"Event urn:uuid:a501b081-2a40-4af2-9fc2-016b5d9b6347: ObjectEvent must contain at least one entry in epcList or quantityList, or for inspecting events a non-empty parentID (package logistics unit)\",\"resolution\":\"One or more required fields are missing for this event type. Check eventID, eventTime, action, bizLocation, and epcLis",
+    "ms": 120
+  },
+  {
+    "id": "EC-B14",
+    "cat": "Missing & malformed fields",
+    "role": "Manufacturer",
+    "title": "epcList explicitly null",
+    "steps": "epcList = null.",
+    "rule": "§3.1.1 commissioning mandatory fields",
+    "expect": "Rejected, same as empty.",
+    "status": 400,
+    "codes": [
+      "MISSING_NEEDED_FIELDS"
+    ],
+    "message": "Event urn:uuid:9cc4d1ed-0ab4-49f8-ac23-19cffc4b22bf: ObjectEvent must contain at least one entry in epcList or quantityList, or for inspecting events a non-empty parentID (package logistics unit)",
+    "body": "{\"category\":\"SCHEMA_INVALID\",\"code\":\"MISSING_NEEDED_FIELDS\",\"message\":\"Event urn:uuid:9cc4d1ed-0ab4-49f8-ac23-19cffc4b22bf: ObjectEvent must contain at least one entry in epcList or quantityList, or for inspecting events a non-empty parentID (package logistics unit)\",\"resolution\":\"One or more required fields are missing for this event type. Check eventID, eventTime, action, bizLocation, and epcLis",
+    "ms": 129
+  },
+  {
+    "id": "EC-C01",
+    "cat": "Time & ordering",
+    "role": "Manufacturer",
+    "title": "Out-of-order: shipping submitted before commissioning",
+    "steps": "Submit a shipping event for a serial, then commission it afterwards.",
+    "rule": "§6.1.3 system accepts events in any order, temporal validation is async",
+    "expect": "Both accepted; shipping flagged at the time, reconciled once commissioning arrives.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "INVALID_LOT"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:5e283f33-14ac-4314-82ad-bdf446814c27\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"LOT-7894\\\" is not registered i",
+    "ms": 1994
+  },
+  {
+    "id": "EC-C02",
+    "cat": "Time & ordering",
+    "role": "Manufacturer",
+    "title": "Two different events with an identical eventTime",
+    "steps": "Commission two different serials with the exact same eventTime.",
+    "rule": "Guide is silent",
+    "expect": "Both accepted - identical timestamps are legitimate for a production run.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "INVALID_LOT"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:df558e91-a14a-4174-bb8a-6199be28a940\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"LOT-7488\\\" is not registered i",
+    "ms": 527
+  },
+  {
+    "id": "EC-C03",
+    "cat": "Time & ordering",
+    "role": "Manufacturer",
+    "title": "eventTimeZoneOffset contradicts the eventTime offset",
+    "steps": "eventTime carries Z (UTC) while eventTimeZoneOffset says +03:00.",
+    "rule": "Guide is silent on cross-field consistency",
+    "expect": "Accepted - Z plus a declared local offset is valid EPCIS - but worth confirming.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "INVALID_LOT"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:dba294a0-1162-4429-9172-65187dabfb1d\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"LOT-1148\\\" is not registered i",
+    "ms": 214
+  },
+  {
+    "id": "EC-C04",
+    "cat": "Time & ordering",
+    "role": "Manufacturer",
+    "title": "Impossible timezone offset",
+    "steps": "eventTimeZoneOffset = \"+25:00\".",
+    "rule": "EPCIS schema: offset range -14:00..+14:00",
+    "expect": "Rejected as a schema violation.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "INVALID_LOT"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:2d5a3fd0-df6d-470c-8e09-9de960432273\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"LOT-1699\\\" is not registered i",
+    "ms": 175
+  },
+  {
+    "id": "EC-C05",
+    "cat": "Time & ordering",
+    "role": "Manufacturer",
+    "title": "Client supplies its own recordTime",
+    "steps": "Event includes recordTime set one year in the past.",
+    "rule": "EPCIS: recordTime is assigned by the repository, not the client",
+    "expect": "Client value ignored or rejected; must not be trusted as the audit timestamp.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "INVALID_LOT"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:f9b65d8e-1714-4418-b02c-a2e9da9bef1b\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"LOT-0020\\\" is not registered i",
+    "ms": 191
+  },
+  {
+    "id": "EC-C06",
+    "cat": "Time & ordering",
+    "role": "Manufacturer",
+    "title": "eventTime as an epoch integer rather than ISO-8601",
+    "steps": "eventTime = 1789200000000.",
+    "rule": "EPCIS requires ISO-8601",
+    "expect": "Rejected as a schema violation.",
+    "status": 400,
+    "codes": [
+      "INVALID_EVENT_TIME"
+    ],
+    "message": "Event urn:uuid:66307957-f873-4d54-9f07-89bf72f12150: eventTime is not a valid ISO-8601 instant (got 1789200000000)",
+    "body": "{\"category\":\"SCHEMA_INVALID\",\"code\":\"INVALID_EVENT_TIME\",\"message\":\"Event urn:uuid:66307957-f873-4d54-9f07-89bf72f12150: eventTime is not a valid ISO-8601 instant (got 1789200000000)\",\"resolution\":\"eventTime must be a valid ISO-8601/xsd:dateTime instant (e.g. 2026-02-15T09:02:11.000Z).\",\"_sandbox\":true}",
+    "ms": 141
+  },
+  {
+    "id": "EC-C07",
+    "cat": "Time & ordering",
+    "role": "Manufacturer",
+    "title": "eventTime exactly at the 5-minute future boundary",
+    "steps": "eventTime = now + 5 minutes exactly.",
+    "rule": "§6.1.1 FUTURE_EVENT_TIME beyond 5 minutes",
+    "expect": "Boundary must be deterministic and documented.",
+    "status": 400,
+    "codes": [
+      "FUTURE_EVENT_TIME"
+    ],
+    "message": "Event time 2026-09-16T11:12:52.655Z is more than 5 minutes in the future (reference time: 2026-09-16T11:07:51.708Z)",
+    "body": "{\"category\":\"DATA_QUALITY\",\"code\":\"FUTURE_EVENT_TIME\",\"message\":\"Event time 2026-09-16T11:12:52.655Z is more than 5 minutes in the future (reference time: 2026-09-16T11:07:51.708Z)\",\"resolution\":\"eventTime is more than 5 minutes in the future. Verify the system clock and timezone offset.\",\"errors\":[{\"layer\":5,\"field\":\"event_time\",\"code\":\"FUTURE_EVENT_TIME\",\"message\":\"Event time 2026-09-16T11:12:52",
+    "ms": 272
+  },
+  {
+    "id": "EC-D01",
+    "cat": "Document structure",
+    "role": "Manufacturer",
+    "title": "Empty eventList array",
+    "steps": "epcisBody.eventList = [].",
+    "rule": "Guide is silent",
+    "expect": "Rejected or accepted as a no-op, but never a server error.",
+    "status": 400,
+    "codes": [
+      "MISSING_NEEDED_FIELDS"
+    ],
+    "message": "EPCISDocument.epcisBody.eventList is empty or missing",
+    "body": "{\"category\":\"SCHEMA_INVALID\",\"code\":\"MISSING_NEEDED_FIELDS\",\"message\":\"EPCISDocument.epcisBody.eventList is empty or missing\",\"resolution\":\"One or more required fields are missing for this event type. Check eventID, eventTime, action, bizLocation, and epcList/quantityList. See guide �3.3.\",\"_sandbox\":true}",
+    "ms": 88
+  },
+  {
+    "id": "EC-D02",
+    "cat": "Document structure",
+    "role": "Manufacturer",
+    "title": "Mixed document: one valid event, one hard-reject event",
+    "steps": "One document containing a valid commissioning event and a future-dated one.",
+    "rule": "§6.2 207 PARTIALLY_ACCEPTED - some events accepted, others rejected",
+    "expect": "207 with a per-event breakdown, or documented all-or-nothing 400.",
+    "status": 400,
+    "codes": [
+      "FUTURE_EVENT_TIME"
+    ],
+    "message": "Event time 2026-09-17T11:07:53.016Z is more than 5 minutes in the future (reference time: 2026-09-16T11:07:52.141Z)",
+    "body": "{\"category\":\"DATA_QUALITY\",\"code\":\"FUTURE_EVENT_TIME\",\"message\":\"Event time 2026-09-17T11:07:53.016Z is more than 5 minutes in the future (reference time: 2026-09-16T11:07:52.141Z)\",\"resolution\":\"eventTime is more than 5 minutes in the future. Verify the system clock and timezone offset.\",\"errors\":[{\"layer\":5,\"field\":\"event_time\",\"code\":\"FUTURE_EVENT_TIME\",\"message\":\"Event time 2026-09-17T11:07:53",
+    "ms": 333
+  },
+  {
+    "id": "EC-D03",
+    "cat": "Document structure",
+    "role": "Manufacturer",
+    "title": "Mixed document: one valid event, one warning-level event",
+    "steps": "One valid commissioning event plus one 8-day-stale event.",
+    "rule": "§6.1.2 flag codes are advisory",
+    "expect": "Both stored, warning attributed to the right event.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "INVALID_LOT",
+      "STALE_EVENT_TIME"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 2,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:07baefd3-06f3-4777-8b3f-bdfba77e87f1\",\"urn:uuid:c3f31666-a113-4479-a9e5-c01a97a780ec\"],\"events_processed\":2,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"messa",
+    "ms": 448
+  },
+  {
+    "id": "EC-D04",
+    "cat": "Document structure",
+    "role": "Manufacturer",
+    "title": "@context supplied as a string instead of an array",
+    "steps": "\"@context\": \"https://ref.gs1.org/...\" rather than an array.",
+    "rule": "§2.4 JSON-LD context requirements",
+    "expect": "Accepted - both forms are valid JSON-LD.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "INVALID_LOT"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:c3979ee9-eac6-4e90-b3e7-5b0661531091\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"LOT-1428\\\" is not registered i",
+    "ms": 233
+  },
+  {
+    "id": "EC-D05",
+    "cat": "Document structure",
+    "role": "Manufacturer",
+    "title": "Unsupported Content-Type",
+    "steps": "Valid JSON-LD body sent as Content-Type: text/plain.",
+    "rule": "§6.2 415 UNSUPPORTED_FORMAT",
+    "expect": "415.",
+    "status": 415,
+    "codes": [],
+    "message": "Unsupported format: unknown. Expected JSON business event, EPCIS 2.0 JSON-LD, or EPCIS 1.2 XML",
+    "body": "{\"message\":\"Unsupported format: unknown. Expected JSON business event, EPCIS 2.0 JSON-LD, or EPCIS 1.2 XML\",\"error\":\"Unsupported Media Type\",\"statusCode\":415,\"_sandbox\":true}",
+    "ms": 115
+  },
+  {
+    "id": "EC-D06",
+    "cat": "Document structure",
+    "role": "Manufacturer",
+    "title": "CBV tokens in URN long form inside JSON-LD",
+    "steps": "bizStep = urn:epcglobal:cbv:bizstep:commissioning in a 2.0 JSON-LD document.",
+    "rule": "§2.4 JSON-LD must use plain CBV tokens; URN form \"Not allowed\"",
+    "expect": "Rejected or flagged per the guide.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "INVALID_LOT"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:2ad52631-ce8e-402f-aa95-d003b62de99c\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"LOT-0568\\\" is not registered i",
+    "ms": 322
+  },
+  {
+    "id": "EC-D07",
+    "cat": "Document structure",
+    "role": "Manufacturer",
+    "title": "EPC URN in uppercase",
+    "steps": "epcList entry written as URN:EPC:ID:SGTIN:...",
+    "rule": "RFC 8141: URN scheme is case-insensitive, namespace-specific string is not",
+    "expect": "Deterministic handling - must not create a second identity for the same serial.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "INVALID_LOT"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:bd6469a0-9292-4b38-81de-857cf1213f1f\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"LOT-7042\\\" is not registered i",
+    "ms": 230
+  },
+  {
+    "id": "EC-D08",
+    "cat": "Document structure",
+    "role": "Manufacturer",
+    "title": "EPC padded with leading and trailing whitespace",
+    "steps": "epcList entry surrounded by spaces.",
+    "rule": "Guide is silent",
+    "expect": "Trimmed and accepted, or rejected - never stored with the padding.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "INVALID_LOT"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:33bb1ab6-5121-4a46-90fc-8484b435a083\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"LOT-9812\\\" is not registered i",
+    "ms": 379
+  },
+  {
+    "id": "EC-D09",
+    "cat": "Document structure",
+    "role": "Manufacturer",
+    "title": "Lot number carrying unicode and emoji",
+    "steps": "ilmd.lotNumber = \"LOT-éçñ-💊\".",
+    "rule": "Guide is silent",
+    "expect": "Accepted and round-tripped intact, or rejected with a charset rule.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "INVALID_LOT"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:2ed4d56e-2733-46d2-ad14-2da4694de732\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"LOT-éçñ-💊\\\" is not registered",
+    "ms": 363
+  },
+  {
+    "id": "EC-D10",
+    "cat": "Document structure",
+    "role": "Manufacturer",
+    "title": "Extremely long lot number (1000 characters)",
+    "steps": "ilmd.lotNumber = 1000 characters.",
+    "rule": "GS1 AI 10 permits at most 20 characters",
+    "expect": "Rejected - lot exceeds the GS1 maximum.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "INVALID_LOT"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:9e2b55fd-22ef-4a34-875b-9b33b9d01922\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"LLLLLLLLLLLLLLLLLLLLLLLLLLLLLL",
+    "ms": 256
+  },
+  {
+    "id": "EC-D11",
+    "cat": "Document structure",
+    "role": "Manufacturer",
+    "title": "Duplicate JSON keys in one event object",
+    "steps": "Raw JSON with bizStep declared twice (commissioning, then shipping).",
+    "rule": "Guide is silent; JSON parsers normally keep the last value",
+    "expect": "Deterministic and safe - ideally rejected as ambiguous.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "UNKNOWN_SGTIN",
+      "SHIPPING_WITHOUT_COMMISSIONING",
+      "INVALID_LOT",
+      "NO_REGULATORY_APPROVAL"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:5cdda042-42dc-463c-be01-04997e70cb1a\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"UNKNOWN_SGTIN\",\"message\":\"SGTIN urn:epc:id:sgtin:0614141.000111.4122680 (s",
+    "ms": 313
+  },
+  {
+    "id": "EC-E01",
+    "cat": "Quantity & class level",
+    "role": "Manufacturer",
+    "title": "quantityList with an LGTIN and no epcList",
+    "steps": "Class-level commissioning using quantityList only.",
+    "rule": "§2.2 accepted identifiers",
+    "expect": "Accepted if class-level is supported, else a clear rejection.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "INVALID_LOT"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:be932943-a3b1-4271-bbef-093f8d28cf3e\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"LOT-4039\\\" is not registered i",
+    "ms": 260
+  },
+  {
+    "id": "EC-E02",
+    "cat": "Quantity & class level",
+    "role": "Manufacturer",
+    "title": "Quantity of zero",
+    "steps": "quantityList entry with quantity 0.",
+    "rule": "Guide is silent",
+    "expect": "Rejected - a zero-quantity movement is meaningless.",
+    "status": 400,
+    "codes": [
+      "INVALID_QUANTITY"
+    ],
+    "message": "Quantity must be greater than 0, got 0",
+    "body": "{\"category\":\"DATA_QUALITY\",\"code\":\"INVALID_QUANTITY\",\"message\":\"Quantity must be greater than 0, got 0\",\"resolution\":\"Quantity must be a positive number. Verify quantityList values.\",\"errors\":[{\"layer\":5,\"field\":\"quantity\",\"code\":\"INVALID_QUANTITY\",\"message\":\"Quantity must be greater than 0, got 0\",\"severity\":\"error\"}],\"_sandbox\":true}",
+    "ms": 239
+  },
+  {
+    "id": "EC-E03",
+    "cat": "Quantity & class level",
+    "role": "Manufacturer",
+    "title": "Negative quantity",
+    "steps": "quantityList entry with quantity -50.",
+    "rule": "Guide is silent",
+    "expect": "Rejected - negative stock cannot be commissioned.",
+    "status": 400,
+    "codes": [
+      "INVALID_QUANTITY"
+    ],
+    "message": "Quantity must be greater than 0, got -50",
+    "body": "{\"category\":\"DATA_QUALITY\",\"code\":\"INVALID_QUANTITY\",\"message\":\"Quantity must be greater than 0, got -50\",\"resolution\":\"Quantity must be a positive number. Verify quantityList values.\",\"errors\":[{\"layer\":5,\"field\":\"quantity\",\"code\":\"INVALID_QUANTITY\",\"message\":\"Quantity must be greater than 0, got -50\",\"severity\":\"error\"}],\"_sandbox\":true}",
+    "ms": 245
+  },
+  {
+    "id": "EC-E04",
+    "cat": "Quantity & class level",
+    "role": "Facility",
+    "title": "Dispensing at class level with quantityList",
+    "steps": "Dispense using quantityList rather than individual SGTINs.",
+    "rule": "§3.3.3 dispensing must be at unit level",
+    "expect": "Rejected - dispensing requires SGTINs.",
+    "status": 201,
+    "codes": [],
+    "message": "",
+    "body": "{\"event_id\":\"urn:uuid:9770c428-1f4b-4482-ab2f-04af605056c5\",\"epcs_processed\":0,\"class_level\":true,\"_sandbox\":true}",
+    "ms": 193
+  },
+  {
+    "id": "EC-F01",
+    "cat": "Aggregation",
+    "role": "Manufacturer",
+    "title": "Container aggregated into itself",
+    "steps": "AggregationEvent where parentID also appears in childEPCs.",
+    "rule": "Guide is silent; logically impossible",
+    "expect": "Rejected - a container cannot contain itself.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "PARENT_NOT_FOUND"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:988b1f51-f937-4328-9dc0-7d859d827e95\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"parentID\",\"code\":\"PARENT_NOT_FOUND\",\"message\":\"Parent SSCC 06141411023371928 has no active ",
+    "ms": 192
+  },
+  {
+    "id": "EC-F02",
+    "cat": "Aggregation",
+    "role": "Manufacturer",
+    "title": "ADD aggregation with an empty childEPCs array",
+    "steps": "childEPCs = [].",
+    "rule": "Guide is silent",
+    "expect": "Rejected - nothing is being aggregated.",
+    "status": 400,
+    "codes": [
+      "MISSING_NEEDED_FIELDS"
+    ],
+    "message": "Event urn:uuid:19551641-27b6-4198-a2b9-a363cb8a0fc6: AggregationEvent must contain at least one entry in childEPCs unless action is UNOBSERVED_OBJECT",
+    "body": "{\"category\":\"SCHEMA_INVALID\",\"code\":\"MISSING_NEEDED_FIELDS\",\"message\":\"Event urn:uuid:19551641-27b6-4198-a2b9-a363cb8a0fc6: AggregationEvent must contain at least one entry in childEPCs unless action is UNOBSERVED_OBJECT\",\"resolution\":\"One or more required fields are missing for this event type. Check eventID, eventTime, action, bizLocation, and epcList/quantityList. See guide �3.3.\",\"_sandbox\":tr",
+    "ms": 95
+  },
+  {
+    "id": "EC-F03",
+    "cat": "Aggregation",
+    "role": "Manufacturer",
+    "title": "One child aggregated under two parents in the same document",
+    "steps": "Two ADD events in one document placing the same SGTIN under different SSCCs.",
+    "rule": "Physical impossibility - an item is in one container",
+    "expect": "Rejected or flagged as a conflict.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "UNKNOWN_SGTIN",
+      "PARENT_NOT_FOUND",
+      "UNCOMMISSIONED_CHILD",
+      "INVALID_DISPOSITION",
+      "CHILD_ALREADY_AGGREGATED"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 2,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:d548ef25-ff8d-4513-a05d-31930226321a\",\"urn:uuid:a86db684-8e95-4bca-bffd-338baa32048f\"],\"events_processed\":2,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"UNKNOWN_SGTIN\",\"message\":\"",
+    "ms": 2025
+  },
+  {
+    "id": "EC-F04",
+    "cat": "Aggregation",
+    "role": "Manufacturer",
+    "title": "Hierarchy deeper than the documented maximum of 3",
+    "steps": "Build item -> case -> pallet -> container, a 4-level hierarchy.",
+    "rule": "§3 Max level of hierarchy = 3",
+    "expect": "Fourth level rejected or flagged.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "PARENT_NOT_FOUND"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:065a68c2-6e12-4755-8d1e-a3bcebeb2c48\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"parentID\",\"code\":\"PARENT_NOT_FOUND\",\"message\":\"Parent SSCC 06141415050758838 has no active ",
+    "ms": 4900
+  },
+  {
+    "id": "EC-F05",
+    "cat": "Aggregation",
+    "role": "Manufacturer",
+    "title": "Same child listed twice in childEPCs",
+    "steps": "childEPCs contains the identical SGTIN twice.",
+    "rule": "§6.1.1 DUPLICATE_EPC_IN_EVENT applies to childEPCs as well as epcList",
+    "expect": "Rejected, as for epcList.",
+    "status": 400,
+    "codes": [
+      "DUPLICATE_EPC_IN_EVENT"
+    ],
+    "message": "Event urn:uuid:63496193-a840-4b0e-a7e4-ccc5e85a0da5: EPC URI \"urn:epc:id:sgtin:0614141.000111.9477061\" appears more than once in the same event's EPC list",
+    "body": "{\"category\":\"SCHEMA_INVALID\",\"code\":\"DUPLICATE_EPC_IN_EVENT\",\"message\":\"Event urn:uuid:63496193-a840-4b0e-a7e4-ccc5e85a0da5: EPC URI \\\"urn:epc:id:sgtin:0614141.000111.9477061\\\" appears more than once in the same event's EPC list\",\"resolution\":\"The same EPC URI appears more than once in epcList or childEPCs. Remove duplicates.\",\"_sandbox\":true}",
+    "ms": 163
+  },
+  {
+    "id": "EC-F06",
+    "cat": "Aggregation",
+    "role": "Distributor",
+    "title": "Unpack a child that was never aggregated",
+    "steps": "DELETE aggregation naming a child with no prior ADD.",
+    "rule": "§3.2.2 Unpack",
+    "expect": "Flagged - no prior pack event.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "UNKNOWN_SGTIN",
+      "UNPACK_WITHOUT_AGGREGATION",
+      "NO_REGULATORY_APPROVAL"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:aef51c39-8397-487a-ab5e-783e49c1012d\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"UNKNOWN_SGTIN\",\"message\":\"SGTIN urn:epc:id:sgtin:0614141.000111.3491541 (s",
+    "ms": 311
+  },
+  {
+    "id": "EC-F07",
+    "cat": "Aggregation",
+    "role": "Manufacturer",
+    "title": "Aggregate a serial that is already dispensed",
+    "steps": "Commission, dispense, then pack the dispensed serial into a case.",
+    "rule": "Lifecycle: dispensed is terminal",
+    "expect": "Rejected or flagged - terminal serials cannot be re-packed.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "UNKNOWN_SGTIN",
+      "INVALID_DISPOSITION",
+      "PARENT_NOT_FOUND",
+      "UNCOMMISSIONED_CHILD"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:eb570e5b-788b-4f5e-b7f7-217491bd9d6b\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"UNKNOWN_SGTIN\",\"message\":\"SGTIN urn:epc:id:sgtin:0614141.000111.8603055 (s",
+    "ms": 3653
+  },
+  {
+    "id": "EC-G01",
+    "cat": "Roles & authorization",
+    "role": "MFG",
+    "title": "MFG key against the manufacturer endpoint",
+    "steps": "POST a commissioning event to /api/integration/manufacturer/events using the MFG API key.",
+    "rule": "§2.5.1 Authentication / role scoping",
+    "expect": "Accepted - the key owns this endpoint.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "INVALID_LOT"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:4040e6b4-126e-4a46-9bd2-21709baf7f65\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"LOT-2519\\\" is not registered i",
+    "ms": 304
+  },
+  {
+    "id": "EC-G02",
+    "cat": "Roles & authorization",
+    "role": "MFG",
+    "title": "MFG key against the supplier endpoint",
+    "steps": "POST a commissioning event to /api/integration/supplier/events using the MFG API key.",
+    "rule": "§2.5.1 Authentication / role scoping",
+    "expect": "403 FORBIDDEN - authenticated but not authorised.",
+    "status": 403,
+    "codes": [],
+    "message": "This API key is not authorized for the \"supplier\" integration route. Request a token with the \"supplier\" permission from the Partner Portal.",
+    "body": "{\"message\":\"This API key is not authorized for the \\\"supplier\\\" integration route. Request a token with the \\\"supplier\\\" permission from the Partner Portal.\",\"error\":\"Forbidden\",\"statusCode\":403}",
+    "ms": 122
+  },
+  {
+    "id": "EC-G03",
+    "cat": "Roles & authorization",
+    "role": "MFG",
+    "title": "MFG key against the facility endpoint",
+    "steps": "POST a commissioning event to /api/integration/facility/events using the MFG API key.",
+    "rule": "§2.5.1 Authentication / role scoping",
+    "expect": "403 FORBIDDEN - authenticated but not authorised.",
+    "status": 403,
+    "codes": [],
+    "message": "This API key is not authorized for the \"facility\" integration route. Request a token with the \"facility\" permission from the Partner Portal.",
+    "body": "{\"message\":\"This API key is not authorized for the \\\"facility\\\" integration route. Request a token with the \\\"facility\\\" permission from the Partner Portal.\",\"error\":\"Forbidden\",\"statusCode\":403}",
+    "ms": 139
+  },
+  {
+    "id": "EC-G04",
+    "cat": "Roles & authorization",
+    "role": "SUP",
+    "title": "SUP key against the manufacturer endpoint",
+    "steps": "POST a commissioning event to /api/integration/manufacturer/events using the SUP API key.",
+    "rule": "§2.5.1 Authentication / role scoping",
+    "expect": "403 FORBIDDEN - authenticated but not authorised.",
+    "status": 403,
+    "codes": [],
+    "message": "This API key is not authorized for the \"manufacturer\" integration route. Request a token with the \"manufacturer\" permission from the Partner Portal.",
+    "body": "{\"message\":\"This API key is not authorized for the \\\"manufacturer\\\" integration route. Request a token with the \\\"manufacturer\\\" permission from the Partner Portal.\",\"error\":\"Forbidden\",\"statusCode\":403}",
+    "ms": 133
+  },
+  {
+    "id": "EC-G05",
+    "cat": "Roles & authorization",
+    "role": "SUP",
+    "title": "SUP key against the supplier endpoint",
+    "steps": "POST a commissioning event to /api/integration/supplier/events using the SUP API key.",
+    "rule": "§2.5.1 Authentication / role scoping",
+    "expect": "Accepted - the key owns this endpoint.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "INVALID_LOT",
+      "NO_REGULATORY_APPROVAL"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:e232cecb-71e1-49f5-9e5e-0a4e0f7d6958\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"LOT-1395\\\" is not registered i",
+    "ms": 451
+  },
+  {
+    "id": "EC-G06",
+    "cat": "Roles & authorization",
+    "role": "SUP",
+    "title": "SUP key against the facility endpoint",
+    "steps": "POST a commissioning event to /api/integration/facility/events using the SUP API key.",
+    "rule": "§2.5.1 Authentication / role scoping",
+    "expect": "403 FORBIDDEN - authenticated but not authorised.",
+    "status": 403,
+    "codes": [],
+    "message": "This API key is not authorized for the \"facility\" integration route. Request a token with the \"facility\" permission from the Partner Portal.",
+    "body": "{\"message\":\"This API key is not authorized for the \\\"facility\\\" integration route. Request a token with the \\\"facility\\\" permission from the Partner Portal.\",\"error\":\"Forbidden\",\"statusCode\":403}",
+    "ms": 299
+  },
+  {
+    "id": "EC-G07",
+    "cat": "Roles & authorization",
+    "role": "FAC",
+    "title": "FAC key against the manufacturer endpoint",
+    "steps": "POST a commissioning event to /api/integration/manufacturer/events using the FAC API key.",
+    "rule": "§2.5.1 Authentication / role scoping",
+    "expect": "403 FORBIDDEN - authenticated but not authorised.",
+    "status": 403,
+    "codes": [],
+    "message": "This API key is not authorized for the \"manufacturer\" integration route. Request a token with the \"manufacturer\" permission from the Partner Portal.",
+    "body": "{\"message\":\"This API key is not authorized for the \\\"manufacturer\\\" integration route. Request a token with the \\\"manufacturer\\\" permission from the Partner Portal.\",\"error\":\"Forbidden\",\"statusCode\":403}",
+    "ms": 164
+  },
+  {
+    "id": "EC-G08",
+    "cat": "Roles & authorization",
+    "role": "FAC",
+    "title": "FAC key against the supplier endpoint",
+    "steps": "POST a commissioning event to /api/integration/supplier/events using the FAC API key.",
+    "rule": "§2.5.1 Authentication / role scoping",
+    "expect": "403 FORBIDDEN - authenticated but not authorised.",
+    "status": 403,
+    "codes": [],
+    "message": "This API key is not authorized for the \"supplier\" integration route. Request a token with the \"supplier\" permission from the Partner Portal.",
+    "body": "{\"message\":\"This API key is not authorized for the \\\"supplier\\\" integration route. Request a token with the \\\"supplier\\\" permission from the Partner Portal.\",\"error\":\"Forbidden\",\"statusCode\":403}",
+    "ms": 188
+  },
+  {
+    "id": "EC-G09",
+    "cat": "Roles & authorization",
+    "role": "FAC",
+    "title": "FAC key against the facility endpoint",
+    "steps": "POST a commissioning event to /api/integration/facility/events using the FAC API key.",
+    "rule": "§2.5.1 Authentication / role scoping",
+    "expect": "Accepted - the key owns this endpoint.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "INVALID_LOT",
+      "NO_REGULATORY_APPROVAL"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:b17a6bbb-4e11-472d-a0be-9ed84476762b\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"LOT-3738\\\" is not registered i",
+    "ms": 445
+  },
+  {
+    "id": "EC-G10",
+    "cat": "Roles & authorization",
+    "role": "Manufacturer",
+    "title": "Manufacturer key against the dispense endpoint",
+    "steps": "POST a dispensing event to /facility/events/dispense with the manufacturer key.",
+    "rule": "§3.3.3 dispensing is a facility operation",
+    "expect": "403 FORBIDDEN.",
+    "status": 403,
+    "codes": [],
+    "message": "This API key is not authorized for the \"facility\" integration route. Request a token with the \"facility\" permission from the Partner Portal.",
+    "body": "{\"message\":\"This API key is not authorized for the \\\"facility\\\" integration route. Request a token with the \\\"facility\\\" permission from the Partner Portal.\",\"error\":\"Forbidden\",\"statusCode\":403}",
+    "ms": 137
+  },
+  {
+    "id": "EC-G11",
+    "cat": "Roles & authorization",
+    "role": "None",
+    "title": "No API key supplied",
+    "steps": "POST with the X-API-Key header omitted.",
+    "rule": "§6.2 401 UNAUTHORIZED",
+    "expect": "401.",
+    "status": 401,
+    "codes": [],
+    "message": "API key required. Please provide X-API-Key header.",
+    "body": "{\"message\":\"API key required. Please provide X-API-Key header.\",\"error\":\"Unauthorized\",\"statusCode\":401}",
+    "ms": 53
+  },
+  {
+    "id": "EC-G12",
+    "cat": "Roles & authorization",
+    "role": "None",
+    "title": "Malformed API key",
+    "steps": "X-API-Key set to a junk string.",
+    "rule": "§6.2 401 UNAUTHORIZED",
+    "expect": "401, with no detail leaked about why.",
+    "status": 401,
+    "codes": [],
+    "message": "Invalid API key",
+    "body": "{\"message\":\"Invalid API key\",\"error\":\"Unauthorized\",\"statusCode\":401}",
+    "ms": 45
+  },
+  {
+    "id": "EC-G13",
+    "cat": "Roles & authorization",
+    "role": "Facility",
+    "title": "Facility submits a commissioning event",
+    "steps": "Facility key posts commissioning to its own endpoint.",
+    "rule": "§3.1 commissioning is a manufacturer event",
+    "expect": "Flagged - a facility does not commission product.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "INVALID_LOT",
+      "NO_REGULATORY_APPROVAL"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:566b0458-e8d3-4e2c-9273-d88da51baf1c\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"LOT-5659\\\" is not registered i",
+    "ms": 323
+  },
+  {
+    "id": "EC-G14",
+    "cat": "Roles & authorization",
+    "role": "Distributor",
+    "title": "Distributor submits a commissioning event",
+    "steps": "Supplier key posts commissioning to its own endpoint.",
+    "rule": "§3.2 distributor events are receive/pack/unpack/ship",
+    "expect": "Flagged - a distributor does not commission product.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "INVALID_LOT",
+      "NO_REGULATORY_APPROVAL"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:312ad102-771b-4de6-b80b-e3ef575350f6\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"LOT-8075\\\" is not registered i",
+    "ms": 391
+  },
+  {
+    "id": "EC-H01",
+    "cat": "Lifecycle & state",
+    "role": "Facility",
+    "title": "Dispense a serial that was never commissioned",
+    "steps": "Dispense a fresh, unknown SGTIN.",
+    "rule": "§3.3.3 dispensing is synchronous and validated",
+    "expect": "Rejected at the sync endpoint - dispensing unknown stock is a safety issue.",
+    "status": 201,
+    "codes": [],
+    "message": "",
+    "body": "{\"event_id\":\"urn:uuid:6df5dfc4-9866-40a2-a3ed-3af9e87add73\",\"epcs_processed\":1,\"class_level\":false,\"_sandbox\":true}",
+    "ms": 379
+  },
+  {
+    "id": "EC-H02",
+    "cat": "Lifecycle & state",
+    "role": "Facility",
+    "title": "Dispense a serial that has already been destroyed",
+    "steps": "Commission, destroy, then dispense.",
+    "rule": "Lifecycle: destroyed is terminal",
+    "expect": "Rejected - destroyed stock must never reach a patient.",
+    "status": 201,
+    "codes": [],
+    "message": "",
+    "body": "{\"event_id\":\"urn:uuid:a0100427-cb1c-4af7-b4a8-0dcd5da4df8b\",\"epcs_processed\":1,\"class_level\":false,\"_sandbox\":true}",
+    "ms": 3807
+  },
+  {
+    "id": "EC-H03",
+    "cat": "Lifecycle & state",
+    "role": "Manufacturer",
+    "title": "Ship the same serial twice from the same location",
+    "steps": "Commission, ship, ship again.",
+    "rule": "Lifecycle: cannot ship what has already left",
+    "expect": "Second shipping flagged.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "UNKNOWN_SGTIN",
+      "INVALID_DISPOSITION",
+      "NO_REGULATORY_APPROVAL"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:9f04f24a-eb93-45f6-9e85-2e3dd6172908\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"UNKNOWN_SGTIN\",\"message\":\"SGTIN urn:epc:id:sgtin:0614141.000111.2527279 (s",
+    "ms": 3667
+  },
+  {
+    "id": "EC-H04",
+    "cat": "Lifecycle & state",
+    "role": "Distributor",
+    "title": "Receive the same serial twice",
+    "steps": "Commission, ship, receive, receive again.",
+    "rule": "Lifecycle: duplicate receipt",
+    "expect": "Second receipt flagged.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "UNKNOWN_SGTIN",
+      "INVALID_DISPOSITION",
+      "NO_REGULATORY_APPROVAL"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:4fd9313e-0d31-4c1e-93bf-cf7454f31cf9\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"UNKNOWN_SGTIN\",\"message\":\"SGTIN urn:epc:id:sgtin:0614141.000111.1708326 (s",
+    "ms": 5590
+  },
+  {
+    "id": "EC-H05",
+    "cat": "Lifecycle & state",
+    "role": "Facility",
+    "title": "Return a serial after it has been dispensed",
+    "steps": "Commission, dispense, then submit a return shipping event.",
+    "rule": "§4.2 Return Events; dispensed is terminal",
+    "expect": "Flagged - dispensed product cannot re-enter the supply chain.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "UNKNOWN_SGTIN",
+      "NO_REGULATORY_APPROVAL"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:10e95668-ef4c-4a39-bbc1-291575c8d12e\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"UNKNOWN_SGTIN\",\"message\":\"SGTIN urn:epc:id:sgtin:0614141.000111.3943471 (s",
+    "ms": 4051
+  },
+  {
+    "id": "EC-H06",
+    "cat": "Lifecycle & state",
+    "role": "Facility",
+    "title": "Dispense the same serial to two different patients",
+    "steps": "Commission, dispense, then dispense again with a new eventID.",
+    "rule": "§6.1.2 SERIAL_ALREADY_DISPENSED",
+    "expect": "Second dispense rejected or flagged - this is the core anti-counterfeit check.",
+    "status": 409,
+    "codes": [
+      "DUPLICATE_EVENT_PAYLOAD"
+    ],
+    "message": "Duplicate matrix key EPC+bizStep:ab1c561f05fdf4e9541fd4c1c69c7ee7409c59ae06dececb2d19f576c64df78c for bizStep=dispensing disposition=dispensed",
+    "body": "{\"category\":\"DUPLICATE_EVENT_PAYLOAD\",\"code\":\"DUPLICATE_EVENT_PAYLOAD\",\"message\":\"Duplicate matrix key EPC+bizStep:ab1c561f05fdf4e9541fd4c1c69c7ee7409c59ae06dececb2d19f576c64df78c for bizStep=dispensing disposition=dispensed\",\"resolution\":\"Review the partner technical onboarding guide for this error code. Contact support if the issue persists.\",\"_sandbox\":true}",
+    "ms": 3880
+  },
+  {
+    "id": "EC-H07",
+    "cat": "Lifecycle & state",
+    "role": "Facility",
+    "title": "Destroy a serial twice",
+    "steps": "Commission, destroy, destroy again.",
+    "rule": "Lifecycle: destroyed is terminal",
+    "expect": "Second destruction flagged.",
+    "status": 409,
+    "codes": [
+      "DUPLICATE_EVENT_PAYLOAD"
+    ],
+    "message": "Duplicate matrix key EPC+bizStep+disposition:fad6d13b125e7f127102d10941b7f3dfe985913b450ae53ebdd308b8c7974939:destroyed for bizStep=destroying disposition=destroyed",
+    "body": "{\"category\":\"DUPLICATE_EVENT_PAYLOAD\",\"code\":\"DUPLICATE_EVENT_PAYLOAD\",\"message\":\"Duplicate matrix key EPC+bizStep+disposition:fad6d13b125e7f127102d10941b7f3dfe985913b450ae53ebdd308b8c7974939:destroyed for bizStep=destroying disposition=destroyed\",\"resolution\":\"Review the partner technical onboarding guide for this error code. Contact support if the issue persists.\",\"_sandbox\":true}",
+    "ms": 3655
+  },
+  {
+    "id": "EC-H08",
+    "cat": "Lifecycle & state",
+    "role": "Facility",
+    "title": "Mark a dispensed serial as damaged",
+    "steps": "Commission, dispense, then submit a damaged product-status event.",
+    "rule": "§4.4.1 Damaged",
+    "expect": "Flagged - status changes after dispensing need a defined policy.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "UNKNOWN_SGTIN",
+      "INVALID_DISPOSITION",
+      "NO_REGULATORY_APPROVAL"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:5d264c16-9faa-4689-8cba-c66f37614197\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"UNKNOWN_SGTIN\",\"message\":\"SGTIN urn:epc:id:sgtin:0614141.000111.1323373 (s",
+    "ms": 3573
+  },
+  {
+    "id": "EC-H09",
+    "cat": "Lifecycle & state",
+    "role": "Facility",
+    "title": "Report a serial stolen after it was destroyed",
+    "steps": "Commission, destroy, then report stolen.",
+    "rule": "§4.4.2 Stolen",
+    "expect": "Flagged - contradictory terminal states.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "UNKNOWN_SGTIN",
+      "SERIAL_ALREADY_DESTROYED",
+      "NO_REGULATORY_APPROVAL"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:834307ee-8222-483a-bfe5-b5e29aa2eb76\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"UNKNOWN_SGTIN\",\"message\":\"SGTIN urn:epc:id:sgtin:0614141.000111.8041838 (s",
+    "ms": 3626
+  },
+  {
+    "id": "EC-H10",
+    "cat": "Lifecycle & state",
+    "role": "Manufacturer",
+    "title": "Ship a serial from a location it was never received at",
+    "steps": "Commission at location A, then ship from location B.",
+    "rule": "§6.1.2 INVENTORY_SIGHTING_MISMATCH",
+    "expect": "Flagged - the serial was never at location B.",
+    "status": 202,
+    "codes": [
+      "UNKNOWN_SGLN",
+      "UNKNOWN_SGTIN",
+      "INVENTORY_SIGHTING_MISMATCH",
+      "NO_REGULATORY_APPROVAL"
+    ],
+    "message": "EPCIS events accepted",
+    "processed": 1,
+    "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:d822d561-3c92-40a2-8b7a-3148958c90d5\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061999900002 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"UNKNOWN_SGTIN\",\"message\":\"SGTIN urn:epc:id:sgtin:0614141.000111.9327230 (s",
+    "ms": 2016
+  }
+]
