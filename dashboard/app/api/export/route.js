@@ -4,9 +4,12 @@ import { exportToWorkbook } from '../../../lib/exportWorkbook';
 
 export const dynamic = 'force-dynamic';
 
-export async function POST() {
+// Body (optional): { runId } to export a single run; no body exports every run.
+export async function POST(request) {
+  const body = await request.json().catch(() => null);
+  const runId = typeof body?.runId === 'string' && body.runId ? body.runId : null;
   try {
-    const { outPath, filename, matchedRows, totalTracked } = await exportToWorkbook();
+    const { outPath, filename, matchedRows, totalTracked } = await exportToWorkbook({ runId });
     const buffer = fs.readFileSync(outPath);
 
     return new NextResponse(buffer, {
@@ -19,6 +22,6 @@ export async function POST() {
       },
     });
   } catch (err) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    return NextResponse.json({ error: err.message }, { status: err.status || 500 });
   }
 }

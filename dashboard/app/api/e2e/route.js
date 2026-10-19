@@ -9,12 +9,13 @@ import {
   MAX_SERIAL_COUNT,
 } from '../../../lib/e2eFlow';
 import { usableProducts, findProduct } from '../../../lib/productRegistry';
-import { createRun, appendResult, finishRun, saveDocument, updateConsignment } from '../../../lib/runStore';
+import { createRun, restartRun, appendResult, finishRun, saveDocument, updateConsignment } from '../../../lib/runStore';
+import { reasonForResult } from '../../../lib/failureReason';
 import { emitProgress } from '../../../lib/runBus';
 import { getBaseUrl } from '../../../lib/env';
 import { normalizeBaseUrl } from '../../../lib/baseUrl';
 import { writeDailyTestSheet } from '../../../lib/testSheets';
-import { checkReachable } from '../../../lib/reachability';
+import { checkReachable, healthSnapshot } from '../../../lib/reachability';
 import { createPortalBatches, MAX_PORTAL_SERIALS } from '../../../lib/portalBatches';
 
 export const dynamic = 'force-dynamic';
@@ -27,8 +28,9 @@ const ROLES = ['manufacturer', 'distributor', 'facility'];
 // enough to be a readable repro on the Logs page, the body itself.
 const INLINE_BODY_LIMIT = 100_000;
 
-function toRunResult(step, documentPath) {
-  return {
+// `documentPaths` maps a format (JSON-LD / XML) to the file its document was saved to.
+function toRunResult(step, documentPaths = {}) {
+  const result = {
     // Two return steps legitimately share a workbook Test ID (a Return Shipping row covers
     // both the facility->distributor and distributor->manufacturer leg), so the UI keys off
     // stepKey. testId stays for stamping the workbook row.
@@ -50,27 +52,30 @@ function toRunResult(step, documentPath) {
     // counted or drawn as one.
     skipped: Boolean(step.skipped),
     error: step.ok ? undefined : step.summary,
-    variants: [
-      {
-        variant: 'JSON-LD',
-        method: 'POST',
-        url: step.url,
-        status: step.status ?? null,
-        requestBody:
-          step.requestBody && step.requestBody.length <= INLINE_BODY_LIMIT ? step.requestBody : undefined,
-        documentPath,
-        responseBody: step.responseBody ?? step.summary,
-        ok: step.ok,
-        durationMs: step.durationMs ?? 0,
-      },
-    ],
+    // One variant per format the journey walked (JSON-LD, and XML on its own consignment).
+    variants: (step.formats || [{ ...step, variant: 'JSON-LD' }]).map((f) => ({
+      variant: f.variant,
+      method: 'POST',
+      url: f.url,
+      status: f.status ?? null,
+      requestBody: f.requestBody && f.requestBody.length <= INLINE_BODY_LIMIT ? f.requestBody : undefined,
+      documentPath: documentPaths[f.variant],
+      responseBody: f.responseBody ?? f.summary,
+      eventId: f.eventId,
+      ok: f.ok,
+      durationMs: f.durationMs ?? 0,
+    })),
   };
+  // Why it failed, in plain English - shown on the Run page and written to the workbook.
+  if (!result.ok && !result.skipped) result.reason = reasonForResult(result);
+  return result;
 }
 
 // The portal batch step is not an API request, but it is recorded in the same result shape
 // so the run views, Logs and the day sheet show it like any other step.
 function portalBatchResult(outcome, ids, baseUrl) {
   const failed = outcome.lines.filter((l) => !l.ok);
+  // Kept for the step-level error text; the request and response bodies carry the detail.
   const summary = outcome.lines
     .map((l, i) => {
       const name = ids.lines[i].product.brand;
@@ -98,8 +103,35 @@ function portalBatchResult(outcome, ids, baseUrl) {
         method: 'UI',
         url: `${baseUrl}/manufacturer/batches`,
         status: outcome.lines.find((l) => l.status)?.status ?? null,
-        requestBody: 'node scripts/portal/create-batches.cjs  (PORTAL_BATCH_REQUEST: product, GTIN and serials per line)',
-        responseBody: summary + (outcome.output && failed.length ? `\n\n${outcome.output}` : ''),
+        // The payload the portal was driven with, and what its batches endpoint answered -
+        // the same shape as every other step, so the dialogs show bodies, not a description.
+        requestBody: JSON.stringify(
+          {
+            endpoint: 'POST /api/manufacturer/batches (submitted through the Manufacturer portal UI)',
+            batches: ids.lines.map((line) => ({
+              product: line.product.brand,
+              gtin: line.product.gtin,
+              expiry: line.expiry,
+              serials: line.serials.map((serial) => serial.slice(serial.lastIndexOf('.') + 1)),
+            })),
+          },
+          null,
+          2
+        ),
+        responseBody: JSON.stringify(
+          outcome.lines.map((line, i) => ({
+            product: ids.lines[i].product.brand,
+            gtin: ids.lines[i].product.gtin,
+            ok: line.ok,
+            status: line.status ?? null,
+            batchNo: line.batchNo ?? null,
+            expiry: line.expiry ?? null,
+            error: line.error ?? null,
+            response: line.response ?? null,
+          })),
+          null,
+          2
+        ),
         ok: failed.length === 0,
         durationMs: outcome.durationMs,
       },
@@ -156,6 +188,7 @@ export async function POST(request) {
       { status: 502 }
     );
   }
+  const health = healthSnapshot(baseUrl, reachability);
 
   // Minted before the run so the consignment is on disk even if the very first request
   // fails - a batch you cannot identify afterwards is not traceable.
@@ -170,6 +203,8 @@ export async function POST(request) {
   }
   const serialCount = clampSerialCount(body.serialCount);
   const identifiers = mintIdentifiers(serialCount, productRefs);
+  // The XML journey walks its own consignment so its events never duplicate the JSON-LD ones.
+  const xmlIdentifiers = mintIdentifiers(serialCount, productRefs, { chain: 1 });
 
   const portalBatches = Boolean(body.portalBatches) && documentMode !== 'oversize';
   if (portalBatches) {
@@ -186,10 +221,11 @@ export async function POST(request) {
       );
     }
   }
-  const run = createRun({
+  const runConfig = {
     role: 'end-to-end',
     eventTypes: null,
     baseUrl,
+    health,
     documentMode,
     consignment: {
       tag: identifiers.tag,
@@ -205,8 +241,27 @@ export async function POST(request) {
       caseC: identifiers.caseC,
       pallet: identifiers.pallet,
       distCase: identifiers.distCase,
+      xml: {
+        lot: xmlIdentifiers.lot,
+        serials: xmlIdentifiers.serials,
+        caseA: xmlIdentifiers.caseA,
+        caseB: xmlIdentifiers.caseB,
+        caseC: xmlIdentifiers.caseC,
+        pallet: xmlIdentifiers.pallet,
+        distCase: xmlIdentifiers.distCase,
+      },
     },
-  });
+  };
+  // `rerunOf`: run the journey again under that run's id, replacing its results.
+  let run;
+  if (body.rerunOf) {
+    run = restartRun(String(body.rerunOf), 'e2e', runConfig);
+    if (!run) {
+      return NextResponse.json({ error: `Run ${body.rerunOf} not found or not an end-to-end run` }, { status: 404 });
+    }
+  } else {
+    run = createRun(runConfig);
+  }
 
   (async () => {
     try {
@@ -219,6 +274,8 @@ export async function POST(request) {
           headed: Boolean(body.portalHeaded),
         });
         applyPortalBatches(identifiers, outcome.lines);
+        // Same products, so the XML consignment is commissioned under the same portal batches.
+        applyPortalBatches(xmlIdentifiers, outcome.lines);
         // The consignment was recorded before the portal assigned lots; record the real ones.
         updateConsignment(run.id, {
           lot: identifiers.lot,
@@ -242,14 +299,20 @@ export async function POST(request) {
           baseUrl,
           documentMode,
           identifiers,
+          xmlIdentifiers,
           settleMs: Number.isFinite(body.settleMs) ? body.settleMs : undefined,
         },
         (step) => {
           // One file per request: d01-mfg-commission (split) or b01-manufacturer (combined).
           const request = String(step.batchId || `s${step.index}`).replace(/\d+/, (n) => n.padStart(2, '0'));
           const name = step.batchSize > 1 ? `${request}-${step.role}` : `${request}-${step.key}`;
-          const documentPath = step.requestBody ? saveDocument(run.id, name, step.requestBody) : undefined;
-          const result = toRunResult(step, documentPath);
+          const documentPaths = {};
+          for (const f of step.formats || []) {
+            if (!f.requestBody) continue;
+            const suffix = f.variant === 'XML' ? '-xml' : '';
+            documentPaths[f.variant] = saveDocument(run.id, `${name}${suffix}`, f.requestBody);
+          }
+          const result = toRunResult(step, documentPaths);
           appendResult(run.id, result);
           emitProgress(run.id, { type: 'result', result });
         }

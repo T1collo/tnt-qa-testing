@@ -13,16 +13,36 @@
 
 import { useEffect, useState, useSyncExternalStore, type Dispatch, type SetStateAction } from "react";
 
-export type RunResultVariant = { variant: string; status: number | null; ok: boolean; durationMs: number };
+export type RunResultVariant = {
+  variant: string;
+  status: number | null;
+  ok: boolean;
+  durationMs: number;
+  method?: string;
+  url?: string;
+  /** The document as sent. Absent for a document too large to inline - see documentPath. */
+  requestBody?: string;
+  responseBody?: string;
+  /** Where the run saved the document, read back through /api/runs?id=&document=. */
+  documentPath?: string;
+};
 export type RunResult = {
   testId: string;
   stepKey?: string;
   eventType: string;
   path: string[];
+  role?: string;
   variants: RunResultVariant[];
   ok: boolean;
   skipped?: boolean;
   error?: string;
+  /** Why it failed, in plain English (set by the runners on every failed result). */
+  reason?: string;
+  eventId?: string;
+  /** Set when several steps travelled in one document (combined per role). */
+  batchId?: string;
+  batchSize?: number;
+  batchEventCount?: number;
 };
 export type TestSheet = { ok: boolean; path?: string; dateKey?: string; matchedRows?: number; error?: string };
 type ProgressEvent =

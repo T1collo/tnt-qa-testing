@@ -5,6 +5,7 @@
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
+const { reasonForResult } = require('./failureReason');
 const { forRole } = require('./testIdMap');
 const { PROJECT_ROOT } = require('./paths');
 
@@ -80,9 +81,12 @@ function freshenEventIds(body) {
 const DEFAULT_SGTIN_PREFIX = 'urn:epc:id:sgtin:0614141.000111';
 let serialCounter = 0;
 
+// 10 clock digits (wrap every ~115 days) + a per-process counter + 2 random digits, so two
+// dashboard processes or a clock wrap still cannot mint the same serial. 17 characters, inside
+// the 20-character GS1 serial limit.
 function freshSerial() {
   serialCounter = (serialCounter + 1) % 100000;
-  return `${String(Date.now()).slice(-8)}${String(serialCounter).padStart(5, '0')}`;
+  return `${String(Date.now()).slice(-10)}${String(serialCounter).padStart(5, '0')}${freshDigits(2)}`;
 }
 
 function freshDigits(n) {
@@ -133,6 +137,10 @@ function freshenBusinessData(body, { sgtinPrefix } = {}) {
     // SSCCs keep their company prefix and get a fresh reference padded to 17 digits.
     .replace(/urn:epc:id:sscc:(\d+)\.\d+/g, (uri, gcp) =>
       remember(uri, () => `urn:epc:id:sscc:${gcp}.${freshDigits(17 - gcp.length)}`))
+    // Class-level quantities (quantityList / childQuantityList) dedupe on the LGTIN too, so
+    // the lot gets a fresh value while the product stays the same.
+    .replace(/urn:epc:class:lgtin:(\d+\.\d+)\.[0-9A-Za-z]+/g, (uri, product) =>
+      remember(uri, () => `urn:epc:class:lgtin:${product}.LOT${freshSerial()}`))
     // Recent, ordered timestamps: events 10 minutes ago, declarations now. The collection's
     // dates are months old, which only adds STALE_EVENT_TIME noise.
     .replace(/("eventTime"\s*:\s*")[^"]*(")/g, (_, a, b) => `${a}${at(10)}${b}`)
@@ -161,9 +169,18 @@ function withoutErrorDeclaration(body) {
     .replace(/<baseExtension>\s*<\/baseExtension>/g, '');
 }
 
+// The corrected read point: same GLN, next extension. The platform dedupes on business
+// content (e.g. SSCC+bizStep+disposition+readPoint), so a corrective that only changes its
+// bizTransaction is rejected as DUPLICATE_EVENT_PAYLOAD of the event it corrects.
+function correctedSgln(uri) {
+  const m = uri.match(/^(urn:epc:id:sgln:\d+\.\d*\.)(\d+)$/);
+  return m ? `${m[1]}${Number(m[2]) + 1}` : uri;
+}
+
 // For an incorrect_data declaration, the event(s) it names in correctiveEventIDs: a copy of
-// the declared event under the corrective ID, without the declaration, and with its business
-// transaction reference marked as corrected - the "incorrect data" being fixed.
+// the declared event under the corrective ID, without the declaration, with its business
+// transaction reference marked as corrected and its location moved to the corrected read
+// point - the "incorrect data" being fixed.
 function correctiveEvents(body) {
   if (body.trimStart().startsWith('{')) {
     const doc = JSON.parse(body);
@@ -174,6 +191,8 @@ function correctiveEvents(body) {
         delete fixed.errorDeclaration;
         fixed.eventID = id;
         for (const bt of fixed.bizTransactionList || []) bt.bizTransaction = `${bt.bizTransaction}-CORRECTED`;
+        if (fixed.readPoint?.id) fixed.readPoint.id = correctedSgln(fixed.readPoint.id);
+        if (fixed.bizLocation?.id) fixed.bizLocation.id = correctedSgln(fixed.bizLocation.id);
         out.push(JSON.stringify({ ...doc, epcisBody: { eventList: [fixed] } }));
       }
     }
@@ -184,6 +203,7 @@ function correctiveEvents(body) {
     withoutErrorDeclaration(body)
       .replace(/(<eventID>)[^<]*(<\/eventID>)/, `$1${id}$2`)
       .replace(/(<bizTransaction[^>]*>)\s*([^<\s]+)\s*(<\/bizTransaction>)/g, '$1$2-CORRECTED$3')
+      .replace(/(<(?:readPoint|bizLocation)>\s*<id>)([^<]+)(<\/id>)/g, (_, a, uri, b) => `${a}${correctedSgln(uri.trim())}${b}`)
   );
 }
 
@@ -204,7 +224,8 @@ function buildRequest(requestNode, vars) {
 }
 
 // Fires the JSON-LD and XML variant under a request-folder node ("Commission (ObjectEvent)"
-// etc. each contain two children named "JSON-LD" and "XML").
+// etc. each contain two children named "JSON-LD" and "XML"). Every run sends both, and the
+// workbook export records each as its own row.
 async function fireVariants(requestFolderNode, vars, onProgress) {
   const variants = requestFolderNode.item || [];
   const results = [];
@@ -317,6 +338,8 @@ async function runForRole(
       variants: variantResults,
       ok: variantResults.length > 0 && variantResults.every((v) => v.ok),
     };
+    // Why it failed, in plain English - shown on the Run page and written to the workbook.
+    if (!testResult.ok) testResult.reason = reasonForResult(testResult);
     perTestResults.push(testResult);
     if (onProgress) onProgress(testResult);
   }

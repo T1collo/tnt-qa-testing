@@ -20,4 +20,17 @@ async function checkReachable(baseUrl) {
   }
 }
 
-module.exports = { checkReachable };
+// Snapshot stored on each run at start so Health history can show past probes, not only
+// the live tile. checkedAt is wall-clock at probe time; baseUrl is the host that was probed.
+function healthSnapshot(baseUrl, reachability) {
+  return {
+    reachable: Boolean(reachability?.reachable),
+    status: reachability?.status ?? null,
+    latencyMs: reachability?.latencyMs ?? null,
+    error: reachability?.error ?? null,
+    checkedAt: new Date().toISOString(),
+    baseUrl,
+  };
+}
+
+module.exports = { checkReachable, healthSnapshot };

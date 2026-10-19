@@ -57,19 +57,23 @@ const FLOW_STEPS = [
   { key: 'mfg-destroy', role: 'manufacturer', phase: 'terminal', label: 'Destruction', testId: 'API-SPEC-RECALL-003', path: ['Special Events', 'Manufacturer', 'Destruction (destroying / destroyed)'] },
 ];
 
-// The identifiers baked into the collection, in the roles they play in the journey.
+// The identifiers baked into the collection, in the roles they play in the journey. The
+// collection carries the partner-docs examples (/partners/docs), which do not chain: the
+// pallet is built as ...5000 but shipped as ...0010, and the distributor repacks into ...0020.
+// Each docs SSCC is therefore mapped to the journey role it stands in for. Serial fields are
+// overwritten wholesale (SERIAL_FIELDS), so the docs SGTINs need no mapping here.
 const TEMPLATE = {
-  sgtin1: 'urn:epc:id:sgtin:0614141.000111.0000001',
-  sgtin2: 'urn:epc:id:sgtin:0614141.000111.0000002',
-  // Commission and Dispense both use this third, unrelated serial - the break in the chain.
-  strayCommissionSgtin: 'urn:epc:id:sgtin:6161102974997.CW2278',
-  caseA: 'urn:epc:id:sscc:0614141.0000000001',
-  caseB: 'urn:epc:id:sscc:0614141.0000001001',
-  caseC: 'urn:epc:id:sscc:0614141.0000001002',
-  pallet: 'urn:epc:id:sscc:0614141.0000005000',
-  distCase: 'urn:epc:id:sscc:0619999.0000000100',
-  lot: 'BATCH-20260805-CR6X59',
-  expiry: '2027-07-15',
+  ssccs: [
+    ['urn:epc:id:sscc:0614141.1234567890', 'caseA'], // Pack items into case
+    ['urn:epc:id:sscc:0123456.0000005000', 'pallet'], // Pack cases onto pallet (parent)
+    ['urn:epc:id:sscc:0123456.0000001001', 'caseB'],
+    ['urn:epc:id:sscc:0123456.0000001002', 'caseC'],
+    ['urn:epc:id:sscc:0123456.0000001003', 'caseA'],
+    ['urn:epc:id:sscc:0123456.0000000010', 'pallet'], // Ship / Receive / Unpack pallet
+    ['urn:epc:id:sscc:0123456.0000000020', 'distCase'], // Repack / Ship / Receive / Unpack case
+  ],
+  lot: 'LOT12345',
+  expiry: '2027-12-31',
 };
 
 function digits(n) {
@@ -116,7 +120,9 @@ function resolveProducts(productRefs) {
 
 // `serialCount` is per product. With several products the per-product count is capped so
 // the whole consignment stays within the 50,000-serial message limit.
-function mintIdentifiers(serialCount = DEFAULT_SERIAL_COUNT, productRefs = null) {
+// `chain` separates consignments minted in the same run: the JSON-LD journey is chain 0 and
+// the XML journey chain 1, so their serials can never coincide even within one millisecond.
+function mintIdentifiers(serialCount = DEFAULT_SERIAL_COUNT, productRefs = null, { chain = 0 } = {}) {
   const products = resolveProducts(productRefs);
   const count = Math.min(clampSerialCount(serialCount), Math.floor(MAX_SERIAL_COUNT / products.length));
   const tag = crypto.randomBytes(3).toString('hex').toUpperCase();
@@ -134,7 +140,7 @@ function mintIdentifiers(serialCount = DEFAULT_SERIAL_COUNT, productRefs = null)
     for (let i = 0; i < count; i += 1) {
       // The product index is part of the serial: the portal's serial registry treats a serial
       // value as unique across products, so two lines sharing "...00000" collide there.
-      serials[i] = `${product.sgtinPrefix}.${runSeed}${p}${String(i).padStart(5, '0')}`;
+      serials[i] = `${product.sgtinPrefix}.${runSeed}${chain}${p}${String(i).padStart(5, '0')}`;
     }
     return {
       product: {
@@ -197,14 +203,7 @@ function applyPortalBatches(ids, batchResults) {
 function substitute(raw, ids) {
   let out = raw;
   const map = [
-    [TEMPLATE.strayCommissionSgtin, ids.sgtin1],
-    [TEMPLATE.sgtin1, ids.sgtin1],
-    [TEMPLATE.sgtin2, ids.sgtin2],
-    [TEMPLATE.pallet, ids.pallet],
-    [TEMPLATE.caseB, ids.caseB],
-    [TEMPLATE.caseC, ids.caseC],
-    [TEMPLATE.caseA, ids.caseA],
-    [TEMPLATE.distCase, ids.distCase],
+    ...TEMPLATE.ssccs.map(([from, role]) => [from, ids[role]]),
     [TEMPLATE.lot, ids.lot],
     ...(ids.expiry ? [[TEMPLATE.expiry, ids.expiry]] : []),
   ];
@@ -266,8 +265,59 @@ function prepareDocument(rawJson, step, ids, offsetMinutes) {
     // 3.1.1.1 keeps one lot per commissioning event. Writing the same list everywhere is
     // what keeps the consignment coherent from commissioning through to dispensing.
     if (serialField && !perLine) event[serialField] = ids.serials;
+
+    // The docs Unpack example lists items under the pallet; this pallet holds cases.
+    if (step.key === 'dist-unpack') event.childEPCs = [ids.caseB, ids.caseC, ids.caseA];
+    // The docs Destruction example also destroys 1000 units of an unrelated lot at class
+    // level; the journey destroys exactly the consignment it walked back.
+    if (step.key === 'mfg-destroy') delete event.quantityList;
   }
   return doc;
+}
+
+// The XML (EPCIS 1.2) counterpart of prepareDocument, applying the same substitutions and
+// structural fixes to the collection's XML variant as text. Returns { xml, eventCount }.
+const XML_EVENT = /<(ObjectEvent|AggregationEvent|TransformationEvent|TransactionEvent)>[\s\S]*?<\/\1>/g;
+
+function epcListXml(tag, epcs) {
+  return `<${tag}>${epcs.map((epc) => `<epc>${epc}</epc>`).join('')}</${tag}>`;
+}
+
+function setEpcList(eventXml, tag, epcs) {
+  return eventXml.replace(new RegExp(`<${tag}>[\\s\\S]*?</${tag}>`), () => epcListXml(tag, epcs));
+}
+
+function prepareXmlDocument(rawXml, step, ids, offsetMinutes) {
+  let xml = normaliseSglns(substitute(rawXml, ids));
+  const eventTime = new Date(Date.now() - offsetMinutes * 60_000).toISOString();
+  xml = xml.replace(/(creationDate=")[^"]*(")/, (_, a, b) => `${a}${new Date().toISOString()}${b}`);
+
+  // A mixed consignment is commissioned with one event per product line, each with its lot.
+  const perLine = step.key === 'mfg-commission' && ids.lines?.length > 1;
+  const serialField = SERIAL_FIELDS[step.key];
+
+  xml = xml.replace(XML_EVENT, (eventXml) => {
+    const finish = (ev) => {
+      let out = ev
+        .replace(/<eventID>[\s\S]*?<\/eventID>/, `<eventID>urn:uuid:${crypto.randomUUID()}</eventID>`)
+        .replace(/<eventTime>[\s\S]*?<\/eventTime>/, `<eventTime>${eventTime}</eventTime>`);
+      if (step.key === 'dist-unpack') out = setEpcList(out, 'childEPCs', [ids.caseB, ids.caseC, ids.caseA]);
+      if (step.key === 'mfg-destroy') out = out.replace(/<quantityList>[\s\S]*?<\/quantityList>/g, '');
+      return out;
+    };
+    if (perLine) {
+      return ids.lines
+        .map((line) => {
+          let text = eventXml.split(ids.lot).join(line.lot);
+          text = text.split(ids.expiry || TEMPLATE.expiry).join(line.expiry || TEMPLATE.expiry);
+          return finish(setEpcList(text, 'epcList', line.serials));
+        })
+        .join('');
+    }
+    return finish(serialField ? setEpcList(eventXml, serialField, ids.serials) : eventXml);
+  });
+
+  return { xml, eventCount: (xml.match(XML_EVENT) || []).length };
 }
 
 function endpointFor(step, baseUrl) {
@@ -342,6 +392,37 @@ function attributeToMembers(request, outcome, ids) {
   }));
 }
 
+async function sendRequest(request, token) {
+  if (!token) return { ok: false, skipped: true, summary: `no ${request.role} token supplied` };
+  const startedAt = Date.now();
+  try {
+    const res = await fetch(request.endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': request.contentType || 'application/ld+json', 'X-API-Key': token },
+      body: request.body,
+    });
+    const text = await res.text().catch(() => '');
+    const success = res.status >= 200 && res.status < 300;
+    return {
+      // A limits probe passes by being refused - a 2xx there means the ceiling is not
+      // enforced, which is itself the finding.
+      ok: request.expectRejection ? res.status >= 400 && res.status < 500 : success,
+      status: res.status,
+      summary: describeResponse(text),
+      responseBody: text,
+      durationMs: Date.now() - startedAt,
+      url: request.endpoint,
+    };
+  } catch (err) {
+    return {
+      ok: false,
+      summary: `network error: ${err.message}`,
+      durationMs: Date.now() - startedAt,
+      url: request.endpoint,
+    };
+  }
+}
+
 // Runs the whole journey. Every request is attempted even after a failure: knowing that
 // commissioning broke AND that the downstream steps then flagged UNKNOWN_SGTIN is the point
 // of an end-to-end run - stopping at the first error hides the cascade.
@@ -364,6 +445,9 @@ async function runEndToEnd(
     products = null,
     // Pre-minted by the caller when it wants to record the consignment before firing.
     identifiers = null,
+    // The XML journey's own consignment (chain 1). Walking the same identifiers twice would
+    // make every XML event a DUPLICATE_EVENT_PAYLOAD of its JSON-LD twin.
+    xmlIdentifiers = null,
   },
   onProgress
 ) {
@@ -372,29 +456,34 @@ async function runEndToEnd(
   }
   const collection = loadCollection();
   const ids = identifiers || mintIdentifiers(serialCount, products);
+  const xmlIds = xmlIdentifiers || mintIdentifiers(serialCount, products, { chain: 1 });
 
-  let requests;
+  // One plan per format; both walk the same steps in the same order and grouping, so request
+  // r of one format speaks for exactly the same steps as request r of the other. The limits
+  // probe is a JSON-LD-only measurement.
+  const plans = [];
   const gaps = [];
   if (documentMode === 'oversize') {
-    requests = planOversizeProbe({ baseUrl, roleEndpoints: ROLE_ENDPOINTS });
+    plans.push({ variant: 'JSON-LD', ids, requests: planOversizeProbe({ baseUrl, roleEndpoints: ROLE_ENDPOINTS }) });
   } else {
-    const prepared = [];
+    const prepared = { 'JSON-LD': [], XML: [] };
     for (let i = 0; i < FLOW_STEPS.length; i += 1) {
       const step = FLOW_STEPS[i];
-      const node = findNode(collection.item, [...step.path, 'JSON-LD']);
-      if (!node) {
+      const jsonNode = findNode(collection.item, [...step.path, 'JSON-LD']);
+      const xmlNode = findNode(collection.item, [...step.path, 'XML']);
+      if (!jsonNode || !xmlNode) {
         gaps.push({ step, index: i });
         continue;
       }
-      prepared.push({
-        step,
-        index: i,
-        endpoint: endpointFor(step, baseUrl),
-        document: prepareDocument(node.request.body.raw, step, ids, FLOW_STEPS.length - i),
-      });
+      const base = { step, index: i, endpoint: endpointFor(step, baseUrl) };
+      const offset = FLOW_STEPS.length - i;
+      prepared['JSON-LD'].push({ ...base, document: prepareDocument(jsonNode.request.body.raw, step, ids, offset) });
+      prepared.XML.push({ ...base, ...prepareXmlDocument(xmlNode.request.body.raw, step, xmlIds, offset) });
     }
-    requests = planRequests({ prepared, mode: documentMode });
+    plans.push({ variant: 'JSON-LD', ids, requests: planRequests({ prepared: prepared['JSON-LD'], mode: documentMode }) });
+    plans.push({ variant: 'XML', ids: xmlIds, requests: planRequests({ prepared: prepared.XML, mode: documentMode }) });
   }
+  const requests = plans[0].requests;
 
   const steps = [];
   const totalSteps = requests.reduce((n, r) => n + r.members.length, 0) + gaps.length;
@@ -414,71 +503,64 @@ async function runEndToEnd(
   }
 
   for (let r = 0; r < requests.length; r += 1) {
-    const request = requests[r];
-    const token = tokens[request.role];
+    const token = tokens[requests[r].role];
 
-    let outcome;
-    if (!token) {
-      outcome = { ok: false, skipped: true, summary: `no ${request.role} token supplied` };
-    } else {
-      const startedAt = Date.now();
-      try {
-        const res = await fetch(request.endpoint, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/ld+json', 'X-API-Key': token },
-          body: request.body,
-        });
-        const text = await res.text().catch(() => '');
-        const success = res.status >= 200 && res.status < 300;
-        outcome = {
-          // A limits probe passes by being refused - a 2xx there means the ceiling is not
-          // enforced, which is itself the finding.
-          ok: request.expectRejection ? res.status >= 400 && res.status < 500 : success,
-          status: res.status,
-          summary: describeResponse(text),
-          responseBody: text,
-          durationMs: Date.now() - startedAt,
-          url: request.endpoint,
-        };
-      } catch (err) {
-        outcome = {
-          ok: false,
-          summary: `network error: ${err.message}`,
-          durationMs: Date.now() - startedAt,
-          url: request.endpoint,
-        };
-      }
+    // Request r in every format, then each step's outcomes are reported together. The first
+    // format (JSON-LD) stays the step's primary outcome for the fields older views read.
+    const perFormat = [];
+    for (const plan of plans) {
+      const request = plan.requests[r];
+      const outcome = await sendRequest(request, token);
+      const attributions = new Map(
+        attributeToMembers(request, outcome, plan.ids).map((a) => [a.member.step.key + a.member.index, a])
+      );
+      perFormat.push({ variant: plan.variant, request, outcome, attributions });
     }
 
-    for (const attribution of attributeToMembers(request, outcome, ids)) {
-      const { member } = attribution;
+    for (const member of requests[r].members) {
+      const formats = perFormat.map(({ variant, request, outcome, attributions }) => {
+        const attribution = attributions.get(member.step.key + member.index);
+        return {
+          variant,
+          ...outcome,
+          // The exact document sent (a limits probe or a skipped step has none worth keeping).
+          requestBody: outcome.skipped ? undefined : request.body,
+          eventId: attribution?.eventId ?? null,
+          attributedWarnings: attribution?.warnings || [],
+          unattributedWarnings: attribution?.unattributedWarnings || [],
+        };
+      });
+      const primary = formats[0];
+      const failing = formats.filter((f) => !f.ok && !f.skipped);
       const result = {
         ...member.step,
         index: member.index + 1,
         of: totalSteps,
-        ...outcome,
+        ...primary,
+        ok: formats.every((f) => f.ok),
+        summary: failing.length
+          ? failing.map((f) => (formats.length > 1 ? `${f.variant}: ${f.summary}` : f.summary)).join('; ')
+          : primary.summary,
         documentMode,
-        batchId: request.batchId,
-        batchSize: request.members.length,
-        batchEventCount: request.eventCount,
-        // The exact document sent (a limits probe or a skipped step has none worth keeping).
-        requestBody: outcome.skipped ? undefined : request.body,
-        eventId: attribution.eventId,
-        attributedWarnings: attribution.warnings,
-        unattributedWarnings: attribution.unattributedWarnings,
+        batchId: requests[r].batchId,
+        batchSize: requests[r].members.length,
+        batchEventCount: requests[r].eventCount,
+        formats,
       };
+      delete result.variant;
       steps.push(result);
       if (onProgress) onProgress(result);
     }
 
     const isLast = r === requests.length - 1;
-    if (!isLast && settleMs > 0 && !outcome.skipped) {
+    if (!isLast && settleMs > 0 && token) {
       await new Promise((resolve) => setTimeout(resolve, settleMs));
     }
   }
 
   return {
     identifiers: ids,
+    xmlIdentifiers: plans.length > 1 ? xmlIds : null,
     documentMode,
     serialCount: ids.serialCount,
     steps,

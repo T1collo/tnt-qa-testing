@@ -1,30 +1,69 @@
 "use client";
 
+import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
-  Boxes,
+  Background,
+  BackgroundVariant,
+  Controls,
+  MiniMap,
+  ReactFlow,
+  ReactFlowProvider,
+  MarkerType,
+  useEdgesState,
+  useNodesState,
+  useReactFlow,
+  type Edge,
+  type Node,
+  type NodeMouseHandler,
+} from "@xyflow/react";
+import "@xyflow/react/dist/style.css";
+import {
+  Activity,
+  ArrowRight,
   CircleCheck,
   CircleX,
-  Factory,
-  Package,
-  PackageCheck,
-  PackageOpen,
-  Pill,
+  Clock,
   RefreshCw,
   RotateCcw,
-  Trash2,
-  Truck,
-  Undo2,
-  type LucideIcon,
 } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import {
+  WorkflowNode,
+  type StepState,
+  type WorkflowNodeData,
+} from "@/components/flow/workflow-node";
+import { WorkflowEdge, type WorkflowEdgeData } from "@/components/flow/workflow-edge";
+import { StepInspector } from "@/components/flow/step-inspector";
 
-type E2eStep = { key: string; index: number; role: string; label: string; testId: string; phase: string; sync: boolean };
-type RunSummary = { id: string; role: string; status: string; finishedAt: string | null; passed: number; total: number };
+type E2eStep = {
+  key: string;
+  index: number;
+  role: string;
+  label: string;
+  testId: string;
+  phase: string;
+  sync: boolean;
+};
+type RunSummary = {
+  id: string;
+  role: string;
+  status: string;
+  finishedAt: string | null;
+  passed: number;
+  total: number;
+  health?: {
+    reachable: boolean;
+    status?: number | null;
+    latencyMs?: number | null;
+    checkedAt?: string;
+    baseUrl?: string;
+  } | null;
+  baseUrl?: string | null;
+};
 type RunResult = {
   testId: string;
   stepKey?: string;
@@ -33,132 +72,175 @@ type RunResult = {
   error?: string;
   variants: { status: number | null; responseBody?: string; url?: string }[];
 };
-type StepState = "pass" | "fail" | "pending" | "skipped";
-type Point = { x: number; y: number };
+type LiveHealth = {
+  baseUrl: string;
+  reachable: boolean;
+  status?: number;
+  latencyMs: number;
+};
 
 const ROLE_ORDER = ["manufacturer", "distributor", "facility"] as const;
+const NODE_TYPES = { workflow: WorkflowNode };
+const EDGE_TYPES = { workflow: WorkflowEdge };
 
-const NODE_W = 268;
-const NODE_H = 76;
-const COL_GAP = 88;
-const ROW_GAP = 30;
-const PAD = 28;
-const HEADER_H = 30;
-const BOW = 58;
-const NUDGE = 12; // keyboard step, in board units
-
-const STEP_ICONS: Record<string, LucideIcon> = {
-  "mfg-commission": Factory,
-  "mfg-pack": Package,
-  "mfg-pack-sscc": Boxes,
-  "mfg-ship": Truck,
-  "dist-receive": PackageCheck,
-  "dist-unpack": PackageOpen,
-  "dist-pack": Package,
-  "dist-ship": Truck,
-  "fac-receive": PackageCheck,
-  "fac-unpack": PackageOpen,
-  "fac-dispense": Pill,
-  "fac-return-ship": Undo2,
-  "dist-return-recv": PackageCheck,
-  "dist-return-ship": Undo2,
-  "mfg-return-recv": PackageCheck,
-  "mfg-destroy": Trash2,
-};
-
-const STATE_STROKE: Record<StepState, string> = {
-  pass: "var(--success)",
-  fail: "var(--destructive)",
-  pending: "var(--border)",
-  skipped: "var(--border)",
-};
-
-function defaultPosition(step: E2eStep, steps: E2eStep[]): Point {
-  const col = Math.max(0, ROLE_ORDER.indexOf(step.role as (typeof ROLE_ORDER)[number]));
-  const row = steps.filter((s) => s.role === step.role).findIndex((s) => s.key === step.key);
-  return { x: PAD + col * (NODE_W + COL_GAP), y: PAD + HEADER_H + row * (NODE_H + ROW_GAP) };
+function defaultLayout(steps: E2eStep[]): Node<WorkflowNodeData>[] {
+  const colGap = 280;
+  const rowGap = 110;
+  const padX = 40;
+  const padY = 60;
+  const rowOf: Record<string, number> = {};
+  return steps.map((step, i) => {
+    const col = Math.max(0, ROLE_ORDER.indexOf(step.role as (typeof ROLE_ORDER)[number]));
+    const row = rowOf[step.role] ?? 0;
+    rowOf[step.role] = row + 1;
+    // Prefer sequential x for a spine feel; nudge by role column as secondary.
+    const x = padX + i * 90 + col * (colGap - 40);
+    const y = padY + row * rowGap + col * 12;
+    return {
+      id: step.key,
+      type: "workflow",
+      position: { x, y },
+      data: {
+        label: step.label,
+        role: step.role,
+        testId: step.testId,
+        state: "idle" as StepState,
+        iconKey: step.key,
+      },
+    };
+  });
 }
 
-// Ports sit on whichever vertical edge the flow actually uses, so every connector is a
-// horizontal-tangent bezier - that is what keeps the curves smooth rather than kinked. Once
-// nodes are draggable the direction has to come from live positions, not column indexes.
-function ports(from: Point, to: Point) {
-  const sameLane = Math.abs(to.x - from.x) < NODE_W * 0.6;
-  const right = (p: Point) => ({ x: p.x + NODE_W, y: p.y + NODE_H / 2 });
-  const left = (p: Point) => ({ x: p.x, y: p.y + NODE_H / 2 });
-  if (sameLane) return { out: right(from), into: right(to), kind: "bow" as const };
-  if (to.x > from.x) return { out: right(from), into: left(to), kind: "forward" as const };
-  return { out: left(from), into: right(to), kind: "back" as const };
-}
-
-function connectorPath(from: Point, to: Point) {
-  const { out, into, kind } = ports(from, to);
-  if (kind === "bow") {
-    return `M${out.x},${out.y} C${out.x + BOW},${out.y} ${into.x + BOW},${into.y} ${into.x},${into.y}`;
+function stateFor(result: RunResult | undefined, running: boolean, isNext: boolean): StepState {
+  if (result) {
+    if (!result.ok && result.skipped) return "skipped";
+    return result.ok ? "success" : "error";
   }
-  const dir = kind === "forward" ? 1 : -1;
-  const reach = Math.max(90, Math.abs(into.x - out.x) * 0.55);
-  return `M${out.x},${out.y} C${out.x + dir * reach},${out.y} ${into.x - dir * reach},${into.y} ${into.x},${into.y}`;
+  if (running && isNext) return "running";
+  return "idle";
 }
 
-// What actually went wrong, pulled out of the stored response for the hover/focus card.
-function failureDetail(result: RunResult | undefined) {
-  if (!result) return null;
-  const variant = result.variants?.[0];
-  const status = variant?.status ?? null;
-  let code = "";
-  let message = result.error || "";
-  let warnings: string[] = [];
-  try {
-    const body = JSON.parse(variant?.responseBody || "");
-    code = body.code || body.category || "";
-    message = body.message || body.resolution || message;
-    warnings = (body.warnings || []).map((w: { code: string }) => w.code);
-  } catch {
-    // Non-JSON body (a gateway error page, say) - the raw text is the best detail we have.
-    if (!message && variant?.responseBody) message = variant.responseBody.slice(0, 160);
-  }
-  return { status, code, message, warnings, url: variant?.url };
-}
-
-export function Connections() {
+function ConnectionsCanvas() {
   const [steps, setSteps] = useState<E2eStep[]>([]);
   const [results, setResults] = useState<Record<string, RunResult>>({});
   const [run, setRun] = useState<RunSummary | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [live, setLive] = useState(false);
-  const [moved, setMoved] = useState<Record<string, Point>>({});
-  const [dragging, setDragging] = useState<string | null>(null);
-  const [scale, setScale] = useState(1);
-
+  const [liveHealth, setLiveHealth] = useState<LiveHealth | null>(null);
+  const [selectedKey, setSelectedKey] = useState<string | null>(null);
+  const [nodes, setNodes, onNodesChange] = useNodesState<Node<WorkflowNodeData>>([]);
+  const [edges, setEdges, onEdgesChange] = useEdgesState<Edge<WorkflowEdgeData>>([]);
+  const defaultsRef = useRef<Node<WorkflowNodeData>[]>([]);
+  const positionsRef = useRef<Record<string, { x: number; y: number }>>({});
   const streamRef = useRef<EventSource | null>(null);
-  const shellRef = useRef<HTMLDivElement | null>(null);
-  const dragRef = useRef<{ key: string; from: Point; pointer: Point } | null>(null);
+  const { fitView } = useReactFlow();
+
+  const loadHealth = useCallback(async () => {
+    try {
+      const res = await fetch("/api/health").then((r) => r.json());
+      if (!res.error) setLiveHealth(res);
+    } catch {
+      // strip stays empty on failure
+    }
+  }, []);
+
+  const applyGraph = useCallback(
+    (nextSteps: E2eStep[], nextResults: Record<string, RunResult>, isLive: boolean) => {
+      if (!defaultsRef.current.length) {
+        defaultsRef.current = defaultLayout(nextSteps);
+        for (const n of defaultsRef.current) positionsRef.current[n.id] = n.position;
+      }
+
+      let firstPending = -1;
+      if (isLive) {
+        firstPending = nextSteps.findIndex((s) => !nextResults[s.key]);
+      }
+
+      const nextNodes = defaultsRef.current.map((node, i) => {
+        const step = nextSteps.find((s) => s.key === node.id) || nextSteps[i];
+        if (!step) return node;
+        const result = nextResults[step.key];
+        const state = stateFor(result, isLive, i === firstPending);
+        const position = positionsRef.current[step.key] || node.position;
+        return {
+          ...node,
+          id: step.key,
+          position,
+          data: {
+            label: step.label,
+            role: step.role,
+            testId: step.testId,
+            state,
+            iconKey: step.key,
+          },
+        };
+      });
+
+      const nextEdges: Edge<WorkflowEdgeData>[] = nextSteps.slice(0, -1).map((step, i) => {
+        const result = nextResults[step.key];
+        const state = stateFor(result, isLive, i === firstPending);
+        return {
+          id: `${step.key}->${nextSteps[i + 1].key}`,
+          source: step.key,
+          target: nextSteps[i + 1].key,
+          type: "workflow",
+          data: { state },
+          markerEnd: {
+            type: MarkerType.ArrowClosed,
+            width: 16,
+            height: 16,
+            color:
+              state === "success"
+                ? "#10b981"
+                : state === "error"
+                  ? "#ef4444"
+                  : state === "running"
+                    ? "#ff6d5a"
+                    : "#b0b2b8",
+          },
+        };
+      });
+
+      setNodes(nextNodes);
+      setEdges(nextEdges);
+    },
+    [setEdges, setNodes]
+  );
 
   const load = useCallback(async () => {
     try {
       const stepsRes = await fetch("/api/e2e").then((r) => r.json());
-      setSteps(stepsRes.steps || []);
+      const nextSteps: E2eStep[] = stepsRes.steps || [];
+      setSteps(nextSteps);
+      defaultsRef.current = defaultLayout(nextSteps);
 
       const runsRes = await fetch("/api/runs").then((r) => r.json());
-      const latest = (runsRes.runs || []).find((r: RunSummary) => r.role === "end-to-end") || null;
+      const latest =
+        (runsRes.runs || []).find((r: RunSummary) => r.role === "end-to-end") || null;
       setRun(latest);
 
+      let byKey: Record<string, RunResult> = {};
       if (latest) {
-        const detail = await fetch(`/api/runs?id=${encodeURIComponent(latest.id)}`).then((r) => r.json());
-        const byKey: Record<string, RunResult> = {};
-        for (const result of detail.results || []) byKey[result.stepKey || result.testId] = result;
-        setResults(byKey);
-      } else {
-        setResults({});
+        const detail = await fetch(`/api/runs?id=${encodeURIComponent(latest.id)}`).then((r) =>
+          r.json()
+        );
+        for (const result of detail.results || []) {
+          byKey[result.stepKey || result.testId] = result;
+        }
+        if (detail.health) {
+          setRun((prev) => (prev ? { ...prev, health: detail.health, baseUrl: detail.baseUrl } : prev));
+        }
       }
+      setResults(byKey);
+      applyGraph(nextSteps, byKey, false);
+      requestAnimationFrame(() => fitView({ padding: 0.2, duration: 200 }));
     } catch {
       setError("Could not load the journey. Is the dashboard server still running?");
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [applyGraph, fitView]);
 
   const followRun = useCallback(
     (runId: string) => {
@@ -169,7 +251,10 @@ export function Connections() {
       es.onmessage = (msg) => {
         const event = JSON.parse(msg.data);
         if (event.type === "result") {
-          setResults((prev) => ({ ...prev, [event.result.stepKey || event.result.testId]: event.result }));
+          setResults((prev) => ({
+            ...prev,
+            [event.result.stepKey || event.result.testId]: event.result,
+          }));
         } else if (event.type === "done") {
           setLive(false);
           es.close();
@@ -183,7 +268,7 @@ export function Connections() {
         streamRef.current = null;
       };
     },
-    [load]
+    [applyGraph, load]
   );
 
   useEffect(() => {
@@ -193,7 +278,7 @@ export function Connections() {
       if (cancelled) return;
       if (first) {
         first = false;
-        await load();
+        await Promise.all([load(), loadHealth()]);
         if (cancelled) return;
       }
       if (streamRef.current) return;
@@ -208,7 +293,7 @@ export function Connections() {
           followRun(active.id);
         }
       } catch {
-        // A failed poll is not worth surfacing - the next tick retries.
+        // retry next tick
       }
     };
     tick();
@@ -219,117 +304,56 @@ export function Connections() {
       streamRef.current?.close();
       streamRef.current = null;
     };
-  }, [followRun, load]);
+  }, [followRun, load, loadHealth]);
 
-  const board = useMemo(() => {
-    const perColumn = ROLE_ORDER.map((role) => steps.filter((s) => s.role === role).length);
-    const rows = Math.max(1, ...perColumn);
-    return {
-      width: PAD * 2 + ROLE_ORDER.length * (NODE_W + COL_GAP) - COL_GAP + BOW,
-      height: PAD * 2 + HEADER_H + rows * (NODE_H + ROW_GAP) - ROW_GAP,
-    };
-  }, [steps]);
-
-  // Scale the whole board to the available width instead of letting it scroll. One transform
-  // on the wrapper keeps the SVG and the node layer in exact agreement - scaling them
-  // separately would drift - and costs nothing at paint time.
   useEffect(() => {
-    const shell = shellRef.current;
-    if (!shell) return;
-    const fit = () => {
-      const available = shell.clientWidth;
-      if (available > 0) setScale(Math.min(1, available / board.width));
-    };
-    fit();
-    const observer = new ResizeObserver(fit);
-    observer.observe(shell);
-    return () => observer.disconnect();
-  }, [board.width]);
+    applyGraph(steps, results, live);
+    // intentionally only when results/live/steps change — not applyGraph identity
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [steps, results, live]);
 
-  const positionOf = useCallback(
-    (step: E2eStep) => moved[step.key] ?? defaultPosition(step, steps),
-    [moved, steps]
-  );
+  const onNodeClick: NodeMouseHandler = useCallback((_e, node) => {
+    setSelectedKey(node.id);
+  }, []);
 
-  const stateFor = useCallback(
-    (step: E2eStep): StepState => {
-      const result = results[step.key];
-      if (!result) return "pending";
-      if (!result.ok && result.skipped) return "skipped";
-      return result.ok ? "pass" : "fail";
+  const onNodesChangeTracked = useCallback(
+    (changes: Parameters<typeof onNodesChange>[0]) => {
+      onNodesChange(changes);
+      for (const change of changes) {
+        if (change.type === "position" && change.position && change.id) {
+          positionsRef.current[change.id] = change.position;
+        }
+      }
     },
-    [results]
+    [onNodesChange]
   );
 
-  // --- dragging -----------------------------------------------------------------------
-  function onPointerDown(event: React.PointerEvent, step: E2eStep) {
-    if (event.button !== 0) return;
-    event.currentTarget.setPointerCapture(event.pointerId);
-    dragRef.current = {
-      key: step.key,
-      from: positionOf(step),
-      pointer: { x: event.clientX, y: event.clientY },
-    };
-    setDragging(step.key);
-  }
+  const resetLayout = useCallback(() => {
+    defaultsRef.current = defaultLayout(steps);
+    positionsRef.current = Object.fromEntries(
+      defaultsRef.current.map((n) => [n.id, n.position])
+    );
+    applyGraph(steps, results, live);
+    requestAnimationFrame(() => fitView({ padding: 0.2, duration: 200 }));
+  }, [applyGraph, fitView, live, results, steps]);
 
-  function onPointerMove(event: React.PointerEvent) {
-    const drag = dragRef.current;
-    if (!drag) return;
-    // Pointer travel is in screen pixels; the board is scaled, so convert before applying.
-    const dx = (event.clientX - drag.pointer.x) / scale;
-    const dy = (event.clientY - drag.pointer.y) / scale;
-    setMoved((prev) => ({
-      ...prev,
-      [drag.key]: {
-        x: Math.max(0, Math.min(board.width - NODE_W, drag.from.x + dx)),
-        y: Math.max(0, Math.min(board.height - NODE_H, drag.from.y + dy)),
-      },
-    }));
-  }
-
-  function endDrag(event: React.PointerEvent) {
-    if (!dragRef.current) return;
-    event.currentTarget.releasePointerCapture(event.pointerId);
-    dragRef.current = null;
-    setDragging(null);
-  }
-
-  // WCAG 2.2 "Dragging Movements": every drag needs a keyboard path. Arrow keys nudge a
-  // focused node, and Reset layout puts everything back without a pointer.
-  function onKeyDown(event: React.KeyboardEvent, step: E2eStep) {
-    const delta: Record<string, Point> = {
-      ArrowLeft: { x: -NUDGE, y: 0 },
-      ArrowRight: { x: NUDGE, y: 0 },
-      ArrowUp: { x: 0, y: -NUDGE },
-      ArrowDown: { x: 0, y: NUDGE },
-    };
-    const move = delta[event.key];
-    if (!move) return;
-    event.preventDefault();
-    const current = positionOf(step);
-    setMoved((prev) => ({
-      ...prev,
-      [step.key]: {
-        x: Math.max(0, Math.min(board.width - NODE_W, current.x + move.x)),
-        y: Math.max(0, Math.min(board.height - NODE_H, current.y + move.y)),
-      },
-    }));
-  }
-
-  const passed = steps.filter((s) => stateFor(s) === "pass").length;
-  const failed = steps.filter((s) => stateFor(s) === "fail").length;
-  const skipped = steps.filter((s) => stateFor(s) === "skipped").length;
+  const selectedStep = steps.find((s) => s.key === selectedKey);
+  const passed = steps.filter((s) => stateFor(results[s.key], false, false) === "success").length;
+  const failed = steps.filter((s) => stateFor(results[s.key], false, false) === "error").length;
+  const skipped = steps.filter((s) => stateFor(results[s.key], false, false) === "skipped").length;
   const skippedNote = skipped ? `, ${skipped} skipped (no token for that role)` : "";
 
+  const runHealth = run?.health;
+  const healthSource = liveHealth;
+
   return (
-    <Card>
+    <Card className="overflow-hidden">
       <CardHeader className="flex flex-row items-start justify-between gap-4">
         <div>
           <CardTitle>Event flow</CardTitle>
           <CardDescription>
             {run
-              ? `End-to-end run ${run.id} — one consignment, commissioned through to destroyed. Hover a step for its response.`
+              ? `End-to-end run ${run.id} — click a node to inspect I/O.`
               : "No end-to-end run recorded yet. Run one from the Run page to light up the pipeline."}
           </CardDescription>
         </div>
@@ -340,12 +364,10 @@ export function Connections() {
               Live
             </Badge>
           )}
-          {Object.keys(moved).length > 0 && (
-            <Button variant="ghost" size="sm" onClick={() => setMoved({})}>
-              <RotateCcw aria-hidden="true" />
-              Reset layout
-            </Button>
-          )}
+          <Button variant="ghost" size="sm" onClick={resetLayout}>
+            <RotateCcw aria-hidden="true" />
+            Reset layout
+          </Button>
           <Button
             variant="outline"
             size="sm"
@@ -353,6 +375,7 @@ export function Connections() {
               setLoading(true);
               setError(null);
               load();
+              loadHealth();
             }}
             disabled={loading || live}
           >
@@ -362,7 +385,42 @@ export function Connections() {
         </div>
       </CardHeader>
 
-      <CardContent className="space-y-4">
+      <CardContent className="space-y-3">
+        <div className="flex flex-wrap items-center gap-3 rounded-lg border bg-muted/30 px-3 py-2 text-xs">
+          <Activity className="size-3.5 text-muted-foreground" />
+          <span className="font-medium">Host health</span>
+          {healthSource ? (
+            <span
+              className={`inline-flex items-center gap-1 ${
+                healthSource.reachable ? "text-success" : "text-destructive"
+              }`}
+            >
+              {healthSource.reachable ? (
+                <CircleCheck className="size-3.5" />
+              ) : (
+                <CircleX className="size-3.5" />
+              )}
+              {healthSource.reachable ? "Reachable" : "Down"}
+              {` · ${healthSource.latencyMs}ms`}
+              {healthSource.status != null ? ` · HTTP ${healthSource.status}` : ""}
+            </span>
+          ) : (
+            <span className="inline-flex items-center gap-1 text-muted-foreground">
+              <Clock className="size-3.5 animate-pulse" /> Checking…
+            </span>
+          )}
+          {runHealth && (
+            <span className="text-muted-foreground">
+              · Checked at run start: {runHealth.reachable ? "up" : "down"}
+              {runHealth.latencyMs != null ? ` · ${runHealth.latencyMs}ms` : ""}
+            </span>
+          )}
+          <Link href="/health" className="ml-auto inline-flex items-center gap-1 text-primary hover:underline">
+            History
+            <ArrowRight className="size-3" />
+          </Link>
+        </div>
+
         <p role="status" aria-atomic="true" className="min-h-4 text-xs text-muted-foreground">
           {loading
             ? "Loading the pipeline…"
@@ -381,251 +439,72 @@ export function Connections() {
             {error}
           </div>
         ) : (
-          <div
-            ref={shellRef}
-            className="w-full overflow-hidden rounded-xl border bg-muted/20"
-            style={{ height: board.height * scale }}
-          >
-            <div
-              className="relative origin-top-left"
-              style={{
-                width: board.width,
-                height: board.height,
-                transform: `scale(${scale})`,
-                backgroundImage: "radial-gradient(circle, var(--border) 1px, transparent 1px)",
-                backgroundSize: "22px 22px",
-              }}
-              role="group"
-              aria-label={
-                run
-                  ? `Pipeline of ${steps.length} steps. ${passed} accepted, ${failed} failed. Nodes can be moved with the arrow keys.`
-                  : `Pipeline of ${steps.length} steps, not yet run.`
-              }
-            >
-              {ROLE_ORDER.map((role, col) => (
-                <div
-                  key={role}
-                  className="pointer-events-none absolute text-xs font-medium uppercase tracking-wide text-muted-foreground"
-                  style={{ left: PAD + col * (NODE_W + COL_GAP), top: PAD, width: NODE_W }}
-                >
-                  {role}
-                </div>
-              ))}
-
-              <svg
-                className="pointer-events-none absolute inset-0 overflow-visible"
-                width={board.width}
-                height={board.height}
-                aria-hidden="true"
+          <div className="flex h-[560px] overflow-hidden rounded-xl border border-[#1e1e24]">
+            <div className="n8n-canvas relative min-w-0 flex-1">
+              <ReactFlow
+                nodes={nodes}
+                edges={edges}
+                onNodesChange={onNodesChangeTracked}
+                onEdgesChange={onEdgesChange}
+                onNodeClick={onNodeClick}
+                nodeTypes={NODE_TYPES}
+                edgeTypes={EDGE_TYPES}
+                fitView
+                minZoom={0.25}
+                maxZoom={1.5}
+                proOptions={{ hideAttribution: true }}
+                defaultEdgeOptions={{ type: "workflow" }}
               >
-                <defs>
-                  {(["pass", "fail", "pending", "skipped"] as StepState[]).map((state) => (
-                    <marker
-                      key={state}
-                      id={`arrow-${state}`}
-                      viewBox="0 0 8 8"
-                      refX="6"
-                      refY="4"
-                      markerWidth="5"
-                      markerHeight="5"
-                      orient="auto-start-reverse"
-                    >
-                      <path d="M0,1 L7,4 L0,7 Z" fill={STATE_STROKE[state]} />
-                    </marker>
-                  ))}
-                </defs>
-
-                {steps.slice(0, -1).map((step, i) => {
-                  const state = stateFor(step);
-                  const d = connectorPath(positionOf(step), positionOf(steps[i + 1]));
-                  return (
-                    <g key={`${step.key}-edge`}>
-                      <path d={d} fill="none" stroke={STATE_STROKE[state]} strokeWidth={2} opacity={0.18} />
-                      <path
-                        d={d}
-                        fill="none"
-                        stroke={STATE_STROKE[state]}
-                        strokeWidth={2}
-                        strokeLinecap="round"
-                        strokeDasharray="8 6"
-                        markerEnd={`url(#arrow-${state})`}
-                        className={state === "pending" || state === "skipped" ? undefined : "animate-flow"}
-                      />
-                    </g>
-                  );
-                })}
-              </svg>
-
-              {steps.map((step) => {
-                const pos = positionOf(step);
-                const state = stateFor(step);
-                const detail = failureDetail(results[step.key]);
-                const Icon = STEP_ICONS[step.key] ?? Package;
-                const isDragging = dragging === step.key;
-                return (
-                  <Tooltip key={step.key}>
-                    <TooltipTrigger asChild>
-                      <div
-                        role="button"
-                        tabIndex={0}
-                        aria-label={`Step ${step.index}, ${step.label}, ${step.role}. ${
-                          state === "pending"
-                            ? "Not run"
-                            : state === "skipped"
-                              ? "Skipped"
-                              : state === "pass"
-                                ? "Accepted"
-                                : "Failed"
-                        }. Arrow keys move this step.`}
-                        onPointerDown={(e) => onPointerDown(e, step)}
-                        onPointerMove={onPointerMove}
-                        onPointerUp={endDrag}
-                        onPointerCancel={endDrag}
-                        onKeyDown={(e) => onKeyDown(e, step)}
-                        className={[
-                          "absolute flex touch-none flex-col justify-center rounded-xl border bg-card px-3 py-2 text-left shadow-sm",
-                          "transition-[box-shadow,border-color] duration-(--duration-quick) ease-(--ease-emphasis)",
-                          "focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-none",
-                          isDragging ? "cursor-grabbing shadow-lg" : "cursor-grab hover:shadow-md",
-                          state === "pass" ? "border-success/70" : "",
-                          state === "fail" ? "border-destructive/70" : "",
-                        ].join(" ")}
-                        style={{
-                          // Positioned by transform so a drag never triggers layout.
-                          transform: `translate3d(${pos.x}px, ${pos.y}px, 0)`,
-                          width: NODE_W,
-                          height: NODE_H,
-                          zIndex: isDragging ? 20 : 10,
-                        }}
-                      >
-                        <div className="flex items-center gap-2">
-                          <span
-                            className={[
-                              "flex size-7 shrink-0 items-center justify-center rounded-lg border",
-                              state === "pass" ? "border-success/40 bg-success/10 text-success" : "",
-                              state === "fail" ? "border-destructive/40 bg-destructive/10 text-destructive" : "",
-                              state === "pending" || state === "skipped" ? "bg-muted text-muted-foreground" : "",
-                            ].join(" ")}
-                            aria-hidden="true"
-                          >
-                            <Icon className="size-4" />
-                          </span>
-                          <span className="font-mono text-xs text-muted-foreground tabular-nums">
-                            {step.index}
-                          </span>
-                          <span className="min-w-0 flex-1 truncate text-sm font-medium" title={step.label}>
-                            {step.label}
-                          </span>
-                          {step.phase !== "forward" && (
-                            <span className="shrink-0 text-muted-foreground">
-                              {step.phase === "terminal" ? (
-                                <Trash2 className="size-3.5" aria-hidden="true" />
-                              ) : (
-                                <Undo2 className="size-3.5" aria-hidden="true" />
-                              )}
-                              <span className="sr-only">
-                                {step.phase === "terminal" ? "terminal step" : "return leg"}
-                              </span>
-                            </span>
-                          )}
-                          {step.sync && (
-                            <Badge variant="outline" className="h-4 shrink-0 px-1 text-[0.7rem]">
-                              sync
-                            </Badge>
-                          )}
-                          {state === "skipped" && (
-                            <Badge variant="outline" className="h-4 shrink-0 px-1 text-[0.7rem] text-muted-foreground">
-                              skipped
-                            </Badge>
-                          )}
-                          {(state === "pass" || state === "fail") && (
-                            <span
-                              className={[
-                                "flex shrink-0 items-center gap-1 text-xs tabular-nums",
-                                state === "pass" ? "text-success" : "text-destructive",
-                              ].join(" ")}
-                            >
-                              {state === "pass" ? (
-                                <CircleCheck className="size-3" aria-hidden="true" />
-                              ) : (
-                                <CircleX className="size-3" aria-hidden="true" />
-                              )}
-                              {detail?.status ?? "err"}
-                            </span>
-                          )}
-                        </div>
-
-                        {/* Output port, on the edge the connector actually leaves by. */}
-                        <span
-                          className="absolute top-1/2 -right-1 size-2 -translate-y-1/2 rounded-full border bg-background"
-                          style={{ borderColor: STATE_STROKE[state] }}
-                          aria-hidden="true"
-                        />
-                      </div>
-                    </TooltipTrigger>
-                    <TooltipContent side="bottom" className="max-w-80">
-                      <p className="font-medium">
-                        {step.index}. {step.label}
-                      </p>
-                      <p className="text-muted-foreground capitalize">
-                        {step.role} · {step.testId}
-                      </p>
-                      {state === "skipped" ? (
-                        <p className="mt-1">Not sent — {results[step.key]?.error}.</p>
-                      ) : state === "pending" ? (
-                        <p className="mt-1">Not run yet.</p>
-                      ) : (
-                        <>
-                          <p className="mt-1">
-                            HTTP {detail?.status ?? "—"}
-                            {detail?.code ? ` · ${detail.code}` : ""}
-                          </p>
-                          {detail?.message && (
-                            <p className="mt-1 text-muted-foreground">{detail.message}</p>
-                          )}
-                          {!!detail?.warnings.length && (
-                            <p className="mt-1 text-muted-foreground">
-                              Warnings: {detail.warnings.join(", ")}
-                            </p>
-                          )}
-                        </>
-                      )}
-                    </TooltipContent>
-                  </Tooltip>
-                );
-              })}
+                <Background
+                  variant={BackgroundVariant.Dots}
+                  gap={18}
+                  size={1.2}
+                  color="#3a3a44"
+                  bgColor="#1e1e24"
+                />
+                <Controls
+                  showInteractive={false}
+                  className="!overflow-hidden !rounded-md !border !border-[#3d3d45] !bg-[#2d2d35] !shadow-lg [&>button]:!border-[#3d3d45] [&>button]:!bg-[#2d2d35] [&>button]:!text-[#f5f5f7] [&>button:hover]:!bg-[#3a3a44]"
+                />
+                <MiniMap
+                  className="!overflow-hidden !rounded-md !border !border-[#3d3d45] !bg-[#2d2d35]"
+                  maskColor="rgba(30,30,36,0.7)"
+                  nodeColor={() => "#ff6d5a"}
+                />
+              </ReactFlow>
+              {!run && !loading && (
+                <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+                  <div className="pointer-events-auto rounded-lg border border-[#3d3d45] bg-[#2d2d35]/95 px-5 py-4 text-center text-sm text-[#f5f5f7] shadow-xl">
+                    <p className="mb-2 text-[#a0a0ab]">Canvas is ready — no execution yet.</p>
+                    <Link href="/" className="inline-flex items-center gap-1 text-[#ff6d5a] hover:underline">
+                      Start an end-to-end run
+                      <ArrowRight className="size-3.5" />
+                    </Link>
+                  </div>
+                </div>
+              )}
             </div>
+            {selectedStep && (
+              <StepInspector
+                label={selectedStep.label}
+                testId={selectedStep.testId}
+                role={selectedStep.role}
+                result={results[selectedStep.key]}
+                onClose={() => setSelectedKey(null)}
+              />
+            )}
           </div>
         )}
-
-        <div className="flex flex-wrap items-center gap-4 text-xs text-muted-foreground">
-          {(
-            [
-              { state: "pass" as const, label: "Accepted — data moved on" },
-              { state: "fail" as const, label: "Broken handoff" },
-              { state: "pending" as const, label: "Not run" },
-            ]
-          ).map((item) => (
-            <span key={item.state} className="flex items-center gap-1.5">
-              <svg width="28" height="8" aria-hidden="true">
-                <line
-                  x1="0"
-                  y1="4"
-                  x2="28"
-                  y2="4"
-                  stroke={STATE_STROKE[item.state]}
-                  strokeWidth="2"
-                  strokeDasharray="8 6"
-                  strokeLinecap="round"
-                />
-              </svg>
-              {item.label}
-            </span>
-          ))}
-          <span className="ml-auto">Drag a step to rearrange, or focus one and use the arrow keys.</span>
-        </div>
       </CardContent>
     </Card>
+  );
+}
+
+export function Connections() {
+  return (
+    <ReactFlowProvider>
+      <ConnectionsCanvas />
+    </ReactFlowProvider>
   );
 }
 

@@ -1,0 +1,27 @@
+Environment: https://trackiq.apeiro-digital.com  (manufacturer test-manufacturer@pharma.ke, saved portal session)
+Date: 2026-10-19 (UTC+3 ~11:24)
+
+1) Portal UI, Create Batch, serials "DUPMVEZMSAX, DUPMVEZMSAX"
+   POST /api/manufacturer/batches
+   {"product_id":3449,"package_id":5012,"expiry":"2028-10-18","qty":2,"serial_numbers":["DUPMVEZMSAX","DUPMVEZMSAX"]}
+   -> HTTP 500 {"statusCode":500,"message":"Internal server error"}
+   x-request-id: 9ad06d16-1ea3-418a-844d-51487884e869   x-apisix-upstream-status: 500
+
+2) Direct API replay, adjacent duplicate ["DUPMVEZN4VA","DUPMVEZN4VA"], qty 2
+   -> HTTP 500 {"statusCode":500,"message":"Internal server error"}
+   x-request-id: fb70ce25-0710-47b2-b4d0-274346ceb4d5
+
+3) Direct API replay, non-adjacent duplicate ["DUPMVEZN4VAA","DUPMVEZN4VAB","DUPMVEZN4VAA"], qty 3
+   -> HTTP 500 {"statusCode":500,"message":"Internal server error"}
+   x-request-id: d37e676c-b005-46a1-9f29-3e366f2effa8
+
+4) repro-api.mjs (this bundle): adjacent -> 500 x-request-id cd6faca5-d3cb-4d5c-a969-afdaed65633e
+                                 non-adjacent -> 500 x-request-id 0bd12f47-a328-41a8-a5db-2f775b68cc08
+5) Postman collection via newman: adjacent -> 500 x-request-id 43985001-c912-45df-87a7-e72d051668ef
+                                  non-adjacent -> 500 x-request-id 23e12f24-2f9f-4bf7-9c4e-44fe17d6dc77
+
+--- tnt-demo (https://tnt-demo.apeiro-digital.com), same manufacturer account, ~11:30 UTC+3 ---
+6) Portal UI, serials "DUPMVEZVB6Y, DUPMVEZVB6Y", product_id 3449 / package_id 5012 (same IDs as TrackIQ)
+   -> HTTP 500 {"statusCode":500,"message":"Internal server error"}  x-request-id a6a27fa8-03bb-4878-9e95-90ed5108298b
+7) repro-api.mjs: adjacent ["DUPMVEZVIKP" x2]               -> 500  x-request-id 4ac9074c-e00f-4381-87be-c26d1e7028c3
+                  non-adjacent ["…A","…B","…A"]              -> 500  x-request-id ff9403f8-f97e-45bc-bfcf-35e356b411c2

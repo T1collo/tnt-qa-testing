@@ -1,0 +1,2647 @@
+{
+	"info": {
+		"_postman_id": "bc0c4f8a-ac73-4987-92db-eb236758dac8",
+		"name": "Kenya TNT - Partner API Partner",
+		"description": "Complete EPCIS integration test suite for manufacturers, distributors, and facilities. Each example includes EPCIS 2.0 JSON-LD and EPCIS 1.2 XML variants. Covers standard lifecycle events, special events (section 4), and error declarations.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "54987366",
+		"_collection_link": "https://go.postman.co/collection/54987366-bc0c4f8a-ac73-4987-92db-eb236758dac8?source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Manufacturer Events",
+			"item": [
+				{
+					"name": "Commission (ObjectEvent)",
+					"item": [
+						{
+							"name": "JSON-LD",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/ld+json"
+									},
+									{
+										"key": "X-API-Key",
+										"value": "{{api_key}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"@context\": [\n        \"https://ref.gs1.org/standards/epcis/epcis-context.jsonld\"\n    ],\n    \"type\": \"EPCISDocument\",\n    \"schemaVersion\": \"2.0\",\n    \"creationDate\": \"2026-07-01T07:00:00.000Z\",\n    \"epcisBody\": {\n        \"eventList\": [\n            {\n                \"type\": \"ObjectEvent\",\n                \"eventID\": \"urn:uuid:demo-fp-a7f3c2e1-stock-x32\",\n                \"eventTime\": \"2026-07-01T07:00:00.000Z\",\n                \"eventTimeZoneOffset\": \"+03:00\",\n                \"epcList\": [\n                    \"urn:epc:id:sgtin:6161102974997.CW2278\"\n                ],\n                \"action\": \"ADD\",\n                \"bizStep\": \"commissioning\",\n                \"disposition\": \"active\",\n                \"readPoint\": {\n                    \"id\": \"urn:epc:id:sgln:10000000.00009.0\"\n                },\n                \"bizLocation\": {\n                    \"id\": \"urn:epc:id:sgln:10000000.00009.0\"\n                },\n                \"ilmd\": {\n                    \"cbvmda:lotNumber\": \"BATCH-20260805-CR6X59\",\n                    \"cbvmda:itemExpirationDate\": \"2027-07-15\"\n                }\n            }\n        ]\n    }\n}\n ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/integration/manufacturer/events",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"integration",
+										"manufacturer",
+										"events"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "XML",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/xml"
+									},
+									{
+										"key": "X-API-Key",
+										"value": "{{api_key}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<epcis:EPCISDocument xmlns:epcis=\"urn:epcglobal:epcis:xsd:1\"\n  xmlns:cbvmda=\"urn:epcglobal:cbv:mda\"\n  schemaVersion=\"1.2\" creationDate=\"2026-01-01T10:00:00.000Z\">\n  <EPCISBody><EventList>\n    <ObjectEvent>\n      <eventID>urn:uuid:11111111-1111-4111-8111-111111111111</eventID>\n      <eventTime>2026-01-01T10:00:00.000Z</eventTime>\n      <eventTimeZoneOffset>+00:00</eventTimeZoneOffset>\n      <epcList>\n        <epc>urn:epc:id:sgtin:0614141.000111.0000001</epc>\n        <epc>urn:epc:id:sgtin:0614141.000111.0000002</epc>\n      </epcList>\n      <action>ADD</action>\n      <bizStep>urn:epcglobal:cbv:bizstep:commissioning</bizStep>\n      <disposition>urn:epcglobal:cbv:disp:active</disposition>\n      <readPoint><id>urn:epc:id:sgln:0614141.00001.0</id></readPoint>\n      <bizLocation><id>urn:epc:id:sgln:0614141.00001.0</id></bizLocation>\n\n\n\n    </ObjectEvent>\n  </EventList></EPCISBody>\n</epcis:EPCISDocument>"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/integration/manufacturer/events",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"integration",
+										"manufacturer",
+										"events"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Pack (AggregationEvent)",
+					"item": [
+						{
+							"name": "JSON-LD",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/ld+json"
+									},
+									{
+										"key": "X-API-Key",
+										"value": "{{api_key}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"@context\": [\n    \"https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld\"\n  ],\n  \"type\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\": \"2026-01-01T10:00:00.000Z\",\n  \"epcisBody\": {\n    \"eventList\": [\n      {\n        \"type\": \"AggregationEvent\",\n        \"eventID\": \"urn:uuid:00000000-0000-4000-8000-000000000002\",\n        \"eventTime\": \"2026-01-01T11:00:00.000Z\",\n        \"eventTimeZoneOffset\": \"+00:00\",\n        \"action\": \"ADD\",\n        \"bizStep\": \"packing\",\n        \"parentID\": \"urn:epc:id:sscc:0614141.0000000001\",\n        \"childEPCs\": [\n          \"urn:epc:id:sgtin:0614141.000111.0000001\",\n          \"urn:epc:id:sgtin:0614141.000111.0000002\"\n        ],\n        \"readPoint\": {\n          \"id\": \"urn:epc:id:sgln:0614141.00001.0\"\n        },\n        \"bizLocation\": {\n          \"id\": \"urn:epc:id:sgln:0614141.00001.0\"\n        },\n        \"disposition\": \"active\"\n      }\n    ]\n  }\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/integration/manufacturer/events",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"integration",
+										"manufacturer",
+										"events"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "XML",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/xml"
+									},
+									{
+										"key": "X-API-Key",
+										"value": "{{api_key}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<epcis:EPCISDocument xmlns:epcis=\"urn:epcglobal:epcis:xsd:1\"\n  xmlns:cbvmda=\"urn:epcglobal:cbv:mda\"\n  schemaVersion=\"1.2\" creationDate=\"2026-01-01T10:00:00.000Z\">\n  <EPCISBody><EventList>\n    <AggregationEvent>\n      <eventID>urn:uuid:00000000-0000-4000-8000-000000000002</eventID>\n      <eventTime>2026-01-01T11:00:00.000Z</eventTime>\n      <eventTimeZoneOffset>+00:00</eventTimeZoneOffset>\n      <parentID>urn:epc:id:sscc:0614141.0000000001</parentID>\n      <childEPCs>\n        <epc>urn:epc:id:sgtin:0614141.000111.0000001</epc>\n        <epc>urn:epc:id:sgtin:0614141.000111.0000002</epc>\n      </childEPCs>\n      <action>ADD</action>\n      <bizStep>urn:epcglobal:cbv:bizstep:packing</bizStep>\n      <disposition>urn:epcglobal:cbv:disp:active</disposition>\n      <readPoint><id>urn:epc:id:sgln:0614141.00001.0</id></readPoint>\n      <bizLocation><id>urn:epc:id:sgln:0614141.00001.0</id></bizLocation>\n    </AggregationEvent>\n  </EventList></EPCISBody>\n</epcis:EPCISDocument>"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/integration/manufacturer/events",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"integration",
+										"manufacturer",
+										"events"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Pack SSCC into SSCC (AggregationEvent)",
+					"item": [
+						{
+							"name": "JSON-LD",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/ld+json"
+									},
+									{
+										"key": "X-API-Key",
+										"value": "{{api_key}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"@context\": [\n    \"https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld\"\n  ],\n  \"type\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\": \"2026-01-01T10:00:00.000Z\",\n  \"epcisBody\": {\n    \"eventList\": [\n      {\n        \"type\": \"AggregationEvent\",\n        \"eventID\": \"urn:uuid:00000000-0000-4000-8000-000000000003\",\n        \"eventTime\": \"2026-01-01T12:00:00.000Z\",\n        \"eventTimeZoneOffset\": \"+00:00\",\n        \"action\": \"ADD\",\n        \"bizStep\": \"packing\",\n        \"parentID\": \"urn:epc:id:sscc:0614141.0000005000\",\n        \"childEPCs\": [\n          \"urn:epc:id:sscc:0614141.0000001001\",\n          \"urn:epc:id:sscc:0614141.0000001002\",\n          \"urn:epc:id:sscc:0614141.0000000001\"\n        ],\n        \"readPoint\": {\n          \"id\": \"urn:epc:id:sgln:0614141.00001.0\"\n        },\n        \"bizLocation\": {\n          \"id\": \"urn:epc:id:sgln:0614141.00001.0\"\n        },\n        \"disposition\": \"active\"\n      }\n    ]\n  }\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/integration/manufacturer/events",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"integration",
+										"manufacturer",
+										"events"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "XML",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/xml"
+									},
+									{
+										"key": "X-API-Key",
+										"value": "{{api_key}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<epcis:EPCISDocument xmlns:epcis=\"urn:epcglobal:epcis:xsd:1\"\n  xmlns:cbvmda=\"urn:epcglobal:cbv:mda\"\n  schemaVersion=\"1.2\" creationDate=\"2026-01-01T10:00:00.000Z\">\n  <EPCISBody><EventList>\n    <AggregationEvent>\n      <eventID>urn:uuid:00000000-0000-4000-8000-000000000003</eventID>\n      <eventTime>2026-01-01T12:00:00.000Z</eventTime>\n      <eventTimeZoneOffset>+00:00</eventTimeZoneOffset>\n      <parentID>urn:epc:id:sscc:0614141.0000005000</parentID>\n      <childEPCs>\n        <epc>urn:epc:id:sscc:0614141.0000001001</epc>\n        <epc>urn:epc:id:sscc:0614141.0000001002</epc>\n        <epc>urn:epc:id:sscc:0614141.0000000001</epc>\n      </childEPCs>\n      <action>ADD</action>\n      <bizStep>urn:epcglobal:cbv:bizstep:packing</bizStep>\n      <disposition>urn:epcglobal:cbv:disp:active</disposition>\n      <readPoint><id>urn:epc:id:sgln:0614141.00001.0</id></readPoint>\n      <bizLocation><id>urn:epc:id:sgln:0614141.00001.0</id></bizLocation>\n    </AggregationEvent>\n  </EventList></EPCISBody>\n</epcis:EPCISDocument>"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/integration/manufacturer/events",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"integration",
+										"manufacturer",
+										"events"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Ship (ObjectEvent)",
+					"item": [
+						{
+							"name": "JSON-LD",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/ld+json"
+									},
+									{
+										"key": "X-API-Key",
+										"value": "{{api_key}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"@context\": [\"https://ref.gs1.org/standards/epcis/epcis-context.jsonld\"],\n  \"type\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\": \"2026-01-02T08:00:00.000Z\",\n  \"epcisBody\": {\n    \"eventList\": [{\n      \"type\": \"ObjectEvent\",\n      \"eventID\": \"urn:uuid:11111111-1111-4111-8111-111111111132\",\n      \"eventTime\": \"2026-01-02T08:00:00.000Z\",\n      \"eventTimeZoneOffset\": \"+00:00\",\n      \"epcList\": [\"urn:epc:id:sscc:0614141.0000005000\"],\n      \"action\": \"OBSERVE\",\n      \"bizStep\": \"shipping\",\n      \"disposition\": \"in_transit\",\n      \"readPoint\": { \"id\": \"urn:epc:id:sgln:0614141.00001.0\" },\n      \"bizLocation\": { \"id\": \"urn:epc:id:sgln:0614141.00001.0\" },\n      \"bizTransactionList\": [{\n        \"type\": \"desadv\",\n        \"bizTransaction\": \"urn:epcglobal:cbv:bt:0614141:ASN-2026-0001\"\n      }],\n      \"sourceList\": [{\n        \"type\": \"location\",\n        \"source\": \"urn:epc:id:sgln:0614141.00001.0\"\n      }],\n      \"destinationList\": [{\n        \"type\": \"location\",\n        \"destination\": \"urn:epc:id:sgln:0619999.00002.0\"\n      }]\n    }]\n  }\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/integration/manufacturer/events",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"integration",
+										"manufacturer",
+										"events"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "XML",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/xml"
+									},
+									{
+										"key": "X-API-Key",
+										"value": "{{api_key}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<epcis:EPCISDocument xmlns:epcis=\"urn:epcglobal:epcis:xsd:1\"\n  xmlns:cbvmda=\"urn:epcglobal:cbv:mda\"\n  schemaVersion=\"1.2\" creationDate=\"2026-01-01T10:00:00.000Z\">\n  <EPCISBody><EventList>\n    <ObjectEvent>\n      <eventID>urn:uuid:11111111-1111-4111-8111-111111111112</eventID>\n      <eventTime>2026-01-02T08:00:00.000Z</eventTime>\n      <eventTimeZoneOffset>+00:00</eventTimeZoneOffset>\n      <epcList>\n        <epc>urn:epc:id:sscc:0614141.0000005000</epc>\n      </epcList>\n      <action>OBSERVE</action>\n      <bizStep>urn:epcglobal:cbv:bizstep:shipping</bizStep>\n      <disposition>urn:epcglobal:cbv:disp:in_transit</disposition>\n      <readPoint><id>urn:epc:id:sgln:0614141.00001.0</id></readPoint>\n      <bizLocation><id>urn:epc:id:sgln:0614141.00001.0</id></bizLocation>\n      <bizTransactionList>\n        <bizTransaction type=\"urn:epcglobal:cbv:btt:desadv\">\n          urn:epcglobal:cbv:bt:0614141:ASN-2026-0001\n        </bizTransaction>\n      </bizTransactionList>\n      <extension>\n        <sourceList>\n          <source type=\"urn:epcglobal:cbv:sdt:location\">\n            urn:epc:id:sgln:0614141.00001.0\n          </source>\n        </sourceList>\n        <destinationList>\n          <destination type=\"urn:epcglobal:cbv:sdt:location\">\n            urn:epc:id:sgln:0619999.00002.0\n          </destination>\n        </destinationList>\n      </extension>\n\n    </ObjectEvent>\n  </EventList></EPCISBody>\n</epcis:EPCISDocument>"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/integration/manufacturer/events",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"integration",
+										"manufacturer",
+										"events"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Distributor Events",
+			"item": [
+				{
+					"name": "Receive (ObjectEvent)",
+					"item": [
+						{
+							"name": "JSON-LD",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/ld+json"
+									},
+									{
+										"key": "X-API-Key",
+										"value": "{{api_key}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"@context\": [\n    \"https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld\"\n  ],\n  \"type\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\": \"2026-01-01T10:00:00.000Z\",\n  \"epcisBody\": {\n    \"eventList\": [\n      {\n        \"type\": \"ObjectEvent\",\n        \"eventID\": \"urn:uuid:22222222-2222-4222-8222-222222222221\",\n        \"eventTime\": \"2026-01-03T09:00:00.000Z\",\n        \"eventTimeZoneOffset\": \"+00:00\",\n        \"action\": \"OBSERVE\",\n        \"bizStep\": \"receiving\",\n        \"disposition\": \"active\",\n        \"epcList\": [\n          \"urn:epc:id:sscc:0614141.0000005000\"\n        ],\n        \"readPoint\": {\n          \"id\": \"urn:epc:id:sgln:0619999.00002.0\"\n        },\n        \"bizLocation\": {\n          \"id\": \"urn:epc:id:sgln:0619999.00002.0\"\n        },\n        \"sourceList\": [\n          {\n            \"type\": \"urn:epcglobal:cbv:sdt:location\",\n            \"source\": \"urn:epc:id:sgln:0614141.00001.0\"\n          }\n        ],\n        \"destinationList\": [\n          {\n            \"type\": \"urn:epcglobal:cbv:sdt:location\",\n            \"destination\": \"urn:epc:id:sgln:0619999.00002.0\"\n          }\n        ],\n        \"bizTransactionList\": [\n          {\n            \"type\": \"urn:epcglobal:cbv:btt:recadv\",\n            \"bizTransaction\": \"urn:epcglobal:cbv:bt:0619999:REC-2026-0001\"\n          }\n        ]\n      }\n    ]\n  }\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/integration/supplier/events",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"integration",
+										"supplier",
+										"events"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "XML",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/xml"
+									},
+									{
+										"key": "X-API-Key",
+										"value": "{{api_key}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<epcis:EPCISDocument xmlns:epcis=\"urn:epcglobal:epcis:xsd:1\"\n  xmlns:cbvmda=\"urn:epcglobal:cbv:mda\"\n  schemaVersion=\"1.2\" creationDate=\"2026-01-01T10:00:00.000Z\">\n  <EPCISBody><EventList>\n    <ObjectEvent>\n      <eventID>urn:uuid:22222222-2222-4222-8222-222222222221</eventID>\n      <eventTime>2026-01-03T09:00:00.000Z</eventTime>\n      <eventTimeZoneOffset>+00:00</eventTimeZoneOffset>\n      <epcList>\n        <epc>urn:epc:id:sscc:0614141.0000005000</epc>\n      </epcList>\n      <action>OBSERVE</action>\n      <bizStep>urn:epcglobal:cbv:bizstep:receiving</bizStep>\n      <disposition>urn:epcglobal:cbv:disp:active</disposition>\n      <readPoint><id>urn:epc:id:sgln:0619999.00002.0</id></readPoint>\n      <bizLocation><id>urn:epc:id:sgln:0619999.00002.0</id></bizLocation>\n      <bizTransactionList>\n        <bizTransaction type=\"urn:epcglobal:cbv:btt:recadv\">\n          urn:epcglobal:cbv:bt:0619999:REC-2026-0001\n        </bizTransaction>\n      </bizTransactionList>\n      <extension>\n        <sourceList>\n          <source type=\"urn:epcglobal:cbv:sdt:location\">\n            urn:epc:id:sgln:0614141.00001.0\n          </source>\n        </sourceList>\n        <destinationList>\n          <destination type=\"urn:epcglobal:cbv:sdt:location\">\n            urn:epc:id:sgln:0619999.00002.0\n          </destination>\n        </destinationList>\n      </extension>\n\n    </ObjectEvent>\n  </EventList></EPCISBody>\n</epcis:EPCISDocument>"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/integration/supplier/events",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"integration",
+										"supplier",
+										"events"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Unpack (AggregationEvent)",
+					"item": [
+						{
+							"name": "JSON-LD",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/ld+json"
+									},
+									{
+										"key": "X-API-Key",
+										"value": "{{api_key}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"@context\": [\n    \"https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld\"\n  ],\n  \"type\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\": \"2026-01-01T10:00:00.000Z\",\n  \"epcisBody\": {\n    \"eventList\": [\n      {\n        \"type\": \"AggregationEvent\",\n        \"eventID\": \"urn:uuid:22222222-2222-4222-8222-222222222222\",\n        \"eventTime\": \"2026-01-03T10:00:00.000Z\",\n        \"eventTimeZoneOffset\": \"+00:00\",\n        \"action\": \"DELETE\",\n        \"bizStep\": \"unpacking\",\n        \"parentID\": \"urn:epc:id:sscc:0614141.0000005000\",\n        \"childEPCs\": [\n          \"urn:epc:id:sscc:0614141.0000001001\",\n          \"urn:epc:id:sscc:0614141.0000001002\",\n          \"urn:epc:id:sscc:0614141.0000000001\"\n        ],\n        \"readPoint\": {\n          \"id\": \"urn:epc:id:sgln:0619999.00002.0\"\n        },\n        \"bizLocation\": {\n          \"id\": \"urn:epc:id:sgln:0619999.00002.0\"\n        },\n        \"disposition\": \"active\"\n      }\n    ]\n  }\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/integration/supplier/events",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"integration",
+										"supplier",
+										"events"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "XML",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/xml"
+									},
+									{
+										"key": "X-API-Key",
+										"value": "{{api_key}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<epcis:EPCISDocument xmlns:epcis=\"urn:epcglobal:epcis:xsd:1\"\n  xmlns:cbvmda=\"urn:epcglobal:cbv:mda\"\n  schemaVersion=\"1.2\" creationDate=\"2026-01-01T10:00:00.000Z\">\n  <EPCISBody><EventList>\n    <AggregationEvent>\n      <eventID>urn:uuid:22222222-2222-4222-8222-222222222222</eventID>\n      <eventTime>2026-01-03T10:00:00.000Z</eventTime>\n      <eventTimeZoneOffset>+00:00</eventTimeZoneOffset>\n      <parentID>urn:epc:id:sscc:0614141.0000005000</parentID>\n      <childEPCs>\n        <epc>urn:epc:id:sscc:0614141.0000001001</epc>\n        <epc>urn:epc:id:sscc:0614141.0000001002</epc>\n        <epc>urn:epc:id:sscc:0614141.0000000001</epc>\n      </childEPCs>\n      <action>DELETE</action>\n      <bizStep>urn:epcglobal:cbv:bizstep:unpacking</bizStep>\n      <disposition>urn:epcglobal:cbv:disp:active</disposition>\n      <readPoint><id>urn:epc:id:sgln:0619999.00002.0</id></readPoint>\n      <bizLocation><id>urn:epc:id:sgln:0619999.00002.0</id></bizLocation>\n    </AggregationEvent>\n  </EventList></EPCISBody>\n</epcis:EPCISDocument>"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/integration/supplier/events",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"integration",
+										"supplier",
+										"events"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Pack (AggregationEvent)",
+					"item": [
+						{
+							"name": "JSON-LD",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/ld+json"
+									},
+									{
+										"key": "X-API-Key",
+										"value": "{{api_key}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"@context\": [\n    \"https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld\"\n  ],\n  \"type\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\": \"2026-01-01T10:00:00.000Z\",\n  \"epcisBody\": {\n    \"eventList\": [\n      {\n        \"type\": \"AggregationEvent\",\n        \"eventID\": \"urn:uuid:22222222-2222-4222-8222-222222222223\",\n        \"eventTime\": \"2026-01-04T08:00:00.000Z\",\n        \"eventTimeZoneOffset\": \"+00:00\",\n        \"action\": \"ADD\",\n        \"bizStep\": \"packing\",\n        \"parentID\": \"urn:epc:id:sscc:0619999.0000000100\",\n        \"childEPCs\": [\n          \"urn:epc:id:sgtin:0614141.000111.0000001\",\n          \"urn:epc:id:sgtin:0614141.000111.0000002\"\n        ],\n        \"readPoint\": {\n          \"id\": \"urn:epc:id:sgln:0619999.00002.0\"\n        },\n        \"bizLocation\": {\n          \"id\": \"urn:epc:id:sgln:0619999.00002.0\"\n        },\n        \"disposition\": \"active\"\n      }\n    ]\n  }\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/integration/supplier/events",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"integration",
+										"supplier",
+										"events"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "XML",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/xml"
+									},
+									{
+										"key": "X-API-Key",
+										"value": "{{api_key}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<epcis:EPCISDocument xmlns:epcis=\"urn:epcglobal:epcis:xsd:1\"\n  xmlns:cbvmda=\"urn:epcglobal:cbv:mda\"\n  schemaVersion=\"1.2\" creationDate=\"2026-01-01T10:00:00.000Z\">\n  <EPCISBody><EventList>\n    <AggregationEvent>\n      <eventID>urn:uuid:22222222-2222-4222-8222-222222222223</eventID>\n      <eventTime>2026-01-04T08:00:00.000Z</eventTime>\n      <eventTimeZoneOffset>+00:00</eventTimeZoneOffset>\n      <parentID>urn:epc:id:sscc:0619999.0000000100</parentID>\n      <childEPCs>\n        <epc>urn:epc:id:sgtin:0614141.000111.0000001</epc>\n        <epc>urn:epc:id:sgtin:0614141.000111.0000002</epc>\n      </childEPCs>\n      <action>ADD</action>\n      <bizStep>urn:epcglobal:cbv:bizstep:packing</bizStep>\n      <disposition>urn:epcglobal:cbv:disp:active</disposition>\n      <readPoint><id>urn:epc:id:sgln:0619999.00002.0</id></readPoint>\n      <bizLocation><id>urn:epc:id:sgln:0619999.00002.0</id></bizLocation>\n    </AggregationEvent>\n  </EventList></EPCISBody>\n</epcis:EPCISDocument>"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/integration/supplier/events",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"integration",
+										"supplier",
+										"events"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Ship (ObjectEvent)",
+					"item": [
+						{
+							"name": "JSON-LD",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/ld+json"
+									},
+									{
+										"key": "X-API-Key",
+										"value": "{{api_key}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"@context\": [\n    \"https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld\"\n  ],\n  \"type\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\": \"2026-01-01T10:00:00.000Z\",\n  \"epcisBody\": {\n    \"eventList\": [\n      {\n        \"type\": \"ObjectEvent\",\n        \"eventID\": \"urn:uuid:22222222-2222-4222-8222-222222222224\",\n        \"eventTime\": \"2026-01-04T10:00:00.000Z\",\n        \"eventTimeZoneOffset\": \"+00:00\",\n        \"action\": \"OBSERVE\",\n        \"bizStep\": \"shipping\",\n        \"disposition\": \"in_transit\",\n        \"epcList\": [\n          \"urn:epc:id:sscc:0619999.0000000100\"\n        ],\n        \"readPoint\": {\n          \"id\": \"urn:epc:id:sgln:0619999.00002.0\"\n        },\n        \"bizLocation\": {\n          \"id\": \"urn:epc:id:sgln:0619999.00002.0\"\n        },\n        \"sourceList\": [\n          {\n            \"type\": \"urn:epcglobal:cbv:sdt:location\",\n            \"source\": \"urn:epc:id:sgln:0619999.00002.0\"\n          }\n        ],\n        \"destinationList\": [\n          {\n            \"type\": \"urn:epcglobal:cbv:sdt:location\",\n            \"destination\": \"urn:epc:id:sgln:0618888.00001.0\"\n          }\n        ],\n        \"bizTransactionList\": [\n          {\n            \"type\": \"urn:epcglobal:cbv:btt:desadv\",\n            \"bizTransaction\": \"urn:epcglobal:cbv:bt:0619999:ASN-2026-0100\"\n          }\n        ]\n      }\n    ]\n  }\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/integration/supplier/events",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"integration",
+										"supplier",
+										"events"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "XML",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/xml"
+									},
+									{
+										"key": "X-API-Key",
+										"value": "{{api_key}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<epcis:EPCISDocument xmlns:epcis=\"urn:epcglobal:epcis:xsd:1\"\n  xmlns:cbvmda=\"urn:epcglobal:cbv:mda\"\n  schemaVersion=\"1.2\" creationDate=\"2026-01-01T10:00:00.000Z\">\n  <EPCISBody><EventList>\n    <ObjectEvent>\n      <eventID>urn:uuid:22222222-2222-4222-8222-222222222224</eventID>\n      <eventTime>2026-01-04T10:00:00.000Z</eventTime>\n      <eventTimeZoneOffset>+00:00</eventTimeZoneOffset>\n      <epcList>\n        <epc>urn:epc:id:sscc:0619999.0000000100</epc>\n      </epcList>\n      <action>OBSERVE</action>\n      <bizStep>urn:epcglobal:cbv:bizstep:shipping</bizStep>\n      <disposition>urn:epcglobal:cbv:disp:in_transit</disposition>\n      <readPoint><id>urn:epc:id:sgln:0619999.00002.0</id></readPoint>\n      <bizLocation><id>urn:epc:id:sgln:0619999.00002.0</id></bizLocation>\n      <bizTransactionList>\n        <bizTransaction type=\"urn:epcglobal:cbv:btt:desadv\">\n          urn:epcglobal:cbv:bt:0619999:ASN-2026-0100\n        </bizTransaction>\n      </bizTransactionList>\n      <extension>\n        <sourceList>\n          <source type=\"urn:epcglobal:cbv:sdt:location\">\n            urn:epc:id:sgln:0619999.00002.0\n          </source>\n        </sourceList>\n        <destinationList>\n          <destination type=\"urn:epcglobal:cbv:sdt:location\">\n            urn:epc:id:sgln:0618888.00001.0\n          </destination>\n        </destinationList>\n      </extension>\n\n    </ObjectEvent>\n  </EventList></EPCISBody>\n</epcis:EPCISDocument>"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/integration/supplier/events",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"integration",
+										"supplier",
+										"events"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Facility Events",
+			"item": [
+				{
+					"name": "Receive (ObjectEvent)",
+					"item": [
+						{
+							"name": "JSON-LD",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/ld+json"
+									},
+									{
+										"key": "X-API-Key",
+										"value": "{{api_key}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"@context\": [\n    \"https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld\"\n  ],\n  \"type\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\": \"2026-01-01T10:00:00.000Z\",\n  \"epcisBody\": {\n    \"eventList\": [\n      {\n        \"type\": \"ObjectEvent\",\n        \"eventID\": \"urn:uuid:33333333-3333-4333-8333-333333333330\",\n        \"eventTime\": \"2026-01-05T09:00:00.000Z\",\n        \"eventTimeZoneOffset\": \"+00:00\",\n        \"action\": \"OBSERVE\",\n        \"bizStep\": \"receiving\",\n        \"disposition\": \"active\",\n        \"epcList\": [\n          \"urn:epc:id:sscc:0619999.0000000100\"\n        ],\n        \"readPoint\": {\n          \"id\": \"urn:epc:id:sgln:0618888.00001.0\"\n        },\n        \"bizLocation\": {\n          \"id\": \"urn:epc:id:sgln:0618888.00001.0\"\n        },\n        \"sourceList\": [\n          {\n            \"type\": \"urn:epcglobal:cbv:sdt:location\",\n            \"source\": \"urn:epc:id:sgln:0619999.00002.0\"\n          }\n        ],\n        \"destinationList\": [\n          {\n            \"type\": \"urn:epcglobal:cbv:sdt:location\",\n            \"destination\": \"urn:epc:id:sgln:0618888.00001.0\"\n          }\n        ],\n        \"bizTransactionList\": [\n          {\n            \"type\": \"urn:epcglobal:cbv:btt:recadv\",\n            \"bizTransaction\": \"urn:epcglobal:cbv:bt:0618888:REC-2026-0001\"\n          }\n        ]\n      }\n    ]\n  }\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/integration/facility/events",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"integration",
+										"facility",
+										"events"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "XML",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/xml"
+									},
+									{
+										"key": "X-API-Key",
+										"value": "{{api_key}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<epcis:EPCISDocument xmlns:epcis=\"urn:epcglobal:epcis:xsd:1\"\n  xmlns:cbvmda=\"urn:epcglobal:cbv:mda\"\n  schemaVersion=\"1.2\" creationDate=\"2026-01-01T10:00:00.000Z\">\n  <EPCISBody><EventList>\n    <ObjectEvent>\n      <eventID>urn:uuid:33333333-3333-4333-8333-333333333330</eventID>\n      <eventTime>2026-01-05T09:00:00.000Z</eventTime>\n      <eventTimeZoneOffset>+00:00</eventTimeZoneOffset>\n      <epcList>\n        <epc>urn:epc:id:sscc:0619999.0000000100</epc>\n      </epcList>\n      <action>OBSERVE</action>\n      <bizStep>urn:epcglobal:cbv:bizstep:receiving</bizStep>\n      <disposition>urn:epcglobal:cbv:disp:active</disposition>\n      <readPoint><id>urn:epc:id:sgln:0618888.00001.0</id></readPoint>\n      <bizLocation><id>urn:epc:id:sgln:0618888.00001.0</id></bizLocation>\n      <bizTransactionList>\n        <bizTransaction type=\"urn:epcglobal:cbv:btt:recadv\">\n          urn:epcglobal:cbv:bt:0618888:REC-2026-0001\n        </bizTransaction>\n      </bizTransactionList>\n      <extension>\n        <sourceList>\n          <source type=\"urn:epcglobal:cbv:sdt:location\">\n            urn:epc:id:sgln:0619999.00002.0\n          </source>\n        </sourceList>\n        <destinationList>\n          <destination type=\"urn:epcglobal:cbv:sdt:location\">\n            urn:epc:id:sgln:0618888.00001.0\n          </destination>\n        </destinationList>\n      </extension>\n\n    </ObjectEvent>\n  </EventList></EPCISBody>\n</epcis:EPCISDocument>"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/integration/facility/events",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"integration",
+										"facility",
+										"events"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Unpack (AggregationEvent)",
+					"item": [
+						{
+							"name": "JSON-LD",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/ld+json"
+									},
+									{
+										"key": "X-API-Key",
+										"value": "{{api_key}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"@context\": [\n    \"https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld\"\n  ],\n  \"type\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\": \"2026-01-01T10:00:00.000Z\",\n  \"epcisBody\": {\n    \"eventList\": [\n      {\n        \"type\": \"AggregationEvent\",\n        \"eventID\": \"urn:uuid:33333333-3333-4333-8333-333333333332\",\n        \"eventTime\": \"2026-01-05T10:00:00.000Z\",\n        \"eventTimeZoneOffset\": \"+00:00\",\n        \"action\": \"DELETE\",\n        \"bizStep\": \"unpacking\",\n        \"parentID\": \"urn:epc:id:sscc:0619999.0000000100\",\n        \"childEPCs\": [\n          \"urn:epc:id:sgtin:0614141.000111.0000001\",\n          \"urn:epc:id:sgtin:0614141.000111.0000002\"\n        ],\n        \"readPoint\": {\n          \"id\": \"urn:epc:id:sgln:0618888.00001.0\"\n        },\n        \"bizLocation\": {\n          \"id\": \"urn:epc:id:sgln:0618888.00001.0\"\n        },\n        \"disposition\": \"active\"\n      }\n    ]\n  }\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/integration/facility/events",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"integration",
+										"facility",
+										"events"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "XML",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/xml"
+									},
+									{
+										"key": "X-API-Key",
+										"value": "{{api_key}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<epcis:EPCISDocument xmlns:epcis=\"urn:epcglobal:epcis:xsd:1\"\n  xmlns:cbvmda=\"urn:epcglobal:cbv:mda\"\n  schemaVersion=\"1.2\" creationDate=\"2026-01-01T10:00:00.000Z\">\n  <EPCISBody><EventList>\n    <AggregationEvent>\n      <eventID>urn:uuid:33333333-3333-4333-8333-333333333332</eventID>\n      <eventTime>2026-01-05T10:00:00.000Z</eventTime>\n      <eventTimeZoneOffset>+00:00</eventTimeZoneOffset>\n      <parentID>urn:epc:id:sscc:0619999.0000000100</parentID>\n      <childEPCs>\n        <epc>urn:epc:id:sgtin:0614141.000111.0000001</epc>\n        <epc>urn:epc:id:sgtin:0614141.000111.0000002</epc>\n      </childEPCs>\n      <action>DELETE</action>\n      <bizStep>urn:epcglobal:cbv:bizstep:unpacking</bizStep>\n      <disposition>urn:epcglobal:cbv:disp:active</disposition>\n      <readPoint><id>urn:epc:id:sgln:0618888.00001.0</id></readPoint>\n      <bizLocation><id>urn:epc:id:sgln:0618888.00001.0</id></bizLocation>\n    </AggregationEvent>\n  </EventList></EPCISBody>\n</epcis:EPCISDocument>"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/integration/facility/events",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"integration",
+										"facility",
+										"events"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Dispense (ObjectEvent - SGTIN only)",
+					"item": [
+						{
+							"name": "JSON-LD",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/ld+json"
+									},
+									{
+										"key": "X-API-Key",
+										"value": "{{api_key}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"@context\": [\n        \"https://ref.gs1.org/standards/epcis/epcis-context.jsonld\"\n    ],\n    \"type\": \"EPCISDocument\",\n    \"schemaVersion\": \"2.0\",\n    \"creationDate\": \"2026-01-01T12:00:00.000Z\",\n    \"epcisBody\": {\n        \"eventList\": [\n            {\n                \"type\": \"ObjectEvent\",\n                \"eventID\": \"urn:uuid:33333333-3333-4333-8333-test-sn-cw2\",\n                \"eventTime\": \"2026-08-05T10:00:00.000Z\",\n                \"eventTimeZoneOffset\": \"+00:00\",\n                \"action\": \"OBSERVE\",\n                \"bizStep\": \"dispensing\",\n                \"disposition\": \"dispensed\",\n                \"epcList\": [\n                    \"urn:epc:id:sgtin:6161102974997.CW2278\"\n                ],\n                \"readPoint\": {\n                    \"id\": \"urn:epc:id:sgln:8888888.888888\"\n                },\n                \"bizLocation\": {\n                    \"id\": \"urn:epc:id:sgln:8888888.888888\"\n                },\n                \"sourceList\": [\n                    {\n                        \"type\": \"urn:epcglobal:cbv:sdt:location\",\n                        \"source\": \"urn:epc:id:sgln:8888888.888888\"\n                    }\n                ],\n                \"destinationList\": [\n                    {\n                        \"type\": \"urn:epcglobal:cbv:sdt:location\",\n                        \"destination\": \"urn:epc:id:sgln:8888888.888888\"\n                    }\n                ]\n            }\n        ]\n    }\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/integration/facility/events/dispense",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"integration",
+										"facility",
+										"events",
+										"dispense"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "XML",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/xml"
+									},
+									{
+										"key": "X-API-Key",
+										"value": "{{api_key}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<epcis:EPCISDocument xmlns:epcis=\"urn:epcglobal:epcis:xsd:1\"\n  xmlns:cbvmda=\"urn:epcglobal:cbv:mda\"\n  schemaVersion=\"1.2\" creationDate=\"2026-01-01T10:00:00.000Z\">\n  <EPCISBody><EventList>\n    <ObjectEvent>\n      <eventID>urn:uuid:33333333-3333-4333-8333-333333333331</eventID>\n      <eventTime>2026-01-06T14:00:00.000Z</eventTime>\n      <eventTimeZoneOffset>+00:00</eventTimeZoneOffset>\n      <epcList>\n        <epc>urn:epc:id:sgtin:0614141.000111.0000001</epc>\n        <epc>urn:epc:id:sgtin:0614141.000111.0000002</epc>\n      </epcList>\n      <action>OBSERVE</action>\n      <bizStep>urn:epcglobal:cbv:bizstep:dispensing</bizStep>\n      <disposition>urn:epcglobal:cbv:disp:dispensed</disposition>\n      <readPoint><id>urn:epc:id:sgln:0618888.00001.0</id></readPoint>\n      <bizLocation><id>urn:epc:id:sgln:0618888.00001.0</id></bizLocation>\n\n      <extension>\n        <sourceList>\n          <source type=\"urn:epcglobal:cbv:sdt:location\">\n            urn:epc:id:sgln:0618888.00001.0\n          </source>\n        </sourceList>\n        <destinationList>\n          <destination type=\"urn:epcglobal:cbv:sdt:location\">\n            urn:epc:id:sgln:0618888.00001.0\n          </destination>\n        </destinationList>\n      </extension>\n\n    </ObjectEvent>\n  </EventList></EPCISBody>\n</epcis:EPCISDocument>"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/integration/facility/events/dispense",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"integration",
+										"facility",
+										"events",
+										"dispense"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Special Events",
+			"item": [
+				{
+					"name": "Manufacturer",
+					"item": [
+						{
+							"name": "Return Receiving (receiving / returned)",
+							"item": [
+								{
+									"name": "JSON-LD",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/ld+json"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"@context\": [\n    \"https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld\"\n  ],\n  \"type\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\": \"2026-01-01T10:00:00.000Z\",\n  \"epcisBody\": {\n    \"eventList\": [\n      {\n        \"type\": \"ObjectEvent\",\n        \"eventID\": \"urn:uuid:a1111111-1111-4111-8111-111111111101\",\n        \"eventTime\": \"2026-01-04T10:00:00.000Z\",\n        \"eventTimeZoneOffset\": \"+00:00\",\n        \"action\": \"OBSERVE\",\n        \"bizStep\": \"receiving\",\n        \"disposition\": \"returned\",\n        \"epcList\": [\n          \"urn:epc:id:sgtin:0614141.000111.0000001\"\n        ],\n        \"readPoint\": {\n          \"id\": \"urn:epc:id:sgln:0614141.00001.0\"\n        },\n        \"bizLocation\": {\n          \"id\": \"urn:epc:id:sgln:0614141.00001.0\"\n        },\n        \"sourceList\": [\n          {\n            \"type\": \"urn:epcglobal:cbv:sdt:owning_party\",\n            \"source\": \"urn:epc:id:sgln:0619999.00002.0\"\n          }\n        ],\n        \"destinationList\": [\n          {\n            \"type\": \"urn:epcglobal:cbv:sdt:owning_party\",\n            \"destination\": \"urn:epc:id:sgln:0614141.00001.0\"\n          },\n          {\n            \"type\": \"urn:epcglobal:cbv:sdt:location\",\n            \"destination\": \"urn:epc:id:sgln:0614141.00001.0\"\n          }\n        ],\n        \"bizTransactionList\": [\n          {\n            \"type\": \"urn:epcglobal:cbv:btt:recadv\",\n            \"bizTransaction\": \"urn:epcglobal:cbv:bt:0614141:RET-REC-2026-0001\"\n          }\n        ]\n      }\n    ]\n  }\n}"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/manufacturer/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"manufacturer",
+												"events"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "XML",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/xml"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<epcis:EPCISDocument xmlns:epcis=\"urn:epcglobal:epcis:xsd:1\"\n  xmlns:cbvmda=\"urn:epcglobal:cbv:mda\"\n  schemaVersion=\"1.2\" creationDate=\"2026-01-01T10:00:00.000Z\">\n  <EPCISBody><EventList>\n    <ObjectEvent>\n      <eventID>urn:uuid:a1111111-1111-4111-8111-111111111101</eventID>\n      <eventTime>2026-01-04T10:00:00.000Z</eventTime>\n      <eventTimeZoneOffset>+00:00</eventTimeZoneOffset>\n      <epcList>\n        <epc>urn:epc:id:sgtin:0614141.000111.0000001</epc>\n      </epcList>\n      <action>OBSERVE</action>\n      <bizStep>urn:epcglobal:cbv:bizstep:receiving</bizStep>\n      <disposition>urn:epcglobal:cbv:disp:returned</disposition>\n      <readPoint><id>urn:epc:id:sgln:0614141.00001.0</id></readPoint>\n      <bizLocation><id>urn:epc:id:sgln:0614141.00001.0</id></bizLocation>\n      <bizTransactionList>\n        <bizTransaction type=\"urn:epcglobal:cbv:btt:recadv\">\n          urn:epcglobal:cbv:bt:0614141:RET-REC-2026-0001\n        </bizTransaction>\n      </bizTransactionList>\n      <extension>\n        <sourceList>\n          <source type=\"urn:epcglobal:cbv:sdt:owning_party\">\n            urn:epc:id:sgln:0619999.00002.0\n          </source>\n        </sourceList>\n        <destinationList>\n          <destination type=\"urn:epcglobal:cbv:sdt:owning_party\">\n            urn:epc:id:sgln:0614141.00001.0\n          </destination>\n          <destination type=\"urn:epcglobal:cbv:sdt:location\">\n            urn:epc:id:sgln:0614141.00001.0\n          </destination>\n        </destinationList>\n      </extension>\n\n    </ObjectEvent>\n  </EventList></EPCISBody>\n</epcis:EPCISDocument>"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/manufacturer/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"manufacturer",
+												"events"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Destruction (destroying / destroyed)",
+							"item": [
+								{
+									"name": "JSON-LD",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/ld+json"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"@context\": [\n    \"https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld\"\n  ],\n  \"type\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\": \"2026-01-01T10:00:00.000Z\",\n  \"epcisBody\": {\n    \"eventList\": [\n      {\n        \"type\": \"ObjectEvent\",\n        \"eventID\": \"urn:uuid:a1111111-1111-4111-8111-111111111102\",\n        \"eventTime\": \"2026-01-04T10:00:00.000Z\",\n        \"eventTimeZoneOffset\": \"+00:00\",\n        \"action\": \"OBSERVE\",\n        \"bizStep\": \"destroying\",\n        \"disposition\": \"destroyed\",\n        \"epcList\": [\n          \"urn:epc:id:sgtin:0614141.000111.0000001\"\n        ],\n        \"readPoint\": {\n          \"id\": \"urn:epc:id:sgln:0614141.00001.0\"\n        },\n        \"bizLocation\": {\n          \"id\": \"urn:epc:id:sgln:0614141.00001.0\"\n        }\n      }\n    ]\n  }\n}"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/manufacturer/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"manufacturer",
+												"events"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "XML",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/xml"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<epcis:EPCISDocument xmlns:epcis=\"urn:epcglobal:epcis:xsd:1\"\n  xmlns:cbvmda=\"urn:epcglobal:cbv:mda\"\n  schemaVersion=\"1.2\" creationDate=\"2026-01-01T10:00:00.000Z\">\n  <EPCISBody><EventList>\n    <ObjectEvent>\n      <eventID>urn:uuid:a1111111-1111-4111-8111-111111111102</eventID>\n      <eventTime>2026-01-04T10:00:00.000Z</eventTime>\n      <eventTimeZoneOffset>+00:00</eventTimeZoneOffset>\n      <epcList>\n        <epc>urn:epc:id:sgtin:0614141.000111.0000001</epc>\n      </epcList>\n      <action>OBSERVE</action>\n      <bizStep>urn:epcglobal:cbv:bizstep:destroying</bizStep>\n      <disposition>urn:epcglobal:cbv:disp:destroyed</disposition>\n      <readPoint><id>urn:epc:id:sgln:0614141.00001.0</id></readPoint>\n      <bizLocation><id>urn:epc:id:sgln:0614141.00001.0</id></bizLocation>\n\n\n\n    </ObjectEvent>\n  </EventList></EPCISBody>\n</epcis:EPCISDocument>"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/manufacturer/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"manufacturer",
+												"events"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Damaged (inspecting / damaged)",
+							"item": [
+								{
+									"name": "JSON-LD",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/ld+json"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"@context\": [\n    \"https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld\"\n  ],\n  \"type\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\": \"2026-01-01T10:00:00.000Z\",\n  \"epcisBody\": {\n    \"eventList\": [\n      {\n        \"type\": \"ObjectEvent\",\n        \"eventID\": \"urn:uuid:a1111111-1111-4111-8111-111111111103\",\n        \"eventTime\": \"2026-01-04T10:00:00.000Z\",\n        \"eventTimeZoneOffset\": \"+00:00\",\n        \"action\": \"OBSERVE\",\n        \"bizStep\": \"inspecting\",\n        \"disposition\": \"damaged\",\n        \"epcList\": [\n          \"urn:epc:id:sgtin:0614141.000111.0000001\"\n        ],\n        \"readPoint\": {\n          \"id\": \"urn:epc:id:sgln:0614141.00001.0\"\n        },\n        \"bizLocation\": {\n          \"id\": \"urn:epc:id:sgln:0614141.00001.0\"\n        }\n      }\n    ]\n  }\n}"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/manufacturer/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"manufacturer",
+												"events"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "XML",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/xml"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<epcis:EPCISDocument xmlns:epcis=\"urn:epcglobal:epcis:xsd:1\"\n  xmlns:cbvmda=\"urn:epcglobal:cbv:mda\"\n  schemaVersion=\"1.2\" creationDate=\"2026-01-01T10:00:00.000Z\">\n  <EPCISBody><EventList>\n    <ObjectEvent>\n      <eventID>urn:uuid:a1111111-1111-4111-8111-111111111103</eventID>\n      <eventTime>2026-01-04T10:00:00.000Z</eventTime>\n      <eventTimeZoneOffset>+00:00</eventTimeZoneOffset>\n      <epcList>\n        <epc>urn:epc:id:sgtin:0614141.000111.0000001</epc>\n      </epcList>\n      <action>OBSERVE</action>\n      <bizStep>urn:epcglobal:cbv:bizstep:inspecting</bizStep>\n      <disposition>urn:epcglobal:cbv:disp:damaged</disposition>\n      <readPoint><id>urn:epc:id:sgln:0614141.00001.0</id></readPoint>\n      <bizLocation><id>urn:epc:id:sgln:0614141.00001.0</id></bizLocation>\n\n\n\n    </ObjectEvent>\n  </EventList></EPCISBody>\n</epcis:EPCISDocument>"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/manufacturer/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"manufacturer",
+												"events"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Stolen (decommissioning / stolen)",
+							"item": [
+								{
+									"name": "JSON-LD",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/ld+json"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"@context\": [\n    \"https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld\"\n  ],\n  \"type\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\": \"2026-01-01T10:00:00.000Z\",\n  \"epcisBody\": {\n    \"eventList\": [\n      {\n        \"type\": \"ObjectEvent\",\n        \"eventID\": \"urn:uuid:a1111111-1111-4111-8111-111111111104\",\n        \"eventTime\": \"2026-01-04T10:00:00.000Z\",\n        \"eventTimeZoneOffset\": \"+00:00\",\n        \"action\": \"OBSERVE\",\n        \"bizStep\": \"decommissioning\",\n        \"disposition\": \"stolen\",\n        \"epcList\": [\n          \"urn:epc:id:sgtin:0614141.000111.0000001\"\n        ],\n        \"readPoint\": {\n          \"id\": \"urn:epc:id:sgln:0614141.00001.0\"\n        },\n        \"bizLocation\": {\n          \"id\": \"urn:epc:id:sgln:0614141.00001.0\"\n        }\n      }\n    ]\n  }\n}"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/manufacturer/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"manufacturer",
+												"events"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "XML",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/xml"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<epcis:EPCISDocument xmlns:epcis=\"urn:epcglobal:epcis:xsd:1\"\n  xmlns:cbvmda=\"urn:epcglobal:cbv:mda\"\n  schemaVersion=\"1.2\" creationDate=\"2026-01-01T10:00:00.000Z\">\n  <EPCISBody><EventList>\n    <ObjectEvent>\n      <eventID>urn:uuid:a1111111-1111-4111-8111-111111111104</eventID>\n      <eventTime>2026-01-04T10:00:00.000Z</eventTime>\n      <eventTimeZoneOffset>+00:00</eventTimeZoneOffset>\n      <epcList>\n        <epc>urn:epc:id:sgtin:0614141.000111.0000001</epc>\n      </epcList>\n      <action>OBSERVE</action>\n      <bizStep>urn:epcglobal:cbv:bizstep:decommissioning</bizStep>\n      <disposition>urn:epcglobal:cbv:disp:stolen</disposition>\n      <readPoint><id>urn:epc:id:sgln:0614141.00001.0</id></readPoint>\n      <bizLocation><id>urn:epc:id:sgln:0614141.00001.0</id></bizLocation>\n\n\n\n    </ObjectEvent>\n  </EventList></EPCISBody>\n</epcis:EPCISDocument>"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/manufacturer/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"manufacturer",
+												"events"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Lost (decommissioning / inactive)",
+							"item": [
+								{
+									"name": "JSON-LD",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/ld+json"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"@context\": [\n    \"https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld\"\n  ],\n  \"type\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\": \"2026-01-01T10:00:00.000Z\",\n  \"epcisBody\": {\n    \"eventList\": [\n      {\n        \"type\": \"ObjectEvent\",\n        \"eventID\": \"urn:uuid:a1111111-1111-4111-8111-111111111105\",\n        \"eventTime\": \"2026-01-04T10:00:00.000Z\",\n        \"eventTimeZoneOffset\": \"+00:00\",\n        \"action\": \"OBSERVE\",\n        \"bizStep\": \"decommissioning\",\n        \"disposition\": \"inactive\",\n        \"epcList\": [\n          \"urn:epc:id:sgtin:0614141.000111.0000001\"\n        ],\n        \"readPoint\": {\n          \"id\": \"urn:epc:id:sgln:0614141.00001.0\"\n        },\n        \"bizLocation\": {\n          \"id\": \"urn:epc:id:sgln:0614141.00001.0\"\n        }\n      }\n    ]\n  }\n}"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/manufacturer/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"manufacturer",
+												"events"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "XML",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/xml"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<epcis:EPCISDocument xmlns:epcis=\"urn:epcglobal:epcis:xsd:1\"\n  xmlns:cbvmda=\"urn:epcglobal:cbv:mda\"\n  schemaVersion=\"1.2\" creationDate=\"2026-01-01T10:00:00.000Z\">\n  <EPCISBody><EventList>\n    <ObjectEvent>\n      <eventID>urn:uuid:a1111111-1111-4111-8111-111111111105</eventID>\n      <eventTime>2026-01-04T10:00:00.000Z</eventTime>\n      <eventTimeZoneOffset>+00:00</eventTimeZoneOffset>\n      <epcList>\n        <epc>urn:epc:id:sgtin:0614141.000111.0000001</epc>\n      </epcList>\n      <action>OBSERVE</action>\n      <bizStep>urn:epcglobal:cbv:bizstep:decommissioning</bizStep>\n      <disposition>urn:epcglobal:cbv:disp:inactive</disposition>\n      <readPoint><id>urn:epc:id:sgln:0614141.00001.0</id></readPoint>\n      <bizLocation><id>urn:epc:id:sgln:0614141.00001.0</id></bizLocation>\n\n\n\n    </ObjectEvent>\n  </EventList></EPCISBody>\n</epcis:EPCISDocument>"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/manufacturer/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"manufacturer",
+												"events"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Expired (inspecting / expired)",
+							"item": [
+								{
+									"name": "JSON-LD",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/ld+json"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"@context\": [\n    \"https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld\"\n  ],\n  \"type\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\": \"2026-01-01T10:00:00.000Z\",\n  \"epcisBody\": {\n    \"eventList\": [\n      {\n        \"type\": \"ObjectEvent\",\n        \"eventID\": \"urn:uuid:a1111111-1111-4111-8111-111111111106\",\n        \"eventTime\": \"2026-01-04T10:00:00.000Z\",\n        \"eventTimeZoneOffset\": \"+00:00\",\n        \"action\": \"OBSERVE\",\n        \"bizStep\": \"inspecting\",\n        \"disposition\": \"expired\",\n        \"epcList\": [\n          \"urn:epc:id:sgtin:0614141.000111.0000001\"\n        ],\n        \"readPoint\": {\n          \"id\": \"urn:epc:id:sgln:0614141.00001.0\"\n        },\n        \"bizLocation\": {\n          \"id\": \"urn:epc:id:sgln:0614141.00001.0\"\n        }\n      }\n    ]\n  }\n}"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/manufacturer/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"manufacturer",
+												"events"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "XML",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/xml"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<epcis:EPCISDocument xmlns:epcis=\"urn:epcglobal:epcis:xsd:1\"\n  xmlns:cbvmda=\"urn:epcglobal:cbv:mda\"\n  schemaVersion=\"1.2\" creationDate=\"2026-01-01T10:00:00.000Z\">\n  <EPCISBody><EventList>\n    <ObjectEvent>\n      <eventID>urn:uuid:a1111111-1111-4111-8111-111111111106</eventID>\n      <eventTime>2026-01-04T10:00:00.000Z</eventTime>\n      <eventTimeZoneOffset>+00:00</eventTimeZoneOffset>\n      <epcList>\n        <epc>urn:epc:id:sgtin:0614141.000111.0000001</epc>\n      </epcList>\n      <action>OBSERVE</action>\n      <bizStep>urn:epcglobal:cbv:bizstep:inspecting</bizStep>\n      <disposition>urn:epcglobal:cbv:disp:expired</disposition>\n      <readPoint><id>urn:epc:id:sgln:0614141.00001.0</id></readPoint>\n      <bizLocation><id>urn:epc:id:sgln:0614141.00001.0</id></bizLocation>\n\n\n\n    </ObjectEvent>\n  </EventList></EPCISBody>\n</epcis:EPCISDocument>"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/manufacturer/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"manufacturer",
+												"events"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Distributor",
+					"item": [
+						{
+							"name": "Return Shipping (shipping / returned)",
+							"item": [
+								{
+									"name": "JSON-LD",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/ld+json"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"@context\": [\n    \"https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld\"\n  ],\n  \"type\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\": \"2026-01-01T10:00:00.000Z\",\n  \"epcisBody\": {\n    \"eventList\": [\n      {\n        \"type\": \"ObjectEvent\",\n        \"eventID\": \"urn:uuid:b2222222-2222-4222-8222-222222222201\",\n        \"eventTime\": \"2026-01-04T10:00:00.000Z\",\n        \"eventTimeZoneOffset\": \"+00:00\",\n        \"action\": \"OBSERVE\",\n        \"bizStep\": \"shipping\",\n        \"disposition\": \"returned\",\n        \"epcList\": [\n          \"urn:epc:id:sgtin:0614141.000111.0000001\"\n        ],\n        \"readPoint\": {\n          \"id\": \"urn:epc:id:sgln:0619999.00002.0\"\n        },\n        \"bizLocation\": {\n          \"id\": \"urn:epc:id:sgln:0619999.00002.0\"\n        },\n        \"sourceList\": [\n          {\n            \"type\": \"urn:epcglobal:cbv:sdt:owning_party\",\n            \"source\": \"urn:epc:id:sgln:0619999.00002.0\"\n          }\n        ],\n        \"destinationList\": [\n          {\n            \"type\": \"urn:epcglobal:cbv:sdt:owning_party\",\n            \"destination\": \"urn:epc:id:sgln:0614141.00001.0\"\n          },\n          {\n            \"type\": \"urn:epcglobal:cbv:sdt:location\",\n            \"destination\": \"urn:epc:id:sgln:0614141.00001.0\"\n          }\n        ],\n        \"bizTransactionList\": [\n          {\n            \"type\": \"urn:epcglobal:cbv:btt:desadv\",\n            \"bizTransaction\": \"urn:epcglobal:cbv:bt:0619999:RMA-2026-0042\"\n          }\n        ]\n      }\n    ]\n  }\n}"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/supplier/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"supplier",
+												"events"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "XML",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/xml"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<epcis:EPCISDocument xmlns:epcis=\"urn:epcglobal:epcis:xsd:1\"\n  xmlns:cbvmda=\"urn:epcglobal:cbv:mda\"\n  schemaVersion=\"1.2\" creationDate=\"2026-01-01T10:00:00.000Z\">\n  <EPCISBody><EventList>\n    <ObjectEvent>\n      <eventID>urn:uuid:b2222222-2222-4222-8222-222222222201</eventID>\n      <eventTime>2026-01-04T10:00:00.000Z</eventTime>\n      <eventTimeZoneOffset>+00:00</eventTimeZoneOffset>\n      <epcList>\n        <epc>urn:epc:id:sgtin:0614141.000111.0000001</epc>\n      </epcList>\n      <action>OBSERVE</action>\n      <bizStep>urn:epcglobal:cbv:bizstep:shipping</bizStep>\n      <disposition>urn:epcglobal:cbv:disp:returned</disposition>\n      <readPoint><id>urn:epc:id:sgln:0619999.00002.0</id></readPoint>\n      <bizLocation><id>urn:epc:id:sgln:0619999.00002.0</id></bizLocation>\n      <bizTransactionList>\n        <bizTransaction type=\"urn:epcglobal:cbv:btt:desadv\">\n          urn:epcglobal:cbv:bt:0619999:RMA-2026-0042\n        </bizTransaction>\n      </bizTransactionList>\n      <extension>\n        <sourceList>\n          <source type=\"urn:epcglobal:cbv:sdt:owning_party\">\n            urn:epc:id:sgln:0619999.00002.0\n          </source>\n        </sourceList>\n        <destinationList>\n          <destination type=\"urn:epcglobal:cbv:sdt:owning_party\">\n            urn:epc:id:sgln:0614141.00001.0\n          </destination>\n          <destination type=\"urn:epcglobal:cbv:sdt:location\">\n            urn:epc:id:sgln:0614141.00001.0\n          </destination>\n        </destinationList>\n      </extension>\n\n    </ObjectEvent>\n  </EventList></EPCISBody>\n</epcis:EPCISDocument>"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/supplier/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"supplier",
+												"events"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Return Receiving (receiving / returned)",
+							"item": [
+								{
+									"name": "JSON-LD",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/ld+json"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"@context\": [\n    \"https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld\"\n  ],\n  \"type\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\": \"2026-01-01T10:00:00.000Z\",\n  \"epcisBody\": {\n    \"eventList\": [\n      {\n        \"type\": \"ObjectEvent\",\n        \"eventID\": \"urn:uuid:b2222222-2222-4222-8222-222222222202\",\n        \"eventTime\": \"2026-01-04T10:00:00.000Z\",\n        \"eventTimeZoneOffset\": \"+00:00\",\n        \"action\": \"OBSERVE\",\n        \"bizStep\": \"receiving\",\n        \"disposition\": \"returned\",\n        \"epcList\": [\n          \"urn:epc:id:sgtin:0614141.000111.0000001\"\n        ],\n        \"readPoint\": {\n          \"id\": \"urn:epc:id:sgln:0619999.00002.0\"\n        },\n        \"bizLocation\": {\n          \"id\": \"urn:epc:id:sgln:0619999.00002.0\"\n        },\n        \"sourceList\": [\n          {\n            \"type\": \"urn:epcglobal:cbv:sdt:owning_party\",\n            \"source\": \"urn:epc:id:sgln:0619999.00002.0\"\n          }\n        ],\n        \"destinationList\": [\n          {\n            \"type\": \"urn:epcglobal:cbv:sdt:owning_party\",\n            \"destination\": \"urn:epc:id:sgln:0614141.00001.0\"\n          },\n          {\n            \"type\": \"urn:epcglobal:cbv:sdt:location\",\n            \"destination\": \"urn:epc:id:sgln:0614141.00001.0\"\n          }\n        ],\n        \"bizTransactionList\": [\n          {\n            \"type\": \"urn:epcglobal:cbv:btt:recadv\",\n            \"bizTransaction\": \"urn:epcglobal:cbv:bt:0614141:RET-REC-2026-0001\"\n          }\n        ]\n      }\n    ]\n  }\n}"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/supplier/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"supplier",
+												"events"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "XML",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/xml"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<epcis:EPCISDocument xmlns:epcis=\"urn:epcglobal:epcis:xsd:1\"\n  xmlns:cbvmda=\"urn:epcglobal:cbv:mda\"\n  schemaVersion=\"1.2\" creationDate=\"2026-01-01T10:00:00.000Z\">\n  <EPCISBody><EventList>\n    <ObjectEvent>\n      <eventID>urn:uuid:b2222222-2222-4222-8222-222222222202</eventID>\n      <eventTime>2026-01-04T10:00:00.000Z</eventTime>\n      <eventTimeZoneOffset>+00:00</eventTimeZoneOffset>\n      <epcList>\n        <epc>urn:epc:id:sgtin:0614141.000111.0000001</epc>\n      </epcList>\n      <action>OBSERVE</action>\n      <bizStep>urn:epcglobal:cbv:bizstep:receiving</bizStep>\n      <disposition>urn:epcglobal:cbv:disp:returned</disposition>\n      <readPoint><id>urn:epc:id:sgln:0619999.00002.0</id></readPoint>\n      <bizLocation><id>urn:epc:id:sgln:0619999.00002.0</id></bizLocation>\n      <bizTransactionList>\n        <bizTransaction type=\"urn:epcglobal:cbv:btt:recadv\">\n          urn:epcglobal:cbv:bt:0614141:RET-REC-2026-0001\n        </bizTransaction>\n      </bizTransactionList>\n      <extension>\n        <sourceList>\n          <source type=\"urn:epcglobal:cbv:sdt:owning_party\">\n            urn:epc:id:sgln:0619999.00002.0\n          </source>\n        </sourceList>\n        <destinationList>\n          <destination type=\"urn:epcglobal:cbv:sdt:owning_party\">\n            urn:epc:id:sgln:0614141.00001.0\n          </destination>\n          <destination type=\"urn:epcglobal:cbv:sdt:location\">\n            urn:epc:id:sgln:0614141.00001.0\n          </destination>\n        </destinationList>\n      </extension>\n\n    </ObjectEvent>\n  </EventList></EPCISBody>\n</epcis:EPCISDocument>"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/supplier/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"supplier",
+												"events"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Destruction (destroying / destroyed)",
+							"item": [
+								{
+									"name": "JSON-LD",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/ld+json"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"@context\": [\n    \"https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld\"\n  ],\n  \"type\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\": \"2026-01-01T10:00:00.000Z\",\n  \"epcisBody\": {\n    \"eventList\": [\n      {\n        \"type\": \"ObjectEvent\",\n        \"eventID\": \"urn:uuid:b2222222-2222-4222-8222-222222222203\",\n        \"eventTime\": \"2026-01-04T10:00:00.000Z\",\n        \"eventTimeZoneOffset\": \"+00:00\",\n        \"action\": \"OBSERVE\",\n        \"bizStep\": \"destroying\",\n        \"disposition\": \"destroyed\",\n        \"epcList\": [\n          \"urn:epc:id:sgtin:0614141.000111.0000001\"\n        ],\n        \"readPoint\": {\n          \"id\": \"urn:epc:id:sgln:0619999.00002.0\"\n        },\n        \"bizLocation\": {\n          \"id\": \"urn:epc:id:sgln:0619999.00002.0\"\n        }\n      }\n    ]\n  }\n}"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/supplier/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"supplier",
+												"events"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "XML",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/xml"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<epcis:EPCISDocument xmlns:epcis=\"urn:epcglobal:epcis:xsd:1\"\n  xmlns:cbvmda=\"urn:epcglobal:cbv:mda\"\n  schemaVersion=\"1.2\" creationDate=\"2026-01-01T10:00:00.000Z\">\n  <EPCISBody><EventList>\n    <ObjectEvent>\n      <eventID>urn:uuid:b2222222-2222-4222-8222-222222222203</eventID>\n      <eventTime>2026-01-04T10:00:00.000Z</eventTime>\n      <eventTimeZoneOffset>+00:00</eventTimeZoneOffset>\n      <epcList>\n        <epc>urn:epc:id:sgtin:0614141.000111.0000001</epc>\n      </epcList>\n      <action>OBSERVE</action>\n      <bizStep>urn:epcglobal:cbv:bizstep:destroying</bizStep>\n      <disposition>urn:epcglobal:cbv:disp:destroyed</disposition>\n      <readPoint><id>urn:epc:id:sgln:0619999.00002.0</id></readPoint>\n      <bizLocation><id>urn:epc:id:sgln:0619999.00002.0</id></bizLocation>\n\n\n\n    </ObjectEvent>\n  </EventList></EPCISBody>\n</epcis:EPCISDocument>"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/supplier/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"supplier",
+												"events"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Damaged (inspecting / damaged)",
+							"item": [
+								{
+									"name": "JSON-LD",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/ld+json"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"@context\": [\n    \"https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld\"\n  ],\n  \"type\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\": \"2026-01-01T10:00:00.000Z\",\n  \"epcisBody\": {\n    \"eventList\": [\n      {\n        \"type\": \"ObjectEvent\",\n        \"eventID\": \"urn:uuid:b2222222-2222-4222-8222-222222222204\",\n        \"eventTime\": \"2026-01-04T10:00:00.000Z\",\n        \"eventTimeZoneOffset\": \"+00:00\",\n        \"action\": \"OBSERVE\",\n        \"bizStep\": \"inspecting\",\n        \"disposition\": \"damaged\",\n        \"epcList\": [\n          \"urn:epc:id:sgtin:0614141.000111.0000001\"\n        ],\n        \"readPoint\": {\n          \"id\": \"urn:epc:id:sgln:0619999.00002.0\"\n        },\n        \"bizLocation\": {\n          \"id\": \"urn:epc:id:sgln:0619999.00002.0\"\n        }\n      }\n    ]\n  }\n}"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/supplier/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"supplier",
+												"events"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "XML",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/xml"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<epcis:EPCISDocument xmlns:epcis=\"urn:epcglobal:epcis:xsd:1\"\n  xmlns:cbvmda=\"urn:epcglobal:cbv:mda\"\n  schemaVersion=\"1.2\" creationDate=\"2026-01-01T10:00:00.000Z\">\n  <EPCISBody><EventList>\n    <ObjectEvent>\n      <eventID>urn:uuid:b2222222-2222-4222-8222-222222222204</eventID>\n      <eventTime>2026-01-04T10:00:00.000Z</eventTime>\n      <eventTimeZoneOffset>+00:00</eventTimeZoneOffset>\n      <epcList>\n        <epc>urn:epc:id:sgtin:0614141.000111.0000001</epc>\n      </epcList>\n      <action>OBSERVE</action>\n      <bizStep>urn:epcglobal:cbv:bizstep:inspecting</bizStep>\n      <disposition>urn:epcglobal:cbv:disp:damaged</disposition>\n      <readPoint><id>urn:epc:id:sgln:0619999.00002.0</id></readPoint>\n      <bizLocation><id>urn:epc:id:sgln:0619999.00002.0</id></bizLocation>\n\n\n\n    </ObjectEvent>\n  </EventList></EPCISBody>\n</epcis:EPCISDocument>"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/supplier/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"supplier",
+												"events"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Stolen (decommissioning / stolen)",
+							"item": [
+								{
+									"name": "JSON-LD",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/ld+json"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"@context\": [\n    \"https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld\"\n  ],\n  \"type\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\": \"2026-01-01T10:00:00.000Z\",\n  \"epcisBody\": {\n    \"eventList\": [\n      {\n        \"type\": \"ObjectEvent\",\n        \"eventID\": \"urn:uuid:b2222222-2222-4222-8222-222222222205\",\n        \"eventTime\": \"2026-01-04T10:00:00.000Z\",\n        \"eventTimeZoneOffset\": \"+00:00\",\n        \"action\": \"OBSERVE\",\n        \"bizStep\": \"decommissioning\",\n        \"disposition\": \"stolen\",\n        \"epcList\": [\n          \"urn:epc:id:sgtin:0614141.000111.0000001\"\n        ],\n        \"readPoint\": {\n          \"id\": \"urn:epc:id:sgln:0619999.00002.0\"\n        },\n        \"bizLocation\": {\n          \"id\": \"urn:epc:id:sgln:0619999.00002.0\"\n        }\n      }\n    ]\n  }\n}"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/supplier/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"supplier",
+												"events"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "XML",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/xml"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<epcis:EPCISDocument xmlns:epcis=\"urn:epcglobal:epcis:xsd:1\"\n  xmlns:cbvmda=\"urn:epcglobal:cbv:mda\"\n  schemaVersion=\"1.2\" creationDate=\"2026-01-01T10:00:00.000Z\">\n  <EPCISBody><EventList>\n    <ObjectEvent>\n      <eventID>urn:uuid:b2222222-2222-4222-8222-222222222205</eventID>\n      <eventTime>2026-01-04T10:00:00.000Z</eventTime>\n      <eventTimeZoneOffset>+00:00</eventTimeZoneOffset>\n      <epcList>\n        <epc>urn:epc:id:sgtin:0614141.000111.0000001</epc>\n      </epcList>\n      <action>OBSERVE</action>\n      <bizStep>urn:epcglobal:cbv:bizstep:decommissioning</bizStep>\n      <disposition>urn:epcglobal:cbv:disp:stolen</disposition>\n      <readPoint><id>urn:epc:id:sgln:0619999.00002.0</id></readPoint>\n      <bizLocation><id>urn:epc:id:sgln:0619999.00002.0</id></bizLocation>\n\n\n\n    </ObjectEvent>\n  </EventList></EPCISBody>\n</epcis:EPCISDocument>"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/supplier/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"supplier",
+												"events"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Lost (decommissioning / inactive)",
+							"item": [
+								{
+									"name": "JSON-LD",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/ld+json"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"@context\": [\n    \"https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld\"\n  ],\n  \"type\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\": \"2026-01-01T10:00:00.000Z\",\n  \"epcisBody\": {\n    \"eventList\": [\n      {\n        \"type\": \"ObjectEvent\",\n        \"eventID\": \"urn:uuid:b2222222-2222-4222-8222-222222222206\",\n        \"eventTime\": \"2026-01-04T10:00:00.000Z\",\n        \"eventTimeZoneOffset\": \"+00:00\",\n        \"action\": \"OBSERVE\",\n        \"bizStep\": \"decommissioning\",\n        \"disposition\": \"inactive\",\n        \"epcList\": [\n          \"urn:epc:id:sgtin:0614141.000111.0000001\"\n        ],\n        \"readPoint\": {\n          \"id\": \"urn:epc:id:sgln:0619999.00002.0\"\n        },\n        \"bizLocation\": {\n          \"id\": \"urn:epc:id:sgln:0619999.00002.0\"\n        }\n      }\n    ]\n  }\n}"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/supplier/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"supplier",
+												"events"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "XML",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/xml"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<epcis:EPCISDocument xmlns:epcis=\"urn:epcglobal:epcis:xsd:1\"\n  xmlns:cbvmda=\"urn:epcglobal:cbv:mda\"\n  schemaVersion=\"1.2\" creationDate=\"2026-01-01T10:00:00.000Z\">\n  <EPCISBody><EventList>\n    <ObjectEvent>\n      <eventID>urn:uuid:b2222222-2222-4222-8222-222222222206</eventID>\n      <eventTime>2026-01-04T10:00:00.000Z</eventTime>\n      <eventTimeZoneOffset>+00:00</eventTimeZoneOffset>\n      <epcList>\n        <epc>urn:epc:id:sgtin:0614141.000111.0000001</epc>\n      </epcList>\n      <action>OBSERVE</action>\n      <bizStep>urn:epcglobal:cbv:bizstep:decommissioning</bizStep>\n      <disposition>urn:epcglobal:cbv:disp:inactive</disposition>\n      <readPoint><id>urn:epc:id:sgln:0619999.00002.0</id></readPoint>\n      <bizLocation><id>urn:epc:id:sgln:0619999.00002.0</id></bizLocation>\n\n\n\n    </ObjectEvent>\n  </EventList></EPCISBody>\n</epcis:EPCISDocument>"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/supplier/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"supplier",
+												"events"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Expired (inspecting / expired)",
+							"item": [
+								{
+									"name": "JSON-LD",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/ld+json"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"@context\": [\n    \"https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld\"\n  ],\n  \"type\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\": \"2026-01-01T10:00:00.000Z\",\n  \"epcisBody\": {\n    \"eventList\": [\n      {\n        \"type\": \"ObjectEvent\",\n        \"eventID\": \"urn:uuid:b2222222-2222-4222-8222-222222222207\",\n        \"eventTime\": \"2026-01-04T10:00:00.000Z\",\n        \"eventTimeZoneOffset\": \"+00:00\",\n        \"action\": \"OBSERVE\",\n        \"bizStep\": \"inspecting\",\n        \"disposition\": \"expired\",\n        \"epcList\": [\n          \"urn:epc:id:sgtin:0614141.000111.0000001\"\n        ],\n        \"readPoint\": {\n          \"id\": \"urn:epc:id:sgln:0619999.00002.0\"\n        },\n        \"bizLocation\": {\n          \"id\": \"urn:epc:id:sgln:0619999.00002.0\"\n        }\n      }\n    ]\n  }\n}"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/supplier/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"supplier",
+												"events"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "XML",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/xml"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<epcis:EPCISDocument xmlns:epcis=\"urn:epcglobal:epcis:xsd:1\"\n  xmlns:cbvmda=\"urn:epcglobal:cbv:mda\"\n  schemaVersion=\"1.2\" creationDate=\"2026-01-01T10:00:00.000Z\">\n  <EPCISBody><EventList>\n    <ObjectEvent>\n      <eventID>urn:uuid:b2222222-2222-4222-8222-222222222207</eventID>\n      <eventTime>2026-01-04T10:00:00.000Z</eventTime>\n      <eventTimeZoneOffset>+00:00</eventTimeZoneOffset>\n      <epcList>\n        <epc>urn:epc:id:sgtin:0614141.000111.0000001</epc>\n      </epcList>\n      <action>OBSERVE</action>\n      <bizStep>urn:epcglobal:cbv:bizstep:inspecting</bizStep>\n      <disposition>urn:epcglobal:cbv:disp:expired</disposition>\n      <readPoint><id>urn:epc:id:sgln:0619999.00002.0</id></readPoint>\n      <bizLocation><id>urn:epc:id:sgln:0619999.00002.0</id></bizLocation>\n\n\n\n    </ObjectEvent>\n  </EventList></EPCISBody>\n</epcis:EPCISDocument>"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/supplier/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"supplier",
+												"events"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Stock Taking (stock_taking / active)",
+							"item": [
+								{
+									"name": "JSON-LD",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/ld+json"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"@context\": [\n    \"https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld\"\n  ],\n  \"type\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\": \"2026-01-01T10:00:00.000Z\",\n  \"epcisBody\": {\n    \"eventList\": [\n      {\n        \"type\": \"ObjectEvent\",\n        \"eventID\": \"urn:uuid:b2222222-2222-4222-8222-222222222208\",\n        \"eventTime\": \"2026-01-04T10:00:00.000Z\",\n        \"eventTimeZoneOffset\": \"+00:00\",\n        \"action\": \"OBSERVE\",\n        \"bizStep\": \"stock_taking\",\n        \"disposition\": \"active\",\n        \"epcList\": [\n          \"urn:epc:id:sgtin:0614141.000111.0000001\"\n        ],\n        \"readPoint\": {\n          \"id\": \"urn:epc:id:sgln:0619999.00002.0\"\n        },\n        \"bizLocation\": {\n          \"id\": \"urn:epc:id:sgln:0619999.00002.0\"\n        }\n      }\n    ]\n  }\n}"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/supplier/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"supplier",
+												"events"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "XML",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/xml"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<epcis:EPCISDocument xmlns:epcis=\"urn:epcglobal:epcis:xsd:1\"\n  xmlns:cbvmda=\"urn:epcglobal:cbv:mda\"\n  schemaVersion=\"1.2\" creationDate=\"2026-01-01T10:00:00.000Z\">\n  <EPCISBody><EventList>\n    <ObjectEvent>\n      <eventID>urn:uuid:b2222222-2222-4222-8222-222222222208</eventID>\n      <eventTime>2026-01-04T10:00:00.000Z</eventTime>\n      <eventTimeZoneOffset>+00:00</eventTimeZoneOffset>\n      <epcList>\n        <epc>urn:epc:id:sgtin:0614141.000111.0000001</epc>\n      </epcList>\n      <action>OBSERVE</action>\n      <bizStep>urn:epcglobal:cbv:bizstep:stock_taking</bizStep>\n      <disposition>urn:epcglobal:cbv:disp:active</disposition>\n      <readPoint><id>urn:epc:id:sgln:0619999.00002.0</id></readPoint>\n      <bizLocation><id>urn:epc:id:sgln:0619999.00002.0</id></bizLocation>\n\n\n\n    </ObjectEvent>\n  </EventList></EPCISBody>\n</epcis:EPCISDocument>"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/supplier/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"supplier",
+												"events"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Facility",
+					"item": [
+						{
+							"name": "Return Shipping (shipping / returned)",
+							"item": [
+								{
+									"name": "JSON-LD",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/ld+json"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"@context\": [\n    \"https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld\"\n  ],\n  \"type\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\": \"2026-01-01T10:00:00.000Z\",\n  \"epcisBody\": {\n    \"eventList\": [\n      {\n        \"type\": \"ObjectEvent\",\n        \"eventID\": \"urn:uuid:c3333333-3333-4333-8333-333333333301\",\n        \"eventTime\": \"2026-01-04T10:00:00.000Z\",\n        \"eventTimeZoneOffset\": \"+00:00\",\n        \"action\": \"OBSERVE\",\n        \"bizStep\": \"shipping\",\n        \"disposition\": \"returned\",\n        \"epcList\": [\n          \"urn:epc:id:sgtin:0614141.000111.0000001\"\n        ],\n        \"readPoint\": {\n          \"id\": \"urn:epc:id:sgln:0618888.00001.0\"\n        },\n        \"bizLocation\": {\n          \"id\": \"urn:epc:id:sgln:0618888.00001.0\"\n        },\n        \"sourceList\": [\n          {\n            \"type\": \"urn:epcglobal:cbv:sdt:owning_party\",\n            \"source\": \"urn:epc:id:sgln:0618888.00001.0\"\n          }\n        ],\n        \"destinationList\": [\n          {\n            \"type\": \"urn:epcglobal:cbv:sdt:owning_party\",\n            \"destination\": \"urn:epc:id:sgln:0619999.00002.0\"\n          },\n          {\n            \"type\": \"urn:epcglobal:cbv:sdt:location\",\n            \"destination\": \"urn:epc:id:sgln:0619999.00002.0\"\n          }\n        ],\n        \"bizTransactionList\": [\n          {\n            \"type\": \"urn:epcglobal:cbv:btt:desadv\",\n            \"bizTransaction\": \"urn:epcglobal:cbv:bt:0618888:RMA-2026-0010\"\n          }\n        ]\n      }\n    ]\n  }\n}"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/facility/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"facility",
+												"events"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "XML",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/xml"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<epcis:EPCISDocument xmlns:epcis=\"urn:epcglobal:epcis:xsd:1\"\n  xmlns:cbvmda=\"urn:epcglobal:cbv:mda\"\n  schemaVersion=\"1.2\" creationDate=\"2026-01-01T10:00:00.000Z\">\n  <EPCISBody><EventList>\n    <ObjectEvent>\n      <eventID>urn:uuid:c3333333-3333-4333-8333-333333333301</eventID>\n      <eventTime>2026-01-04T10:00:00.000Z</eventTime>\n      <eventTimeZoneOffset>+00:00</eventTimeZoneOffset>\n      <epcList>\n        <epc>urn:epc:id:sgtin:0614141.000111.0000001</epc>\n      </epcList>\n      <action>OBSERVE</action>\n      <bizStep>urn:epcglobal:cbv:bizstep:shipping</bizStep>\n      <disposition>urn:epcglobal:cbv:disp:returned</disposition>\n      <readPoint><id>urn:epc:id:sgln:0618888.00001.0</id></readPoint>\n      <bizLocation><id>urn:epc:id:sgln:0618888.00001.0</id></bizLocation>\n      <bizTransactionList>\n        <bizTransaction type=\"urn:epcglobal:cbv:btt:desadv\">\n          urn:epcglobal:cbv:bt:0618888:RMA-2026-0010\n        </bizTransaction>\n      </bizTransactionList>\n      <extension>\n        <sourceList>\n          <source type=\"urn:epcglobal:cbv:sdt:owning_party\">\n            urn:epc:id:sgln:0618888.00001.0\n          </source>\n        </sourceList>\n        <destinationList>\n          <destination type=\"urn:epcglobal:cbv:sdt:owning_party\">\n            urn:epc:id:sgln:0619999.00002.0\n          </destination>\n          <destination type=\"urn:epcglobal:cbv:sdt:location\">\n            urn:epc:id:sgln:0619999.00002.0\n          </destination>\n        </destinationList>\n      </extension>\n\n    </ObjectEvent>\n  </EventList></EPCISBody>\n</epcis:EPCISDocument>"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/facility/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"facility",
+												"events"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Destruction (destroying / destroyed)",
+							"item": [
+								{
+									"name": "JSON-LD",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/ld+json"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"@context\": [\n    \"https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld\"\n  ],\n  \"type\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\": \"2026-01-01T10:00:00.000Z\",\n  \"epcisBody\": {\n    \"eventList\": [\n      {\n        \"type\": \"ObjectEvent\",\n        \"eventID\": \"urn:uuid:c3333333-3333-4333-8333-333333333302\",\n        \"eventTime\": \"2026-01-04T10:00:00.000Z\",\n        \"eventTimeZoneOffset\": \"+00:00\",\n        \"action\": \"OBSERVE\",\n        \"bizStep\": \"destroying\",\n        \"disposition\": \"destroyed\",\n        \"epcList\": [\n          \"urn:epc:id:sgtin:0614141.000111.0000001\"\n        ],\n        \"readPoint\": {\n          \"id\": \"urn:epc:id:sgln:0618888.00001.0\"\n        },\n        \"bizLocation\": {\n          \"id\": \"urn:epc:id:sgln:0618888.00001.0\"\n        }\n      }\n    ]\n  }\n}"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/facility/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"facility",
+												"events"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "XML",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/xml"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<epcis:EPCISDocument xmlns:epcis=\"urn:epcglobal:epcis:xsd:1\"\n  xmlns:cbvmda=\"urn:epcglobal:cbv:mda\"\n  schemaVersion=\"1.2\" creationDate=\"2026-01-01T10:00:00.000Z\">\n  <EPCISBody><EventList>\n    <ObjectEvent>\n      <eventID>urn:uuid:c3333333-3333-4333-8333-333333333302</eventID>\n      <eventTime>2026-01-04T10:00:00.000Z</eventTime>\n      <eventTimeZoneOffset>+00:00</eventTimeZoneOffset>\n      <epcList>\n        <epc>urn:epc:id:sgtin:0614141.000111.0000001</epc>\n      </epcList>\n      <action>OBSERVE</action>\n      <bizStep>urn:epcglobal:cbv:bizstep:destroying</bizStep>\n      <disposition>urn:epcglobal:cbv:disp:destroyed</disposition>\n      <readPoint><id>urn:epc:id:sgln:0618888.00001.0</id></readPoint>\n      <bizLocation><id>urn:epc:id:sgln:0618888.00001.0</id></bizLocation>\n\n\n\n    </ObjectEvent>\n  </EventList></EPCISBody>\n</epcis:EPCISDocument>"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/facility/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"facility",
+												"events"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Damaged (inspecting / damaged)",
+							"item": [
+								{
+									"name": "JSON-LD",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/ld+json"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"@context\": [\n    \"https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld\"\n  ],\n  \"type\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\": \"2026-01-01T10:00:00.000Z\",\n  \"epcisBody\": {\n    \"eventList\": [\n      {\n        \"type\": \"ObjectEvent\",\n        \"eventID\": \"urn:uuid:c3333333-3333-4333-8333-333333333303\",\n        \"eventTime\": \"2026-01-04T10:00:00.000Z\",\n        \"eventTimeZoneOffset\": \"+00:00\",\n        \"action\": \"OBSERVE\",\n        \"bizStep\": \"inspecting\",\n        \"disposition\": \"damaged\",\n        \"epcList\": [\n          \"urn:epc:id:sgtin:0614141.000111.0000001\"\n        ],\n        \"readPoint\": {\n          \"id\": \"urn:epc:id:sgln:0618888.00001.0\"\n        },\n        \"bizLocation\": {\n          \"id\": \"urn:epc:id:sgln:0618888.00001.0\"\n        }\n      }\n    ]\n  }\n}"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/facility/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"facility",
+												"events"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "XML",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/xml"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<epcis:EPCISDocument xmlns:epcis=\"urn:epcglobal:epcis:xsd:1\"\n  xmlns:cbvmda=\"urn:epcglobal:cbv:mda\"\n  schemaVersion=\"1.2\" creationDate=\"2026-01-01T10:00:00.000Z\">\n  <EPCISBody><EventList>\n    <ObjectEvent>\n      <eventID>urn:uuid:c3333333-3333-4333-8333-333333333303</eventID>\n      <eventTime>2026-01-04T10:00:00.000Z</eventTime>\n      <eventTimeZoneOffset>+00:00</eventTimeZoneOffset>\n      <epcList>\n        <epc>urn:epc:id:sgtin:0614141.000111.0000001</epc>\n      </epcList>\n      <action>OBSERVE</action>\n      <bizStep>urn:epcglobal:cbv:bizstep:inspecting</bizStep>\n      <disposition>urn:epcglobal:cbv:disp:damaged</disposition>\n      <readPoint><id>urn:epc:id:sgln:0618888.00001.0</id></readPoint>\n      <bizLocation><id>urn:epc:id:sgln:0618888.00001.0</id></bizLocation>\n\n\n\n    </ObjectEvent>\n  </EventList></EPCISBody>\n</epcis:EPCISDocument>"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/facility/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"facility",
+												"events"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Stolen (decommissioning / stolen)",
+							"item": [
+								{
+									"name": "JSON-LD",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/ld+json"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"@context\": [\n    \"https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld\"\n  ],\n  \"type\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\": \"2026-01-01T10:00:00.000Z\",\n  \"epcisBody\": {\n    \"eventList\": [\n      {\n        \"type\": \"ObjectEvent\",\n        \"eventID\": \"urn:uuid:c3333333-3333-4333-8333-333333333304\",\n        \"eventTime\": \"2026-01-04T10:00:00.000Z\",\n        \"eventTimeZoneOffset\": \"+00:00\",\n        \"action\": \"OBSERVE\",\n        \"bizStep\": \"decommissioning\",\n        \"disposition\": \"stolen\",\n        \"epcList\": [\n          \"urn:epc:id:sgtin:0614141.000111.0000001\"\n        ],\n        \"readPoint\": {\n          \"id\": \"urn:epc:id:sgln:0618888.00001.0\"\n        },\n        \"bizLocation\": {\n          \"id\": \"urn:epc:id:sgln:0618888.00001.0\"\n        }\n      }\n    ]\n  }\n}"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/facility/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"facility",
+												"events"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "XML",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/xml"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<epcis:EPCISDocument xmlns:epcis=\"urn:epcglobal:epcis:xsd:1\"\n  xmlns:cbvmda=\"urn:epcglobal:cbv:mda\"\n  schemaVersion=\"1.2\" creationDate=\"2026-01-01T10:00:00.000Z\">\n  <EPCISBody><EventList>\n    <ObjectEvent>\n      <eventID>urn:uuid:c3333333-3333-4333-8333-333333333304</eventID>\n      <eventTime>2026-01-04T10:00:00.000Z</eventTime>\n      <eventTimeZoneOffset>+00:00</eventTimeZoneOffset>\n      <epcList>\n        <epc>urn:epc:id:sgtin:0614141.000111.0000001</epc>\n      </epcList>\n      <action>OBSERVE</action>\n      <bizStep>urn:epcglobal:cbv:bizstep:decommissioning</bizStep>\n      <disposition>urn:epcglobal:cbv:disp:stolen</disposition>\n      <readPoint><id>urn:epc:id:sgln:0618888.00001.0</id></readPoint>\n      <bizLocation><id>urn:epc:id:sgln:0618888.00001.0</id></bizLocation>\n\n\n\n    </ObjectEvent>\n  </EventList></EPCISBody>\n</epcis:EPCISDocument>"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/facility/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"facility",
+												"events"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Lost (decommissioning / inactive)",
+							"item": [
+								{
+									"name": "JSON-LD",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/ld+json"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"@context\": [\n    \"https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld\"\n  ],\n  \"type\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\": \"2026-01-01T10:00:00.000Z\",\n  \"epcisBody\": {\n    \"eventList\": [\n      {\n        \"type\": \"ObjectEvent\",\n        \"eventID\": \"urn:uuid:c3333333-3333-4333-8333-333333333305\",\n        \"eventTime\": \"2026-01-04T10:00:00.000Z\",\n        \"eventTimeZoneOffset\": \"+00:00\",\n        \"action\": \"OBSERVE\",\n        \"bizStep\": \"decommissioning\",\n        \"disposition\": \"inactive\",\n        \"epcList\": [\n          \"urn:epc:id:sgtin:0614141.000111.0000001\"\n        ],\n        \"readPoint\": {\n          \"id\": \"urn:epc:id:sgln:0618888.00001.0\"\n        },\n        \"bizLocation\": {\n          \"id\": \"urn:epc:id:sgln:0618888.00001.0\"\n        }\n      }\n    ]\n  }\n}"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/facility/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"facility",
+												"events"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "XML",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/xml"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<epcis:EPCISDocument xmlns:epcis=\"urn:epcglobal:epcis:xsd:1\"\n  xmlns:cbvmda=\"urn:epcglobal:cbv:mda\"\n  schemaVersion=\"1.2\" creationDate=\"2026-01-01T10:00:00.000Z\">\n  <EPCISBody><EventList>\n    <ObjectEvent>\n      <eventID>urn:uuid:c3333333-3333-4333-8333-333333333305</eventID>\n      <eventTime>2026-01-04T10:00:00.000Z</eventTime>\n      <eventTimeZoneOffset>+00:00</eventTimeZoneOffset>\n      <epcList>\n        <epc>urn:epc:id:sgtin:0614141.000111.0000001</epc>\n      </epcList>\n      <action>OBSERVE</action>\n      <bizStep>urn:epcglobal:cbv:bizstep:decommissioning</bizStep>\n      <disposition>urn:epcglobal:cbv:disp:inactive</disposition>\n      <readPoint><id>urn:epc:id:sgln:0618888.00001.0</id></readPoint>\n      <bizLocation><id>urn:epc:id:sgln:0618888.00001.0</id></bizLocation>\n\n\n\n    </ObjectEvent>\n  </EventList></EPCISBody>\n</epcis:EPCISDocument>"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/facility/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"facility",
+												"events"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Expired (inspecting / expired)",
+							"item": [
+								{
+									"name": "JSON-LD",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/ld+json"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"@context\": [\n    \"https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld\"\n  ],\n  \"type\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\": \"2026-01-01T10:00:00.000Z\",\n  \"epcisBody\": {\n    \"eventList\": [\n      {\n        \"type\": \"ObjectEvent\",\n        \"eventID\": \"urn:uuid:c3333333-3333-4333-8333-333333333306\",\n        \"eventTime\": \"2026-01-04T10:00:00.000Z\",\n        \"eventTimeZoneOffset\": \"+00:00\",\n        \"action\": \"OBSERVE\",\n        \"bizStep\": \"inspecting\",\n        \"disposition\": \"expired\",\n        \"epcList\": [\n          \"urn:epc:id:sgtin:0614141.000111.0000001\"\n        ],\n        \"readPoint\": {\n          \"id\": \"urn:epc:id:sgln:0618888.00001.0\"\n        },\n        \"bizLocation\": {\n          \"id\": \"urn:epc:id:sgln:0618888.00001.0\"\n        }\n      }\n    ]\n  }\n}"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/facility/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"facility",
+												"events"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "XML",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/xml"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<epcis:EPCISDocument xmlns:epcis=\"urn:epcglobal:epcis:xsd:1\"\n  xmlns:cbvmda=\"urn:epcglobal:cbv:mda\"\n  schemaVersion=\"1.2\" creationDate=\"2026-01-01T10:00:00.000Z\">\n  <EPCISBody><EventList>\n    <ObjectEvent>\n      <eventID>urn:uuid:c3333333-3333-4333-8333-333333333306</eventID>\n      <eventTime>2026-01-04T10:00:00.000Z</eventTime>\n      <eventTimeZoneOffset>+00:00</eventTimeZoneOffset>\n      <epcList>\n        <epc>urn:epc:id:sgtin:0614141.000111.0000001</epc>\n      </epcList>\n      <action>OBSERVE</action>\n      <bizStep>urn:epcglobal:cbv:bizstep:inspecting</bizStep>\n      <disposition>urn:epcglobal:cbv:disp:expired</disposition>\n      <readPoint><id>urn:epc:id:sgln:0618888.00001.0</id></readPoint>\n      <bizLocation><id>urn:epc:id:sgln:0618888.00001.0</id></bizLocation>\n\n\n\n    </ObjectEvent>\n  </EventList></EPCISBody>\n</epcis:EPCISDocument>"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/facility/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"facility",
+												"events"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Stock Taking (stock_taking / active)",
+							"item": [
+								{
+									"name": "JSON-LD",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/ld+json"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"@context\": [\n    \"https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld\"\n  ],\n  \"type\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\": \"2026-01-01T10:00:00.000Z\",\n  \"epcisBody\": {\n    \"eventList\": [\n      {\n        \"type\": \"ObjectEvent\",\n        \"eventID\": \"urn:uuid:c3333333-3333-4333-8333-333333333307\",\n        \"eventTime\": \"2026-01-04T10:00:00.000Z\",\n        \"eventTimeZoneOffset\": \"+00:00\",\n        \"action\": \"OBSERVE\",\n        \"bizStep\": \"stock_taking\",\n        \"disposition\": \"active\",\n        \"epcList\": [\n          \"urn:epc:id:sgtin:0614141.000111.0000001\"\n        ],\n        \"readPoint\": {\n          \"id\": \"urn:epc:id:sgln:0618888.00001.0\"\n        },\n        \"bizLocation\": {\n          \"id\": \"urn:epc:id:sgln:0618888.00001.0\"\n        }\n      }\n    ]\n  }\n}"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/facility/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"facility",
+												"events"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "XML",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/xml"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<epcis:EPCISDocument xmlns:epcis=\"urn:epcglobal:epcis:xsd:1\"\n  xmlns:cbvmda=\"urn:epcglobal:cbv:mda\"\n  schemaVersion=\"1.2\" creationDate=\"2026-01-01T10:00:00.000Z\">\n  <EPCISBody><EventList>\n    <ObjectEvent>\n      <eventID>urn:uuid:c3333333-3333-4333-8333-333333333307</eventID>\n      <eventTime>2026-01-04T10:00:00.000Z</eventTime>\n      <eventTimeZoneOffset>+00:00</eventTimeZoneOffset>\n      <epcList>\n        <epc>urn:epc:id:sgtin:0614141.000111.0000001</epc>\n      </epcList>\n      <action>OBSERVE</action>\n      <bizStep>urn:epcglobal:cbv:bizstep:stock_taking</bizStep>\n      <disposition>urn:epcglobal:cbv:disp:active</disposition>\n      <readPoint><id>urn:epc:id:sgln:0618888.00001.0</id></readPoint>\n      <bizLocation><id>urn:epc:id:sgln:0618888.00001.0</id></bizLocation>\n\n\n\n    </ObjectEvent>\n  </EventList></EPCISBody>\n</epcis:EPCISDocument>"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/facility/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"facility",
+												"events"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Error Declaration",
+					"item": [
+						{
+							"name": "Did Not Occur - void mistaken event (Manufacturer)",
+							"item": [
+								{
+									"name": "JSON-LD",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/ld+json"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"@context\": [\n    \"https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld\"\n  ],\n  \"type\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\": \"2026-01-01T10:00:00.000Z\",\n  \"epcisBody\": {\n    \"eventList\": [\n      {\n        \"type\": \"ObjectEvent\",\n        \"eventID\": \"urn:uuid:aaaaaaaa-bbbb-4ccc-dddd-eeeeeeeeeeee\",\n        \"eventTime\": \"2026-01-02T08:00:00.000Z\",\n        \"eventTimeZoneOffset\": \"+00:00\",\n        \"action\": \"OBSERVE\",\n        \"bizStep\": \"shipping\",\n        \"disposition\": \"in_transit\",\n        \"epcList\": [\n          \"urn:epc:id:sscc:0614141.0000000001\"\n        ],\n        \"readPoint\": {\n          \"id\": \"urn:epc:id:sgln:0614141.00001.0\"\n        },\n        \"bizLocation\": {\n          \"id\": \"urn:epc:id:sgln:0614141.00001.0\"\n        },\n        \"sourceList\": [\n          {\n            \"type\": \"urn:epcglobal:cbv:sdt:location\",\n            \"source\": \"urn:epc:id:sgln:0614141.00001.0\"\n          }\n        ],\n        \"destinationList\": [\n          {\n            \"type\": \"urn:epcglobal:cbv:sdt:location\",\n            \"destination\": \"urn:epc:id:sgln:0619999.00002.0\"\n          }\n        ],\n        \"bizTransactionList\": [\n          {\n            \"type\": \"urn:epcglobal:cbv:btt:desadv\",\n            \"bizTransaction\": \"urn:epcglobal:cbv:bt:0614141:ASN-2026-0001\"\n          }\n        ],\n        \"errorDeclaration\": {\n          \"declarationTime\": \"2026-01-02T12:00:00.000Z\",\n          \"reason\": \"did_not_occur\"\n        }\n      }\n    ]\n  }\n}"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/manufacturer/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"manufacturer",
+												"events"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "XML",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/xml"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<epcis:EPCISDocument xmlns:epcis=\"urn:epcglobal:epcis:xsd:1\"\n  xmlns:cbvmda=\"urn:epcglobal:cbv:mda\"\n  schemaVersion=\"1.2\" creationDate=\"2026-01-01T10:00:00.000Z\">\n  <EPCISBody><EventList>\n    <ObjectEvent>\n      <eventID>urn:uuid:aaaaaaaa-bbbb-4ccc-dddd-eeeeeeeeeeee</eventID>\n      <eventTime>2026-01-02T08:00:00.000Z</eventTime>\n      <eventTimeZoneOffset>+00:00</eventTimeZoneOffset>\n      <epcList>\n        <epc>urn:epc:id:sscc:0614141.0000000001</epc>\n      </epcList>\n      <action>OBSERVE</action>\n      <bizStep>urn:epcglobal:cbv:bizstep:shipping</bizStep>\n      <disposition>urn:epcglobal:cbv:disp:in_transit</disposition>\n      <readPoint><id>urn:epc:id:sgln:0614141.00001.0</id></readPoint>\n      <bizLocation><id>urn:epc:id:sgln:0614141.00001.0</id></bizLocation>\n      <bizTransactionList>\n        <bizTransaction type=\"urn:epcglobal:cbv:btt:desadv\">\n          urn:epcglobal:cbv:bt:0614141:ASN-2026-0001\n        </bizTransaction>\n      </bizTransactionList>\n      <extension>\n        <sourceList>\n          <source type=\"urn:epcglobal:cbv:sdt:location\">\n            urn:epc:id:sgln:0614141.00001.0\n          </source>\n        </sourceList>\n        <destinationList>\n          <destination type=\"urn:epcglobal:cbv:sdt:location\">\n            urn:epc:id:sgln:0619999.00002.0\n          </destination>\n        </destinationList>\n      </extension>\n      <errorDeclaration>\n        <declarationTime>2026-01-02T12:00:00.000Z</declarationTime>\n        <reason>did_not_occur</reason>\n\n      </errorDeclaration>\n    </ObjectEvent>\n  </EventList></EPCISBody>\n</epcis:EPCISDocument>"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/manufacturer/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"manufacturer",
+												"events"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Incorrect Data - with corrective event (Manufacturer)",
+							"item": [
+								{
+									"name": "JSON-LD",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/ld+json"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"@context\": [\n    \"https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld\"\n  ],\n  \"type\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\": \"2026-01-01T10:00:00.000Z\",\n  \"epcisBody\": {\n    \"eventList\": [\n      {\n        \"type\": \"ObjectEvent\",\n        \"eventID\": \"urn:uuid:aaaaaaaa-bbbb-4ccc-dddd-eeeeeeeeeeee\",\n        \"eventTime\": \"2026-01-02T08:00:00.000Z\",\n        \"eventTimeZoneOffset\": \"+00:00\",\n        \"action\": \"OBSERVE\",\n        \"bizStep\": \"shipping\",\n        \"disposition\": \"in_transit\",\n        \"epcList\": [\n          \"urn:epc:id:sscc:0614141.0000000001\"\n        ],\n        \"readPoint\": {\n          \"id\": \"urn:epc:id:sgln:0614141.00001.0\"\n        },\n        \"bizLocation\": {\n          \"id\": \"urn:epc:id:sgln:0614141.00001.0\"\n        },\n        \"sourceList\": [\n          {\n            \"type\": \"urn:epcglobal:cbv:sdt:location\",\n            \"source\": \"urn:epc:id:sgln:0614141.00001.0\"\n          }\n        ],\n        \"destinationList\": [\n          {\n            \"type\": \"urn:epcglobal:cbv:sdt:location\",\n            \"destination\": \"urn:epc:id:sgln:0619999.00002.0\"\n          }\n        ],\n        \"bizTransactionList\": [\n          {\n            \"type\": \"urn:epcglobal:cbv:btt:desadv\",\n            \"bizTransaction\": \"urn:epcglobal:cbv:bt:0614141:ASN-2026-0001\"\n          }\n        ],\n        \"errorDeclaration\": {\n          \"declarationTime\": \"2026-01-02T12:00:00.000Z\",\n          \"reason\": \"incorrect_data\",\n          \"correctiveEventIDs\": [\n            \"urn:uuid:ffffffff-ffff-4fff-8fff-ffffffffffff\"\n          ]\n        }\n      }\n    ]\n  }\n}"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/manufacturer/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"manufacturer",
+												"events"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "XML",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/xml"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<epcis:EPCISDocument xmlns:epcis=\"urn:epcglobal:epcis:xsd:1\"\n  xmlns:cbvmda=\"urn:epcglobal:cbv:mda\"\n  schemaVersion=\"1.2\" creationDate=\"2026-01-01T10:00:00.000Z\">\n  <EPCISBody><EventList>\n    <ObjectEvent>\n      <eventID>urn:uuid:aaaaaaaa-bbbb-4ccc-dddd-eeeeeeeeeeee</eventID>\n      <eventTime>2026-01-02T08:00:00.000Z</eventTime>\n      <eventTimeZoneOffset>+00:00</eventTimeZoneOffset>\n      <epcList>\n        <epc>urn:epc:id:sscc:0614141.0000000001</epc>\n      </epcList>\n      <action>OBSERVE</action>\n      <bizStep>urn:epcglobal:cbv:bizstep:shipping</bizStep>\n      <disposition>urn:epcglobal:cbv:disp:in_transit</disposition>\n      <readPoint><id>urn:epc:id:sgln:0614141.00001.0</id></readPoint>\n      <bizLocation><id>urn:epc:id:sgln:0614141.00001.0</id></bizLocation>\n      <bizTransactionList>\n        <bizTransaction type=\"urn:epcglobal:cbv:btt:desadv\">\n          urn:epcglobal:cbv:bt:0614141:ASN-2026-0001\n        </bizTransaction>\n      </bizTransactionList>\n      <extension>\n        <sourceList>\n          <source type=\"urn:epcglobal:cbv:sdt:location\">\n            urn:epc:id:sgln:0614141.00001.0\n          </source>\n        </sourceList>\n        <destinationList>\n          <destination type=\"urn:epcglobal:cbv:sdt:location\">\n            urn:epc:id:sgln:0619999.00002.0\n          </destination>\n        </destinationList>\n      </extension>\n      <errorDeclaration>\n        <declarationTime>2026-01-02T12:00:00.000Z</declarationTime>\n        <reason>incorrect_data</reason>\n        <correctiveEventIDs>\n          <correctiveEventID>urn:uuid:ffffffff-ffff-4fff-8fff-ffffffffffff</correctiveEventID>\n        </correctiveEventIDs>\n      </errorDeclaration>\n    </ObjectEvent>\n  </EventList></EPCISBody>\n</epcis:EPCISDocument>"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/manufacturer/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"manufacturer",
+												"events"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Did Not Occur - void mistaken event (Distributor)",
+							"item": [
+								{
+									"name": "JSON-LD",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/ld+json"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"@context\": [\n    \"https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld\"\n  ],\n  \"type\": \"EPCISDocument\",\n  \"schemaVersion\": \"2.0\",\n  \"creationDate\": \"2026-01-01T10:00:00.000Z\",\n  \"epcisBody\": {\n    \"eventList\": [\n      {\n        \"type\": \"ObjectEvent\",\n        \"eventID\": \"urn:uuid:bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb\",\n        \"eventTime\": \"2026-01-03T09:00:00.000Z\",\n        \"eventTimeZoneOffset\": \"+00:00\",\n        \"action\": \"OBSERVE\",\n        \"bizStep\": \"receiving\",\n        \"disposition\": \"active\",\n        \"epcList\": [\n          \"urn:epc:id:sscc:0614141.0000000001\"\n        ],\n        \"readPoint\": {\n          \"id\": \"urn:epc:id:sgln:0619999.00002.0\"\n        },\n        \"bizLocation\": {\n          \"id\": \"urn:epc:id:sgln:0619999.00002.0\"\n        },\n        \"sourceList\": [\n          {\n            \"type\": \"urn:epcglobal:cbv:sdt:location\",\n            \"source\": \"urn:epc:id:sgln:0614141.00001.0\"\n          }\n        ],\n        \"destinationList\": [\n          {\n            \"type\": \"urn:epcglobal:cbv:sdt:location\",\n            \"destination\": \"urn:epc:id:sgln:0619999.00002.0\"\n          }\n        ],\n        \"bizTransactionList\": [\n          {\n            \"type\": \"urn:epcglobal:cbv:btt:recadv\",\n            \"bizTransaction\": \"urn:epcglobal:cbv:bt:0619999:REC-2026-0001\"\n          }\n        ],\n        \"errorDeclaration\": {\n          \"declarationTime\": \"2026-01-03T11:00:00.000Z\",\n          \"reason\": \"did_not_occur\"\n        }\n      }\n    ]\n  }\n}"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/supplier/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"supplier",
+												"events"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "XML",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/xml"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<epcis:EPCISDocument xmlns:epcis=\"urn:epcglobal:epcis:xsd:1\"\n  xmlns:cbvmda=\"urn:epcglobal:cbv:mda\"\n  schemaVersion=\"1.2\" creationDate=\"2026-01-01T10:00:00.000Z\">\n  <EPCISBody><EventList>\n    <ObjectEvent>\n      <eventID>urn:uuid:bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb</eventID>\n      <eventTime>2026-01-03T09:00:00.000Z</eventTime>\n      <eventTimeZoneOffset>+00:00</eventTimeZoneOffset>\n      <epcList>\n        <epc>urn:epc:id:sscc:0614141.0000000001</epc>\n      </epcList>\n      <action>OBSERVE</action>\n      <bizStep>urn:epcglobal:cbv:bizstep:receiving</bizStep>\n      <disposition>urn:epcglobal:cbv:disp:active</disposition>\n      <readPoint><id>urn:epc:id:sgln:0619999.00002.0</id></readPoint>\n      <bizLocation><id>urn:epc:id:sgln:0619999.00002.0</id></bizLocation>\n      <bizTransactionList>\n        <bizTransaction type=\"urn:epcglobal:cbv:btt:recadv\">\n          urn:epcglobal:cbv:bt:0619999:REC-2026-0001\n        </bizTransaction>\n      </bizTransactionList>\n      <extension>\n        <sourceList>\n          <source type=\"urn:epcglobal:cbv:sdt:location\">\n            urn:epc:id:sgln:0614141.00001.0\n          </source>\n        </sourceList>\n        <destinationList>\n          <destination type=\"urn:epcglobal:cbv:sdt:location\">\n            urn:epc:id:sgln:0619999.00002.0\n          </destination>\n        </destinationList>\n      </extension>\n      <errorDeclaration>\n        <declarationTime>2026-01-03T11:00:00.000Z</declarationTime>\n        <reason>did_not_occur</reason>\n\n      </errorDeclaration>\n    </ObjectEvent>\n  </EventList></EPCISBody>\n</epcis:EPCISDocument>"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/supplier/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"supplier",
+												"events"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Did Not Occur - void mistaken event (Facility)",
+							"item": [
+								{
+									"name": "JSON-LD",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/ld+json"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"@context\": [\n        \"https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld\"\n    ],\n    \"type\": \"EPCISDocument\",\n    \"schemaVersion\": \"2.0\",\n    \"creationDate\": \"2026-01-01T10:00:00.000Z\",\n    \"epcisBody\": {\n        \"eventList\": [\n            {\n                \"type\": \"ObjectEvent\",\n                \"eventID\": \"urn:uuid:cccccccc-cccc-4ccc-8ccc-cccccccccccc\",\n                \"eventTime\": \"2026-01-06T14:00:00.000Z\",\n                \"eventTimeZoneOffset\": \"+00:00\",\n                \"action\": \"OBSERVE\",\n                \"bizStep\": \"dispensing\",\n                \"disposition\": \"dispensed\",\n                \"epcList\": [\n                    \"urn:epc:id:sgtin:0614141.000111.0000001\"\n                ],\n                \"readPoint\": {\n                    \"id\": \"urn:epc:id:sgln:0618888.00001.0\"\n                },\n                \"bizLocation\": {\n                    \"id\": \"urn:epc:id:sgln:0618888.00001.0\"\n                },\n                \"errorDeclaration\": {\n                    \"declarationTime\": \"2026-01-06T16:00:00.000Z\",\n                    \"reason\": \"did_not_occur\"\n                }\n            }\n        ]\n    }\n}"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/facility/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"facility",
+												"events"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "XML",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/xml"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "{{api_key}}"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<epcis:EPCISDocument xmlns:epcis=\"urn:epcglobal:epcis:xsd:1\"\n  xmlns:cbvmda=\"urn:epcglobal:cbv:mda\"\n  schemaVersion=\"1.2\" creationDate=\"2026-01-01T10:00:00.000Z\">\n  <EPCISBody><EventList>\n    <ObjectEvent>\n      <eventID>urn:uuid:cccccccc-cccc-4ccc-8ccc-cccccccccccc</eventID>\n      <eventTime>2026-01-06T14:00:00.000Z</eventTime>\n      <eventTimeZoneOffset>+00:00</eventTimeZoneOffset>\n      <epcList>\n        <epc>urn:epc:id:sgtin:0614141.000111.0000001</epc>\n      </epcList>\n      <action>OBSERVE</action>\n      <bizStep>urn:epcglobal:cbv:bizstep:dispensing</bizStep>\n      <disposition>urn:epcglobal:cbv:disp:dispensed</disposition>\n      <readPoint><id>urn:epc:id:sgln:0618888.00001.0</id></readPoint>\n      <bizLocation><id>urn:epc:id:sgln:0618888.00001.0</id></bizLocation>\n\n\n      <errorDeclaration>\n        <declarationTime>2026-01-06T16:00:00.000Z</declarationTime>\n        <reason>did_not_occur</reason>\n\n      </errorDeclaration>\n    </ObjectEvent>\n  </EventList></EPCISBody>\n</epcis:EPCISDocument>"
+										},
+										"url": {
+											"raw": "{{base_url}}/api/integration/facility/events",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"api",
+												"integration",
+												"facility",
+												"events"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					],
+					"description": "Re-submit the original event with the same eventID plus errorDeclaration. declarationTime must be after eventTime."
+				}
+			],
+			"description": "EPCIS guide section 4 - returns, destruction, product status, inventory, and error declarations"
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "{{api_key}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "X-API-Key",
+				"type": "string"
+			},
+			{
+				"key": "in",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "https://trackiq.apeiro-digital.com"
+		},
+		{
+			"key": "api_key",
+			"value": "YOUR_PARTNER_API_KEY_HERE"
+		}
+	]
+}

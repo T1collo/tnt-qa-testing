@@ -1,0 +1,238 @@
+{
+  "info": {
+    "name": "BUG - Duplicate serials in one batch return HTTP 500",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Create Batch (POST /api/manufacturer/batches) with a serial repeated inside serial_numbers returns 500 \"Internal server error\" instead of a 4xx validation message.\n\nSetup: set base_url, and session_cookie to the manufacturer portal session cookie (DevTools > Application > Cookies, as name=value). product_id / package_id default to TrackIQ Telmicos 40 mg; read them off the Create Batch request in DevTools on another environment.\n\nThe duplicate requests FAIL their tests while the bug is present. The control request creates a real batch; run it only to prove the payload is otherwise valid."
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://trackiq.apeiro-digital.com"
+    },
+    {
+      "key": "session_cookie",
+      "value": ""
+    },
+    {
+      "key": "product_id",
+      "value": "3449"
+    },
+    {
+      "key": "package_id",
+      "value": "5012"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Duplicate serial, adjacent (A, A) - expect 4xx",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const sn = 'DUP' + Date.now().toString(36).toUpperCase();",
+              "const serials = [sn, sn];",
+              "pm.variables.set('serials_json', JSON.stringify(serials));",
+              "pm.variables.set('qty', serials.length);",
+              "pm.variables.set('expiry', new Date(Date.now() + 730 * 864e5).toISOString().slice(0, 10));",
+              "if (pm.variables.get('session_cookie')) pm.request.headers.upsert({ key: 'Cookie', value: pm.variables.get('session_cookie') });"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "console.log('x-request-id', pm.response.headers.get('x-request-id'), 'body', pm.response.text());",
+              "pm.test('session accepted (not 401/403)', () => pm.expect(pm.response.code).to.not.be.oneOf([401, 403]));",
+              "pm.test('duplicate serials do not cause a server error (no 5xx)', () => pm.expect(pm.response.code).to.be.below(500));",
+              "pm.test('rejected with a 4xx validation message naming the duplicate', () => {",
+              "  pm.expect(pm.response.code).to.be.within(400, 499);",
+              "  pm.expect(pm.response.text()).to.match(/duplicate|unique|already|repeated/i);",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Origin",
+            "value": "{{base_url}}"
+          },
+          {
+            "key": "Referer",
+            "value": "{{base_url}}/manufacturer/batches"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"product_id\": {{product_id}},\n  \"package_id\": {{package_id}},\n  \"expiry\": \"{{expiry}}\",\n  \"qty\": {{qty}},\n  \"serial_numbers\": {{serials_json}}\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/manufacturer/batches",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "manufacturer",
+            "batches"
+          ]
+        },
+        "description": "Two identical serials. Observed 2026-10-19 on TrackIQ: 500 {\"statusCode\":500,\"message\":\"Internal server error\"}."
+      }
+    },
+    {
+      "name": "2. Duplicate serial, non-adjacent (A, B, A) - expect 4xx",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const sn = 'DUP' + Date.now().toString(36).toUpperCase();",
+              "const serials = [sn + 'A', sn + 'B', sn + 'A'];",
+              "pm.variables.set('serials_json', JSON.stringify(serials));",
+              "pm.variables.set('qty', serials.length);",
+              "pm.variables.set('expiry', new Date(Date.now() + 730 * 864e5).toISOString().slice(0, 10));",
+              "if (pm.variables.get('session_cookie')) pm.request.headers.upsert({ key: 'Cookie', value: pm.variables.get('session_cookie') });"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "console.log('x-request-id', pm.response.headers.get('x-request-id'), 'body', pm.response.text());",
+              "pm.test('session accepted (not 401/403)', () => pm.expect(pm.response.code).to.not.be.oneOf([401, 403]));",
+              "pm.test('duplicate serials do not cause a server error (no 5xx)', () => pm.expect(pm.response.code).to.be.below(500));",
+              "pm.test('rejected with a 4xx validation message naming the duplicate', () => {",
+              "  pm.expect(pm.response.code).to.be.within(400, 499);",
+              "  pm.expect(pm.response.text()).to.match(/duplicate|unique|already|repeated/i);",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Origin",
+            "value": "{{base_url}}"
+          },
+          {
+            "key": "Referer",
+            "value": "{{base_url}}/manufacturer/batches"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"product_id\": {{product_id}},\n  \"package_id\": {{package_id}},\n  \"expiry\": \"{{expiry}}\",\n  \"qty\": {{qty}},\n  \"serial_numbers\": {{serials_json}}\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/manufacturer/batches",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "manufacturer",
+            "batches"
+          ]
+        },
+        "description": "Duplicate separated by another serial. Observed 2026-10-19 on TrackIQ: 500."
+      }
+    },
+    {
+      "name": "3. CONTROL unique serials (CREATES A BATCH) - expect 201",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const sn = 'DUP' + Date.now().toString(36).toUpperCase();",
+              "const serials = [sn + 'X', sn + 'Y'];",
+              "pm.variables.set('serials_json', JSON.stringify(serials));",
+              "pm.variables.set('qty', serials.length);",
+              "pm.variables.set('expiry', new Date(Date.now() + 730 * 864e5).toISOString().slice(0, 10));",
+              "if (pm.variables.get('session_cookie')) pm.request.headers.upsert({ key: 'Cookie', value: pm.variables.get('session_cookie') });"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('same payload with unique serials is accepted', () => pm.expect(pm.response.code).to.be.oneOf([200, 201]));",
+              "console.log('created batch', pm.response.json().batch_no || pm.response.json().batchNo, '- destroy it after the run');"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Origin",
+            "value": "{{base_url}}"
+          },
+          {
+            "key": "Referer",
+            "value": "{{base_url}}/manufacturer/batches"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"product_id\": {{product_id}},\n  \"package_id\": {{package_id}},\n  \"expiry\": \"{{expiry}}\",\n  \"qty\": {{qty}},\n  \"serial_numbers\": {{serials_json}}\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/manufacturer/batches",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "manufacturer",
+            "batches"
+          ]
+        },
+        "description": "Proves product/package/expiry are valid, so the 500 above comes only from the duplicate. Creates a batch: clean it up afterwards (Manufacturer portal > Destruction)."
+      }
+    }
+  ]
+}

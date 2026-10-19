@@ -4,11 +4,13 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import {
   Check,
   CircleCheck,
+  FileJson,
   CircleX,
   FileSpreadsheet,
   Loader2,
   MonitorPlay,
   RefreshCw,
+  RotateCcw,
   Settings2,
   Square,
   Trash2,
@@ -35,6 +37,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Toggle } from "@/components/ui/toggle";
+import { RunStepDialog } from "@/components/run-step-dialog";
 import {
   RunModeDialog,
   SCOPES,
@@ -42,6 +45,7 @@ import {
   type Product,
 } from "@/components/run-mode-dialog";
 import { KNOWN_ENVIRONMENTS, normalizeBaseUrl } from "@/lib/baseUrl";
+import { cn } from "@/lib/utils";
 import {
   beginRun,
   clearRun,
@@ -83,6 +87,12 @@ const MODES: { value: Mode; label: string; detail: string }[] = [
 ];
 
 const ROLE_SHORT: Record<string, string> = { manufacturer: "Mfg", distributor: "Dist", facility: "Fac" };
+// One hue per role, matching the chips used in the Audit table and step dialogs.
+const ROLE_TONE: Record<string, string> = {
+  manufacturer: "text-chart-1",
+  distributor: "text-chart-2",
+  facility: "text-chart-3",
+};
 
 const specLabel = (file: string) => file.replace(/\.spec\.[jt]s$/, "");
 
@@ -109,8 +119,11 @@ export function Run() {
   const [productIds, setProductIds] = useFormField<string[]>("productIds", []);
   const [serialCount, setSerialCount] = useFormField("serialCount", 2);
   const [maxSerialCount, setMaxSerialCount] = useState(50000);
-  const [freshData, setFreshData] = useFormField("freshData", false);
-  const [portalBatches, setPortalBatches] = useFormField("portalBatches", true);
+  // On by default: fixed identifiers are a 409 duplicate on every run after the first.
+  const [freshData, setFreshData] = useFormField("freshData", true);
+  // Off by default: a run commissions with its own minted lot, as it did before the portal
+  // batch step existed. Tick the box in the run dialog to create batches in the portal first.
+  const [portalBatches, setPortalBatches] = useFormField("portalBatches", false);
   const [portalHeaded, setPortalHeaded] = useFormField("portalHeaded", false);
   const [e2eTokens, setE2eTokens] = useFormField<Record<E2eRole, string>>("e2eTokens", {
     manufacturer: "",
@@ -123,6 +136,14 @@ export function Run() {
   const [baseUrlError, setBaseUrlError] = useState<string | null>(null);
   const [hostCheck, setHostCheck] = useState<HostCheck>({ state: "idle" });
   const [selectedEventTypes, setSelectedEventTypes] = useFormField<string[]>("selectedEventTypes", []);
+  // Set when the page was opened to re-run an earlier run (?rerun=<id>): the form is filled
+  // from that run and starting sends rerunOf, so results replace that run's instead of
+  // creating a new one.
+  const [rerun, setRerun] = useState<{ id: string; attempt: number } | null>(null);
+  // "Everything" in a past run is resolved once the event list / spec list has loaded.
+  const pendingSelectAll = useRef<"events" | "specs" | null>(null);
+  // Which step's document is open in the dialog.
+  const [openStep, setOpenStep] = useState<string | null>(null);
   // The run lives outside this component so it keeps streaming while another page is open;
   // only a new run or the Clear button resets it.
   const { kind, running, runId, runBaseUrl, results, runStatus, runError, testSheet, total, logs } =
@@ -207,6 +228,56 @@ export function Run() {
     setRoleForSelection(role);
     setSelectedEventTypes([]);
   }
+
+  useEffect(() => {
+    const id = new URLSearchParams(window.location.search).get("rerun");
+    if (!id) return;
+    window.history.replaceState(null, "", window.location.pathname);
+    fetch(`/api/runs/${encodeURIComponent(id)}`)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((run) => {
+        if (!run) return;
+        if (run.baseUrl) setBaseUrl(run.baseUrl);
+        const productRefs = (run.consignment?.products || []).map((p: { productId?: string }) => p.productId).filter(Boolean);
+        if (run.role === "end-to-end") {
+          setMode("e2e");
+          if (run.documentMode) setDocumentMode(run.documentMode);
+          if (productRefs.length) setProductIds(productRefs);
+          if (run.consignment?.serialsPerProduct) setSerialCount(run.consignment.serialsPerProduct);
+          setPortalBatches(Boolean(run.consignment?.portalBatches));
+        } else if (run.role === "ui") {
+          setMode("ui");
+          setHeaded(run.documentMode === "headed");
+          const specList = run.consignment?.specs;
+          if (Array.isArray(specList)) setSpecFiles(specList);
+          else pendingSelectAll.current = "specs";
+        } else {
+          setMode("role");
+          setRole(run.role);
+          // Set together with the role so the role-change reset does not clear it.
+          setRoleForSelection(run.role);
+          setFreshData(run.documentMode === "fresh-data");
+          if (productRefs.length) setProductIds(productRefs);
+          if (Array.isArray(run.eventTypes)) setSelectedEventTypes(run.eventTypes);
+          else pendingSelectAll.current = "events";
+        }
+        setRerun({ id: run.id, attempt: (run.attempt || 1) + 1 });
+      })
+      .catch(() => {});
+    // Runs once on arrival; the setters are stable.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (pendingSelectAll.current === "events" && eventTypesForRole.length > 0) {
+      pendingSelectAll.current = null;
+      setSelectedEventTypes(eventTypesForRole);
+    }
+    if (pendingSelectAll.current === "specs" && specs?.length) {
+      pendingSelectAll.current = null;
+      setSpecFiles(specs.map((sp) => sp.file));
+    }
+  }, [eventTypesForRole, specs, setSelectedEventTypes, setSpecFiles]);
 
   const checkedSet = new Set(selectedEventTypes);
   const allSelected =
@@ -299,9 +370,13 @@ export function Run() {
         files: specFiles,
         headed,
         baseUrl: normalized.value,
+        rerunOf: rerun?.id,
       });
       if (!res.ok || !data.runId) runFailedToStart(data.error || "Failed to start the browser suite");
-      else runStarted(data.runId, data.total ?? null);
+      else {
+        setRerun(null);
+        runStarted(data.runId, data.total ?? null);
+      }
     } catch {
       runFailedToStart("Could not reach the dashboard server to start the run");
     } finally {
@@ -334,6 +409,7 @@ export function Run() {
               products: productIds,
               portalBatches,
               portalHeaded,
+              rerunOf: rerun?.id,
             })
           : await post("/api/run", {
               role,
@@ -342,6 +418,7 @@ export function Run() {
               baseUrl: normalized.value,
               freshData,
               products: freshData ? productIds : undefined,
+              rerunOf: rerun?.id,
             });
     } catch {
       setStarting(false);
@@ -355,6 +432,7 @@ export function Run() {
       return;
     }
     setConfigOpen(false);
+    setRerun(null);
     // Tokens stay in the form so the same run can be repeated; they are held in memory only.
     runStarted(data.runId, mode === "e2e" ? journeySteps.length : checkedSet.size);
   }
@@ -388,6 +466,22 @@ export function Run() {
       <Card>
         <CardContent>
           <form onSubmit={onSubmit} className="space-y-5">
+            {rerun && (
+              <div
+                role="status"
+                className="flex flex-wrap items-center gap-x-3 gap-y-2 rounded-lg border border-selected/40 bg-selected/5 px-3 py-2 text-sm"
+              >
+                <RotateCcw className="size-4 shrink-0 text-selected" aria-hidden="true" />
+                <span className="min-w-0 flex-1">
+                  Re-running <span className="font-mono text-xs">{rerun.id}</span> (attempt {rerun.attempt}) with
+                  its original settings. Its results will be replaced; the previous attempt stays in the
+                  run record. Re-enter the API token{mode === "e2e" ? "s" : ""} if needed — they are never saved.
+                </span>
+                <Button type="button" variant="ghost" size="sm" onClick={() => setRerun(null)}>
+                  Run as new instead
+                </Button>
+              </div>
+            )}
             <div className="grid gap-4 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
               <div className="min-w-0 space-y-1.5">
                 <Label htmlFor="base-url">Environment base URL</Label>
@@ -536,7 +630,7 @@ export function Run() {
                             {step.index}
                           </span>
                           <span className="min-w-0 truncate" title={`${step.role} — ${step.label}`}>
-                            <span className="text-muted-foreground">
+                            <span className={ROLE_TONE[step.role] ?? "text-muted-foreground"}>
                               {ROLE_SHORT[step.role] ?? step.role}
                             </span>{" "}
                             {step.label}
@@ -794,6 +888,12 @@ export function Run() {
         onStart={startRun}
       />
 
+      <RunStepDialog
+        result={openStep ? (results[openStep] ?? null) : null}
+        runId={runId}
+        onOpenChange={(open) => !open && setOpenStep(null)}
+      />
+
       {(runId || resultList.length > 0) && (
         <Card>
           <CardHeader>
@@ -873,25 +973,55 @@ export function Run() {
               </div>
             ) : null}
             <div className="divide-y border-t">
-              {resultList.map((r) => (
-                <div
-                  key={r.stepKey || r.testId}
-                  className="flex items-center justify-between gap-3 px-6 py-2 text-sm"
-                >
-                  <div className="min-w-0">
-                    <span className="mr-2 font-mono text-xs text-muted-foreground">{r.testId}</span>
-                    <span>{r.eventType}</span>
-                    {kind === "ui" && !r.ok && !r.skipped && r.error && (
-                      <span className="block truncate text-xs text-destructive" title={r.error}>
-                        {r.error}
-                      </span>
+              {resultList.map((r) => {
+                const key = r.stepKey || r.testId;
+                // A browser test has no document to show; API steps open theirs.
+                const sent = r.variants?.some((v) => v.requestBody || v.documentPath);
+                const shared = (r.batchSize ?? 1) > 1;
+                const Row = sent ? "button" : "div";
+                return (
+                  <Row
+                    key={key}
+                    {...(sent
+                      ? {
+                          type: "button" as const,
+                          onClick: () => setOpenStep(key),
+                          "aria-label": `Open the document sent for ${r.testId} ${r.eventType}`,
+                        }
+                      : {})}
+                    className={cn(
+                      "flex w-full items-center justify-between gap-3 px-6 py-2 text-left text-sm",
+                      sent &&
+                        "cursor-pointer transition-colors duration-(--duration-quick) hover:bg-muted/60 focus-visible:bg-muted/60 focus-visible:outline-none"
                     )}
-                  </div>
-                  <Badge variant={r.ok ? "default" : r.skipped ? "outline" : "destructive"}>
-                    {r.ok ? "PASS" : r.skipped ? "SKIPPED" : "FAIL"}
-                  </Badge>
-                </div>
-              ))}
+                  >
+                    <div className="min-w-0">
+                      <span className="mr-2 font-mono text-xs text-muted-foreground">{r.testId}</span>
+                      <span>{r.eventType}</span>
+                      {shared && (
+                        <span className="ml-2 text-xs text-muted-foreground">
+                          shares document {r.batchId} · {r.batchEventCount} events
+                        </span>
+                      )}
+                      {/* Every failure says why in plain English; the raw error stays in the
+                          step dialog. Older results without a reason show their error. */}
+                      {!r.ok && !r.skipped && (r.reason || r.error) && (
+                        <span className="line-clamp-2 block text-xs text-destructive" title={r.error || r.reason}>
+                          {r.reason || r.error}
+                        </span>
+                      )}
+                    </div>
+                    <span className="flex shrink-0 items-center gap-2">
+                      {sent && (
+                        <FileJson className="size-3.5 text-muted-foreground" aria-hidden="true" />
+                      )}
+                      <Badge variant={r.ok ? "default" : r.skipped ? "outline" : "destructive"}>
+                        {r.ok ? "PASS" : r.skipped ? "SKIPPED" : "FAIL"}
+                      </Badge>
+                    </span>
+                  </Row>
+                );
+              })}
               {running && (
                 <div className="flex items-center gap-2 px-6 py-2 text-sm italic text-muted-foreground">
                   <Loader2 className="size-3.5 animate-spin" aria-hidden="true" />

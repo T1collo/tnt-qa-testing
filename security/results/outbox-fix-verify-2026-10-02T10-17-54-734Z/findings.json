@@ -1,0 +1,334 @@
+{
+  "report": {
+    "createdAt": "2026-10-02T10:18:03.267Z",
+    "hypothesis": "epcis_outbox_id_seq setval fix — Partner manufacturer events should not intermittent-500 on outbox PK",
+    "targets": [
+      {
+        "target": "tnt-demo",
+        "base": "https://tnt-demo.apeiro-digital.com",
+        "runId": "3dd5f765",
+        "totalRequests": 32,
+        "outcomeCounts": {
+          "OK_2XX": 31,
+          "OK_409_DEDUP": 1
+        },
+        "uniqueEventRequests": 30,
+        "uniqueEvent2xx": 30,
+        "http5xx": 0,
+        "outboxPkeySignals": 0,
+        "duplicateSecondStatus": 409,
+        "pass": true
+      }
+    ],
+    "overallPass": true
+  },
+  "detail": [
+    {
+      "name": "tnt-demo",
+      "summary": {
+        "target": "tnt-demo",
+        "base": "https://tnt-demo.apeiro-digital.com",
+        "runId": "3dd5f765",
+        "totalRequests": 32,
+        "outcomeCounts": {
+          "OK_2XX": 31,
+          "OK_409_DEDUP": 1
+        },
+        "uniqueEventRequests": 30,
+        "uniqueEvent2xx": 30,
+        "http5xx": 0,
+        "outboxPkeySignals": 0,
+        "duplicateSecondStatus": 409,
+        "pass": true
+      },
+      "results": [
+        {
+          "phase": "sequential",
+          "i": 0,
+          "eventID": "urn:uuid:7db64d1b-55f6-41fc-ace0-fa0f69ad6565",
+          "status": 202,
+          "ms": 486,
+          "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:7db64d1b-55f6-41fc-ace0-fa0f69ad6565\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"OUTBOXFIX-2026-10-02\\\" is not registered in the batches registry\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true",
+          "outcome": "OK_2XX"
+        },
+        {
+          "phase": "sequential",
+          "i": 1,
+          "eventID": "urn:uuid:7a100a40-33f5-43dd-a7c0-fa3b2a161156",
+          "status": 202,
+          "ms": 385,
+          "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:7a100a40-33f5-43dd-a7c0-fa3b2a161156\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"OUTBOXFIX-2026-10-02\\\" is not registered in the batches registry\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true",
+          "outcome": "OK_2XX"
+        },
+        {
+          "phase": "sequential",
+          "i": 2,
+          "eventID": "urn:uuid:7730647b-6125-4d5f-a3c2-526e426fe59a",
+          "status": 202,
+          "ms": 262,
+          "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:7730647b-6125-4d5f-a3c2-526e426fe59a\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"OUTBOXFIX-2026-10-02\\\" is not registered in the batches registry\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true",
+          "outcome": "OK_2XX"
+        },
+        {
+          "phase": "sequential",
+          "i": 3,
+          "eventID": "urn:uuid:943830fc-e080-44cd-9ed1-1a7a9a29c7f8",
+          "status": 202,
+          "ms": 265,
+          "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:943830fc-e080-44cd-9ed1-1a7a9a29c7f8\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"OUTBOXFIX-2026-10-02\\\" is not registered in the batches registry\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true",
+          "outcome": "OK_2XX"
+        },
+        {
+          "phase": "sequential",
+          "i": 4,
+          "eventID": "urn:uuid:f21ad8fe-73ed-4a5c-aca9-c9b7add6093a",
+          "status": 202,
+          "ms": 264,
+          "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:f21ad8fe-73ed-4a5c-aca9-c9b7add6093a\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"OUTBOXFIX-2026-10-02\\\" is not registered in the batches registry\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true",
+          "outcome": "OK_2XX"
+        },
+        {
+          "phase": "sequential",
+          "i": 5,
+          "eventID": "urn:uuid:0a20ccd7-5703-48ee-ab5a-2b16302735d9",
+          "status": 202,
+          "ms": 265,
+          "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:0a20ccd7-5703-48ee-ab5a-2b16302735d9\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"OUTBOXFIX-2026-10-02\\\" is not registered in the batches registry\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true",
+          "outcome": "OK_2XX"
+        },
+        {
+          "phase": "sequential",
+          "i": 6,
+          "eventID": "urn:uuid:3e0671c0-8113-47e0-b1d9-8c19162c4c5e",
+          "status": 202,
+          "ms": 258,
+          "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:3e0671c0-8113-47e0-b1d9-8c19162c4c5e\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"OUTBOXFIX-2026-10-02\\\" is not registered in the batches registry\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true",
+          "outcome": "OK_2XX"
+        },
+        {
+          "phase": "sequential",
+          "i": 7,
+          "eventID": "urn:uuid:faeb698e-09b2-409c-9f8a-fe36319c416a",
+          "status": 202,
+          "ms": 319,
+          "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:faeb698e-09b2-409c-9f8a-fe36319c416a\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"OUTBOXFIX-2026-10-02\\\" is not registered in the batches registry\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true",
+          "outcome": "OK_2XX"
+        },
+        {
+          "phase": "sequential",
+          "i": 8,
+          "eventID": "urn:uuid:2250d3df-f15a-4462-9418-239647a54ad1",
+          "status": 202,
+          "ms": 564,
+          "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:2250d3df-f15a-4462-9418-239647a54ad1\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"OUTBOXFIX-2026-10-02\\\" is not registered in the batches registry\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true",
+          "outcome": "OK_2XX"
+        },
+        {
+          "phase": "sequential",
+          "i": 9,
+          "eventID": "urn:uuid:c6fe812a-51d5-4bec-ac69-8cf2ea799a3b",
+          "status": 202,
+          "ms": 238,
+          "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:c6fe812a-51d5-4bec-ac69-8cf2ea799a3b\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"OUTBOXFIX-2026-10-02\\\" is not registered in the batches registry\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true",
+          "outcome": "OK_2XX"
+        },
+        {
+          "phase": "sequential",
+          "i": 10,
+          "eventID": "urn:uuid:02ec5755-e637-434b-b879-7f2260a357d2",
+          "status": 202,
+          "ms": 286,
+          "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:02ec5755-e637-434b-b879-7f2260a357d2\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"OUTBOXFIX-2026-10-02\\\" is not registered in the batches registry\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true",
+          "outcome": "OK_2XX"
+        },
+        {
+          "phase": "sequential",
+          "i": 11,
+          "eventID": "urn:uuid:3a95f0cc-72fd-498e-aa87-71a05fb2bd4c",
+          "status": 202,
+          "ms": 240,
+          "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:3a95f0cc-72fd-498e-aa87-71a05fb2bd4c\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"OUTBOXFIX-2026-10-02\\\" is not registered in the batches registry\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true",
+          "outcome": "OK_2XX"
+        },
+        {
+          "phase": "sequential",
+          "i": 12,
+          "eventID": "urn:uuid:3693af31-0259-48fb-b4ec-30634097694e",
+          "status": 202,
+          "ms": 284,
+          "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:3693af31-0259-48fb-b4ec-30634097694e\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"OUTBOXFIX-2026-10-02\\\" is not registered in the batches registry\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true",
+          "outcome": "OK_2XX"
+        },
+        {
+          "phase": "sequential",
+          "i": 13,
+          "eventID": "urn:uuid:191d5002-98b1-45fb-98aa-de85b833b87a",
+          "status": 202,
+          "ms": 241,
+          "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:191d5002-98b1-45fb-98aa-de85b833b87a\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"OUTBOXFIX-2026-10-02\\\" is not registered in the batches registry\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true",
+          "outcome": "OK_2XX"
+        },
+        {
+          "phase": "sequential",
+          "i": 14,
+          "eventID": "urn:uuid:aea116a8-c0c0-4c7e-84d4-26239cf1fd8b",
+          "status": 202,
+          "ms": 289,
+          "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:aea116a8-c0c0-4c7e-84d4-26239cf1fd8b\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"OUTBOXFIX-2026-10-02\\\" is not registered in the batches registry\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true",
+          "outcome": "OK_2XX"
+        },
+        {
+          "phase": "sequential",
+          "i": 15,
+          "eventID": "urn:uuid:4c954d49-c1bf-49d4-accf-2c31616af40a",
+          "status": 202,
+          "ms": 328,
+          "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:4c954d49-c1bf-49d4-accf-2c31616af40a\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"OUTBOXFIX-2026-10-02\\\" is not registered in the batches registry\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true",
+          "outcome": "OK_2XX"
+        },
+        {
+          "phase": "sequential",
+          "i": 16,
+          "eventID": "urn:uuid:55f71fec-d906-46a8-895e-7322bafc05ab",
+          "status": 202,
+          "ms": 227,
+          "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:55f71fec-d906-46a8-895e-7322bafc05ab\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"OUTBOXFIX-2026-10-02\\\" is not registered in the batches registry\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true",
+          "outcome": "OK_2XX"
+        },
+        {
+          "phase": "sequential",
+          "i": 17,
+          "eventID": "urn:uuid:32691486-ab76-4d1b-933b-be215dbbfe23",
+          "status": 202,
+          "ms": 320,
+          "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:32691486-ab76-4d1b-933b-be215dbbfe23\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"OUTBOXFIX-2026-10-02\\\" is not registered in the batches registry\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true",
+          "outcome": "OK_2XX"
+        },
+        {
+          "phase": "sequential",
+          "i": 18,
+          "eventID": "urn:uuid:6ce57ad0-ce5b-4e52-b713-1130c90727a0",
+          "status": 202,
+          "ms": 259,
+          "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:6ce57ad0-ce5b-4e52-b713-1130c90727a0\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"OUTBOXFIX-2026-10-02\\\" is not registered in the batches registry\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true",
+          "outcome": "OK_2XX"
+        },
+        {
+          "phase": "sequential",
+          "i": 19,
+          "eventID": "urn:uuid:500a581a-b991-4282-b891-e44230f475cf",
+          "status": 202,
+          "ms": 535,
+          "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:500a581a-b991-4282-b891-e44230f475cf\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"OUTBOXFIX-2026-10-02\\\" is not registered in the batches registry\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true",
+          "outcome": "OK_2XX"
+        },
+        {
+          "phase": "sequential",
+          "i": 20,
+          "eventID": "urn:uuid:d6c71756-3a13-48b6-b21d-0af8f5d835c5",
+          "status": 202,
+          "ms": 246,
+          "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:d6c71756-3a13-48b6-b21d-0af8f5d835c5\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"OUTBOXFIX-2026-10-02\\\" is not registered in the batches registry\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true",
+          "outcome": "OK_2XX"
+        },
+        {
+          "phase": "sequential",
+          "i": 21,
+          "eventID": "urn:uuid:1002cea8-f074-454b-8333-c3c3018607f7",
+          "status": 202,
+          "ms": 257,
+          "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:1002cea8-f074-454b-8333-c3c3018607f7\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"OUTBOXFIX-2026-10-02\\\" is not registered in the batches registry\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true",
+          "outcome": "OK_2XX"
+        },
+        {
+          "phase": "sequential",
+          "i": 22,
+          "eventID": "urn:uuid:52d9efda-4760-4e4f-9fdf-523b33090ef3",
+          "status": 202,
+          "ms": 261,
+          "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:52d9efda-4760-4e4f-9fdf-523b33090ef3\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"OUTBOXFIX-2026-10-02\\\" is not registered in the batches registry\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true",
+          "outcome": "OK_2XX"
+        },
+        {
+          "phase": "sequential",
+          "i": 23,
+          "eventID": "urn:uuid:e116dad9-6e94-4e27-990b-aff6542176e5",
+          "status": 202,
+          "ms": 230,
+          "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:e116dad9-6e94-4e27-990b-aff6542176e5\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"OUTBOXFIX-2026-10-02\\\" is not registered in the batches registry\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true",
+          "outcome": "OK_2XX"
+        },
+        {
+          "phase": "sequential",
+          "i": 24,
+          "eventID": "urn:uuid:9ab70c99-63e2-40c0-b971-f9c694fba9b4",
+          "status": 202,
+          "ms": 201,
+          "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:9ab70c99-63e2-40c0-b971-f9c694fba9b4\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"OUTBOXFIX-2026-10-02\\\" is not registered in the batches registry\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true",
+          "outcome": "OK_2XX"
+        },
+        {
+          "phase": "concurrent",
+          "i": 0,
+          "eventID": "urn:uuid:b05ea40d-4d46-4fe6-9bfa-6cbdd6b1690a",
+          "status": 202,
+          "ms": 512,
+          "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:b05ea40d-4d46-4fe6-9bfa-6cbdd6b1690a\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"OUTBOXFIX-2026-10-02\\\" is not registered in the batches registry\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true",
+          "outcome": "OK_2XX"
+        },
+        {
+          "phase": "concurrent",
+          "i": 1,
+          "eventID": "urn:uuid:bc35da32-1f69-4ce7-8622-428c387654a4",
+          "status": 202,
+          "ms": 577,
+          "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:bc35da32-1f69-4ce7-8622-428c387654a4\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"OUTBOXFIX-2026-10-02\\\" is not registered in the batches registry\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true",
+          "outcome": "OK_2XX"
+        },
+        {
+          "phase": "concurrent",
+          "i": 2,
+          "eventID": "urn:uuid:1fa47794-2a8e-44a8-9c2c-0314047e0406",
+          "status": 202,
+          "ms": 626,
+          "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:1fa47794-2a8e-44a8-9c2c-0314047e0406\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"OUTBOXFIX-2026-10-02\\\" is not registered in the batches registry\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true",
+          "outcome": "OK_2XX"
+        },
+        {
+          "phase": "concurrent",
+          "i": 3,
+          "eventID": "urn:uuid:d448a2ec-bce7-4612-96f3-57292451b900",
+          "status": 202,
+          "ms": 596,
+          "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:d448a2ec-bce7-4612-96f3-57292451b900\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"OUTBOXFIX-2026-10-02\\\" is not registered in the batches registry\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true",
+          "outcome": "OK_2XX"
+        },
+        {
+          "phase": "concurrent",
+          "i": 4,
+          "eventID": "urn:uuid:ef7f322d-cdd2-4aa4-97d0-0dcfa932f350",
+          "status": 202,
+          "ms": 607,
+          "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:ef7f322d-cdd2-4aa4-97d0-0dcfa932f350\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"OUTBOXFIX-2026-10-02\\\" is not registered in the batches registry\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true",
+          "outcome": "OK_2XX"
+        },
+        {
+          "phase": "duplicate-first",
+          "eventID": "urn:uuid:edb0dd83-5d65-445f-98c6-7b412ced9abb",
+          "status": 202,
+          "ms": 221,
+          "body": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:edb0dd83-5d65-445f-98c6-7b412ced9abb\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"OUTBOXFIX-2026-10-02\\\" is not registered in the batches registry\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true",
+          "outcome": "OK_2XX"
+        },
+        {
+          "phase": "duplicate-second",
+          "eventID": "urn:uuid:edb0dd83-5d65-445f-98c6-7b412ced9abb",
+          "status": 409,
+          "ms": 161,
+          "body": "{\"category\":\"DUPLICATE_EVENT_ID\",\"code\":\"DUPLICATE_EVENT_ID\",\"message\":\"Event ID urn:uuid:edb0dd83-5d65-445f-98c6-7b412ced9abb was already ingested\",\"resolution\":\"This event_id has already been ingested. This is idempotent � no action needed. If this is a different event, assign a new UUID.\",\"event_id\":\"urn:uuid:edb0dd83-5d65-445f-98c6-7b412ced9abb\",\"_sandbox\":true}",
+          "outcome": "OK_409_DEDUP"
+        }
+      ]
+    }
+  ]
+}

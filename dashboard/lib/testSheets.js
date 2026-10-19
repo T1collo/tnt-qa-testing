@@ -27,7 +27,8 @@ async function writeDailyTestSheet(dateKey = runDateKey(new Date().toISOString()
     (summary) => summary.finishedAt && runDateKey(summary.finishedAt) === dateKey
   );
 
-  const { wb, matchedRows } = await buildWorkbook(index);
+  // The day's sheet lists the test data created that day.
+  const { wb, matchedRows } = await buildWorkbook(index, { dataLog: (e) => runDateKey(e.timestamp) === dateKey });
 
   const folder = dayFolder(dateKey);
   fs.mkdirSync(folder, { recursive: true });

@@ -1,15 +1,16 @@
-import { IBM_Plex_Sans, JetBrains_Mono } from "next/font/google";
+import { Fira_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { AppShell } from "@/components/app-shell";
 import { ThemeProvider } from "@/components/theme-provider";
 import { THEME_STORAGE_KEY } from "@/lib/theme";
 
-// "Developer Mono" pairing: IBM Plex Sans carries the UI, JetBrains Mono carries headings,
+// "Dashboard Data" pairing (ui-ux-pro-max typography domain): Fira Sans carries the UI,
+// JetBrains Mono carries headings,
 // test IDs, URLs and response codes - the parts of this console that are literally code.
 // Loaded through next/font so the files are self-hosted and preloaded, with no render-
 // blocking @import and no layout shift from a late swap.
-const plexSans = IBM_Plex_Sans({
-  variable: "--font-plex-sans",
+const firaSans = Fira_Sans({
+  variable: "--font-fira-sans",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
 });
@@ -32,7 +33,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${plexSans.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={`${firaSans.variable} ${jetbrainsMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head>

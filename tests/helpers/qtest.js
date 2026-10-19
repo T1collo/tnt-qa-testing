@@ -5,15 +5,19 @@
 // Playwright decides which fixtures to inject by statically reading the destructured
 // parameter names off the function passed directly to test() - a generic (args) => fn(args)
 // wrapper hides that from it and every fixture comes back undefined. So this wrapper
-// destructures { page } itself and forwards it; if a test ever needs other fixtures
-// (context, request, ...) add them here too.
+// destructures the fixtures itself and forwards them; add any further fixture here too.
 const { test } = require('@playwright/test');
 
+// The ID is a static annotation, so a test skipped before its body runs (a serial chain
+// stopping after a failure) still reports which workbook row it belongs to.
 function qtest(id, title, fn) {
-  test(title, async ({ page }) => {
-    test.info().annotations.push({ type: 'testId', description: id });
-    return fn({ page });
+  test(title, { annotation: { type: 'testId', description: id } }, async ({ page, browser, request }) => {
+    return fn({ page, browser, request });
   });
 }
 
-module.exports = { qtest };
+/** Stable workbook ID for a page-inventory check, e.g. ('admin', '/regulator/journey') -> SMOKE-ADMIN-REGULATOR-JOURNEY. */
+const pageTestId = (role, path) =>
+  `SMOKE-${role}-${path.replace(/^\//, '').replace(/[^a-z0-9]+/gi, '-')}`.toUpperCase().replace(/-+$/, '');
+
+module.exports = { qtest, pageTestId };

@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { listSpecs, startRun, stopRun, recentRuns } from '../../../lib/playwrightRunner';
 import { normalizeBaseUrl } from '../../../lib/baseUrl';
+import { getBaseUrl } from '../../../lib/env';
+import { checkReachable, healthSnapshot } from '../../../lib/reachability';
 
 export const dynamic = 'force-dynamic';
 
@@ -33,22 +35,34 @@ export async function POST(request) {
     return NextResponse.json({ error: 'Pick at least one spec file' }, { status: 400 });
   }
 
-  let baseUrl;
+  let baseUrl = getBaseUrl();
   if (body.baseUrl !== undefined) {
     const normalized = normalizeBaseUrl(body.baseUrl);
     if (!normalized.ok) return NextResponse.json({ error: normalized.error }, { status: 400 });
     baseUrl = normalized.value;
   }
 
+  // Same host gate as API/e2e — UI tests against a dead host are not a useful suite result.
+  const reachability = await checkReachable(baseUrl);
+  if (!reachability.reachable) {
+    return NextResponse.json(
+      { error: `${baseUrl} is not reachable — ${reachability.error}`, reachability },
+      { status: 502 }
+    );
+  }
+  const health = healthSnapshot(baseUrl, reachability);
+
   try {
     const run = startRun({
       // Every spec picked means the whole suite, which is what `npm test` runs.
       files: files.length === specs.length ? [] : files,
       headed: Boolean(body.headed),
+      rerunOf: typeof body.rerunOf === 'string' && body.rerunOf ? body.rerunOf : null,
       baseUrl,
+      health,
     });
     const total = specs.filter((s) => files.includes(s.file)).reduce((n, s) => n + s.tests, 0);
-    return NextResponse.json({ runId: run.id, total });
+    return NextResponse.json({ runId: run.id, total, health });
   } catch (err) {
     return NextResponse.json({ error: err.message }, { status: err.status || 500 });
   }

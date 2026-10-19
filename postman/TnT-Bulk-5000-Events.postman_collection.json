@@ -1,0 +1,191 @@
+{
+  "info": {
+    "_postman_id": "a1b2c3d4-5000-4e00-8f00-bulk5kevents01",
+    "name": "TnT · Bulk 5,000 Events (500/504 repro)",
+    "description": "Postman-shaped repro for TNT-SEC-INP-008 / TNT-PERF-014.\n\nSends one EPCISDocument with 5,000 ObjectEvents (commissioning) to the Partner API. Historically the gateway returns **500 Internal Server Error** or **504 Gateway Timeout** instead of a bounded 4xx.\n\nSetup:\n1. Set collection variables `base_url` and `mfg_token` (or role token).\n2. Optionally change `event_count` (ladder: 100 → 500 → 1000 → 5000).\n3. Send **POST · 5,000-event batch**.\n4. Read `batch_id`, `first_event_id`, `last_event_id` from the collection variables after the pre-request runs.\n\nCLI twin: `node scripts/generate-bulk-5000.mjs` (writes manifest + event-ids.txt; add `--send` to POST).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "base_url", "value": "https://tnt-demo.apeiro-digital.com" },
+    { "key": "mfg_token", "value": "" },
+    { "key": "event_count", "value": "5000" },
+    { "key": "lot", "value": "BULK5K-POSTMAN" },
+    { "key": "batch_id", "value": "" },
+    { "key": "first_event_id", "value": "" },
+    { "key": "last_event_id", "value": "" },
+    { "key": "event_ids_sample", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "POST · 5,000-event batch (expect non-5xx; often 500/504)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/ld+json" },
+          { "key": "X-API-Key", "value": "{{mfg_token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{{bulk_document}}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/integration/manufacturer/events",
+          "host": ["{{base_url}}"],
+          "path": ["api", "integration", "manufacturer", "events"]
+        },
+        "description": "Builds `event_count` unique commissioning ObjectEvents in the pre-request script, stores batch/event IDs on the collection, then POSTs the full document.\n\nPass criterion for the security checklist: HTTP status < 500 (bounded rejection). Live environments have been observed returning 500 or 504."
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const count = Math.max(1, parseInt(pm.collectionVariables.get('event_count') || '5000', 10));",
+              "const lot = pm.collectionVariables.get('lot') || 'BULK5K-POSTMAN';",
+              "const runId = Date.now().toString(36) + Math.floor(Math.random() * 1e6).toString(36);",
+              "const batchId = 'batch-5k-' + runId;",
+              "const now = new Date().toISOString();",
+              "const eventIds = [];",
+              "const eventList = [];",
+              "for (let i = 0; i < count; i++) {",
+              "  const eventID = 'urn:uuid:bulk-' + runId + '-' + String(i).padStart(5, '0');",
+              "  const serial = (Date.now().toString().slice(-8) + String(i).padStart(7, '0')).slice(-15);",
+              "  eventIds.push(eventID);",
+              "  eventList.push({",
+              "    type: 'ObjectEvent',",
+              "    eventID,",
+              "    eventTime: now,",
+              "    eventTimeZoneOffset: '+03:00',",
+              "    epcList: ['urn:epc:id:sgtin:0123456.305512.' + serial],",
+              "    action: 'ADD',",
+              "    bizStep: 'commissioning',",
+              "    disposition: 'active',",
+              "    readPoint: { id: 'urn:epc:id:sgln:0123456.22222.0' },",
+              "    bizLocation: { id: 'urn:epc:id:sgln:0123456.22222.0' },",
+              "    ilmd: { 'cbvmda:lotNumber': lot, 'cbvmda:itemExpirationDate': '2028-01-01' }",
+              "  });",
+              "}",
+              "const doc = {",
+              "  '@context': ['https://ref.gs1.org/standards/epcis/epcis-context.jsonld'],",
+              "  type: 'EPCISDocument',",
+              "  schemaVersion: '2.0',",
+              "  creationDate: now,",
+              "  epcisBody: { eventList }",
+              "};",
+              "pm.variables.set('bulk_document', JSON.stringify(doc));",
+              "pm.collectionVariables.set('batch_id', batchId);",
+              "pm.collectionVariables.set('first_event_id', eventIds[0]);",
+              "pm.collectionVariables.set('last_event_id', eventIds[count - 1]);",
+              "pm.collectionVariables.set('event_ids_sample', [eventIds[0], eventIds[Math.floor(count / 2)], eventIds[count - 1]].join(' | '));",
+              "console.log('batch_id=', batchId, 'events=', count, 'first=', eventIds[0], 'last=', eventIds[count - 1]);"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const batchId = pm.collectionVariables.get('batch_id');",
+              "const first = pm.collectionVariables.get('first_event_id');",
+              "const last = pm.collectionVariables.get('last_event_id');",
+              "console.log('batch_id', batchId);",
+              "console.log('first_event_id', first);",
+              "console.log('last_event_id', last);",
+              "console.log('status', pm.response.code, 'ms', pm.response.responseTime);",
+              "",
+              "let body = {};",
+              "try { body = pm.response.json(); } catch (e) { /* non-JSON */ }",
+              "const returned = body.event_ids || [];",
+              "pm.collectionVariables.set('returned_event_count', String(returned.length));",
+              "if (returned.length) {",
+              "  pm.collectionVariables.set('returned_first_event_id', returned[0]);",
+              "  pm.collectionVariables.set('returned_last_event_id', returned[returned.length - 1]);",
+              "}",
+              "",
+              "pm.test('Bulk batch | HTTP status is not 5xx (bounded handling)', function () {",
+              "  pm.expect(pm.response.code, 'status ' + pm.response.code + ' body=' + pm.response.text().slice(0, 180)).to.be.below(500);",
+              "});",
+              "pm.test('Bulk batch | response is not empty on transport success', function () {",
+              "  pm.expect(pm.response.code).to.be.above(0);",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "POST · ladder 100 events (sanity)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/ld+json" },
+          { "key": "X-API-Key", "value": "{{mfg_token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{{bulk_document}}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/integration/manufacturer/events",
+          "host": ["{{base_url}}"],
+          "path": ["api", "integration", "manufacturer", "events"]
+        },
+        "description": "Same builder as the 5k request, but forces event_count=100 for a quick ladder step (usually 202)."
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.collectionVariables.set('event_count', '100');",
+              "const count = 100;",
+              "const lot = pm.collectionVariables.get('lot') || 'BULK5K-POSTMAN';",
+              "const runId = Date.now().toString(36) + Math.floor(Math.random() * 1e6).toString(36);",
+              "const batchId = 'batch-100-' + runId;",
+              "const now = new Date().toISOString();",
+              "const eventIds = [];",
+              "const eventList = [];",
+              "for (let i = 0; i < count; i++) {",
+              "  const eventID = 'urn:uuid:bulk-' + runId + '-' + String(i).padStart(5, '0');",
+              "  const serial = (Date.now().toString().slice(-8) + String(i).padStart(7, '0')).slice(-15);",
+              "  eventIds.push(eventID);",
+              "  eventList.push({",
+              "    type: 'ObjectEvent', eventID, eventTime: now, eventTimeZoneOffset: '+03:00',",
+              "    epcList: ['urn:epc:id:sgtin:0123456.305512.' + serial],",
+              "    action: 'ADD', bizStep: 'commissioning', disposition: 'active',",
+              "    readPoint: { id: 'urn:epc:id:sgln:0123456.22222.0' },",
+              "    bizLocation: { id: 'urn:epc:id:sgln:0123456.22222.0' },",
+              "    ilmd: { 'cbvmda:lotNumber': lot, 'cbvmda:itemExpirationDate': '2028-01-01' }",
+              "  });",
+              "}",
+              "pm.variables.set('bulk_document', JSON.stringify({",
+              "  '@context': ['https://ref.gs1.org/standards/epcis/epcis-context.jsonld'],",
+              "  type: 'EPCISDocument', schemaVersion: '2.0', creationDate: now,",
+              "  epcisBody: { eventList }",
+              "}));",
+              "pm.collectionVariables.set('batch_id', batchId);",
+              "pm.collectionVariables.set('first_event_id', eventIds[0]);",
+              "pm.collectionVariables.set('last_event_id', eventIds[count - 1]);"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Ladder 100 | accepted or documented client error (not 5xx)', function () {",
+              "  pm.expect(pm.response.code).to.be.below(500);",
+              "});"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

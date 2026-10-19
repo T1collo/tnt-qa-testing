@@ -1,0 +1,54 @@
+{
+  "at": "2026-10-19T08:24:00.457Z",
+  "base": "https://trackiq.apeiro-digital.com",
+  "product": "Telmicos 40 mg Oral Tablet",
+  "serial": "DUPMVEZMSAX",
+  "request": {
+    "method": "POST",
+    "url": "https://trackiq.apeiro-digital.com/api/manufacturer/batches",
+    "headers": {
+      ":authority": "trackiq.apeiro-digital.com",
+      ":method": "POST",
+      ":path": "/api/manufacturer/batches",
+      ":scheme": "https",
+      "accept": "*/*",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "content-length": "114",
+      "content-type": "application/json",
+      "origin": "https://trackiq.apeiro-digital.com",
+      "priority": "u=1, i",
+      "referer": "https://trackiq.apeiro-digital.com/manufacturer/batches",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "sec-fetch-dest": "empty",
+      "sec-fetch-mode": "cors",
+      "sec-fetch-site": "same-origin",
+      "traceparent": "00-5be4d14f181ad20c7a86d24c46f9beaa-9e1482c425659de6-01",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36"
+    },
+    "authHeaders": [
+      "cookie"
+    ],
+    "body": "{\"product_id\":3449,\"package_id\":5012,\"expiry\":\"2028-10-18\",\"qty\":2,\"serial_numbers\":[\"DUPMVEZMSAX\",\"DUPMVEZMSAX\"]}"
+  },
+  "response": {
+    "status": 500,
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "access-control-allow-origin": "https://trackiq.apeiro-digital.com",
+      "content-length": "52",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Mon, 19 Oct 2026 08:23:57 GMT",
+      "etag": "W/\"34-rlKccw1E+/fV8niQk4oFitDfPro\"",
+      "server": "nginx",
+      "vary": "Origin",
+      "x-apisix-upstream-status": "500",
+      "x-request-id": "9ad06d16-1ea3-418a-844d-51487884e869"
+    },
+    "body": "{\"statusCode\":500,\"message\":\"Internal server error\"}"
+  },
+  "cookieNames": [
+    "__Secure-trackiq_user_prod.session_token"
+  ]
+}

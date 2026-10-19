@@ -4,6 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
+  Activity,
   LayoutDashboard,
   PlayCircle,
   ScrollText,
@@ -44,6 +45,7 @@ import {
 const NAV = [
   { href: "/", label: "Run", icon: PlayCircle },
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/health", label: "Health", icon: Activity },
   { href: "/logs", label: "Logs", icon: ScrollText },
   { href: "/audit", label: "Audit", icon: ShieldCheck },
   { href: "/test-map", label: "Test Map", icon: MapIcon },

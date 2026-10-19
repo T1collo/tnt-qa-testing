@@ -7,11 +7,13 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-plex-sans);
+  --font-sans: var(--font-fira-sans);
   --font-mono: var(--font-jetbrains-mono);
   --font-heading: var(--font-jetbrains-mono);
   --color-selected: var(--selected);
   --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-highlight: var(--highlight);
   /* One motion scale for the whole console, so every state change shares a rhythm instead
      of each component inventing its own timing. Exit is ~70% of enter - leaving should feel
      quicker than arriving. The ease is a decelerating curve: fast out of the gate, settling
@@ -62,86 +64,147 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+  --color-chart-scale-pattern-color: var(--chart-scale-pattern-color);
+  --color-chart-scale-05: var(--chart-scale-05);
+  --color-chart-scale-04: var(--chart-scale-04);
+  --color-chart-scale-03: var(--chart-scale-03);
+  --color-chart-scale-02: var(--chart-scale-02);
+  --color-chart-scale-01: var(--chart-scale-01);
+  --color-chart-label: var(--chart-label);
+  --color-chart-marker-foreground: var(--chart-marker-foreground);
+  --color-chart-marker-border: var(--chart-marker-border);
+  --color-chart-marker-background: var(--chart-marker-background);
+  --color-chart-tooltip-muted: var(--chart-tooltip-muted);
+  --color-chart-tooltip-foreground: var(--chart-tooltip-foreground);
+  --color-chart-tooltip-background: var(--chart-tooltip-background);
+  --chart-brush-border: var(--chart-brush-border);
+  --color-chart-grid: var(--chart-grid);
+  --color-chart-crosshair: var(--chart-crosshair);
+  --chart-line-secondary: var(--chart-line-secondary);
+  --chart-line-primary: var(--chart-line-primary);
+  --color-chart-foreground-muted: var(--chart-foreground-muted);
+  --color-chart-foreground: var(--chart-foreground);
+  --color-chart-background: var(--chart-background);
 }
 
 :root {
+  /* Palette: blue data + amber highlights (ui-ux-pro-max colour domain), on a cool off-white
+     ground. Every foreground below is contrast-checked against the surface it sits on. */
+  --background: oklch(0.982 0.004 250);
+  --foreground: oklch(0.21 0.02 258);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
+  --card-foreground: oklch(0.21 0.02 258);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.424 0.181 265.6);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.424 0.181 265.6);
-  /* One accent for "this is selected" - the current nav item and the chosen event-type
-     chips. Kept distinct from --accent/--sidebar-accent, which mean "hovered", so the two
-     states never render identically. Verified 7.07:1 on the tinted nav row and 7.40:1 on
-     the tinted chip. */
-  --selected: oklch(0.424 0.181 265.6);
-  /* Positive status, the counterpart to --destructive. Darkened from the reference status
-     green (#22C55E), which only reaches 2.28:1 as text on a white card - this one measures
-     5.02:1. The dark theme can use the brighter original. */
-  --success: oklch(0.527 0.137 150.1);
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.21 0.02 258);
+  /* #1E40AF - 8.6:1 on white */
+  --primary: oklch(0.42 0.16 264);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.955 0.008 250);
+  --secondary-foreground: oklch(0.28 0.03 258);
+  --muted: oklch(0.96 0.006 250);
+  --muted-foreground: oklch(0.5 0.025 258);
+  --accent: oklch(0.94 0.02 250);
+  --accent-foreground: oklch(0.28 0.03 258);
+  --destructive: oklch(0.55 0.21 27);
+  --border: oklch(0.91 0.01 250);
+  --input: oklch(0.89 0.012 250);
+  --ring: oklch(0.42 0.16 264);
+  --radius: 0.75rem;
+  --sidebar: oklch(0.965 0.008 250);
+  --sidebar-foreground: oklch(0.21 0.02 258);
+  --sidebar-primary: oklch(0.42 0.16 264);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.93 0.015 250);
+  --sidebar-accent-foreground: oklch(0.21 0.02 258);
+  --sidebar-border: oklch(0.9 0.012 250);
+  --sidebar-ring: oklch(0.42 0.16 264);
+  --selected: oklch(0.42 0.16 264);
+  /* Green 5.0:1, amber 4.7:1 on white; the two non-blue states. */
+  --success: oklch(0.52 0.14 150);
+  --warning: oklch(0.55 0.13 75);
+  /* #D97706 - the one highlight hue, for emphasis that is not a status. */
+  --highlight: oklch(0.62 0.15 62);
+  --chart-1: oklch(0.42 0.16 264);
+  --chart-2: oklch(0.6 0.12 200);
+  --chart-3: oklch(0.62 0.15 62);
+  --chart-4: oklch(0.52 0.14 150);
+  --chart-5: oklch(0.55 0.21 27);
+  --chart-background: oklch(1 0 0);
+  --chart-foreground: oklch(0.145 0.004 285);
+  --chart-foreground-muted: oklch(0.55 0.014 260);
+  /* Pass/fail-aligned series colors for Bklit charts on Dashboard + Health. */
+  --chart-line-primary: var(--success);
+  --chart-line-secondary: var(--destructive);
+  --chart-crosshair: oklch(0.4 0.1828 274.34);
+  --chart-grid: oklch(0.9 0 0);
+  --chart-brush-border: var(--chart-grid);
+  --chart-tooltip-background: oklch(0.21 0.006 285 / 0.8);
+  --chart-tooltip-foreground: oklch(0.985 0 0);
+  --chart-tooltip-muted: oklch(0.65 0.01 260);
+  --chart-marker-background: oklch(0.97 0.005 260);
+  --chart-marker-border: oklch(0.85 0.01 260);
+  --chart-marker-foreground: oklch(0.3 0.01 260);
+  --chart-label: oklch(0.45 0.01 260);
+  --chart-scale-01: oklch(0.98 0.003 106);
+  --chart-scale-02: oklch(0.92 0.008 106);
+  --chart-scale-03: oklch(0.82 0.015 106);
+  --chart-scale-04: oklch(0.68 0.02 106);
+  --chart-scale-05: oklch(0.55 0.025 106);
+  --chart-scale-pattern-color: oklch(0.96 0.005 106);
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
+  --background: oklch(0.19 0.015 258);
+  --foreground: oklch(0.96 0.005 250);
+  --card: oklch(0.235 0.018 258);
+  --card-foreground: oklch(0.96 0.005 250);
+  --popover: oklch(0.255 0.018 258);
+  --popover-foreground: oklch(0.96 0.005 250);
+  --primary: oklch(0.72 0.14 258);
+  --primary-foreground: oklch(0.18 0.03 262);
+  --secondary: oklch(0.3 0.02 258);
+  --secondary-foreground: oklch(0.96 0.005 250);
+  --muted: oklch(0.3 0.02 258);
+  --muted-foreground: oklch(0.75 0.02 250);
+  --accent: oklch(0.32 0.025 258);
+  --accent-foreground: oklch(0.96 0.005 250);
+  --destructive: oklch(0.7 0.19 22);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.424 0.181 265.6);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --ring: oklch(0.72 0.14 258);
+  --sidebar: oklch(0.225 0.018 258);
+  --sidebar-foreground: oklch(0.96 0.005 250);
+  --sidebar-primary: oklch(0.72 0.14 258);
+  --sidebar-primary-foreground: oklch(0.18 0.03 262);
+  --sidebar-accent: oklch(0.32 0.025 258);
+  --sidebar-accent-foreground: oklch(0.96 0.005 250);
   --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.809 0.096 251.8);
-  --selected: oklch(0.809 0.096 251.8);
-  --success: oklch(0.723 0.192 149.6);
+  --sidebar-ring: oklch(0.72 0.14 258);
+  --selected: oklch(0.76 0.12 255);
+  --success: oklch(0.76 0.17 150);
+  --warning: oklch(0.8 0.15 80);
+  --highlight: oklch(0.78 0.14 68);
+  --chart-1: oklch(0.72 0.14 258);
+  --chart-2: oklch(0.7 0.1 200);
+  --chart-3: oklch(0.78 0.14 68);
+  --chart-4: oklch(0.76 0.17 150);
+  --chart-5: oklch(0.7 0.19 22);
+  --chart-background: oklch(0.145 0 0);
+  --chart-foreground: oklch(0.45 0 0);
+  --chart-foreground-muted: oklch(0.65 0.01 260);
+  --chart-crosshair: oklch(0.45 0 0);
+  --chart-grid: oklch(0.25 0 0);
+  --chart-brush-border: var(--chart-grid);
+  --chart-marker-background: oklch(0.25 0.01 260);
+  --chart-marker-border: oklch(0.4 0.01 260);
+  --chart-marker-foreground: oklch(0.9 0 0);
+  --chart-label: oklch(0.75 0.01 260);
+  --chart-scale-01: oklch(0.28 0.03 270);
+  --chart-scale-02: oklch(0.38 0.04 270);
+  --chart-scale-03: oklch(0.48 0.05 270);
+  --chart-scale-04: oklch(0.58 0.06 270);
+  --chart-scale-05: oklch(0.68 0.07 270);
+  --chart-scale-pattern-color: oklch(0.145 0 0);
 }
 
 @layer base {
@@ -196,7 +259,6 @@
   }
 }
 
-
 /* Connection flow. stroke-dashoffset is a deliberate exception to the transform/opacity
    rule: an SVG path has no transform that moves dashes along its own length, and the
    alternative (translating a masked overlay) costs a composited layer per edge for the same
@@ -208,5 +270,56 @@
   }
   to {
     stroke-dashoffset: 0;
+  }
+}
+
+/* Workflow canvas (Connections) — dark dotted board inspired by n8n-style automation UX. */
+.n8n-canvas {
+  background: #1e1e24;
+}
+.n8n-canvas .react-flow__node {
+  cursor: grab;
+}
+.n8n-canvas .react-flow__node:active {
+  cursor: grabbing;
+}
+.n8n-canvas .react-flow__attribution {
+  display: none;
+}
+
+/* The collapsing sidebar is the one place a size animation is unavoidable: the page content
+   beside it reflows as it narrows, so there is no transform that stands in for it. Scoped to
+   the two elements that carry the width (the spacer and the fixed panel), kept to the app's
+   own enter duration, and skipped entirely under prefers-reduced-motion. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-slot="sidebar-gap"],
+  [data-slot="sidebar-container"] {
+    transition-property: width, left, right;
+    transition-duration: var(--duration-enter);
+    transition-timing-function: var(--ease-emphasis);
+  }
+
+  /* The labels fade as the rail narrows rather than clipping mid-word. */
+  [data-slot="sidebar-menu-button"] > span:last-child,
+  [data-slot="sidebar-group-label"] {
+    transition-property: opacity, transform;
+    transition-duration: var(--duration-quick);
+    transition-timing-function: var(--ease-emphasis);
+  }
+}
+
+/* Tab panels arrive rather than appearing. */
+[data-slot="tabs-content"][data-state="active"] {
+  animation: tab-in var(--duration-enter) var(--ease-emphasis);
+}
+
+@keyframes tab-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
   }
 }

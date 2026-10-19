@@ -36,14 +36,24 @@ function runPath(runId) {
   return path.join(RUN_DIR, `${runId}.json`);
 }
 
-function createRun({ role, eventTypes, baseUrl, documentMode = null, consignment = null }) {
-  const runId = newRunId();
+function createRun({
+  role,
+  eventTypes,
+  baseUrl,
+  documentMode = null,
+  consignment = null,
+  health = null,
+  id = null,
+}) {
+  const runId = id || newRunId();
   const run = {
     id: runId,
     role,
     eventTypes: eventTypes || null,
     baseUrl,
     documentMode,
+    // Host reachability at run start — source of truth for /health history.
+    health: health || null,
     // Every identifier this run minted, recorded before anything is sent so a batch can
     // be traced back to its serials, lot, cases and pallet without re-deriving them.
     consignment,
@@ -62,6 +72,8 @@ function createRun({ role, eventTypes, baseUrl, documentMode = null, consignment
     id: run.id,
     role: run.role,
     documentMode: run.documentMode,
+    baseUrl: run.baseUrl,
+    health: run.health,
     startedAt: run.startedAt,
     finishedAt: null,
     status: 'running',
@@ -75,12 +87,81 @@ function createRun({ role, eventTypes, baseUrl, documentMode = null, consignment
   return run;
 }
 
+// Which start route a stored run belongs to, so a re-run can only go back through the same one.
+function runKind(run) {
+  if (run.role === 'end-to-end') return 'e2e';
+  if (run.role === 'ui') return 'ui';
+  return 'role';
+}
+
+const MAX_KEPT_ATTEMPTS = 10;
+
+// Re-runs an existing run under the same id instead of creating a new one. The previous
+// attempt (results, timings, status) is kept under `attempts`, newest last; the run's config
+// is refreshed from `fields` (the operator may have changed environment or selection) and it
+// goes back to running. Returns null when the run does not exist or is a different kind.
+function restartRun(runId, kind, fields = {}) {
+  const run = readRun(runId);
+  if (!run || runKind(run) !== kind) return null;
+  const previous = {
+    startedAt: run.startedAt,
+    finishedAt: run.finishedAt,
+    status: run.status,
+    baseUrl: run.baseUrl,
+    results: run.results,
+  };
+  const attempts = [...(run.attempts || []), previous].slice(-MAX_KEPT_ATTEMPTS);
+  const restarted = {
+    ...run,
+    ...Object.fromEntries(Object.entries(fields).filter(([, v]) => v !== undefined)),
+    id: run.id,
+    role: run.role,
+    attempt: (run.attempt || 1) + 1,
+    attempts,
+    startedAt: new Date().toISOString(),
+    finishedAt: null,
+    status: 'running',
+    results: [],
+  };
+  fs.writeFileSync(runPath(runId), JSON.stringify(restarted, null, 2), 'utf-8');
+
+  // Move the run to the top of the history as running again.
+  const index = readIndex().filter((entry) => entry.id !== runId);
+  index.unshift({
+    id: restarted.id,
+    role: restarted.role,
+    documentMode: restarted.documentMode,
+    baseUrl: restarted.baseUrl,
+    health: restarted.health,
+    startedAt: restarted.startedAt,
+    finishedAt: null,
+    status: 'running',
+    total: 0,
+    passed: 0,
+    failed: 0,
+    skipped: 0,
+    attempt: restarted.attempt,
+  });
+  writeIndex(index.slice(0, 200));
+  audit.recordRunRestart(restarted, restarted.attempt);
+  return restarted;
+}
+
 function appendResult(runId, result) {
   const run = readRun(runId);
   if (!run) return;
   run.results.push(result);
   fs.writeFileSync(runPath(runId), JSON.stringify(run, null, 2), 'utf-8');
   audit.recordResult(runId, result);
+}
+
+// Bulk-replace results (Playwright finishes with its own list rather than streaming into
+// the store one-by-one). Does not re-audit individual results — finishRun covers the run.
+function setResults(runId, results) {
+  const run = readRun(runId);
+  if (!run) return;
+  run.results = Array.isArray(results) ? results : [];
+  fs.writeFileSync(runPath(runId), JSON.stringify(run, null, 2), 'utf-8');
 }
 
 function finishRun(runId, { status = 'complete', error = null } = {}) {
@@ -97,6 +178,8 @@ function finishRun(runId, { status = 'complete', error = null } = {}) {
     id: run.id,
     role: run.role,
     documentMode: run.documentMode ?? null,
+    baseUrl: run.baseUrl ?? null,
+    health: run.health ?? null,
     startedAt: run.startedAt,
     finishedAt: run.finishedAt,
     status: run.status,
@@ -104,6 +187,7 @@ function finishRun(runId, { status = 'complete', error = null } = {}) {
     passed,
     failed: total - passed - skipped,
     skipped,
+    attempt: run.attempt || 1,
   };
 
   // Update the entry createRun() already added rather than adding a second one for the
@@ -127,7 +211,8 @@ function documentsDir(runId) {
 function saveDocument(runId, name, body) {
   const dir = documentsDir(runId);
   fs.mkdirSync(dir, { recursive: true });
-  const file = path.join(dir, `${name}.json`);
+  const isXml = String(body).trimStart().startsWith('<');
+  const file = path.join(dir, `${name}.${isXml ? 'xml' : 'json'}`);
   if (fs.existsSync(file)) return file; // a combined document is shared by several steps
   let text = body;
   try {
@@ -160,4 +245,15 @@ function listRuns() {
   return readIndex();
 }
 
-module.exports = { createRun, appendResult, finishRun, readRun, listRuns, saveDocument, updateConsignment, documentsDir };
+module.exports = {
+  createRun,
+  restartRun,
+  appendResult,
+  setResults,
+  finishRun,
+  readRun,
+  listRuns,
+  saveDocument,
+  updateConsignment,
+  documentsDir,
+};

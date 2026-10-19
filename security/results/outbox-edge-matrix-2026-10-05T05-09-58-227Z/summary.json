@@ -1,0 +1,18 @@
+{
+  "batchId": "batch-edge-c33de4dd",
+  "base": "https://trackiq.apeiro-digital.com",
+  "endpoint": "https://trackiq.apeiro-digital.com/api/integration/manufacturer/events",
+  "createdAt": "2026-10-05T05:11:12.131Z",
+  "outDir": "C:\\Users\\Collins\\Desktop\\TnT\\qa-testing-suite\\security\\results\\outbox-edge-matrix-2026-10-05T05-09-58-227Z",
+  "headlineTotal": 30,
+  "headlinePass": 29,
+  "headlineFail": 1,
+  "http5xxRows": 0,
+  "outboxPkeySignals": 0,
+  "pass": false,
+  "notes": [
+    "API/Postman-only matrix — does not reintroduce DB sequence lag.",
+    "Prior 5k request burst referenced, not repeated in this run.",
+    "Multi-event documents may return 504; treated as non-outbox failure mode if not 500."
+  ]
+}

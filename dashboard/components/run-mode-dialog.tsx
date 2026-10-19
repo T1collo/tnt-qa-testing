@@ -237,7 +237,7 @@ export function RunModeDialog({
                   <p id="run-fresh-data-help" className="mt-0.5 text-xs text-muted-foreground">
                     {freshData
                       ? "Each request gets new serials, SSCCs and timestamps, so a valid event is judged on validity. Error declarations submit their original event first."
-                      : "Off: requests are fired exactly as written. After the first run most return 409 duplicate - expected, but it only proves the first submission worked."}
+                      : "Off: requests are fired exactly as written - only for testing duplicate rejection. After the first run most return 409 duplicate."}
                   </p>
                 </div>
               </div>

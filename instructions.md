@@ -103,3 +103,36 @@ That tagging + generator script is the natural next piece of work here.
 | `tests/lifecycle.spec.js` | Full commission → pack → aggregate → approve → ship → receive flow |
 | `tests/helpers/auth.js` | `loginAs(page, role)` helper, reads credentials from `.env` |
 | `tests/helpers/datalog.js` | Shared helper for logging test data used during a run |
+
+## 7. How results are reported (rule for every test and every export)
+
+Every generated workbook (all-runs export, single-run export, daily sheet) gives each test row
+a STATUS of PASS, FAIL or NOT TESTED, coloured across the whole row (green / red / yellow).
+
+For a **FAIL**:
+- **Actual Result** holds the exact outcome observed - the real status, values or text the
+  test saw, or exactly what the platform answered (HTTP status, error code, message).
+- **COMMENTS** starts with `Failed because: <reason in plain English>`, then where the result
+  came from (run id, role, time).
+- A FAIL carried over from the master plan (a case no run has executed yet) follows the same
+  rule: its comment becomes `Failed because: <the plan's own comment> | Carried over from the
+  master test plan - not re-run by automation.`
+
+Every test, including the page-inventory smoke checks (`SMOKE-<ROLE>-<PATH>`), carries a workbook
+Test ID via `qtest(...)`. The ID is a static annotation, so a test skipped after an earlier serial
+step failed still lands on its row as NOT TESTED.
+
+The Run page shows the same plain reason under each failed step.
+
+Where the reason comes from (`dashboard/lib/failureReason.js`):
+1. a reason the test states itself - preferred for new tests:
+   `test.info().annotations.push({ type: 'reason', description: 'The duplicate serial was accepted instead of being rejected' })`
+2. otherwise the Playwright assertion / timeout, translated (e.g. "expected 400, but the system gave 201";
+   "the \"Sign In\" button stayed disabled (waited 15 s)")
+3. for API steps, the platform's response (e.g. "rejected the XML submission with HTTP 409
+   DUPLICATE_EVENT_PAYLOAD - this exact event had already been recorded")
+
+So that Actual Result is exact, every test records what it observed with an `actual`
+annotation (in a try/finally, so it is written even when the test fails), and gives its
+assertions a plain message: `expect(status, 'the duplicate serial should be rejected').toBe(400)`.
+Cases the master plan does not list also declare an `expected` annotation.

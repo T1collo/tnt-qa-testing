@@ -10,6 +10,7 @@
 const path = require('path');
 const fs = require('fs');
 const { PROJECT_ROOT } = require('./paths');
+const { eventsFromBody, returnedEventIds } = require('./epcisEvents');
 
 const DB_PATH = path.join(PROJECT_ROOT, 'run_data', 'audit.sqlite');
 const SCHEMA_VERSION = 1;
@@ -163,6 +164,25 @@ function recordRunStart(run) {
   });
 }
 
+// A re-run reuses the run's id: its row goes back to running and the previous attempt's
+// results are replaced, so the audit reflects the latest attempt instead of mixing two. The
+// earlier attempt stays in the run record (runStore keeps it under `attempts`).
+function recordRunRestart(run, attempt) {
+  safely('recordRunRestart', (db) => {
+    db.prepare('DELETE FROM warnings WHERE run_id = ?').run(run.id);
+    db.prepare('DELETE FROM results WHERE run_id = ?').run(run.id);
+    db.prepare('DELETE FROM batches WHERE run_id = ?').run(run.id);
+    db.prepare(
+      `UPDATE runs SET status = 'running', started_at = ?, finished_at = NULL, total = 0, passed = 0, failed = 0,
+         skipped = 0, error = NULL, base_url = ?, document_mode = ?, consignment = ?
+       WHERE id = ?`
+    ).run(run.startedAt || now(), run.baseUrl ?? null, run.documentMode ?? null, json(run.consignment), run.id);
+    db.prepare(`INSERT INTO run_logs (run_id, at, level, message) VALUES (?, ?, 'info', ?)`).run(
+      run.id, now(), `Re-run started (attempt ${attempt}) against ${run.baseUrl ?? 'default environment'} - previous results replaced`
+    );
+  });
+}
+
 function updateRunConsignment(runId, consignment) {
   safely('updateRunConsignment', (db) => {
     db.prepare('UPDATE runs SET consignment = ? WHERE id = ?').run(json(consignment), runId);
@@ -298,57 +318,22 @@ function searchResults({ runId, outcome, testId, code, q, limit = 200 } = {}) {
   );
 }
 
-// The events a request carried, from its stored body or, for large journey documents, the
-// saved document file. Handles EPCIS JSON-LD and 1.2 XML.
-const XML_EVENT = /<(ObjectEvent|AggregationEvent|TransactionEvent|TransformationEvent)\b[\s\S]*?<\/\1>/g;
-
-function xmlValues(xml, tag) {
-  return [...xml.matchAll(new RegExp(`<${tag}>([\\s\\S]*?)</${tag}>`, 'g'))].map((m) => m[1].trim());
-}
-
-function eventsFromBody(body) {
-  if (!body) return [];
-  try {
-    const doc = JSON.parse(body);
-    return (doc.epcisBody?.eventList || []).map((e) => ({
-      eventID: e.eventID ?? null,
-      type: e.type ?? null,
-      bizStep: e.bizStep ?? null,
-      parentID: e.parentID ?? null,
-      epcList: e.epcList || [],
-      childEPCs: e.childEPCs || [],
-    }));
-  } catch {
-    return (body.match(XML_EVENT) || []).map((block) => ({
-      eventID: xmlValues(block, 'eventID')[0] ?? null,
-      type: block.match(/^<(\w+)/)[1],
-      bizStep: xmlValues(block, 'bizStep')[0] ?? null,
-      parentID: xmlValues(block, 'parentID')[0] ?? null,
-      epcList: xmlValues(xmlValues(block, 'epcList').join(''), 'epc'),
-      childEPCs: xmlValues(xmlValues(block, 'childEPCs').join(''), 'epc'),
-    }));
-  }
-}
-
-function returnedEventIds(responseBody) {
-  try {
-    return JSON.parse(responseBody).event_ids || [];
-  } catch {
-    return [];
-  }
-}
-
 function resultDetail(id) {
   return (
     safely('resultDetail', (db) => {
       const row = db.prepare('SELECT * FROM results WHERE id = ?').get(id);
       if (!row) return null;
       row.issues = db.prepare('SELECT kind, code, field, severity, message FROM warnings WHERE result_id = ?').all(id);
+      // A document too large to store inline lives in the run's documents folder; read it
+      // back so the dialog shows the payload itself rather than a path to it.
       let body = row.request_body;
       if (!body && row.document_path) {
         try {
           body = fs.readFileSync(row.document_path, 'utf8');
-        } catch {
+          row.request_body = body;
+          row.body_from_file = true;
+        } catch (err) {
+          row.body_unavailable = `${row.document_path} could not be read (${err.code || err.message})`;
           body = null;
         }
       }
@@ -392,6 +377,7 @@ module.exports = {
   open,
   platformIssues,
   recordRunStart,
+  recordRunRestart,
   updateRunConsignment,
   recordResult,
   recordLog,

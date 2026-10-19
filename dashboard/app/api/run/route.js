@@ -1,12 +1,12 @@
 import { NextResponse } from 'next/server';
 import { runForRole } from '../../../lib/postmanRunner';
-import { createRun, appendResult, finishRun } from '../../../lib/runStore';
+import { createRun, restartRun, readRun, appendResult, finishRun } from '../../../lib/runStore';
 import { emitProgress } from '../../../lib/runBus';
 import { getBaseUrl } from '../../../lib/env';
 import { normalizeBaseUrl } from '../../../lib/baseUrl';
 import { ROLES } from '../../../lib/testIdMap';
 import { writeDailyTestSheet } from '../../../lib/testSheets';
-import { checkReachable } from '../../../lib/reachability';
+import { checkReachable, healthSnapshot } from '../../../lib/reachability';
 import { findProduct } from '../../../lib/productRegistry';
 
 export const dynamic = 'force-dynamic';
@@ -32,7 +32,8 @@ export async function POST(request) {
   const { role, apiToken, eventTypes } = body;
   // Happy-path option: mint fresh serials/SSCCs/timestamps per request instead of firing the
   // collection's fixed identifiers, which are duplicates on every run after the first.
-  const freshData = body.freshData === true;
+  // On unless explicitly turned off (duplicate-rejection testing).
+  const freshData = body.freshData !== false;
 
   if (!Object.values(ROLES).includes(role)) {
     return NextResponse.json({ error: `role must be one of: ${Object.values(ROLES).join(', ')}` }, { status: 400 });
@@ -62,6 +63,7 @@ export async function POST(request) {
       { status: 502 }
     );
   }
+  const health = healthSnapshot(baseUrl, reachability);
 
   // `products` (a list) rotates several products across requests; `product` is the older
   // single form.
@@ -79,18 +81,31 @@ export async function POST(request) {
   }
   const product = products[0] || null;
 
-  const run = createRun({
+  const config = {
     role,
     eventTypes: eventTypes || null,
     baseUrl,
     documentMode: freshData ? 'fresh-data' : null,
+    health,
     consignment: product
       ? {
           product: { productId: product.productId, gtin: product.gtin, brand: product.brand, sgtinPrefix: product.sgtinPrefix },
           products: products.map((p) => ({ productId: p.productId, gtin: p.gtin, brand: p.brand, sgtinPrefix: p.sgtinPrefix })),
         }
       : null,
-  });
+  };
+  // `rerunOf`: run again under that run's id, replacing its results, instead of a new run.
+  let run;
+  if (body.rerunOf) {
+    const previous = readRun(String(body.rerunOf));
+    if (!previous) return NextResponse.json({ error: `Run ${body.rerunOf} not found` }, { status: 404 });
+    if (previous.role !== role) {
+      return NextResponse.json({ error: `Run ${previous.id} was a ${previous.role} run, not ${role}` }, { status: 400 });
+    }
+    run = restartRun(previous.id, 'role', config);
+  } else {
+    run = createRun(config);
+  }
 
   // Fire-and-forget: the run executes in this same long-running Node process (this app
   // isn't deployed as stateless serverless functions), streaming progress over SSE via

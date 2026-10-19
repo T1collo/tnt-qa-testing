@@ -46,6 +46,18 @@ function mergeDocuments(documents) {
   return merged;
 }
 
+// The XML counterpart of mergeDocuments: the first document's envelope with every
+// document's <EventList> contents placed inside it, in order.
+function mergeXmlDocuments(xmls) {
+  const inner = (xml) => (xml.match(/<EventList>([\s\S]*?)<\/EventList>/) || [])[1] || '';
+  return xmls[0].replace(/<EventList>[\s\S]*?<\/EventList>/, () => `<EventList>${xmls.map(inner).join('')}</EventList>`);
+}
+
+// A prepared entry carries either a JSON-LD `document` or an XML string (`xml` + `eventCount`).
+const bodyOf = (entry) => (entry.xml !== undefined ? entry.xml : JSON.stringify(entry.document));
+const eventCountOf = (entry) => (entry.xml !== undefined ? entry.eventCount : entry.document.epcisBody.eventList.length);
+const contentTypeOf = (entry) => (entry.xml !== undefined ? 'application/xml' : 'application/ld+json');
+
 // Contiguous runs of the same role, with any synchronous step forced into a group of its own.
 function groupContiguous(prepared) {
   const groups = [];
@@ -76,19 +88,20 @@ function planRequests({ prepared, mode }) {
       endpoint: entry.endpoint,
       sync: Boolean(entry.step.sync),
       // Each entry's own document, untouched.
-      body: JSON.stringify(entry.document),
-      eventCount: entry.document.epcisBody.eventList.length,
+      body: bodyOf(entry),
+      contentType: contentTypeOf(entry),
+      eventCount: eventCountOf(entry),
       members: [{ step: entry.step, index: entry.index, eventOffset: 0 }],
     }));
   }
 
   if (mode === 'combined') {
     return groupContiguous(prepared).map((group, i) => {
-      const merged = mergeDocuments(group.entries.map((e) => e.document));
+      const isXml = group.entries[0].xml !== undefined;
       let eventOffset = 0;
       const members = group.entries.map((entry) => {
         const member = { step: entry.step, index: entry.index, eventOffset };
-        eventOffset += entry.document.epcisBody.eventList.length;
+        eventOffset += eventCountOf(entry);
         return member;
       });
       return {
@@ -96,8 +109,11 @@ function planRequests({ prepared, mode }) {
         role: group.role,
         endpoint: group.entries[0].endpoint,
         sync: group.sync,
-        body: JSON.stringify(merged),
-        eventCount: merged.epcisBody.eventList.length,
+        body: isXml
+          ? mergeXmlDocuments(group.entries.map((e) => e.xml))
+          : JSON.stringify(mergeDocuments(group.entries.map((e) => e.document))),
+        contentType: contentTypeOf(group.entries[0]),
+        eventCount: eventOffset,
         members,
       };
     });

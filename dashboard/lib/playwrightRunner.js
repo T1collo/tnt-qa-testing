@@ -10,6 +10,8 @@ const crypto = require('crypto');
 const { EventEmitter } = require('events');
 const { PROJECT_ROOT } = require('./paths');
 const audit = require('./auditDb');
+const { createRun, restartRun, finishRun, setResults } = require('./runStore');
+const { reasonForResult } = require('./failureReason');
 
 const CLI = path.join(PROJECT_ROOT, 'node_modules', '@playwright', 'test', 'cli.js');
 const REPORTER = path.join(PROJECT_ROOT, 'tests', 'helpers', 'live-reporter.js');
@@ -77,7 +79,8 @@ function publish(run, event) {
 
 function toResult(e) {
   const skipped = e.status === 'skipped';
-  return {
+  const ok = e.outcome === 'expected' && !skipped;
+  const result = {
     // Tests without a workbook ID (qtest) fall back to their spec name, not Playwright's hash.
     testId: e.testId || String(e.path?.[0] || 'test').replace(/\.spec\.[jt]s$/, ''),
     stepKey: e.id,
@@ -96,30 +99,59 @@ function toResult(e) {
         ok: e.outcome === 'expected',
         durationMs: e.durationMs,
         error: e.error || undefined,
+        actual: e.actual || undefined,
+        expected: e.expected || undefined,
+        reason: e.reason || undefined,
+        errorDetail: e.errorDetail || undefined,
       },
     ],
   };
+  // Why it failed, in plain English - shown on the Run page and written to the workbook.
+  if (!ok && !skipped) result.reason = reasonForResult(result);
+  return result;
 }
 
-function startRun({ files, headed, baseUrl }) {
+// `rerunOf`: run again under that run's id (its previous attempt is archived) instead of a new run.
+function startRun({ files, headed, baseUrl, health = null, rerunOf = null }) {
   if (registry.activeId) {
     const err = new Error('A Playwright run is already in progress.');
     err.status = 409;
     throw err;
   }
-  const id = `pw_${Date.now()}_${crypto.randomBytes(3).toString('hex')}`;
-  const run = { id, status: 'running', total: null, results: [], logs: [], startedAt: new Date().toISOString() };
+  const config = {
+    role: 'ui',
+    eventTypes: null,
+    baseUrl: baseUrl || null,
+    documentMode: headed ? 'headed' : 'headless',
+    health,
+    consignment: { specs: files.length ? files : 'all' },
+  };
+  // Mirror into runStore so /health history includes UI runs with the same probe snapshot.
+  let storeRun;
+  if (rerunOf) {
+    storeRun = restartRun(rerunOf, 'ui', config);
+    if (!storeRun) {
+      const err = new Error(`Run ${rerunOf} not found or not a UI-test run`);
+      err.status = 404;
+      throw err;
+    }
+  } else {
+    storeRun = createRun({ id: `pw_${Date.now()}_${crypto.randomBytes(3).toString('hex')}`, ...config });
+  }
+  const id = storeRun.id;
+  const run = {
+    id: storeRun.id,
+    status: 'running',
+    total: null,
+    results: [],
+    logs: [],
+    startedAt: storeRun.startedAt,
+    health,
+    baseUrl,
+  };
   registry.runs.set(id, run);
   registry.activeId = id;
-  audit.recordRunStart({
-    id,
-    kind: 'ui',
-    role: 'browser',
-    documentMode: headed ? 'headed' : 'headless',
-    baseUrl,
-    startedAt: run.startedAt,
-    consignment: { specs: files.length ? files : 'all' },
-  });
+  // createRun / restartRun already wrote the audit start row (role: ui).
 
   // The config's own reporters are replaced, so html and json are listed again to keep the
   // report and test-results/results.json exactly as `npm test` leaves them.
@@ -153,17 +185,8 @@ function startRun({ files, headed, baseUrl }) {
     run.finishedAt = new Date().toISOString();
     delete run.child;
     registry.activeId = null;
-    const passed = run.results.filter((r) => r.ok).length;
-    const skipped = run.results.filter((r) => !r.ok && r.skipped).length;
-    audit.recordRunFinish(run.id, {
-      status,
-      finishedAt: run.finishedAt,
-      total: run.results.length,
-      passed,
-      failed: run.results.length - passed - skipped,
-      skipped,
-      error,
-    });
+    setResults(run.id, run.results);
+    finishRun(run.id, { status, error });
     publish(run, { type: 'done', status, error });
   };
   child.on('error', (err) => finish('error', err.message));
