@@ -1,2 +1,4 @@
 event_id,row_index,code,message,gtin,batch_no,case_group
-hierarchy-csv-row:4,4,VALIDATION_FAILED,"Serial number ""SOEM3SE206002"" (GTIN: 6161102974997) already appears in row 3 of this CSV.",6161102974997,BOEM3SE206003,C063
+hierarchy-csv-row:4,4,VALIDATION_FAILED,"Serial number ""SOTCM65606002"" (GTIN: 6161102974997) already appears in row 3 of this CSV.",6161102974997,BOTCM65606003,C063
+urn:uuid:dc27aa04-5ff3-4b02-84da-9ae3124f1168,,DUPLICATE_EVENT_ID,"Event ID urn:uuid:dc27aa04-5ff3-4b02-84da-9ae3124f1168 was already ingested",,,
+urn:uuid:12308344-b0cc-4dd8-8e1c-f7d36d546c75,,DUPLICATE_EVENT_ID,"Event ID urn:uuid:12308344-b0cc-4dd8-8e1c-f7d36d546c75 was already ingested",,,

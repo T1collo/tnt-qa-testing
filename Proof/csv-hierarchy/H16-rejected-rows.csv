@@ -1,2 +1,5 @@
 event_id,row_index,code,message,gtin,batch_no,case_group
-hierarchy-csv-row:4,4,VALIDATION_FAILED,"package_group is required",6161102974997,BOEM3SE216003,C163
+hierarchy-csv-row:4,4,VALIDATION_FAILED,"package_group is required",6161102974997,BOTCM65616003,C163
+urn:uuid:6ec632aa-a119-4416-8989-a25597236547,,DUPLICATE_EVENT_ID,"Event ID urn:uuid:6ec632aa-a119-4416-8989-a25597236547 was already ingested",,,
+urn:uuid:b7740bcf-641f-4fb7-813b-c1b89d72ff71,,DUPLICATE_EVENT_ID,"Event ID urn:uuid:b7740bcf-641f-4fb7-813b-c1b89d72ff71 was already ingested",,,
+urn:uuid:c81ad8d1-0d0d-4655-8a72-c3284d88ce78,,DUPLICATE_EVENT_ID,"Event ID urn:uuid:c81ad8d1-0d0d-4655-8a72-c3284d88ce78 was already ingested",,,

@@ -1,0 +1,219 @@
+{
+  "run": "PIVTY5F",
+  "at": "2026-11-13T08:21:12.734Z",
+  "question": "Are ScP51100001, SCP51100001, scp51100001 stored as-sent or all folded to scp51100001?",
+  "sent": [
+    "ScP51100001",
+    "SCP51100001",
+    "scp51100001"
+  ],
+  "storedSerials": [],
+  "uniqueStored": [],
+  "preservedAsSent": false,
+  "appearsFoldedToLowercase": false,
+  "notes": [
+    "If C2/C3 reject as DUPLICATE_EVENT_PAYLOAD after C1, case is folded (same EPC key).",
+    "If all three store distinct serial_number values matching send case, case is preserved."
+  ],
+  "tests": [
+    {
+      "name": "C_CASE_1_ScP51100001.csv",
+      "serial": "ScP51100001",
+      "batch": "BCPIVTY5F1",
+      "uploadStatus": 202,
+      "uploadBody": "{\"async\":true,\"accepted\":true,\"correlation_id\":\"8990f389-c86c-49c3-987f-8ab0346e05fc\",\"request_id\":\"8990f389-c86c-49c3-987f-8ab0346e05fc\",\"status_url\":\"/partners/hierarchy-bulk/csv-import/status/8990f389-c86c-49c3-987f-8ab0346e05fc\",\"message\":\"Hierarchy Bulk CSV accepted for asynchronous manufacturer event processing. Poll status_url.\",\"estimated_epcs\":3,\"event_count\":3,\"parse_rejected_count\":0}",
+      "requestId": "8990f389-c86c-49c3-987f-8ab0346e05fc",
+      "final": {
+        "correlation_id": "8990f389-c86c-49c3-987f-8ab0346e05fc",
+        "status": "succeeded",
+        "result_http_status": 200,
+        "partial": false,
+        "event_ids": [
+          "urn:uuid:371d4c5c-f6ac-4de2-8843-aab3241b7158",
+          "urn:uuid:79ecee9e-80c7-4323-818f-0fe51e5343ac",
+          "urn:uuid:2054daeb-94a0-4f52-8f73-226c4da3579e"
+        ],
+        "rejected": [],
+        "accepted_count": 3,
+        "rejected_count": 0,
+        "error_code": null,
+        "error_message": null,
+        "result_summary": {
+          "message": "EPCIS events accepted",
+          "partial": false,
+          "rejected": [],
+          "byte_size": 146,
+          "event_ids": [
+            "urn:uuid:371d4c5c-f6ac-4de2-8843-aab3241b7158",
+            "urn:uuid:79ecee9e-80c7-4323-818f-0fe51e5343ac",
+            "urn:uuid:2054daeb-94a0-4f52-8f73-226c4da3579e"
+          ],
+          "event_count": 3,
+          "content_type": "text/csv",
+          "accepted_count": 3,
+          "estimated_epcs": 3,
+          "rejected_count": 0,
+          "events_processed": 3,
+          "parse_rejected_count": 0
+        },
+        "accepted_at": "2026-11-13T08:20:56.796Z",
+        "updated_at": "2026-11-13T08:20:57.335Z",
+        "completed_at": "2026-11-13T08:20:57.335Z",
+        "endpoint": "/partners/hierarchy-bulk/csv-import/async"
+      },
+      "pageText": "Upload Manufacturer partners can submit EPCIS XML or hierarchy Bulk CSV for asynchronous validation and ingest. Outcomes appear here and under Async submissions. Supported limits Now: Hierarchy Bulk CSV (.csv) → manufacturer commissioning + aggregation events (partial) Also available: EPCIS 1.2 XML — switch to XML mode Coming later: JSON-LD (.json, .jsonld) Max size 10.00 MB Processing: async (session auth — no API key paste) Hierarchy Bulk CSV XML available CSV available JSON-LD soon Download CSV template Drop a .csv file here, or click to browse Max 10.00 MB · Hierarchy Bulk CSV (batches → cases → packages) C_CASE_1_ScP51100001.csv 146 B Upload CSV Live status succeeded Correlation ID 8990f389-c86c-49c3-987f-8ab0346e05fc Events (accepted / rejected) 3 / 0 Succeeded · 3 event(s) accepted View full details Open in Async submissions Refresh status National Track & Trace System — Partner Portal Need help? Contact trackandtrace@apeiro.digital",
+      "rejected": [],
+      "stored": {
+        "found": false,
+        "searched": "BCPIVTY5F1",
+        "nearby": []
+      }
+    },
+    {
+      "name": "C_CASE_2_SCP51100001.csv",
+      "serial": "SCP51100001",
+      "batch": "BCPIVTY5F2",
+      "uploadStatus": 202,
+      "uploadBody": "{\"async\":true,\"accepted\":true,\"correlation_id\":\"cf47235e-23a2-4ae5-a865-399939cdcec7\",\"request_id\":\"cf47235e-23a2-4ae5-a865-399939cdcec7\",\"status_url\":\"/partners/hierarchy-bulk/csv-import/status/cf47235e-23a2-4ae5-a865-399939cdcec7\",\"message\":\"Hierarchy Bulk CSV accepted for asynchronous manufacturer event processing. Poll status_url.\",\"estimated_epcs\":3,\"event_count\":3,\"parse_rejected_count\":0}",
+      "requestId": "cf47235e-23a2-4ae5-a865-399939cdcec7",
+      "final": {
+        "correlation_id": "cf47235e-23a2-4ae5-a865-399939cdcec7",
+        "status": "succeeded",
+        "result_http_status": 207,
+        "partial": true,
+        "event_ids": [
+          "urn:uuid:6e241eec-8c29-44b4-8a0f-fabbd02b7c58",
+          "urn:uuid:0ca65e74-248a-4d4c-8f1e-d56a279f18ba"
+        ],
+        "rejected": [
+          {
+            "epc": "urn:epc:id:sgtin:6161102974997.SCP51100001",
+            "code": "DUPLICATE_EVENT_PAYLOAD",
+            "message": "Duplicate matrix key EPC+bizStep:5b307715ea86d5806710f1636db6b006f490b64599e39136adca3afd5fbd51d6 for bizStep=commissioning disposition=active",
+            "event_id": "urn:uuid:0ad32222-7302-4383-84c5-5a4d6feb35b7",
+            "http_status": 409
+          }
+        ],
+        "accepted_count": 2,
+        "rejected_count": 1,
+        "error_code": null,
+        "error_message": null,
+        "result_summary": {
+          "message": "EPCIS events accepted",
+          "partial": true,
+          "rejected": [
+            {
+              "epc": "urn:epc:id:sgtin:6161102974997.SCP51100001",
+              "code": "DUPLICATE_EVENT_PAYLOAD",
+              "message": "Duplicate matrix key EPC+bizStep:5b307715ea86d5806710f1636db6b006f490b64599e39136adca3afd5fbd51d6 for bizStep=commissioning disposition=active",
+              "event_id": "urn:uuid:0ad32222-7302-4383-84c5-5a4d6feb35b7",
+              "http_status": 409
+            }
+          ],
+          "byte_size": 146,
+          "event_ids": [
+            "urn:uuid:6e241eec-8c29-44b4-8a0f-fabbd02b7c58",
+            "urn:uuid:0ca65e74-248a-4d4c-8f1e-d56a279f18ba"
+          ],
+          "event_count": 3,
+          "content_type": "text/csv",
+          "accepted_count": 2,
+          "estimated_epcs": 3,
+          "rejected_count": 1,
+          "events_processed": 2,
+          "parse_rejected_count": 0
+        },
+        "accepted_at": "2026-11-13T08:21:03.293Z",
+        "updated_at": "2026-11-13T08:21:03.546Z",
+        "completed_at": "2026-11-13T08:21:03.546Z",
+        "endpoint": "/partners/hierarchy-bulk/csv-import/async"
+      },
+      "pageText": "Upload Manufacturer partners can submit EPCIS XML or hierarchy Bulk CSV for asynchronous validation and ingest. Outcomes appear here and under Async submissions. Supported limits Now: Hierarchy Bulk CSV (.csv) → manufacturer commissioning + aggregation events (partial) Also available: EPCIS 1.2 XML — switch to XML mode Coming later: JSON-LD (.json, .jsonld) Max size 10.00 MB Processing: async (session auth — no API key paste) Hierarchy Bulk CSV XML available CSV available JSON-LD soon Download CSV template Drop a .csv file here, or click to browse Max 10.00 MB · Hierarchy Bulk CSV (batches → cases → packages) C_CASE_2_SCP51100001.csv 146 B Upload CSV Live status succeeded Correlation ID cf47235e-23a2-4ae5-a865-399939cdcec7 Events (accepted / rejected) 2 / 1 Partial · 2 event(s) accepted · 1 rejected DUPLICATE_EVENT_PAYLOAD · urn:uuid:0ad32222-7302-4383-84c5-5a4d6feb35b7 Duplicate matrix key EPC+bizStep:5b307715ea86d5806710f1636db6b006f490b64599e39136adca3afd5fbd51d6 for bizStep=commissioning disposition=active Download rejected CSV View full details Open in Async submissions Refresh status National Track & Trace System — Partner Portal Need help? Contact trackandtrace@apeiro.digital",
+      "rejected": [
+        {
+          "code": "DUPLICATE_EVENT_PAYLOAD",
+          "message": "Duplicate matrix key EPC+bizStep:5b307715ea86d5806710f1636db6b006f490b64599e39136adca3afd5fbd51d6 for bizStep=commissioning disposition=active",
+          "epc": "urn:epc:id:sgtin:6161102974997.SCP51100001"
+        }
+      ],
+      "stored": {
+        "found": false,
+        "searched": "BCPIVTY5F2",
+        "nearby": []
+      }
+    },
+    {
+      "name": "C_CASE_3_scp51100001.csv",
+      "serial": "scp51100001",
+      "batch": "BCPIVTY5F3",
+      "uploadStatus": 202,
+      "uploadBody": "{\"async\":true,\"accepted\":true,\"correlation_id\":\"6b22b85b-e983-43db-8955-a68dc2ad3f3c\",\"request_id\":\"6b22b85b-e983-43db-8955-a68dc2ad3f3c\",\"status_url\":\"/partners/hierarchy-bulk/csv-import/status/6b22b85b-e983-43db-8955-a68dc2ad3f3c\",\"message\":\"Hierarchy Bulk CSV accepted for asynchronous manufacturer event processing. Poll status_url.\",\"estimated_epcs\":3,\"event_count\":3,\"parse_rejected_count\":0}",
+      "requestId": "6b22b85b-e983-43db-8955-a68dc2ad3f3c",
+      "final": {
+        "correlation_id": "6b22b85b-e983-43db-8955-a68dc2ad3f3c",
+        "status": "succeeded",
+        "result_http_status": 207,
+        "partial": true,
+        "event_ids": [
+          "urn:uuid:298ac0af-340a-4046-82c1-11d7c7eb35af",
+          "urn:uuid:c6da6ebd-5a7c-45e9-849d-528162ce6cf5"
+        ],
+        "rejected": [
+          {
+            "epc": "urn:epc:id:sgtin:6161102974997.scp51100001",
+            "code": "DUPLICATE_EVENT_PAYLOAD",
+            "message": "Duplicate matrix key EPC+bizStep:5b307715ea86d5806710f1636db6b006f490b64599e39136adca3afd5fbd51d6 for bizStep=commissioning disposition=active",
+            "event_id": "urn:uuid:828bc840-df27-4436-836d-3420ef181950",
+            "http_status": 409
+          }
+        ],
+        "accepted_count": 2,
+        "rejected_count": 1,
+        "error_code": null,
+        "error_message": null,
+        "result_summary": {
+          "message": "EPCIS events accepted",
+          "partial": true,
+          "rejected": [
+            {
+              "epc": "urn:epc:id:sgtin:6161102974997.scp51100001",
+              "code": "DUPLICATE_EVENT_PAYLOAD",
+              "message": "Duplicate matrix key EPC+bizStep:5b307715ea86d5806710f1636db6b006f490b64599e39136adca3afd5fbd51d6 for bizStep=commissioning disposition=active",
+              "event_id": "urn:uuid:828bc840-df27-4436-836d-3420ef181950",
+              "http_status": 409
+            }
+          ],
+          "byte_size": 146,
+          "event_ids": [
+            "urn:uuid:298ac0af-340a-4046-82c1-11d7c7eb35af",
+            "urn:uuid:c6da6ebd-5a7c-45e9-849d-528162ce6cf5"
+          ],
+          "event_count": 3,
+          "content_type": "text/csv",
+          "accepted_count": 2,
+          "estimated_epcs": 3,
+          "rejected_count": 1,
+          "events_processed": 2,
+          "parse_rejected_count": 0
+        },
+        "accepted_at": "2026-11-13T08:21:09.665Z",
+        "updated_at": "2026-11-13T08:21:10.025Z",
+        "completed_at": "2026-11-13T08:21:10.025Z",
+        "endpoint": "/partners/hierarchy-bulk/csv-import/async"
+      },
+      "pageText": "Upload Manufacturer partners can submit EPCIS XML or hierarchy Bulk CSV for asynchronous validation and ingest. Outcomes appear here and under Async submissions. Supported limits Now: Hierarchy Bulk CSV (.csv) → manufacturer commissioning + aggregation events (partial) Also available: EPCIS 1.2 XML — switch to XML mode Coming later: JSON-LD (.json, .jsonld) Max size 10.00 MB Processing: async (session auth — no API key paste) Hierarchy Bulk CSV XML available CSV available JSON-LD soon Download CSV template Drop a .csv file here, or click to browse Max 10.00 MB · Hierarchy Bulk CSV (batches → cases → packages) C_CASE_3_scp51100001.csv 146 B Upload CSV Live status succeeded Correlation ID 6b22b85b-e983-43db-8955-a68dc2ad3f3c Events (accepted / rejected) 2 / 1 Partial · 2 event(s) accepted · 1 rejected DUPLICATE_EVENT_PAYLOAD · urn:uuid:828bc840-df27-4436-836d-3420ef181950 Duplicate matrix key EPC+bizStep:5b307715ea86d5806710f1636db6b006f490b64599e39136adca3afd5fbd51d6 for bizStep=commissioning disposition=active Download rejected CSV View full details Open in Async submissions Refresh status National Track & Trace System — Partner Portal Need help? Contact trackandtrace@apeiro.digital",
+      "rejected": [
+        {
+          "code": "DUPLICATE_EVENT_PAYLOAD",
+          "message": "Duplicate matrix key EPC+bizStep:5b307715ea86d5806710f1636db6b006f490b64599e39136adca3afd5fbd51d6 for bizStep=commissioning disposition=active",
+          "epc": "urn:epc:id:sgtin:6161102974997.scp51100001"
+        }
+      ],
+      "stored": {
+        "found": false,
+        "searched": "BCPIVTY5F3",
+        "nearby": []
+      }
+    }
+  ]
+}

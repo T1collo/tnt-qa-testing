@@ -1,0 +1,68 @@
+Partner Portal
+
+Track & Trace
+
+Dashboard
+Organization
+Users
+Tokens
+Certification
+Logs
+Async submissions
+Upload
+Partner Learning Center
+MEMPHIS VISIONCARE PVT.LTD
+GLN: 0619999000047
+Logout
+Back to Home
+manufacturer@apeiro.digital
+Partner admin
+Async submissions
+
+Track outcomes for POST .../events/async by Request ID
+
+Filters
+1
+Refresh
+
+How async processing statuses work
+
+Accepted — request received and queued (HTTP 202). Paste the Request ID from the response into Filters to find it.
+Processing — validation and storage are in progress.
+Succeeded — event accepted into the platform (downstream delivery may still complete separately).
+Failed — validation or processing failed; fix the payload and resubmit (you get a new Request ID).
+
+If submit returns HTTP 503, the request was not accepted — retry later. API Logs only show the HTTP accept hop; final outcome is tracked here. See the Partner Learning Center.
+
+Request ID
+Status
+All
+accepted
+processing
+succeeded
+failed
+Start Date
+End Date
+Apply Filters
+Clear
+REQUEST ID	ACCEPTED	STATUS	ROLE	COMPLETED
+
+8990f389-c86c-49c3-987f-8ab0346e05fc
+
+text/csv · 146 B · 3 EPCs
+
+	13/11/2026, 11:20:56	succeeded	
+manufacturer
+	13/11/2026, 11:20:57
+Showing 1–1 of 1 · filtered · newest first
+Rows per page
+25 / page
+50 / page
+100 / page
+Previous
+Page 1 / 1
+Next
+
+National Track & Trace System — Partner Portal
+
+Need help? Contact trackandtrace@apeiro.digital
