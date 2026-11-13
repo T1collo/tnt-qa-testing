@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<epcis:EPCISDocument xmlns:epcis="urn:epcglobal:epcis:xsd:1" xmlns:cbvmda="urn:epcglobal:cbv:mda" schemaVersion="1.2" creationDate="2026-11-09T09:00:00.000Z">
+  <EPCISBody><EventList>
+    <ObjectEvent>
+      <eventID>urn:uuid:5744a2e6-9398-4af4-a2a6-45d1e9ca74c3</eventID>
+      <eventTime>2026-11-09T08:55:00.000Z</eventTime>
+      <eventTimeZoneOffset>+03:00</eventTimeZoneOffset>
+      <epcList><epc>urn:epc:id:sgtin:0614141.107346.QA4217304968</epc></epcList>
+      <action>ADD</action>
+      <bizStep>urn:epcglobal:cbv:bizstep:commissioning</bizStep>
+      <disposition>urn:epcglobal:cbv:disp:active</disposition>
+      <readPoint><id>urn:epc:id:sgln:0614141.00001.0</id></readPoint>
+      <bizLocation><id>urn:epc:id:sgln:0614141.00001.0</id></bizLocation>
+      <extension><ilmd>
+        <cbvmda:lotNumber>QAXML01</cbvmda:lotNumber>
+        <cbvmda:itemExpirationDate>2028-12-31</cbvmda:itemExpirationDate>
+      </ilmd></extension>
+    </ObjectEvent>
+  </EventList></EPCISBody>
+</epcis:EPCISDocument>

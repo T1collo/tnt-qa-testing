@@ -1,11 +1,24 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { ChevronLeft, ChevronRight, Database, Loader2, RefreshCw, Search } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  CircleCheck,
+  CircleMinus,
+  CircleX,
+  Database,
+  Filter,
+  History,
+  ListChecks,
+  Loader2,
+  RefreshCw,
+  Search,
+} from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Panel } from "@/components/panel";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
@@ -32,6 +45,8 @@ import {
   StatusPill,
 } from "@/components/document-view";
 import { Skeleton } from "@/components/ui/skeleton";
+import type { EventTracking } from "@/lib/run-session";
+import { isTestStep } from "@/lib/utils";
 import {
   Table,
   TableBody,
@@ -88,6 +103,21 @@ type ResultDetail = ResultRow & {
   issues: { kind: string; code: string | null; field: string | null; severity: string | null; message: string | null }[];
   events: SentEvent[];
   returned_event_ids: string[];
+  /** Requests a browser or load test sent, read back from the run record. */
+  exchanges?: AuditExchange[];
+  /** Load tests: every event sent (event ID, EPC, HTTP status). */
+  tracking?: EventTracking;
+};
+type AuditExchange = {
+  variant: string | null;
+  method: string | null;
+  url: string | null;
+  http_status: number | null;
+  duration_ms: number | null;
+  request_body: string | null;
+  response_body: string | null;
+  events: SentEvent[];
+  returned_event_ids: string[];
 };
 type SentEvent = {
   eventID: string | null;
@@ -125,7 +155,7 @@ function resultsUrl(f: Filters) {
 
 function OutcomeBadge({ outcome }: { outcome: string }) {
   return (
-    <Badge variant={outcome === "pass" ? "default" : outcome === "skipped" ? "outline" : "destructive"}>
+    <Badge variant={outcome === "pass" ? "success" : outcome === "skipped" ? "outline" : "destructive"}>
       {outcome === "pass" ? "PASS" : outcome === "skipped" ? "SKIPPED" : "FAIL"}
     </Badge>
   );
@@ -228,42 +258,36 @@ export function Audit() {
   const selectedRun = runId === ALL ? null : runAudit?.id === runId ? runAudit : null;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       <p className="text-sm text-muted-foreground">
         Every run and every result — passes, failures and skips — with the request, the platform&apos;s
         response and each warning it raised. Stored locally in SQLite for review and audit.
       </p>
 
       {summary?.unavailable ? (
-        <Card>
-          <CardContent className="text-sm text-destructive" role="alert">
-            The audit database is unavailable: {summary.unavailable}
-          </CardContent>
-        </Card>
+        <p className="rounded-xl border p-4 text-sm text-destructive" role="alert">
+          The audit database is unavailable: {summary.unavailable}
+        </p>
       ) : (
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
           {[
-            { label: "Runs recorded", value: counts.runTotal },
-            { label: "Passed results", value: counts.pass },
-            { label: "Failed results", value: counts.fail },
-            { label: "Skipped results", value: counts.skipped },
+            { label: "Runs recorded", value: counts.runTotal, icon: Database },
+            { label: "Passed results", value: counts.pass, icon: CircleCheck },
+            { label: "Failed results", value: counts.fail, icon: CircleX },
+            { label: "Skipped results", value: counts.skipped, icon: CircleMinus },
           ].map((s) => (
-            <Card key={s.label} className="gap-1 py-4">
-              <CardHeader className="px-4">
-                <CardDescription>{s.label}</CardDescription>
-                <CardTitle className="text-2xl tabular-nums">
-                  {summary ? s.value.toLocaleString() : <Skeleton className="h-7 w-16" />}
-                </CardTitle>
-              </CardHeader>
-            </Card>
+            <Panel key={s.label} title={s.label} icon={s.icon}>
+              <div className="font-mono text-3xl font-medium tracking-tight tabular-nums">
+                {summary ? s.value.toLocaleString() : <Skeleton className="h-9 w-20" />}
+              </div>
+            </Panel>
           ))}
         </div>
       )}
 
-      <Card>
-        <CardContent>
+      <Panel title="Filters" icon={Filter}>
           <form
-            className="grid gap-3 md:grid-cols-2 xl:grid-cols-[minmax(0,2fr)_repeat(2,minmax(0,1fr))_minmax(0,1.2fr)]"
+            className="grid gap-3 md:grid-cols-2 xl:grid-cols-[minmax(0,1.6fr)_repeat(2,minmax(0,1fr))_minmax(0,1.8fr)]"
             onSubmit={(e) => {
               e.preventDefault();
               void search();
@@ -340,23 +364,22 @@ export function Audit() {
               </div>
             </div>
           </form>
-        </CardContent>
-      </Card>
+      </Panel>
 
       {selectedRun && (
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-base">
+        <Panel title="Selected run" icon={History} bodyClassName="gap-4">
+          <div className="border-b pb-3 text-sm">
+            <p className="font-medium">
               {KIND_LABEL[selectedRun.kind] ?? selectedRun.kind} run — {selectedRun.status}
-            </CardTitle>
-            <CardDescription>
+            </p>
+            <p className="mt-1 text-muted-foreground">
               <span className="font-mono">{selectedRun.id}</span> · {when(selectedRun.started_at)}
               {selectedRun.finished_at ? ` → ${when(selectedRun.finished_at)}` : ""} · {selectedRun.passed} passed,{" "}
               {selectedRun.failed} failed, {selectedRun.skipped} skipped
               {selectedRun.base_url && <span className="block font-mono text-xs">{selectedRun.base_url}</span>}
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="grid gap-4 lg:grid-cols-2">
+            </p>
+          </div>
+          <div className="grid gap-4 lg:grid-cols-2">
             <div className="min-w-0">
               <h3 className="mb-1.5 text-xs font-medium text-muted-foreground">Run log</h3>
               <pre className="max-h-48 overflow-auto rounded-md bg-muted p-3 font-mono text-xs whitespace-pre-wrap">
@@ -383,19 +406,21 @@ export function Audit() {
                 </ul>
               )}
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </Panel>
       )}
 
-      <Card className="py-0">
-        <div className="flex flex-wrap items-center justify-between gap-2 border-b px-4 py-3 text-sm">
-          <span className="flex items-center gap-2 text-muted-foreground" aria-live="polite">
-            <Database className="size-4" aria-hidden="true" />
-            {rows === null
-              ? "Loading results…"
-              : `${rows.length.toLocaleString()}${rows.length === 1000 ? "+" : ""} result${rows.length === 1 ? "" : "s"}`}
-          </span>
+      <Panel
+        title="Results"
+        icon={ListChecks}
+        bodyClassName="overflow-hidden p-0"
+        action={
           <div className="flex items-center gap-1">
+            <span className="hidden pr-2 font-mono text-xs text-muted-foreground tabular-nums sm:inline" aria-live="polite">
+              {rows === null
+                ? "Loading…"
+                : `${rows.length.toLocaleString()}${rows.length === 1000 ? "+" : ""} result${rows.length === 1 ? "" : "s"}`}
+            </span>
             <Button type="button" variant="ghost" size="sm" onClick={() => void search()} disabled={loading}>
               <RefreshCw aria-hidden="true" />
               Refresh
@@ -424,8 +449,8 @@ export function Audit() {
               <ChevronRight />
             </Button>
           </div>
-        </div>
-
+        }
+      >
         {error ? (
           <p className="px-4 py-6 text-sm text-destructive" role="alert">
             {error}
@@ -538,7 +563,7 @@ export function Audit() {
             </Table>
           </div>
         )}
-      </Card>
+      </Panel>
 
       <Dialog open={detailId !== null} onOpenChange={(open) => !open && setDetailId(null)}>
         {/* One column, top to bottom: details and platform codes, then headers, request body and
@@ -567,7 +592,7 @@ export function Audit() {
                   <DurationPill
                     ms={detail.duration_ms}
                     step={detail.step_key || detail.test_id}
-                    untimed={detail.method === "UI"}
+                    untimed={isTestStep(detail.method)}
                   />
                 </div>
                 {detail.url && (
@@ -626,6 +651,43 @@ export function Audit() {
                 )}
                 <CodeBlock label="Response" text={pretty(detail.response_body)} copyable />
               </div>
+
+              {detail.tracking && detail.tracking.lines.length > 0 && (
+                <CodeBlock
+                  label={`Events sent — event ID · EPC · HTTP status (${detail.tracking.total.toLocaleString()}${
+                    detail.tracking.lines.length < detail.tracking.total
+                      ? `, first ${detail.tracking.lines.length.toLocaleString()} shown`
+                      : ""
+                  })`}
+                  text={detail.tracking.lines.join("\n")}
+                  copyable
+                />
+              )}
+
+              {(detail.exchanges ?? []).map((x, i) => (
+                <section key={i} className="flex min-w-0 flex-col gap-3 rounded-2xl border p-3">
+                  <div className="flex flex-wrap items-center gap-2 text-sm">
+                    <span className="text-xs font-medium">
+                      Request {i + 1}
+                      {x.variant ? ` · ${x.variant}` : ""}
+                    </span>
+                    <StatusPill status={x.http_status} />
+                    <DurationPill ms={x.duration_ms} step={detail.step_key || detail.test_id} />
+                  </div>
+                  {x.url && (
+                    <p className="font-mono text-xs break-all">
+                      {x.method} {x.url}
+                    </p>
+                  )}
+                  <EventSummary
+                    events={x.events}
+                    returnedIds={x.returned_event_ids}
+                    missingNote="This request carried no EPCIS events."
+                  />
+                  <CodeBlock label="Request body" text={pretty(x.request_body)} copyable />
+                  <CodeBlock label="Response" text={pretty(x.response_body)} copyable />
+                </section>
+              ))}
             </div>
           ) : (
             <div className="flex items-center gap-2 text-sm text-muted-foreground">

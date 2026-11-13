@@ -1,0 +1,9 @@
+2d     CSV-02d_single_row.csv -> 202 {"correlation_id":"e1ff2256-d314-4091-9e59-144f3a655855","status":"failed","result_http_status":400,"partial":false,"error_code":"INVALID_GTIN_CHECK_DIGIT","error_message":"GTIN 06161102974998 has inv
+2e     CSV-02e_single_row.csv -> 202 {"correlation_id":"09059c41-3d6c-4d3c-9e27-d2e4726157c2","status":"failed","result_http_status":400,"partial":false,"error_code":"INVALID_GTIN_CHECK_DIGIT","error_message":"GTIN 00061611029749 has inv
+2f     CSV-02f_single_row.csv -> 202 {"correlation_id":"0f235eee-4356-4a45-bb34-cd6c085c7698","status":"succeeded","result_http_status":200,"partial":false,"event_ids":["urn:uuid:ceb72104-b1b3-4055-8299-126140afe7dc"],"accepted_count":1,
+2g     CSV-02g_single_row.csv -> 500 {"statusCode":500,"message":"Internal server error"}
+14d    CSV-14d_single_placeholder.csv -> 202 {"correlation_id":"7107d83d-1412-4471-ae08-dd136fbbbf45","status":"failed","result_http_status":409,"partial":false,"error_code":"DUPLICATE_EVENT_PAYLOAD","error_message":"Duplicate matrix key EPC+biz
+14e    CSV-14e_single_placeholder.csv -> 202 {"correlation_id":"bf76bf0b-d3f8-48c0-a7a7-0085939d4019","status":"failed","result_http_status":400,"partial":false,"error_code":"INVALID_GS1_IDENTIFIER","error_message":"SGTIN serial must be 1–20 GS1
+14f    CSV-14f_single_placeholder.csv -> 202 {"correlation_id":"96a6a7e9-29ac-4ca5-88b5-a6b8d106125b","status":"failed","result_http_status":409,"partial":false,"error_code":"DUPLICATE_EVENT_PAYLOAD","error_message":"Duplicate matrix key EPC+biz
+
+Screenshots and results in c:\Users\Collins\Desktop\TnT\qa-testing-suite\Proof\partner

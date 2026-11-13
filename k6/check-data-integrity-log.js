@@ -17,7 +17,8 @@ if (!logPath) {
 const lines = fs.readFileSync(logPath, 'utf-8').split('\n');
 const rows = [];
 for (const line of lines) {
-  const m = line.match(/INTEGRITY submitted=(\S+) status=(\d+) acked=(\S+)/);
+  // k6 logs console output as msg="...", so stop each capture at a quote as well as whitespace.
+  const m = line.match(/INTEGRITY submitted=([^\s"]+) status=(\d+) acked=([^\s"]+)/);
   if (m) {
     rows.push({ submitted: m[1], status: Number(m[2]), acked: m[3] === 'NONE' ? [] : m[3].split('|') });
   }

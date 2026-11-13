@@ -25,6 +25,12 @@ export type RunResultVariant = {
   responseBody?: string;
   /** Where the run saved the document, read back through /api/runs?id=&document=. */
   documentPath?: string;
+  /** Browser tests only: what the test checks, what it saw, and why it failed. */
+  expected?: string;
+  actual?: string;
+  reason?: string;
+  errorDetail?: string;
+  error?: string;
 };
 export type RunResult = {
   testId: string;
@@ -38,12 +44,17 @@ export type RunResult = {
   error?: string;
   /** Why it failed, in plain English (set by the runners on every failed result). */
   reason?: string;
+  /** Browser tests only: the requests the test sent (portal API calls, EPCIS documents). */
+  exchanges?: RunResultVariant[];
+  /** k6 runs only: every event sent (event ID, EPC, HTTP status), for tracing afterwards. */
+  tracking?: EventTracking;
   eventId?: string;
   /** Set when several steps travelled in one document (combined per role). */
   batchId?: string;
   batchSize?: number;
   batchEventCount?: number;
 };
+export type EventTracking = { total: number; lines: string[]; file?: string };
 export type TestSheet = { ok: boolean; path?: string; dateKey?: string; matchedRows?: number; error?: string };
 type ProgressEvent =
   | { type: "result"; result: RunResult }
@@ -53,8 +64,8 @@ type ProgressEvent =
   | { type: "log"; line: string }
   | { type: "reset" };
 
-/** "api" runs go through /api/run or /api/e2e; "ui" runs are the Playwright browser suite. */
-export type RunKind = "api" | "ui";
+/** "api" runs go through /api/run or /api/e2e; "ui" runs are the Playwright browser suite; "load" runs are k6. */
+export type RunKind = "api" | "ui" | "load";
 const MAX_LOG_LINES = 400;
 const CONNECTION_LOST = "Lost the live connection to the dashboard server.";
 
@@ -153,7 +164,12 @@ function followRun(runId: string, kind: RunKind) {
   closeStream();
   // Query-string form: plain paths keep working even when the dev server loses dynamic routes.
   const id = encodeURIComponent(runId);
-  const url = kind === "ui" ? `/api/playwright/stream?runId=${id}` : `/api/run/stream?runId=${id}`;
+  const url =
+    kind === "ui"
+      ? `/api/playwright/stream?runId=${id}`
+      : kind === "load"
+        ? `/api/k6/stream?runId=${id}`
+        : `/api/run/stream?runId=${id}`;
   const es = new EventSource(url);
   source = es;
   es.onmessage = (msg) => {
@@ -212,11 +228,11 @@ export function runStarted(runId: string, total: number | null = null) {
   followRun(runId, state.kind);
 }
 
-/** Playwright runs can be stopped; the stream then reports them as "stopped". */
+/** Playwright and k6 runs can be stopped; the stream then reports them as "stopped". */
 export async function stopRun() {
-  if (state.kind !== "ui" || !state.runId || !state.running) return;
+  if (state.kind === "api" || !state.runId || !state.running) return;
   try {
-    const res = await fetch(`/api/playwright?runId=${encodeURIComponent(state.runId)}`, { method: "DELETE" });
+    const res = await fetch(`/api/${state.kind === "load" ? "k6" : "playwright"}?runId=${encodeURIComponent(state.runId)}`, { method: "DELETE" });
     if (!res.ok) setRunState({ runError: "The run could not be stopped — it may already have finished." });
   } catch {
     setRunState({ runError: "Could not reach the dashboard server to stop the run." });

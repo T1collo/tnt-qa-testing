@@ -56,11 +56,12 @@ const T = [
   { id: '21c', finding: 'A', src: 'CSV-21c_latin1.csv', latin1: true, what: '2 rows, Latin-1 encoded, one with "Côte d\'Ivoire"' },
   // Rejected as duplicates, so the batch shot shows where 0, NA and DUMMY are still stored: the first run's lots.
   { id: '14b', finding: 'B', src: 'CSV-14b_placeholders_only.csv', search: 'LXP514', what: 'Placeholder serials 0, NA, DUMMY (fresh lots)' },
-  // NONE, TEST, XXXX, 000000 and UNKNOWN were stored by the 12 Nov 07:37 run (request ad77bd67), so they
-  // now come back as duplicates; this set has never been sent. alsoSearch shows the earlier set still stored.
-  { id: '14n', finding: 'B', alsoSearch: 'LRLC14N', what: 'Placeholder serials never used before: TBC, SAMPLE, BLANK, NOSERIAL, 999999', build: () => {
+  // Earlier placeholder sets are stored now and come back as duplicates (NONE, TEST, XXXX, 000000, UNKNOWN:
+  // 12 Nov request ad77bd67; TBC, SAMPLE, BLANK, NOSERIAL, 999999: 12 Nov LZG914N*). This set has never been
+  // sent. alsoSearch shows an earlier set still stored as serials.
+  { id: '14n', finding: 'B', alsoSearch: 'LZG914N', what: 'Placeholder serials never used before: NA2, NOSERIALNO, UNASSIGNED, DEFAULT, 11111111', build: () => {
     const base = Date.now() - 50 * 60_000;
-    const lines = ['TBC', 'SAMPLE', 'BLANK', 'NOSERIAL', '999999'].map((sn, i) => row({
+    const lines = ['NA2', 'NOSERIALNO', 'UNASSIGNED', 'DEFAULT', '11111111'].map((sn, i) => row({
       Event_Type: 'COMMISSIONING', Identifier_Type: 'SGTIN', GTIN: '6161102974997', Unit_ID: sn, Packaging_Level: 'Item',
       Event_Timestamp: new Date(base + i * 60_000 + 3 * 3600_000).toISOString().slice(0, 19), Event_TimeZone_Offset: '+03:00',
       BizLocation_GLN: '6164003000000', Lot_Batch_Number: `L${RUN}14N${i}`, Lot_Manufacturing_Date: new Date().toISOString().slice(0, 8) + '01',

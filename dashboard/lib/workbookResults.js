@@ -139,7 +139,8 @@ function summarizeActualResult(result) {
 // COMMENTS for a stamped row: on a failure the plain-English reason comes first, then where
 // the result came from. Recomputed from the variants shown, which may come from several runs.
 function failureComment(result, ok, stamp, extra = '') {
-  const source = `Automated via QA Dashboard - ${stamp}.${extra}`;
+  // Where the result came from: the run id and role only - no tool name, no date.
+  const source = `${stamp}.${extra}`;
   if (ok) return source;
   // Recomputed at export time so older runs pick up the current plain-English wording; a
   // reason the test wrote itself is kept on its variant and still wins.
@@ -248,7 +249,7 @@ function completeTestRows(sheet, isStamped, untouched) {
       const why = existing || (actual && !/^Recorded as /.test(actual)
         ? actual
         : 'the master test plan marks this case as failed but records no reason');
-      commentCell.value = `Failed because: ${why} | Carried over from the master test plan - not re-run by automation.`;
+      commentCell.value = `Failed because: ${why} | Carried over from the master test plan; not re-run.`;
     }
     completed += 1;
   });
@@ -309,7 +310,7 @@ function appendUnlistedResults(wb, index, listed) {
   const sectionStyle = ref ? { ...ref.getRow(1).getCell(1).style } : {};
   const headerStyle = ref ? { ...ref.getRow(2).getCell(1).style } : {};
   const bodyStyle = ref ? { ...ref.getRow(3).getCell(2).style } : {};
-  const stampOf = (rn) => `run ${rn.id} (${rn.role}) at ${rn.finishedAt || rn.startedAt}`;
+  const stampOf = (rn) => `Run ${rn.id} (${rn.role})`;
   let added = 0;
 
   for (const home of UNLISTED_HOMES) {
@@ -378,7 +379,7 @@ async function buildWorkbook(index, { untouched = 'keep', dataLog = null } = {})
       const row = sheet.getRow(r);
       const testId = row.getCell(COLS.testId).value;
       const { result, run, formats } = index.get(testId);
-      const stampOf = (rn) => `run ${rn.id} (${rn.role}) at ${rn.finishedAt || rn.startedAt}`;
+      const stampOf = (rn) => `Run ${rn.id} (${rn.role})`;
       matchedRows += 1;
 
       const hasFormats = formats.some((f) => FORMAT_LABEL[f.variant.variant]);
@@ -400,7 +401,7 @@ async function buildWorkbook(index, { untouched = 'keep', dataLog = null } = {})
         put(added, 'expected', `Accepted (HTTP 2xx) in ${FORMAT_LABEL[v.variant]}`);
         put(added, 'actualResult', describeResponse(v) + (v.durationMs != null ? ` (${v.durationMs} ms)` : ''));
         if (C.status) paintRow(added, C, v.ok ? 'PASS' : 'FAIL');
-        put(added, 'comments', v.ok ? `Automated via QA Dashboard - ${stamp}.` : `Failed because: ${reasonFromApiResponse(v)} | Automated via QA Dashboard - ${stamp}.`);
+        put(added, 'comments', v.ok ? `${stamp}.` : `Failed because: ${reasonFromApiResponse(v)} | ${stamp}.`);
         formatRows += 1;
       });
     }

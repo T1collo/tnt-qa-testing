@@ -11,6 +11,7 @@ const os = require('os');
 const { spawnSync } = require('child_process');
 const { test, expect } = require('@playwright/test');
 const { qtest } = require('../helpers/qtest');
+const { recordExchange } = require('../helpers/exchanges');
 const { logEntity } = require('../helpers/datalog');
 const { PORTAL, PARTNER_ACCOUNTS, partnerFlow, partnerContext } = require('./partner-helpers');
 
@@ -204,6 +205,7 @@ test.describe('Partner portal - role-based access', () => {
             headers: { 'Content-Type': 'application/ld+json', 'X-API-Key': key },
             body: '{}',
           });
+          await recordExchange({ label: `${role} key -> ${target}`, url: ENDPOINTS[target], status: res.status, ok: target === role ? ![401, 403].includes(res.status) : res.status === 403, contentType: 'application/ld+json', requestBody: '{}', responseBody: await res.text() });
           r.observed.push(`${target} endpoint: HTTP ${res.status}`);
           if (target === role) expect([401, 403], `own endpoint refused the ${role} key`).not.toContain(res.status);
           else expect(res.status, `${role} key on the ${target} endpoint`).toBe(403);

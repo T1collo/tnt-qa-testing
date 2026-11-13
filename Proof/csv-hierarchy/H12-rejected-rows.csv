@@ -1,2 +1,2 @@
 event_id,row_index,code,message,gtin,batch_no,case_group
-hierarchy-csv-row:52,52,VALIDATION_FAILED,"expiry ""not-a-date"" is not a valid date. Use ISO 8601 format, e.g. 2027-06-30.",6161102974997,B9PNH10A12051,C1251
+hierarchy-csv-row:52,52,VALIDATION_FAILED,"expiry ""not-a-date"" is not a valid date. Use ISO 8601 format, e.g. 2027-06-30.",6161102974997,BOEM3SE212051,C1251

@@ -13,6 +13,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import {
+  BrowserTestDetail,
   CodeBlock,
   EventSummary,
   NO_SCROLLBAR,
@@ -24,7 +25,7 @@ import {
 } from "@/components/document-view";
 import { eventsFromBody, returnedEventIds } from "@/lib/epcisEvents";
 import type { RunResult } from "@/lib/run-session";
-import { cn } from "@/lib/utils";
+import { cn, isTestStep, showsTestDetail } from "@/lib/utils";
 
 /**
  * One step of a live run: the document it was sent in - whole, including every event when a
@@ -47,7 +48,9 @@ export function RunStepDialog({
   const [fetchError, setFetchError] = useState<{ step: string; message: string } | null>(null);
 
   const step = result?.stepKey || result?.testId || null;
-  const variants = result?.variants ?? [];
+  // A browser test opens on its own result, then one tab per request it sent.
+  const exchanges = result?.exchanges ?? [];
+  const variants = [...(result?.variants ?? []), ...exchanges];
   const variant = variants[Math.min(variantIndex, Math.max(variants.length - 1, 0))];
   const needsFetch = Boolean(result && variant && !variant.requestBody && variant.documentPath && runId && step);
 
@@ -81,6 +84,8 @@ export function RunStepDialog({
   const events: DocEvent[] = eventsFromBody(document ?? "");
   const returned = returnedEventIds(variant?.responseBody ?? "");
   const shared = (result.batchSize ?? 1) > 1;
+  const isTest = showsTestDetail(variant);
+  const tabLabel = (v: (typeof variants)[number]) => (showsTestDetail(v) ? "Test" : v.variant);
 
   return (
     <Dialog open onOpenChange={onOpenChange}>
@@ -111,62 +116,78 @@ export function RunStepDialog({
             <DurationPill
               ms={variant?.durationMs}
               step={result.stepKey || result.testId}
-              untimed={variant?.method === "UI"}
+              untimed={isTestStep(variant?.method)}
             />
             {variants.length > 1 && (
-              <span className="ml-auto flex gap-1">
+              <span className={cn("flex flex-wrap gap-1", exchanges.length ? "basis-full" : "ml-auto")}>
                 {variants.map((v, i) => (
                   <Button
-                    key={v.variant}
+                    key={`${v.variant}-${i}`}
                     type="button"
                     size="sm"
                     variant={i === variantIndex ? "secondary" : "ghost"}
                     aria-pressed={i === variantIndex}
                     onClick={() => setVariantIndex(i)}
                   >
-                    {v.variant}
+                    {tabLabel(v)}
                   </Button>
                 ))}
               </span>
             )}
           </div>
 
-          {variant?.url && (
+          {variant?.url && !isTest && (
             <p className="font-mono text-xs break-all">
               {variant.method ?? "POST"} {variant.url}
             </p>
           )}
-          {result.error && !result.ok && (
-            <p className="text-sm text-destructive" role="alert">
-              {result.error}
-            </p>
-          )}
-
-          <EventSummary
-            events={events}
-            returnedIds={returned}
-            fallbackEventId={result.eventId ?? null}
-            missingNote="This step sent no document, so there is nothing to copy."
-          />
-
-          {document ? (
-            <CodeBlock
-              label={shared ? "Document sent (shared by several steps)" : "Document sent"}
-              text={pretty(document)}
-              copyable
+          {isTest ? (
+            <BrowserTestDetail
+              variant={variant}
+              ok={result.ok}
+              skipped={result.skipped}
+              reason={result.reason}
+              requestCount={exchanges.length}
+              tracking={result.tracking}
             />
-          ) : needsFetch && fetchError?.step !== step ? (
-            <p className="flex items-center gap-2 text-xs text-muted-foreground">
-              <Loader2 className="size-3.5 animate-spin" aria-hidden="true" />
-              Loading the saved document…
-            </p>
-          ) : fetchError?.step === step ? (
-            <p className="text-xs text-destructive" role="alert">
-              {fetchError.message}
-            </p>
-          ) : null}
+          ) : (
+            <>
+            {result.error && !result.ok && !exchanges.length && (
+              <p className="text-sm text-destructive" role="alert">
+                {result.error}
+              </p>
+            )}
 
-          <CodeBlock label="Response" text={pretty(variant?.responseBody)} copyable />
+            {/* A portal call that is not an EPCIS document has no events or EPCs to list. */}
+            {(events.length > 0 || !exchanges.length) && (
+              <EventSummary
+                events={events}
+                returnedIds={returned}
+                fallbackEventId={result.eventId ?? null}
+                missingNote="This step sent no document, so there is nothing to copy."
+              />
+            )}
+
+            {document ? (
+              <CodeBlock
+                label={shared ? "Document sent (shared by several steps)" : "Document sent"}
+                text={pretty(document)}
+                copyable
+              />
+            ) : needsFetch && fetchError?.step !== step ? (
+              <p className="flex items-center gap-2 text-xs text-muted-foreground">
+                <Loader2 className="size-3.5 animate-spin" aria-hidden="true" />
+                Loading the saved document…
+              </p>
+            ) : fetchError?.step === step ? (
+              <p className="text-xs text-destructive" role="alert">
+                {fetchError.message}
+              </p>
+            ) : null}
+
+            <CodeBlock label="Response" text={pretty(variant?.responseBody)} copyable />
+            </>
+          )}
         </div>
       </DialogContent>
     </Dialog>

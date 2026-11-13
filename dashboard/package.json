@@ -6,10 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "postinstall": "patch-package"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "@number-flow/react": "^0.6.2",
+    "@skyhook-io/k8s-ui": "^1.19.0",
     "@visx/curve": "^4.0.1-alpha.0",
     "@visx/event": "^4.0.1-alpha.0",
     "@visx/gradient": "^4.0.1-alpha.0",
@@ -24,7 +27,9 @@
     "d3-array": "^3.2.4",
     "d3-shape": "^3.2.0",
     "dotenv": "^17.4.2",
+    "elkjs": "^0.12.1",
     "exceljs": "^4.4.0",
+    "gsap": "^3.15.0",
     "lucide-react": "^1.31.0",
     "motion": "^14.0.0",
     "next": "16.3.1",
@@ -43,6 +48,7 @@
     "@types/react-dom": "^19.2.4",
     "eslint": "^9",
     "eslint-config-next": "16.3.1",
+    "patch-package": "^8.0.1",
     "tailwindcss": "^4",
     "typescript": "^6.0.3"
   }

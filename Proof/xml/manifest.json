@@ -1,0 +1,609 @@
+{
+  "created": "2026-11-09T10:29:30.660Z",
+  "stamp": "4220170625",
+  "cases": [
+    {
+      "shot": "E01",
+      "title": "Commissioning",
+      "expected": "202 accepted; job succeeds (master-data warnings OK)",
+      "file": "E01.xml",
+      "kind": "event",
+      "eventID": "urn:uuid:a2f0baba-d2b3-417f-ab29-e335261a6348"
+    },
+    {
+      "shot": "E02",
+      "title": "Packing",
+      "expected": "202 accepted; job succeeds (PARENT_NOT_FOUND / UNCOMMISSIONED_CHILD flags OK)",
+      "file": "E02.xml",
+      "kind": "event",
+      "eventID": "urn:uuid:9f3906b0-a262-4a77-b1d7-fb0aaa0344f7"
+    },
+    {
+      "shot": "E03",
+      "title": "SSCC-to-SSCC Packing",
+      "expected": "202 accepted; job succeeds with aggregation flags OK",
+      "file": "E03.xml",
+      "kind": "event",
+      "eventID": "urn:uuid:ec9c7a4e-534d-4f05-b6b2-80393b2b1555"
+    },
+    {
+      "shot": "E04",
+      "title": "Shipping",
+      "expected": "202 accepted; job succeeds (SHIPPING_WITHOUT_COMMISSIONING / NO_REGULATORY_APPROVAL OK)",
+      "file": "E04.xml",
+      "kind": "event",
+      "eventID": "urn:uuid:4a8bc9da-e88d-43fa-ae61-23b16c4bcf2a"
+    },
+    {
+      "shot": "E05",
+      "title": "Regulator Approval",
+      "expected": "202 accepted; UNAUTHORIZED_INSPECTING_EVENT warning expected for partner",
+      "file": "E05.xml",
+      "kind": "event",
+      "eventID": "urn:uuid:97a36365-2db0-4cd8-b701-080a7de8e2ff"
+    },
+    {
+      "shot": "E06",
+      "title": "Return Shipping",
+      "expected": "202 accepted; job succeeds with disposition/sequence flags OK",
+      "file": "E06.xml",
+      "kind": "event",
+      "eventID": "urn:uuid:74d80d99-86f9-4277-8ee0-d4aa0e86786d"
+    },
+    {
+      "shot": "E07",
+      "title": "Return Receiving",
+      "expected": "202 accepted; job succeeds with receiving flags OK",
+      "file": "E07.xml",
+      "kind": "event",
+      "eventID": "urn:uuid:f3ebe532-b638-4c8c-8846-f2fd0f6004d5"
+    },
+    {
+      "shot": "E08",
+      "title": "Recall Initiation (holding)",
+      "expected": "Role mismatch or rejected/failed — holding not on manufacturer allow-list",
+      "file": "E08.xml",
+      "kind": "event",
+      "eventID": "urn:uuid:603f69f2-ee68-4be6-bbe6-d6219d89dee7"
+    },
+    {
+      "shot": "E09",
+      "title": "Damaged",
+      "expected": "202 accepted; UNAUTHORIZED_INSPECTING_EVENT and/or INVALID_DISPOSITION flags OK",
+      "file": "E09.xml",
+      "kind": "event",
+      "eventID": "urn:uuid:2c2dc387-ceae-4459-a95c-7c3810443692"
+    },
+    {
+      "shot": "E10",
+      "title": "Stolen",
+      "expected": "202 accepted; job succeeds with disposition flags OK",
+      "file": "E10.xml",
+      "kind": "event",
+      "eventID": "urn:uuid:8b8c9636-22b1-4af7-a4c6-cdee040cf2d5"
+    },
+    {
+      "shot": "E11",
+      "title": "Lost",
+      "expected": "202 accepted; job succeeds with disposition flags OK",
+      "file": "E11.xml",
+      "kind": "event",
+      "eventID": "urn:uuid:64561d59-3527-46ce-aba1-245c7cce5739"
+    },
+    {
+      "shot": "E12",
+      "title": "Expired",
+      "expected": "202 accepted; inspecting/expired flags OK",
+      "file": "E12.xml",
+      "kind": "event",
+      "eventID": "urn:uuid:33cb7164-b00e-46f4-847d-94638ed88e99"
+    },
+    {
+      "shot": "E13",
+      "title": "Destruction Completion",
+      "expected": "202 accepted; destruction flags OK",
+      "file": "E13.xml",
+      "kind": "event",
+      "eventID": "urn:uuid:35af61a2-b08f-46fb-8ad7-c4c8dd998377"
+    },
+    {
+      "shot": "E14",
+      "title": "Export",
+      "expected": "202 accepted; export/disposition flags OK",
+      "file": "E14.xml",
+      "kind": "event",
+      "eventID": "urn:uuid:9dc6198f-602e-4509-9365-3d31b21505f4"
+    },
+    {
+      "shot": "E15",
+      "title": "Stock Adjustment",
+      "expected": "202 accepted or role rejection for stock_taking on manufacturer",
+      "file": "E15.xml",
+      "kind": "event",
+      "eventID": "urn:uuid:955f79c4-f8d4-4aaf-ad61-c046424a562a"
+    },
+    {
+      "shot": "R001",
+      "title": "TC-S1-001 INVALID_XML_STRUCTURE",
+      "expected": "Hard reject / failed: INVALID_XML_STRUCTURE",
+      "file": "R001.xml",
+      "kind": "rule",
+      "code": "INVALID_XML_STRUCTURE",
+      "expectFail": true
+    },
+    {
+      "shot": "R005",
+      "title": "TC-S1-005 INVALID_SBDH",
+      "expected": "Hard reject INVALID_SBDH or INVALID_XML_STRUCTURE for bad/empty SBDH TypeVersion",
+      "file": "R005.xml",
+      "kind": "rule",
+      "code": "INVALID_SBDH",
+      "expectFail": true
+    },
+    {
+      "shot": "R008",
+      "title": "TC-S1-008 INVALID_EXPIRY_FORMAT",
+      "expected": "Hard reject INVALID_EXPIRY_FORMAT",
+      "file": "R008.xml",
+      "kind": "rule",
+      "code": "INVALID_EXPIRY_FORMAT",
+      "expectFail": true
+    },
+    {
+      "shot": "R009",
+      "title": "TC-S1-009 INVALID_GS1_IDENTIFIER",
+      "expected": "Hard reject INVALID_GS1_IDENTIFIER",
+      "file": "R009.xml",
+      "kind": "rule",
+      "code": "INVALID_GS1_IDENTIFIER",
+      "expectFail": true
+    },
+    {
+      "shot": "R010",
+      "title": "TC-S1-010 FUTURE_EVENT_TIME",
+      "expected": "Hard reject FUTURE_EVENT_TIME",
+      "file": "R010.xml",
+      "kind": "rule",
+      "code": "FUTURE_EVENT_TIME",
+      "expectFail": true
+    },
+    {
+      "shot": "R011",
+      "title": "TC-S1-011 MISSING_NEEDED_FIELDS",
+      "expected": "Hard reject MISSING_NEEDED_FIELDS",
+      "file": "R011.xml",
+      "kind": "rule",
+      "code": "MISSING_NEEDED_FIELDS",
+      "expectFail": true
+    },
+    {
+      "shot": "R012a",
+      "title": "TC-S1-012 setup first eventID",
+      "expected": "202 accepted (setup for duplicate eventID)",
+      "file": "R012a.xml",
+      "kind": "setup",
+      "eventID": "urn:uuid:6f44b3a1-4c5f-45c2-9fc4-8cdbb3d7e9c3"
+    },
+    {
+      "shot": "R012",
+      "title": "TC-S1-012 DUPLICATE_EVENT_ID",
+      "expected": "Job failed DUPLICATE_EVENT_ID",
+      "file": "R012.xml",
+      "kind": "rule",
+      "code": "DUPLICATE_EVENT_ID",
+      "expectFail": true,
+      "dependsOn": "R012a",
+      "reuseEventID": "urn:uuid:6f44b3a1-4c5f-45c2-9fc4-8cdbb3d7e9c3"
+    },
+    {
+      "shot": "R013a",
+      "title": "TC-S1-013 setup original payload",
+      "expected": "202 accepted (setup for duplicate payload)",
+      "file": "R013a.xml",
+      "kind": "setup",
+      "epc": "urn:epc:id:sgtin:0614141.107346.42201706250002620"
+    },
+    {
+      "shot": "R013",
+      "title": "TC-S1-013 DUPLICATE_EVENT_PAYLOAD",
+      "expected": "Job failed DUPLICATE_EVENT_PAYLOAD",
+      "file": "R013.xml",
+      "kind": "rule",
+      "code": "DUPLICATE_EVENT_PAYLOAD",
+      "expectFail": true,
+      "dependsOn": "R013a"
+    },
+    {
+      "shot": "R014",
+      "title": "TC-S1-014 DUPLICATE_EPC_IN_EVENT",
+      "expected": "Hard reject DUPLICATE_EPC_IN_EVENT",
+      "file": "R014.xml",
+      "kind": "rule",
+      "code": "DUPLICATE_EPC_IN_EVENT",
+      "expectFail": true
+    },
+    {
+      "shot": "R021",
+      "title": "TC-S1-021 UNKNOWN_SGTIN",
+      "expected": "Accepted with UNKNOWN_SGTIN warning (or hard reject per sheet)",
+      "file": "R021.xml",
+      "kind": "rule",
+      "code": "UNKNOWN_SGTIN"
+    },
+    {
+      "shot": "R022",
+      "title": "TC-S1-022 UNKNOWN_SGLN",
+      "expected": "Accepted with UNKNOWN_SGLN warning",
+      "file": "R022.xml",
+      "kind": "rule",
+      "code": "UNKNOWN_SGLN"
+    },
+    {
+      "shot": "R024",
+      "title": "TC-S1-024 INVALID_GTIN_CHECK_DIGIT",
+      "expected": "Hard reject INVALID_GTIN_CHECK_DIGIT (or INVALID_GS1_IDENTIFIER)",
+      "file": "R024.xml",
+      "kind": "rule",
+      "code": "INVALID_GTIN_CHECK_DIGIT",
+      "expectFail": true
+    },
+    {
+      "shot": "R025",
+      "title": "TC-S1-025 INVALID_GLN_CHECK_DIGIT",
+      "expected": "Hard reject INVALID_GLN_CHECK_DIGIT (or INVALID_GS1_IDENTIFIER)",
+      "file": "R025.xml",
+      "kind": "rule",
+      "code": "INVALID_GLN_CHECK_DIGIT",
+      "expectFail": true
+    },
+    {
+      "shot": "R026",
+      "title": "TC-S1-026 INVALID_SSCC_CHECK_DIGIT",
+      "expected": "Hard reject INVALID_SSCC_CHECK_DIGIT (or INVALID_GS1_IDENTIFIER)",
+      "file": "R026.xml",
+      "kind": "rule",
+      "code": "INVALID_SSCC_CHECK_DIGIT",
+      "expectFail": true
+    },
+    {
+      "shot": "R027",
+      "title": "TC-S1-027 INVALID_LOT",
+      "expected": "Accepted with INVALID_LOT warning",
+      "file": "R027.xml",
+      "kind": "rule",
+      "code": "INVALID_LOT"
+    },
+    {
+      "shot": "R029",
+      "title": "TC-S1-029 NO_REGULATORY_APPROVAL",
+      "expected": "Accepted with NO_REGULATORY_APPROVAL warning",
+      "file": "R029.xml",
+      "kind": "rule",
+      "code": "NO_REGULATORY_APPROVAL"
+    },
+    {
+      "shot": "R030",
+      "title": "TC-S1-030 UNAUTHORIZED_INSPECTING_EVENT",
+      "expected": "Accepted with UNAUTHORIZED_INSPECTING_EVENT warning",
+      "file": "R030.xml",
+      "kind": "rule",
+      "code": "UNAUTHORIZED_INSPECTING_EVENT"
+    },
+    {
+      "shot": "R031",
+      "title": "TC-S1-031 EXPIRING_SOON",
+      "expected": "Accepted with EXPIRING_SOON warning",
+      "file": "R031.xml",
+      "kind": "rule",
+      "code": "EXPIRING_SOON"
+    },
+    {
+      "shot": "R035",
+      "title": "TC-S1-035 INVALID_BIZSTEP",
+      "expected": "Hard reject or flag INVALID_BIZSTEP",
+      "file": "R035.xml",
+      "kind": "rule",
+      "code": "INVALID_BIZSTEP",
+      "expectFail": true
+    },
+    {
+      "shot": "R037",
+      "title": "TC-S1-037 INVALID_PARENT_CHILD_RELATION",
+      "expected": "Flag or reject INVALID_PARENT_CHILD_RELATION (SSCC under SSCC may also be valid as E03)",
+      "file": "R037.xml",
+      "kind": "rule",
+      "code": "INVALID_PARENT_CHILD_RELATION"
+    },
+    {
+      "shot": "R038",
+      "title": "TC-S1-038 PARENT_NOT_FOUND",
+      "expected": "Accepted with PARENT_NOT_FOUND warning",
+      "file": "R038.xml",
+      "kind": "rule",
+      "code": "PARENT_NOT_FOUND"
+    },
+    {
+      "shot": "R042",
+      "title": "TC-S1-042 EXPIRED_PRODUCT",
+      "expected": "Accepted with EXPIRED_PRODUCT warning",
+      "file": "R042.xml",
+      "kind": "rule",
+      "code": "EXPIRED_PRODUCT"
+    },
+    {
+      "shot": "R046",
+      "title": "TC-S1-046 STALE_EVENT_TIME",
+      "expected": "Accepted with STALE_EVENT_TIME warning",
+      "file": "R046.xml",
+      "kind": "rule",
+      "code": "STALE_EVENT_TIME"
+    },
+    {
+      "shot": "R047",
+      "title": "TC-S1-047 UNCOMMISSIONED_CHILD",
+      "expected": "Accepted with UNCOMMISSIONED_CHILD warning",
+      "file": "R047.xml",
+      "kind": "rule",
+      "code": "UNCOMMISSIONED_CHILD"
+    },
+    {
+      "shot": "R048",
+      "title": "TC-S1-048 SHIPPING_WITHOUT_COMMISSIONING",
+      "expected": "Accepted with SHIPPING_WITHOUT_COMMISSIONING warning",
+      "file": "R048.xml",
+      "kind": "rule",
+      "code": "SHIPPING_WITHOUT_COMMISSIONING"
+    },
+    {
+      "shot": "R049",
+      "title": "TC-S1-049 DUPLICATE_SSCC_IN_MESSAGE",
+      "expected": "Flag or reject DUPLICATE_SSCC_IN_MESSAGE",
+      "file": "R049.xml",
+      "kind": "rule",
+      "code": "DUPLICATE_SSCC_IN_MESSAGE"
+    },
+    {
+      "shot": "RSIZE",
+      "title": "Upload over 10 MB max",
+      "expected": "UI/API reject over max size (MESSAGE_SIZE_EXCEEDED or client/server size error)",
+      "file": "RSIZE.xml",
+      "kind": "rule",
+      "code": "MESSAGE_SIZE_EXCEEDED",
+      "expectFail": true
+    },
+    {
+      "shot": "R002",
+      "title": "TC-S1-002 INVALID_JSON_STRUCTURE",
+      "expected": "NOT TESTABLE via manufacturer XML upload",
+      "file": null,
+      "kind": "not_testable",
+      "reason": "JSON-LD only — XML upload UI accepts .xml only",
+      "verdict": "NOT TESTABLE"
+    },
+    {
+      "shot": "R003",
+      "title": "TC-S1-003 MISSING_EPCIS_BODY",
+      "expected": "NOT TESTABLE via manufacturer XML upload",
+      "file": null,
+      "kind": "not_testable",
+      "reason": "JSON-LD body shape — not expressible as XML file upload",
+      "verdict": "NOT TESTABLE"
+    },
+    {
+      "shot": "R004",
+      "title": "TC-S1-004 MISSING_EVENT_LIST",
+      "expected": "NOT TESTABLE via manufacturer XML upload",
+      "file": null,
+      "kind": "not_testable",
+      "reason": "JSON-LD body shape — not expressible as XML file upload",
+      "verdict": "NOT TESTABLE"
+    },
+    {
+      "shot": "R006",
+      "title": "TC-S1-006 MESSAGE_SIZE_EXCEEDED (dispense 1MB)",
+      "expected": "NOT TESTABLE via manufacturer XML upload",
+      "file": null,
+      "kind": "not_testable",
+      "reason": "Sync dispense endpoint only — not partner XML upload",
+      "verdict": "NOT TESTABLE"
+    },
+    {
+      "shot": "R007",
+      "title": "TC-S1-007 TOO_MANY_SERIALS (50001)",
+      "expected": "NOT TESTABLE via manufacturer XML upload",
+      "file": null,
+      "kind": "not_testable",
+      "reason": "Skipped: 50k+ serial fixture impractical for UI pack; max_epcs advertised as 50000",
+      "verdict": "NOT TESTABLE"
+    },
+    {
+      "shot": "R015",
+      "title": "TC-S1-015 IMPOSSIBLE_SENSOR_VALUES",
+      "expected": "NOT TESTABLE via manufacturer XML upload",
+      "file": null,
+      "kind": "not_testable",
+      "reason": "SensorElement is JSON-LD / EPCIS 2.0 — not XML 1.2 upload",
+      "verdict": "NOT TESTABLE"
+    },
+    {
+      "shot": "R016",
+      "title": "TC-S1-016 ERROR_DECLARATION_BEFORE_EVENT",
+      "expected": "NOT TESTABLE via manufacturer XML upload",
+      "file": null,
+      "kind": "not_testable",
+      "reason": "Needs chained errorDeclaration XML — deferred",
+      "verdict": "NOT TESTABLE"
+    },
+    {
+      "shot": "R017",
+      "title": "TC-S1-017 ERROR_DECLARATION_ORIGINAL_NOT_FOUND",
+      "expected": "NOT TESTABLE via manufacturer XML upload",
+      "file": null,
+      "kind": "not_testable",
+      "reason": "Needs errorDeclaration against unknown eventID",
+      "verdict": "NOT TESTABLE"
+    },
+    {
+      "shot": "R018",
+      "title": "TC-S1-018 ERROR_DECLARATION_CONTENT_MISMATCH",
+      "expected": "NOT TESTABLE via manufacturer XML upload",
+      "file": null,
+      "kind": "not_testable",
+      "reason": "Needs errorDeclaration resubmit chain",
+      "verdict": "NOT TESTABLE"
+    },
+    {
+      "shot": "R019",
+      "title": "TC-S1-019 ERROR_DECLARATION_INVALID_REASON",
+      "expected": "NOT TESTABLE via manufacturer XML upload",
+      "file": null,
+      "kind": "not_testable",
+      "reason": "Needs errorDeclaration with bad reason",
+      "verdict": "NOT TESTABLE"
+    },
+    {
+      "shot": "R020",
+      "title": "TC-S1-020 ERROR_DECLARATION_CORRECTIVE_NOT_FOUND",
+      "expected": "NOT TESTABLE via manufacturer XML upload",
+      "file": null,
+      "kind": "not_testable",
+      "reason": "Needs errorDeclaration + corrective IDs",
+      "verdict": "NOT TESTABLE"
+    },
+    {
+      "shot": "R023",
+      "title": "TC-S1-023 INACTIVE_SGLN",
+      "expected": "NOT TESTABLE via manufacturer XML upload",
+      "file": null,
+      "kind": "not_testable",
+      "reason": "Needs registered-but-inactive SGLN fixture",
+      "verdict": "NOT TESTABLE"
+    },
+    {
+      "shot": "R028",
+      "title": "TC-S1-028 INVENTORY_SIGHTING_MISMATCH",
+      "expected": "NOT TESTABLE via manufacturer XML upload",
+      "file": null,
+      "kind": "not_testable",
+      "reason": "Needs prior commission at location A then sighting at B",
+      "verdict": "NOT TESTABLE"
+    },
+    {
+      "shot": "R032",
+      "title": "TC-S1-032 SERIAL_ALREADY_DISPENSED",
+      "expected": "NOT TESTABLE via manufacturer XML upload",
+      "file": null,
+      "kind": "not_testable",
+      "reason": "Needs facility dispense then manufacturer event",
+      "verdict": "NOT TESTABLE"
+    },
+    {
+      "shot": "R033",
+      "title": "TC-S1-033 SERIAL_ALREADY_DESTROYED",
+      "expected": "NOT TESTABLE via manufacturer XML upload",
+      "file": null,
+      "kind": "not_testable",
+      "reason": "Needs destroy then lifecycle event chain",
+      "verdict": "NOT TESTABLE"
+    },
+    {
+      "shot": "R034",
+      "title": "TC-S1-034 INVALID_DISPOSITION (dispensed→active)",
+      "expected": "NOT TESTABLE via manufacturer XML upload",
+      "file": null,
+      "kind": "not_testable",
+      "reason": "Needs dispensed serial then illegal transition",
+      "verdict": "NOT TESTABLE"
+    },
+    {
+      "shot": "R036",
+      "title": "TC-S1-036 INVALID_TERMINAL_STATE",
+      "expected": "NOT TESTABLE via manufacturer XML upload",
+      "file": null,
+      "kind": "not_testable",
+      "reason": "Needs terminal serial then lifecycle action",
+      "verdict": "NOT TESTABLE"
+    },
+    {
+      "shot": "R039",
+      "title": "TC-S1-039 CHILD_ALREADY_AGGREGATED",
+      "expected": "NOT TESTABLE via manufacturer XML upload",
+      "file": null,
+      "kind": "not_testable",
+      "reason": "Needs pack then re-pack under second SSCC chain",
+      "verdict": "NOT TESTABLE"
+    },
+    {
+      "shot": "R040",
+      "title": "TC-S1-040 INVALID_EVENT_SEQUENCE",
+      "expected": "NOT TESTABLE via manufacturer XML upload",
+      "file": null,
+      "kind": "not_testable",
+      "reason": "Receiving-before-shipping is distributor/facility path",
+      "verdict": "NOT TESTABLE"
+    },
+    {
+      "shot": "R041",
+      "title": "TC-S1-041 SSCC_AT_DISPENSING",
+      "expected": "NOT TESTABLE via manufacturer XML upload",
+      "file": null,
+      "kind": "not_testable",
+      "reason": "Facility /dispense only",
+      "verdict": "NOT TESTABLE"
+    },
+    {
+      "shot": "R043",
+      "title": "TC-S1-043 RECALL_ACTIVE",
+      "expected": "NOT TESTABLE via manufacturer XML upload",
+      "file": null,
+      "kind": "not_testable",
+      "reason": "Needs active recall fixture",
+      "verdict": "NOT TESTABLE"
+    },
+    {
+      "shot": "R044",
+      "title": "TC-S1-044 RECEIVING_WITHOUT_SHIPPING",
+      "expected": "NOT TESTABLE via manufacturer XML upload",
+      "file": null,
+      "kind": "not_testable",
+      "reason": "Distributor/facility receiving path",
+      "verdict": "NOT TESTABLE"
+    },
+    {
+      "shot": "R045",
+      "title": "TC-S1-045 UNPACK_WITHOUT_AGGREGATION",
+      "expected": "NOT TESTABLE via manufacturer XML upload",
+      "file": null,
+      "kind": "not_testable",
+      "reason": "Distributor unpack path",
+      "verdict": "NOT TESTABLE"
+    },
+    {
+      "shot": "R050",
+      "title": "TC-S1-050 DUPLICATE_SSCC_CROSS_MESSAGE",
+      "expected": "NOT TESTABLE via manufacturer XML upload",
+      "file": null,
+      "kind": "not_testable",
+      "reason": "Needs two sequential pack messages with same parent",
+      "verdict": "NOT TESTABLE"
+    },
+    {
+      "shot": "R051",
+      "title": "TC-S1-051 INCOMPLETE_ERROR_DECLARATION",
+      "expected": "NOT TESTABLE via manufacturer XML upload",
+      "file": null,
+      "kind": "not_testable",
+      "reason": "Needs errorDeclaration XML",
+      "verdict": "NOT TESTABLE"
+    },
+    {
+      "shot": "R052",
+      "title": "TC-S1-052 ERROR_DECLARATION_WITHOUT_REASON",
+      "expected": "NOT TESTABLE via manufacturer XML upload",
+      "file": null,
+      "kind": "not_testable",
+      "reason": "Needs errorDeclaration XML",
+      "verdict": "NOT TESTABLE"
+    }
+  ]
+}

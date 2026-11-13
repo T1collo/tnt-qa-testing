@@ -1,2 +1,2 @@
 event_id,row_index,code,message,gtin,batch_no,case_group
-hierarchy-csv-row:4,4,VALIDATION_FAILED,"Serial number ""S9PNH10A06002"" (GTIN: 6161102974997) already appears in row 3 of this CSV.",6161102974997,B9PNH10A06003,C063
+hierarchy-csv-row:4,4,VALIDATION_FAILED,"Serial number ""SOEM3SE206002"" (GTIN: 6161102974997) already appears in row 3 of this CSV.",6161102974997,BOEM3SE206003,C063

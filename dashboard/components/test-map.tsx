@@ -1,4 +1,6 @@
-import { Card, CardContent } from "@/components/ui/card";
+import { Map as MapIcon } from "lucide-react";
+
+import { Panel } from "@/components/panel";
 import {
   Table,
   TableBody,
@@ -23,15 +25,19 @@ export function TestMap() {
   );
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       <p className="text-sm text-muted-foreground">
         What the runner actually fires for each workbook Test ID — sourced directly from{" "}
         <code className="rounded bg-muted px-1 py-0.5 text-xs">lib/testIdMap.js</code>, the same
         file the run engine and the Excel export both use, so this list can&apos;t drift out of sync.
       </p>
 
-      <Card>
-        <CardContent className="p-0">
+      <Panel
+        title="Test ID map"
+        icon={MapIcon}
+        action={<span className="font-mono text-xs text-muted-foreground tabular-nums">{rows.length} mapped</span>}
+        bodyClassName="overflow-hidden p-0"
+      >
           <Table>
             <TableHeader>
               <TableRow>
@@ -56,8 +62,7 @@ export function TestMap() {
               ))}
             </TableBody>
           </Table>
-        </CardContent>
-      </Card>
+      </Panel>
     </div>
   );
 }

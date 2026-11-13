@@ -339,6 +339,26 @@ function resultDetail(id) {
       }
       row.events = eventsFromBody(body);
       row.returned_event_ids = returnedEventIds(row.response_body);
+      // Browser tests and load tests carry their requests as `exchanges` on the run record
+      // rather than as rows here (rows are what the counts are made of). Read them back so
+      // every result shows what was sent and received. Required lazily: runStore requires
+      // this module.
+      const { readRun } = require('./runStore');
+      const stored = row.step_key
+        ? (readRun(row.run_id)?.results || []).find((r) => (r.stepKey || r.testId) === row.step_key)
+        : null;
+      row.exchanges = (stored?.exchanges || []).map((x) => ({
+        variant: x.variant ?? null,
+        method: x.method ?? null,
+        url: x.url ?? null,
+        http_status: x.status ?? null,
+        duration_ms: x.durationMs ?? null,
+        request_body: x.requestBody ?? null,
+        response_body: x.responseBody ?? null,
+        events: eventsFromBody(x.requestBody),
+        returned_event_ids: returnedEventIds(x.responseBody),
+      }));
+      if (stored?.tracking) row.tracking = stored.tracking;
       return row;
     }) ?? null
   );

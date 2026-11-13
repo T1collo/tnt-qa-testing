@@ -10,8 +10,10 @@
 // under concurrent pressure, since processing_mode is ASYNC and a naive implementation could
 // plausibly cross wires between concurrent requests.
 //
-// Run:
+// Run (ROLE defaults to manufacturer; supplier/facility send receiving events instead):
 //   k6 run -e MANUFACTURER_API_TOKEN=xxx k6/data-integrity-manufacturer-commission.js
+//   k6 run -e ROLE=supplier -e DISTRIBUTOR_API_TOKEN=xxx k6/data-integrity-manufacturer-commission.js
+//   k6 run -e ROLE=facility -e FACILITY_API_TOKEN=xxx k6/data-integrity-manufacturer-commission.js
 //
 // Then check for cross-request duplicate/missing IDs:
 //   k6 run ... > k6/data-integrity-run.log 2>&1
@@ -19,18 +21,16 @@
 //
 // Useful overrides:
 //   -e BASE_URL=https://tnt-demo.apeiro-digital.com
+//   -e API_TOKEN=xxx        # overrides the role's own token variable
 //   -e TOTAL_REQUESTS=300   # total commission events to send
 //   -e VUS=30               # concurrent VUs sharing that total (concurrency pressure)
 
 import http from 'k6/http';
 import { check } from 'k6';
-import { newRunId, commissionPayload, authHeaders } from './lib/epcis.js';
+import { newRunId, authHeaders, roleTarget, loadtestEventId, track } from './lib/epcis.js';
 
 const BASE_URL = (__ENV.BASE_URL || 'https://tnt-demo.apeiro-digital.com').replace(/\/+$/, '');
-const API_TOKEN = __ENV.MANUFACTURER_API_TOKEN;
-if (!API_TOKEN) {
-  throw new Error('MANUFACTURER_API_TOKEN is required, e.g. -e MANUFACTURER_API_TOKEN=xxx');
-}
+const TARGET = roleTarget(__ENV, BASE_URL);
 
 const TOTAL_REQUESTS = Number(__ENV.TOTAL_REQUESTS || 300);
 const VUS = Number(__ENV.VUS || 30);
@@ -54,15 +54,17 @@ export const options = {
 };
 
 export default function () {
-  const eventID = `urn:uuid:loadtest-${RUN_ID}-${__VU}-${__ITER}`;
-  const payload = commissionPayload(RUN_ID, __VU, __ITER);
-  // commissionPayload builds its own eventID internally using the same RUN_ID/VU/ITER
-  // scheme, so re-derive it identically here rather than re-parsing the JSON string back out.
+  // Every payload builder stamps loadtestEventId(), so derive the expected ID the same way
+  // rather than re-parsing the JSON string back out.
+  const eventID = loadtestEventId(RUN_ID, __VU, __ITER);
+  const payload = TARGET.payload(RUN_ID, __VU, __ITER);
 
-  const res = http.post(`${BASE_URL}/api/integration/manufacturer/events`, payload, {
-    headers: authHeaders(API_TOKEN),
-    tags: { name: 'commission' },
+  const res = http.post(TARGET.url, payload, {
+    headers: authHeaders(TARGET.token),
+    tags: { name: TARGET.tag, role: TARGET.role },
   });
+
+  track(res, payload, loadtestEventId(RUN_ID, __VU, __ITER), TARGET.url);
 
   let ackIds = [];
   let parsedOk = false;

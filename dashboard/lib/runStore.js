@@ -91,6 +91,7 @@ function createRun({
 function runKind(run) {
   if (run.role === 'end-to-end') return 'e2e';
   if (run.role === 'ui') return 'ui';
+  if (run.role === 'load') return 'load';
   return 'role';
 }
 

@@ -1,0 +1,31 @@
+h3. TL-1846 — Partner registration / login load + rate-limit check (TrackIQ)
+
+*Environment:* https://trackiq.apeiro-digital.com
+*Paths exercised:*
+* Register UI: {{/partners/register}} → {{POST /api/auth/register}}
+* Login UI: {{/partners/login?returnTo=%2Fpartners%2Ftokens}} → {{POST /api/auth/user/sign-in/email}}
+
+*Password:* {{Password-123}}
+*Organization type:* Domestic Manufacturer ({{MANUFACTURER_DOMESTIC}}), country {{KE}}
+*Accounts:* {{qatiq001@test.com}} … {{qatiq050@test.com}}
+
+h4. Automated batch (50 orgs)
+* Signup Accepted: *50 / 50*
+* Signup rate-limited (429): 0
+* First-pass login: Passed 9/50, Rate-limited 41/50
+* After throttle window + paced re-login: Login Passed *50 / 50*; still 429: 0; other failures: 0
+* Blank GLN on register → auto test GLNs returned on Accepted signups
+
+h4. Dedicated login rate-limit burst
+30 rapid sign-in calls against {{qatiq001@test.com}} (mix of wrong/correct password).
+* Statuses: 200, 401, 429
+* 429 count: *27 / 30*
+* First 429 at attempt #1 (wrongPassword=false); headers {"x-retry-after":"10"}
+
+h4. Evidence
+* Credentials: {{new/trackiq-creds.xlsx}}
+* Raw JSON: {{new/TL-1846_TrackIQ_Partner_Register_Login_Results.json}}
+
+h4. Verdict
+*PASS* for registration under this load (50/50 Accepted).
+*PASS* for login rate limiting (429 observed under sequential load and/or burst).

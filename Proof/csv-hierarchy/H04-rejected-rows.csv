@@ -1,5 +1,5 @@
 event_id,row_index,code,message,gtin,batch_no,case_group
-urn:uuid:aaabadd2-6609-40ad-8079-c4260c41a5d3,,INVALID_GS1_IDENTIFIER,"SGTIN company prefix must be 6–12 digits",,,
-urn:uuid:fff8abe3-7882-41d0-8bd5-bff7615dc1c9,,INVALID_GS1_IDENTIFIER,"SGTIN serial must be 1–20 GS1-permitted URI characters",,,
-urn:uuid:58d0417a-3f43-427e-8ed9-155ecd6372e9,,INVALID_GS1_IDENTIFIER,"SGTIN company prefix must be 6–12 digits",,,
-urn:uuid:ebf8ede2-fd87-47e1-8447-ad51790250af,,INVALID_GS1_IDENTIFIER,"SGTIN serial must be 1–20 GS1-permitted URI characters",,,
+urn:uuid:75c8076c-a9f2-4ee7-832f-92acbbd2e260,,INVALID_GS1_IDENTIFIER,"SGTIN company prefix must be 6–12 digits",,,
+urn:uuid:5ffc495c-4e9f-47f5-8597-e94629df10ed,,INVALID_GS1_IDENTIFIER,"SGTIN serial must be 1–20 GS1-permitted URI characters",,,
+urn:uuid:5314f03c-bcc5-482e-8f72-58af44cfe5fe,,INVALID_GS1_IDENTIFIER,"SGTIN company prefix must be 6–12 digits",,,
+urn:uuid:4a7dab4b-0ddb-443c-8d41-deb736a165d8,,INVALID_GS1_IDENTIFIER,"SGTIN serial must be 1–20 GS1-permitted URI characters",,,

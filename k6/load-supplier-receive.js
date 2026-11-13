@@ -5,7 +5,8 @@
 // supplier/facility routes are the only ingestion surface available.
 //
 // Run:
-//   k6 run -e API_TOKEN=$DISTRIBUTOR_API_TOKEN -e ROLE=supplier k6/load-supplier-receive.js
+//   k6 run -e DISTRIBUTOR_API_TOKEN=xxx k6/load-supplier-receive.js
+//   k6 run -e ROLE=facility -e FACILITY_API_TOKEN=xxx k6/load-supplier-receive.js
 //
 // Overrides:
 //   -e BASE_URL=https://tnt-demo.apeiro-digital.com   # host root, no trailing slash
@@ -16,14 +17,12 @@
 import http from 'k6/http';
 import { check } from 'k6';
 import { Rate, Trend, Counter } from 'k6/metrics';
-import { newRunId, receivePayload, authHeaders } from './lib/epcis.js';
+import { newRunId, authHeaders, roleTarget, loadtestEventId, track } from './lib/epcis.js';
 
 const BASE_URL = (__ENV.BASE_URL || 'https://tnt-demo.apeiro-digital.com').replace(/\/+$/, '');
-const API_TOKEN = __ENV.API_TOKEN;
-if (!API_TOKEN) {
-  throw new Error('API_TOKEN is required, e.g. -e API_TOKEN=trk_test_xxx');
-}
-const ROLE = __ENV.ROLE || 'supplier';
+// This script's ROLE defaults to supplier; the token falls back to the role's own variable
+// (DISTRIBUTOR_API_TOKEN / FACILITY_API_TOKEN) when API_TOKEN is not passed.
+const TARGET = roleTarget({ ...__ENV, ROLE: __ENV.ROLE || 'supplier' }, BASE_URL);
 const TARGET_VUS = Number(__ENV.TARGET_VUS || 10);
 const P95_MS = Number(__ENV.P95_MS || 800);
 const P99_MS = Number(__ENV.P99_MS || 1500);
@@ -49,12 +48,14 @@ export const options = {
 };
 
 export default function () {
-  const payload = receivePayload(RUN_ID, __VU, __ITER, ROLE === 'facility' ? 'facility' : 'supplier');
+  const payload = TARGET.payload(RUN_ID, __VU, __ITER);
 
-  const res = http.post(`${BASE_URL}/api/integration/${ROLE}/events`, payload, {
-    headers: authHeaders(API_TOKEN),
+  const res = http.post(TARGET.url, payload, {
+    headers: authHeaders(TARGET.token),
     tags: { name: 'receive' },
   });
+
+  track(res, payload, loadtestEventId(RUN_ID, __VU, __ITER), TARGET.url);
 
   receiveDuration.add(res.timings.duration);
 

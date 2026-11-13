@@ -1,0 +1,41 @@
+1      CSV-01_valid_full_journey.csv -> 202 {"correlation_id":"e7053a4f-8638-4a57-9d50-87b3eb9f2980","status":"succeeded","result_http_status":200,"partial":false,"event_ids":["urn:uuid:6eec03f6-2b75-42fa-813d-5c10fe233367","urn:uuid:5214a6ea-9
+2      CSV-02_commissioning_errors.csv -> 400 {"error":"Bad Request","message":"CSV contains disallowed formula-like content"}
+3      CSV-03_commissioning_flags.csv -> 202 {"correlation_id":"d5f95e06-1cab-473e-a9bb-e1dbe2724b23","status":"succeeded","result_http_status":200,"partial":false,"event_ids":["urn:uuid:0dd7c53a-5b11-412e-81f0-c94e2fd2156e","urn:uuid:6317727b-9
+4      CSV-04_values_that_must_pass.csv -> 400 {"invalid":{"count":3,"rows":[{"row_index":2,"row":{"Event_Type":"COMMISSIONING","Identifier_Type":"SGTIN","GTIN":"6161102974997","Unit_ID":"SGQ50400001","Parent_ID":"","Packaging_Level":"Item","Event
+5      CSV-05_packing_errors.csv -> 400 {"invalid":{"count":7,"rows":[{"row_index":20,"row":{"Event_Type":"AGGREGATION","Identifier_Type":"SGTIN","GTIN":"6161102974997","Unit_ID":"SGQ50500005","Parent_ID":"","Packaging_Level":"Item","Event_
+6      CSV-06_duplicates.csv -> 400 {"invalid":{"count":3,"rows":[{"row_index":3,"row":{"Event_Type":"COMMISSIONING","Identifier_Type":"SGTIN","GTIN":"6161102974997","Unit_ID":"SGQ50600001","Parent_ID":"","Packaging_Level":"Item","Event
+7      CSV-07_reupload_of_CSV-01.csv -> 202 {"correlation_id":"562873d8-57f7-4c7a-b38b-f5e82686f392","status":"failed","result_http_status":400,"partial":false,"rejected":[{"code":"DUPLICATE_EVENT_ID","message":"Event ID urn:uuid:6eec03f6-2b75-
+8      CSV-08_valid_shipping.csv -> 400 {"invalid":{"count":1,"rows":[{"row_index":19,"row":{"Event_Type":"SHIPPING","Identifier_Type":"SSCC","GTIN":"","Unit_ID":"061640035108000068","Parent_ID":"","Packaging_Level":"Package","Event_Timesta
+9      CSV-09_shipping_errors.csv -> 400 {"invalid":{"count":6,"rows":[{"row_index":26,"row":{"Event_Type":"SHIPPING","Identifier_Type":"SSCC","GTIN":"","Unit_ID":"061640035109000029","Parent_ID":"","Packaging_Level":"Package","Event_Timesta
+10     CSV-10_after_shipping.csv -> 400 {"invalid":{"count":2,"rows":[{"row_index":2,"row":{"Event_Type":"SHIPPING","Identifier_Type":"SSCC","GTIN":"","Unit_ID":"061640035108000020","Parent_ID":"","Packaging_Level":"Package","Event_Timestam
+11a    CSV-11a_commission_for_destruction.csv -> 202 {"correlation_id":"4f2f6ba2-b037-42d6-a99e-68b7867f1bc0","status":"succeeded","result_http_status":200,"partial":false,"event_ids":["urn:uuid:4b86cbcf-a386-48a3-8d20-b99586227112","urn:uuid:09fccd51-6
+11c    CSV-11b_pack_destroyed_items.csv -> 400 {"invalid":{"count":2,"rows":[{"row_index":2,"row":{"Event_Type":"AGGREGATION","Identifier_Type":"SGTIN","GTIN":"6161102974997","Unit_ID":"SGQ51100001","Parent_ID":"061640035111000017","Packaging_Leve
+12a    CSV-12a_100_rows_one_bad.csv -> 202 {"correlation_id":"b0f4dea5-0cb6-4e5f-846f-86c6ca0bf5a2","status":"succeeded","result_http_status":200,"partial":false,"event_ids":["urn:uuid:50c559f3-1cf1-40e4-8d10-66207e1df457","urn:uuid:5a6e4033-3
+12b    CSV-12b_100_rows_fixed.csv -> 202 {"correlation_id":"582a023d-ae44-4442-b9f2-04cee7220252","status":"succeeded","result_http_status":200,"partial":false,"event_ids":["urn:uuid:3afd2c61-cb3b-4d30-8543-6bd01d928db2"],"accepted_count":1,
+13a    CSV-13_identity.csv -> 400 {"invalid":{"count":1,"rows":[{"row_index":8,"row":{"Event_Type":"INSPECTING","Identifier_Type":"SSCC","GTIN":"","Unit_ID":"061640035113000022","Parent_ID":"","Packaging_Level":"Package","Event_Timest
+13b    CSV-13_valid_for_session_checks.csv -> 401 {"message":"Valid user session required","error":"Unauthorized","statusCode":401}
+13c    CSV-13_valid_for_session_checks.csv -> 401 {"message":"X-User-Id authentication is not supported","error":"Unauthorized","statusCode":401}
+13e    CSV-13_valid_for_session_checks.csv -> - Bulk CSV — EPCIS Events Manufacturer API key Required for external async ingest. Keys are not stored by this dialog. Select CSV file (max 2 MB, 500 rows) How EPCIS Event CSV works CSV-13_valid_for_ses
+13f    CSV-13_valid_for_session_checks.csv -> 400 {"message":"Invalid API key","error":"Unauthorized","statusCode":401}
+14     CSV-14_batch_loophole.csv -> 400 {"invalid":{"count":2,"rows":[{"row_index":2,"row":{"Event_Type":"COMMISSIONING","Identifier_Type":"SGTIN","GTIN":"6161102974997","Unit_ID":"","Parent_ID":"","Packaging_Level":"Item","Event_Timestamp"
+15     CSV-15_excel_saved.csv -> 400 {"invalid":{"count":6,"rows":[{"row_index":2,"row":{"Event_Type":"COMMISSIONING","Identifier_Type":"SGTIN","GTIN":"6.1611E+12","Unit_ID":"SGQ51500001","Parent_ID":"","Packaging_Level":"Item","Event_Ti
+16     CSV-16_broken_rows.csv -> 202 {"correlation_id":"a8d5811b-73a5-494d-bb3a-3e6366685ddf","status":"succeeded","result_http_status":200,"partial":false,"event_ids":["urn:uuid:529771b8-4777-4dc4-8ca8-6c1db7bf8200","urn:uuid:e62fcdb8-a
+17a    CSV-17a_500_rows.csv -> 202 {"correlation_id":"9c10e6b2-3117-4a13-a408-5ae794b815f5","status":"succeeded","result_http_status":200,"partial":false,"event_ids":["urn:uuid:1816f744-ce73-4ca4-8b6b-4fa034c12a53","urn:uuid:6257a928-1
+17b    CSV-17b_50000_serials.csv -> 400 {"error":"Bad Request","message":"Upload exceeds maximum allowed size"}
+18a    CSV-18a_501_rows.csv -> 400 {"message":"Too many rows. Maximum is 500 data rows.","error":"Bad Request","statusCode":400}
+18b    CSV-18b_50001_serials.csv -> 400 {"error":"Bad Request","message":"Upload exceeds maximum allowed size"}
+19     CSV-19_injection.csv -> 400 {"error":"Bad Request","message":"CSV contains disallowed formula-like content"}
+20b     -> - Async submissions list after the run
+20d-1   -> 202 {"correlation_id":"f20557d4-1f29-4834-ad8b-ff9a5ff3c72e","status":"succeeded","result_http_status":200,"partial":false,"event_ids":["urn:uuid:557b99fa-4d41-4ca7-8422-413d29f4a992","urn:uuid:85b6f189-2
+20d-2   -> 202 {"correlation_id":"11644fb1-00ae-403d-a014-d515d9c91f0b","status":"succeeded","result_http_status":200,"partial":false,"event_ids":["urn:uuid:36301c6a-ef83-422b-8259-2a659a5c2942","urn:uuid:59bf451e-2
+21a    CSV-21a_utf8_bom.csv -> 202 {"correlation_id":"bb0c7ad6-ffe5-405b-aa94-4de09ee82248","status":"succeeded","result_http_status":200,"partial":false,"event_ids":["urn:uuid:de29d73d-8c85-48a8-872f-94fd4a73d98a","urn:uuid:e83cd0c9-1
+21b    CSV-21b_utf16.csv -> 400 {"error":"Bad Request","message":"File content is not plain CSV/text. Upload rejected."}
+21c    CSV-21c_latin1.csv -> 202 {"correlation_id":"edbc15f1-4d12-4ab8-aebe-0cc4bf3423d4","status":"succeeded","result_http_status":200,"partial":false,"event_ids":["urn:uuid:7b8caf6f-ead6-4c11-86dc-0ec4c84828b2"],"accepted_count":1,
+21d    CSV-21d_semicolons.csv -> 400 {"message":"CSV missing required column \"Event_Type\". Required core: Event_Type, Identifier_Type, Unit_ID, Event_Timestamp, Event_TimeZone_Offset, BizLocation_GLN.","error":"Bad Request","statusCode
+21e    CSV-21e_missing_column.csv -> 400 {"invalid":{"count":2,"rows":[{"row_index":2,"row":{"Event_Type":"COMMISSIONING","Identifier_Type":"SGTIN","GTIN":"6161102974997","Unit_ID":"FU6BWe1","Parent_ID":"","Packaging_Level":"Item","Event_Tim
+21f    CSV-21f_renamed_column.csv -> 400 {"message":"CSV missing required column \"Event_Type\". Required core: Event_Type, Identifier_Type, Unit_ID, Event_Timestamp, Event_TimeZone_Offset, BizLocation_GLN.","error":"Bad Request","statusCode
+21g    CSV-21g_reordered_columns.csv -> 202 {"correlation_id":"1185f634-8500-437d-8fb3-6b17664fa420","status":"succeeded","result_http_status":200,"partial":false,"event_ids":["urn:uuid:4d376344-3c1d-47fd-85df-81cb0a78de34","urn:uuid:feaa5781-d
+21h    CSV-21h_empty.csv -> 400 {"error":"Bad Request","message":"File is empty"}
+21i    CSV-21i_wrong_extension.txt -> 202 {"correlation_id":"3eac725c-b73e-41a2-9b52-ce2f6b1b5f1c","status":"succeeded","result_http_status":200,"partial":false,"event_ids":["urn:uuid:7fa6e6aa-530b-4064-8356-cd787d6bdf08","urn:uuid:d954c7f0-8
+
+Screenshots and results in C:\Users\Collins\Desktop\TnT\qa-testing-suite\Proof\partner

@@ -2,9 +2,11 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
+  Activity,
   Check,
   CircleCheck,
   FileJson,
+  ListChecks,
   CircleX,
   FileSpreadsheet,
   Loader2,
@@ -12,6 +14,7 @@ import {
   RefreshCw,
   RotateCcw,
   Settings2,
+  SlidersHorizontal,
   Square,
   Trash2,
 } from "lucide-react";
@@ -27,6 +30,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Panel } from "@/components/panel";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
@@ -45,7 +49,7 @@ import {
   type Product,
 } from "@/components/run-mode-dialog";
 import { KNOWN_ENVIRONMENTS, normalizeBaseUrl } from "@/lib/baseUrl";
-import { cn } from "@/lib/utils";
+import { cn, isTestStep } from "@/lib/utils";
 import {
   beginRun,
   clearRun,
@@ -67,7 +71,9 @@ type HostCheck =
 
 type E2eStep = { key: string; index: number; role: string; label: string; testId: string; phase: string; sync: boolean };
 type Spec = { file: string; tests: number };
-type Mode = "role" | "e2e" | "ui";
+type Mode = "role" | "e2e" | "ui" | "load";
+type LoadField = { key: string; label: string; min: number; max: number; default: number };
+type LoadTest = { id: string; label: string; detail: string; fields: LoadField[] };
 const E2E_ROLES = ["manufacturer", "distributor", "facility"] as const;
 type E2eRole = (typeof E2E_ROLES)[number];
 
@@ -83,6 +89,11 @@ const MODES: { value: Mode; label: string; detail: string }[] = [
     value: "ui",
     label: "Browser UI suite",
     detail: "Playwright drives the portal in Chromium. Logins come from .env on this machine.",
+  },
+  {
+    value: "load",
+    label: "Load test (k6)",
+    detail: "k6 sends sustained traffic from one partner role and checks latency, errors and limits.",
   },
 ];
 
@@ -136,6 +147,14 @@ export function Run() {
   const [baseUrlError, setBaseUrlError] = useState<string | null>(null);
   const [hostCheck, setHostCheck] = useState<HostCheck>({ state: "idle" });
   const [selectedEventTypes, setSelectedEventTypes] = useFormField<string[]>("selectedEventTypes", []);
+  const [loadTests, setLoadTests] = useState<LoadTest[] | null>(null);
+  const [k6Error, setK6Error] = useState<string | null>(null);
+  // Any combination; they run one after another in one run.
+  const [loadTestIds, setLoadTestIds] = useFormField<string[]>("loadTestIds", ["load"]);
+  // Per test, so switching between tests keeps what was typed for each.
+  const [loadFields, setLoadFields] = useFormField<Record<string, Record<string, number>>>("loadFields", {});
+  // How long the running load test is expected to take, as the server worked it out.
+  const [loadSeconds, setLoadSeconds] = useState<number | null>(null);
   // Set when the page was opened to re-run an earlier run (?rerun=<id>): the form is filled
   // from that run and starting sends rerunOf, so results replace that run's instead of
   // creating a new one.
@@ -187,6 +206,19 @@ export function Run() {
         setSpecsError("Could not load the Playwright suite.");
       });
   }, [restored, setSpecFiles]);
+
+  useEffect(() => {
+    fetch("/api/k6")
+      .then((r) => r.json())
+      .then((d) => {
+        setLoadTests(d.tests || []);
+        setK6Error(d.error || null);
+      })
+      .catch(() => {
+        setLoadTests([]);
+        setK6Error("Could not load the k6 test list.");
+      });
+  }, []);
 
   // Prefill from the server's resolved default (.env) so the field shows the environment a
   // run would actually hit, instead of starting blank and leaving that choice invisible.
@@ -251,6 +283,24 @@ export function Run() {
           const specList = run.consignment?.specs;
           if (Array.isArray(specList)) setSpecFiles(specList);
           else pendingSelectAll.current = "specs";
+        } else if (run.role === "load") {
+          setMode("load");
+          const c = run.consignment || {};
+          // Older load runs recorded a single { test, fields }; newer ones a list.
+          const picked: { test: string; fields?: Record<string, number> }[] = Array.isArray(c.tests)
+            ? c.tests
+            : c.test
+              ? [{ test: c.test, fields: c.fields }]
+              : [];
+          if (picked.length) setLoadTestIds(picked.map((t) => t.test));
+          if (c.partnerRole) {
+            setRole(c.partnerRole);
+            setRoleForSelection(c.partnerRole);
+          }
+          setLoadFields((prev) => ({
+            ...prev,
+            ...Object.fromEntries(picked.filter((t) => t.fields).map((t) => [t.test, t.fields!])),
+          }));
         } else {
           setMode("role");
           setRole(run.role);
@@ -306,6 +356,22 @@ export function Run() {
     .filter((s) => specFiles.includes(s.file))
     .reduce((n, s) => n + s.tests, 0);
   const currentMode = MODES.find((m) => m.value === mode) ?? MODES[0];
+  // Selected tests in catalogue order, which is the order they run in.
+  const selectedLoadTests = (loadTests ?? []).filter((t) => loadTestIds.includes(t.id));
+  const loadValue = (testId: string, field: LoadField) => loadFields[testId]?.[field.key] ?? field.default;
+  const loadValueInvalid = (testId: string, f: LoadField) => {
+    const v = loadValue(testId, f);
+    return !Number.isFinite(v) || v < f.min || v > f.max;
+  };
+  const loadFieldInvalid = selectedLoadTests.some((t) => t.fields.some((f) => loadValueInvalid(t.id, f)));
+
+  function setLoadValue(testId: string, key: string, value: number) {
+    setLoadFields((prev) => ({ ...prev, [testId]: { ...prev[testId], [key]: value } }));
+  }
+
+  function toggleLoadTest(id: string) {
+    setLoadTestIds((prev) => (prev.includes(id) ? prev.filter((t) => t !== id) : [...prev, id]));
+  }
 
   // Validated on blur rather than per keystroke, so a half-typed URL is never flagged wrong.
   function validateBaseUrl() {
@@ -344,6 +410,7 @@ export function Run() {
   function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (mode === "ui") void startUiRun();
+    else if (mode === "load") void startLoadRun();
     else setConfigOpen(true);
   }
 
@@ -353,7 +420,7 @@ export function Run() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
     });
-    const data = (await res.json()) as { runId?: string; error?: string; total?: number };
+    const data = (await res.json()) as { runId?: string; error?: string; total?: number; seconds?: number | null };
     return { res, data };
   }
 
@@ -376,6 +443,41 @@ export function Run() {
       else {
         setRerun(null);
         runStarted(data.runId, data.total ?? null);
+      }
+    } catch {
+      runFailedToStart("Could not reach the dashboard server to start the run");
+    } finally {
+      setStarting(false);
+    }
+  }
+
+  // Load tests start straight away, like the browser suite: the form already shows the
+  // role, key and load profile, and a run can be stopped from the progress card.
+  async function startLoadRun() {
+    const normalized = validateBaseUrl();
+    if (!normalized.ok || selectedLoadTests.length === 0) {
+      baseUrlRef.current?.focus();
+      return;
+    }
+    setStarting(true);
+    setLoadSeconds(null);
+    beginRun(normalized.value, "load");
+    try {
+      const { res, data } = await post("/api/k6", {
+        tests: selectedLoadTests.map((t) => ({
+          test: t.id,
+          fields: Object.fromEntries(t.fields.map((f) => [f.key, loadValue(t.id, f)])),
+        })),
+        role,
+        apiToken,
+        baseUrl: normalized.value,
+        rerunOf: rerun?.id,
+      });
+      if (!res.ok || !data.runId) runFailedToStart(data.error || "Failed to start the load test");
+      else {
+        setRerun(null);
+        setLoadSeconds(typeof data.seconds === "number" ? data.seconds : null);
+        runStarted(data.runId, null);
       }
     } catch {
       runFailedToStart("Could not reach the dashboard server to start the run");
@@ -446,7 +548,9 @@ export function Run() {
     running ||
     starting ||
     !baseUrl ||
-    (mode === "ui" && (specFiles.length === 0 || hostCheck.state !== "ok"));
+    (mode === "ui" && (specFiles.length === 0 || hostCheck.state !== "ok")) ||
+    (mode === "load" &&
+      (hostCheck.state !== "ok" || !apiToken || selectedLoadTests.length === 0 || Boolean(k6Error) || loadFieldInvalid));
   const formHint =
     hostCheck.state === "checking"
       ? "Checking the environment…"
@@ -454,17 +558,24 @@ export function Run() {
         ? "Environment must be reachable before a run can start."
         : mode === "ui" && specFiles.length === 0
           ? "Pick at least one spec file."
-          : null;
+          : mode === "load" && k6Error
+            ? k6Error
+            : mode === "load" && !apiToken
+              ? "Add the role's API token."
+              : mode === "load" && selectedLoadTests.length === 0
+                ? "Pick at least one load test."
+              : mode === "load" && loadFieldInvalid
+                ? "Bring the load profile back inside its limits."
+                : null;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       <p className="text-sm text-muted-foreground">
         Pick the environment and what to run, add the tokens it needs, and run it against the
         live platform.
       </p>
 
-      <Card>
-        <CardContent>
+      <Panel title="Run configuration" icon={SlidersHorizontal}>
           <form onSubmit={onSubmit} className="space-y-5">
             {rerun && (
               <div
@@ -658,8 +769,7 @@ export function Run() {
               </>
             )}
 
-            {mode === "role" && (
-              <>
+            {(mode === "role" || mode === "load") && (
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="min-w-0 space-y-1.5">
                     <Label htmlFor="role">Role</Label>
@@ -690,11 +800,126 @@ export function Run() {
                       aria-describedby="token-message"
                     />
                     <p id="token-message" className="min-h-4 text-xs text-muted-foreground">
-                      Never saved — kept only until this tab is reloaded or closed.
+                      {mode === "load"
+                        ? "Handed to k6 as an environment variable. Never saved."
+                        : "Never saved — kept only until this tab is reloaded or closed."}
                     </p>
                   </div>
                 </div>
+            )}
 
+            {mode === "load" && (
+              <div className="space-y-3">
+                <div className="space-y-2">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <Label id="load-tests-label">Load tests</Label>
+                    <div className="flex items-center gap-1">
+                      <span className="mr-1 text-xs text-muted-foreground tabular-nums">
+                        {selectedLoadTests.length} of {loadTests?.length ?? 0} selected
+                      </span>
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => setLoadTestIds((loadTests ?? []).map((t) => t.id))}
+                        disabled={!loadTests?.length || selectedLoadTests.length === loadTests.length}
+                      >
+                        Select all
+                      </Button>
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => setLoadTestIds([])}
+                        disabled={selectedLoadTests.length === 0}
+                      >
+                        Clear
+                      </Button>
+                    </div>
+                  </div>
+                  <div role="group" aria-labelledby="load-tests-label" className="flex flex-wrap gap-2">
+                    {loadTests === null && (
+                      <span className="flex items-center gap-1 text-xs text-muted-foreground">
+                        <Loader2 className="size-3 animate-spin" aria-hidden="true" />
+                        Loading the load tests…
+                      </span>
+                    )}
+                    {(loadTests ?? []).map((t) => {
+                      const checked = loadTestIds.includes(t.id);
+                      return (
+                        <Toggle
+                          key={t.id}
+                          size="sm"
+                          variant="outline"
+                          pressed={checked}
+                          onPressedChange={() => toggleLoadTest(t.id)}
+                          className="data-[state=on]:border-selected/70 data-[state=on]:bg-selected/10 data-[state=on]:text-selected"
+                        >
+                          <Check className={checked ? "opacity-100" : "opacity-0"} aria-hidden="true" />
+                          {t.label}
+                        </Toggle>
+                      );
+                    })}
+                  </div>
+                  <p className="min-h-4 text-xs text-muted-foreground">
+                    {k6Error ? (
+                      <span className="text-destructive">{k6Error}</span>
+                    ) : selectedLoadTests.length > 1 ? (
+                      `Runs one after another in this order — ${selectedLoadTests.map((t) => t.label).join(" → ")} — so no test skews another's numbers.`
+                    ) : null}
+                  </p>
+                </div>
+
+                {selectedLoadTests.length > 0 && (
+                  <div className="grid gap-3 lg:grid-cols-2">
+                    {selectedLoadTests.map((t) => (
+                      <fieldset key={t.id} className="min-w-0 space-y-3 rounded-lg border px-3 py-3">
+                        <legend className="sr-only">{t.label} settings</legend>
+                        <div className="min-w-0">
+                          <p className="text-sm font-medium">{t.label}</p>
+                          <p className="text-xs text-muted-foreground">{t.detail}</p>
+                        </div>
+                        <div className="grid gap-3 sm:grid-cols-2">
+                          {t.fields.map((f) => {
+                            const value = loadValue(t.id, f);
+                            const invalid = loadValueInvalid(t.id, f);
+                            const id = `load-${t.id}-${f.key}`;
+                            return (
+                              <div key={id} className="min-w-0 space-y-1.5">
+                                <Label htmlFor={id}>{f.label}</Label>
+                                <Input
+                                  id={id}
+                                  type="number"
+                                  inputMode="numeric"
+                                  min={f.min}
+                                  max={f.max}
+                                  value={Number.isFinite(value) ? value : ""}
+                                  onChange={(e) =>
+                                    setLoadValue(t.id, f.key, e.target.value === "" ? NaN : Number(e.target.value))
+                                  }
+                                  aria-invalid={invalid || undefined}
+                                  aria-describedby={`${id}-help`}
+                                  className="tabular-nums"
+                                />
+                                <p
+                                  id={`${id}-help`}
+                                  className={cn("min-h-4 text-xs", invalid ? "text-destructive" : "text-muted-foreground")}
+                                >
+                                  {f.min.toLocaleString()}–{f.max.toLocaleString()}
+                                </p>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </fieldset>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {mode === "role" && (
+              <>
                 <div className="space-y-2">
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <Label id="event-types-label">Event types to run</Label>
@@ -740,12 +965,16 @@ export function Run() {
                           // so a chosen chip was indistinguishable from the one under the cursor.
                           className="data-[state=on]:border-selected/70 data-[state=on]:bg-selected/10 data-[state=on]:text-selected"
                         >
-                          {/* Always rendered, faded when unselected: selection is then carried
-                              by a mark as well as by colour, and the chip keeps one width. */}
-                          <Check
-                            className={checked ? "opacity-100" : "opacity-0"}
+                          {/* An always-visible box: selection is carried by a mark as well as by
+                              colour, and the chip keeps one width. */}
+                          <span
                             aria-hidden="true"
-                          />
+                            className={`flex size-3.5 shrink-0 items-center justify-center rounded-[4px] border ${
+                              checked ? "border-selected bg-selected text-primary-foreground" : "border-input bg-card"
+                            }`}
+                          >
+                            {checked && <Check className="size-2.5!" strokeWidth={3} />}
+                          </span>
                           {type}
                         </Toggle>
                       );
@@ -829,17 +1058,26 @@ export function Run() {
                   <Loader2 className="animate-spin" />
                 ) : mode === "ui" ? (
                   <MonitorPlay />
+                ) : mode === "load" ? (
+                  <Activity />
                 ) : (
                   <Settings2 />
                 )}
-                {running ? "Running…" : mode === "ui" ? "Run browser tests" : "Run…"}
+                {running
+                  ? "Running…"
+                  : mode === "ui"
+                    ? "Run browser tests"
+                    : mode === "load"
+                      ? selectedLoadTests.length === 1
+                        ? `Run ${selectedLoadTests[0].label.toLowerCase()} test`
+                        : `Run ${selectedLoadTests.length || ""} load tests`.replace("  ", " ")
+                      : "Run…"}
               </Button>
               {runError && !running && <p className="text-sm text-destructive">{runError}</p>}
               {!runError && formHint && <p className="text-sm text-muted-foreground">{formHint}</p>}
             </div>
           </form>
-        </CardContent>
-      </Card>
+      </Panel>
 
       <RunModeDialog
         open={configOpen}
@@ -894,11 +1132,26 @@ export function Run() {
         onOpenChange={(open) => !open && setOpenStep(null)}
       />
 
+      {!runId && resultList.length === 0 && (
+        <Panel title="Results" icon={ListChecks}>
+          <div className="flex min-h-40 flex-col items-center justify-center gap-1 text-center">
+            <p className="text-sm font-medium">No run in progress</p>
+            <p className="max-w-[48ch] text-sm text-muted-foreground">
+              Results appear here step by step once you start a run. Past runs are in Logs and Audit.
+            </p>
+          </div>
+        </Panel>
+      )}
+
       {(runId || resultList.length > 0) && (
         <Card>
           <CardHeader>
             <CardTitle>
-              {kind === "ui" ? "Browser suite — live progress" : "Live progress"}
+              {kind === "ui"
+                ? "Browser suite — live progress"
+                : kind === "load"
+                  ? "Load test — live progress"
+                  : "Live progress"}
             </CardTitle>
             <CardAction className="flex gap-2">
               {!running && runId && !runStatus && (
@@ -907,7 +1160,7 @@ export function Run() {
                   Reconnect
                 </Button>
               )}
-              {kind === "ui" && running && (
+              {kind !== "api" && running && (
                 <Button type="button" variant="destructive" size="sm" onClick={() => void stopRun()}>
                   <Square aria-hidden="true" />
                   Stop
@@ -975,8 +1228,11 @@ export function Run() {
             <div className="divide-y border-t">
               {resultList.map((r) => {
                 const key = r.stepKey || r.testId;
-                // A browser test has no document to show; API steps open theirs.
-                const sent = r.variants?.some((v) => v.requestBody || v.documentPath);
+                // API steps open the document they sent; browser tests open their details and
+                // the requests they made.
+                const sent =
+                  r.variants?.some((v) => v.requestBody || v.documentPath || isTestStep(v.method)) ||
+                  Boolean(r.exchanges?.length);
                 const shared = (r.batchSize ?? 1) > 1;
                 const Row = sent ? "button" : "div";
                 return (
@@ -986,7 +1242,7 @@ export function Run() {
                       ? {
                           type: "button" as const,
                           onClick: () => setOpenStep(key),
-                          "aria-label": `Open the document sent for ${r.testId} ${r.eventType}`,
+                          "aria-label": `Open the details for ${r.testId} ${r.eventType}`,
                         }
                       : {})}
                     className={cn(
@@ -1025,11 +1281,17 @@ export function Run() {
               {running && (
                 <div className="flex items-center gap-2 px-6 py-2 text-sm italic text-muted-foreground">
                   <Loader2 className="size-3.5 animate-spin" aria-hidden="true" />
-                  {kind === "ui" && total === null ? "Starting Playwright…" : "Waiting for next result…"}
+                  {kind === "load"
+                    ? `k6 is running — results arrive when it finishes${
+                        loadSeconds ? ` (about ${Math.max(1, Math.round(loadSeconds / 60))} min)` : ""
+                      }.`
+                    : kind === "ui" && total === null
+                      ? "Starting Playwright…"
+                      : "Waiting for next result…"}
                 </div>
               )}
             </div>
-            {kind === "ui" && logs.length > 0 && (
+            {kind !== "api" && logs.length > 0 && (
               <div className="border-t px-6 py-3">
                 <h3 className="mb-1.5 text-xs font-medium text-muted-foreground">Runner output</h3>
                 <pre

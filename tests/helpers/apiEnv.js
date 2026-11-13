@@ -2,6 +2,7 @@
 // the host root on both environments; keys are environment-specific (a tnt-demo key is
 // rejected by TrackIQ and vice versa), so each role's key is chosen to match.
 const { isTrackiq, baseUrl } = require('./auth');
+const { recordExchange } = require('./exchanges');
 
 const ENDPOINT_PATHS = {
   manufacturer: '/api/integration/manufacturer/events',
@@ -21,15 +22,24 @@ const endpoint = (role) => `${baseUrl()}${ENDPOINT_PATHS[role]}`;
 // POSTs an EPCIS document (JSON-LD object/string or XML string) as `role`.
 // Returns { status, json, text, warnings: [codes] }.
 async function postEvent(role, body, format = typeof body === 'string' && body.trimStart().startsWith('<') ? 'xml' : 'json') {
+  const sent = typeof body === 'string' ? body : JSON.stringify(body);
+  const contentType = format === 'xml' ? 'application/xml' : 'application/ld+json';
+  const started = Date.now();
   const res = await fetch(endpoint(role), {
     method: 'POST',
-    headers: {
-      'Content-Type': format === 'xml' ? 'application/xml' : 'application/ld+json',
-      'X-API-Key': apiKey(role),
-    },
-    body: typeof body === 'string' ? body : JSON.stringify(body),
+    headers: { 'Content-Type': contentType, 'X-API-Key': apiKey(role) },
+    body: sent,
   });
   const text = await res.text();
+  await recordExchange({
+    label: `${role} ${format === 'xml' ? 'XML' : 'JSON-LD'}`,
+    url: endpoint(role),
+    status: res.status,
+    contentType,
+    requestBody: sent,
+    responseBody: text,
+    durationMs: Date.now() - started,
+  });
   let json = null;
   try {
     json = JSON.parse(text);

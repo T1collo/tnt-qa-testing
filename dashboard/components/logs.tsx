@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CheckCheck, ChevronDown, Copy, Loader2 } from "lucide-react";
+import { CheckCheck, ChevronDown, ListChecks, Copy, Loader2 } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -14,19 +14,24 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Panel } from "@/components/panel";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Toggle } from "@/components/ui/toggle";
 import {
+  BrowserTestDetail,
   CodeBlock,
   CopyButton,
+  EventSummary,
   DurationPill,
   budgetFor,
   RoleChip,
   StatusPill,
   pretty,
 } from "@/components/document-view";
-import { cn } from "@/lib/utils";
+import { eventsFromBody, returnedEventIds } from "@/lib/epcisEvents";
+import type { EventTracking } from "@/lib/run-session";
+import { cn, isTestStep, showsTestDetail } from "@/lib/utils";
 
 type RunSummary = {
   id: string;
@@ -53,13 +58,18 @@ type ResultVariant = {
   variant: string;
   method: string;
   url: string;
-  requestHeaders: Record<string, string>;
+  requestHeaders?: Record<string, string>;
   requestBody?: string;
   documentPath?: string;
   status: number | null;
   responseBody: string | null;
   error: string | null;
   durationMs: number;
+  /** Browser tests only: what the test checks, what it saw, and why it failed. */
+  expected?: string;
+  actual?: string;
+  reason?: string;
+  errorDetail?: string;
 };
 
 type RunResult = {
@@ -69,9 +79,14 @@ type RunResult = {
   path: string[];
   role?: string;
   variants: ResultVariant[];
+  /** Browser tests only: the requests the test sent (portal API calls, EPCIS documents). */
+  exchanges?: ResultVariant[];
+  /** k6 runs only: every event sent (event ID, EPC, HTTP status). */
+  tracking?: EventTracking;
   ok: boolean;
   skipped?: boolean;
   error?: string;
+  reason?: string;
   batchId?: string;
   batchSize?: number;
   batchEventCount?: number;
@@ -99,6 +114,7 @@ const stepKeyOf = (r: RunResult) => r.stepKey || r.testId;
 function buildCurl(variant: ResultVariant, body: string | null) {
   // Portal steps are browser actions, not requests; there is no curl for them.
   if (variant.method === "UI") return `# Browser step on ${variant.url}`;
+  if (variant.method === "K6") return `# k6 load-test check — re-run it from the Run page (${variant.url})`;
   const headers = Object.entries(variant.requestHeaders || {})
     .map(([k, v]) => `  -H "${k}: ${v === "***" ? "$YOUR_API_KEY" : v}"`)
     .join(" \\\n");
@@ -132,6 +148,8 @@ function StepRow({
   const primary = result.variants?.[0];
   const onDisk = Boolean(primary && !primary.requestBody && primary.documentPath);
   const shared = (result.batchSize ?? 1) > 1;
+  const isBrowserTest = isTestStep(primary?.method);
+  const exchanges = result.exchanges ?? [];
 
   function toggle(next: boolean) {
     setOpen(next);
@@ -140,9 +158,9 @@ function StepRow({
 
   return (
     <Collapsible open={open} onOpenChange={toggle}>
-      <Card className="overflow-hidden py-0">
+      <div className="border-b last:border-b-0">
         <CollapsibleTrigger asChild>
-          <button className={cn(ROW_GRID, "w-full px-4 py-3 text-left text-sm hover:bg-muted/50 focus-visible:bg-muted/50 focus-visible:outline-none")}>
+          <button className={cn(ROW_GRID, "w-full cursor-pointer px-4 py-3 text-left text-sm hover:bg-muted/50 focus-visible:bg-muted/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring")}>
             <span className="text-right font-mono text-xs text-muted-foreground tabular-nums">{index}</span>
             <span className="hidden truncate font-mono text-xs text-muted-foreground md:block">
               {result.testId}
@@ -169,11 +187,11 @@ function StepRow({
                     {result.batchId}
                   </span>
                 ) : (
-                  <DurationPill ms={primary?.durationMs} step={step} untimed={primary?.method === "UI"} />
+                  <DurationPill ms={primary?.durationMs} step={step} untimed={isTestStep(primary?.method)} />
                 ))}
             </span>
             <Badge
-              variant={outcome === "pass" ? "default" : outcome === "skipped" ? "outline" : "destructive"}
+              variant={outcome === "pass" ? "success" : outcome === "skipped" ? "outline" : "destructive"}
               className="justify-center"
             >
               {outcome === "pass" ? "PASS" : outcome === "skipped" ? "SKIPPED" : "FAIL"}
@@ -227,7 +245,7 @@ function StepRow({
               )}
             </div>
 
-            {outcome === "skipped" ? (
+            {outcome === "skipped" && !isBrowserTest ? (
               <div>
                 <h4 className="mb-1 text-xs font-semibold tracking-wide text-muted-foreground uppercase">
                   Why it did not run
@@ -239,7 +257,22 @@ function StepRow({
                 </p>
               </div>
             ) : (
-              (result.variants || []).map((v, i) => {
+              [...(result.variants || []), ...exchanges].map((v, i) => {
+                if (showsTestDetail(v)) {
+                  return (
+                    <div key={i} className="space-y-3 rounded-2xl border bg-background p-3">
+                      <span className="text-xs font-medium">Test result</span>
+                      <BrowserTestDetail
+                        variant={v}
+                        ok={result.ok}
+                        skipped={result.skipped}
+                        reason={result.reason}
+                        requestCount={exchanges.length}
+                        tracking={result.tracking}
+                      />
+                    </div>
+                  );
+                }
                 const body = v.requestBody ?? (i === 0 ? documents[step] : undefined) ?? null;
                 return (
                   <div key={i} className="space-y-3 rounded-2xl border bg-background p-3">
@@ -247,7 +280,7 @@ function StepRow({
                       <span className="text-xs font-medium">{v.variant}</span>
                       <span className="flex items-center gap-2">
                         <StatusPill status={v.status} />
-                        <DurationPill ms={v.durationMs} step={step} untimed={v.method === "UI"} />
+                        <DurationPill ms={v.durationMs} step={step} untimed={isTestStep(v.method)} />
                       </span>
                     </div>
                     <p className="font-mono text-xs break-all">
@@ -265,6 +298,14 @@ function StepRow({
                         This run did not record the body it sent for this step.
                       </p>
                     )}
+                    {/* Every request with a body lists its event IDs and EPCs, ready to copy. */}
+                    {body && (
+                      <EventSummary
+                        events={eventsFromBody(body)}
+                        returnedIds={returnedEventIds(v.responseBody ?? "")}
+                        missingNote="This request carried no EPCIS events."
+                      />
+                    )}
                     <CodeBlock label="Response" text={pretty(v.responseBody)} copyable />
                     <CodeBlock label="Repro (curl)" text={buildCurl(v, body)} copyable />
                     {v.error && <p className="text-xs text-destructive">Network error: {v.error}</p>}
@@ -274,7 +315,7 @@ function StepRow({
             )}
           </div>
         </CollapsibleContent>
-      </Card>
+      </div>
     </Collapsible>
   );
 }
@@ -390,7 +431,7 @@ function DocumentRow({
                 <DurationPill
                   ms={primary.durationMs}
                   budgetMs={budgetMs}
-                  untimed={primary.method === "UI"}
+                  untimed={isTestStep(primary.method)}
                 />
               </span>
               <ChevronDown
@@ -408,12 +449,19 @@ function DocumentRow({
             {document.variants.map((v, i) => {
               const text = i === 0 ? body : (v.requestBody ?? null);
               return text ? (
-                <CodeBlock
-                  key={i}
-                  label={`Whole document sent${document.variants.length > 1 ? ` (${v.variant})` : ""}`}
-                  text={pretty(text)}
-                  copyable
-                />
+                <div key={i} className="space-y-3">
+                  <EventSummary
+                    events={eventsFromBody(text)}
+                    returnedIds={returnedEventIds(v.responseBody ?? "")}
+                    missingNote="This document carried no EPCIS events."
+                  />
+                  <CodeBlock
+                    label={`Whole document sent${document.variants.length > 1 ? ` (${v.variant})` : ""}`}
+                    text={pretty(text)}
+                    copyable
+                  />
+                  {v.responseBody && <CodeBlock label="Response" text={pretty(v.responseBody)} copyable />}
+                </div>
               ) : (
                 <p key={i} className="flex items-center gap-2 text-xs text-muted-foreground">
                   {onDisk && <Loader2 className="size-3.5 animate-spin" aria-hidden="true" />}
@@ -555,7 +603,7 @@ export function Logs() {
   const documents_ = documentsOf(results);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <p className="max-w-[65ch] text-sm text-muted-foreground">
           Every step of a run — passed, failed and skipped — with the event body that was sent, the
@@ -670,15 +718,17 @@ export function Logs() {
                 </CardContent>
               </Card>
             ) : (
-              shown.map((r) => (
-                <StepRow
-                  key={stepKeyOf(r)}
-                  result={r}
-                  index={results.indexOf(r) + 1}
-                  documents={documents}
-                  onNeedDocument={loadDocument}
-                />
-              ))
+              <Panel title="Run steps" icon={ListChecks} bodyClassName="overflow-hidden p-0">
+                {shown.map((r) => (
+                  <StepRow
+                    key={stepKeyOf(r)}
+                    result={r}
+                    index={results.indexOf(r) + 1}
+                    documents={documents}
+                    onNeedDocument={loadDocument}
+                  />
+                ))}
+              </Panel>
             )}
           </TabsContent>
 

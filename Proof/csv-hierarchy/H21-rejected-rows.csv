@@ -1,2 +1,2 @@
 event_id,row_index,code,message,gtin,batch_no,case_group
-urn:uuid:f26b4767-1cf4-4790-8c2c-7c8d35ccd49e,,INVALID_JSON_STRUCTURE,"lotNumber contains characters outside the GS1 AI(10) permitted set (+1 more schema issue(s))",,,
+urn:uuid:ee4ad405-e6fb-4b51-8872-40e47d454200,,INVALID_JSON_STRUCTURE,"lotNumber contains characters outside the GS1 AI(10) permitted set (+1 more schema issue(s))",,,

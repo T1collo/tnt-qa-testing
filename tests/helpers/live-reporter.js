@@ -14,6 +14,20 @@ function annotationOf(type, test, result) {
 
 const testIdOf = (test, result) => annotationOf('testId', test, result);
 
+// Requests the test recorded (helpers/exchanges.js): each one's body, response and status.
+function exchangesOf(result) {
+  return (result?.attachments || [])
+    .filter((a) => a.name === 'exchange' && a.body)
+    .map((a) => {
+      try {
+        return JSON.parse(a.body.toString('utf8'));
+      } catch {
+        return null;
+      }
+    })
+    .filter(Boolean);
+}
+
 class LiveReporter {
   onBegin(_config, suite) {
     emit({ type: 'begin', total: suite.allTests().length });
@@ -39,6 +53,7 @@ class LiveReporter {
       // The full failure message (colour codes removed), so the dashboard can say exactly what
       // was compared and translate it into a plain reason.
       errorDetail: result.error?.message ? result.error.message.replace(/\x1b\[[0-9;]*m/g, '').slice(0, 3000) : null,
+      exchanges: exchangesOf(result),
       title: test.title,
       path: rest.slice(0, -1),
       project,

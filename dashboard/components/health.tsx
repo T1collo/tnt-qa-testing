@@ -8,18 +8,17 @@ import {
   CircleCheck,
   CircleX,
   Clock,
+  Filter,
+  Gauge,
+  History,
+  Layers,
   RefreshCw,
+  Rows3,
 } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Panel, PanelFigure } from "@/components/panel";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
@@ -41,11 +40,8 @@ import { BarChart } from "@/components/charts/bar-chart";
 import { BarChartLoading } from "@/components/charts/bar-chart-loading";
 import { Bar } from "@/components/charts/bar";
 import { BarXAxis } from "@/components/charts/bar-x-axis";
-import { ComposedChart } from "@/components/charts/composed-chart";
 import { Grid } from "@/components/charts/grid";
 import { ChartTooltip } from "@/components/charts/tooltip";
-import { SeriesBar } from "@/components/charts/series-bar";
-import { XAxis } from "@/components/charts/x-axis";
 
 type HostHealth = {
   reachable: boolean;
@@ -88,7 +84,7 @@ type Filters = {
   to: string;
 };
 
-const ROLES = ["all", "manufacturer", "distributor", "facility", "end-to-end", "ui"] as const;
+const ROLES = ["all", "manufacturer", "distributor", "facility", "end-to-end", "ui", "load"] as const;
 
 function delta(current: number | null | undefined, past: number | null | undefined) {
   if (current == null || past == null) return null;
@@ -176,150 +172,155 @@ export function Health() {
     loadLive();
   }, [loadLive]);
 
-  const latencySeries = useMemo(
-    () =>
-      [...items]
-        .slice(0, 16)
-        .reverse()
-        .filter((r) => r.health?.latencyMs != null)
-        .map((r) => ({
-          label: new Date(r.health?.checkedAt || r.startedAt).toLocaleDateString(undefined, {
-            month: "short",
-            day: "numeric",
-          }),
-          latency: r.health!.latencyMs as number,
-        })),
-    [items]
-  );
+  const latencySeries = useMemo(() => {
+    // The chart keys each bar by its label, so two runs in the same minute need telling apart.
+    const seen = new Map<string, number>();
+    return [...items]
+      .slice(0, 16)
+      .reverse()
+      .filter((r) => r.health?.latencyMs != null)
+      .map((r) => {
+        const base = new Date(r.health?.checkedAt || r.startedAt).toLocaleString(undefined, {
+          month: "short",
+          day: "numeric",
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+        const n = (seen.get(base) ?? 0) + 1;
+        seen.set(base, n);
+        return { label: n > 1 ? `${base} #${n}` : base, latency: r.health!.latencyMs as number };
+      });
+  }, [items]);
 
-  const suiteBars = useMemo(
-    () =>
-      [...items]
-        .reverse()
-        .filter((r) => r.passRate != null || r.total > 0)
-        .map((r) => ({
-          date: new Date(r.startedAt),
-          passed: r.passed,
-          failed: r.failed,
-        })),
-    [items]
-  );
+  // One evenly spaced bar per day: on a time axis, runs close together draw on top of each other,
+  // which hides the failures underneath. Newest 14 days with results; each run is in History.
+  const suiteBars = useMemo(() => {
+    const byDay = new Map<number, { date: Date; passed: number; failed: number }>();
+    for (const r of items) {
+      if (r.total === 0) continue;
+      const d = new Date(r.startedAt);
+      d.setHours(0, 0, 0, 0);
+      const day = byDay.get(d.getTime()) ?? { date: d, passed: 0, failed: 0 };
+      day.passed += r.passed;
+      day.failed += r.failed;
+      byDay.set(d.getTime(), day);
+    }
+    return [...byDay.values()]
+      .sort((a, b) => a.date.getTime() - b.date.getTime())
+      .slice(-14)
+      .map((day) => ({
+        label: day.date.toLocaleDateString(undefined, { month: "short", day: "numeric" }),
+        passed: day.passed,
+        failed: day.failed,
+      }));
+  }, [items]);
 
   const suiteDelta = delta(current?.passRate, past?.passRate);
   const failDelta = delta(current?.failed, past?.failed);
   const latencyDelta = delta(current?.health?.latencyMs ?? null, past?.health?.latencyMs ?? null);
 
   return (
-    <div className="space-y-6">
-      <div className="flex flex-wrap items-start justify-between gap-3">
-        <div>
-          <p className="text-sm text-muted-foreground">
-            Host reachability and suite health — current vs past, with filterable history.
-          </p>
-        </div>
+    <div className="space-y-4">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <p className="text-sm text-muted-foreground">
+          Host reachability and suite health — current vs past, with filterable history.
+        </p>
         <Button size="sm" variant="outline" onClick={() => { loadHistory(); loadLive(probeUrl || undefined); }} disabled={loading}>
           <RefreshCw className={loading ? "animate-spin" : ""} />
           Refresh
         </Button>
       </div>
 
-      <div className="grid gap-4 lg:grid-cols-2">
-        <Card>
-          <CardHeader>
-            <CardDescription>Current</CardDescription>
-            <CardTitle className="text-xl">
-              {current ? (
-                <>
-                  <span className="font-mono text-base">{current.id.split("_").slice(-1)[0]}</span>
-                  <span className="ml-2 text-sm font-normal text-muted-foreground">{current.role}</span>
-                </>
-              ) : (
-                "No matching runs"
-              )}
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-2 text-sm">
-            <div>
-              <div className="text-xs text-muted-foreground">Live probe</div>
-              <HostBadge live={live} />
+      <div className="grid gap-4 lg:grid-cols-3">
+        <Panel title="Live probe" icon={Activity} bodyClassName="gap-3">
+          <PanelFigure
+            label="Partner API host, right now"
+            value={live ? `${live.latencyMs} ms` : "—"}
+            note={live?.status != null ? `HTTP ${live.status}` : undefined}
+          />
+          <div className="text-sm">
+            <HostBadge live={live} />
+          </div>
+          <div className="mt-auto flex flex-wrap items-end gap-2">
+            <div className="min-w-40 flex-1 space-y-1.5">
+              <Label htmlFor="probe-url">Base URL (optional)</Label>
+              <Input
+                id="probe-url"
+                placeholder="Default from .env"
+                value={probeUrl}
+                onChange={(e) => setProbeUrl(e.target.value)}
+              />
             </div>
-            <div>
-              <div className="text-xs text-muted-foreground">At run start</div>
-              <HostBadge health={current?.health} />
-            </div>
-            <div className="text-muted-foreground">
-              Suite:{" "}
-              <span className="font-medium text-foreground">
-                {current?.passRate != null ? `${current.passRate}%` : "—"}
-              </span>
-              {current ? ` · ${current.passed} passed · ${current.failed} failed` : ""}
-            </div>
-          </CardContent>
-        </Card>
+            <Button variant="outline" onClick={() => loadLive(probeUrl || undefined)} disabled={probing}>
+              {probing ? "Checking…" : "Check now"}
+            </Button>
+          </div>
+        </Panel>
 
-        <Card>
-          <CardHeader>
-            <CardDescription>Past (previous matching run)</CardDescription>
-            <CardTitle className="text-xl">
-              {past ? (
-                <>
-                  <span className="font-mono text-base">{past.id.split("_").slice(-1)[0]}</span>
-                  <span className="ml-2 text-sm font-normal text-muted-foreground">{past.role}</span>
-                </>
-              ) : (
-                "No prior run"
+        <Panel title="Latest run" icon={Layers} bodyClassName="gap-3">
+          <PanelFigure
+            label={current ? `Suite pass rate · ${current.role}` : "No matching runs"}
+            value={current?.passRate != null ? `${current.passRate}%` : "—"}
+            note={current?.id.split("_").slice(-1)[0]}
+          />
+          {current && (
+            <dl className="space-y-2 text-sm">
+              <div className="flex items-center justify-between gap-3">
+                <dt className="text-muted-foreground">Results</dt>
+                <dd className="font-mono text-xs tabular-nums">
+                  {current.passed} passed · {current.failed} failed
+                </dd>
+              </div>
+              <div className="flex items-center justify-between gap-3">
+                <dt className="text-muted-foreground">At run start</dt>
+                <dd>
+                  <HostBadge health={current.health} />
+                </dd>
+              </div>
+            </dl>
+          )}
+        </Panel>
+
+        <Panel title="Previous run" icon={History} bodyClassName="gap-3">
+          <PanelFigure
+            label={past ? `Suite pass rate · ${past.role}` : "No prior run"}
+            value={past?.passRate != null ? `${past.passRate}%` : "—"}
+            note={past?.id.split("_").slice(-1)[0]}
+          />
+          {past && (
+            <dl className="space-y-2 text-sm">
+              <div className="flex items-center justify-between gap-3">
+                <dt className="text-muted-foreground">Results</dt>
+                <dd className="font-mono text-xs tabular-nums">
+                  {past.passed} passed · {past.failed} failed
+                </dd>
+              </div>
+              <div className="flex items-center justify-between gap-3">
+                <dt className="text-muted-foreground">At run start</dt>
+                <dd>
+                  <HostBadge health={past.health} />
+                </dd>
+              </div>
+              {(suiteDelta != null || failDelta != null || latencyDelta != null) && (
+                <div className="flex items-center justify-between gap-3">
+                  <dt className="text-muted-foreground">Latest vs this run</dt>
+                  <dd className="text-right font-mono text-xs tabular-nums">
+                    {[
+                      suiteDelta != null && `${suiteDelta}% pass`,
+                      failDelta != null && `${failDelta} fails`,
+                      latencyDelta != null && `${latencyDelta} ms`,
+                    ]
+                      .filter(Boolean)
+                      .join(" · ")}
+                  </dd>
+                </div>
               )}
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-2 text-sm">
-            <HostBadge health={past?.health} />
-            <div className="text-muted-foreground">
-              Suite:{" "}
-              <span className="font-medium text-foreground">
-                {past?.passRate != null ? `${past.passRate}%` : "—"}
-              </span>
-              {past ? ` · ${past.passed} passed · ${past.failed} failed` : ""}
-            </div>
-            <div className="flex flex-wrap gap-2 pt-1">
-              {suiteDelta != null && (
-                <Badge variant="secondary">Pass rate {suiteDelta}%</Badge>
-              )}
-              {failDelta != null && <Badge variant="secondary">Fails {failDelta}</Badge>}
-              {latencyDelta != null && (
-                <Badge variant="secondary">Latency {latencyDelta}ms</Badge>
-              )}
-            </div>
-          </CardContent>
-        </Card>
+            </dl>
+          )}
+        </Panel>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-base">Live probe</CardTitle>
-          <CardDescription>Check the partner API host now (same probe used before runs).</CardDescription>
-        </CardHeader>
-        <CardContent className="flex flex-wrap items-end gap-3">
-          <div className="min-w-[240px] flex-1 space-y-1.5">
-            <Label htmlFor="probe-url">Base URL (optional)</Label>
-            <Input
-              id="probe-url"
-              placeholder="Leave blank for default from .env"
-              value={probeUrl}
-              onChange={(e) => setProbeUrl(e.target.value)}
-            />
-          </div>
-          <Button onClick={() => loadLive(probeUrl || undefined)} disabled={probing}>
-            <Activity />
-            {probing ? "Checking…" : "Check now"}
-          </Button>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-base">Filters</CardTitle>
-        </CardHeader>
-        <CardContent className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+      <Panel title="Filters" icon={Filter} bodyClassName="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
           <div className="space-y-1.5">
             <Label>Role</Label>
             <Select
@@ -396,75 +397,69 @@ export function Health() {
               onChange={(e) => setFilters((f) => ({ ...f, to: e.target.value }))}
             />
           </div>
-        </CardContent>
-      </Card>
+      </Panel>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-base">Latency over time</CardTitle>
-          <CardDescription>Host probe latency (ms) for filtered runs</CardDescription>
-        </CardHeader>
-        <CardContent>
+      <div className="grid gap-4 lg:grid-cols-2">
+        <Panel title="Latency over time" icon={Gauge}>
+          <p className="mb-3 text-sm text-muted-foreground">Host probe latency (ms), filtered runs</p>
           {loading ? (
-            <BarChartLoading aspectRatio="21 / 9" className="w-full" />
+            <BarChartLoading aspectRatio="2 / 1" className="w-full" />
           ) : latencySeries.length < 2 ? (
             <p className="text-sm text-muted-foreground">Need at least two probes with latency.</p>
           ) : (
-            <BarChart data={latencySeries} xDataKey="label" aspectRatio="21 / 9" className="w-full">
+            <BarChart data={latencySeries} xDataKey="label" aspectRatio="2 / 1" className="w-full">
               <Grid horizontal />
               <Bar dataKey="latency" fill="var(--chart-1)" lineCap={4} />
-              <BarXAxis />
+              <BarXAxis maxLabels={5} />
               <ChartTooltip />
             </BarChart>
           )}
-        </CardContent>
-      </Card>
+        </Panel>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-base">Suite health over time</CardTitle>
-          <CardDescription>
-            Pass / fail counts as stacked bars · {suiteBars.length} runs
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
+        <Panel title="Suite health over time" icon={Layers}>
+          <p className="mb-3 text-sm text-muted-foreground">
+            Passed and failed tests per day · latest {suiteBars.length} days with runs
+          </p>
           {loading ? (
             <BarChartLoading aspectRatio="2 / 1" className="w-full" />
           ) : suiteBars.length < 2 ? (
             <p className="text-sm text-muted-foreground">
-              Need at least two runs with suite results to chart.
+              Need results from at least two days to chart.
             </p>
           ) : (
-            <ComposedChart
-              margin={{ top: 8, right: 8, bottom: 40, left: 8 }}
-              data={suiteBars}
-              xDataKey="date"
-              aspectRatio="2 / 1"
-              barGap={0}
-              maxBarSize={32}
-              stacked
-              className="w-full"
-            >
-              <Grid horizontal />
-              <SeriesBar dataKey="passed" fill="var(--success)" radius={4} />
-              <SeriesBar dataKey="failed" fill="var(--destructive)" radius={4} />
-              <ChartTooltip showCrosshair={false} />
-              <XAxis numTicks={8} />
-            </ComposedChart>
+            <>
+              <BarChart data={suiteBars} xDataKey="label" aspectRatio="2 / 1" stacked barGap={0.4} className="w-full">
+                <Grid horizontal />
+                <Bar dataKey="passed" fill="var(--success)" lineCap={2} />
+                <Bar dataKey="failed" fill="var(--destructive)" lineCap={2} />
+                <BarXAxis maxLabels={7} />
+                <ChartTooltip />
+              </BarChart>
+              <ul className="mt-3 flex gap-4 text-xs text-muted-foreground">
+                <li className="flex items-center gap-1.5">
+                  <span className="size-2.5 rounded-xs bg-success" aria-hidden="true" /> Passed
+                </li>
+                <li className="flex items-center gap-1.5">
+                  <span className="size-2.5 rounded-xs bg-destructive" aria-hidden="true" /> Failed
+                </li>
+              </ul>
+            </>
           )}
-        </CardContent>
-      </Card>
+        </Panel>
+      </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-base">History</CardTitle>
-          <CardDescription>
+      <Panel
+        title="History"
+        icon={Rows3}
+        bodyClassName="overflow-hidden p-0"
+        action={
+          <span className="font-mono text-xs text-muted-foreground tabular-nums">
             {loading ? "Loading…" : `${items.length} snapshot${items.length === 1 ? "" : "s"}`}
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="p-0">
+          </span>
+        }
+      >
           {items.length === 0 ? (
-            <p className="px-6 pb-6 text-sm text-muted-foreground">
+            <p className="p-4 text-sm text-muted-foreground">
               No health snapshots yet. Start a run — every run records a host probe at start.
             </p>
           ) : (
@@ -493,7 +488,7 @@ export function Health() {
                     </TableCell>
                     <TableCell>
                       {row.health ? (
-                        <Badge variant={row.health.reachable ? "default" : "destructive"}>
+                        <Badge variant={row.health.reachable ? "success" : "destructive"}>
                           {row.health.reachable ? "up" : "down"}
                         </Badge>
                       ) : (
@@ -519,8 +514,7 @@ export function Health() {
               </TableBody>
             </Table>
           )}
-        </CardContent>
-      </Card>
+      </Panel>
     </div>
   );
 }

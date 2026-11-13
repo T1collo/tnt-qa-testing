@@ -7,12 +7,19 @@
 // wrapper hides that from it and every fixture comes back undefined. So this wrapper
 // destructures the fixtures itself and forwards them; add any further fixture here too.
 const { test } = require('@playwright/test');
+const { captureBrowserCalls } = require('./exchanges');
 
 // The ID is a static annotation, so a test skipped before its body runs (a serial chain
 // stopping after a failure) still reports which workbook row it belongs to.
 function qtest(id, title, fn) {
   test(title, { annotation: { type: 'testId', description: id } }, async ({ page, browser, request }) => {
-    return fn({ page, browser, request });
+    // The portal API calls the test triggers, shown with their bodies on the dashboard.
+    const stopCapture = captureBrowserCalls(page);
+    try {
+      return await fn({ page, browser, request });
+    } finally {
+      await stopCapture();
+    }
   });
 }
 

@@ -2,15 +2,30 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+/* Radar UI: its theme comes first so the console tokens below keep their own values. */
+@import "@skyhook-io/k8s-ui/theme/variables.css";
+@import "@skyhook-io/k8s-ui/theme/tailwind-theme.css";
+@import "@skyhook-io/k8s-ui/theme/components.css";
+@import "@skyhook-io/k8s-ui/topology.css";
+@source "../node_modules/@skyhook-io/k8s-ui/src";
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-fira-sans);
-  --font-mono: var(--font-jetbrains-mono);
-  --font-heading: var(--font-jetbrains-mono);
+  --font-sans: var(--font-dm-sans);
+  --font-mono: var(--font-dm-mono);
+  --font-heading: var(--font-dm-sans);
   --color-selected: var(--selected);
+  --color-flow-ok: #22c55e;
+  --color-flow-warn: #eab308;
+  --color-flow-fail: #ef4444;
+  --color-flow-stopped: #3b82f6;
+  --color-group-border: var(--group-border);
+  --color-group-header: var(--group-header);
+  --color-group-label: var(--group-label);
+  --color-group-icon: var(--group-icon);
   --color-success: var(--success);
   --color-warning: var(--warning);
   --color-highlight: var(--highlight);
@@ -90,41 +105,41 @@
 :root {
   /* Palette: blue data + amber highlights (ui-ux-pro-max colour domain), on a cool off-white
      ground. Every foreground below is contrast-checked against the surface it sits on. */
-  --background: oklch(0.982 0.004 250);
-  --foreground: oklch(0.21 0.02 258);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.21 0.02 258);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.21 0.02 258);
+  --background: #F0F3F9;
+  --foreground: #1A1C20;
+  --card: #F8FBFE;
+  --card-foreground: #1A1C20;
+  --popover: #F8FBFE;
+  --popover-foreground: #1A1C20;
   /* #1E40AF - 8.6:1 on white */
-  --primary: oklch(0.42 0.16 264);
+  --primary: #3B66A8;
   --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.955 0.008 250);
-  --secondary-foreground: oklch(0.28 0.03 258);
-  --muted: oklch(0.96 0.006 250);
-  --muted-foreground: oklch(0.5 0.025 258);
-  --accent: oklch(0.94 0.02 250);
-  --accent-foreground: oklch(0.28 0.03 258);
+  --secondary: #E6ECF5;
+  --secondary-foreground: #1A1C20;
+  --muted: #E6ECF5;
+  --muted-foreground: #555860;
+  --accent: #DDE5F2;
+  --accent-foreground: #1A1C20;
   --destructive: oklch(0.55 0.21 27);
-  --border: oklch(0.91 0.01 250);
-  --input: oklch(0.89 0.012 250);
-  --ring: oklch(0.42 0.16 264);
-  --radius: 0.75rem;
-  --sidebar: oklch(0.965 0.008 250);
-  --sidebar-foreground: oklch(0.21 0.02 258);
-  --sidebar-primary: oklch(0.42 0.16 264);
+  --border: #D8E0EE;
+  --input: #CDD6E8;
+  --ring: #3B66A8;
+  --radius: 0.5rem;
+  --sidebar: #E7ECF5;
+  --sidebar-foreground: #1A1C20;
+  --sidebar-primary: #3B66A8;
   --sidebar-primary-foreground: oklch(0.99 0 0);
-  --sidebar-accent: oklch(0.93 0.015 250);
-  --sidebar-accent-foreground: oklch(0.21 0.02 258);
-  --sidebar-border: oklch(0.9 0.012 250);
-  --sidebar-ring: oklch(0.42 0.16 264);
-  --selected: oklch(0.42 0.16 264);
+  --sidebar-accent: #DDE5F2;
+  --sidebar-accent-foreground: #1A1C20;
+  --sidebar-border: #D8E0EE;
+  --sidebar-ring: #3B66A8;
+  --selected: #3B66A8;
   /* Green 5.0:1, amber 4.7:1 on white; the two non-blue states. */
   --success: oklch(0.52 0.14 150);
   --warning: oklch(0.55 0.13 75);
   /* #D97706 - the one highlight hue, for emphasis that is not a status. */
   --highlight: oklch(0.62 0.15 62);
-  --chart-1: oklch(0.42 0.16 264);
+  --chart-1: #3B66A8;
   --chart-2: oklch(0.6 0.12 200);
   --chart-3: oklch(0.62 0.15 62);
   --chart-4: oklch(0.52 0.14 150);
@@ -151,40 +166,44 @@
   --chart-scale-04: oklch(0.68 0.02 106);
   --chart-scale-05: oklch(0.55 0.025 106);
   --chart-scale-pattern-color: oklch(0.96 0.005 106);
+  --group-border: rgba(16, 185, 129, 0.3);
+  --group-header: rgba(16, 185, 129, 0.15);
+  --group-label: #047857;
+  --group-icon: #059669;
 }
 
 .dark {
-  --background: oklch(0.19 0.015 258);
-  --foreground: oklch(0.96 0.005 250);
-  --card: oklch(0.235 0.018 258);
-  --card-foreground: oklch(0.96 0.005 250);
-  --popover: oklch(0.255 0.018 258);
-  --popover-foreground: oklch(0.96 0.005 250);
-  --primary: oklch(0.72 0.14 258);
+  --background: #0B0F1E;
+  --foreground: #F5F6F8;
+  --card: #14192A;
+  --card-foreground: #F5F6F8;
+  --popover: #14192A;
+  --popover-foreground: #F5F6F8;
+  --primary: #6A9FE0;
   --primary-foreground: oklch(0.18 0.03 262);
-  --secondary: oklch(0.3 0.02 258);
-  --secondary-foreground: oklch(0.96 0.005 250);
-  --muted: oklch(0.3 0.02 258);
-  --muted-foreground: oklch(0.75 0.02 250);
-  --accent: oklch(0.32 0.025 258);
-  --accent-foreground: oklch(0.96 0.005 250);
+  --secondary: #1E2338;
+  --secondary-foreground: #F5F6F8;
+  --muted: #1E2338;
+  --muted-foreground: #B0B5C0;
+  --accent: #282E48;
+  --accent-foreground: #F5F6F8;
   --destructive: oklch(0.7 0.19 22);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.72 0.14 258);
-  --sidebar: oklch(0.225 0.018 258);
-  --sidebar-foreground: oklch(0.96 0.005 250);
-  --sidebar-primary: oklch(0.72 0.14 258);
+  --border: #222840;
+  --input: #2C324A;
+  --ring: #6A9FE0;
+  --sidebar: #080B16;
+  --sidebar-foreground: #F5F6F8;
+  --sidebar-primary: #6A9FE0;
   --sidebar-primary-foreground: oklch(0.18 0.03 262);
-  --sidebar-accent: oklch(0.32 0.025 258);
-  --sidebar-accent-foreground: oklch(0.96 0.005 250);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.72 0.14 258);
-  --selected: oklch(0.76 0.12 255);
+  --sidebar-accent: #282E48;
+  --sidebar-accent-foreground: #F5F6F8;
+  --sidebar-border: #222840;
+  --sidebar-ring: #6A9FE0;
+  --selected: #6A9FE0;
   --success: oklch(0.76 0.17 150);
   --warning: oklch(0.8 0.15 80);
   --highlight: oklch(0.78 0.14 68);
-  --chart-1: oklch(0.72 0.14 258);
+  --chart-1: #6A9FE0;
   --chart-2: oklch(0.7 0.1 200);
   --chart-3: oklch(0.78 0.14 68);
   --chart-4: oklch(0.76 0.17 150);
@@ -205,6 +224,10 @@
   --chart-scale-04: oklch(0.58 0.06 270);
   --chart-scale-05: oklch(0.68 0.07 270);
   --chart-scale-pattern-color: oklch(0.145 0 0);
+  --group-border: rgba(16, 185, 129, 0.4);
+  --group-header: rgba(16, 185, 129, 0.2);
+  --group-label: #6ee7b7;
+  --group-icon: #34d399;
 }
 
 @layer base {
@@ -322,4 +345,44 @@
     opacity: 1;
     transform: none;
   }
+}
+
+/* React Flow rules from Radar's web/src/index.css, which the package does not ship. */
+.react-flow__pane {
+  cursor: grab;
+}
+.react-flow__pane:active {
+  cursor: grabbing;
+}
+.react-flow__node,
+.react-flow__node:active {
+  cursor: pointer !important;
+}
+.react-flow .react-flow__controls {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: 8px;
+  box-shadow: var(--shadow-md);
+}
+.react-flow .react-flow__controls-button {
+  background: var(--bg-surface);
+  border: none;
+  border-bottom: 1px solid var(--border-default);
+  color: var(--text-tertiary);
+  width: 28px;
+  height: 28px;
+  padding: 5px;
+}
+.react-flow .react-flow__controls-button:hover {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+}
+.react-flow .react-flow__controls-button:last-child {
+  border-bottom: none;
+}
+.react-flow .react-flow__controls-button svg {
+  fill: currentColor;
+}
+.react-flow__attribution {
+  background: transparent;
 }

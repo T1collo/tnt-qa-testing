@@ -10,11 +10,14 @@
 // former is a system behaving as designed under pressure, the latter is a defect. See
 // k6/lib/epcis.js for the confirmed-working payload shape this reuses.
 //
-// Run:
+// Run (ROLE defaults to manufacturer; supplier/facility send receiving events instead):
 //   k6 run -e MANUFACTURER_API_TOKEN=xxx k6/stress-manufacturer-commission.js
+//   k6 run -e ROLE=supplier -e DISTRIBUTOR_API_TOKEN=xxx k6/stress-manufacturer-commission.js
+//   k6 run -e ROLE=facility -e FACILITY_API_TOKEN=xxx k6/stress-manufacturer-commission.js
 //
 // Useful overrides (all optional, sane defaults below):
 //   -e BASE_URL=https://tnt-demo.apeiro-digital.com
+//   -e API_TOKEN=xxx             # overrides the role's own token variable
 //   -e STAGE_VUS=25,75,150       # comma-separated VU targets for each ramp step
 //   -e STEP_DURATION=30s         # time to ramp into (and hold at) each step
 //   -e HOLD=1m                   # hold time at the final (highest) step
@@ -24,13 +27,10 @@
 import http from 'k6/http';
 import { check } from 'k6';
 import { Counter, Trend } from 'k6/metrics';
-import { newRunId, commissionPayload, authHeaders } from './lib/epcis.js';
+import { newRunId, authHeaders, roleTarget, loadtestEventId, track } from './lib/epcis.js';
 
 const BASE_URL = (__ENV.BASE_URL || 'https://tnt-demo.apeiro-digital.com').replace(/\/+$/, '');
-const API_TOKEN = __ENV.MANUFACTURER_API_TOKEN;
-if (!API_TOKEN) {
-  throw new Error('MANUFACTURER_API_TOKEN is required, e.g. -e MANUFACTURER_API_TOKEN=xxx');
-}
+const TARGET = roleTarget(__ENV, BASE_URL);
 
 const STAGE_VUS = (__ENV.STAGE_VUS || '25,75,150').split(',').map(Number);
 const STEP_DURATION = __ENV.STEP_DURATION || '30s';
@@ -64,12 +64,14 @@ export const options = {
 };
 
 export default function () {
-  const payload = commissionPayload(RUN_ID, __VU, __ITER);
+  const payload = TARGET.payload(RUN_ID, __VU, __ITER);
 
-  const res = http.post(`${BASE_URL}/api/integration/manufacturer/events`, payload, {
-    headers: authHeaders(API_TOKEN),
-    tags: { name: 'commission' },
+  const res = http.post(TARGET.url, payload, {
+    headers: authHeaders(TARGET.token),
+    tags: { name: TARGET.tag, role: TARGET.role },
   });
+
+  track(res, payload, loadtestEventId(RUN_ID, __VU, __ITER), TARGET.url);
 
   commissionDuration.add(res.timings.duration);
 

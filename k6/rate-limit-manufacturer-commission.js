@@ -13,11 +13,17 @@
 // meaningful: a clean 429 means rate limiting works as documented; queuing/crashes without a
 // 429 would suggest the budget isn't actually enforced before the system falls over instead.
 //
-// Run:
+// Supplier and facility have no documented budget in the workbook; for those roles the run
+// logs the x-ratelimit-* headers the API returns, so the tier actually enforced is on record.
+//
+// Run (ROLE defaults to manufacturer; supplier/facility send receiving events instead):
 //   k6 run -e MANUFACTURER_API_TOKEN=xxx k6/rate-limit-manufacturer-commission.js
+//   k6 run -e ROLE=supplier -e DISTRIBUTOR_API_TOKEN=xxx k6/rate-limit-manufacturer-commission.js
+//   k6 run -e ROLE=facility -e FACILITY_API_TOKEN=xxx k6/rate-limit-manufacturer-commission.js
 //
 // Useful overrides:
 //   -e BASE_URL=https://tnt-demo.apeiro-digital.com
+//   -e API_TOKEN=xxx       # overrides the role's own token variable
 //   -e TARGET_RPS=150      # requests/sec to sustain (150 rps = 9,000/min, inside the documented band)
 //   -e DURATION=90s        # how long to sustain it
 //   -e MAX_VUS=300         # ceiling on VUs k6 can spin up to sustain the rate if responses are slow
@@ -25,13 +31,10 @@
 
 import http from 'k6/http';
 import { Counter, Trend } from 'k6/metrics';
-import { newRunId, commissionPayload, authHeaders } from './lib/epcis.js';
+import { newRunId, authHeaders, roleTarget, loadtestEventId, track } from './lib/epcis.js';
 
 const BASE_URL = (__ENV.BASE_URL || 'https://tnt-demo.apeiro-digital.com').replace(/\/+$/, '');
-const API_TOKEN = __ENV.MANUFACTURER_API_TOKEN;
-if (!API_TOKEN) {
-  throw new Error('MANUFACTURER_API_TOKEN is required, e.g. -e MANUFACTURER_API_TOKEN=xxx');
-}
+const TARGET = roleTarget(__ENV, BASE_URL);
 
 const TARGET_RPS = Number(__ENV.TARGET_RPS || 150);
 const DURATION = __ENV.DURATION || '90s';
@@ -60,14 +63,23 @@ export const options = {
 };
 
 export default function () {
-  const payload = commissionPayload(RUN_ID, __VU, __ITER);
+  const payload = TARGET.payload(RUN_ID, __VU, __ITER);
 
-  const res = http.post(`${BASE_URL}/api/integration/manufacturer/events`, payload, {
-    headers: authHeaders(API_TOKEN),
-    tags: { name: 'commission' },
+  const res = http.post(TARGET.url, payload, {
+    headers: authHeaders(TARGET.token),
+    tags: { name: TARGET.tag, role: TARGET.role },
   });
 
+  track(res, payload, loadtestEventId(RUN_ID, __VU, __ITER), TARGET.url);
+
   commissionDuration.add(res.timings.duration);
+
+  if (__VU === 1 && __ITER === 0) {
+    const limits = Object.entries(res.headers)
+      .filter(([k]) => k.toLowerCase().startsWith('x-ratelimit'))
+      .map(([k, v]) => `${k}=${v}`);
+    console.log(`RATELIMIT role=${TARGET.role} ${limits.join(' ') || '(no x-ratelimit headers)'}`);
+  }
 
   if (res.status === 0) {
     networkErrorCount.add(1);

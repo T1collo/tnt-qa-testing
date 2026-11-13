@@ -9,6 +9,7 @@ const { expect } = require('@playwright/test');
 const { loginAs, newRolePage } = require('../helpers/auth');
 const { logEntity } = require('../helpers/datalog');
 const { selectProduct, selectPackage } = require('../helpers/portal');
+const { recordExchange } = require('../helpers/exchanges');
 
 const PRODUCT_NAME = process.env.LIFECYCLE_PRODUCT || 'Telmicos 40 mg Oral Tablet';
 const PRODUCT_2_NAME = process.env.SECOND_PRODUCT || 'Arbitel AM 5 mg/40 mg Oral Tablet';
@@ -161,9 +162,21 @@ async function clickCreateCase(page, { timeout = 60_000, allowNoRequest = false 
     attempts++;
     const preview = await page.request.get('/api/manufacturer/sscc/generate').then((r) => r.json()).catch(() => ({}));
     request = { ...request, sscc: preview.sscc || request.sscc };
+    const started = Date.now();
     const replay = await page.request.post('/api/manufacturer/cases', { data: request });
     status = replay.status();
     body = await json(replay);
+    // page.request bypasses the browser, so captureBrowserCalls never sees this retry.
+    await recordExchange({
+      label: `Create case (retry ${attempts})`,
+      url: replay.url(),
+      status,
+      ok: replay.ok(),
+      contentType: 'application/json',
+      requestBody: JSON.stringify(request),
+      responseBody: body == null ? null : typeof body === 'string' ? body : JSON.stringify(body),
+      durationMs: Date.now() - started,
+    });
   }
   return { status, body, request, attempts };
 }

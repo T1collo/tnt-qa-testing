@@ -140,6 +140,18 @@ k6 run -e MANUFACTURER_API_TOKEN=$TOKEN -e TARGET_RPS=150 \
        k6/rate-limit-manufacturer-commission.js
 
 # Data integrity under concurrency
-k6 run -e MANUFACTURER_API_TOKEN=$TOKEN k6/data-integrity-manufacturer-commission.js
-node k6/check-data-integrity-log.js
+k6 run -e MANUFACTURER_API_TOKEN=$TOKEN k6/data-integrity-manufacturer-commission.js > run.log 2>&1
+node k6/check-data-integrity-log.js run.log
+
+# Load — supplier/facility receiving
+k6 run -e DISTRIBUTOR_API_TOKEN=$TOKEN k6/load-supplier-receive.js
+k6 run -e ROLE=facility -e FACILITY_API_TOKEN=$TOKEN k6/load-supplier-receive.js
 ```
+
+Stress, rate-limit and data-integrity take `-e ROLE=manufacturer|supplier|facility`
+(default manufacturer). Supplier and facility send receiving events and read
+`DISTRIBUTOR_API_TOKEN` / `FACILITY_API_TOKEN`; `-e API_TOKEN` overrides any role's key.
+
+Rate-limit tiers the API reports in `X-Ratelimit-*` headers (tnt-demo, 2026-11-02):
+manufacturer 10,000/min (≈166 req/s), supplier 5,000/min (≈83 req/s), facility
+1,000/min (≈16.7 req/s). Size `TARGET_RPS` per role: facility's tier is reachable.

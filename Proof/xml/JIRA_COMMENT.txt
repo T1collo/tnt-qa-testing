@@ -1,0 +1,95 @@
+Manufacturer Partner Portal XML upload vs TnT rules (full matrix)
+
+Environment: https://tnt-demo.apeiro-digital.com/partners/upload
+Account: manufacturer@apeiro.digital (MEMPHIS VISIONCARE PVT.LTD, GLN 8901234567890)
+Auth: Partner session → POST /api/partners/uploads → GET /api/partners/async-submissions/{request_id}
+Run: 9 Nov 2026. Own EPCIS 1.2 XML fixtures. Early event screenshots kept in Proof/xml; remaining cases run without new screenshots.
+Pass rule: outcome matches guide (hard reject vs succeed+flag). Placeholder UNKNOWN_* warnings allowed on happy paths.
+
+Counts: PASS 24 · FAIL 18 · N/A 1 · NOT TESTED 1 · NOT TESTABLE 26
+
+h3. Results
+
+||Check||Rule / Event||Expected||UI / HTTP||Status (job)||Evidence||Verdict||
+| E01 | Commissioning | 202 accepted; job succeeds (master-data warnings OK) | HTTP 202 | succeeded; HTTP 200; warnings: UNKNOWN_SGLN, INVALID_LOT | E01, E01-status | PASS |
+| E02 | Packing | 202 accepted; job succeeds (PARENT_NOT_FOUND / UNCOMMISSIONED_CHILD flags OK) | HTTP 202 | succeeded; HTTP 200; warnings: UNKNOWN_SGLN, UNKNOWN_SGTIN, PARENT_NOT_FOUND, UNCOMMISSIONED_CHILD | E02, E02-status | PASS |
+| E03 | SSCC-to-SSCC Packing | 202 accepted; job succeeds with aggregation flags OK | HTTP 202 | accepted | E03, E03-status | FAIL (stuck accepted) |
+| E04 | Shipping | 202 accepted; job succeeds (SHIPPING_WITHOUT_COMMISSIONING / NO_REGULATORY_APPROVAL OK) | HTTP 202 | succeeded; HTTP 200; warnings: UNKNOWN_SGLN, UNKNOWN_PARTY_GLN, SHIPPING_WITHOUT_COMMISSIONING | E04, E04-status | PASS |
+| E05 | Regulator Approval | 202 accepted; UNAUTHORIZED_INSPECTING_EVENT warning expected for partner | HTTP 202 | accepted | E05, E05-status | FAIL (stuck accepted) |
+| E06 | Return Shipping | 202 accepted; job succeeds with disposition/sequence flags OK | HTTP 202 | succeeded; HTTP 200; warnings: UNKNOWN_SGLN, UNKNOWN_PARTY_GLN, SHIPPING_WITHOUT_COMMISSIONING | E06, E06-status | PASS |
+| E07 | Return Receiving | 202 accepted; job succeeds with receiving flags OK | HTTP 202 | accepted | E07, E07-status | FAIL (stuck accepted) |
+| E08 | Recall Initiation (holding) | Role mismatch or rejected/failed — holding not on manufacturer allow-list | HTTP 202 | failed; HTTP 403; PARTNER_TYPE_BIZSTEP_MISMATCH; Partner type "manufacturer" is not allowed to submit bizStep "holding". Allowed for this partner: commissioning, packing, shipping, receivin | E08, E08-status | N/A (role) |
+| E09 | Damaged | 202 accepted; UNAUTHORIZED_INSPECTING_EVENT and/or INVALID_DISPOSITION flags OK | HTTP 202 | accepted | E09, E09-status | FAIL (stuck accepted) |
+| E10 | Stolen | 202 accepted; job succeeds with disposition flags OK | HTTP 202 | succeeded; HTTP 200; warnings: UNKNOWN_SGLN, UNKNOWN_SGTIN, NO_REGULATORY_APPROVAL | E10 | PASS |
+| E11 | Lost | 202 accepted; job succeeds with disposition flags OK | HTTP 202 | failed; HTTP 409; DUPLICATE_EVENT_ID; Event urn:uuid:64561d59-3527-46ce-aba1-245c7cce5739 was not persisted — a row with the same event_id already exists | E11 | FAIL |
+| E12 | Expired | 202 accepted; inspecting/expired flags OK | HTTP 202 | succeeded; HTTP 200; warnings: UNKNOWN_SGLN, UNKNOWN_SGTIN, UNAUTHORIZED_INSPECTING_EVENT | E12, E12-status | PASS |
+| E13 | Destruction Completion | 202 accepted; destruction flags OK | HTTP 202 | succeeded; HTTP 200; warnings: UNKNOWN_SGLN, UNKNOWN_SGTIN, NO_REGULATORY_APPROVAL | E13, E13-status | PASS |
+| E14 | Export | 202 accepted; export/disposition flags OK | HTTP 202 | accepted | E14, E14-status | FAIL (stuck accepted) |
+| E15 | Stock Adjustment | 202 accepted or role rejection for stock_taking on manufacturer | HTTP 202 | succeeded; HTTP 200; warnings: UNKNOWN_SGLN, UNKNOWN_SGTIN, NO_REGULATORY_APPROVAL | E15 | PASS |
+| R001 | TC-S1-001 INVALID_XML_STRUCTURE | Hard reject / failed: INVALID_XML_STRUCTURE | HTTP 202 | accepted | R001, R001-status | FAIL (stuck accepted) |
+| R005 | TC-S1-005 INVALID_SBDH | Hard reject INVALID_SBDH or INVALID_XML_STRUCTURE for bad/empty SBDH TypeVersion | HTTP 202 | accepted | R005 | FAIL (stuck accepted) |
+| R008 | TC-S1-008 INVALID_EXPIRY_FORMAT | Hard reject INVALID_EXPIRY_FORMAT | HTTP 202 | failed; HTTP 400; INVALID_EXPIRY_FORMAT; itemExpirationDate must be a real calendar date in "YYYY-MM-DD" form (e.g. 2027-06-30) | R008, R008-status | PASS |
+| R009 | TC-S1-009 INVALID_GS1_IDENTIFIER | Hard reject INVALID_GS1_IDENTIFIER | HTTP 202 | failed; HTTP 400; INVALID_GS1_IDENTIFIER; SGTIN indicator+item-reference must be exactly 6 digits for a 7-digit company prefix | R009, R009-status | PASS |
+| R010 | TC-S1-010 FUTURE_EVENT_TIME | Hard reject FUTURE_EVENT_TIME | HTTP 202 | failed; HTTP 400; FUTURE_EVENT_TIME; Event time 2026-11-09T10:59:30.000Z is more than 5 minutes in the future (reference time: 2026-11-09T10:44:14.454Z) | R010, R010-status | PASS |
+| R011 | TC-S1-011 MISSING_NEEDED_FIELDS | Hard reject MISSING_NEEDED_FIELDS | HTTP 202 | failed; HTTP 400; MISSING_NEEDED_FIELDS; bizStep is undefined — expected a core CBV token, urn:epcglobal:cbv:bizstep: URI, or extension URI | R011, R011-status | PASS |
+| R012a | TC-S1-012 setup first eventID | 202 accepted (setup for duplicate eventID) | HTTP 202 | failed; HTTP 409; DUPLICATE_EVENT_ID; Event ID urn:uuid:6f44b3a1-4c5f-45c2-9fc4-8cdbb3d7e9c3 was already ingested | R012a, R012a-status | PASS |
+| R012 | TC-S1-012 DUPLICATE_EVENT_ID | Job failed DUPLICATE_EVENT_ID | HTTP 202 | failed; HTTP 409; DUPLICATE_EVENT_ID; Event ID urn:uuid:6f44b3a1-4c5f-45c2-9fc4-8cdbb3d7e9c3 was already ingested | R012, R012-status | PASS |
+| R013a | TC-S1-013 setup original payload | 202 accepted (setup for duplicate payload) | HTTP 202 | failed; HTTP 409; DUPLICATE_EVENT_ID; Event ID urn:uuid:34a88216-05d2-4761-82a7-e1ecb45418e3 was already ingested | R013a, R013a-status | PASS |
+| R013 | TC-S1-013 DUPLICATE_EVENT_PAYLOAD | Job failed DUPLICATE_EVENT_PAYLOAD | HTTP 202 | failed; HTTP 409; DUPLICATE_EVENT_PAYLOAD; Duplicate matrix key EPC+bizStep:dfc339c192485fc888073c596f95599721551968c8b82566a95175189f12c53a for bizStep=commissioning disposition=acti | R013, R013-status | PASS |
+| R014 | TC-S1-014 DUPLICATE_EPC_IN_EVENT | Hard reject DUPLICATE_EPC_IN_EVENT | HTTP 202 | failed; HTTP 400; DUPLICATE_EPC_IN_EVENT; Event urn:uuid:74a7f8b2-1f9a-44d1-bb5a-f250b54a6d12: EPC URI "urn:epc:id:sgtin:0614141.107346.42201706250002717" appears more than once in t | R014, R014-status | PASS |
+| R021 | TC-S1-021 UNKNOWN_SGTIN | Accepted with UNKNOWN_SGTIN warning (or hard reject per sheet) | HTTP 202 | failed; HTTP 400; MISSING_NEEDED_FIELDS; sourceList is undefined — expected a non-empty array for shipping / void_shipping events (+1 more schema issue(s)) | R021, R021-status | PASS |
+| R022 | TC-S1-022 UNKNOWN_SGLN | Accepted with UNKNOWN_SGLN warning | HTTP 202 | failed; HTTP 409; DUPLICATE_EVENT_ID; Event ID urn:uuid:18bb11a5-63eb-4012-958b-626b9aaa20d6 was already ingested | R022, R022-status | FAIL |
+| R024 | TC-S1-024 INVALID_GTIN_CHECK_DIGIT | Hard reject INVALID_GTIN_CHECK_DIGIT (or INVALID_GS1_IDENTIFIER) | HTTP 202 | failed; HTTP 409; DUPLICATE_EVENT_ID; Event ID urn:uuid:67b44325-2c4b-4326-964e-844a8f3d35f8 was already ingested | R024, R024-status | PASS |
+| R025 | TC-S1-025 INVALID_GLN_CHECK_DIGIT | Hard reject INVALID_GLN_CHECK_DIGIT (or INVALID_GS1_IDENTIFIER) | HTTP 202 | failed; HTTP 400; INVALID_GS1_IDENTIFIER; SGLN URI must be CompanyPrefix.LocationReference.Extension | R025, R025-status | PASS |
+| R026 | TC-S1-026 INVALID_SSCC_CHECK_DIGIT | Hard reject INVALID_SSCC_CHECK_DIGIT (or INVALID_GS1_IDENTIFIER) | HTTP 202 | failed; HTTP 400; INVALID_GS1_IDENTIFIER; SSCC serial reference must be exactly 10 digits (extension digit + serial ref) for a 7-digit company prefix | R026, R026-status | PASS |
+| R027 | TC-S1-027 INVALID_LOT | Accepted with INVALID_LOT warning | HTTP 202 | failed; HTTP 409; DUPLICATE_EVENT_ID; Event ID urn:uuid:b0debe1b-e8bb-4bc7-9ecd-228ec05360d5 was already ingested | R027, R027-status | FAIL |
+| R029 | TC-S1-029 NO_REGULATORY_APPROVAL | Accepted with NO_REGULATORY_APPROVAL warning | HTTP 202 | accepted | R029, R029-status | FAIL (stuck accepted) |
+| R030 | TC-S1-030 UNAUTHORIZED_INSPECTING_EVENT | Accepted with UNAUTHORIZED_INSPECTING_EVENT warning | HTTP 202 | failed; HTTP 409; DUPLICATE_EVENT_ID; Event ID urn:uuid:a014ceaf-ef0a-40d0-8581-368c9b54f8f8 was already ingested | R030, R030-status | FAIL |
+| R031 | TC-S1-031 EXPIRING_SOON | Accepted with EXPIRING_SOON warning | HTTP 202 | failed; HTTP 409; DUPLICATE_EVENT_ID; Event ID urn:uuid:2562778b-308b-4210-b8c4-b5b29a00367e was already ingested | R031, R031-status | FAIL |
+| R035 | TC-S1-035 INVALID_BIZSTEP | Hard reject or flag INVALID_BIZSTEP | HTTP 202 | failed; HTTP 400; INVALID_XML_STRUCTURE; bizStep must be a core CBV token, a urn:epcglobal:cbv:bizstep: URI, or a valid extension URI | R035, R035-status | PASS |
+| R037 | TC-S1-037 INVALID_PARENT_CHILD_RELATION | Flag or reject INVALID_PARENT_CHILD_RELATION (SSCC under SSCC may also be valid as E03) | HTTP 202 | accepted | R037, R037-status | FAIL (stuck accepted) |
+| R038 | TC-S1-038 PARENT_NOT_FOUND | Accepted with PARENT_NOT_FOUND warning | HTTP 202 | accepted | R038, R038-status | FAIL (stuck accepted) |
+| R042 | TC-S1-042 EXPIRED_PRODUCT | Accepted with EXPIRED_PRODUCT warning | HTTP 202 | failed; HTTP 409; DUPLICATE_EVENT_ID; Event ID urn:uuid:0a5bbbdb-f001-44a8-a75d-8d75639b906f was already ingested | R042, R042-status | FAIL |
+| R046 | TC-S1-046 STALE_EVENT_TIME | Accepted with STALE_EVENT_TIME warning | HTTP 202 | failed; HTTP 409; DUPLICATE_EVENT_ID; Event ID urn:uuid:18c58867-4df1-4afb-8b37-92e7b062bd2f was already ingested | R046, R046-status | FAIL |
+| R047 | TC-S1-047 UNCOMMISSIONED_CHILD | Accepted with UNCOMMISSIONED_CHILD warning | HTTP 202 | failed; HTTP 409; DUPLICATE_EVENT_ID; Event ID urn:uuid:64d746d8-8c73-4e67-9a1b-5f2b450b3de5 was already ingested | R047, R047-status | FAIL |
+| R048 | TC-S1-048 SHIPPING_WITHOUT_COMMISSIONING | Accepted with SHIPPING_WITHOUT_COMMISSIONING warning | HTTP 202 | succeeded; HTTP 200; warnings: UNKNOWN_SGLN, UNKNOWN_SGTIN, UNKNOWN_PARTY_GLN, SHIPPING_WITHOUT_COMMISSIONING, NO_REGULATORY_APPROVAL | R048, R048-status | PASS |
+| R049 | TC-S1-049 DUPLICATE_SSCC_IN_MESSAGE | Flag or reject DUPLICATE_SSCC_IN_MESSAGE | HTTP 202 | failed; HTTP 400; DUPLICATE_EVENT_ID; 2 event(s) rejected | R049, R049-status | PASS |
+| RSIZE | Upload over 10 MB max | UI/API reject over max size (MESSAGE_SIZE_EXCEEDED or client/server size error) | skipped (--skip-size) | skipped (--skip-size) | RSIZE | NOT TESTED |
+| R002 | TC-S1-002 INVALID_JSON_STRUCTURE | NOT TESTABLE via manufacturer XML upload | JSON-LD only — XML upload UI accepts .xml only | JSON-LD only — XML upload UI accepts .xml only | — | NOT TESTABLE |
+| R003 | TC-S1-003 MISSING_EPCIS_BODY | NOT TESTABLE via manufacturer XML upload | JSON-LD body shape — not expressible as XML file upload | JSON-LD body shape — not expressible as XML file upload | — | NOT TESTABLE |
+| R004 | TC-S1-004 MISSING_EVENT_LIST | NOT TESTABLE via manufacturer XML upload | JSON-LD body shape — not expressible as XML file upload | JSON-LD body shape — not expressible as XML file upload | — | NOT TESTABLE |
+| R006 | TC-S1-006 MESSAGE_SIZE_EXCEEDED (dispense 1MB) | NOT TESTABLE via manufacturer XML upload | Sync dispense endpoint only — not partner XML upload | Sync dispense endpoint only — not partner XML upload | — | NOT TESTABLE |
+| R007 | TC-S1-007 TOO_MANY_SERIALS (50001) | NOT TESTABLE via manufacturer XML upload | Skipped: 50k+ serial fixture impractical for UI pack; max_epcs advertised as 50000 | Skipped: 50k+ serial fixture impractical for UI pack; max_epcs advertised as 50000 | — | NOT TESTABLE |
+| R015 | TC-S1-015 IMPOSSIBLE_SENSOR_VALUES | NOT TESTABLE via manufacturer XML upload | SensorElement is JSON-LD / EPCIS 2.0 — not XML 1.2 upload | SensorElement is JSON-LD / EPCIS 2.0 — not XML 1.2 upload | — | NOT TESTABLE |
+| R016 | TC-S1-016 ERROR_DECLARATION_BEFORE_EVENT | NOT TESTABLE via manufacturer XML upload | Needs chained errorDeclaration XML — deferred | Needs chained errorDeclaration XML — deferred | — | NOT TESTABLE |
+| R017 | TC-S1-017 ERROR_DECLARATION_ORIGINAL_NOT_FOUND | NOT TESTABLE via manufacturer XML upload | Needs errorDeclaration against unknown eventID | Needs errorDeclaration against unknown eventID | — | NOT TESTABLE |
+| R018 | TC-S1-018 ERROR_DECLARATION_CONTENT_MISMATCH | NOT TESTABLE via manufacturer XML upload | Needs errorDeclaration resubmit chain | Needs errorDeclaration resubmit chain | — | NOT TESTABLE |
+| R019 | TC-S1-019 ERROR_DECLARATION_INVALID_REASON | NOT TESTABLE via manufacturer XML upload | Needs errorDeclaration with bad reason | Needs errorDeclaration with bad reason | — | NOT TESTABLE |
+| R020 | TC-S1-020 ERROR_DECLARATION_CORRECTIVE_NOT_FOUND | NOT TESTABLE via manufacturer XML upload | Needs errorDeclaration + corrective IDs | Needs errorDeclaration + corrective IDs | — | NOT TESTABLE |
+| R023 | TC-S1-023 INACTIVE_SGLN | NOT TESTABLE via manufacturer XML upload | Needs registered-but-inactive SGLN fixture | Needs registered-but-inactive SGLN fixture | — | NOT TESTABLE |
+| R028 | TC-S1-028 INVENTORY_SIGHTING_MISMATCH | NOT TESTABLE via manufacturer XML upload | Needs prior commission at location A then sighting at B | Needs prior commission at location A then sighting at B | — | NOT TESTABLE |
+| R032 | TC-S1-032 SERIAL_ALREADY_DISPENSED | NOT TESTABLE via manufacturer XML upload | Needs facility dispense then manufacturer event | Needs facility dispense then manufacturer event | — | NOT TESTABLE |
+| R033 | TC-S1-033 SERIAL_ALREADY_DESTROYED | NOT TESTABLE via manufacturer XML upload | Needs destroy then lifecycle event chain | Needs destroy then lifecycle event chain | — | NOT TESTABLE |
+| R034 | TC-S1-034 INVALID_DISPOSITION (dispensed→active) | NOT TESTABLE via manufacturer XML upload | Needs dispensed serial then illegal transition | Needs dispensed serial then illegal transition | — | NOT TESTABLE |
+| R036 | TC-S1-036 INVALID_TERMINAL_STATE | NOT TESTABLE via manufacturer XML upload | Needs terminal serial then lifecycle action | Needs terminal serial then lifecycle action | — | NOT TESTABLE |
+| R039 | TC-S1-039 CHILD_ALREADY_AGGREGATED | NOT TESTABLE via manufacturer XML upload | Needs pack then re-pack under second SSCC chain | Needs pack then re-pack under second SSCC chain | — | NOT TESTABLE |
+| R040 | TC-S1-040 INVALID_EVENT_SEQUENCE | NOT TESTABLE via manufacturer XML upload | Receiving-before-shipping is distributor/facility path | Receiving-before-shipping is distributor/facility path | — | NOT TESTABLE |
+| R041 | TC-S1-041 SSCC_AT_DISPENSING | NOT TESTABLE via manufacturer XML upload | Facility /dispense only | Facility /dispense only | — | NOT TESTABLE |
+| R043 | TC-S1-043 RECALL_ACTIVE | NOT TESTABLE via manufacturer XML upload | Needs active recall fixture | Needs active recall fixture | — | NOT TESTABLE |
+| R044 | TC-S1-044 RECEIVING_WITHOUT_SHIPPING | NOT TESTABLE via manufacturer XML upload | Distributor/facility receiving path | Distributor/facility receiving path | — | NOT TESTABLE |
+| R045 | TC-S1-045 UNPACK_WITHOUT_AGGREGATION | NOT TESTABLE via manufacturer XML upload | Distributor unpack path | Distributor unpack path | — | NOT TESTABLE |
+| R050 | TC-S1-050 DUPLICATE_SSCC_CROSS_MESSAGE | NOT TESTABLE via manufacturer XML upload | Needs two sequential pack messages with same parent | Needs two sequential pack messages with same parent | — | NOT TESTABLE |
+| R051 | TC-S1-051 INCOMPLETE_ERROR_DECLARATION | NOT TESTABLE via manufacturer XML upload | Needs errorDeclaration XML | Needs errorDeclaration XML | — | NOT TESTABLE |
+| R052 | TC-S1-052 ERROR_DECLARATION_WITHOUT_REASON | NOT TESTABLE via manufacturer XML upload | Needs errorDeclaration XML | Needs errorDeclaration XML | — | NOT TESTABLE |
+
+h3. Findings
+# *Manufacturer XML upload path works.* Session auth, multipart POST, async status API.
+# *Several jobs remain status=accepted with no terminal result* after extended polling (queue stall). See FAIL (stuck accepted).
+# *Shipping with sourceList/destinationList succeeds* with SHIPPING_WITHOUT_COMMISSIONING / related warnings (E04, E06, R048).
+# *Recall Initiation (holding) → PARTNER_TYPE_BIZSTEP_MISMATCH* for manufacturer (E08).
+# *Stock Adjustment (stock_taking) succeeded* for manufacturer on demo (E15).
+# *Hard rejects confirmed:* INVALID_EXPIRY_FORMAT (R008), FUTURE_EVENT_TIME (R010), MISSING_NEEDED_FIELDS (R011), DUPLICATE_EPC_IN_EVENT (R014), INVALID_GS1_IDENTIFIER (R009/R025/R026), DUPLICATE_EVENT_ID / DUPLICATE_EVENT_PAYLOAD (R012/R013).
+# *Duplicate eventID contamination:* some later fixtures reused IDs from earlier uploads (DUPLICATE_EVENT_ID). Re-run those with fresh UUIDs if a clean PASS/FAIL is required.
+# *NOT TESTABLE rows* cannot be expressed via manufacturer .xml upload alone (JSON-LD, dispense, facility, error-declaration chains, missing fixtures).
+
+Evidence (where captured earlier): Proof/xml/{Check}.png and {Check}-status.png

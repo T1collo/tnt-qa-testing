@@ -106,6 +106,9 @@ function toResult(e) {
       },
     ],
   };
+  // Requests the test sent (portal API calls, EPCIS documents), opened from the Run and Logs
+  // pages. Kept apart from `variants`, which the workbook export reads as the test itself.
+  if (Array.isArray(e.exchanges) && e.exchanges.length) result.exchanges = e.exchanges;
   // Why it failed, in plain English - shown on the Run page and written to the workbook.
   if (!ok && !skipped) result.reason = reasonForResult(result);
   return result;

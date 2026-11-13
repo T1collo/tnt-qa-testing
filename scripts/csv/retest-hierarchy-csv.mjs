@@ -44,10 +44,10 @@ const T = [
     build: () => csv([`${RUN}-45`, `${RUN}_95`, `${RUN}.46`, `${RUN}/47`, `S${RUN}${'A'.repeat(20 - RUN.length - 1)}`].map((s, i) => rowOf('04', i + 1, { serial: s }))) },
   { id: 'H14a', finding: 'B', what: 'Placeholder serials 0, NA, DUMMY', expect: 'rejected as placeholders (not stored as serials)',
     build: () => csv(['0', 'NA', 'DUMMY'].map((s, i) => line({ batch: `B${RUN}14A${i}`, serial: s, cg: `C14A${i}`, pg: `P14A${i}` }))) },
-  // Placeholder words this product has never been sent (TBC, SAMPLE, BLANK, NOSERIAL, 999999 and NONE, TEST,
-  // XXXX, 000000, UNKNOWN were stored by the 12 Nov API retest, so they now come back as duplicates).
-  { id: 'H14b', finding: 'B', what: 'Placeholder serials never used before: PENDING, NOTSET, EMPTY, NOSN, 00000000', expect: 'rejected as placeholders (not stored as serials)',
-    build: () => csv(['PENDING', 'NOTSET', 'EMPTY', 'NOSN', '00000000'].map((s, i) => line({ batch: `B${RUN}14B${i}`, serial: s, cg: `C14B${i}`, pg: `P14B${i}` }))) },
+  // Placeholder words this product has never been sent. Already used (now duplicates): TBC, SAMPLE, BLANK, NOSERIAL,
+  // 999999, NONE, TEST, XXXX, 000000, UNKNOWN (12 Nov API retest) and PENDING, NOTSET, EMPTY, NOSN, 00000000 (12 Nov UI).
+  { id: 'H14b', finding: 'B', what: 'Placeholder serials never used before: PLACEHOLDER, NOTAVAILABLE, NULLSERIAL, TOBEASSIGNED, XXXXXXXXXX', expect: 'rejected as placeholders (not stored as serials)',
+    build: () => csv(['PLACEHOLDER', 'NOTAVAILABLE', 'NULLSERIAL', 'TOBEASSIGNED', 'XXXXXXXXXX'].map((s, i) => line({ batch: `B${RUN}14B${i}`, serial: s, cg: `C14B${i}`, pg: `P14B${i}` }))) },
   // Serial case cannot be read back by a partner (no payload, diagnostics or log entry for these jobs),
   // so it is tested by behaviour: HC sends mixed/upper case, HC2 then sends the same serials in lower case.
   // If the platform still lower-cases serials, HC2 collides with HC and is rejected as a duplicate.

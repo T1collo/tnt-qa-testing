@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Check, Copy } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import type { EventTracking } from "@/lib/run-session";
 import { cn } from "@/lib/utils";
 
 export type DocEvent = {
@@ -38,10 +39,10 @@ export function StatusPill({ status, className }: { status: number | null | unde
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-full px-2 py-0.5 font-mono text-xs tabular-nums",
-        ok && "bg-success/15 text-success",
-        bad && "bg-destructive/15 text-destructive",
-        !ok && !bad && "bg-muted text-muted-foreground",
+        "inline-flex items-center font-mono text-xs tabular-nums",
+        ok && "text-success",
+        bad && "text-destructive",
+        !ok && !bad && "text-muted-foreground",
         className
       )}
     >
@@ -95,11 +96,11 @@ export function DurationPill({
     <span
       title={untimed ? "Not an API request" : `Target p95 < ${budget.toLocaleString()} ms (${ref})`}
       className={cn(
-        "inline-flex items-center rounded-full px-2 py-0.5 font-mono text-xs tabular-nums",
-        state === "good" && "bg-success/15 text-success",
-        state === "slow" && "bg-warning/15 text-warning",
-        state === "bad" && "bg-destructive/15 text-destructive",
-        state === "plain" && "bg-muted text-muted-foreground"
+        "inline-flex items-center font-mono text-xs tabular-nums",
+        state === "good" && "text-muted-foreground",
+        state === "slow" && "text-warning",
+        state === "bad" && "text-destructive",
+        state === "plain" && "text-muted-foreground"
       )}
     >
       {ms.toLocaleString()} ms
@@ -249,6 +250,87 @@ export function EventSummary({
           );
         })
       )}
+    </div>
+  );
+}
+
+type BrowserTestVariant = {
+  method?: string | null;
+  expected?: string | null;
+  actual?: string | null;
+  reason?: string | null;
+  errorDetail?: string | null;
+  error?: string | null;
+};
+
+function DetailText({ label, text, tone }: { label: string; text?: string | null; tone?: "error" }) {
+  if (!text) return null;
+  return (
+    <div className="min-w-0 space-y-1">
+      <h4 className="text-xs font-medium text-muted-foreground">{label}</h4>
+      <p className={cn("text-sm whitespace-pre-wrap break-words", tone === "error" && "text-destructive")}>{text}</p>
+    </div>
+  );
+}
+
+/**
+ * A browser test's own result: what it checks, what it saw and - when it failed - why, in
+ * plain English with the raw failure underneath. The requests it sent are listed separately.
+ */
+export function BrowserTestDetail({
+  variant,
+  ok,
+  skipped,
+  reason,
+  requestCount,
+  tracking,
+}: {
+  variant: BrowserTestVariant | undefined;
+  ok: boolean;
+  skipped?: boolean;
+  reason?: string | null;
+  requestCount: number;
+  /** k6 runs: every event sent, one "eventID  EPC  status" line each. */
+  tracking?: EventTracking | null;
+}) {
+  const why = reason || variant?.reason || variant?.error;
+  return (
+    <div className="space-y-4">
+      <DetailText label="Expected" text={variant?.expected} />
+      <DetailText label="Actual result" text={variant?.actual} />
+      {skipped ? (
+        <DetailText label="Why it did not run" text={variant?.error || "Skipped - an earlier step this test depends on did not pass."} />
+      ) : (
+        !ok && <DetailText label="Failed because" text={why} tone="error" />
+      )}
+      {!ok && !skipped && variant?.errorDetail && (
+        <CodeBlock label="Failure detail" text={variant.errorDetail} copyable />
+      )}
+      {tracking && tracking.lines.length > 0 && (
+        <CodeBlock
+          label={`Events sent — event ID · EPC · HTTP status (${tracking.total.toLocaleString()}${
+            tracking.lines.length < tracking.total ? `, first ${tracking.lines.length.toLocaleString()} shown` : ""
+          })`}
+          text={tracking.lines.join("\n")}
+          copyable
+        />
+      )}
+      {tracking?.file && tracking.lines.length < tracking.total && (
+        <p className="text-xs break-all text-muted-foreground">
+          The full list is saved with the run: <span className="font-mono">{tracking.file}</span>
+        </p>
+      )}
+      <p className="text-xs text-muted-foreground">
+        {variant?.method === "K6"
+          ? requestCount > 0
+            ? `Measured by k6 across the whole run. ${requestCount} sampled request${requestCount === 1 ? "" : "s"} — the first, then any failures — open in the tabs above with the document, EPCs, event IDs and response.`
+            : "Measured by k6 across the whole run. The script, role and load profile are in the run record."
+          : requestCount > 0
+          ? `This test sent ${requestCount} request${requestCount === 1 ? "" : "s"}; the body, any EPCs and the response of each are shown with it.`
+          : skipped
+            ? "Nothing was sent, so there is no request or response to show."
+            : "This test sent no data-changing requests, so there is no document or response to show."}
+      </p>
     </div>
   );
 }

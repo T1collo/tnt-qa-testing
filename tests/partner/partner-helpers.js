@@ -9,6 +9,7 @@ const fs = require('fs');
 const path = require('path');
 const { spawnSync } = require('child_process');
 const { expect } = require('@playwright/test');
+const { recordExchange } = require('../helpers/exchanges');
 const {
   loadCollection,
   findNode,
@@ -102,12 +103,22 @@ function buildEvent(collectionPath, variant) {
 }
 
 async function submit(endpoint, { body, contentType }) {
+  const started = Date.now();
   const res = await fetch(endpoint, {
     method: 'POST',
     headers: { 'Content-Type': contentType, 'X-API-Key': FACILITY_KEY },
     body,
   });
   const text = await res.text();
+  await recordExchange({
+    label: `facility ${/xml/.test(contentType) ? 'XML' : 'JSON-LD'}`,
+    url: endpoint,
+    status: res.status,
+    contentType,
+    requestBody: body,
+    responseBody: text,
+    durationMs: Date.now() - started,
+  });
   let json = null;
   try {
     json = JSON.parse(text);

@@ -1,0 +1,187 @@
+L4 CSV upload vs L5 rules: Partner portal test results
+
+Environment: https://tnt-demo.apeiro-digital.com/partners  (Partner Portal > Bulk CSV)
+Account: manufacturer@apeiro.digital, MEMPHIS VISIONCARE PVT.LTD (GLN 8901234567890), key type sandbox (trk_test_)
+Run: 5 Nov 2026, pack GQ5. The Manufacturer-portal tests were re-run here with the same files, plus partner-only checks (13e, 13f, 2c to 2g, 14c to 14f).
+Rules: Technical Guide v0.2 and this ticket
+
+How the partner upload works: the CSV is converted to EPCIS JSON-LD and sent to /integration/manufacturer/events/async. The dialog shows the final result. Warnings are not shown; they appear only in the job status (the -status screenshots).
+
+Pass rule: the outcome matches the expected result. Each bad line fails with a message naming the problem and the line number, valid rows in the same file are kept, and nothing is repaired or filled in silently.
+
+1 Valid full journey
+Expected: all rows accepted.
+Result: Accepted. 15 events stored. Warnings in the job status: UNKNOWN_SGLN, INVALID_LOT, UNKNOWN_SGTIN, PARENT_NOT_FOUND (31 in total); the dialog does not show them.
+Evidence: 1, 1-status
+Verdict: PASS
+
+2 Commissioning errors (one per row)
+Expected: each bad line rejected with its code; valid rows accepted.
+Result: 2: the whole file was refused with "CSV contains disallowed formula-like content", caused by the +0300 offset row.
+2b (same file without that row): 10 lines rejected with line numbers (lines 3, 4, 5, 7, 9, 12, 13, 18, 19, 23).
+Not caught at upload: GTIN with a bad check digit, an 11-digit GTIN, a GLN with a bad check digit, a 7-digit GLN, expiry 2028-02-30, IMPORT without a MAH GLN, a 21-character serial, a serial with "#", a 21-character lot, a lot with "#", a lowercase event type, a future event time, and a DD/MM event time. The Manufacturer portal rejects the 4 GTIN and GLN rows at upload; the Partner portal does not.
+2c to 2g (each bad identifier row on its own):
+2c: the 4 rows together returned HTTP 500 "Internal server error".
+2d: bad GTIN check digit, rejected by L5 after queueing: INVALID_GTIN_CHECK_DIGIT.
+2e: the 11-digit GTIN 61611029749 was zero-padded to 00061611029749 and then rejected for its check digit. The value was changed before L5 saw it.
+2f: GLN 6164003000001 (bad check digit) was accepted and stored, "Upload successful".
+2g: 7-digit GLN 6164003, HTTP 500 "Internal server error".
+Evidence: 2, 2b, 2c, 2d, 2d-status, 2e, 2e-status, 2f, 2f-status, 2g
+Verdict: FAIL
+
+3 Commissioning flags
+Expected: all accepted, flagged EXPIRED_PRODUCT, EXPIRING_SOON, STALE_EVENT_TIME, UNKNOWN_SGTIN and UNKNOWN_SGLN.
+Result: 5 of 5 accepted. EXPIRED_PRODUCT, EXPIRING_SOON, STALE_EVENT_TIME and UNKNOWN_SGLN raised; UNKNOWN_SGTIN not raised for the unregistered GTIN.
+Evidence: 3, 3-status
+Verdict: FAIL
+
+4 Columns L5 does not use
+Expected: all rows accepted.
+Result: 4: file refused. Line 2 "Missing required field Import_Sales_Permit_Ref for IMPORT commissioning", line 3 "Manufacturing_Origin must be IMPORT or DOMESTIC", line 4 "Missing required field Manufacturing_Origin". The CSV blocks rows that L5 accepts.
+4b (same file without those rows): 10 rows, 8 events stored, "Upload successful", nothing reported for the missing 2.
+Evidence: 4, 4b, 4b-status
+Verdict: FAIL
+
+5 Packing errors (one per row)
+Expected: bad parents and four levels rejected; the rest flagged.
+Result: 5: 7 lines rejected with line numbers (11, 14, 15, 16, 19, 20, 24): child never commissioned, case as its own parent, child packed twice, SSCC under an item, missing parent, portal label as parent. The other bad rows were not caught at upload.
+5b (without those rows): the whole file was refused with "Invalid SSCC check digit for Unit_ID 06164003510500008. Fix the SSCC before import." No line number was given.
+Evidence: 5, 5b
+Verdict: FAIL
+
+6 Duplicates
+Expected: same item twice rejected (DUPLICATE_EPC_IN_EVENT); the rest flagged; nothing stored twice.
+Result: 6: 3 lines rejected (line 3 serial commissioned twice, line 7 child packed twice, line 9 case boxed twice).
+6b (without those rows): 8 rows, 5 events stored, "Upload successful", no message for the other 3 and no duplicate flag.
+Evidence: 6, 6b, 6b-status
+Verdict: FAIL
+
+7 Re-upload of test 1, unchanged
+Expected: every row refused as a duplicate; nothing stored twice.
+Result: Job failed, all 15 events rejected DUPLICATE_EVENT_ID, 0 stored.
+Evidence: 7, 7-status
+Verdict: PASS
+
+8 Valid shipping
+Expected: all rows accepted; owner and custodian stored separately.
+Result: 8: file refused, line 19 "Missing required field Receiver_Custodian_GLN". A shipment with the receiver owner only is blocked.
+8b (custodian filled in): 18 of 18 accepted. No NO_REGULATORY_APPROVAL flag, although the packages were never PPB-approved (they are built in the same file).
+Evidence: 8, 8b, 8b-status
+Verdict: FAIL
+
+9 Shipping errors (each on its own package)
+Expected: missing fields and bad identifiers rejected; pending and rejected flagged NO_REGULATORY_APPROVAL.
+Result: 9: 6 lines rejected (26 to 29 missing transaction, reference, sender and receiver; 33 and 34 shipping an SSCC not built in the file).
+9b (without those rows): 27 of 27 accepted, including the unregistered receiver, the invalid transaction type and the shipments before packing. Warnings were only UNKNOWN_SGLN, INVALID_LOT, UNKNOWN_SGTIN and PARENT_NOT_FOUND; there was no NO_REGULATORY_APPROVAL flag.
+Evidence: 9, 9b, 9b-status
+Verdict: FAIL
+
+10 After shipping
+Expected: all flagged INVALID_DISPOSITION.
+Result: Refused by the CSV's own rule before L5. Line 2 "Shipping SSCC must appear earlier as a Parent_ID", line 6 "Unit_ID SGQ50800001 was never commissioned in this file". 10b, run again after 8b had shipped, gave the same result. A CSV cannot act on stock from an earlier upload, so INVALID_DISPOSITION cannot be reached.
+Evidence: 10, 10b
+Verdict: FAIL
+
+11 Damaged, destroyed and recalled stock
+Result: The Partner portal has no destruction, damage or recall screen. 11a commissioned 2 items; 11c (pack them) was refused by the same in-file rule as test 10, "was never commissioned in this file".
+Evidence: 11a, 11a-status, 11c
+Verdict: NOT TESTABLE on the Partner portal
+
+12 Partial failure and resubmission
+Expected: only line 52 rejected; the resubmission adds only the fixed row.
+Result: 12a: 100 rows with line 52 in the future, "Upload successful", 99 events stored, no error and no line number. 12b (line 52 fixed): 1 event added.
+Evidence: 12a, 12a-status, 12b, 12b-status
+Verdict: FAIL (12a drops the row silently; 12b correct)
+
+13 Identity and access
+Expected: GLN and GTIN rejected, inspection flagged UNAUTHORIZED_INSPECTING_EVENT, expired session and tampered X-User-Id blocked, invalid key refused.
+Result:
+13a: file refused, line 8 "Invalid Event_Type INSPECTING".
+13d (without the inspection row): 6 of 6 accepted, including KEMSA's GLN 0614142000011 and Xarelto GTIN 04057598013642 (another manufacturer's product).
+13b expired session: 401 "Valid user session required".
+13c changed X-User-Id: 401 "X-User-Id authentication is not supported".
+13e no API key: the Import button stays disabled.
+13f made-up key: "Invalid API key", returned as HTTP 400 while the body says 401.
+The dialog asks for a production key, but the sandbox key was accepted and every job is marked sandbox: true.
+Every event in this run used the template's GLN 6164003000000, which belongs to Test Manufacturer, not MEMPHIS (8901234567890). All were accepted with only an UNKNOWN_SGLN warning.
+Evidence: 13a, 13b, 13c, 13d, 13d-status, 13e, 13f
+Verdict: FAIL
+
+14 Batch loophole
+Expected: never stored as serials.
+Result: 14: blank serials rejected (lines 2 and 3).
+14b (0, NA, DUMMY): rejected DUPLICATE_EVENT_PAYLOAD, because these serials already exist from the Manufacturer-portal run.
+14c (NULL, N/A, TBD): "Upload successful", 2 of 3 stored.
+14d and 14f: NULL and TBD refused as duplicates, which confirms they were stored as serials.
+14e: N/A on its own rejected INVALID_GS1_IDENTIFIER. In 14c it was dropped with no message.
+Evidence: 14, 14b, 14b-status, 14c, 14c-status, 14d, 14e, 14f
+Verdict: FAIL
+
+15 Excel-saved file
+Expected: rejected clearly; nothing repaired.
+Result: Refused with a clear message on every line, e.g. 'GTIN looks like Excel scientific notation ("6.1611E+12"). Store IDs as text.' and "Lot_Expiry_Date must be YYYY-MM-DD".
+Evidence: 15
+Verdict: PASS
+
+16 Broken rows
+Expected: the 2 broken rows rejected with line numbers; blank lines ignored.
+Result: 4 rows, 3 events stored, "Upload successful". The broken rows were not reported.
+Evidence: 16, 16-status
+Verdict: FAIL
+
+17 Limits
+Result: 17a: 500 rows, 500 events stored. 17b: 50,000 serials (7.5 MB), "Upload exceeds maximum allowed size". The real CSV limit is 2 MB / 500 rows, against the guide's 50,000 serials / 10 MB.
+Evidence: 17a, 17a-status, 17b
+Verdict: PASS (limits recorded; below the guide's figures)
+
+18 Over the limit
+Expected: rejected; nothing stored.
+Result: 18a 501 rows: "Too many rows. Maximum is 500 data rows." 18b 50,001 serials: "Upload exceeds maximum allowed size". Not TOO_MANY_SERIALS, but nothing was stored.
+Evidence: 18a, 18b
+Verdict: PASS
+
+19 Injection
+Expected: blocked, or stored as plain text that never runs.
+Result: 19: refused, "CSV contains disallowed formula-like content". 19b (HTML value only): job failed INVALID_JSON_STRUCTURE, "countryOfOrigin must be an ISO 3166-1 alpha-2 code".
+Evidence: 19, 19b, 19b-status
+Verdict: PASS
+
+20 Manual checks
+(a) Same L5 path: confirmed. The status shows the file was sent to /integration/manufacturer/events/async, and rejections carry L5 codes (DUPLICATE_EVENT_ID, INVALID_GTIN_CHECK_DIGIT). The upload-time checks differ from the Manufacturer portal (see test 2).
+(b) Import record: Async submissions shows request ID, time, status, size and EPC count only. No file name, file hash, uploader or row-to-event lineage.
+(c) Another manufacturer's access: not tested (one partner account).
+(d) Two uploads at once: both accepted, 5 and 5 events, with separate correlation IDs and counts.
+(e) Downstream receive and dispense: not tested on the Partner portal.
+Evidence: 20b, 20d-1, 20d-1-status, 20d-2, 20d-2-status
+Verdict: FAIL (b)
+
+21 File-level format checks
+Checks: each file holds 2 valid commissioning rows, so only the format problem can cause a rejection.
+Expected: rejected clearly, never repaired (ticket T13).
+21a UTF-8 BOM: accepted, 2 stored.
+21b UTF-16: rejected, "File content is not plain CSV/text. Upload rejected." Correct.
+21c Latin-1 (one row with "Côte d'Ivoire"): "Upload successful", 1 of 2 stored. The Latin-1 row was dropped with no message.
+21d Semicolons: rejected, "CSV missing required column Event_Type". The message does not mention the delimiter.
+21e Missing column (Lot_Expiry_Date): lines 2 and 3 rejected, "Missing required field Lot_Expiry_Date". Correct.
+21f Renamed column: rejected, "CSV missing required column Event_Type". Correct.
+21g Reordered columns: accepted, 2 stored, mapped by header name.
+21h Empty file: rejected, "File is empty". Correct.
+21i .txt extension: accepted, 2 stored. The file picker allows ".csv,.txt".
+Evidence: 21a to 21i, with -status for 21a, 21c, 21g, 21i
+Verdict: FAIL (21c silent drop; 21a, 21g and 21i accepted where the ticket expects rejection)
+
+Findings for the developers (Partner portal)
+
+1. Server crash on a short GLN. A 7-digit BizLocation_GLN returns HTTP 500 "Internal server error" instead of a line error. Evidence: 2c, 2g.
+
+2. Upload checks are weaker than on the Manufacturer portal. GTIN and GLN check digits are not checked at upload. A GLN with a bad check digit is accepted and stored, and an 11-digit GTIN is zero-padded before L5 rejects it. Evidence: 2b, 2d, 2e, 2f.
+
+3. Rows are dropped while the upload reports success. Seen in 12a (100 rows, 99 stored), 16 (4 rows, 3 stored), 4b (10 rows, 8), 6b (8 rows, 5), 14c (3 rows, 2) and 21c (2 rows, 1). No line number is given. Evidence: those shots and their -status.
+
+4. Events accepted for another organisation's location and product. The partner template is pre-filled with Test Manufacturer's GLN, and MEMPHIS uploads at that GLN are accepted with only an UNKNOWN_SGLN warning. KEMSA's GLN and the Xarelto GTIN are also accepted. Evidence: 1-status, 13d, 13d-status.
+
+5. Placeholder serials become real serials. NULL and TBD were stored, and 0, NA and DUMMY already exist from the Manufacturer run. Evidence: 14b, 14c, 14d, 14f.
+
+6. CSV shipping skips PPB approval. Packages built and shipped in the same file are never approved, and no NO_REGULATORY_APPROVAL flag is raised. Evidence: 8b-status, 9b-status.
+
+7. API key handling. The dialog asks for a production key, but a sandbox key is accepted and every job runs as sandbox. An invalid key returns HTTP 400 with a 401 body. Evidence: 13f, any -status.

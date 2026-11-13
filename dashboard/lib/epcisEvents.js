@@ -31,12 +31,33 @@ function eventsFromBody(body) {
   }
 }
 
+const EVENT_ID_KEY = /^event_?ids?$/i;
+
+// The partner API answers { event_ids: [...] }; portal APIs nest a record's event_id inside
+// their own response shape (e.g. a created batch). Both are collected, in order, once each.
 function returnedEventIds(responseBody) {
+  let parsed;
   try {
-    return JSON.parse(responseBody).event_ids || [];
+    parsed = JSON.parse(responseBody);
   } catch {
     return [];
   }
+  if (Array.isArray(parsed?.event_ids)) return parsed.event_ids;
+  const ids = [];
+  const walk = (value, depth) => {
+    if (depth > 8 || value == null || typeof value !== 'object') return;
+    for (const [key, v] of Object.entries(value)) {
+      if (EVENT_ID_KEY.test(key)) {
+        for (const id of Array.isArray(v) ? v : [v]) {
+          if (typeof id === 'string' && id && !ids.includes(id)) ids.push(id);
+        }
+      } else {
+        walk(v, depth + 1);
+      }
+    }
+  };
+  walk(parsed, 0);
+  return ids;
 }
 
 module.exports = { eventsFromBody, returnedEventIds };

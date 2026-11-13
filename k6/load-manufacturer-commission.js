@@ -22,7 +22,7 @@
 import http from 'k6/http';
 import { check } from 'k6';
 import { Rate, Trend } from 'k6/metrics';
-import { newRunId, commissionPayload, authHeaders } from './lib/epcis.js';
+import { newRunId, commissionPayload, authHeaders, loadtestEventId, track } from './lib/epcis.js';
 
 const BASE_URL = (__ENV.BASE_URL || 'https://tnt-demo.apeiro-digital.com').replace(/\/+$/, '');
 const API_TOKEN = __ENV.MANUFACTURER_API_TOKEN;
@@ -62,6 +62,8 @@ export default function () {
     headers: authHeaders(API_TOKEN),
     tags: { name: 'commission' },
   });
+
+  track(res, payload, loadtestEventId(RUN_ID, __VU, __ITER), `${BASE_URL}/api/integration/manufacturer/events`);
 
   commissionDuration.add(res.timings.duration);
 

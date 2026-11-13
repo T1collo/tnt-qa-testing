@@ -113,10 +113,10 @@ For a **FAIL**:
 - **Actual Result** holds the exact outcome observed - the real status, values or text the
   test saw, or exactly what the platform answered (HTTP status, error code, message).
 - **COMMENTS** starts with `Failed because: <reason in plain English>`, then where the result
-  came from (run id, role, time).
+  came from: `Run <run id> (<role>)`. Comments never name the tool and never carry a date.
 - A FAIL carried over from the master plan (a case no run has executed yet) follows the same
   rule: its comment becomes `Failed because: <the plan's own comment> | Carried over from the
-  master test plan - not re-run by automation.`
+  master test plan; not re-run.`
 
 Every test, including the page-inventory smoke checks (`SMOKE-<ROLE>-<PATH>`), carries a workbook
 Test ID via `qtest(...)`. The ID is a static annotation, so a test skipped after an earlier serial

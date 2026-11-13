@@ -1,23 +1,21 @@
-import { Fira_Sans, JetBrains_Mono } from "next/font/google";
+import { DM_Mono, DM_Sans } from "next/font/google";
 import "./globals.css";
-import { AppShell } from "@/components/app-shell";
+import { SideNav } from "@/components/side-nav";
 import { ThemeProvider } from "@/components/theme-provider";
 import { THEME_STORAGE_KEY } from "@/lib/theme";
 
-// "Dashboard Data" pairing (ui-ux-pro-max typography domain): Fira Sans carries the UI,
-// JetBrains Mono carries headings,
-// test IDs, URLs and response codes - the parts of this console that are literally code.
-// Loaded through next/font so the files are self-hosted and preloaded, with no render-
-// blocking @import and no layout shift from a late swap.
-const firaSans = Fira_Sans({
-  variable: "--font-fira-sans",
+// DM Sans carries the UI; DM Mono carries test IDs, URLs and response codes - the parts of this
+// console that are literally code. Loaded through next/font so the files are self-hosted and
+// preloaded, with no render-blocking @import and no layout shift from a late swap.
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
+const dmMono = DM_Mono({
+  variable: "--font-dm-mono",
   subsets: ["latin"],
+  weight: ["400", "500"],
 });
 
 export const metadata = {
@@ -33,7 +31,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${firaSans.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={`${dmSans.variable} ${dmMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head>
@@ -41,7 +39,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className="min-h-full">
         <ThemeProvider>
-          <AppShell>{children}</AppShell>
+          <SideNav>{children}</SideNav>
         </ThemeProvider>
       </body>
     </html>
