@@ -1,0 +1,105 @@
+h2. Partner portal XML upload (/partners/upload) vs EPCIS rules. Overall result: FAIL
+
+*Environment:* https://tnt-demo.apeiro-digital.com/partners/upload, partner manufacturer@apeiro.digital (manufacturer), run 2026-11-09T13:09:45.986Z
+*Reference file:* SC_EP_NT_O_BXCEKSE (1).XML (SAP ATTP export, 25.8 MB, 14,949 events)
+
+h3. Numbers
+* *53* tests: *31* PASS, *22* FAIL
+
+h3. Failed (22)
+||ID||Area||Test||Rule (Technical Guides)||Expected||Actual||Status||
+| X01 | Valid | Valid journey: commission 6 items > 2 cases > 1 pallet > ship | Guide 3.x happy path | accepted | accepted (upload 202, job succeeded, 5/5 events): UNKNOWN_SGLN, INVALID_LOT, UNKNOWN_PARTY_GLN, SHIPPING_WITHOUT_COMMISSIONING, PARENT_NOT_FOUND, INVALID_DISPOSITION; unexpected SHIPPING_WITHOUT_COMMISSIONING, INVALID_DISPOSITION | (x) FAIL |
+| X04 | Valid | eventID inside <baseExtension> | Guide: either placement accepted | accepted | accepted (upload 202, job succeeded, 5/5 events): UNKNOWN_SGLN, INVALID_LOT, UNKNOWN_PARTY_GLN, SHIPPING_WITHOUT_COMMISSIONING, PARENT_NOT_FOUND, INVALID_DISPOSITION; unexpected SHIPPING_WITHOUT_COMMISSIONING, INVALID_DISPOSITION | (x) FAIL |
+| X05 | Valid | Uppercase .XML extension (as SAP exports it) | Accepted extension .xml | accepted | accepted (upload 202, job succeeded, 5/5 events): UNKNOWN_SGLN, INVALID_LOT, UNKNOWN_PARTY_GLN, SHIPPING_WITHOUT_COMMISSIONING, PARENT_NOT_FOUND, INVALID_DISPOSITION; unexpected SHIPPING_WITHOUT_COMMISSIONING, INVALID_DISPOSITION | (x) FAIL |
+| X06 | Valid | UTF-8 with BOM | XML 1.0 encoding | accepted | never completed (upload 202, job accepted); job still "accepted" 25 min after upload, no result or diagnostics | (x) FAIL |
+| X07 | Valid | Windows CRLF line endings | XML 1.0 line handling | accepted | accepted (upload 202, job succeeded, 5/5 events): UNKNOWN_SGLN, INVALID_LOT, UNKNOWN_PARTY_GLN, SHIPPING_WITHOUT_COMMISSIONING, PARENT_NOT_FOUND, INVALID_DISPOSITION; unexpected SHIPPING_WITHOUT_COMMISSIONING, INVALID_DISPOSITION | (x) FAIL |
+| X08 | Valid | UTF-16 encoded document (declared UTF-16) | XML 1.0 encoding | accepted | never completed (upload 202, job processing); job still "processing" 25 min after upload, no result or diagnostics | (x) FAIL |
+| X12 | Structure | EPCISBody without EventList | MISSING_EVENT_LIST | rejected MISSING_EVENT_LIST | never completed (upload 202, job accepted); job still "accepted" 24 min after upload, no result or diagnostics | (x) FAIL |
+| X14 | Structure | EPCIS 2.0 XML document (xsd:2, schemaVersion 2.0) | EPCIS 1.2 XML only | rejected UNSUPPORTED_FORMAT or INVALID_XML_STRUCTURE | accepted (upload 202, job succeeded, 5/5 events): UNKNOWN_SGLN, INVALID_LOT, UNKNOWN_PARTY_GLN, SHIPPING_WITHOUT_COMMISSIONING, PARENT_NOT_FOUND, INVALID_DISPOSITION | (x) FAIL |
+| X15 | Structure | SBDH header without Sender/Receiver | INVALID_SBDH | rejected INVALID_SBDH | never completed (upload 202, job accepted); job still "accepted" 24 min after upload, no result or diagnostics | (x) FAIL |
+| X25 | Fields | eventTime not in UTC (no Z, local time) | eventTime must be UTC ending in Z | rejected | never completed (upload 202, job accepted); job still "accepted" 23 min after upload, no result or diagnostics | (x) FAIL |
+| X28 | Fields | Commissioning with disposition in_transit | INVALID_DISPOSITION | rejected INVALID_DISPOSITION | never completed (upload 202, job accepted); job still "accepted" 23 min after upload, no result or diagnostics | (x) FAIL |
+| X32 | Fields | Malformed SGTIN (company prefix + item ref = 12 digits) | INVALID_GS1_IDENTIFIER | rejected INVALID_GS1_IDENTIFIER | never completed (upload 202, job accepted); job still "accepted" 23 min after upload, no result or diagnostics | (x) FAIL |
+| X36 | Fields | Shipping without bizTransactionList | Guide: bizTransactionList mandatory on all events | rejected MISSING_REQUIRED_FIELD | never completed (upload 202, job accepted); job still "accepted" 22 min after upload, no result or diagnostics | (x) FAIL |
+| X40 | Business rules | Pack items that were never commissioned | UNCOMMISSIONED_CHILD | accepted UNCOMMISSIONED_CHILD | never completed (upload 202, job accepted); job still "accepted" 22 min after upload, no result or diagnostics | (x) FAIL |
+| X41 | Business rules | Pack an item already packed in another case | CHILD_ALREADY_AGGREGATED | rejected CHILD_ALREADY_AGGREGATED | accepted (upload 202, job succeeded, 3/3 events): UNKNOWN_SGLN, INVALID_LOT, PARENT_NOT_FOUND, INVALID_DISPOSITION, CHILD_ALREADY_AGGREGATED; rule raised only as a warning; every event accepted | (x) FAIL |
+| X42 | Business rules | Ship a case that was never commissioned or packed | SHIPPING_WITHOUT_COMMISSIONING | accepted SHIPPING_WITHOUT_COMMISSIONING | never completed (upload 202, job accepted); job still "accepted" 22 min after upload, no result or diagnostics | (x) FAIL |
+| X44 | Business rules | Unknown GTIN (not in master data) | Soft block: accepted, flagged UNKNOWN_SGTIN | accepted UNKNOWN_SGTIN | accepted (upload 202, job succeeded, 1/1 events): UNKNOWN_SGLN, INVALID_LOT | (x) FAIL |
+| X45 | Business rules | Another manufacturer's GTIN (Xarelto, Bayer) | Soft block: accepted, flagged (product not owned by partner) | accepted UNKNOWN_SGTIN or MASTER_DATA | accepted (upload 202, job succeeded, 1/1 events): UNKNOWN_SGLN, INVALID_LOT | (x) FAIL |
+| X47 | Business rules | Pack an item destroyed earlier in the file | SERIAL_ALREADY_DESTROYED | rejected SERIAL_ALREADY_DESTROYED or INVALID_TERMINAL_STATE | accepted (upload 202, job succeeded, 3/3 events): UNKNOWN_SGLN, INVALID_LOT, NO_REGULATORY_APPROVAL, SERIAL_ALREADY_DESTROYED, PARENT_NOT_FOUND; rule raised only as a warning; every event accepted | (x) FAIL |
+| X50 | Limits | Exactly 50,000 EPCs in one document | Max 50,000 EPCs per document | accepted | rejected (upload 400): TOO_MANY_SERIALS | (x) FAIL |
+| X52 | Limits | Valid file padded to just under 10 MB | Max 10 MB | accepted | accepted (upload 202, job succeeded, 5/5 events): UNKNOWN_SGLN, INVALID_LOT, UNKNOWN_PARTY_GLN, SHIPPING_WITHOUT_COMMISSIONING, PARENT_NOT_FOUND, INVALID_DISPOSITION; unexpected SHIPPING_WITHOUT_COMMISSIONING, INVALID_DISPOSITION | (x) FAIL |
+| X62 | Security | Script markup in lotNumber (escaped <script>) | Lot must be alphanumeric (INVALID_LOT) | rejected INVALID_LOT | accepted (upload 202, job succeeded, 1/1 events): UNKNOWN_SGLN, INVALID_LOT; rule raised only as a warning; every event accepted | (x) FAIL |
+
+h3. Passed (31)
+||ID||Area||Test||Rule (Technical Guides)||Expected||Actual||Status||
+| X02a | Valid | Your SAP ATTP file, first ~1 MB of whole events, unchanged | Guide: imported-product commissioning needs sourceList (foreign MAH GLN) + countryOfOrigin | rejected MISSING_NEEDED_FIELDS | rejected (upload 202, job failed, 0/5 events): MISSING_NEEDED_FIELDS | (/) PASS |
+| X02b | Valid | Your SAP ATTP file, largest slice under 10 MB and 50,000 EPCs, unchanged | Guide: imported-product commissioning needs sourceList (foreign MAH GLN) + countryOfOrigin | rejected MISSING_NEEDED_FIELDS | rejected (upload 202, job failed, 0/21 events): MISSING_NEEDED_FIELDS | (/) PASS |
+| X03 | Valid | Your full SAP ATTP file (25.8 MB), unchanged | Max 10 MB per document | rejected PAYLOAD_TOO_LARGE or MESSAGE_SIZE_EXCEEDED | rejected (upload 413, page blocked it; API direct): PAYLOAD_TOO_LARGE | (/) PASS |
+| X10 | Structure | Malformed XML (unclosed tag) | INVALID_XML_STRUCTURE | rejected INVALID_XML_STRUCTURE | rejected (upload 202, job failed): INVALID_XML_STRUCTURE | (/) PASS |
+| X11 | Structure | No EPCISBody | MISSING_EPCIS_BODY | rejected MISSING_EPCIS_BODY | rejected (upload 202, job failed): INVALID_XML_STRUCTURE; code differs from guide: expected MISSING_EPCIS_BODY | (/) PASS |
+| X13 | Structure | Empty EventList | MISSING_EVENT_LIST | rejected MISSING_EVENT_LIST | rejected (upload 202, job failed): INVALID_XML_STRUCTURE; code differs from guide: expected MISSING_EVENT_LIST | (/) PASS |
+| X16 | Structure | Empty file (0 bytes) | Reject empty upload | rejected | rejected (upload 400) | (/) PASS |
+| X17 | Structure | JSON-LD content saved as .xml | EPCIS 1.2 XML only | rejected INVALID_XML_STRUCTURE or UNSUPPORTED_FORMAT or UPLOAD_FORMAT_PLANNED | rejected (upload 202, job failed): INVALID_XML_STRUCTURE | (/) PASS |
+| X18 | Structure | CSV file (.csv) | XML only; CSV "coming later" | rejected UNSUPPORTED_FORMAT or UPLOAD_FORMAT_PLANNED | rejected (upload 415, page blocked it; API direct): UPLOAD_FORMAT_PLANNED | (/) PASS |
+| X19 | Structure | Well-formed XML that is not an EPCISDocument | EPCIS 1.2 schema | rejected INVALID_XML_STRUCTURE or MISSING_EPCIS_BODY | rejected (upload 202, job failed): INVALID_XML_STRUCTURE | (/) PASS |
+| X20 | Fields | Event without eventID (no top-level, no baseExtension) | Guide: neither placement = hard reject | rejected MISSING_REQUIRED_FIELD | rejected (upload 202, job failed): MISSING_NEEDED_FIELDS; code differs from guide: expected MISSING_REQUIRED_FIELD | (/) PASS |
+| X21 | Fields | Same eventID on two events in one file | DUPLICATE_EVENT_ID: second event rejected | partial DUPLICATE_EVENT_ID | partial (upload 202, job succeeded, 1/2 events): UNKNOWN_SGLN, INVALID_LOT, DUPLICATE_EVENT_ID | (/) PASS |
+| X22 | Fields | X01 uploaded again after it was ingested | DUPLICATE_EVENT_ID | rejected DUPLICATE_EVENT_ID or DUPLICATE_EVENT_PAYLOAD | rejected (upload 202, job failed, 0/5 events): DUPLICATE_EVENT_ID | (/) PASS |
+| X23 | Fields | eventTime one day in the future | FUTURE_EVENT_TIME | rejected FUTURE_EVENT_TIME | rejected (upload 202, job failed): FUTURE_EVENT_TIME | (/) PASS |
+| X24 | Fields | eventTime 10 days old | STALE_EVENT_TIME (warning path) | accepted STALE_EVENT_TIME | accepted (upload 202, job succeeded, 1/1 events): UNKNOWN_SGLN, STALE_EVENT_TIME, INVALID_LOT | (/) PASS |
+| X26 | Fields | eventTimeZoneOffset missing | MISSING_REQUIRED_FIELD | rejected MISSING_REQUIRED_FIELD | rejected (upload 202, job failed): MISSING_NEEDED_FIELDS; code differs from guide: expected MISSING_REQUIRED_FIELD | (/) PASS |
+| X27 | Fields | action CREATE (not ADD/OBSERVE/DELETE) | INVALID_ACTION | rejected INVALID_ACTION | rejected (upload 202, job failed): INVALID_XML_STRUCTURE; code differs from guide: expected INVALID_ACTION | (/) PASS |
+| X29 | Fields | Commissioning without ILMD (no lot, no expiry) | MISSING_ILMD | rejected MISSING_ILMD | rejected (upload 202, job failed): MISSING_NEEDED_FIELDS; code differs from guide: expected MISSING_ILMD | (/) PASS |
+| X30 | Fields | Expiry date 31/12/2028 (not YYYY-MM-DD) | INVALID_EXPIRY_FORMAT | rejected INVALID_EXPIRY_FORMAT | rejected (upload 202, job failed): INVALID_EXPIRY_FORMAT | (/) PASS |
+| X31 | Fields | Two lot numbers in one commissioning event | MIXED_LOT_IN_COMMISSIONING | rejected MIXED_LOT_IN_COMMISSIONING | rejected (upload 202, job failed): MISSING_NEEDED_FIELDS; code differs from guide: expected MIXED_LOT_IN_COMMISSIONING | (/) PASS |
+| X33 | Fields | Malformed SSCC parent (16 digits) on the pack event | INVALID_GS1_IDENTIFIER: pack event rejected | partial INVALID_GS1_IDENTIFIER | partial (upload 202, job succeeded, 1/2 events): UNKNOWN_SGLN, INVALID_LOT, INVALID_GS1_IDENTIFIER | (/) PASS |
+| X34 | Fields | Same EPC twice in one event | DUPLICATE_EPC_IN_EVENT | rejected DUPLICATE_EPC_IN_EVENT | rejected (upload 202, job failed): DUPLICATE_EPC_IN_EVENT | (/) PASS |
+| X35 | Fields | Event without bizStep | MISSING_REQUIRED_FIELD | rejected MISSING_REQUIRED_FIELD | rejected (upload 202, job failed): MISSING_NEEDED_FIELDS; code differs from guide: expected MISSING_REQUIRED_FIELD | (/) PASS |
+| X43 | Business rules | Pack listed before commission in the file (eventTime order is correct) | Events processed in eventTime order | accepted | accepted (upload 202, job succeeded, 2/2 events): UNKNOWN_SGLN, INVALID_LOT, PARENT_NOT_FOUND | (/) PASS |
+| X46 | Business rules | Dispensing event from a manufacturer | PARTNER_TYPE_BIZSTEP_MISMATCH: dispense event rejected | partial PARTNER_TYPE_BIZSTEP_MISMATCH | partial (upload 202, job succeeded, 1/2 events): UNKNOWN_SGLN, INVALID_LOT, PARTNER_TYPE_BIZSTEP_MISMATCH | (/) PASS |
+| X48 | Business rules | 100 events, event 51 has a malformed SGTIN | PARTIALLY_ACCEPTED: 99 accepted, 1 rejected | partial INVALID_GS1_IDENTIFIER or PARTIALLY_ACCEPTED | partial (upload 202, job succeeded, 99/100 events): UNKNOWN_SGLN, INVALID_LOT, INVALID_GS1_IDENTIFIER | (/) PASS |
+| X51 | Limits | 50,001 EPCs in one document | TOO_MANY_SERIALS | rejected TOO_MANY_SERIALS | rejected (upload 400): TOO_MANY_SERIALS | (/) PASS |
+| X53 | Limits | Valid file padded to just over 10 MB | PAYLOAD_TOO_LARGE | rejected PAYLOAD_TOO_LARGE or MESSAGE_SIZE_EXCEEDED | rejected (upload 413, page blocked it; API direct): PAYLOAD_TOO_LARGE | (/) PASS |
+| X60 | Security | External entity (XXE) pointing at file:///etc/passwd in lotNumber | DOCTYPE/entities must be refused | rejected | rejected (upload 202, job failed): INVALID_XML_STRUCTURE | (/) PASS |
+| X61 | Security | Internal entity expansion (bounded: 1,000 copies) | DOCTYPE/entities must be refused | rejected | rejected (upload 202, job failed): INVALID_XML_STRUCTURE | (/) PASS |
+| X63 | Security | Upload with no session (signed out) | Session auth required | rejected | rejected (upload 401, no session) | (/) PASS |
+
+h3. Findings
+*Overall verdict: FAIL.* *31/53 PASS, 22/53 FAIL.* The core checks work: XML validation, the size limit, session auth, duplicates and XXE protection. The failures fall into 7 defects (below), 4 of them High.
+
+h4. Defects
+# *[High] 10 of 53 uploads (19%) never finish.* They stay "accepted" or "processing" with no result, no diagnostics and no failure, more than 20 minutes after upload (normal jobs finish in about 1 minute). The partner is never told the outcome. Affected inputs: UTF-8 BOM (X06), UTF-16 (X08), EPCISBody without EventList (X12), SBDH without Sender/Receiver (X15), eventTime without Z (X25), commissioning with disposition in_transit (X28), 12-digit SGTIN (X32), shipping without bizTransactionList (X36), packing items never commissioned (X40), shipping a case never commissioned (X42). X06 and X08 are valid files, and X40 and X42 should complete with a warning. Example: request 3089925c-4ac7-4fe0-b83f-0805f6754f9f (X42).
+# *[High] Events inside one document are not processed in document/eventTime order.* ObjectEvents (commission, ship) appear to be processed before AggregationEvents (pack). Every valid journey (commission > pack cases > pack pallet > ship) gets SHIPPING_WITHOUT_COMMISSIONING ("No prior aggregation (ADD) ... before shipping") plus INVALID_DISPOSITION ("in_transit" → "in_progress" for the pallet SSCC). The pallet can be left "in_progress" after it has shipped. Seen in X01, X04, X05, X07 and X52, and the same on the integration API.
+# *[High] Integrity rules are raised as warnings only, so the bad event is stored.* The same item was packed into two cases: CHILD_ALREADY_AGGREGATED, 3/3 accepted (X41). A destroyed item was packed: SERIAL_ALREADY_DESTROYED ("terminal disposition destroyed — no further transitions allowed"), 3/3 accepted (X47).
+# *[High] Product soft blocks never fire.* Unknown or not-owned GTINs should be accepted but flagged; here they are accepted with no flag at all. An unknown GTIN produced no UNKNOWN_SGTIN (X44). Another manufacturer's GTIN (Xarelto, Bayer) was commissioned by this partner with no warning (X45). Both are the same on the integration API, so nothing in the flags or reports would surface these products.
+# *[Medium] The 50,000-EPC limit counts location GLNs as EPCs.* A document with exactly 50,000 serials is rejected: "Document appears to contain 50100 EPCs" (X50). The extra 100 are the readPoint/bizLocation of each event. The Async page over-counts the same way (1 item shows as "4 EPCs").
+# *[Medium] An EPCIS 2.0 XML document (xsd:2, schemaVersion 2.0) is accepted and processed (X14)*, although the upload page says "EPCIS 1.2 XML only".
+# *[Medium] Markup in lotNumber is stored.* An escaped <script> lot was accepted with only the INVALID_LOT warning that every unregistered lot gets (X62). Confirm it is escaped wherever lots are displayed.
+
+h4. Gaps in the Async submissions page
+* *Partial outcomes show as "succeeded"* (label "succeededpartial"): X21 1/2, X33 1/2, X46 1/2, X48 99/100. Dropped events are easy to miss.
+* *No per-event diagnostics for single-event documents or failed jobs.* /diagnostics returns 404 "Diagnostics are not available for this submission" (X24, X44, X45, X62 and all 16 failed jobs). The partner sees a warning or error code but not which event or field caused it.
+* *Stuck jobs never time out*, and clicking the row opens no detail (X42).
+* The page header still says "Track outcomes for POST .../events/async"; it does not mention uploads.
+* In diagnostics, each rejection reason is listed twice: once under its real code and once as a generic "WARNING" with the same message (X02a/X02b).
+
+h4. Error codes that differ from the Technical Guides (rule enforced, so marked PASS)
+* INVALID_XML_STRUCTURE instead of MISSING_EPCIS_BODY (X11), MISSING_EVENT_LIST (X13) and INVALID_ACTION (X27).
+* MISSING_NEEDED_FIELDS instead of MISSING_REQUIRED_FIELD (X20, X26, X35), MISSING_ILMD (X29) and MIXED_LOT_IN_COMMISSIONING (X31).
+* Oversize files return a plain 413 "Payload Too Large" with no PAYLOAD_TOO_LARGE / MESSAGE_SIZE_EXCEEDED code (X03, X53).
+Either the API should return the documented codes or the guide should be updated, because partners map these codes.
+
+h4. Reference SAP ATTP file (SC_EP_NT_O_BXCEKSE (1).XML). Platform correct; action for PM
+* At 25.8 MB the full file is over the 10 MB limit and is rejected (413). The page also blocks it before sending.
+* Slices under the limit are rejected event by event: "Foreign MAH commissioning requires sourceList". The product is imported (GS1 prefix 4008500), and the guide requires sourceList (foreign MAH GLN) and cbvmda:countryOfOrigin. The SAP export has neither.
+* Partners exporting from SAP ATTP need guidance: split files to ≤10 MB and ≤50,000 EPCs, and add sourceList and countryOfOrigin for imported products.
+
+h4. Working as expected
+* Malformed XML, non-EPCIS XML, JSON saved as .xml, CSV (415 UPLOAD_FORMAT_PLANNED) and empty files are all rejected. The 10 MB limit is enforced in the page and on the server.
+* XXE (file:///etc/passwd) and entity expansion are refused (INVALID_XML_STRUCTURE). No file content was leaked.
+* eventIDs are preserved, both top-level and inside baseExtension (X01, X04). A re-upload is rejected with DUPLICATE_EVENT_ID (X22).
+* FUTURE_EVENT_TIME, STALE_EVENT_TIME (warning), INVALID_EXPIRY_FORMAT, DUPLICATE_EPC_IN_EVENT, PARTNER_TYPE_BIZSTEP_MISMATCH and partial acceptance (99/100) all behave as documented. Upload without a session returns 401.
+* The warnings UNKNOWN_SGLN, INVALID_LOT, UNKNOWN_PARTY_GLN and PARENT_NOT_FOUND come from the test master data and are not counted as defects.
+
+*Evidence:* Proof/partner-xml/<ID>.png (page after upload) and <ID>-status.png (final submission record). Files: C:\Users\Collins\Desktop\uploads\xml-partner. Request IDs are in results.json.

@@ -1,0 +1,1050 @@
+{
+  "at": "2026-11-06T07:17:02.531Z",
+  "url": "https://tnt-demo.apeiro-digital.com/api/integration/manufacturer/events",
+  "results": [
+    {
+      "event": "Commissioning",
+      "bId": "urn:uuid:84272034-399a-4585-8753-a0c8e20f822e",
+      "sends": {
+        "A": {
+          "status": 202,
+          "code": "",
+          "message": "EPCIS events accepted",
+          "eventIds": [
+            "urn:uuid:59b27075-0515-4409-82bf-2ee3f4d50f1f"
+          ],
+          "warnings": [
+            "UNKNOWN_SGLN"
+          ],
+          "raw": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:59b27075-0515-4409-82bf-2ee3f4d50f1f\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:59b27075-0515-4409-82bf-2ee3f4d50f1f",
+          "epcs": [
+            "urn:epc:id:sgtin:0614141.107346.39493231650000162",
+            "urn:epc:id:sgtin:0614141.107346.39493231660000216"
+          ],
+          "idEchoed": true
+        },
+        "B": {
+          "status": 202,
+          "code": "",
+          "message": "EPCIS events accepted",
+          "eventIds": [
+            "urn:uuid:84272034-399a-4585-8753-a0c8e20f822e"
+          ],
+          "warnings": [
+            "UNKNOWN_SGLN"
+          ],
+          "raw": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:84272034-399a-4585-8753-a0c8e20f822e\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:84272034-399a-4585-8753-a0c8e20f822e",
+          "epcs": [
+            "urn:epc:id:sgtin:0614141.107346.39493231670000349",
+            "urn:epc:id:sgtin:0614141.107346.39493231670000421"
+          ],
+          "idEchoed": true
+        },
+        "B-reID": {
+          "status": 409,
+          "code": "DUPLICATE_EVENT_ID",
+          "message": "Event ID urn:uuid:84272034-399a-4585-8753-a0c8e20f822e was already ingested",
+          "eventIds": [],
+          "warnings": [],
+          "raw": "{\"category\":\"DUPLICATE_EVENT_ID\",\"code\":\"DUPLICATE_EVENT_ID\",\"message\":\"Event ID urn:uuid:84272034-399a-4585-8753-a0c8e20f822e was already ingested\",\"resolution\":\"This event_id has already been ingested. This is idempotent � no action needed. If this is a different event, assign a new UUID.\",\"event_id\":\"urn:uuid:84272034-399a-4585-8753-a0c8e20f822e\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:84272034-399a-4585-8753-a0c8e20f822e",
+          "epcs": [
+            "urn:epc:id:sgtin:0614141.107346.39493231670000549",
+            "urn:epc:id:sgtin:0614141.107346.39493231670000636"
+          ],
+          "idEchoed": false
+        },
+        "X-reID": {
+          "status": 409,
+          "code": "DUPLICATE_EVENT_ID",
+          "message": "Event ID urn:uuid:84272034-399a-4585-8753-a0c8e20f822e was already ingested",
+          "eventIds": [],
+          "warnings": [],
+          "raw": "{\"category\":\"DUPLICATE_EVENT_ID\",\"code\":\"DUPLICATE_EVENT_ID\",\"message\":\"Event ID urn:uuid:84272034-399a-4585-8753-a0c8e20f822e was already ingested\",\"resolution\":\"This event_id has already been ingested. This is idempotent � no action needed. If this is a different event, assign a new UUID.\",\"event_id\":\"urn:uuid:84272034-399a-4585-8753-a0c8e20f822e\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:84272034-399a-4585-8753-a0c8e20f822e",
+          "epcs": [
+            "urn:epc:id:sgtin:0614141.107346.39493231670000783",
+            "urn:epc:id:sgtin:0614141.107346.39493231670000873"
+          ],
+          "idEchoed": false
+        }
+      }
+    },
+    {
+      "event": "Packing",
+      "bId": "urn:uuid:003b653e-8609-4426-b686-20c45c2953f2",
+      "sends": {
+        "A": {
+          "status": 202,
+          "code": "",
+          "message": "EPCIS events accepted",
+          "eventIds": [
+            "urn:uuid:b85a84e6-5a73-4b53-9315-f9c284796914"
+          ],
+          "warnings": [
+            "UNKNOWN_SGLN",
+            "UNKNOWN_SGTIN",
+            "UNKNOWN_SGTIN",
+            "PARENT_NOT_FOUND",
+            "UNCOMMISSIONED_CHILD",
+            "UNCOMMISSIONED_CHILD"
+          ],
+          "raw": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:b85a84e6-5a73-4b53-9315-f9c284796914\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"UNKNOWN_SGTIN\",\"message\":\"SGTIN urn:epc:id:sgtin:0614141.107346.39493306380000952 (serial: 39493306380000952) not found in serial_numbers registry\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"UNKNOWN_SGTIN\",\"message\":\"SGTIN urn:epc:id:sgtin:0614141.107346.39493306380001019 (serial: 39493306380001019) not found in serial_numbers registry\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"parentID\",\"code\":\"PARENT_NOT_FOUND\",\"message\":\"Parent SSCC 06141414307972751 has no active case_package_history row matching case_sscc or package_sscc\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"childEPCs\",\"code\":\"UNCOMMISSIONED_CHILD\",\"message\":\"Child SGTIN is not registered in serial_numbers before aggregation: urn:epc:id:sgtin:0614141.107346.39493306380000952\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"childEPCs\",\"code\":\"UNCOMMISSIONED_CHILD\",\"message\":\"Child SGTIN is not registered in serial_numbers before aggregation: urn:epc:id:sgtin:0614141.107346.39493306380001019\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:b85a84e6-5a73-4b53-9315-f9c284796914",
+          "epcs": [
+            "urn:epc:id:sscc:0614141.4307972751",
+            "urn:epc:id:sgtin:0614141.107346.39493306380000952",
+            "urn:epc:id:sgtin:0614141.107346.39493306380001019"
+          ],
+          "idEchoed": true
+        },
+        "B": {
+          "status": 202,
+          "code": "",
+          "message": "EPCIS events accepted",
+          "eventIds": [
+            "urn:uuid:003b653e-8609-4426-b686-20c45c2953f2"
+          ],
+          "warnings": [
+            "UNKNOWN_SGLN",
+            "UNKNOWN_SGTIN",
+            "UNKNOWN_SGTIN",
+            "PARENT_NOT_FOUND",
+            "UNCOMMISSIONED_CHILD",
+            "UNCOMMISSIONED_CHILD"
+          ],
+          "raw": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:003b653e-8609-4426-b686-20c45c2953f2\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"UNKNOWN_SGTIN\",\"message\":\"SGTIN urn:epc:id:sgtin:0614141.107346.39493306380001129 (serial: 39493306380001129) not found in serial_numbers registry\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"UNKNOWN_SGTIN\",\"message\":\"SGTIN urn:epc:id:sgtin:0614141.107346.39493306380001242 (serial: 39493306380001242) not found in serial_numbers registry\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"parentID\",\"code\":\"PARENT_NOT_FOUND\",\"message\":\"Parent SSCC 06141413438944441 has no active case_package_history row matching case_sscc or package_sscc\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"childEPCs\",\"code\":\"UNCOMMISSIONED_CHILD\",\"message\":\"Child SGTIN is not registered in serial_numbers before aggregation: urn:epc:id:sgtin:0614141.107346.39493306380001129\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"childEPCs\",\"code\":\"UNCOMMISSIONED_CHILD\",\"message\":\"Child SGTIN is not registered in serial_numbers before aggregation: urn:epc:id:sgtin:0614141.107346.39493306380001242\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:003b653e-8609-4426-b686-20c45c2953f2",
+          "epcs": [
+            "urn:epc:id:sscc:0614141.3438944441",
+            "urn:epc:id:sgtin:0614141.107346.39493306380001129",
+            "urn:epc:id:sgtin:0614141.107346.39493306380001242"
+          ],
+          "idEchoed": true
+        },
+        "B-reID": {
+          "status": 409,
+          "code": "DUPLICATE_EVENT_ID",
+          "message": "Event ID urn:uuid:003b653e-8609-4426-b686-20c45c2953f2 was already ingested",
+          "eventIds": [],
+          "warnings": [],
+          "raw": "{\"category\":\"DUPLICATE_EVENT_ID\",\"code\":\"DUPLICATE_EVENT_ID\",\"message\":\"Event ID urn:uuid:003b653e-8609-4426-b686-20c45c2953f2 was already ingested\",\"resolution\":\"This event_id has already been ingested. This is idempotent � no action needed. If this is a different event, assign a new UUID.\",\"event_id\":\"urn:uuid:003b653e-8609-4426-b686-20c45c2953f2\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:003b653e-8609-4426-b686-20c45c2953f2",
+          "epcs": [
+            "urn:epc:id:sscc:0614141.7593141470",
+            "urn:epc:id:sgtin:0614141.107346.39493306380001334",
+            "urn:epc:id:sgtin:0614141.107346.39493306380001460"
+          ],
+          "idEchoed": false
+        },
+        "X-reID": {
+          "status": 409,
+          "code": "DUPLICATE_EVENT_ID",
+          "message": "Event ID urn:uuid:003b653e-8609-4426-b686-20c45c2953f2 was already ingested",
+          "eventIds": [],
+          "warnings": [],
+          "raw": "{\"category\":\"DUPLICATE_EVENT_ID\",\"code\":\"DUPLICATE_EVENT_ID\",\"message\":\"Event ID urn:uuid:003b653e-8609-4426-b686-20c45c2953f2 was already ingested\",\"resolution\":\"This event_id has already been ingested. This is idempotent � no action needed. If this is a different event, assign a new UUID.\",\"event_id\":\"urn:uuid:003b653e-8609-4426-b686-20c45c2953f2\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:003b653e-8609-4426-b686-20c45c2953f2",
+          "epcs": [
+            "urn:epc:id:sscc:0614141.0411997075",
+            "urn:epc:id:sgtin:0614141.107346.39493306380001510",
+            "urn:epc:id:sgtin:0614141.107346.39493306380001677"
+          ],
+          "idEchoed": false
+        }
+      }
+    },
+    {
+      "event": "SSCC-to-SSCC Packing",
+      "bId": "urn:uuid:1f2849a0-b09f-4c55-a672-401029886f47",
+      "sends": {
+        "A": {
+          "status": 202,
+          "code": "",
+          "message": "EPCIS events accepted",
+          "eventIds": [
+            "urn:uuid:a102f83d-344e-4e72-b191-88db85d6f9b7"
+          ],
+          "warnings": [
+            "UNKNOWN_SGLN",
+            "PARENT_NOT_FOUND"
+          ],
+          "raw": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:a102f83d-344e-4e72-b191-88db85d6f9b7\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"parentID\",\"code\":\"PARENT_NOT_FOUND\",\"message\":\"Parent SSCC 01234561077416459 has no active case_package_history row matching case_sscc or package_sscc\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:a102f83d-344e-4e72-b191-88db85d6f9b7",
+          "epcs": [
+            "urn:epc:id:sscc:0123456.1077416459",
+            "urn:epc:id:sscc:0123456.9619719247",
+            "urn:epc:id:sscc:0123456.3086185459",
+            "urn:epc:id:sscc:0123456.6333628439"
+          ],
+          "idEchoed": true
+        },
+        "B": {
+          "status": 202,
+          "code": "",
+          "message": "EPCIS events accepted",
+          "eventIds": [
+            "urn:uuid:1f2849a0-b09f-4c55-a672-401029886f47"
+          ],
+          "warnings": [
+            "UNKNOWN_SGLN",
+            "PARENT_NOT_FOUND"
+          ],
+          "raw": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:1f2849a0-b09f-4c55-a672-401029886f47\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"parentID\",\"code\":\"PARENT_NOT_FOUND\",\"message\":\"Parent SSCC 01234560126283328 has no active case_package_history row matching case_sscc or package_sscc\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:1f2849a0-b09f-4c55-a672-401029886f47",
+          "epcs": [
+            "urn:epc:id:sscc:0123456.0126283328",
+            "urn:epc:id:sscc:0123456.6654487117",
+            "urn:epc:id:sscc:0123456.1243326219",
+            "urn:epc:id:sscc:0123456.7689214313"
+          ],
+          "idEchoed": true
+        },
+        "B-reID": {
+          "status": 409,
+          "code": "DUPLICATE_EVENT_ID",
+          "message": "Event ID urn:uuid:1f2849a0-b09f-4c55-a672-401029886f47 was already ingested",
+          "eventIds": [],
+          "warnings": [],
+          "raw": "{\"category\":\"DUPLICATE_EVENT_ID\",\"code\":\"DUPLICATE_EVENT_ID\",\"message\":\"Event ID urn:uuid:1f2849a0-b09f-4c55-a672-401029886f47 was already ingested\",\"resolution\":\"This event_id has already been ingested. This is idempotent � no action needed. If this is a different event, assign a new UUID.\",\"event_id\":\"urn:uuid:1f2849a0-b09f-4c55-a672-401029886f47\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:1f2849a0-b09f-4c55-a672-401029886f47",
+          "epcs": [
+            "urn:epc:id:sscc:0123456.3179003167",
+            "urn:epc:id:sscc:0123456.7256701038",
+            "urn:epc:id:sscc:0123456.6363069508",
+            "urn:epc:id:sscc:0123456.2149945499"
+          ],
+          "idEchoed": false
+        },
+        "X-reID": {
+          "status": 409,
+          "code": "DUPLICATE_EVENT_ID",
+          "message": "Event ID urn:uuid:1f2849a0-b09f-4c55-a672-401029886f47 was already ingested",
+          "eventIds": [],
+          "warnings": [],
+          "raw": "{\"category\":\"DUPLICATE_EVENT_ID\",\"code\":\"DUPLICATE_EVENT_ID\",\"message\":\"Event ID urn:uuid:1f2849a0-b09f-4c55-a672-401029886f47 was already ingested\",\"resolution\":\"This event_id has already been ingested. This is idempotent � no action needed. If this is a different event, assign a new UUID.\",\"event_id\":\"urn:uuid:1f2849a0-b09f-4c55-a672-401029886f47\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:1f2849a0-b09f-4c55-a672-401029886f47",
+          "epcs": [
+            "urn:epc:id:sscc:0123456.7783363813",
+            "urn:epc:id:sscc:0123456.0089710120",
+            "urn:epc:id:sscc:0123456.9752290192",
+            "urn:epc:id:sscc:0123456.3256608157"
+          ],
+          "idEchoed": false
+        }
+      }
+    },
+    {
+      "event": "Shipping",
+      "bId": "urn:uuid:3acb7402-8688-467c-83e6-49c44051f784",
+      "sends": {
+        "A": {
+          "status": 202,
+          "code": "",
+          "message": "EPCIS events accepted",
+          "eventIds": [
+            "urn:uuid:a721d387-263c-485e-aaaa-2a779d9385c1"
+          ],
+          "warnings": [
+            "UNKNOWN_SGLN",
+            "UNKNOWN_PARTY_GLN",
+            "UNKNOWN_PARTY_GLN",
+            "SHIPPING_WITHOUT_COMMISSIONING"
+          ],
+          "raw": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:a721d387-263c-485e-aaaa-2a779d9385c1\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345611111 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"party_gln\",\"code\":\"UNKNOWN_PARTY_GLN\",\"message\":\"Party GLN 012345611111 is not registered in the parties registry\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"party_gln\",\"code\":\"UNKNOWN_PARTY_GLN\",\"message\":\"Party GLN 012345622222 is not registered in the parties registry\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epc_list\",\"code\":\"SHIPPING_WITHOUT_COMMISSIONING\",\"message\":\"No prior aggregation (ADD) or receiving event for SSCC urn:epc:id:sscc:0123456.8703502872 before shipping\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:a721d387-263c-485e-aaaa-2a779d9385c1",
+          "epcs": [
+            "urn:epc:id:sscc:0123456.8703502872"
+          ],
+          "idEchoed": true
+        },
+        "B": {
+          "status": 202,
+          "code": "",
+          "message": "EPCIS events accepted",
+          "eventIds": [
+            "urn:uuid:3acb7402-8688-467c-83e6-49c44051f784"
+          ],
+          "warnings": [
+            "UNKNOWN_SGLN",
+            "UNKNOWN_PARTY_GLN",
+            "UNKNOWN_PARTY_GLN",
+            "SHIPPING_WITHOUT_COMMISSIONING"
+          ],
+          "raw": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:3acb7402-8688-467c-83e6-49c44051f784\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345611111 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"party_gln\",\"code\":\"UNKNOWN_PARTY_GLN\",\"message\":\"Party GLN 012345611111 is not registered in the parties registry\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"party_gln\",\"code\":\"UNKNOWN_PARTY_GLN\",\"message\":\"Party GLN 012345622222 is not registered in the parties registry\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epc_list\",\"code\":\"SHIPPING_WITHOUT_COMMISSIONING\",\"message\":\"No prior aggregation (ADD) or receiving event for SSCC urn:epc:id:sscc:0123456.6766922572 before shipping\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:3acb7402-8688-467c-83e6-49c44051f784",
+          "epcs": [
+            "urn:epc:id:sscc:0123456.6766922572"
+          ],
+          "idEchoed": true
+        },
+        "B-reID": {
+          "status": 409,
+          "code": "DUPLICATE_EVENT_ID",
+          "message": "Event ID urn:uuid:3acb7402-8688-467c-83e6-49c44051f784 was already ingested",
+          "eventIds": [],
+          "warnings": [],
+          "raw": "{\"category\":\"DUPLICATE_EVENT_ID\",\"code\":\"DUPLICATE_EVENT_ID\",\"message\":\"Event ID urn:uuid:3acb7402-8688-467c-83e6-49c44051f784 was already ingested\",\"resolution\":\"This event_id has already been ingested. This is idempotent � no action needed. If this is a different event, assign a new UUID.\",\"event_id\":\"urn:uuid:3acb7402-8688-467c-83e6-49c44051f784\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:3acb7402-8688-467c-83e6-49c44051f784",
+          "epcs": [
+            "urn:epc:id:sscc:0123456.8296729010"
+          ],
+          "idEchoed": false
+        },
+        "X-reID": {
+          "status": 409,
+          "code": "DUPLICATE_EVENT_ID",
+          "message": "Event ID urn:uuid:3acb7402-8688-467c-83e6-49c44051f784 was already ingested",
+          "eventIds": [],
+          "warnings": [],
+          "raw": "{\"category\":\"DUPLICATE_EVENT_ID\",\"code\":\"DUPLICATE_EVENT_ID\",\"message\":\"Event ID urn:uuid:3acb7402-8688-467c-83e6-49c44051f784 was already ingested\",\"resolution\":\"This event_id has already been ingested. This is idempotent � no action needed. If this is a different event, assign a new UUID.\",\"event_id\":\"urn:uuid:3acb7402-8688-467c-83e6-49c44051f784\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:3acb7402-8688-467c-83e6-49c44051f784",
+          "epcs": [
+            "urn:epc:id:sscc:0123456.6682674489"
+          ],
+          "idEchoed": false
+        }
+      }
+    },
+    {
+      "event": "Return Shipping",
+      "bId": "urn:uuid:35e473c5-809d-4b1c-90cd-1e9c4f28a6bc",
+      "sends": {
+        "A": {
+          "status": 202,
+          "code": "",
+          "message": "EPCIS events accepted",
+          "eventIds": [
+            "urn:uuid:166b4a61-e51b-483d-abff-a79d251dd8c5"
+          ],
+          "warnings": [
+            "UNKNOWN_SGLN",
+            "UNKNOWN_PARTY_GLN",
+            "UNKNOWN_PARTY_GLN",
+            "SHIPPING_WITHOUT_COMMISSIONING"
+          ],
+          "raw": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:166b4a61-e51b-483d-abff-a79d251dd8c5\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"party_gln\",\"code\":\"UNKNOWN_PARTY_GLN\",\"message\":\"Party GLN 012345622222 is not registered in the parties registry\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"party_gln\",\"code\":\"UNKNOWN_PARTY_GLN\",\"message\":\"Party GLN 012345611111 is not registered in the parties registry\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epc_list\",\"code\":\"SHIPPING_WITHOUT_COMMISSIONING\",\"message\":\"No prior aggregation (ADD) or receiving event for SSCC urn:epc:id:sscc:0123456.9925893046 before shipping\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:166b4a61-e51b-483d-abff-a79d251dd8c5",
+          "epcs": [
+            "urn:epc:id:sscc:0123456.9925893046"
+          ],
+          "idEchoed": true
+        },
+        "B": {
+          "status": 202,
+          "code": "",
+          "message": "EPCIS events accepted",
+          "eventIds": [
+            "urn:uuid:35e473c5-809d-4b1c-90cd-1e9c4f28a6bc"
+          ],
+          "warnings": [
+            "UNKNOWN_SGLN",
+            "UNKNOWN_PARTY_GLN",
+            "UNKNOWN_PARTY_GLN",
+            "SHIPPING_WITHOUT_COMMISSIONING"
+          ],
+          "raw": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:35e473c5-809d-4b1c-90cd-1e9c4f28a6bc\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"party_gln\",\"code\":\"UNKNOWN_PARTY_GLN\",\"message\":\"Party GLN 012345622222 is not registered in the parties registry\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"party_gln\",\"code\":\"UNKNOWN_PARTY_GLN\",\"message\":\"Party GLN 012345611111 is not registered in the parties registry\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epc_list\",\"code\":\"SHIPPING_WITHOUT_COMMISSIONING\",\"message\":\"No prior aggregation (ADD) or receiving event for SSCC urn:epc:id:sscc:0123456.9171651979 before shipping\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:35e473c5-809d-4b1c-90cd-1e9c4f28a6bc",
+          "epcs": [
+            "urn:epc:id:sscc:0123456.9171651979"
+          ],
+          "idEchoed": true
+        },
+        "B-reID": {
+          "status": 409,
+          "code": "DUPLICATE_EVENT_ID",
+          "message": "Event ID urn:uuid:35e473c5-809d-4b1c-90cd-1e9c4f28a6bc was already ingested",
+          "eventIds": [],
+          "warnings": [],
+          "raw": "{\"category\":\"DUPLICATE_EVENT_ID\",\"code\":\"DUPLICATE_EVENT_ID\",\"message\":\"Event ID urn:uuid:35e473c5-809d-4b1c-90cd-1e9c4f28a6bc was already ingested\",\"resolution\":\"This event_id has already been ingested. This is idempotent � no action needed. If this is a different event, assign a new UUID.\",\"event_id\":\"urn:uuid:35e473c5-809d-4b1c-90cd-1e9c4f28a6bc\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:35e473c5-809d-4b1c-90cd-1e9c4f28a6bc",
+          "epcs": [
+            "urn:epc:id:sscc:0123456.4018487145"
+          ],
+          "idEchoed": false
+        },
+        "X-reID": {
+          "status": 409,
+          "code": "DUPLICATE_EVENT_ID",
+          "message": "Event ID urn:uuid:35e473c5-809d-4b1c-90cd-1e9c4f28a6bc was already ingested",
+          "eventIds": [],
+          "warnings": [],
+          "raw": "{\"category\":\"DUPLICATE_EVENT_ID\",\"code\":\"DUPLICATE_EVENT_ID\",\"message\":\"Event ID urn:uuid:35e473c5-809d-4b1c-90cd-1e9c4f28a6bc was already ingested\",\"resolution\":\"This event_id has already been ingested. This is idempotent � no action needed. If this is a different event, assign a new UUID.\",\"event_id\":\"urn:uuid:35e473c5-809d-4b1c-90cd-1e9c4f28a6bc\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:35e473c5-809d-4b1c-90cd-1e9c4f28a6bc",
+          "epcs": [
+            "urn:epc:id:sscc:0123456.2802612427"
+          ],
+          "idEchoed": false
+        }
+      }
+    },
+    {
+      "event": "Return Receiving",
+      "bId": "urn:uuid:835fee58-d95d-4bef-ac8f-600886d0564d",
+      "sends": {
+        "A": {
+          "status": 202,
+          "code": "",
+          "message": "EPCIS events accepted",
+          "eventIds": [
+            "urn:uuid:286299b0-9230-497b-a26c-55e78bf75604"
+          ],
+          "warnings": [
+            "UNKNOWN_SGLN",
+            "UNKNOWN_PARTY_GLN",
+            "UNKNOWN_PARTY_GLN"
+          ],
+          "raw": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:286299b0-9230-497b-a26c-55e78bf75604\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345611111 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"party_gln\",\"code\":\"UNKNOWN_PARTY_GLN\",\"message\":\"Party GLN 012345622222 is not registered in the parties registry\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"party_gln\",\"code\":\"UNKNOWN_PARTY_GLN\",\"message\":\"Party GLN 012345611111 is not registered in the parties registry\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:286299b0-9230-497b-a26c-55e78bf75604",
+          "epcs": [
+            "urn:epc:id:sscc:0123456.7390772426"
+          ],
+          "idEchoed": true
+        },
+        "B": {
+          "status": 202,
+          "code": "",
+          "message": "EPCIS events accepted",
+          "eventIds": [
+            "urn:uuid:835fee58-d95d-4bef-ac8f-600886d0564d"
+          ],
+          "warnings": [
+            "UNKNOWN_SGLN",
+            "UNKNOWN_PARTY_GLN",
+            "UNKNOWN_PARTY_GLN"
+          ],
+          "raw": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:835fee58-d95d-4bef-ac8f-600886d0564d\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345611111 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"party_gln\",\"code\":\"UNKNOWN_PARTY_GLN\",\"message\":\"Party GLN 012345622222 is not registered in the parties registry\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"party_gln\",\"code\":\"UNKNOWN_PARTY_GLN\",\"message\":\"Party GLN 012345611111 is not registered in the parties registry\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:835fee58-d95d-4bef-ac8f-600886d0564d",
+          "epcs": [
+            "urn:epc:id:sscc:0123456.9920863346"
+          ],
+          "idEchoed": true
+        },
+        "B-reID": {
+          "status": 409,
+          "code": "DUPLICATE_EVENT_ID",
+          "message": "Event ID urn:uuid:835fee58-d95d-4bef-ac8f-600886d0564d was already ingested",
+          "eventIds": [],
+          "warnings": [],
+          "raw": "{\"category\":\"DUPLICATE_EVENT_ID\",\"code\":\"DUPLICATE_EVENT_ID\",\"message\":\"Event ID urn:uuid:835fee58-d95d-4bef-ac8f-600886d0564d was already ingested\",\"resolution\":\"This event_id has already been ingested. This is idempotent � no action needed. If this is a different event, assign a new UUID.\",\"event_id\":\"urn:uuid:835fee58-d95d-4bef-ac8f-600886d0564d\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:835fee58-d95d-4bef-ac8f-600886d0564d",
+          "epcs": [
+            "urn:epc:id:sscc:0123456.5256992244"
+          ],
+          "idEchoed": false
+        },
+        "X-reID": {
+          "status": 409,
+          "code": "DUPLICATE_EVENT_ID",
+          "message": "Event ID urn:uuid:835fee58-d95d-4bef-ac8f-600886d0564d was already ingested",
+          "eventIds": [],
+          "warnings": [],
+          "raw": "{\"category\":\"DUPLICATE_EVENT_ID\",\"code\":\"DUPLICATE_EVENT_ID\",\"message\":\"Event ID urn:uuid:835fee58-d95d-4bef-ac8f-600886d0564d was already ingested\",\"resolution\":\"This event_id has already been ingested. This is idempotent � no action needed. If this is a different event, assign a new UUID.\",\"event_id\":\"urn:uuid:835fee58-d95d-4bef-ac8f-600886d0564d\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:835fee58-d95d-4bef-ac8f-600886d0564d",
+          "epcs": [
+            "urn:epc:id:sscc:0123456.8117007007"
+          ],
+          "idEchoed": false
+        }
+      }
+    },
+    {
+      "event": "Recall Initiation",
+      "bId": "urn:uuid:7dfd85d7-206d-4458-821a-5b4738510b61",
+      "sends": {
+        "A": {
+          "status": 403,
+          "code": "PARTNER_TYPE_BIZSTEP_MISMATCH",
+          "message": "Partner type \"manufacturer\" is not allowed to submit bizStep \"holding\". Allowed for this partner: commissioning, packing, shipping, receiving, destroying, inspecting, decommissioning.",
+          "eventIds": [],
+          "warnings": [],
+          "raw": "{\"category\":\"AUTHORIZATION\",\"code\":\"PARTNER_TYPE_BIZSTEP_MISMATCH\",\"message\":\"Partner type \\\"manufacturer\\\" is not allowed to submit bizStep \\\"holding\\\". Allowed for this partner: commissioning, packing, shipping, receiving, destroying, inspecting, decommissioning.\",\"resolution\":\"This partner type is not allowed to submit that bizStep. Use the matching integration route and an allowed core or special-event bizStep for your partner (manufacturer / supplier / facility). See guide §3–§4.\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:afeb93c5-a902-4c5b-a6da-65e80bb2d7ae",
+          "epcs": [
+            "urn:epc:class:lgtin:0123456.305512.LOT39493661860001722"
+          ],
+          "idEchoed": false
+        },
+        "B": {
+          "status": 403,
+          "code": "PARTNER_TYPE_BIZSTEP_MISMATCH",
+          "message": "Partner type \"manufacturer\" is not allowed to submit bizStep \"holding\". Allowed for this partner: commissioning, packing, shipping, receiving, destroying, inspecting, decommissioning.",
+          "eventIds": [],
+          "warnings": [],
+          "raw": "{\"category\":\"AUTHORIZATION\",\"code\":\"PARTNER_TYPE_BIZSTEP_MISMATCH\",\"message\":\"Partner type \\\"manufacturer\\\" is not allowed to submit bizStep \\\"holding\\\". Allowed for this partner: commissioning, packing, shipping, receiving, destroying, inspecting, decommissioning.\",\"resolution\":\"This partner type is not allowed to submit that bizStep. Use the matching integration route and an allowed core or special-event bizStep for your partner (manufacturer / supplier / facility). See guide §3–§4.\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:7dfd85d7-206d-4458-821a-5b4738510b61",
+          "epcs": [
+            "urn:epc:class:lgtin:0123456.305512.LOT39493661860001800"
+          ],
+          "idEchoed": false
+        },
+        "B-reID": {
+          "status": 403,
+          "code": "PARTNER_TYPE_BIZSTEP_MISMATCH",
+          "message": "Partner type \"manufacturer\" is not allowed to submit bizStep \"holding\". Allowed for this partner: commissioning, packing, shipping, receiving, destroying, inspecting, decommissioning.",
+          "eventIds": [],
+          "warnings": [],
+          "raw": "{\"category\":\"AUTHORIZATION\",\"code\":\"PARTNER_TYPE_BIZSTEP_MISMATCH\",\"message\":\"Partner type \\\"manufacturer\\\" is not allowed to submit bizStep \\\"holding\\\". Allowed for this partner: commissioning, packing, shipping, receiving, destroying, inspecting, decommissioning.\",\"resolution\":\"This partner type is not allowed to submit that bizStep. Use the matching integration route and an allowed core or special-event bizStep for your partner (manufacturer / supplier / facility). See guide §3–§4.\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:7dfd85d7-206d-4458-821a-5b4738510b61",
+          "epcs": [
+            "urn:epc:class:lgtin:0123456.305512.LOT39493661860001906"
+          ],
+          "idEchoed": false
+        },
+        "X-reID": {
+          "status": 403,
+          "code": "PARTNER_TYPE_BIZSTEP_MISMATCH",
+          "message": "Partner type \"manufacturer\" is not allowed to submit bizStep \"holding\". Allowed for this partner: commissioning, packing, shipping, receiving, destroying, inspecting, decommissioning.",
+          "eventIds": [],
+          "warnings": [],
+          "raw": "{\"category\":\"AUTHORIZATION\",\"code\":\"PARTNER_TYPE_BIZSTEP_MISMATCH\",\"message\":\"Partner type \\\"manufacturer\\\" is not allowed to submit bizStep \\\"holding\\\". Allowed for this partner: commissioning, packing, shipping, receiving, destroying, inspecting, decommissioning.\",\"resolution\":\"This partner type is not allowed to submit that bizStep. Use the matching integration route and an allowed core or special-event bizStep for your partner (manufacturer / supplier / facility). See guide §3–§4.\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:7dfd85d7-206d-4458-821a-5b4738510b61",
+          "epcs": [
+            "urn:epc:class:lgtin:0123456.305512.LOT39493661860002059"
+          ],
+          "idEchoed": false
+        }
+      }
+    },
+    {
+      "event": "Damaged",
+      "bId": "urn:uuid:89272f8d-4218-469d-8bf9-066c7a948520",
+      "sends": {
+        "A": {
+          "status": 202,
+          "code": "",
+          "message": "EPCIS events accepted",
+          "eventIds": [
+            "urn:uuid:dd64191c-e0fc-4d74-b5c0-69e4a57efd3c"
+          ],
+          "warnings": [
+            "UNKNOWN_SGLN",
+            "UNKNOWN_SGTIN",
+            "UNAUTHORIZED_INSPECTING_EVENT",
+            "UNAUTHORIZED_INSPECTING_EVENT"
+          ],
+          "raw": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:dd64191c-e0fc-4d74-b5c0-69e4a57efd3c\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"UNKNOWN_SGTIN\",\"message\":\"SGTIN urn:epc:id:sgtin:0123456.305512.39493731450002153 (serial: 39493731450002153) not found in serial_numbers registry\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"bizStep\",\"code\":\"UNAUTHORIZED_INSPECTING_EVENT\",\"message\":\"Inspecting (regulator approval) events may only be submitted by PPB/DHA — submitter actorType is \\\"manufacturer\\\"\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"disposition\",\"code\":\"UNAUTHORIZED_INSPECTING_EVENT\",\"message\":\"Regulator approval event should set disposition to active (got \\\"damaged\\\")\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:dd64191c-e0fc-4d74-b5c0-69e4a57efd3c",
+          "epcs": [
+            "urn:epc:id:sgtin:0123456.305512.39493731450002153"
+          ],
+          "idEchoed": true
+        },
+        "B": {
+          "status": 202,
+          "code": "",
+          "message": "EPCIS events accepted",
+          "eventIds": [
+            "urn:uuid:89272f8d-4218-469d-8bf9-066c7a948520"
+          ],
+          "warnings": [
+            "UNKNOWN_SGLN",
+            "UNKNOWN_SGTIN",
+            "UNAUTHORIZED_INSPECTING_EVENT",
+            "UNAUTHORIZED_INSPECTING_EVENT"
+          ],
+          "raw": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:89272f8d-4218-469d-8bf9-066c7a948520\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"UNKNOWN_SGTIN\",\"message\":\"SGTIN urn:epc:id:sgtin:0123456.305512.39493731450002219 (serial: 39493731450002219) not found in serial_numbers registry\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"bizStep\",\"code\":\"UNAUTHORIZED_INSPECTING_EVENT\",\"message\":\"Inspecting (regulator approval) events may only be submitted by PPB/DHA — submitter actorType is \\\"manufacturer\\\"\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"disposition\",\"code\":\"UNAUTHORIZED_INSPECTING_EVENT\",\"message\":\"Regulator approval event should set disposition to active (got \\\"damaged\\\")\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:89272f8d-4218-469d-8bf9-066c7a948520",
+          "epcs": [
+            "urn:epc:id:sgtin:0123456.305512.39493731450002219"
+          ],
+          "idEchoed": true
+        },
+        "B-reID": {
+          "status": 409,
+          "code": "DUPLICATE_EVENT_ID",
+          "message": "Event ID urn:uuid:89272f8d-4218-469d-8bf9-066c7a948520 was already ingested",
+          "eventIds": [],
+          "warnings": [],
+          "raw": "{\"category\":\"DUPLICATE_EVENT_ID\",\"code\":\"DUPLICATE_EVENT_ID\",\"message\":\"Event ID urn:uuid:89272f8d-4218-469d-8bf9-066c7a948520 was already ingested\",\"resolution\":\"This event_id has already been ingested. This is idempotent � no action needed. If this is a different event, assign a new UUID.\",\"event_id\":\"urn:uuid:89272f8d-4218-469d-8bf9-066c7a948520\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:89272f8d-4218-469d-8bf9-066c7a948520",
+          "epcs": [
+            "urn:epc:id:sgtin:0123456.305512.39493731450002334"
+          ],
+          "idEchoed": false
+        },
+        "X-reID": {
+          "status": 409,
+          "code": "DUPLICATE_EVENT_ID",
+          "message": "Event ID urn:uuid:89272f8d-4218-469d-8bf9-066c7a948520 was already ingested",
+          "eventIds": [],
+          "warnings": [],
+          "raw": "{\"category\":\"DUPLICATE_EVENT_ID\",\"code\":\"DUPLICATE_EVENT_ID\",\"message\":\"Event ID urn:uuid:89272f8d-4218-469d-8bf9-066c7a948520 was already ingested\",\"resolution\":\"This event_id has already been ingested. This is idempotent � no action needed. If this is a different event, assign a new UUID.\",\"event_id\":\"urn:uuid:89272f8d-4218-469d-8bf9-066c7a948520\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:89272f8d-4218-469d-8bf9-066c7a948520",
+          "epcs": [
+            "urn:epc:id:sgtin:0123456.305512.39493731450002497"
+          ],
+          "idEchoed": false
+        }
+      }
+    },
+    {
+      "event": "Stolen",
+      "bId": "urn:uuid:63474ed2-ddea-4c76-ba5d-a3ac1c7c1381",
+      "sends": {
+        "A": {
+          "status": 202,
+          "code": "",
+          "message": "EPCIS events accepted",
+          "eventIds": [
+            "urn:uuid:735c37f1-de88-4939-aeec-07a7510d49d8"
+          ],
+          "warnings": [
+            "UNKNOWN_SGLN",
+            "UNKNOWN_SGTIN",
+            "NO_REGULATORY_APPROVAL"
+          ],
+          "raw": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:735c37f1-de88-4939-aeec-07a7510d49d8\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"UNKNOWN_SGTIN\",\"message\":\"SGTIN urn:epc:id:sgtin:0123456.305512.39493801540002599 (serial: 39493801540002599) not found in serial_numbers registry\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"NO_REGULATORY_APPROVAL\",\"message\":\"SGTIN urn:epc:id:sgtin:0123456.305512.39493801540002599 has no prior PPB regulatory approval event (inspecting + btt:cert)\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:735c37f1-de88-4939-aeec-07a7510d49d8",
+          "epcs": [
+            "urn:epc:id:sgtin:0123456.305512.39493801540002599"
+          ],
+          "idEchoed": true
+        },
+        "B": {
+          "status": 202,
+          "code": "",
+          "message": "EPCIS events accepted",
+          "eventIds": [
+            "urn:uuid:63474ed2-ddea-4c76-ba5d-a3ac1c7c1381"
+          ],
+          "warnings": [
+            "UNKNOWN_SGLN",
+            "UNKNOWN_SGTIN",
+            "NO_REGULATORY_APPROVAL"
+          ],
+          "raw": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:63474ed2-ddea-4c76-ba5d-a3ac1c7c1381\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"UNKNOWN_SGTIN\",\"message\":\"SGTIN urn:epc:id:sgtin:0123456.305512.39493801540002611 (serial: 39493801540002611) not found in serial_numbers registry\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"NO_REGULATORY_APPROVAL\",\"message\":\"SGTIN urn:epc:id:sgtin:0123456.305512.39493801540002611 has no prior PPB regulatory approval event (inspecting + btt:cert)\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:63474ed2-ddea-4c76-ba5d-a3ac1c7c1381",
+          "epcs": [
+            "urn:epc:id:sgtin:0123456.305512.39493801540002611"
+          ],
+          "idEchoed": true
+        },
+        "B-reID": {
+          "status": 409,
+          "code": "DUPLICATE_EVENT_ID",
+          "message": "Event ID urn:uuid:63474ed2-ddea-4c76-ba5d-a3ac1c7c1381 was already ingested",
+          "eventIds": [],
+          "warnings": [],
+          "raw": "{\"category\":\"DUPLICATE_EVENT_ID\",\"code\":\"DUPLICATE_EVENT_ID\",\"message\":\"Event ID urn:uuid:63474ed2-ddea-4c76-ba5d-a3ac1c7c1381 was already ingested\",\"resolution\":\"This event_id has already been ingested. This is idempotent � no action needed. If this is a different event, assign a new UUID.\",\"event_id\":\"urn:uuid:63474ed2-ddea-4c76-ba5d-a3ac1c7c1381\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:63474ed2-ddea-4c76-ba5d-a3ac1c7c1381",
+          "epcs": [
+            "urn:epc:id:sgtin:0123456.305512.39493801540002738"
+          ],
+          "idEchoed": false
+        },
+        "X-reID": {
+          "status": 409,
+          "code": "DUPLICATE_EVENT_ID",
+          "message": "Event ID urn:uuid:63474ed2-ddea-4c76-ba5d-a3ac1c7c1381 was already ingested",
+          "eventIds": [],
+          "warnings": [],
+          "raw": "{\"category\":\"DUPLICATE_EVENT_ID\",\"code\":\"DUPLICATE_EVENT_ID\",\"message\":\"Event ID urn:uuid:63474ed2-ddea-4c76-ba5d-a3ac1c7c1381 was already ingested\",\"resolution\":\"This event_id has already been ingested. This is idempotent � no action needed. If this is a different event, assign a new UUID.\",\"event_id\":\"urn:uuid:63474ed2-ddea-4c76-ba5d-a3ac1c7c1381\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:63474ed2-ddea-4c76-ba5d-a3ac1c7c1381",
+          "epcs": [
+            "urn:epc:id:sgtin:0123456.305512.39493801550002813"
+          ],
+          "idEchoed": false
+        }
+      }
+    },
+    {
+      "event": "Lost",
+      "bId": "urn:uuid:d6db3e29-2510-470c-9c74-50cd9f797396",
+      "sends": {
+        "A": {
+          "status": 202,
+          "code": "",
+          "message": "EPCIS events accepted",
+          "eventIds": [
+            "urn:uuid:dcd1e38a-f3fa-45d4-89d4-9a356209df9b"
+          ],
+          "warnings": [
+            "UNKNOWN_SGLN",
+            "UNKNOWN_SGTIN",
+            "NO_REGULATORY_APPROVAL"
+          ],
+          "raw": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:dcd1e38a-f3fa-45d4-89d4-9a356209df9b\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"UNKNOWN_SGTIN\",\"message\":\"SGTIN urn:epc:id:sgtin:0123456.305512.39493875940002966 (serial: 39493875940002966) not found in serial_numbers registry\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"NO_REGULATORY_APPROVAL\",\"message\":\"SGTIN urn:epc:id:sgtin:0123456.305512.39493875940002966 has no prior PPB regulatory approval event (inspecting + btt:cert)\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:dcd1e38a-f3fa-45d4-89d4-9a356209df9b",
+          "epcs": [
+            "urn:epc:id:sgtin:0123456.305512.39493875940002966"
+          ],
+          "idEchoed": true
+        },
+        "B": {
+          "status": 202,
+          "code": "",
+          "message": "EPCIS events accepted",
+          "eventIds": [
+            "urn:uuid:d6db3e29-2510-470c-9c74-50cd9f797396"
+          ],
+          "warnings": [
+            "UNKNOWN_SGLN",
+            "UNKNOWN_SGTIN",
+            "NO_REGULATORY_APPROVAL"
+          ],
+          "raw": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:d6db3e29-2510-470c-9c74-50cd9f797396\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"UNKNOWN_SGTIN\",\"message\":\"SGTIN urn:epc:id:sgtin:0123456.305512.39493875940003090 (serial: 39493875940003090) not found in serial_numbers registry\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"NO_REGULATORY_APPROVAL\",\"message\":\"SGTIN urn:epc:id:sgtin:0123456.305512.39493875940003090 has no prior PPB regulatory approval event (inspecting + btt:cert)\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:d6db3e29-2510-470c-9c74-50cd9f797396",
+          "epcs": [
+            "urn:epc:id:sgtin:0123456.305512.39493875940003090"
+          ],
+          "idEchoed": true
+        },
+        "B-reID": {
+          "status": 409,
+          "code": "DUPLICATE_EVENT_ID",
+          "message": "Event ID urn:uuid:d6db3e29-2510-470c-9c74-50cd9f797396 was already ingested",
+          "eventIds": [],
+          "warnings": [],
+          "raw": "{\"category\":\"DUPLICATE_EVENT_ID\",\"code\":\"DUPLICATE_EVENT_ID\",\"message\":\"Event ID urn:uuid:d6db3e29-2510-470c-9c74-50cd9f797396 was already ingested\",\"resolution\":\"This event_id has already been ingested. This is idempotent � no action needed. If this is a different event, assign a new UUID.\",\"event_id\":\"urn:uuid:d6db3e29-2510-470c-9c74-50cd9f797396\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:d6db3e29-2510-470c-9c74-50cd9f797396",
+          "epcs": [
+            "urn:epc:id:sgtin:0123456.305512.39493875950003175"
+          ],
+          "idEchoed": false
+        },
+        "X-reID": {
+          "status": 409,
+          "code": "DUPLICATE_EVENT_ID",
+          "message": "Event ID urn:uuid:d6db3e29-2510-470c-9c74-50cd9f797396 was already ingested",
+          "eventIds": [],
+          "warnings": [],
+          "raw": "{\"category\":\"DUPLICATE_EVENT_ID\",\"code\":\"DUPLICATE_EVENT_ID\",\"message\":\"Event ID urn:uuid:d6db3e29-2510-470c-9c74-50cd9f797396 was already ingested\",\"resolution\":\"This event_id has already been ingested. This is idempotent � no action needed. If this is a different event, assign a new UUID.\",\"event_id\":\"urn:uuid:d6db3e29-2510-470c-9c74-50cd9f797396\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:d6db3e29-2510-470c-9c74-50cd9f797396",
+          "epcs": [
+            "urn:epc:id:sgtin:0123456.305512.39493875950003209"
+          ],
+          "idEchoed": false
+        }
+      }
+    },
+    {
+      "event": "Expired",
+      "bId": "urn:uuid:2fce7a89-1b1e-417b-ab02-82753e442a39",
+      "sends": {
+        "A": {
+          "status": 202,
+          "code": "",
+          "message": "EPCIS events accepted",
+          "eventIds": [
+            "urn:uuid:5216131d-8782-4b58-8cbe-2ea3b208cfc9"
+          ],
+          "warnings": [
+            "UNKNOWN_SGLN",
+            "UNKNOWN_SGTIN",
+            "UNKNOWN_SGTIN",
+            "UNAUTHORIZED_INSPECTING_EVENT",
+            "UNAUTHORIZED_INSPECTING_EVENT"
+          ],
+          "raw": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:5216131d-8782-4b58-8cbe-2ea3b208cfc9\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"UNKNOWN_SGTIN\",\"message\":\"SGTIN urn:epc:id:sgtin:0123456.305512.39493946970003300 (serial: 39493946970003300) not found in serial_numbers registry\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"UNKNOWN_SGTIN\",\"message\":\"SGTIN urn:epc:id:sgtin:0123456.305512.39493946970003416 (serial: 39493946970003416) not found in serial_numbers registry\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"bizStep\",\"code\":\"UNAUTHORIZED_INSPECTING_EVENT\",\"message\":\"Inspecting (regulator approval) events may only be submitted by PPB/DHA — submitter actorType is \\\"manufacturer\\\"\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"disposition\",\"code\":\"UNAUTHORIZED_INSPECTING_EVENT\",\"message\":\"Regulator approval event should set disposition to active (got \\\"expired\\\")\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:5216131d-8782-4b58-8cbe-2ea3b208cfc9",
+          "epcs": [
+            "urn:epc:id:sgtin:0123456.305512.39493946970003300",
+            "urn:epc:id:sgtin:0123456.305512.39493946970003416"
+          ],
+          "idEchoed": true
+        },
+        "B": {
+          "status": 202,
+          "code": "",
+          "message": "EPCIS events accepted",
+          "eventIds": [
+            "urn:uuid:2fce7a89-1b1e-417b-ab02-82753e442a39"
+          ],
+          "warnings": [
+            "UNKNOWN_SGLN",
+            "UNKNOWN_SGTIN",
+            "UNKNOWN_SGTIN",
+            "UNAUTHORIZED_INSPECTING_EVENT",
+            "UNAUTHORIZED_INSPECTING_EVENT"
+          ],
+          "raw": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:2fce7a89-1b1e-417b-ab02-82753e442a39\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345622222 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"UNKNOWN_SGTIN\",\"message\":\"SGTIN urn:epc:id:sgtin:0123456.305512.39493946970003517 (serial: 39493946970003517) not found in serial_numbers registry\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"UNKNOWN_SGTIN\",\"message\":\"SGTIN urn:epc:id:sgtin:0123456.305512.39493946970003663 (serial: 39493946970003663) not found in serial_numbers registry\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"bizStep\",\"code\":\"UNAUTHORIZED_INSPECTING_EVENT\",\"message\":\"Inspecting (regulator approval) events may only be submitted by PPB/DHA — submitter actorType is \\\"manufacturer\\\"\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"disposition\",\"code\":\"UNAUTHORIZED_INSPECTING_EVENT\",\"message\":\"Regulator approval event should set disposition to active (got \\\"expired\\\")\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:2fce7a89-1b1e-417b-ab02-82753e442a39",
+          "epcs": [
+            "urn:epc:id:sgtin:0123456.305512.39493946970003517",
+            "urn:epc:id:sgtin:0123456.305512.39493946970003663"
+          ],
+          "idEchoed": true
+        },
+        "B-reID": {
+          "status": 409,
+          "code": "DUPLICATE_EVENT_ID",
+          "message": "Event ID urn:uuid:2fce7a89-1b1e-417b-ab02-82753e442a39 was already ingested",
+          "eventIds": [],
+          "warnings": [],
+          "raw": "{\"category\":\"DUPLICATE_EVENT_ID\",\"code\":\"DUPLICATE_EVENT_ID\",\"message\":\"Event ID urn:uuid:2fce7a89-1b1e-417b-ab02-82753e442a39 was already ingested\",\"resolution\":\"This event_id has already been ingested. This is idempotent � no action needed. If this is a different event, assign a new UUID.\",\"event_id\":\"urn:uuid:2fce7a89-1b1e-417b-ab02-82753e442a39\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:2fce7a89-1b1e-417b-ab02-82753e442a39",
+          "epcs": [
+            "urn:epc:id:sgtin:0123456.305512.39493946970003703",
+            "urn:epc:id:sgtin:0123456.305512.39493946970003804"
+          ],
+          "idEchoed": false
+        },
+        "X-reID": {
+          "status": 409,
+          "code": "DUPLICATE_EVENT_ID",
+          "message": "Event ID urn:uuid:2fce7a89-1b1e-417b-ab02-82753e442a39 was already ingested",
+          "eventIds": [],
+          "warnings": [],
+          "raw": "{\"category\":\"DUPLICATE_EVENT_ID\",\"code\":\"DUPLICATE_EVENT_ID\",\"message\":\"Event ID urn:uuid:2fce7a89-1b1e-417b-ab02-82753e442a39 was already ingested\",\"resolution\":\"This event_id has already been ingested. This is idempotent � no action needed. If this is a different event, assign a new UUID.\",\"event_id\":\"urn:uuid:2fce7a89-1b1e-417b-ab02-82753e442a39\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:2fce7a89-1b1e-417b-ab02-82753e442a39",
+          "epcs": [
+            "urn:epc:id:sgtin:0123456.305512.39493946970003998",
+            "urn:epc:id:sgtin:0123456.305512.39493946970004065"
+          ],
+          "idEchoed": false
+        }
+      }
+    },
+    {
+      "event": "Destruction Completion",
+      "bId": "urn:uuid:7f9efc18-8092-4ad1-8a2d-bd99f7261571",
+      "sends": {
+        "A": {
+          "status": 202,
+          "code": "",
+          "message": "EPCIS events accepted",
+          "eventIds": [
+            "urn:uuid:886663af-5f08-4e7b-b175-0f79ac3eb396"
+          ],
+          "warnings": [
+            "UNKNOWN_SGLN",
+            "UNKNOWN_SGTIN",
+            "UNKNOWN_SGTIN",
+            "UNKNOWN_SGTIN",
+            "UNKNOWN_SGTIN",
+            "UNKNOWN_SGTIN",
+            "INVALID_LOT",
+            "NO_REGULATORY_APPROVAL",
+            "NO_REGULATORY_APPROVAL",
+            "NO_REGULATORY_APPROVAL",
+            "NO_REGULATORY_APPROVAL",
+            "NO_REGULATORY_APPROVAL"
+          ],
+          "raw": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:886663af-5f08-4e7b-b175-0f79ac3eb396\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345633333 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"UNKNOWN_SGTIN\",\"message\":\"SGTIN urn:epc:id:sgtin:0614141.000111.39494016340004114 (serial: 39494016340004114) not found in serial_numbers registry\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"UNKNOWN_SGTIN\",\"message\":\"SGTIN urn:epc:id:sgtin:0614141.000111.39494016340004272 (serial: 39494016340004272) not found in serial_numbers registry\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"UNKNOWN_SGTIN\",\"message\":\"SGTIN urn:epc:id:sgtin:0614141.000111.39494016340004310 (serial: 39494016340004310) not found in serial_numbers registry\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"UNKNOWN_SGTIN\",\"message\":\"SGTIN urn:epc:id:sgtin:0614141.000111.39494016340004492 (serial: 39494016340004492) not found in serial_numbers registry\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"UNKNOWN_SGTIN\",\"message\":\"SGTIN urn:epc:id:sgtin:0614141.000111.39494016340004554 (serial: 39494016340004554) not found in serial_numbers registry\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"LOT39494016340004642\\\" is not registered in the batches registry\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"NO_REGULATORY_APPROVAL\",\"message\":\"SGTIN urn:epc:id:sgtin:0614141.000111.39494016340004114 has no prior PPB regulatory approval event (inspecting + btt:cert)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"NO_REGULATORY_APPROVAL\",\"message\":\"SGTIN urn:epc:id:sgtin:0614141.000111.39494016340004272 has no prior PPB regulatory approval event (inspecting + btt:cert)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"NO_REGULATORY_APPROVAL\",\"message\":",
+          "sentId": "urn:uuid:886663af-5f08-4e7b-b175-0f79ac3eb396",
+          "epcs": [
+            "urn:epc:id:sgtin:0614141.000111.39494016340004114",
+            "urn:epc:id:sgtin:0614141.000111.39494016340004272",
+            "urn:epc:id:sgtin:0614141.000111.39494016340004310",
+            "urn:epc:id:sgtin:0614141.000111.39494016340004492",
+            "urn:epc:id:sgtin:0614141.000111.39494016340004554",
+            "urn:epc:class:lgtin:0123456.305512.LOT39494016340004642"
+          ],
+          "idEchoed": true
+        },
+        "B": {
+          "status": 202,
+          "code": "",
+          "message": "EPCIS events accepted",
+          "eventIds": [
+            "urn:uuid:7f9efc18-8092-4ad1-8a2d-bd99f7261571"
+          ],
+          "warnings": [
+            "UNKNOWN_SGLN",
+            "UNKNOWN_SGTIN",
+            "UNKNOWN_SGTIN",
+            "UNKNOWN_SGTIN",
+            "UNKNOWN_SGTIN",
+            "UNKNOWN_SGTIN",
+            "INVALID_LOT",
+            "NO_REGULATORY_APPROVAL",
+            "NO_REGULATORY_APPROVAL",
+            "NO_REGULATORY_APPROVAL",
+            "NO_REGULATORY_APPROVAL",
+            "NO_REGULATORY_APPROVAL"
+          ],
+          "raw": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:7f9efc18-8092-4ad1-8a2d-bd99f7261571\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 012345633333 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"UNKNOWN_SGTIN\",\"message\":\"SGTIN urn:epc:id:sgtin:0614141.000111.39494016340004742 (serial: 39494016340004742) not found in serial_numbers registry\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"UNKNOWN_SGTIN\",\"message\":\"SGTIN urn:epc:id:sgtin:0614141.000111.39494016340004844 (serial: 39494016340004844) not found in serial_numbers registry\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"UNKNOWN_SGTIN\",\"message\":\"SGTIN urn:epc:id:sgtin:0614141.000111.39494016340004940 (serial: 39494016340004940) not found in serial_numbers registry\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"UNKNOWN_SGTIN\",\"message\":\"SGTIN urn:epc:id:sgtin:0614141.000111.39494016340005042 (serial: 39494016340005042) not found in serial_numbers registry\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"UNKNOWN_SGTIN\",\"message\":\"SGTIN urn:epc:id:sgtin:0614141.000111.39494016340005111 (serial: 39494016340005111) not found in serial_numbers registry\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"ilmd.lotNumber\",\"code\":\"INVALID_LOT\",\"message\":\"Lot number \\\"LOT39494016340005263\\\" is not registered in the batches registry\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"NO_REGULATORY_APPROVAL\",\"message\":\"SGTIN urn:epc:id:sgtin:0614141.000111.39494016340004742 has no prior PPB regulatory approval event (inspecting + btt:cert)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"NO_REGULATORY_APPROVAL\",\"message\":\"SGTIN urn:epc:id:sgtin:0614141.000111.39494016340004844 has no prior PPB regulatory approval event (inspecting + btt:cert)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"NO_REGULATORY_APPROVAL\",\"message\":",
+          "sentId": "urn:uuid:7f9efc18-8092-4ad1-8a2d-bd99f7261571",
+          "epcs": [
+            "urn:epc:id:sgtin:0614141.000111.39494016340004742",
+            "urn:epc:id:sgtin:0614141.000111.39494016340004844",
+            "urn:epc:id:sgtin:0614141.000111.39494016340004940",
+            "urn:epc:id:sgtin:0614141.000111.39494016340005042",
+            "urn:epc:id:sgtin:0614141.000111.39494016340005111",
+            "urn:epc:class:lgtin:0123456.305512.LOT39494016340005263"
+          ],
+          "idEchoed": true
+        },
+        "B-reID": {
+          "status": 409,
+          "code": "DUPLICATE_EVENT_ID",
+          "message": "Event ID urn:uuid:7f9efc18-8092-4ad1-8a2d-bd99f7261571 was already ingested",
+          "eventIds": [],
+          "warnings": [],
+          "raw": "{\"category\":\"DUPLICATE_EVENT_ID\",\"code\":\"DUPLICATE_EVENT_ID\",\"message\":\"Event ID urn:uuid:7f9efc18-8092-4ad1-8a2d-bd99f7261571 was already ingested\",\"resolution\":\"This event_id has already been ingested. This is idempotent � no action needed. If this is a different event, assign a new UUID.\",\"event_id\":\"urn:uuid:7f9efc18-8092-4ad1-8a2d-bd99f7261571\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:7f9efc18-8092-4ad1-8a2d-bd99f7261571",
+          "epcs": [
+            "urn:epc:id:sgtin:0614141.000111.39494016340005331",
+            "urn:epc:id:sgtin:0614141.000111.39494016340005403",
+            "urn:epc:id:sgtin:0614141.000111.39494016340005555",
+            "urn:epc:id:sgtin:0614141.000111.39494016340005651",
+            "urn:epc:id:sgtin:0614141.000111.39494016340005734",
+            "urn:epc:class:lgtin:0123456.305512.LOT39494016340005845"
+          ],
+          "idEchoed": false
+        },
+        "X-reID": {
+          "status": 409,
+          "code": "DUPLICATE_EVENT_ID",
+          "message": "Event ID urn:uuid:7f9efc18-8092-4ad1-8a2d-bd99f7261571 was already ingested",
+          "eventIds": [],
+          "warnings": [],
+          "raw": "{\"category\":\"DUPLICATE_EVENT_ID\",\"code\":\"DUPLICATE_EVENT_ID\",\"message\":\"Event ID urn:uuid:7f9efc18-8092-4ad1-8a2d-bd99f7261571 was already ingested\",\"resolution\":\"This event_id has already been ingested. This is idempotent � no action needed. If this is a different event, assign a new UUID.\",\"event_id\":\"urn:uuid:7f9efc18-8092-4ad1-8a2d-bd99f7261571\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:7f9efc18-8092-4ad1-8a2d-bd99f7261571",
+          "epcs": [
+            "urn:epc:id:sgtin:0614141.000111.39494016340005962",
+            "urn:epc:id:sgtin:0614141.000111.39494016340006024",
+            "urn:epc:id:sgtin:0614141.000111.39494016340006162",
+            "urn:epc:id:sgtin:0614141.000111.39494016340006244",
+            "urn:epc:id:sgtin:0614141.000111.39494016340006370",
+            "urn:epc:class:lgtin:0123456.305512.LOT39494016340006475"
+          ],
+          "idEchoed": false
+        }
+      }
+    },
+    {
+      "event": "Export",
+      "bId": "urn:uuid:98e32881-7eeb-45cc-add8-dd930bf74510",
+      "sends": {
+        "A": {
+          "status": 202,
+          "code": "",
+          "message": "EPCIS events accepted",
+          "eventIds": [
+            "urn:uuid:7191cece-7a75-43de-a9d6-9a00f9ad8a06"
+          ],
+          "warnings": [
+            "UNKNOWN_SGLN",
+            "UNKNOWN_SGTIN",
+            "UNKNOWN_SGTIN",
+            "NO_REGULATORY_APPROVAL",
+            "NO_REGULATORY_APPROVAL"
+          ],
+          "raw": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:7191cece-7a75-43de-a9d6-9a00f9ad8a06\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"UNKNOWN_SGTIN\",\"message\":\"SGTIN urn:epc:id:sgtin:0123456.305512.39494085070006588 (serial: 39494085070006588) not found in serial_numbers registry\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"UNKNOWN_SGTIN\",\"message\":\"SGTIN urn:epc:id:sgtin:0123456.305512.39494085070006699 (serial: 39494085070006699) not found in serial_numbers registry\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"NO_REGULATORY_APPROVAL\",\"message\":\"SGTIN urn:epc:id:sgtin:0123456.305512.39494085070006588 has no prior PPB regulatory approval event (inspecting + btt:cert)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"NO_REGULATORY_APPROVAL\",\"message\":\"SGTIN urn:epc:id:sgtin:0123456.305512.39494085070006699 has no prior PPB regulatory approval event (inspecting + btt:cert)\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:7191cece-7a75-43de-a9d6-9a00f9ad8a06",
+          "epcs": [
+            "urn:epc:id:sgtin:0123456.305512.39494085070006588",
+            "urn:epc:id:sgtin:0123456.305512.39494085070006699"
+          ],
+          "idEchoed": true
+        },
+        "B": {
+          "status": 202,
+          "code": "",
+          "message": "EPCIS events accepted",
+          "eventIds": [
+            "urn:uuid:98e32881-7eeb-45cc-add8-dd930bf74510"
+          ],
+          "warnings": [
+            "UNKNOWN_SGLN",
+            "UNKNOWN_SGTIN",
+            "UNKNOWN_SGTIN",
+            "NO_REGULATORY_APPROVAL",
+            "NO_REGULATORY_APPROVAL"
+          ],
+          "raw": "{\"success\":true,\"message\":\"EPCIS events accepted\",\"event_ids\":[\"urn:uuid:98e32881-7eeb-45cc-add8-dd930bf74510\"],\"events_processed\":1,\"warnings\":[{\"layer\":3,\"field\":\"gln\",\"code\":\"UNKNOWN_SGLN\",\"message\":\"GLN 061414100001 not found in master data registry (locations)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"UNKNOWN_SGTIN\",\"message\":\"SGTIN urn:epc:id:sgtin:0123456.305512.39494085070006721 (serial: 39494085070006721) not found in serial_numbers registry\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"UNKNOWN_SGTIN\",\"message\":\"SGTIN urn:epc:id:sgtin:0123456.305512.39494085070006848 (serial: 39494085070006848) not found in serial_numbers registry\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"NO_REGULATORY_APPROVAL\",\"message\":\"SGTIN urn:epc:id:sgtin:0123456.305512.39494085070006721 has no prior PPB regulatory approval event (inspecting + btt:cert)\",\"severity\":\"warning\"},{\"layer\":3,\"field\":\"epcList\",\"code\":\"NO_REGULATORY_APPROVAL\",\"message\":\"SGTIN urn:epc:id:sgtin:0123456.305512.39494085070006848 has no prior PPB regulatory approval event (inspecting + btt:cert)\",\"severity\":\"warning\"}],\"processing_mode\":\"ASYNC\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:98e32881-7eeb-45cc-add8-dd930bf74510",
+          "epcs": [
+            "urn:epc:id:sgtin:0123456.305512.39494085070006721",
+            "urn:epc:id:sgtin:0123456.305512.39494085070006848"
+          ],
+          "idEchoed": true
+        },
+        "B-reID": {
+          "status": 409,
+          "code": "DUPLICATE_EVENT_ID",
+          "message": "Event ID urn:uuid:98e32881-7eeb-45cc-add8-dd930bf74510 was already ingested",
+          "eventIds": [],
+          "warnings": [],
+          "raw": "{\"category\":\"DUPLICATE_EVENT_ID\",\"code\":\"DUPLICATE_EVENT_ID\",\"message\":\"Event ID urn:uuid:98e32881-7eeb-45cc-add8-dd930bf74510 was already ingested\",\"resolution\":\"This event_id has already been ingested. This is idempotent � no action needed. If this is a different event, assign a new UUID.\",\"event_id\":\"urn:uuid:98e32881-7eeb-45cc-add8-dd930bf74510\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:98e32881-7eeb-45cc-add8-dd930bf74510",
+          "epcs": [
+            "urn:epc:id:sgtin:0123456.305512.39494085080006966",
+            "urn:epc:id:sgtin:0123456.305512.39494085080007095"
+          ],
+          "idEchoed": false
+        },
+        "X-reID": {
+          "status": 409,
+          "code": "DUPLICATE_EVENT_ID",
+          "message": "Event ID urn:uuid:98e32881-7eeb-45cc-add8-dd930bf74510 was already ingested",
+          "eventIds": [],
+          "warnings": [],
+          "raw": "{\"category\":\"DUPLICATE_EVENT_ID\",\"code\":\"DUPLICATE_EVENT_ID\",\"message\":\"Event ID urn:uuid:98e32881-7eeb-45cc-add8-dd930bf74510 was already ingested\",\"resolution\":\"This event_id has already been ingested. This is idempotent � no action needed. If this is a different event, assign a new UUID.\",\"event_id\":\"urn:uuid:98e32881-7eeb-45cc-add8-dd930bf74510\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:98e32881-7eeb-45cc-add8-dd930bf74510",
+          "epcs": [
+            "urn:epc:id:sgtin:0123456.305512.39494085080007104",
+            "urn:epc:id:sgtin:0123456.305512.39494085080007248"
+          ],
+          "idEchoed": false
+        }
+      }
+    },
+    {
+      "event": "Stock Adjustment",
+      "bId": "urn:uuid:0ab8406d-b298-4f0f-8c11-31540617532b",
+      "sends": {
+        "A": {
+          "status": 403,
+          "code": "PARTNER_TYPE_BIZSTEP_MISMATCH",
+          "message": "Partner type \"manufacturer\" is not allowed to submit bizStep \"stock_taking\". Allowed for this partner: commissioning, packing, shipping, receiving, destroying, inspecting, decommissioning.",
+          "eventIds": [],
+          "warnings": [],
+          "raw": "{\"category\":\"AUTHORIZATION\",\"code\":\"PARTNER_TYPE_BIZSTEP_MISMATCH\",\"message\":\"Partner type \\\"manufacturer\\\" is not allowed to submit bizStep \\\"stock_taking\\\". Allowed for this partner: commissioning, packing, shipping, receiving, destroying, inspecting, decommissioning.\",\"resolution\":\"This partner type is not allowed to submit that bizStep. Use the matching integration route and an allowed core or special-event bizStep for your partner (manufacturer / supplier / facility). See guide §3–§4.\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:7f8c484c-e607-4553-a1c4-80bc33ca17fd",
+          "epcs": [
+            "urn:epc:id:sgtin:0614141.107346.39494157130007328",
+            "urn:epc:id:sgtin:0614141.107346.39494157140007414"
+          ],
+          "idEchoed": false
+        },
+        "B": {
+          "status": 403,
+          "code": "PARTNER_TYPE_BIZSTEP_MISMATCH",
+          "message": "Partner type \"manufacturer\" is not allowed to submit bizStep \"stock_taking\". Allowed for this partner: commissioning, packing, shipping, receiving, destroying, inspecting, decommissioning.",
+          "eventIds": [],
+          "warnings": [],
+          "raw": "{\"category\":\"AUTHORIZATION\",\"code\":\"PARTNER_TYPE_BIZSTEP_MISMATCH\",\"message\":\"Partner type \\\"manufacturer\\\" is not allowed to submit bizStep \\\"stock_taking\\\". Allowed for this partner: commissioning, packing, shipping, receiving, destroying, inspecting, decommissioning.\",\"resolution\":\"This partner type is not allowed to submit that bizStep. Use the matching integration route and an allowed core or special-event bizStep for your partner (manufacturer / supplier / facility). See guide §3–§4.\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:0ab8406d-b298-4f0f-8c11-31540617532b",
+          "epcs": [
+            "urn:epc:id:sgtin:0614141.107346.39494157140007505",
+            "urn:epc:id:sgtin:0614141.107346.39494157140007657"
+          ],
+          "idEchoed": false
+        },
+        "B-reID": {
+          "status": 403,
+          "code": "PARTNER_TYPE_BIZSTEP_MISMATCH",
+          "message": "Partner type \"manufacturer\" is not allowed to submit bizStep \"stock_taking\". Allowed for this partner: commissioning, packing, shipping, receiving, destroying, inspecting, decommissioning.",
+          "eventIds": [],
+          "warnings": [],
+          "raw": "{\"category\":\"AUTHORIZATION\",\"code\":\"PARTNER_TYPE_BIZSTEP_MISMATCH\",\"message\":\"Partner type \\\"manufacturer\\\" is not allowed to submit bizStep \\\"stock_taking\\\". Allowed for this partner: commissioning, packing, shipping, receiving, destroying, inspecting, decommissioning.\",\"resolution\":\"This partner type is not allowed to submit that bizStep. Use the matching integration route and an allowed core or special-event bizStep for your partner (manufacturer / supplier / facility). See guide §3–§4.\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:0ab8406d-b298-4f0f-8c11-31540617532b",
+          "epcs": [
+            "urn:epc:id:sgtin:0614141.107346.39494157140007743",
+            "urn:epc:id:sgtin:0614141.107346.39494157140007803"
+          ],
+          "idEchoed": false
+        },
+        "X-reID": {
+          "status": 403,
+          "code": "PARTNER_TYPE_BIZSTEP_MISMATCH",
+          "message": "Partner type \"manufacturer\" is not allowed to submit bizStep \"stock_taking\". Allowed for this partner: commissioning, packing, shipping, receiving, destroying, inspecting, decommissioning.",
+          "eventIds": [],
+          "warnings": [],
+          "raw": "{\"category\":\"AUTHORIZATION\",\"code\":\"PARTNER_TYPE_BIZSTEP_MISMATCH\",\"message\":\"Partner type \\\"manufacturer\\\" is not allowed to submit bizStep \\\"stock_taking\\\". Allowed for this partner: commissioning, packing, shipping, receiving, destroying, inspecting, decommissioning.\",\"resolution\":\"This partner type is not allowed to submit that bizStep. Use the matching integration route and an allowed core or special-event bizStep for your partner (manufacturer / supplier / facility). See guide §3–§4.\",\"_sandbox\":true}",
+          "sentId": "urn:uuid:0ab8406d-b298-4f0f-8c11-31540617532b",
+          "epcs": [
+            "urn:epc:id:sgtin:0614141.107346.39494157140007953",
+            "urn:epc:id:sgtin:0614141.107346.39494157140008039"
+          ],
+          "idEchoed": false
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+h2. Manufacturer XML events: eventID inside <baseExtension>. Overall result: PASS
+
+*Environment:* tnt-demo, {{POST /api/integration/manufacturer/events}}, EPCIS 1.2 XML, manufacturer API key
+*Run:* 2026-11-06T07:17:02.531Z
+*Sources:* the XML samples under Partner Docs > Technical Guides (live), sent unchanged except for the eventID wrapper:
+{code:xml}
+<baseExtension>
+  <eventID>urn:uuid:...</eventID>
+</baseExtension>
+{code}
+
+h3. Numbers
+* *14* manufacturer event types, *56* requests
+* *12/12* allowed events *PASS*: the wrapped eventID is accepted, echoed back, and enforced for uniqueness exactly like a top-level eventID
+* *0* differences between top-level and wrapped placement, in HTTP status, error code or warnings, across all 14 events
+* *2* events (Recall Initiation, Stock Adjustment) were rejected for the manufacturer role in both placements (403 PARTNER_TYPE_BIZSTEP_MISMATCH). This is unrelated to baseExtension.
+
+h3. What each event was sent
+||Variant||Body||Expected||
+| A | Docs sample as-is (top-level eventID), fresh serials | 202, eventID echoed |
+| B | Same, eventID wrapped in baseExtension | Same as A |
+| B-reID | Fresh payload, B's eventID again inside baseExtension | 409 DUPLICATE_EVENT_ID |
+| X-reID | Fresh payload, B's eventID as a top-level eventID | 409 DUPLICATE_EVENT_ID |
+
+h3. Results
+||Event||A top-level||B baseExtension||B eventID echoed||B-reID||X-reID||Verdict||
+| Commissioning | 202 | 202 | Yes | 409 DUPLICATE_EVENT_ID | 409 DUPLICATE_EVENT_ID | (/) PASS |
+| Packing | 202 | 202 | Yes | 409 DUPLICATE_EVENT_ID | 409 DUPLICATE_EVENT_ID | (/) PASS |
+| SSCC-to-SSCC Packing | 202 | 202 | Yes | 409 DUPLICATE_EVENT_ID | 409 DUPLICATE_EVENT_ID | (/) PASS |
+| Shipping | 202 | 202 | Yes | 409 DUPLICATE_EVENT_ID | 409 DUPLICATE_EVENT_ID | (/) PASS |
+| Return Shipping | 202 | 202 | Yes | 409 DUPLICATE_EVENT_ID | 409 DUPLICATE_EVENT_ID | (/) PASS |
+| Return Receiving | 202 | 202 | Yes | 409 DUPLICATE_EVENT_ID | 409 DUPLICATE_EVENT_ID | (/) PASS |
+| Recall Initiation | 403 PARTNER_TYPE_BIZSTEP_MISMATCH | 403 PARTNER_TYPE_BIZSTEP_MISMATCH | No | 403 PARTNER_TYPE_BIZSTEP_MISMATCH | 403 PARTNER_TYPE_BIZSTEP_MISMATCH | (!) N/A (role) |
+| Damaged | 202 | 202 | Yes | 409 DUPLICATE_EVENT_ID | 409 DUPLICATE_EVENT_ID | (/) PASS |
+| Stolen | 202 | 202 | Yes | 409 DUPLICATE_EVENT_ID | 409 DUPLICATE_EVENT_ID | (/) PASS |
+| Lost | 202 | 202 | Yes | 409 DUPLICATE_EVENT_ID | 409 DUPLICATE_EVENT_ID | (/) PASS |
+| Expired | 202 | 202 | Yes | 409 DUPLICATE_EVENT_ID | 409 DUPLICATE_EVENT_ID | (/) PASS |
+| Destruction Completion | 202 | 202 | Yes | 409 DUPLICATE_EVENT_ID | 409 DUPLICATE_EVENT_ID | (/) PASS |
+| Export | 202 | 202 | Yes | 409 DUPLICATE_EVENT_ID | 409 DUPLICATE_EVENT_ID | (/) PASS |
+| Stock Adjustment | 403 PARTNER_TYPE_BIZSTEP_MISMATCH | 403 PARTNER_TYPE_BIZSTEP_MISMATCH | No | 403 PARTNER_TYPE_BIZSTEP_MISMATCH | 403 PARTNER_TYPE_BIZSTEP_MISMATCH | (!) N/A (role) |
+
+h3. Findings
+# *baseExtension eventID is fully supported (PASS).* Every allowed manufacturer event (commission, pack, SSCC-to-SSCC pack, ship, return ship, return receive, damaged, stolen, lost, expired, destruction, export) returned the same HTTP 202 and the same warnings with the wrapper as without it. The {{event_ids}} in each response matched the UUID inside baseExtension, so the platform reads the ID from there rather than minting its own.
+# *Idempotency is shared across both placements (PASS).* Reusing a baseExtension eventID on a new payload was rejected with 409 DUPLICATE_EVENT_ID ("Event ID ... was already ingested"). The same ID sent as a top-level eventID was rejected too, so both placements write to the same uniqueness store, as the Technical Guides state.
+# *Observation: the Recall Initiation sample cannot be sent by a manufacturer.* The docs sample uses bizStep {{holding}}, and the manufacturer key gets 403 PARTNER_TYPE_BIZSTEP_MISMATCH (allowed: commissioning, packing, shipping, receiving, destroying, inspecting, decommissioning). The guide also says a Destruction "should be preceded by a Recall Initiation", which a manufacturer cannot submit. Product should confirm which role owns recall initiation. Stock Adjustment ({{stock_taking}}) is likewise blocked for the manufacturer, which is expected if it belongs to facilities.
+# *Noise, not defects:* the warnings UNKNOWN_SGLN, UNKNOWN_SGTIN, UNKNOWN_PARTY_GLN, PARENT_NOT_FOUND, UNCOMMISSIONED_CHILD, SHIPPING_WITHOUT_COMMISSIONING, NO_REGULATORY_APPROVAL, UNAUTHORIZED_INSPECTING_EVENT and INVALID_LOT come from the docs samples' placeholder GS1 data (prefix 0614141). They were identical in A and B.
+
+h3. Event IDs and EPCs (all 56 requests)
+||Event||Variant||eventID||EPCs||HTTP||
+| Commissioning | A | {{urn:uuid:59b27075-0515-4409-82bf-2ee3f4d50f1f}} | {{urn:epc:id:sgtin:0614141.107346.39493231650000162}}\\ {{urn:epc:id:sgtin:0614141.107346.39493231660000216}} | 202 |
+| Commissioning | B | {{urn:uuid:84272034-399a-4585-8753-a0c8e20f822e}} | {{urn:epc:id:sgtin:0614141.107346.39493231670000349}}\\ {{urn:epc:id:sgtin:0614141.107346.39493231670000421}} | 202 |
+| Commissioning | B-reID | {{urn:uuid:84272034-399a-4585-8753-a0c8e20f822e}} | {{urn:epc:id:sgtin:0614141.107346.39493231670000549}}\\ {{urn:epc:id:sgtin:0614141.107346.39493231670000636}} | 409 DUPLICATE_EVENT_ID |
+| Commissioning | X-reID | {{urn:uuid:84272034-399a-4585-8753-a0c8e20f822e}} | {{urn:epc:id:sgtin:0614141.107346.39493231670000783}}\\ {{urn:epc:id:sgtin:0614141.107346.39493231670000873}} | 409 DUPLICATE_EVENT_ID |
+| Packing | A | {{urn:uuid:b85a84e6-5a73-4b53-9315-f9c284796914}} | {{urn:epc:id:sscc:0614141.4307972751}}\\ {{urn:epc:id:sgtin:0614141.107346.39493306380000952}}\\ {{urn:epc:id:sgtin:0614141.107346.39493306380001019}} | 202 |
+| Packing | B | {{urn:uuid:003b653e-8609-4426-b686-20c45c2953f2}} | {{urn:epc:id:sscc:0614141.3438944441}}\\ {{urn:epc:id:sgtin:0614141.107346.39493306380001129}}\\ {{urn:epc:id:sgtin:0614141.107346.39493306380001242}} | 202 |
+| Packing | B-reID | {{urn:uuid:003b653e-8609-4426-b686-20c45c2953f2}} | {{urn:epc:id:sscc:0614141.7593141470}}\\ {{urn:epc:id:sgtin:0614141.107346.39493306380001334}}\\ {{urn:epc:id:sgtin:0614141.107346.39493306380001460}} | 409 DUPLICATE_EVENT_ID |
+| Packing | X-reID | {{urn:uuid:003b653e-8609-4426-b686-20c45c2953f2}} | {{urn:epc:id:sscc:0614141.0411997075}}\\ {{urn:epc:id:sgtin:0614141.107346.39493306380001510}}\\ {{urn:epc:id:sgtin:0614141.107346.39493306380001677}} | 409 DUPLICATE_EVENT_ID |
+| SSCC-to-SSCC Packing | A | {{urn:uuid:a102f83d-344e-4e72-b191-88db85d6f9b7}} | {{urn:epc:id:sscc:0123456.1077416459}}\\ {{urn:epc:id:sscc:0123456.9619719247}}\\ {{urn:epc:id:sscc:0123456.3086185459}}\\ {{urn:epc:id:sscc:0123456.6333628439}} | 202 |
+| SSCC-to-SSCC Packing | B | {{urn:uuid:1f2849a0-b09f-4c55-a672-401029886f47}} | {{urn:epc:id:sscc:0123456.0126283328}}\\ {{urn:epc:id:sscc:0123456.6654487117}}\\ {{urn:epc:id:sscc:0123456.1243326219}}\\ {{urn:epc:id:sscc:0123456.7689214313}} | 202 |
+| SSCC-to-SSCC Packing | B-reID | {{urn:uuid:1f2849a0-b09f-4c55-a672-401029886f47}} | {{urn:epc:id:sscc:0123456.3179003167}}\\ {{urn:epc:id:sscc:0123456.7256701038}}\\ {{urn:epc:id:sscc:0123456.6363069508}}\\ {{urn:epc:id:sscc:0123456.2149945499}} | 409 DUPLICATE_EVENT_ID |
+| SSCC-to-SSCC Packing | X-reID | {{urn:uuid:1f2849a0-b09f-4c55-a672-401029886f47}} | {{urn:epc:id:sscc:0123456.7783363813}}\\ {{urn:epc:id:sscc:0123456.0089710120}}\\ {{urn:epc:id:sscc:0123456.9752290192}}\\ {{urn:epc:id:sscc:0123456.3256608157}} | 409 DUPLICATE_EVENT_ID |
+| Shipping | A | {{urn:uuid:a721d387-263c-485e-aaaa-2a779d9385c1}} | {{urn:epc:id:sscc:0123456.8703502872}} | 202 |
+| Shipping | B | {{urn:uuid:3acb7402-8688-467c-83e6-49c44051f784}} | {{urn:epc:id:sscc:0123456.6766922572}} | 202 |
+| Shipping | B-reID | {{urn:uuid:3acb7402-8688-467c-83e6-49c44051f784}} | {{urn:epc:id:sscc:0123456.8296729010}} | 409 DUPLICATE_EVENT_ID |
+| Shipping | X-reID | {{urn:uuid:3acb7402-8688-467c-83e6-49c44051f784}} | {{urn:epc:id:sscc:0123456.6682674489}} | 409 DUPLICATE_EVENT_ID |
+| Return Shipping | A | {{urn:uuid:166b4a61-e51b-483d-abff-a79d251dd8c5}} | {{urn:epc:id:sscc:0123456.9925893046}} | 202 |
+| Return Shipping | B | {{urn:uuid:35e473c5-809d-4b1c-90cd-1e9c4f28a6bc}} | {{urn:epc:id:sscc:0123456.9171651979}} | 202 |
+| Return Shipping | B-reID | {{urn:uuid:35e473c5-809d-4b1c-90cd-1e9c4f28a6bc}} | {{urn:epc:id:sscc:0123456.4018487145}} | 409 DUPLICATE_EVENT_ID |
+| Return Shipping | X-reID | {{urn:uuid:35e473c5-809d-4b1c-90cd-1e9c4f28a6bc}} | {{urn:epc:id:sscc:0123456.2802612427}} | 409 DUPLICATE_EVENT_ID |
+| Return Receiving | A | {{urn:uuid:286299b0-9230-497b-a26c-55e78bf75604}} | {{urn:epc:id:sscc:0123456.7390772426}} | 202 |
+| Return Receiving | B | {{urn:uuid:835fee58-d95d-4bef-ac8f-600886d0564d}} | {{urn:epc:id:sscc:0123456.9920863346}} | 202 |
+| Return Receiving | B-reID | {{urn:uuid:835fee58-d95d-4bef-ac8f-600886d0564d}} | {{urn:epc:id:sscc:0123456.5256992244}} | 409 DUPLICATE_EVENT_ID |
+| Return Receiving | X-reID | {{urn:uuid:835fee58-d95d-4bef-ac8f-600886d0564d}} | {{urn:epc:id:sscc:0123456.8117007007}} | 409 DUPLICATE_EVENT_ID |
+| Recall Initiation | A | {{urn:uuid:afeb93c5-a902-4c5b-a6da-65e80bb2d7ae}} | {{urn:epc:class:lgtin:0123456.305512.LOT39493661860001722}} | 403 PARTNER_TYPE_BIZSTEP_MISMATCH |
+| Recall Initiation | B | {{urn:uuid:7dfd85d7-206d-4458-821a-5b4738510b61}} | {{urn:epc:class:lgtin:0123456.305512.LOT39493661860001800}} | 403 PARTNER_TYPE_BIZSTEP_MISMATCH |
+| Recall Initiation | B-reID | {{urn:uuid:7dfd85d7-206d-4458-821a-5b4738510b61}} | {{urn:epc:class:lgtin:0123456.305512.LOT39493661860001906}} | 403 PARTNER_TYPE_BIZSTEP_MISMATCH |
+| Recall Initiation | X-reID | {{urn:uuid:7dfd85d7-206d-4458-821a-5b4738510b61}} | {{urn:epc:class:lgtin:0123456.305512.LOT39493661860002059}} | 403 PARTNER_TYPE_BIZSTEP_MISMATCH |
+| Damaged | A | {{urn:uuid:dd64191c-e0fc-4d74-b5c0-69e4a57efd3c}} | {{urn:epc:id:sgtin:0123456.305512.39493731450002153}} | 202 |
+| Damaged | B | {{urn:uuid:89272f8d-4218-469d-8bf9-066c7a948520}} | {{urn:epc:id:sgtin:0123456.305512.39493731450002219}} | 202 |
+| Damaged | B-reID | {{urn:uuid:89272f8d-4218-469d-8bf9-066c7a948520}} | {{urn:epc:id:sgtin:0123456.305512.39493731450002334}} | 409 DUPLICATE_EVENT_ID |
+| Damaged | X-reID | {{urn:uuid:89272f8d-4218-469d-8bf9-066c7a948520}} | {{urn:epc:id:sgtin:0123456.305512.39493731450002497}} | 409 DUPLICATE_EVENT_ID |
+| Stolen | A | {{urn:uuid:735c37f1-de88-4939-aeec-07a7510d49d8}} | {{urn:epc:id:sgtin:0123456.305512.39493801540002599}} | 202 |
+| Stolen | B | {{urn:uuid:63474ed2-ddea-4c76-ba5d-a3ac1c7c1381}} | {{urn:epc:id:sgtin:0123456.305512.39493801540002611}} | 202 |
+| Stolen | B-reID | {{urn:uuid:63474ed2-ddea-4c76-ba5d-a3ac1c7c1381}} | {{urn:epc:id:sgtin:0123456.305512.39493801540002738}} | 409 DUPLICATE_EVENT_ID |
+| Stolen | X-reID | {{urn:uuid:63474ed2-ddea-4c76-ba5d-a3ac1c7c1381}} | {{urn:epc:id:sgtin:0123456.305512.39493801550002813}} | 409 DUPLICATE_EVENT_ID |
+| Lost | A | {{urn:uuid:dcd1e38a-f3fa-45d4-89d4-9a356209df9b}} | {{urn:epc:id:sgtin:0123456.305512.39493875940002966}} | 202 |
+| Lost | B | {{urn:uuid:d6db3e29-2510-470c-9c74-50cd9f797396}} | {{urn:epc:id:sgtin:0123456.305512.39493875940003090}} | 202 |
+| Lost | B-reID | {{urn:uuid:d6db3e29-2510-470c-9c74-50cd9f797396}} | {{urn:epc:id:sgtin:0123456.305512.39493875950003175}} | 409 DUPLICATE_EVENT_ID |
+| Lost | X-reID | {{urn:uuid:d6db3e29-2510-470c-9c74-50cd9f797396}} | {{urn:epc:id:sgtin:0123456.305512.39493875950003209}} | 409 DUPLICATE_EVENT_ID |
+| Expired | A | {{urn:uuid:5216131d-8782-4b58-8cbe-2ea3b208cfc9}} | {{urn:epc:id:sgtin:0123456.305512.39493946970003300}}\\ {{urn:epc:id:sgtin:0123456.305512.39493946970003416}} | 202 |
+| Expired | B | {{urn:uuid:2fce7a89-1b1e-417b-ab02-82753e442a39}} | {{urn:epc:id:sgtin:0123456.305512.39493946970003517}}\\ {{urn:epc:id:sgtin:0123456.305512.39493946970003663}} | 202 |
+| Expired | B-reID | {{urn:uuid:2fce7a89-1b1e-417b-ab02-82753e442a39}} | {{urn:epc:id:sgtin:0123456.305512.39493946970003703}}\\ {{urn:epc:id:sgtin:0123456.305512.39493946970003804}} | 409 DUPLICATE_EVENT_ID |
+| Expired | X-reID | {{urn:uuid:2fce7a89-1b1e-417b-ab02-82753e442a39}} | {{urn:epc:id:sgtin:0123456.305512.39493946970003998}}\\ {{urn:epc:id:sgtin:0123456.305512.39493946970004065}} | 409 DUPLICATE_EVENT_ID |
+| Destruction Completion | A | {{urn:uuid:886663af-5f08-4e7b-b175-0f79ac3eb396}} | {{urn:epc:id:sgtin:0614141.000111.39494016340004114}}\\ {{urn:epc:id:sgtin:0614141.000111.39494016340004272}}\\ {{urn:epc:id:sgtin:0614141.000111.39494016340004310}}\\ {{urn:epc:id:sgtin:0614141.000111.39494016340004492}}\\ {{urn:epc:id:sgtin:0614141.000111.39494016340004554}}\\ {{urn:epc:class:lgtin:0123456.305512.LOT39494016340004642}} | 202 |
+| Destruction Completion | B | {{urn:uuid:7f9efc18-8092-4ad1-8a2d-bd99f7261571}} | {{urn:epc:id:sgtin:0614141.000111.39494016340004742}}\\ {{urn:epc:id:sgtin:0614141.000111.39494016340004844}}\\ {{urn:epc:id:sgtin:0614141.000111.39494016340004940}}\\ {{urn:epc:id:sgtin:0614141.000111.39494016340005042}}\\ {{urn:epc:id:sgtin:0614141.000111.39494016340005111}}\\ {{urn:epc:class:lgtin:0123456.305512.LOT39494016340005263}} | 202 |
+| Destruction Completion | B-reID | {{urn:uuid:7f9efc18-8092-4ad1-8a2d-bd99f7261571}} | {{urn:epc:id:sgtin:0614141.000111.39494016340005331}}\\ {{urn:epc:id:sgtin:0614141.000111.39494016340005403}}\\ {{urn:epc:id:sgtin:0614141.000111.39494016340005555}}\\ {{urn:epc:id:sgtin:0614141.000111.39494016340005651}}\\ {{urn:epc:id:sgtin:0614141.000111.39494016340005734}}\\ {{urn:epc:class:lgtin:0123456.305512.LOT39494016340005845}} | 409 DUPLICATE_EVENT_ID |
+| Destruction Completion | X-reID | {{urn:uuid:7f9efc18-8092-4ad1-8a2d-bd99f7261571}} | {{urn:epc:id:sgtin:0614141.000111.39494016340005962}}\\ {{urn:epc:id:sgtin:0614141.000111.39494016340006024}}\\ {{urn:epc:id:sgtin:0614141.000111.39494016340006162}}\\ {{urn:epc:id:sgtin:0614141.000111.39494016340006244}}\\ {{urn:epc:id:sgtin:0614141.000111.39494016340006370}}\\ {{urn:epc:class:lgtin:0123456.305512.LOT39494016340006475}} | 409 DUPLICATE_EVENT_ID |
+| Export | A | {{urn:uuid:7191cece-7a75-43de-a9d6-9a00f9ad8a06}} | {{urn:epc:id:sgtin:0123456.305512.39494085070006588}}\\ {{urn:epc:id:sgtin:0123456.305512.39494085070006699}} | 202 |
+| Export | B | {{urn:uuid:98e32881-7eeb-45cc-add8-dd930bf74510}} | {{urn:epc:id:sgtin:0123456.305512.39494085070006721}}\\ {{urn:epc:id:sgtin:0123456.305512.39494085070006848}} | 202 |
+| Export | B-reID | {{urn:uuid:98e32881-7eeb-45cc-add8-dd930bf74510}} | {{urn:epc:id:sgtin:0123456.305512.39494085080006966}}\\ {{urn:epc:id:sgtin:0123456.305512.39494085080007095}} | 409 DUPLICATE_EVENT_ID |
+| Export | X-reID | {{urn:uuid:98e32881-7eeb-45cc-add8-dd930bf74510}} | {{urn:epc:id:sgtin:0123456.305512.39494085080007104}}\\ {{urn:epc:id:sgtin:0123456.305512.39494085080007248}} | 409 DUPLICATE_EVENT_ID |
+| Stock Adjustment | A | {{urn:uuid:7f8c484c-e607-4553-a1c4-80bc33ca17fd}} | {{urn:epc:id:sgtin:0614141.107346.39494157130007328}}\\ {{urn:epc:id:sgtin:0614141.107346.39494157140007414}} | 403 PARTNER_TYPE_BIZSTEP_MISMATCH |
+| Stock Adjustment | B | {{urn:uuid:0ab8406d-b298-4f0f-8c11-31540617532b}} | {{urn:epc:id:sgtin:0614141.107346.39494157140007505}}\\ {{urn:epc:id:sgtin:0614141.107346.39494157140007657}} | 403 PARTNER_TYPE_BIZSTEP_MISMATCH |
+| Stock Adjustment | B-reID | {{urn:uuid:0ab8406d-b298-4f0f-8c11-31540617532b}} | {{urn:epc:id:sgtin:0614141.107346.39494157140007743}}\\ {{urn:epc:id:sgtin:0614141.107346.39494157140007803}} | 403 PARTNER_TYPE_BIZSTEP_MISMATCH |
+| Stock Adjustment | X-reID | {{urn:uuid:0ab8406d-b298-4f0f-8c11-31540617532b}} | {{urn:epc:id:sgtin:0614141.107346.39494157140007953}}\\ {{urn:epc:id:sgtin:0614141.107346.39494157140008039}} | 403 PARTNER_TYPE_BIZSTEP_MISMATCH |

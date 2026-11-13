@@ -1,0 +1,2 @@
+event_id,row_index,code,message,gtin,batch_no,case_group
+hierarchy-csv-row:4,4,VALIDATION_FAILED,"package_group is required",6161102974997,B9PNH10A16003,C163

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<epcis:EPCISDocument xmlns:epcis="urn:epcglobal:epcis:xsd:1"
+  schemaVersion="1.2" creationDate="2026-11-06T07:16:41.634Z">
+  <EPCISBody><EventList>
+    <ObjectEvent>
+      <eventID>urn:uuid:886663af-5f08-4e7b-b175-0f79ac3eb396</eventID>
+      <eventTime>2026-11-06T07:06:41.634Z</eventTime>
+      <eventTimeZoneOffset>+03:00</eventTimeZoneOffset>
+      <!-- Mandatory: serialized destruction — each destroyed pack listed individually -->
+      <!-- Platform marks each SGTIN as destroyed independently -->
+      <epcList>
+        <epc>urn:epc:id:sgtin:0614141.000111.39494016340004114</epc>
+        <epc>urn:epc:id:sgtin:0614141.000111.39494016340004272</epc>
+        <epc>urn:epc:id:sgtin:0614141.000111.39494016340004310</epc>
+        <epc>urn:epc:id:sgtin:0614141.000111.39494016340004492</epc>
+        <epc>urn:epc:id:sgtin:0614141.000111.39494016340004554</epc>
+      </epcList>
+      <action>OBSERVE</action>
+      <bizStep>urn:epcglobal:cbv:bizstep:destroying</bizStep>
+      <disposition>urn:epcglobal:cbv:disp:destroyed</disposition>
+      <readPoint><id>urn:epc:id:sgln:0123456.33333.0</id></readPoint>
+      <bizLocation><id>urn:epc:id:sgln:0123456.33333.0</id></bizLocation>
+      <bizTransactionList>
+        <bizTransaction type="urn:epcglobal:cbv:btt:cert">
+          urn:epc:id:gdti:0123456.99999.DESTROY-CERT-001
+        </bizTransaction>
+      </bizTransactionList>
+      <quantityList>
+        <quantityElement>
+          <epcClass>urn:epc:class:lgtin:0123456.305512.LOT39494016340004642</epcClass>
+          <quantity>1000</quantity>
+          <uom>EA</uom>
+        </quantityElement>
+      </quantityList>
+    </ObjectEvent>
+  </EventList></EPCISBody>
+</epcis:EPCISDocument>

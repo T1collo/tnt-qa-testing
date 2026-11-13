@@ -1,0 +1,182 @@
+{
+  "at": "2026-11-12T08:20:21.834Z",
+  "run": "A1VEYFD",
+  "tests": [
+    {
+      "id": "H14b",
+      "finding": "B",
+      "what": "Placeholder serials never used before: PENDING, NOTSET, EMPTY, NOSN, 00000000",
+      "expect": "rejected as placeholders (not stored as serials)",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-hierarchy\\H14b_A1VEYFD.csv",
+      "rows": 5,
+      "batches": [
+        "BA1VEYFD14B0",
+        "BA1VEYFD14B1",
+        "BA1VEYFD14B2",
+        "BA1VEYFD14B3",
+        "BA1VEYFD14B4"
+      ],
+      "serials": [
+        "PENDING",
+        "NOTSET",
+        "EMPTY",
+        "NOSN",
+        "00000000"
+      ],
+      "upload": {
+        "status": 202,
+        "body": "{\"async\":true,\"accepted\":true,\"correlation_id\":\"6bf345d1-e6c8-4a92-8645-0d7b8bbd1b91\",\"request_id\":\"6bf345d1-e6c8-4a92-8645-0d7b8bbd1b91\",\"status_url\":\"/partners/hierarchy-bulk/csv-import/status/6bf345d1-e6c8-4a92-8645-0d7b8bbd1b91\",\"message\":\"Hierarchy Bulk CSV accepted for asynchronous manufacturer event processing. Poll status_url.\",\"estimated_epcs\":15,\"event_count\":15,\"parse_rejected_count\":0}"
+      },
+      "requestId": "6bf345d1-e6c8-4a92-8645-0d7b8bbd1b91",
+      "final": {
+        "correlation_id": "6bf345d1-e6c8-4a92-8645-0d7b8bbd1b91",
+        "status": "succeeded",
+        "result_http_status": 207,
+        "partial": true,
+        "event_ids": [
+          "urn:uuid:bd7bb7d5-6d5d-43bc-8b3b-cd786f89efb6",
+          "urn:uuid:aec28094-0139-4979-8ef4-33c7369064d7",
+          "urn:uuid:fed412d5-f886-4125-8689-718d391245ff",
+          "urn:uuid:666bf6f2-e507-4e7d-8fd2-cf28a3c8ac6b",
+          "urn:uuid:f7df7814-79c2-44a5-85b5-e5d621bb72b7",
+          "urn:uuid:b7075ed7-e4b7-4611-8146-e17208e8159a",
+          "urn:uuid:44c50bd6-4997-47ae-846d-211443ddc1a6",
+          "urn:uuid:2393dbb3-ab69-451d-83ff-e5195097c15a",
+          "urn:uuid:b2a629a4-7784-422f-8a58-bcdb4179eb21",
+          "urn:uuid:47dd6f3a-6473-44e5-8ebc-df9a5495ea53"
+        ],
+        "rejected": [
+          {
+            "epc": "urn:epc:id:sscc:89012345.044953616",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:593ce159-e598-46bd-8545-1c4e0967ca97 was already ingested",
+            "event_id": "urn:uuid:593ce159-e598-46bd-8545-1c4e0967ca97",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:89012345.854723249",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:bbb65d94-8672-4c02-8547-eac45af2c60c was already ingested",
+            "event_id": "urn:uuid:bbb65d94-8672-4c02-8547-eac45af2c60c",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:89012345.842167116",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:70b73761-3f29-4cde-884d-e0212d36da7a was already ingested",
+            "event_id": "urn:uuid:70b73761-3f29-4cde-884d-e0212d36da7a",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:89012345.744722154",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:8a5f2f67-f746-492e-85d7-27ee20b13293 was already ingested",
+            "event_id": "urn:uuid:8a5f2f67-f746-492e-85d7-27ee20b13293",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:89012345.332550190",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:b366e55a-f397-438e-85f1-2d282f792917 was already ingested",
+            "event_id": "urn:uuid:b366e55a-f397-438e-85f1-2d282f792917",
+            "http_status": 409
+          }
+        ],
+        "accepted_count": 10,
+        "rejected_count": 5,
+        "error_code": null,
+        "error_message": null,
+        "result_summary": {
+          "message": "EPCIS events accepted",
+          "partial": true,
+          "success": true,
+          "rejected": [
+            {
+              "epc": "urn:epc:id:sscc:89012345.044953616",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:593ce159-e598-46bd-8545-1c4e0967ca97 was already ingested",
+              "event_id": "urn:uuid:593ce159-e598-46bd-8545-1c4e0967ca97",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:89012345.854723249",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:bbb65d94-8672-4c02-8547-eac45af2c60c was already ingested",
+              "event_id": "urn:uuid:bbb65d94-8672-4c02-8547-eac45af2c60c",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:89012345.842167116",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:70b73761-3f29-4cde-884d-e0212d36da7a was already ingested",
+              "event_id": "urn:uuid:70b73761-3f29-4cde-884d-e0212d36da7a",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:89012345.744722154",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:8a5f2f67-f746-492e-85d7-27ee20b13293 was already ingested",
+              "event_id": "urn:uuid:8a5f2f67-f746-492e-85d7-27ee20b13293",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:89012345.332550190",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:b366e55a-f397-438e-85f1-2d282f792917 was already ingested",
+              "event_id": "urn:uuid:b366e55a-f397-438e-85f1-2d282f792917",
+              "http_status": 409
+            }
+          ],
+          "byte_size": 383,
+          "event_ids": [
+            "urn:uuid:bd7bb7d5-6d5d-43bc-8b3b-cd786f89efb6",
+            "urn:uuid:aec28094-0139-4979-8ef4-33c7369064d7",
+            "urn:uuid:fed412d5-f886-4125-8689-718d391245ff",
+            "urn:uuid:666bf6f2-e507-4e7d-8fd2-cf28a3c8ac6b",
+            "urn:uuid:f7df7814-79c2-44a5-85b5-e5d621bb72b7",
+            "urn:uuid:b7075ed7-e4b7-4611-8146-e17208e8159a",
+            "urn:uuid:44c50bd6-4997-47ae-846d-211443ddc1a6",
+            "urn:uuid:2393dbb3-ab69-451d-83ff-e5195097c15a",
+            "urn:uuid:b2a629a4-7784-422f-8a58-bcdb4179eb21",
+            "urn:uuid:47dd6f3a-6473-44e5-8ebc-df9a5495ea53"
+          ],
+          "event_count": 15,
+          "content_type": "text/csv",
+          "accepted_count": 10,
+          "estimated_epcs": 15,
+          "rejected_count": 5,
+          "events_processed": 10,
+          "parse_rejected_count": 0
+        },
+        "accepted_at": "2026-11-12T08:20:07.345Z",
+        "updated_at": "2026-11-12T08:20:08.839Z",
+        "completed_at": "2026-11-12T08:20:08.839Z",
+        "endpoint": "/partners/hierarchy-bulk/csv-import/async"
+      },
+      "pageText": "Upload Manufacturer partners can submit EPCIS XML or hierarchy Bulk CSV for asynchronous validation and ingest. Outcomes appear here and under Async submissions. Supported limits Now: Hierarchy Bulk CSV (.csv) → manufacturer commissioning + aggregation events (partial) Also available: EPCIS 1.2 XML — switch to XML mode Coming later: JSON-LD (.json, .jsonld) Max size 10.00 MB Processing: async (session auth — no API key paste) Hierarchy Bulk CSV XML available CSV available JSON-LD soon Download CSV template Drop a .csv file here, or click to browse Max 10.00 MB · Hierarchy Bulk CSV (batches → cases → packages) H14b_A1VEYFD.csv 383 B Upload CSV Live status succeeded Correlation ID 6bf345d1-e6c8-4a92-8645-0d7b8bbd1b91 Events (accepted / rejected) 10 / 5 Partial · 10 event(s) accepted · 5 rejected DUPLICATE_EVENT_ID · urn:uuid:593ce159-e598-46bd-8545-1c4e0967ca97 Event ID urn:uuid:593ce159-e598-46bd-8545-1c4e0967ca97 was already ingested DUPLICATE_EVENT_ID · urn:uuid:bbb65d94-8672-4c02-8547-eac45af2c60c Event ID urn:uuid:bbb65d94-8672-4c02-8547-eac45af2c60c was already ingested DUPLICATE_EVENT_ID · urn:uuid:70b73761-3f29-4cde-884d-e0212d36da7a Event ID urn:uuid:70b73761-3f29-4cde-884d-e0212d36da7a was already ingested DUPLICATE_EVENT_ID · urn:uuid:8a5f2f67-f746-492e-85d7-27ee20b13293 Event ID urn:uuid:8a5f2f67-f746-492e-85d7-27ee20b13293 was already ingested DUPLICATE_EVENT_ID · urn:uuid:b366e55a-f397-438e-85f1-2d282f792917 Event ID urn:uuid:b366e55a-f397-438e-85f1-2d282f792917 was already ingested Download rejected CSV Refresh status National Track & Trace System — Partner Portal Need help? Contact trackandtrace@apeiro.digital",
+      "rejectedRowsFile": "H14b-rejected-rows.csv",
+      "stored": [
+        {
+          "batch": "BA1VEYFD14B0",
+          "found": false
+        },
+        {
+          "batch": "BA1VEYFD14B1",
+          "found": false
+        },
+        {
+          "batch": "BA1VEYFD14B2",
+          "found": false
+        },
+        {
+          "batch": "BA1VEYFD14B3",
+          "found": false
+        },
+        {
+          "batch": "BA1VEYFD14B4",
+          "found": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1311 @@
+{
+  "at": "2026-11-12T07:48:38.498Z",
+  "tests": [
+    {
+      "id": "12a",
+      "finding": "A",
+      "src": "CSV-12a_100_rows_one_bad.csv",
+      "what": "100 rows, line 52 has a future Event_Timestamp (2027-01-01)",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-retest\\CSV-12a_retest.csv",
+      "rows": 100,
+      "lots": [
+        "LEWJ12A"
+      ],
+      "serials": [
+        "SEWJ1200001",
+        "SEWJ1200002",
+        "SEWJ1200003",
+        "SEWJ1200004",
+        "SEWJ1200005",
+        "SEWJ1200006",
+        "SEWJ1200007",
+        "SEWJ1200008",
+        "SEWJ1200009",
+        "SEWJ1200010",
+        "SEWJ1200011",
+        "SEWJ1200012",
+        "SEWJ1200013",
+        "SEWJ1200014",
+        "SEWJ1200015",
+        "SEWJ1200016",
+        "SEWJ1200017",
+        "SEWJ1200018",
+        "SEWJ1200019",
+        "SEWJ1200020",
+        "SEWJ1200021",
+        "SEWJ1200022",
+        "SEWJ1200023",
+        "SEWJ1200024",
+        "SEWJ1200025",
+        "SEWJ1200026",
+        "SEWJ1200027",
+        "SEWJ1200028",
+        "SEWJ1200029",
+        "SEWJ1200030",
+        "SEWJ1200031",
+        "SEWJ1200032",
+        "SEWJ1200033",
+        "SEWJ1200034",
+        "SEWJ1200035",
+        "SEWJ1200036",
+        "SEWJ1200037",
+        "SEWJ1200038",
+        "SEWJ1200039",
+        "SEWJ1200040",
+        "SEWJ1200041",
+        "SEWJ1200042",
+        "SEWJ1200043",
+        "SEWJ1200044",
+        "SEWJ1200045",
+        "SEWJ1200046",
+        "SEWJ1200047",
+        "SEWJ1200048",
+        "SEWJ1200049",
+        "SEWJ1200050",
+        "SEWJ1200051",
+        "SEWJ1200052",
+        "SEWJ1200053",
+        "SEWJ1200054",
+        "SEWJ1200055",
+        "SEWJ1200056",
+        "SEWJ1200057",
+        "SEWJ1200058",
+        "SEWJ1200059",
+        "SEWJ1200060",
+        "SEWJ1200061",
+        "SEWJ1200062",
+        "SEWJ1200063",
+        "SEWJ1200064",
+        "SEWJ1200065",
+        "SEWJ1200066",
+        "SEWJ1200067",
+        "SEWJ1200068",
+        "SEWJ1200069",
+        "SEWJ1200070",
+        "SEWJ1200071",
+        "SEWJ1200072",
+        "SEWJ1200073",
+        "SEWJ1200074",
+        "SEWJ1200075",
+        "SEWJ1200076",
+        "SEWJ1200077",
+        "SEWJ1200078",
+        "SEWJ1200079",
+        "SEWJ1200080",
+        "SEWJ1200081",
+        "SEWJ1200082",
+        "SEWJ1200083",
+        "SEWJ1200084",
+        "SEWJ1200085",
+        "SEWJ1200086",
+        "SEWJ1200087",
+        "SEWJ1200088",
+        "SEWJ1200089",
+        "SEWJ1200090",
+        "SEWJ1200091",
+        "SEWJ1200092",
+        "SEWJ1200093",
+        "SEWJ1200094",
+        "SEWJ1200095",
+        "SEWJ1200096",
+        "SEWJ1200097",
+        "SEWJ1200098",
+        "SEWJ1200099",
+        "SEWJ1200100"
+      ],
+      "validate": {
+        "status": 200,
+        "body": "{\"valid\":{\"count\":100},\"invalid\":{\"count\":0,\"rows\":[]}}"
+      },
+      "import": {
+        "status": 202,
+        "body": "{\"async\":true,\"correlation_id\":\"04b749ea-0612-4769-8116-427310e25980\",\"status_url\":\"/api/manufacturer/epcis-events/csv-import/status/04b749ea-0612-4769-8116-427310e25980\",\"accepted\":true,\"message\":\"EPCIS Event CSV accepted for asynchronous processing. Poll status_url for outcomes.\"}"
+      },
+      "final": {
+        "correlation_id": "04b749ea-0612-4769-8116-427310e25980",
+        "status": "succeeded",
+        "result_http_status": 207,
+        "partial": true,
+        "event_ids": [
+          "urn:uuid:6ac38dda-1cfa-41dd-8b05-79988f05bb82",
+          "urn:uuid:aeca5ab7-b63e-445e-80d2-4d7029cad881",
+          "urn:uuid:bb5f1522-ef2d-424e-81d2-468dbd8b34d0",
+          "urn:uuid:b88f1563-c2c0-4ccb-8fd7-ebe5a8dc00ed",
+          "urn:uuid:d0112a52-dad0-4a8e-8908-e2e90618801f",
+          "urn:uuid:684ce087-bf2e-423a-8426-fe3a89b10244",
+          "urn:uuid:5d76953f-6044-4844-8623-56c233d4b5c6",
+          "urn:uuid:5d591a19-0c6e-4b6b-8b61-39ba68eb67b1",
+          "urn:uuid:bd688eeb-7f10-4986-8d81-6cd3e9c7dc14",
+          "urn:uuid:896dda53-15df-4b56-87d7-9256950ea764",
+          "urn:uuid:4152ca1e-ef0b-46a8-8904-f70bac457ed6",
+          "urn:uuid:c8548ba9-2a79-48b1-88a7-86abf6045635",
+          "urn:uuid:7bc596eb-2b3e-4827-87f0-eb41bdaa8e3e",
+          "urn:uuid:d4f077f4-8540-41b2-8da8-2e6fa7191735",
+          "urn:uuid:e26159d7-87ca-4c7a-85e7-c88c782231a0",
+          "urn:uuid:5e54fbdd-05ac-45fb-888c-8233020f1940",
+          "urn:uuid:c8ab888a-50f2-4f5d-87e1-9d4d4ae28dbd",
+          "urn:uuid:b11630be-1ca0-4508-8fa0-64b22b75f2de",
+          "urn:uuid:33243f88-ed57-425c-893c-01928268081f",
+          "urn:uuid:f00a3728-ce2c-47ff-86e6-99166697df02"
+        ],
+        "rejected": [
+          {
+            "code": "FUTURE_EVENT_TIME",
+            "message": "Event time 2027-01-01T05:00:00.000Z is more than 5 minutes in the future (reference time: 2026-11-12T07:45:39.178Z)",
+            "event_id": "urn:uuid:1cec6121-a50e-446e-833b-746e2a1ffef6",
+            "http_status": 400
+          }
+        ],
+        "accepted_count": 99,
+        "error_code": null,
+        "error_message": null,
+        "result_summary": {
+          "ok": true,
+          "message": "EPCIS events accepted",
+          "partial": true,
+          "success": true,
+          "rejected": [
+            {
+              "code": "FUTURE_EVENT_TIME",
+              "message": "Event time 2027-01-01T05:00:00.000Z is more than 5 minutes in the future (reference time: 2026-11-12T07:45:39.178Z)",
+              "event_id": "urn:uuid:1cec6121-a50e-446e-833b-746e2a1ffef6",
+              "http_status": 400
+            }
+          ],
+          "byte_size": 57188,
+          "epc_count": 300,
+          "event_ids": [
+            "urn:uuid:6ac38dda-1cfa-41dd-8b05-79988f05bb82",
+            "urn:uuid:aeca5ab7-b63e-445e-80d2-4d7029cad881",
+            "urn:uuid:bb5f1522-ef2d-424e-81d2-468dbd8b34d0",
+            "urn:uuid:b88f1563-c2c0-4ccb-8fd7-ebe5a8dc00ed",
+            "urn:uuid:d0112a52-dad0-4a8e-8908-e2e90618801f",
+            "urn:uuid:684ce087-bf2e-423a-8426-fe3a89b10244",
+            "urn:uuid:5d76953f-6044-4844-8623-56c233d4b5c6",
+            "urn:uuid:5d591a19-0c6e-4b6b-8b61-39ba68eb67b1",
+            "urn:uuid:bd688eeb-7f10-4986-8d81-6cd3e9c7dc14",
+            "urn:uuid:896dda53-15df-4b56-87d7-9256950ea764",
+            "urn:uuid:4152ca1e-ef0b-46a8-8904-f70bac457ed6",
+            "urn:uuid:c8548ba9-2a79-48b1-88a7-86abf6045635",
+            "urn:uuid:7bc596eb-2b3e-4827-87f0-eb41bdaa8e3e",
+            "urn:uuid:d4f077f4-8540-41b2-8da8-2e6fa7191735",
+            "urn:uuid:e26159d7-87ca-4c7a-85e7-c88c782231a0",
+            "urn:uuid:5e54fbdd-05ac-45fb-888c-8233020f1940",
+            "urn:uuid:c8ab888a-50f2-4f5d-87e1-9d4d4ae28dbd",
+            "urn:uuid:b11630be-1ca0-4508-8fa0-64b22b75f2de",
+            "urn:uuid:33243f88-ed57-425c-893c-01928268081f",
+            "urn:uuid:f00a3728-ce2c-47ff-86e6-99166697df02"
+          ],
+          "object_key": "epcis/ingest/2026/11/12/04b749ea-0612-4769-8116-427310e25980.jsonld",
+          "event_count": 100,
+          "http_status": 207,
+          "content_type": "application/ld+json",
+          "warning_codes": [
+            "UNKNOWN_SGLN",
+            "INVALID_LOT"
+          ],
+          "warning_count": 100,
+          "accepted_count": 99,
+          "estimated_epcs": 300,
+          "rejected_codes": [
+            "FUTURE_EVENT_TIME"
+          ],
+          "rejected_count": 1,
+          "processing_mode": "ASYNC",
+          "events_processed": 99,
+          "error_code_totals": {
+            "FUTURE_EVENT_TIME": 1
+          },
+          "rejected_event_ids": [
+            "urn:uuid:1cec6121-a50e-446e-833b-746e2a1ffef6"
+          ],
+          "warning_code_totals": {
+            "INVALID_LOT": 1,
+            "UNKNOWN_SGLN": 99
+          },
+          "diagnostics_available": true,
+          "diagnostics_byte_size": 19474,
+          "diagnostics_expires_at": "2027-02-10T07:45:49.466Z",
+          "diagnostics_object_key": "epcis/async-diagnostics/2026/11/12/04b749ea-0612-4769-8116-427310e25980.ndjson",
+          "diagnostics_event_count": 100
+        },
+        "accepted_at": "2026-11-12 07:45:39.255+00",
+        "created_at": "2026-11-12 07:45:39.255+00",
+        "updated_at": "2026-11-12 07:45:49.499+00",
+        "completed_at": "2026-11-12 07:45:49.499+00"
+      },
+      "stored": [
+        {
+          "lot": "LEWJ12A",
+          "batch": 9654,
+          "created_at": "2026-11-12T07:45:39.405Z",
+          "manufacturing_date": "2028-11-01",
+          "expiry": "2028-11-01",
+          "qty": "1.00",
+          "serials": [
+            "SEWJ1200001",
+            "SEWJ1200002",
+            "SEWJ1200003",
+            "SEWJ1200004",
+            "SEWJ1200005",
+            "SEWJ1200006",
+            "SEWJ1200007",
+            "SEWJ1200008",
+            "SEWJ1200009",
+            "SEWJ1200010",
+            "SEWJ1200011",
+            "SEWJ1200012",
+            "SEWJ1200013",
+            "SEWJ1200014",
+            "SEWJ1200015",
+            "SEWJ1200016",
+            "SEWJ1200017",
+            "SEWJ1200018",
+            "SEWJ1200019",
+            "SEWJ1200020",
+            "SEWJ1200021",
+            "SEWJ1200022",
+            "SEWJ1200023",
+            "SEWJ1200024",
+            "SEWJ1200025",
+            "SEWJ1200026",
+            "SEWJ1200027",
+            "SEWJ1200028",
+            "SEWJ1200029",
+            "SEWJ1200030",
+            "SEWJ1200031",
+            "SEWJ1200032",
+            "SEWJ1200033",
+            "SEWJ1200034",
+            "SEWJ1200035",
+            "SEWJ1200036",
+            "SEWJ1200037",
+            "SEWJ1200038",
+            "SEWJ1200039",
+            "SEWJ1200040",
+            "SEWJ1200041",
+            "SEWJ1200042",
+            "SEWJ1200043",
+            "SEWJ1200044",
+            "SEWJ1200045",
+            "SEWJ1200046",
+            "SEWJ1200047",
+            "SEWJ1200048",
+            "SEWJ1200049",
+            "SEWJ1200050",
+            "SEWJ1200052",
+            "SEWJ1200053",
+            "SEWJ1200054",
+            "SEWJ1200055",
+            "SEWJ1200056",
+            "SEWJ1200057",
+            "SEWJ1200058",
+            "SEWJ1200059",
+            "SEWJ1200060",
+            "SEWJ1200061",
+            "SEWJ1200062",
+            "SEWJ1200063",
+            "SEWJ1200064",
+            "SEWJ1200065",
+            "SEWJ1200066",
+            "SEWJ1200067",
+            "SEWJ1200068",
+            "SEWJ1200069",
+            "SEWJ1200070",
+            "SEWJ1200071",
+            "SEWJ1200072",
+            "SEWJ1200073",
+            "SEWJ1200074",
+            "SEWJ1200075",
+            "SEWJ1200076",
+            "SEWJ1200077",
+            "SEWJ1200078",
+            "SEWJ1200079",
+            "SEWJ1200080",
+            "SEWJ1200081",
+            "SEWJ1200082",
+            "SEWJ1200083",
+            "SEWJ1200084",
+            "SEWJ1200085",
+            "SEWJ1200086",
+            "SEWJ1200087",
+            "SEWJ1200088",
+            "SEWJ1200089",
+            "SEWJ1200090",
+            "SEWJ1200091",
+            "SEWJ1200092",
+            "SEWJ1200093",
+            "SEWJ1200094",
+            "SEWJ1200095",
+            "SEWJ1200096",
+            "SEWJ1200097",
+            "SEWJ1200098",
+            "SEWJ1200099",
+            "SEWJ1200100"
+          ]
+        }
+      ],
+      "storedSerials": [
+        "SEWJ1200001",
+        "SEWJ1200002",
+        "SEWJ1200003",
+        "SEWJ1200004",
+        "SEWJ1200005",
+        "SEWJ1200006",
+        "SEWJ1200007",
+        "SEWJ1200008",
+        "SEWJ1200009",
+        "SEWJ1200010",
+        "SEWJ1200011",
+        "SEWJ1200012",
+        "SEWJ1200013",
+        "SEWJ1200014",
+        "SEWJ1200015",
+        "SEWJ1200016",
+        "SEWJ1200017",
+        "SEWJ1200018",
+        "SEWJ1200019",
+        "SEWJ1200020",
+        "SEWJ1200021",
+        "SEWJ1200022",
+        "SEWJ1200023",
+        "SEWJ1200024",
+        "SEWJ1200025",
+        "SEWJ1200026",
+        "SEWJ1200027",
+        "SEWJ1200028",
+        "SEWJ1200029",
+        "SEWJ1200030",
+        "SEWJ1200031",
+        "SEWJ1200032",
+        "SEWJ1200033",
+        "SEWJ1200034",
+        "SEWJ1200035",
+        "SEWJ1200036",
+        "SEWJ1200037",
+        "SEWJ1200038",
+        "SEWJ1200039",
+        "SEWJ1200040",
+        "SEWJ1200041",
+        "SEWJ1200042",
+        "SEWJ1200043",
+        "SEWJ1200044",
+        "SEWJ1200045",
+        "SEWJ1200046",
+        "SEWJ1200047",
+        "SEWJ1200048",
+        "SEWJ1200049",
+        "SEWJ1200050",
+        "SEWJ1200052",
+        "SEWJ1200053",
+        "SEWJ1200054",
+        "SEWJ1200055",
+        "SEWJ1200056",
+        "SEWJ1200057",
+        "SEWJ1200058",
+        "SEWJ1200059",
+        "SEWJ1200060",
+        "SEWJ1200061",
+        "SEWJ1200062",
+        "SEWJ1200063",
+        "SEWJ1200064",
+        "SEWJ1200065",
+        "SEWJ1200066",
+        "SEWJ1200067",
+        "SEWJ1200068",
+        "SEWJ1200069",
+        "SEWJ1200070",
+        "SEWJ1200071",
+        "SEWJ1200072",
+        "SEWJ1200073",
+        "SEWJ1200074",
+        "SEWJ1200075",
+        "SEWJ1200076",
+        "SEWJ1200077",
+        "SEWJ1200078",
+        "SEWJ1200079",
+        "SEWJ1200080",
+        "SEWJ1200081",
+        "SEWJ1200082",
+        "SEWJ1200083",
+        "SEWJ1200084",
+        "SEWJ1200085",
+        "SEWJ1200086",
+        "SEWJ1200087",
+        "SEWJ1200088",
+        "SEWJ1200089",
+        "SEWJ1200090",
+        "SEWJ1200091",
+        "SEWJ1200092",
+        "SEWJ1200093",
+        "SEWJ1200094",
+        "SEWJ1200095",
+        "SEWJ1200096",
+        "SEWJ1200097",
+        "SEWJ1200098",
+        "SEWJ1200099",
+        "SEWJ1200100"
+      ],
+      "run": "EWJ"
+    },
+    {
+      "id": "16",
+      "finding": "A",
+      "src": "CSV-16_broken_rows.csv",
+      "what": "4 rows: one with an extra field, one with a missing field, blank lines",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-retest\\CSV-16_retest.csv",
+      "rows": 4,
+      "lots": [
+        "LEWJ16A"
+      ],
+      "serials": [
+        "SEWJ1600001",
+        "SEWJ1600002",
+        "SEWJ1600003",
+        "SEWJ1600004"
+      ],
+      "validate": {
+        "status": 200,
+        "body": "{\"valid\":{\"count\":4},\"invalid\":{\"count\":0,\"rows\":[]}}"
+      },
+      "import": {
+        "status": 202,
+        "body": "{\"async\":true,\"correlation_id\":\"68bc1c70-100d-4535-8b3a-30dca44ecd45\",\"status_url\":\"/api/manufacturer/epcis-events/csv-import/status/68bc1c70-100d-4535-8b3a-30dca44ecd45\",\"accepted\":true,\"message\":\"EPCIS Event CSV accepted for asynchronous processing. Poll status_url for outcomes.\"}"
+      },
+      "final": {
+        "correlation_id": "68bc1c70-100d-4535-8b3a-30dca44ecd45",
+        "status": "succeeded",
+        "result_http_status": 207,
+        "partial": true,
+        "event_ids": [
+          "urn:uuid:b2641168-4a3c-4b38-887d-8ffa7f957276",
+          "urn:uuid:b42549e7-3dfd-488a-8b96-16580fda8e3a",
+          "urn:uuid:ca5e9587-76f5-432b-8d64-595e48dea244"
+        ],
+        "rejected": [
+          {
+            "code": "INVALID_JSON_STRUCTURE",
+            "message": "countryOfOrigin must be an ISO 3166-1 alpha-2 code (e.g. KE, IN) (+2 more schema issue(s))",
+            "event_id": "urn:uuid:50ac1935-1632-4904-8693-62d0b5bc8adf",
+            "http_status": 400
+          }
+        ],
+        "accepted_count": 3,
+        "error_code": null,
+        "error_message": null,
+        "result_summary": {
+          "ok": true,
+          "message": "EPCIS events accepted",
+          "partial": true,
+          "success": true,
+          "rejected": [
+            {
+              "code": "INVALID_JSON_STRUCTURE",
+              "message": "countryOfOrigin must be an ISO 3166-1 alpha-2 code (e.g. KE, IN) (+2 more schema issue(s))",
+              "event_id": "urn:uuid:50ac1935-1632-4904-8693-62d0b5bc8adf",
+              "http_status": 400
+            }
+          ],
+          "byte_size": 2521,
+          "epc_count": 12,
+          "event_ids": [
+            "urn:uuid:b2641168-4a3c-4b38-887d-8ffa7f957276",
+            "urn:uuid:b42549e7-3dfd-488a-8b96-16580fda8e3a",
+            "urn:uuid:ca5e9587-76f5-432b-8d64-595e48dea244"
+          ],
+          "object_key": "epcis/ingest/2026/11/12/68bc1c70-100d-4535-8b3a-30dca44ecd45.jsonld",
+          "event_count": 4,
+          "http_status": 207,
+          "content_type": "application/ld+json",
+          "warning_codes": [
+            "UNKNOWN_SGLN",
+            "INVALID_LOT"
+          ],
+          "warning_count": 4,
+          "accepted_count": 3,
+          "estimated_epcs": 12,
+          "rejected_codes": [
+            "WARNING",
+            "INVALID_JSON_STRUCTURE"
+          ],
+          "rejected_count": 1,
+          "processing_mode": "ASYNC",
+          "events_processed": 3,
+          "error_code_totals": {
+            "WARNING": 3,
+            "INVALID_JSON_STRUCTURE": 1
+          },
+          "rejected_event_ids": [
+            "urn:uuid:50ac1935-1632-4904-8693-62d0b5bc8adf"
+          ],
+          "warning_code_totals": {
+            "INVALID_LOT": 1,
+            "UNKNOWN_SGLN": 3
+          },
+          "diagnostics_available": true,
+          "diagnostics_byte_size": 1218,
+          "diagnostics_expires_at": "2027-02-10T07:45:57.812Z",
+          "diagnostics_object_key": "epcis/async-diagnostics/2026/11/12/68bc1c70-100d-4535-8b3a-30dca44ecd45.ndjson",
+          "diagnostics_event_count": 4
+        },
+        "accepted_at": "2026-11-12 07:45:57.401+00",
+        "created_at": "2026-11-12 07:45:57.401+00",
+        "updated_at": "2026-11-12 07:45:57.848+00",
+        "completed_at": "2026-11-12 07:45:57.848+00"
+      },
+      "stored": [
+        {
+          "lot": "LEWJ16A",
+          "batch": 9753,
+          "created_at": "2026-11-12T07:45:57.543Z",
+          "manufacturing_date": "2028-11-01",
+          "expiry": "2028-11-01",
+          "qty": "1.00",
+          "serials": [
+            "SEWJ1600001",
+            "SEWJ1600002",
+            "SEWJ1600003"
+          ]
+        }
+      ],
+      "storedSerials": [
+        "SEWJ1600001",
+        "SEWJ1600002",
+        "SEWJ1600003"
+      ],
+      "run": "EWJ"
+    },
+    {
+      "id": "4b",
+      "finding": "A",
+      "src": "CSV-04b_without_rejected_rows.csv",
+      "what": "10 rows of values that must pass",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-retest\\CSV-4b_retest.csv",
+      "rows": 10,
+      "lots": [
+        "LEWJ04A",
+        "LEWJ04F",
+        "LEWJ04BBBBBBBBBBBBBB"
+      ],
+      "serials": [
+        "SEWJ0400004",
+        "SEWJ0400005",
+        "061640033604999992",
+        "SEWJ04AAAAAAAAAAAAAA",
+        "SEWJ04-45",
+        "SEWJ04_95",
+        "SEWJ04.46",
+        "SEWJ04/47",
+        "SEWJ0400006",
+        "SEWJ0400007"
+      ],
+      "validate": {
+        "status": 200,
+        "body": "{\"valid\":{\"count\":10},\"invalid\":{\"count\":0,\"rows\":[]}}"
+      },
+      "import": {
+        "status": 202,
+        "body": "{\"async\":true,\"correlation_id\":\"bbf27ac7-b019-4c2a-8232-786c7e82fa51\",\"status_url\":\"/api/manufacturer/epcis-events/csv-import/status/bbf27ac7-b019-4c2a-8232-786c7e82fa51\",\"accepted\":true,\"message\":\"EPCIS Event CSV accepted for asynchronous processing. Poll status_url for outcomes.\"}"
+      },
+      "final": {
+        "correlation_id": "bbf27ac7-b019-4c2a-8232-786c7e82fa51",
+        "status": "succeeded",
+        "result_http_status": 207,
+        "partial": true,
+        "event_ids": [
+          "urn:uuid:9b521d70-723e-4b64-82b2-288b8279f6e9",
+          "urn:uuid:95f403d4-7b79-472c-8a5e-f3cae37b33a5",
+          "urn:uuid:bf5aead8-89a4-4c4b-8138-5ea1e16ef450",
+          "urn:uuid:bb75e12a-1a56-4eef-8902-f8ecbcbb3986",
+          "urn:uuid:655b8bbc-36ca-437d-82e4-3c0576d9cd8c",
+          "urn:uuid:58f16936-cfca-4df0-8ad9-0db8bb2372e8",
+          "urn:uuid:bff565c2-4f21-4805-8831-e00293195781",
+          "urn:uuid:0f8fc2d6-1b4d-4006-871e-d49410b32b98"
+        ],
+        "rejected": [
+          {
+            "code": "INVALID_GS1_IDENTIFIER",
+            "message": "SGTIN company prefix must be 6–12 digits",
+            "event_id": "urn:uuid:70bdfffe-f9b3-4eb8-873e-51e971552ae4",
+            "http_status": 400
+          },
+          {
+            "code": "INVALID_GS1_IDENTIFIER",
+            "message": "SGTIN serial must be 1–20 GS1-permitted URI characters",
+            "event_id": "urn:uuid:136b6e0e-f37a-49f8-800b-38fca74a2262",
+            "http_status": 400
+          }
+        ],
+        "accepted_count": 8,
+        "error_code": null,
+        "error_message": null,
+        "result_summary": {
+          "ok": true,
+          "message": "EPCIS events accepted",
+          "partial": true,
+          "success": true,
+          "rejected": [
+            {
+              "code": "INVALID_GS1_IDENTIFIER",
+              "message": "SGTIN company prefix must be 6–12 digits",
+              "event_id": "urn:uuid:70bdfffe-f9b3-4eb8-873e-51e971552ae4",
+              "http_status": 400
+            },
+            {
+              "code": "INVALID_GS1_IDENTIFIER",
+              "message": "SGTIN serial must be 1–20 GS1-permitted URI characters",
+              "event_id": "urn:uuid:136b6e0e-f37a-49f8-800b-38fca74a2262",
+              "http_status": 400
+            }
+          ],
+          "byte_size": 5912,
+          "epc_count": 30,
+          "event_ids": [
+            "urn:uuid:9b521d70-723e-4b64-82b2-288b8279f6e9",
+            "urn:uuid:95f403d4-7b79-472c-8a5e-f3cae37b33a5",
+            "urn:uuid:bf5aead8-89a4-4c4b-8138-5ea1e16ef450",
+            "urn:uuid:bb75e12a-1a56-4eef-8902-f8ecbcbb3986",
+            "urn:uuid:655b8bbc-36ca-437d-82e4-3c0576d9cd8c",
+            "urn:uuid:58f16936-cfca-4df0-8ad9-0db8bb2372e8",
+            "urn:uuid:bff565c2-4f21-4805-8831-e00293195781",
+            "urn:uuid:0f8fc2d6-1b4d-4006-871e-d49410b32b98"
+          ],
+          "object_key": "epcis/ingest/2026/11/12/bbf27ac7-b019-4c2a-8232-786c7e82fa51.jsonld",
+          "event_count": 10,
+          "http_status": 207,
+          "content_type": "application/ld+json",
+          "warning_codes": [
+            "UNKNOWN_SGLN",
+            "INVALID_LOT"
+          ],
+          "warning_count": 11,
+          "accepted_count": 8,
+          "estimated_epcs": 30,
+          "rejected_codes": [
+            "INVALID_GS1_IDENTIFIER",
+            "WARNING"
+          ],
+          "rejected_count": 2,
+          "processing_mode": "ASYNC",
+          "events_processed": 8,
+          "error_code_totals": {
+            "WARNING": 2,
+            "INVALID_GS1_IDENTIFIER": 2
+          },
+          "rejected_event_ids": [
+            "urn:uuid:70bdfffe-f9b3-4eb8-873e-51e971552ae4",
+            "urn:uuid:136b6e0e-f37a-49f8-800b-38fca74a2262"
+          ],
+          "warning_code_totals": {
+            "INVALID_LOT": 3,
+            "UNKNOWN_SGLN": 8
+          },
+          "diagnostics_available": true,
+          "diagnostics_byte_size": 2431,
+          "diagnostics_expires_at": "2027-02-10T07:46:07.281Z",
+          "diagnostics_object_key": "epcis/async-diagnostics/2026/11/12/bbf27ac7-b019-4c2a-8232-786c7e82fa51.ndjson",
+          "diagnostics_event_count": 10
+        },
+        "accepted_at": "2026-11-12 07:46:06.227+00",
+        "created_at": "2026-11-12 07:46:06.227+00",
+        "updated_at": "2026-11-12 07:46:07.311+00",
+        "completed_at": "2026-11-12 07:46:07.311+00"
+      },
+      "stored": [
+        {
+          "lot": "LEWJ04A",
+          "batch": 9756,
+          "created_at": "2026-11-12T07:46:06.328Z",
+          "manufacturing_date": "2028-11-01",
+          "expiry": "2028-11-01",
+          "qty": "1.00",
+          "serials": [
+            "061640033604999992",
+            "SEWJ04-45",
+            "SEWJ0400004",
+            "SEWJ0400006",
+            "SEWJ0400007",
+            "SEWJ04_95"
+          ]
+        },
+        {
+          "lot": "LEWJ04F",
+          "batch": 9757,
+          "created_at": "2026-11-12T07:46:06.475Z",
+          "manufacturing_date": "2028-11-01",
+          "expiry": "2028-11-01",
+          "qty": "1.00",
+          "serials": [
+            "SEWJ0400005"
+          ]
+        },
+        {
+          "lot": "LEWJ04BBBBBBBBBBBBBB",
+          "batch": 9759,
+          "created_at": "2026-11-12T07:46:06.733Z",
+          "manufacturing_date": "2028-11-01",
+          "expiry": "2028-11-01",
+          "qty": "1.00",
+          "serials": [
+            "SEWJ04AAAAAAAAAAAAAA"
+          ]
+        }
+      ],
+      "storedSerials": [
+        "061640033604999992",
+        "SEWJ04-45",
+        "SEWJ0400004",
+        "SEWJ0400006",
+        "SEWJ0400007",
+        "SEWJ04_95",
+        "SEWJ0400005",
+        "SEWJ04AAAAAAAAAAAAAA"
+      ],
+      "run": "EWJ"
+    },
+    {
+      "id": "6b",
+      "finding": "A",
+      "src": "CSV-06b_without_rejected_rows.csv",
+      "what": "8 rows with duplicates in the file",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-retest\\CSV-6b_retest.csv",
+      "rows": 8,
+      "lots": [
+        "LEWJ06A"
+      ],
+      "serials": [
+        "SEWJ0600001",
+        "SEWJ0600002",
+        "SEWJ0600003",
+        "SEWJ0600002",
+        "061640033606000016",
+        "SEWJ0600003",
+        "SEWJ0600003",
+        "SEWJ0100001"
+      ],
+      "validate": {
+        "status": 200,
+        "body": "{\"valid\":{\"count\":8},\"invalid\":{\"count\":0,\"rows\":[]}}"
+      },
+      "import": {
+        "status": 202,
+        "body": "{\"async\":true,\"correlation_id\":\"112a063a-1891-4775-b72c-20265b601f72\",\"status_url\":\"/api/manufacturer/epcis-events/csv-import/status/112a063a-1891-4775-b72c-20265b601f72\",\"accepted\":true,\"message\":\"EPCIS Event CSV accepted for asynchronous processing. Poll status_url for outcomes.\"}"
+      },
+      "final": {
+        "correlation_id": "112a063a-1891-4775-b72c-20265b601f72",
+        "status": "succeeded",
+        "result_http_status": 207,
+        "partial": true,
+        "event_ids": [
+          "urn:uuid:d18adb03-5ee1-4f9e-8c70-7b2cdcb650e5",
+          "urn:uuid:cd674812-4f54-41c3-836c-f0f5aeb9b5a1",
+          "urn:uuid:2f9e4a2d-bf4e-4dc3-89bc-7c32cf474343",
+          "urn:uuid:b4317b01-ecc8-46d0-85b8-389368728e02",
+          "urn:uuid:26096c52-369d-4bb5-85e6-171f18387bc2",
+          "urn:uuid:c6d329be-1027-48ad-84e1-8bed82cbaa3d"
+        ],
+        "rejected": [
+          {
+            "code": "DUPLICATE_EPC_IN_EVENT",
+            "message": "Event urn:uuid:bc4a70d6-c9da-4184-8874-ef0e1da03d74: EPC URI \"urn:epc:id:sgtin:6161102974997.SEWJ0600003\" appears more than once in the same event's EPC list",
+            "event_id": "urn:uuid:bc4a70d6-c9da-4184-8874-ef0e1da03d74",
+            "http_status": 400
+          }
+        ],
+        "accepted_count": 6,
+        "error_code": null,
+        "error_message": null,
+        "result_summary": {
+          "ok": true,
+          "message": "EPCIS events accepted",
+          "partial": true,
+          "success": true,
+          "rejected": [
+            {
+              "code": "DUPLICATE_EPC_IN_EVENT",
+              "message": "Event urn:uuid:bc4a70d6-c9da-4184-8874-ef0e1da03d74: EPC URI \"urn:epc:id:sgtin:6161102974997.SEWJ0600003\" appears more than once in the same event's EPC list",
+              "event_id": "urn:uuid:bc4a70d6-c9da-4184-8874-ef0e1da03d74",
+              "http_status": 400
+            }
+          ],
+          "byte_size": 3924,
+          "epc_count": 25,
+          "event_ids": [
+            "urn:uuid:d18adb03-5ee1-4f9e-8c70-7b2cdcb650e5",
+            "urn:uuid:cd674812-4f54-41c3-836c-f0f5aeb9b5a1",
+            "urn:uuid:2f9e4a2d-bf4e-4dc3-89bc-7c32cf474343",
+            "urn:uuid:b4317b01-ecc8-46d0-85b8-389368728e02",
+            "urn:uuid:26096c52-369d-4bb5-85e6-171f18387bc2",
+            "urn:uuid:c6d329be-1027-48ad-84e1-8bed82cbaa3d"
+          ],
+          "object_key": "epcis/ingest/2026/11/12/112a063a-1891-4775-b72c-20265b601f72.jsonld",
+          "event_count": 7,
+          "http_status": 207,
+          "content_type": "application/ld+json",
+          "warning_codes": [
+            "UNKNOWN_SGLN",
+            "INVALID_LOT",
+            "PARENT_NOT_FOUND"
+          ],
+          "warning_count": 9,
+          "accepted_count": 6,
+          "estimated_epcs": 25,
+          "rejected_codes": [
+            "DUPLICATE_EPC_IN_EVENT"
+          ],
+          "rejected_count": 1,
+          "processing_mode": "ASYNC",
+          "events_processed": 6,
+          "error_code_totals": {
+            "DUPLICATE_EPC_IN_EVENT": 1
+          },
+          "rejected_event_ids": [
+            "urn:uuid:bc4a70d6-c9da-4184-8874-ef0e1da03d74"
+          ],
+          "warning_code_totals": {
+            "INVALID_LOT": 1,
+            "UNKNOWN_SGLN": 6,
+            "PARENT_NOT_FOUND": 2
+          },
+          "diagnostics_available": true,
+          "diagnostics_byte_size": 1862,
+          "diagnostics_expires_at": "2027-02-10T07:46:18.525Z",
+          "diagnostics_object_key": "epcis/async-diagnostics/2026/11/12/112a063a-1891-4775-b72c-20265b601f72.ndjson",
+          "diagnostics_event_count": 7
+        },
+        "accepted_at": "2026-11-12 07:46:17.789+00",
+        "created_at": "2026-11-12 07:46:17.789+00",
+        "updated_at": "2026-11-12 07:46:18.553+00",
+        "completed_at": "2026-11-12 07:46:18.553+00"
+      },
+      "stored": [
+        {
+          "lot": "LEWJ06A",
+          "batch": 9764,
+          "created_at": "2026-11-12T07:46:17.943Z",
+          "manufacturing_date": "2028-11-01",
+          "expiry": "2028-11-01",
+          "qty": "1.00",
+          "serials": [
+            "SEWJ0100001",
+            "SEWJ0600001",
+            "SEWJ0600002",
+            "SEWJ0600003"
+          ]
+        }
+      ],
+      "storedSerials": [
+        "SEWJ0100001",
+        "SEWJ0600001",
+        "SEWJ0600002",
+        "SEWJ0600003"
+      ],
+      "run": "EWJ"
+    },
+    {
+      "id": "21c",
+      "finding": "A",
+      "src": "CSV-21c_latin1.csv",
+      "latin1": true,
+      "what": "2 rows, Latin-1 encoded, one with \"Côte d'Ivoire\"",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-retest\\CSV-21c_retest.csv",
+      "rows": 2,
+      "lots": [
+        "LEWJ21c"
+      ],
+      "serials": [
+        "EWJ21c1",
+        "EWJ21c2"
+      ],
+      "validate": {
+        "status": 200,
+        "body": "{\"valid\":{\"count\":2},\"invalid\":{\"count\":0,\"rows\":[]}}"
+      },
+      "import": {
+        "status": 202,
+        "body": "{\"async\":true,\"correlation_id\":\"977f5a55-7bad-4562-bfe4-40bd5a7d0a46\",\"status_url\":\"/api/manufacturer/epcis-events/csv-import/status/977f5a55-7bad-4562-bfe4-40bd5a7d0a46\",\"accepted\":true,\"message\":\"EPCIS Event CSV accepted for asynchronous processing. Poll status_url for outcomes.\"}"
+      },
+      "final": {
+        "correlation_id": "977f5a55-7bad-4562-bfe4-40bd5a7d0a46",
+        "status": "succeeded",
+        "result_http_status": 207,
+        "partial": true,
+        "event_ids": [
+          "urn:uuid:c65ddd0d-3567-46f2-844a-d9dfaa157a39"
+        ],
+        "rejected": [
+          {
+            "code": "INVALID_JSON_STRUCTURE",
+            "message": "countryOfOrigin must be an ISO 3166-1 alpha-2 code (e.g. KE, IN) (+2 more schema issue(s))",
+            "event_id": "urn:uuid:78516a4f-0742-4e86-86c9-c92fe36fd79b",
+            "http_status": 400
+          }
+        ],
+        "accepted_count": 1,
+        "error_code": null,
+        "error_message": null,
+        "result_summary": {
+          "ok": true,
+          "message": "EPCIS events accepted",
+          "partial": true,
+          "success": true,
+          "rejected": [
+            {
+              "code": "INVALID_JSON_STRUCTURE",
+              "message": "countryOfOrigin must be an ISO 3166-1 alpha-2 code (e.g. KE, IN) (+2 more schema issue(s))",
+              "event_id": "urn:uuid:78516a4f-0742-4e86-86c9-c92fe36fd79b",
+              "http_status": 400
+            }
+          ],
+          "byte_size": 1370,
+          "epc_count": 6,
+          "event_ids": [
+            "urn:uuid:c65ddd0d-3567-46f2-844a-d9dfaa157a39"
+          ],
+          "object_key": "epcis/ingest/2026/11/12/977f5a55-7bad-4562-bfe4-40bd5a7d0a46.jsonld",
+          "event_count": 2,
+          "http_status": 207,
+          "content_type": "application/ld+json",
+          "warning_codes": [
+            "UNKNOWN_SGLN",
+            "INVALID_LOT"
+          ],
+          "warning_count": 2,
+          "accepted_count": 1,
+          "estimated_epcs": 6,
+          "rejected_codes": [
+            "WARNING",
+            "INVALID_JSON_STRUCTURE"
+          ],
+          "rejected_count": 1,
+          "processing_mode": "ASYNC",
+          "events_processed": 1,
+          "error_code_totals": {
+            "WARNING": 3,
+            "INVALID_JSON_STRUCTURE": 1
+          },
+          "rejected_event_ids": [
+            "urn:uuid:78516a4f-0742-4e86-86c9-c92fe36fd79b"
+          ],
+          "warning_code_totals": {
+            "INVALID_LOT": 1,
+            "UNKNOWN_SGLN": 1
+          },
+          "diagnostics_available": true,
+          "diagnostics_byte_size": 832,
+          "diagnostics_expires_at": "2027-02-10T07:46:26.660Z",
+          "diagnostics_object_key": "epcis/async-diagnostics/2026/11/12/977f5a55-7bad-4562-bfe4-40bd5a7d0a46.ndjson",
+          "diagnostics_event_count": 2
+        },
+        "accepted_at": "2026-11-12 07:46:26.496+00",
+        "created_at": "2026-11-12 07:46:26.496+00",
+        "updated_at": "2026-11-12 07:46:26.684+00",
+        "completed_at": "2026-11-12 07:46:26.684+00"
+      },
+      "stored": [
+        {
+          "lot": "LEWJ21c",
+          "batch": 9768,
+          "created_at": "2026-11-12T07:46:26.600Z",
+          "manufacturing_date": "2028-11-01",
+          "expiry": "2028-11-01",
+          "qty": "1.00",
+          "serials": [
+            "EWJ21c1"
+          ]
+        }
+      ],
+      "storedSerials": [
+        "EWJ21c1"
+      ],
+      "run": "EWJ"
+    },
+    {
+      "id": "14b",
+      "finding": "B",
+      "src": "CSV-14b_placeholders_only.csv",
+      "search": "LXP514",
+      "what": "Placeholder serials 0, NA, DUMMY (fresh lots)",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-retest\\CSV-14b_retest.csv",
+      "rows": 3,
+      "lots": [
+        "LQXB140",
+        "LQXB14NA",
+        "LQXB14DU"
+      ],
+      "serials": [
+        "0",
+        "NA",
+        "DUMMY"
+      ],
+      "validate": {
+        "status": 200,
+        "body": "{\"valid\":{\"count\":3},\"invalid\":{\"count\":0,\"rows\":[]}}"
+      },
+      "import": {
+        "status": 202,
+        "body": "{\"async\":true,\"correlation_id\":\"1f10a06e-bd30-42fe-a8e7-ce7ad1b2e1ea\",\"status_url\":\"/api/manufacturer/epcis-events/csv-import/status/1f10a06e-bd30-42fe-a8e7-ce7ad1b2e1ea\",\"accepted\":true,\"message\":\"EPCIS Event CSV accepted for asynchronous processing. Poll status_url for outcomes.\"}"
+      },
+      "final": {
+        "correlation_id": "1f10a06e-bd30-42fe-a8e7-ce7ad1b2e1ea",
+        "status": "failed",
+        "result_http_status": 400,
+        "partial": false,
+        "rejected": [
+          {
+            "code": "DUPLICATE_EVENT_PAYLOAD",
+            "message": "Duplicate matrix key EPC+bizStep:fdbc39e9b9237ff0256226d5632d6f7fa6b25ffeca73601369f86760f89b2e17 for bizStep=commissioning disposition=active",
+            "event_id": "urn:uuid:dca98d43-4dd8-42e1-80e4-89ee534630ef",
+            "http_status": 409
+          },
+          {
+            "code": "DUPLICATE_EVENT_PAYLOAD",
+            "message": "Duplicate matrix key EPC+bizStep:5cb0c27ac6f751838b74cc7dc2d611ef5e8079fc195d70e84bf81e55b3d7c628 for bizStep=commissioning disposition=active",
+            "event_id": "urn:uuid:cfe75210-df3e-405e-860e-5340b79a3702",
+            "http_status": 409
+          },
+          {
+            "code": "DUPLICATE_EVENT_PAYLOAD",
+            "message": "Duplicate matrix key EPC+bizStep:2f9453f743ae3147d7dbfde8a217f716b6f7a8e906a8b2f80b213942568bdc19 for bizStep=commissioning disposition=active",
+            "event_id": "urn:uuid:d7844090-fc16-4ff0-86d0-a42a3807b693",
+            "http_status": 409
+          }
+        ],
+        "accepted_count": 0,
+        "error_code": "DUPLICATE_EVENT_PAYLOAD",
+        "error_message": "3 event(s) rejected",
+        "result_summary": {
+          "ok": false,
+          "code": "DUPLICATE_EVENT_PAYLOAD",
+          "message": "3 event(s) rejected",
+          "partial": false,
+          "success": false,
+          "category": "SCHEMA_INVALID",
+          "rejected": [
+            {
+              "code": "DUPLICATE_EVENT_PAYLOAD",
+              "message": "Duplicate matrix key EPC+bizStep:fdbc39e9b9237ff0256226d5632d6f7fa6b25ffeca73601369f86760f89b2e17 for bizStep=commissioning disposition=active",
+              "event_id": "urn:uuid:dca98d43-4dd8-42e1-80e4-89ee534630ef",
+              "http_status": 409
+            },
+            {
+              "code": "DUPLICATE_EVENT_PAYLOAD",
+              "message": "Duplicate matrix key EPC+bizStep:5cb0c27ac6f751838b74cc7dc2d611ef5e8079fc195d70e84bf81e55b3d7c628 for bizStep=commissioning disposition=active",
+              "event_id": "urn:uuid:cfe75210-df3e-405e-860e-5340b79a3702",
+              "http_status": 409
+            },
+            {
+              "code": "DUPLICATE_EVENT_PAYLOAD",
+              "message": "Duplicate matrix key EPC+bizStep:2f9453f743ae3147d7dbfde8a217f716b6f7a8e906a8b2f80b213942568bdc19 for bizStep=commissioning disposition=active",
+              "event_id": "urn:uuid:d7844090-fc16-4ff0-86d0-a42a3807b693",
+              "http_status": 409
+            }
+          ],
+          "byte_size": 1875,
+          "epc_count": 9,
+          "object_key": "epcis/ingest/2026/11/12/1f10a06e-bd30-42fe-a8e7-ce7ad1b2e1ea.jsonld",
+          "resolution": "This payload fingerprint has already been ingested. No action needed unless the content is intentionally different — then change eventID and payload.",
+          "event_count": 3,
+          "http_status": 400,
+          "content_type": "application/ld+json",
+          "failure_stage": "processing",
+          "warning_codes": [],
+          "warning_count": 0,
+          "accepted_count": 0,
+          "estimated_epcs": 9,
+          "rejected_codes": [
+            "DUPLICATE_EVENT_PAYLOAD"
+          ],
+          "rejected_count": 3,
+          "events_processed": 0,
+          "error_code_totals": {
+            "DUPLICATE_EVENT_PAYLOAD": 3
+          },
+          "rejected_event_ids": [
+            "urn:uuid:dca98d43-4dd8-42e1-80e4-89ee534630ef",
+            "urn:uuid:cfe75210-df3e-405e-860e-5340b79a3702",
+            "urn:uuid:d7844090-fc16-4ff0-86d0-a42a3807b693"
+          ],
+          "diagnostics_available": true,
+          "diagnostics_byte_size": 900,
+          "diagnostics_expires_at": "2027-02-10T07:48:26.634Z",
+          "diagnostics_object_key": "epcis/async-diagnostics/2026/11/12/1f10a06e-bd30-42fe-a8e7-ce7ad1b2e1ea.ndjson",
+          "diagnostics_event_count": 3
+        },
+        "accepted_at": "2026-11-12 07:48:26.344+00",
+        "created_at": "2026-11-12 07:48:26.344+00",
+        "updated_at": "2026-11-12 07:48:26.667+00",
+        "completed_at": "2026-11-12 07:48:26.667+00"
+      },
+      "stored": [
+        {
+          "lot": "LQXB140",
+          "batch": null
+        },
+        {
+          "lot": "LQXB14NA",
+          "batch": null
+        },
+        {
+          "lot": "LQXB14DU",
+          "batch": null
+        }
+      ],
+      "storedSerials": [],
+      "run": "QXB"
+    },
+    {
+      "id": "14n",
+      "finding": "B",
+      "alsoSearch": "LRLC14N",
+      "what": "Placeholder serials never used before: TBC, SAMPLE, BLANK, NOSERIAL, 999999",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-retest\\CSV-14n_retest.csv",
+      "rows": 5,
+      "lots": [
+        "LZG914N0",
+        "LZG914N1",
+        "LZG914N2",
+        "LZG914N3",
+        "LZG914N4"
+      ],
+      "serials": [
+        "TBC",
+        "SAMPLE",
+        "BLANK",
+        "NOSERIAL",
+        "999999"
+      ],
+      "validate": {
+        "status": 200,
+        "body": "{\"valid\":{\"count\":5},\"invalid\":{\"count\":0,\"rows\":[]}}"
+      },
+      "import": {
+        "status": 202,
+        "body": "{\"async\":true,\"correlation_id\":\"d5b07e82-2fb7-4ea5-9b1c-d62bcaab09c1\",\"status_url\":\"/api/manufacturer/epcis-events/csv-import/status/d5b07e82-2fb7-4ea5-9b1c-d62bcaab09c1\",\"accepted\":true,\"message\":\"EPCIS Event CSV accepted for asynchronous processing. Poll status_url for outcomes.\"}"
+      },
+      "final": {
+        "correlation_id": "d5b07e82-2fb7-4ea5-9b1c-d62bcaab09c1",
+        "status": "succeeded",
+        "result_http_status": 200,
+        "partial": false,
+        "event_ids": [
+          "urn:uuid:2d0748be-1d27-484c-8b7d-dfb7ae9333a7",
+          "urn:uuid:9f6b2254-769d-4831-8bf2-822d2edcddb5",
+          "urn:uuid:9d9466db-560f-4b9c-89be-37b635344c7e",
+          "urn:uuid:88224d28-9d52-4b49-8a93-1fef4e537a3a",
+          "urn:uuid:e5164f39-cb76-490e-8913-b5eba00fd310"
+        ],
+        "accepted_count": 5,
+        "error_code": null,
+        "error_message": null,
+        "result_summary": {
+          "ok": true,
+          "message": "EPCIS events accepted",
+          "success": true,
+          "byte_size": 3016,
+          "epc_count": 15,
+          "event_ids": [
+            "urn:uuid:2d0748be-1d27-484c-8b7d-dfb7ae9333a7",
+            "urn:uuid:9f6b2254-769d-4831-8bf2-822d2edcddb5",
+            "urn:uuid:9d9466db-560f-4b9c-89be-37b635344c7e",
+            "urn:uuid:88224d28-9d52-4b49-8a93-1fef4e537a3a",
+            "urn:uuid:e5164f39-cb76-490e-8913-b5eba00fd310"
+          ],
+          "object_key": "epcis/ingest/2026/11/12/d5b07e82-2fb7-4ea5-9b1c-d62bcaab09c1.jsonld",
+          "event_count": 5,
+          "http_status": 200,
+          "content_type": "application/ld+json",
+          "warning_codes": [
+            "UNKNOWN_SGLN",
+            "INVALID_LOT"
+          ],
+          "warning_count": 10,
+          "accepted_count": 5,
+          "estimated_epcs": 15,
+          "rejected_codes": [],
+          "rejected_count": 0,
+          "processing_mode": "ASYNC",
+          "events_processed": 5,
+          "warning_code_totals": {
+            "INVALID_LOT": 5,
+            "UNKNOWN_SGLN": 5
+          },
+          "diagnostics_available": true,
+          "diagnostics_byte_size": 1470,
+          "diagnostics_expires_at": "2027-02-10T07:47:27.318Z",
+          "diagnostics_object_key": "epcis/async-diagnostics/2026/11/12/d5b07e82-2fb7-4ea5-9b1c-d62bcaab09c1.ndjson",
+          "diagnostics_event_count": 5
+        },
+        "accepted_at": "2026-11-12 07:47:26.599+00",
+        "created_at": "2026-11-12 07:47:26.599+00",
+        "updated_at": "2026-11-12 07:47:27.347+00",
+        "completed_at": "2026-11-12 07:47:27.347+00"
+      },
+      "stored": [
+        {
+          "lot": "LZG914N0",
+          "batch": 9769,
+          "created_at": "2026-11-12T07:47:26.728Z",
+          "manufacturing_date": "2028-12-31",
+          "expiry": "2028-12-31",
+          "qty": "1.00",
+          "serials": [
+            "TBC"
+          ]
+        },
+        {
+          "lot": "LZG914N1",
+          "batch": 9770,
+          "created_at": "2026-11-12T07:47:26.865Z",
+          "manufacturing_date": "2028-12-31",
+          "expiry": "2028-12-31",
+          "qty": "1.00",
+          "serials": [
+            "SAMPLE"
+          ]
+        },
+        {
+          "lot": "LZG914N2",
+          "batch": 9771,
+          "created_at": "2026-11-12T07:47:26.985Z",
+          "manufacturing_date": "2028-12-31",
+          "expiry": "2028-12-31",
+          "qty": "1.00",
+          "serials": [
+            "BLANK"
+          ]
+        },
+        {
+          "lot": "LZG914N3",
+          "batch": 9772,
+          "created_at": "2026-11-12T07:47:27.126Z",
+          "manufacturing_date": "2028-12-31",
+          "expiry": "2028-12-31",
+          "qty": "1.00",
+          "serials": [
+            "NOSERIAL"
+          ]
+        },
+        {
+          "lot": "LZG914N4",
+          "batch": 9773,
+          "created_at": "2026-11-12T07:47:27.265Z",
+          "manufacturing_date": "2028-12-31",
+          "expiry": "2028-12-31",
+          "qty": "1.00",
+          "serials": [
+            "999999"
+          ]
+        }
+      ],
+      "storedSerials": [
+        "TBC",
+        "SAMPLE",
+        "BLANK",
+        "NOSERIAL",
+        "999999"
+      ],
+      "run": "ZG9"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+event_id,row_index,code,message,gtin,batch_no,case_group
+urn:uuid:819e8c7a-f2d7-40d3-815d-05ffe2325b00,,DUPLICATE_EVENT_PAYLOAD,"Duplicate matrix key EPC+bizStep:ae95f6551f57c0dc05c02fabbeb8ed7bebdce06ef79c71254f9d6409a5395d94 for bizStep=commissioning disposition=active",,,
+urn:uuid:1e137451-416c-4512-8464-b869bffc247d,,DUPLICATE_EVENT_PAYLOAD,"Duplicate matrix key EPC+bizStep:54ae5c8dbdb9b17be9f7f9236be5d61d8a682120a32a2406cc8b0fc120eb4ac5 for bizStep=commissioning disposition=active",,,
+urn:uuid:e969de21-a1ce-4ebd-88f4-2198b9be7c70,,DUPLICATE_EVENT_PAYLOAD,"Duplicate matrix key EPC+bizStep:e8b982c4a49068ded36fc84b60944121756f1f1a41870cbbfff6d5084bbe6d8f for bizStep=commissioning disposition=active",,,

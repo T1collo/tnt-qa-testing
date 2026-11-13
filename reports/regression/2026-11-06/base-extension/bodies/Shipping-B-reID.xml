@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<epcis:EPCISDocument xmlns:epcis="urn:epcglobal:epcis:xsd:1"
+  schemaVersion="1.2" creationDate="2026-11-06T07:15:45.188Z">
+  <EPCISBody><EventList>
+    <ObjectEvent>
+      <baseExtension>
+        <eventID>urn:uuid:3acb7402-8688-467c-83e6-49c44051f784</eventID>
+      </baseExtension>
+      <eventTime>2026-11-06T07:05:45.188Z</eventTime>
+      <eventTimeZoneOffset>+03:00</eventTimeZoneOffset>
+      <epcList>
+        <epc>urn:epc:id:sscc:0123456.8296729010</epc>
+      </epcList>
+      <action>OBSERVE</action>
+      <bizStep>urn:epcglobal:cbv:bizstep:shipping</bizStep>
+      <disposition>urn:epcglobal:cbv:disp:in_transit</disposition>
+      <readPoint><id>urn:epc:id:sgln:0123456.11111.0</id></readPoint>
+      <bizLocation><id>urn:epc:id:sgln:0123456.11111.0</id></bizLocation>
+      <bizTransactionList>
+        <bizTransaction type="urn:epcglobal:cbv:btt:desadv">
+          urn:epcglobal:cbv:bt:0123456:ASN123
+        </bizTransaction>
+      </bizTransactionList>
+      <extension>
+        <sourceList>
+          <source type="urn:epcglobal:cbv:sdt:owning_party">
+            urn:epc:id:sgln:0123456.11111.0
+          </source>
+        </sourceList>
+        <destinationList>
+          <destination type="urn:epcglobal:cbv:sdt:owning_party">
+            urn:epc:id:sgln:0123456.22222.0
+          </destination>
+          <destination type="urn:epcglobal:cbv:sdt:location">
+            urn:epc:id:sgln:0123456.22222.0
+          </destination>
+        </destinationList>
+      </extension>
+    </ObjectEvent>
+  </EventList></EPCISBody>
+</epcis:EPCISDocument>
