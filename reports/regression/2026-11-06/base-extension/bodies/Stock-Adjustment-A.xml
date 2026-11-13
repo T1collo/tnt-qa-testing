@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<epcis:EPCISDocument xmlns:epcis="urn:epcglobal:epcis:xsd:1"
+  schemaVersion="1.2" creationDate="2026-11-06T07:16:55.713Z">
+  <EPCISBody><EventList>
+    <ObjectEvent>
+      <eventID>urn:uuid:7f8c484c-e607-4553-a1c4-80bc33ca17fd</eventID>
+      <eventTime>2026-11-06T07:06:55.713Z</eventTime>
+      <eventTimeZoneOffset>+03:00</eventTimeZoneOffset>
+      <epcList>
+        <epc>urn:epc:id:sgtin:0614141.107346.39494157130007328</epc>
+        <epc>urn:epc:id:sgtin:0614141.107346.39494157140007414</epc>
+      </epcList>
+      <action>OBSERVE</action>
+      <bizStep>urn:epcglobal:cbv:bizstep:stock_taking</bizStep>
+      <disposition>urn:epcglobal:cbv:disp:active</disposition>
+      <readPoint><id>urn:epc:id:sgln:0614141.00001.400</id></readPoint>
+      <bizLocation><id>urn:epc:id:sgln:0614141.00001.0</id></bizLocation>
+      <bizTransactionList>
+        <bizTransaction type="upevt">urn:kenya-tnt:stockcount:CYCLE-2026-02-28</bizTransaction>
+      </bizTransactionList>
+    </ObjectEvent>
+  </EventList></EPCISBody>
+</epcis:EPCISDocument>

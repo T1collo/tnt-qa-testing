@@ -1,0 +1,27 @@
+diff --git a/node_modules/@skyhook-io/k8s-ui/src/components/topology/TopologyGraph.tsx b/node_modules/@skyhook-io/k8s-ui/src/components/topology/TopologyGraph.tsx
+index 828da35..9dd0721 100644
+--- a/node_modules/@skyhook-io/k8s-ui/src/components/topology/TopologyGraph.tsx
++++ b/node_modules/@skyhook-io/k8s-ui/src/components/topology/TopologyGraph.tsx
+@@ -105,9 +105,9 @@ function isRolloutTrafficEdgeLabel(label: TopologyEdge['label']): boolean {
+ // a flowing/green edge that implies traffic crosses a break.
+ const REACH_COLORS: Record<string, string> = {
+   verified: '#22c55e',
+-  reached: '#22c55e',
++  reached: '#eab308',
+   unreachable: '#ef4444',
+-  blocked: '#94a3b8',
++  blocked: '#3b82f6',
+   'not-tested': '#cbd5e1',
+ }
+ const REACH_DASH: Record<string, string | undefined> = {
+@@ -118,7 +118,9 @@ const REACH_DASH: Record<string, string | undefined> = {
+ function reachEdgeStyle(o: string): React.CSSProperties {
+   return {
+     stroke: REACH_COLORS[o] || '#94a3b8',
+-    strokeWidth: 2,
++    // Healthy lines stay quiet so problem lines stand out.
++    strokeWidth: o === 'verified' || o === 'not-tested' ? 1.25 : 2.5,
++    opacity: o === 'verified' ? 0.55 : 1,
+     strokeDasharray: REACH_DASH[o],
+   }
+ }

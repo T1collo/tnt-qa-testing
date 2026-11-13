@@ -1,0 +1,7 @@
+event_id,row_index,code,message,gtin,batch_no,case_group
+urn:uuid:e547152e-77f4-4587-85c6-5197f63dabc2,,DUPLICATE_EVENT_PAYLOAD,"Duplicate matrix key EPC+bizStep:0ad7461b3bafcfc77111f569387d16e4040c59f207292472d8379f24200716dc for bizStep=commissioning disposition=active",,,
+urn:uuid:8664cd03-157b-4e3a-808f-0a4e59e7bbd8,,DUPLICATE_EVENT_PAYLOAD,"Duplicate matrix key EPC+bizStep:43319a17f45a4e79cf9ab801a4b53ee861e63fdd9c4d57fbf7a9194627b74951 for bizStep=commissioning disposition=active",,,
+urn:uuid:7a03134e-eedb-45f5-8910-ec1c911227df,,DUPLICATE_EVENT_PAYLOAD,"Duplicate matrix key EPC+bizStep:5f1cbd3f9ca3191d524956decdcd8aa15636a8ed2e85a6b53473b666e0be70f1 for bizStep=commissioning disposition=active",,,
+urn:uuid:151c0d21-3e42-4eb3-8eb4-2fb3d77f0ac2,,DUPLICATE_EVENT_ID,"Event ID urn:uuid:151c0d21-3e42-4eb3-8eb4-2fb3d77f0ac2 was already ingested",,,
+urn:uuid:48748b35-53c6-4192-8394-545c89e406da,,DUPLICATE_EVENT_ID,"Event ID urn:uuid:48748b35-53c6-4192-8394-545c89e406da was already ingested",,,
+urn:uuid:2399bba6-a12f-4962-8c84-716f62499322,,DUPLICATE_EVENT_ID,"Event ID urn:uuid:2399bba6-a12f-4962-8c84-716f62499322 was already ingested",,,

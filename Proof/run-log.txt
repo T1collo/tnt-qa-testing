@@ -1,0 +1,31 @@
+2      CSV-02_commissioning_errors.csv -> 400 {"error":"Bad Request","message":"CSV contains disallowed formula-like content"}
+3      CSV-03_commissioning_flags.csv -> 202 {"async":true,"correlation_id":"377ff9a0-153d-4748-a37b-b7eabee6d256","status_url":"/api/manufacturer/epcis-events/csv-import/status/377ff9a0-153d-4748-a37b-b7e
+4      CSV-04_values_that_must_pass.csv -> 400 {"invalid":{"count":3,"rows":[{"row_index":2,"row":{"Event_Type":"COMMISSIONING","Identifier_Type":"SGTIN","GTIN":"6161102974997","Unit_ID":"SXP50400001","Paren
+5      CSV-05_packing_errors.csv -> 400 {"invalid":{"count":8,"rows":[{"row_index":11,"row":{"Event_Type":"AGGREGATION","Identifier_Type":"SGTIN","GTIN":"6161102974997","Unit_ID":"SXP50500009","Parent
+6      CSV-06_duplicates.csv -> 400 {"invalid":{"count":3,"rows":[{"row_index":3,"row":{"Event_Type":"COMMISSIONING","Identifier_Type":"SGTIN","GTIN":"6161102974997","Unit_ID":"SXP50600001","Paren
+7      CSV-07_reupload_of_CSV-01.csv -> 202 {"async":true,"correlation_id":"6bd75f07-f6c1-40ee-97b1-fe2365f87e56","status_url":"/api/manufacturer/epcis-events/csv-import/status/6bd75f07-f6c1-40ee-97b1-fe2
+8      CSV-08_valid_shipping.csv -> 400 {"invalid":{"count":1,"rows":[{"row_index":19,"row":{"Event_Type":"SHIPPING","Identifier_Type":"SSCC","GTIN":"","Unit_ID":"061640039108000066","Parent_ID":"","P
+9      CSV-09_shipping_errors.csv -> 400 {"invalid":{"count":7,"rows":[{"row_index":26,"row":{"Event_Type":"SHIPPING","Identifier_Type":"SSCC","GTIN":"","Unit_ID":"061640039109000027","Parent_ID":"","P
+10     CSV-10_after_shipping.csv -> 400 {"invalid":{"count":2,"rows":[{"row_index":2,"row":{"Event_Type":"SHIPPING","Identifier_Type":"SSCC","GTIN":"","Unit_ID":"061640039108000028","Parent_ID":"","Pa
+11a    CSV-11a_commission_for_destruction.csv -> 202 {"async":true,"correlation_id":"f5d63ea9-9355-414e-9578-031e85029b02","status_url":"/api/manufacturer/epcis-events/csv-import/status/f5d63ea9-9355-414e-9578-031
+11b     -> - no request sent
+11c    CSV-11b_pack_destroyed_items.csv -> 400 {"invalid":{"count":2,"rows":[{"row_index":2,"row":{"Event_Type":"AGGREGATION","Identifier_Type":"SGTIN","GTIN":"6161102974997","Unit_ID":"SXP51100001","Parent_
+12a    CSV-12a_100_rows_one_bad.csv -> 202 {"async":true,"correlation_id":"11fca35e-a5cc-4c82-8741-87c251f67609","status_url":"/api/manufacturer/epcis-events/csv-import/status/11fca35e-a5cc-4c82-8741-87c
+12b    CSV-12b_100_rows_fixed.csv -> 202 {"async":true,"correlation_id":"f7cd7788-e25a-425a-826a-260eda787582","status_url":"/api/manufacturer/epcis-events/csv-import/status/f7cd7788-e25a-425a-826a-260
+13a    CSV-13_identity.csv -> 400 {"invalid":{"count":1,"rows":[{"row_index":8,"row":{"Event_Type":"INSPECTING","Identifier_Type":"SSCC","GTIN":"","Unit_ID":"061640039113000020","Parent_ID":"","
+13b    CSV-13_valid_for_session_checks.csv -> 401 {"message":"Valid session required","error":"Unauthorized","statusCode":401}
+13c    CSV-13_valid_for_session_checks.csv -> 401 {"message":"X-User-Id authentication is not supported","error":"Unauthorized","statusCode":401}
+14     CSV-14_batch_loophole.csv -> 400 {"invalid":{"count":2,"rows":[{"row_index":2,"row":{"Event_Type":"COMMISSIONING","Identifier_Type":"SGTIN","GTIN":"6161102974997","Unit_ID":"","Parent_ID":"","P
+15     CSV-15_excel_saved.csv -> 400 {"invalid":{"count":6,"rows":[{"row_index":2,"row":{"Event_Type":"COMMISSIONING","Identifier_Type":"SGTIN","GTIN":"6.1611E+12","Unit_ID":"SXP51500001","Parent_I
+16     CSV-16_broken_rows.csv -> 202 {"async":true,"correlation_id":"888e0104-9b31-451d-a7d1-a5d6289002d1","status_url":"/api/manufacturer/epcis-events/csv-import/status/888e0104-9b31-451d-a7d1-a5d
+17a    CSV-17a_500_rows.csv -> 202 {"async":true,"correlation_id":"d31986ad-2377-49b0-b753-5e597caf392a","status_url":"/api/manufacturer/epcis-events/csv-import/status/d31986ad-2377-49b0-b753-5e5
+17b    CSV-17b_50000_serials.csv -> 400 {"error":"Bad Request","message":"Upload exceeds maximum allowed size"}
+18a    CSV-18a_501_rows.csv -> 400 {"message":"Too many rows. Maximum is 500 data rows.","error":"Bad Request","statusCode":400}
+18b    CSV-18b_50001_serials.csv -> 400 {"error":"Bad Request","message":"Upload exceeds maximum allowed size"}
+19     CSV-19_injection.csv -> 400 {"error":"Bad Request","message":"CSV contains disallowed formula-like content"}
+20b     -> - batch list searched for LXP501A
+20d-1   -> 202 {"async":true,"correlation_id":"0f4703cf-0ab6-4824-aec4-248229791f47","status_url":"/api/manufacturer/epcis-events/csv-import/status/0f4703cf-0ab6-4824-aec4-248
+20d-2   -> 202 {"async":true,"correlation_id":"5e7d5247-b615-4af2-92b1-185c50062c8d","status_url":"/api/manufacturer/epcis-events/csv-import/status/5e7d5247-b615-4af2-92b1-185
+
+Screenshots and results.json in C:\Users\Collins\Desktop\TnT\qa-testing-suite\Proof
+EXIT 0

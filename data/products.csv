@@ -1,0 +1,87 @@
+etcd_product_id,generic_concept_code,brand_display_name,generic_display_name,gtin,package_code,package_name
+PH10266,GE10575,Amtel 5 mg/80 mg Oral Tablet,Amlodipine 5 mg/Telmisartan 80 mg Oral Tablet,18904179702187,PH10266-1,3 X 10 Tablets
+PH10385,GE10760,Cosamide 100 mg Oral Tablet,Lacosamide 100 mg Oral Tablet,18904159610501,PH10385-1,1*10
+PH1043,GE10248,Xarelto 10 mg Oral Tablet,Rivaroxaban 10 mg Oral Tablet,04057598013642,PH1043-1,1 x 10 Tabs
+PH10430,GE10577,Arbitel AM 5 mg/40 mg Oral Tablet,Amlodipine 5 mg/Telmisartan 40 mg Oral Tablet,18901302149468,PH10430-1,3 x 10s
+PH1044,GE10250,Xarelto 15 mg Oral Tablet,Rivaroxaban 15 mg Oral Tablet,04057598013628,PH1044-1,1 x 14 Tabs
+PH11140,GE10981,Inosita Plus 1000 mg/50 mg Oral Tablet,Metformin 1000 mg/Sitagliptin 50 mg Oral Tablet,08964001421528,PH11140-2,
+PH11588,GE10051,Atorid 40 mg Oral Tablet,Atorvastatin 40 mg Oral Tablet,08906055268476,PH11588-1,3X 10s
+PH11603,GE10125,Telmicos 40 mg Oral Tablet,Telmisartan 40 mg Oral Tablet,6161102974997,PH11603-2,3x10
+PH11626,GE10777,Zulu Mr 100 mg/500 mg/500 mg Oral Tablet,Aceclofenac 100 mg/Chlorzoxazone 500 mg/Paracetamol 500 mg Oral Tablet,08904181313930,PH11626-1,2x10
+PH11710,GE10137,Zomep Es 40 mg Oral Tablet,Esomeprazole 40 mg Oral Tablet,18904182200007,PH11710-1,3x10
+PH11850,GE12075,Glemont L 5 mg/10 mg Oral Tablet,Levocetirizine 5 mg/Montelukast 10 mg Oral Tablet,18904091141613,PH11850-1,1x7
+PH12191,GE11182,Regucoline 500 mg Oral Tablet,Citicoline 500 mg Oral Tablet,18903500165455,PH12191-1,1x10
+PH12484,GE10458,EnLev 5 mg Oral Tablet,Levocetirizine 5 mg Oral Tablet,18906007512906,PH12484-1,1 x 10
+PH12579,GE10890,Coempaken 12.5 mg/1000 mg Oral Tablet,Empagliflozin 12.5 mg/Metformin 1000 mg Oral Tablet,08964002399536,PH12579-2,4x7
+PH12658,GE11959,Esopride 40 mg/150 mg Oral Capsule,Esomeprazole 40 mg/Itopride 150 mg Oral Capsule,18906007515310,PH12658-1,3x10
+PH13411,GE12820,Zyrtal 1.5 %w/w/5 %w/w Topical Gel,Aceclofenac 1.5 %w/w/Menthol 5 %w/w Topical Gel,8906034082611,PH13411-1,1*1
+PH1379,GE10580,Zolpirex 10 mg Oral Tablet,Zolpidem 10 mg Oral Tablet,18906013141725,PH1379-1,20 Tablets
+PH14179,GE11923,Esofag D 40 mg/30 mg Oral Capsule,Domperidone 40 mg/Esomeprazole 30 mg Oral Capsule,18901302199302,PH14179-1,3x10
+PH14511,GE12172,"Betmiga 50 50 mg Oral Tablet, Extended Release","Mirabegron 50 mg Oral Tablet, Extended Release",08699043890031,PH14511-1,30s
+PH14555,GE12094,Dolutegravir / Lamivudine / Tenofovir / Disoproxil Fumarate 50 mg/300 mg/300 mg Oral Tablet,Dolutegravir 50 mg/Lamivudine 300 mg/Tenofovir 300 mg Oral Tablet,08907802009182,PH14555-2,1X90S
+PH14926,GE11513,Verclob 10 mg Oral Tablet,Clobazam 10 mg Oral Tablet,18908000972261,PH14926-1,10x10
+PH15300,GE11513,Clobaberg 10 mg Oral Tablet,Clobazam 10 mg Oral Tablet,18904112513368,PH15300-1,10x10
+PH15469,GE10125,Micartel 40 mg Oral Tablet,Telmisartan 40 mg Oral Tablet,18906034081956,PH15469-1,2x14
+PH16281,GE10178,Xykaa 1000 mg Oral Tablet,Paracetamol 1000 mg Oral Tablet,18904131207309,PH16281-2,
+PH17299,GE11365,Risofos 35 mg Oral Tablet,Risedronate Sodium 35 mg Oral Tablet,08904181314821,PH17299-1,1 x 4s
+PH17305,GE11851,Zulu-Sp 100 mg/500 mg/15 mg Oral Tablet,Aceclofenac 100 mg/Paracetamol 500 mg/Serratiopeptidase 15 mg Oral Tablet,08904181315170,PH17305-3,20
+PH18266,GE11061,Secutril-VT 49 mg/51 mg Oral Tablet,Sacubitril 49 mg/Valsartan 51 mg Oral Tablet,08961101692339,PH18266-2,2x7
+PH19004,GE10887,Coempaken 5 mg/500 mg Oral Tablet,Empagliflozin 5 mg/Metformin 500 mg Oral Tablet,08964002400539,PH19004-1,4x7
+PH19005,GE10888,Coempaken 5 mg/1000 mg Oral Tablet,Empagliflozin 5 mg/Metformin 1000 mg Oral Tablet,08964002399581,PH19005-1,4x7
+PH19006,GE10421,Empaken 10 mg Oral Tablet,Empagliflozin 10 mg Oral Tablet,08964002397778,PH19006-1,2X7 TABLETS
+PH1918,GE11309,Dopamac 250 mg Oral Tablet,Methyldopa 250 mg Oral Tablet,18901463124571,PH1918-1,10x10
+PH1947,GE11020,Ojen Oz 200 mg/500 mg Oral Tablet,Ofloxacin 200 mg/Ornidazole 500 mg Oral Tablet,18906003152731,PH1947-2,
+PH1997,GE10220,Rabemac 20 mg Oral Tablet,Rabeprazole 20 mg Oral Tablet,18901463020538,PH1997-2,3x10s
+PH2006,GE10493,Trenaxa 500 mg Oral Tablet,Tranexamic Acid 500 mg Oral Tablet,18901463031459,PH2006-1,30
+PH2047,GE10315,Ocid 20 mg Oral Capsule,Omeprazole 20 mg Oral Capsule,18901120010766,PH2047-1,10x10 Capsules
+PH21457,GE11852,Zulu-ES 100 mg/20 mg/500 mg Oral Tablet,Aceclofenac 100 mg/Esomeprazole 20 mg/Paracetamol 500 mg Oral Tablet,8904181316955,PH21457-2,10
+PH21943,GE12166,"Oziclide 60 mg Oral Tablet, Extended Release","Gliclazide 60 mg Oral Tablet, Extended Release",18901296039189,PH21943-1,3by10
+PH2195,GE10368,Unitel H 12.5 mg/80 mg Oral Tablet,Hydrochlorothiazide 12.5 mg/Telmisartan 80 mg Oral Tablet,18904179700121,PH2195-1,3x10
+PH225,GE10795,Zulu 100 mg/500 mg Oral Tablet,Aceclofenac 100 mg/Paracetamol 500 mg Oral Tablet,08904181313916,PH225-1,30x10
+PH2562,GE10644,Cytotec 200 mcg Oral Tablet,Misoprostol 200 mcg Oral Tablet,05415062307250,PH2562-1,28s
+PH2574,GE10037,Kuin 500 mg Oral Tablet,Ciprofloxacin 500 mg Oral Tablet,890229701002,PH2574-1,10s
+PH2846,GE10839,Dermovate 0.05 %w/w Topical Cream,Clobetasol 0.05 %w/w Topical Cream,08964001590224,PH2846-3,
+PH2883,GE10108,Montana 10 mg Oral Tablet,Montelukast 10 mg Oral Tablet,18902297005746,PH2883-1,2x7
+PH2938,GE10907,Flixotide 250 mcg Oral Inhaler,Fluticasone 250 mcg Oral Inhaler,06291107438405,PH2938-1,120D
+PH2958,GE10906,Flixotide 125 mcg Oral Inhaler,Fluticasone 125 mcg Oral Inhaler,06291107438429,PH2958-1,120D
+PH2981,GE11831,Brustan 100 mg/125 mg Oral Syrup,Ibuprofen 100 mg/Paracetamol 125 mg per 5ml Oral Syrup,8901296108031,PH2981-1,1x100ml
+PH3366,GE12032,Robidom-SR 10 mg/20 mg Oral Capsule,Domperidone 10 mg/Rabeprazole 20 mg Oral Capsule,18906055266561,PH3366-1,3x10
+PH3592,GE10660,Contiflo OD S 0.4 mg Oral Tablet,Tamsulosin 0.4 mg Oral Tablet,18901296105273,PH3592-1,10s
+PH4025,GE10220,Barole 20 mg Oral Tablet,Rabeprazole 20 mg Oral Tablet,18904184002807,PH4025-1,3 x 10
+PH4076,GE11701,Daktarin 2 %w/w Oral Gel,Miconazole 2 %w/w Oral Gel,08964001392118,PH4076-2,
+PH4291,GE10949,Lamitor 100 mg Oral Tablet,Lamotrigine 100 mg Oral Tablet,08903855027746,PH4291-2,
+PH4297,GE10950,Lamitor 25 mg Oral Tablet,Lamotrigine 25 mg Oral Tablet,08903855027739,PH4297-2,
+PH4435,GE10050,Atorid 20 mg Oral Tablet,Atorvastatin 20 mg Oral Tablet,08906055266472,PH4435-1,10 X 3 X 10s
+PH4572,GE11599,Lefra 20 mg Oral Tablet,Leflunomide 20 mg Oral Tablet,08903855003832,PH4572-3,
+PH4897,GE10308,Emitino 2 mg Injection Solution,Ondansetron 2 mg per 1ml Injection Solution,8906031050507,PH4897-1,30ml
+PH490,GE10031,Abz 400 mg Oral Tablet,Albendazole 400 mg Oral Tablet,18902281609479,PH490-1,1x1
+PH4963,GE11309,Methyldopa 250 mg Oral Tablet,Methyldopa 250 mg Oral Tablet,18904065012178,PH4963-1,10x10
+PH5112,GE10149,Amaryl 4 mg Oral Tablet,Glimepiride 4 mg Oral Tablet,08964001483038,PH5112-1,30s
+PH5451,GE10132,Lasix 40 mg Oral Tablet,Furosemide 40 mg Oral Tablet,3582910029267,PH5451-1,20
+PH5517,GE10186,Zyrtec 10 mg Oral Tablet,Cetirizine 10 mg Oral Tablet,08964001480075,PH5517-2,3x10
+PH5571,GE10137,Esose 40 mg Oral Tablet,Esomeprazole 40 mg Oral Tablet,18904091118349,PH5571-2,3x10s
+PH5571,GE10137,Esose 40 mg Oral Tablet,Esomeprazole 40 mg Oral Tablet,18904091185402,PH5571-1,1x10s
+PH5575,GE11101,Isoptin SR 240 mg Oral Tablet,Verapamil 240 mg Oral Tablet,08699548031953,PH5575-4,
+PH5609,GE11370,Satrogyl 300 mg Oral Tablet,Satranidazole 300 mg Oral Tablet,18902269250716,PH5609-1,1x10
+PH561,GE10351,Adalat LA 30 mg Oral Tablet,Nifedipine 30 mg Oral Tablet,04057598014670,PH561-1,3x10s
+PH569,GE10829,Flamcheck MR 250 mg/50 mg/325 mg Oral Tablet,Chlorzoxazone 250 mg/Diclofenac 50 mg/Paracetamol 325 mg Oral Tablet,18902281606508,PH569-1,1x10
+PH5791,GE10830,Doloact-MR 250 mg/50 mg/500 mg Oral Tablet,Chlorzoxazone 250 mg/Diclofenac 50 mg/Paracetamol 500 mg Oral Tablet,18908003433018,PH5791-1,10x10
+PH5796,GE11712,Ivermectol 6 mg Oral Tablet,Ivermectin 6 mg Oral Tablet,28908003433022,PH5796-1,1x10s
+PH5808,GE11099,Tx-Mf 250 mg/500 mg Oral Tablet,Mefenamic Acid 250 mg/Tranexamic Acid 500 mg Oral Tablet,18908003433162,PH5808-1,6 TABLETS
+PH5897,GE10054,Flagyl 400 mg Oral Tablet,Metronidazole 400 mg Oral Tablet,08964001483410,PH5897-2,
+PH5927,GE10580,Stilnox 10 mg Oral Tablet,Zolpidem 10 mg Oral Tablet,03664798032826,PH5927-1,14s
+PH5932,GE10252,Tritace 5 mg Oral Tablet,Ramipril 5 mg Oral Tablet,08964001483915,PH5932-1,Blisters 30s
+PH5940,GE11427,Acular 0.5 %w/v Ophthalmic Drops,Ketorolac 0.5 %w/v Ophthalmic Drops,05016007218107,PH5940-1,5ml
+PH6494,GE12233,Minoxin Plus 50 mg Topical Solution,Minoxidil 50 mg per 1ml Topical Solution,08961101532536,PH6494-1,60s
+PH6777,GE10126,Arbitel 80 mg Oral Tablet,Telmisartan 80 mg Oral Tablet,18901302179533,PH6777-1,3x10
+PH6993,GE10334,Angizaar-H 12.5 mg/50 mg Oral Tablet,Hydrochlorothiazide 12.5 mg/Losartan 50 mg Oral Tablet,18901302154820,PH6993-1,3 x 10s
+PH7207,GE10235,Diclomol SR 100 mg Oral Tablet,Diclofenac 100 mg Oral Tablet,18901815000034,PH7207-1,1X100
+PH7375,GE12252,Essvit 5 mg Oral Tablet,Biotin 5 mg Oral Tablet,18908003433155,PH7375-1,10x10
+PH7542,GE10614,Nexito 10 mg Oral Tablet,Escitalopram 10 mg Oral Tablet,18901296203122,PH7542-1,5x10
+PH7593,GE10371,Tagera Forte 1 g Oral Tablet,Secnidazole 1 g Oral Tablet,28901315063000,PH7593-1,10x1x2
+PH7758,GE10772,Symbicort Turbuhaler G Dose 160 mcg/4.5 mcg Oral Inhaler,Budesonide 160 mcg/Formoterol 4.5 mcg Oral Inhaler,07321839712005,PH7758-2,1x120 doses
+PH7784,GE10627,Roaccutane 20 mg Oral Capsule,Isotretinoin 20 mg Oral Capsule,07613326013062,PH7784-1,3x10
+PH7888,GE10831,Stugeron 25 mg Oral Tablet,Cinnarizine 25 mg Oral Tablet,08964001392040,PH7888-1,50s
+PH7999,GE10493,Pause-500 500 mg Oral Tablet,Tranexamic Acid 500 mg Oral Tablet,18902319336773,PH7999-1,3x10s
+PH8453,GE10778,Adol 125 mg Rectal Suppository,Paracetamol 125 mg Rectal Suppository,06291100080038,PH8453-2,
+PH8540,GE11564,Budecort Inhaler 100 mg Oral Tablet,Erlotinib 100 mg Oral Tablet,18901117242040,PH8540-1,1x200 doses

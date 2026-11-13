@@ -1,0 +1,653 @@
+{
+  "report": {
+    "createdAt": "2026-10-02T10:15:37.484Z",
+    "hypothesis": "epcis_outbox_id_seq setval fix — Partner manufacturer events should not intermittent-500 on outbox PK",
+    "targets": [
+      {
+        "target": "tnt-demo",
+        "base": "https://tnt-demo.apeiro-digital.com",
+        "runId": "41615871",
+        "totalRequests": 32,
+        "outcomeCounts": {
+          "OTHER_400": 32
+        },
+        "uniqueEventRequests": 30,
+        "uniqueEvent2xx": 0,
+        "http5xx": 0,
+        "outboxPkeySignals": 0,
+        "duplicateSecondStatus": 400,
+        "pass": false
+      },
+      {
+        "target": "trackiq",
+        "base": "https://trackiq.apeiro-digital.com",
+        "runId": "cfaabfb4",
+        "totalRequests": 32,
+        "outcomeCounts": {
+          "OTHER_401": 32
+        },
+        "uniqueEventRequests": 30,
+        "uniqueEvent2xx": 0,
+        "http5xx": 0,
+        "outboxPkeySignals": 0,
+        "duplicateSecondStatus": 401,
+        "pass": false
+      }
+    ],
+    "overallPass": false
+  },
+  "detail": [
+    {
+      "name": "tnt-demo",
+      "summary": {
+        "target": "tnt-demo",
+        "base": "https://tnt-demo.apeiro-digital.com",
+        "runId": "41615871",
+        "totalRequests": 32,
+        "outcomeCounts": {
+          "OTHER_400": 32
+        },
+        "uniqueEventRequests": 30,
+        "uniqueEvent2xx": 0,
+        "http5xx": 0,
+        "outboxPkeySignals": 0,
+        "duplicateSecondStatus": 400,
+        "pass": false
+      },
+      "results": [
+        {
+          "phase": "sequential",
+          "i": 0,
+          "eventID": "urn:uuid:outboxfix-41615871-000",
+          "status": 400,
+          "ms": 380,
+          "body": "{\"category\":\"SCHEMA_INVALID\",\"code\":\"INVALID_JSON_STRUCTURE\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\",\"resolution\":\"Verify your JSON conforms to the EPCIS 2.0 JSON-LD format with @context, type: \\\"EPCISDocument\\\", and epcisBody.eventList. See guide �3.2.\",\"errors\":[{\"path\":\"epcisBody.eventList[1].eventID\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\"}],\"_sandbox\":t",
+          "outcome": "OTHER_400"
+        },
+        {
+          "phase": "sequential",
+          "i": 1,
+          "eventID": "urn:uuid:outboxfix-41615871-001",
+          "status": 400,
+          "ms": 207,
+          "body": "{\"category\":\"SCHEMA_INVALID\",\"code\":\"INVALID_JSON_STRUCTURE\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\",\"resolution\":\"Verify your JSON conforms to the EPCIS 2.0 JSON-LD format with @context, type: \\\"EPCISDocument\\\", and epcisBody.eventList. See guide �3.2.\",\"errors\":[{\"path\":\"epcisBody.eventList[1].eventID\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\"}],\"_sandbox\":t",
+          "outcome": "OTHER_400"
+        },
+        {
+          "phase": "sequential",
+          "i": 2,
+          "eventID": "urn:uuid:outboxfix-41615871-002",
+          "status": 400,
+          "ms": 167,
+          "body": "{\"category\":\"SCHEMA_INVALID\",\"code\":\"INVALID_JSON_STRUCTURE\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\",\"resolution\":\"Verify your JSON conforms to the EPCIS 2.0 JSON-LD format with @context, type: \\\"EPCISDocument\\\", and epcisBody.eventList. See guide �3.2.\",\"errors\":[{\"path\":\"epcisBody.eventList[1].eventID\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\"}],\"_sandbox\":t",
+          "outcome": "OTHER_400"
+        },
+        {
+          "phase": "sequential",
+          "i": 3,
+          "eventID": "urn:uuid:outboxfix-41615871-003",
+          "status": 400,
+          "ms": 193,
+          "body": "{\"category\":\"SCHEMA_INVALID\",\"code\":\"INVALID_JSON_STRUCTURE\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\",\"resolution\":\"Verify your JSON conforms to the EPCIS 2.0 JSON-LD format with @context, type: \\\"EPCISDocument\\\", and epcisBody.eventList. See guide �3.2.\",\"errors\":[{\"path\":\"epcisBody.eventList[1].eventID\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\"}],\"_sandbox\":t",
+          "outcome": "OTHER_400"
+        },
+        {
+          "phase": "sequential",
+          "i": 4,
+          "eventID": "urn:uuid:outboxfix-41615871-004",
+          "status": 400,
+          "ms": 183,
+          "body": "{\"category\":\"SCHEMA_INVALID\",\"code\":\"INVALID_JSON_STRUCTURE\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\",\"resolution\":\"Verify your JSON conforms to the EPCIS 2.0 JSON-LD format with @context, type: \\\"EPCISDocument\\\", and epcisBody.eventList. See guide �3.2.\",\"errors\":[{\"path\":\"epcisBody.eventList[1].eventID\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\"}],\"_sandbox\":t",
+          "outcome": "OTHER_400"
+        },
+        {
+          "phase": "sequential",
+          "i": 5,
+          "eventID": "urn:uuid:outboxfix-41615871-005",
+          "status": 400,
+          "ms": 204,
+          "body": "{\"category\":\"SCHEMA_INVALID\",\"code\":\"INVALID_JSON_STRUCTURE\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\",\"resolution\":\"Verify your JSON conforms to the EPCIS 2.0 JSON-LD format with @context, type: \\\"EPCISDocument\\\", and epcisBody.eventList. See guide �3.2.\",\"errors\":[{\"path\":\"epcisBody.eventList[1].eventID\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\"}],\"_sandbox\":t",
+          "outcome": "OTHER_400"
+        },
+        {
+          "phase": "sequential",
+          "i": 6,
+          "eventID": "urn:uuid:outboxfix-41615871-006",
+          "status": 400,
+          "ms": 192,
+          "body": "{\"category\":\"SCHEMA_INVALID\",\"code\":\"INVALID_JSON_STRUCTURE\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\",\"resolution\":\"Verify your JSON conforms to the EPCIS 2.0 JSON-LD format with @context, type: \\\"EPCISDocument\\\", and epcisBody.eventList. See guide �3.2.\",\"errors\":[{\"path\":\"epcisBody.eventList[1].eventID\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\"}],\"_sandbox\":t",
+          "outcome": "OTHER_400"
+        },
+        {
+          "phase": "sequential",
+          "i": 7,
+          "eventID": "urn:uuid:outboxfix-41615871-007",
+          "status": 400,
+          "ms": 126,
+          "body": "{\"category\":\"SCHEMA_INVALID\",\"code\":\"INVALID_JSON_STRUCTURE\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\",\"resolution\":\"Verify your JSON conforms to the EPCIS 2.0 JSON-LD format with @context, type: \\\"EPCISDocument\\\", and epcisBody.eventList. See guide �3.2.\",\"errors\":[{\"path\":\"epcisBody.eventList[1].eventID\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\"}],\"_sandbox\":t",
+          "outcome": "OTHER_400"
+        },
+        {
+          "phase": "sequential",
+          "i": 8,
+          "eventID": "urn:uuid:outboxfix-41615871-008",
+          "status": 400,
+          "ms": 427,
+          "body": "{\"category\":\"SCHEMA_INVALID\",\"code\":\"INVALID_JSON_STRUCTURE\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\",\"resolution\":\"Verify your JSON conforms to the EPCIS 2.0 JSON-LD format with @context, type: \\\"EPCISDocument\\\", and epcisBody.eventList. See guide �3.2.\",\"errors\":[{\"path\":\"epcisBody.eventList[1].eventID\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\"}],\"_sandbox\":t",
+          "outcome": "OTHER_400"
+        },
+        {
+          "phase": "sequential",
+          "i": 9,
+          "eventID": "urn:uuid:outboxfix-41615871-009",
+          "status": 400,
+          "ms": 146,
+          "body": "{\"category\":\"SCHEMA_INVALID\",\"code\":\"INVALID_JSON_STRUCTURE\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\",\"resolution\":\"Verify your JSON conforms to the EPCIS 2.0 JSON-LD format with @context, type: \\\"EPCISDocument\\\", and epcisBody.eventList. See guide �3.2.\",\"errors\":[{\"path\":\"epcisBody.eventList[1].eventID\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\"}],\"_sandbox\":t",
+          "outcome": "OTHER_400"
+        },
+        {
+          "phase": "sequential",
+          "i": 10,
+          "eventID": "urn:uuid:outboxfix-41615871-010",
+          "status": 400,
+          "ms": 163,
+          "body": "{\"category\":\"SCHEMA_INVALID\",\"code\":\"INVALID_JSON_STRUCTURE\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\",\"resolution\":\"Verify your JSON conforms to the EPCIS 2.0 JSON-LD format with @context, type: \\\"EPCISDocument\\\", and epcisBody.eventList. See guide �3.2.\",\"errors\":[{\"path\":\"epcisBody.eventList[1].eventID\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\"}],\"_sandbox\":t",
+          "outcome": "OTHER_400"
+        },
+        {
+          "phase": "sequential",
+          "i": 11,
+          "eventID": "urn:uuid:outboxfix-41615871-011",
+          "status": 400,
+          "ms": 135,
+          "body": "{\"category\":\"SCHEMA_INVALID\",\"code\":\"INVALID_JSON_STRUCTURE\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\",\"resolution\":\"Verify your JSON conforms to the EPCIS 2.0 JSON-LD format with @context, type: \\\"EPCISDocument\\\", and epcisBody.eventList. See guide �3.2.\",\"errors\":[{\"path\":\"epcisBody.eventList[1].eventID\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\"}],\"_sandbox\":t",
+          "outcome": "OTHER_400"
+        },
+        {
+          "phase": "sequential",
+          "i": 12,
+          "eventID": "urn:uuid:outboxfix-41615871-012",
+          "status": 400,
+          "ms": 176,
+          "body": "{\"category\":\"SCHEMA_INVALID\",\"code\":\"INVALID_JSON_STRUCTURE\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\",\"resolution\":\"Verify your JSON conforms to the EPCIS 2.0 JSON-LD format with @context, type: \\\"EPCISDocument\\\", and epcisBody.eventList. See guide �3.2.\",\"errors\":[{\"path\":\"epcisBody.eventList[1].eventID\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\"}],\"_sandbox\":t",
+          "outcome": "OTHER_400"
+        },
+        {
+          "phase": "sequential",
+          "i": 13,
+          "eventID": "urn:uuid:outboxfix-41615871-013",
+          "status": 400,
+          "ms": 166,
+          "body": "{\"category\":\"SCHEMA_INVALID\",\"code\":\"INVALID_JSON_STRUCTURE\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\",\"resolution\":\"Verify your JSON conforms to the EPCIS 2.0 JSON-LD format with @context, type: \\\"EPCISDocument\\\", and epcisBody.eventList. See guide �3.2.\",\"errors\":[{\"path\":\"epcisBody.eventList[1].eventID\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\"}],\"_sandbox\":t",
+          "outcome": "OTHER_400"
+        },
+        {
+          "phase": "sequential",
+          "i": 14,
+          "eventID": "urn:uuid:outboxfix-41615871-014",
+          "status": 400,
+          "ms": 130,
+          "body": "{\"category\":\"SCHEMA_INVALID\",\"code\":\"INVALID_JSON_STRUCTURE\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\",\"resolution\":\"Verify your JSON conforms to the EPCIS 2.0 JSON-LD format with @context, type: \\\"EPCISDocument\\\", and epcisBody.eventList. See guide �3.2.\",\"errors\":[{\"path\":\"epcisBody.eventList[1].eventID\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\"}],\"_sandbox\":t",
+          "outcome": "OTHER_400"
+        },
+        {
+          "phase": "sequential",
+          "i": 15,
+          "eventID": "urn:uuid:outboxfix-41615871-015",
+          "status": 400,
+          "ms": 146,
+          "body": "{\"category\":\"SCHEMA_INVALID\",\"code\":\"INVALID_JSON_STRUCTURE\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\",\"resolution\":\"Verify your JSON conforms to the EPCIS 2.0 JSON-LD format with @context, type: \\\"EPCISDocument\\\", and epcisBody.eventList. See guide �3.2.\",\"errors\":[{\"path\":\"epcisBody.eventList[1].eventID\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\"}],\"_sandbox\":t",
+          "outcome": "OTHER_400"
+        },
+        {
+          "phase": "sequential",
+          "i": 16,
+          "eventID": "urn:uuid:outboxfix-41615871-016",
+          "status": 400,
+          "ms": 199,
+          "body": "{\"category\":\"SCHEMA_INVALID\",\"code\":\"INVALID_JSON_STRUCTURE\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\",\"resolution\":\"Verify your JSON conforms to the EPCIS 2.0 JSON-LD format with @context, type: \\\"EPCISDocument\\\", and epcisBody.eventList. See guide �3.2.\",\"errors\":[{\"path\":\"epcisBody.eventList[1].eventID\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\"}],\"_sandbox\":t",
+          "outcome": "OTHER_400"
+        },
+        {
+          "phase": "sequential",
+          "i": 17,
+          "eventID": "urn:uuid:outboxfix-41615871-017",
+          "status": 400,
+          "ms": 138,
+          "body": "{\"category\":\"SCHEMA_INVALID\",\"code\":\"INVALID_JSON_STRUCTURE\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\",\"resolution\":\"Verify your JSON conforms to the EPCIS 2.0 JSON-LD format with @context, type: \\\"EPCISDocument\\\", and epcisBody.eventList. See guide �3.2.\",\"errors\":[{\"path\":\"epcisBody.eventList[1].eventID\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\"}],\"_sandbox\":t",
+          "outcome": "OTHER_400"
+        },
+        {
+          "phase": "sequential",
+          "i": 18,
+          "eventID": "urn:uuid:outboxfix-41615871-018",
+          "status": 400,
+          "ms": 142,
+          "body": "{\"category\":\"SCHEMA_INVALID\",\"code\":\"INVALID_JSON_STRUCTURE\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\",\"resolution\":\"Verify your JSON conforms to the EPCIS 2.0 JSON-LD format with @context, type: \\\"EPCISDocument\\\", and epcisBody.eventList. See guide �3.2.\",\"errors\":[{\"path\":\"epcisBody.eventList[1].eventID\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\"}],\"_sandbox\":t",
+          "outcome": "OTHER_400"
+        },
+        {
+          "phase": "sequential",
+          "i": 19,
+          "eventID": "urn:uuid:outboxfix-41615871-019",
+          "status": 400,
+          "ms": 152,
+          "body": "{\"category\":\"SCHEMA_INVALID\",\"code\":\"INVALID_JSON_STRUCTURE\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\",\"resolution\":\"Verify your JSON conforms to the EPCIS 2.0 JSON-LD format with @context, type: \\\"EPCISDocument\\\", and epcisBody.eventList. See guide �3.2.\",\"errors\":[{\"path\":\"epcisBody.eventList[1].eventID\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\"}],\"_sandbox\":t",
+          "outcome": "OTHER_400"
+        },
+        {
+          "phase": "sequential",
+          "i": 20,
+          "eventID": "urn:uuid:outboxfix-41615871-020",
+          "status": 400,
+          "ms": 156,
+          "body": "{\"category\":\"SCHEMA_INVALID\",\"code\":\"INVALID_JSON_STRUCTURE\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\",\"resolution\":\"Verify your JSON conforms to the EPCIS 2.0 JSON-LD format with @context, type: \\\"EPCISDocument\\\", and epcisBody.eventList. See guide �3.2.\",\"errors\":[{\"path\":\"epcisBody.eventList[1].eventID\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\"}],\"_sandbox\":t",
+          "outcome": "OTHER_400"
+        },
+        {
+          "phase": "sequential",
+          "i": 21,
+          "eventID": "urn:uuid:outboxfix-41615871-021",
+          "status": 400,
+          "ms": 188,
+          "body": "{\"category\":\"SCHEMA_INVALID\",\"code\":\"INVALID_JSON_STRUCTURE\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\",\"resolution\":\"Verify your JSON conforms to the EPCIS 2.0 JSON-LD format with @context, type: \\\"EPCISDocument\\\", and epcisBody.eventList. See guide �3.2.\",\"errors\":[{\"path\":\"epcisBody.eventList[1].eventID\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\"}],\"_sandbox\":t",
+          "outcome": "OTHER_400"
+        },
+        {
+          "phase": "sequential",
+          "i": 22,
+          "eventID": "urn:uuid:outboxfix-41615871-022",
+          "status": 400,
+          "ms": 184,
+          "body": "{\"category\":\"SCHEMA_INVALID\",\"code\":\"INVALID_JSON_STRUCTURE\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\",\"resolution\":\"Verify your JSON conforms to the EPCIS 2.0 JSON-LD format with @context, type: \\\"EPCISDocument\\\", and epcisBody.eventList. See guide �3.2.\",\"errors\":[{\"path\":\"epcisBody.eventList[1].eventID\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\"}],\"_sandbox\":t",
+          "outcome": "OTHER_400"
+        },
+        {
+          "phase": "sequential",
+          "i": 23,
+          "eventID": "urn:uuid:outboxfix-41615871-023",
+          "status": 400,
+          "ms": 138,
+          "body": "{\"category\":\"SCHEMA_INVALID\",\"code\":\"INVALID_JSON_STRUCTURE\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\",\"resolution\":\"Verify your JSON conforms to the EPCIS 2.0 JSON-LD format with @context, type: \\\"EPCISDocument\\\", and epcisBody.eventList. See guide �3.2.\",\"errors\":[{\"path\":\"epcisBody.eventList[1].eventID\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\"}],\"_sandbox\":t",
+          "outcome": "OTHER_400"
+        },
+        {
+          "phase": "sequential",
+          "i": 24,
+          "eventID": "urn:uuid:outboxfix-41615871-024",
+          "status": 400,
+          "ms": 168,
+          "body": "{\"category\":\"SCHEMA_INVALID\",\"code\":\"INVALID_JSON_STRUCTURE\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\",\"resolution\":\"Verify your JSON conforms to the EPCIS 2.0 JSON-LD format with @context, type: \\\"EPCISDocument\\\", and epcisBody.eventList. See guide �3.2.\",\"errors\":[{\"path\":\"epcisBody.eventList[1].eventID\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\"}],\"_sandbox\":t",
+          "outcome": "OTHER_400"
+        },
+        {
+          "phase": "concurrent",
+          "i": 0,
+          "eventID": "urn:uuid:outboxfix-41615871-c0",
+          "status": 400,
+          "ms": 251,
+          "body": "{\"category\":\"SCHEMA_INVALID\",\"code\":\"INVALID_JSON_STRUCTURE\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\",\"resolution\":\"Verify your JSON conforms to the EPCIS 2.0 JSON-LD format with @context, type: \\\"EPCISDocument\\\", and epcisBody.eventList. See guide �3.2.\",\"errors\":[{\"path\":\"epcisBody.eventList[1].eventID\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\"}],\"_sandbox\":t",
+          "outcome": "OTHER_400"
+        },
+        {
+          "phase": "concurrent",
+          "i": 1,
+          "eventID": "urn:uuid:outboxfix-41615871-c1",
+          "status": 400,
+          "ms": 529,
+          "body": "{\"category\":\"SCHEMA_INVALID\",\"code\":\"INVALID_JSON_STRUCTURE\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\",\"resolution\":\"Verify your JSON conforms to the EPCIS 2.0 JSON-LD format with @context, type: \\\"EPCISDocument\\\", and epcisBody.eventList. See guide �3.2.\",\"errors\":[{\"path\":\"epcisBody.eventList[1].eventID\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\"}],\"_sandbox\":t",
+          "outcome": "OTHER_400"
+        },
+        {
+          "phase": "concurrent",
+          "i": 2,
+          "eventID": "urn:uuid:outboxfix-41615871-c2",
+          "status": 400,
+          "ms": 339,
+          "body": "{\"category\":\"SCHEMA_INVALID\",\"code\":\"INVALID_JSON_STRUCTURE\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\",\"resolution\":\"Verify your JSON conforms to the EPCIS 2.0 JSON-LD format with @context, type: \\\"EPCISDocument\\\", and epcisBody.eventList. See guide �3.2.\",\"errors\":[{\"path\":\"epcisBody.eventList[1].eventID\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\"}],\"_sandbox\":t",
+          "outcome": "OTHER_400"
+        },
+        {
+          "phase": "concurrent",
+          "i": 3,
+          "eventID": "urn:uuid:outboxfix-41615871-c3",
+          "status": 400,
+          "ms": 492,
+          "body": "{\"category\":\"SCHEMA_INVALID\",\"code\":\"INVALID_JSON_STRUCTURE\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\",\"resolution\":\"Verify your JSON conforms to the EPCIS 2.0 JSON-LD format with @context, type: \\\"EPCISDocument\\\", and epcisBody.eventList. See guide �3.2.\",\"errors\":[{\"path\":\"epcisBody.eventList[1].eventID\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\"}],\"_sandbox\":t",
+          "outcome": "OTHER_400"
+        },
+        {
+          "phase": "concurrent",
+          "i": 4,
+          "eventID": "urn:uuid:outboxfix-41615871-c4",
+          "status": 400,
+          "ms": 314,
+          "body": "{\"category\":\"SCHEMA_INVALID\",\"code\":\"INVALID_JSON_STRUCTURE\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\",\"resolution\":\"Verify your JSON conforms to the EPCIS 2.0 JSON-LD format with @context, type: \\\"EPCISDocument\\\", and epcisBody.eventList. See guide �3.2.\",\"errors\":[{\"path\":\"epcisBody.eventList[1].eventID\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\"}],\"_sandbox\":t",
+          "outcome": "OTHER_400"
+        },
+        {
+          "phase": "duplicate-first",
+          "eventID": "urn:uuid:outboxfix-41615871-dup",
+          "status": 400,
+          "ms": 112,
+          "body": "{\"category\":\"SCHEMA_INVALID\",\"code\":\"INVALID_JSON_STRUCTURE\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\",\"resolution\":\"Verify your JSON conforms to the EPCIS 2.0 JSON-LD format with @context, type: \\\"EPCISDocument\\\", and epcisBody.eventList. See guide �3.2.\",\"errors\":[{\"path\":\"epcisBody.eventList[1].eventID\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\"}],\"_sandbox\":t",
+          "outcome": "OTHER_400"
+        },
+        {
+          "phase": "duplicate-second",
+          "eventID": "urn:uuid:outboxfix-41615871-dup",
+          "status": 400,
+          "ms": 77,
+          "body": "{\"category\":\"SCHEMA_INVALID\",\"code\":\"INVALID_JSON_STRUCTURE\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\",\"resolution\":\"Verify your JSON conforms to the EPCIS 2.0 JSON-LD format with @context, type: \\\"EPCISDocument\\\", and epcisBody.eventList. See guide �3.2.\",\"errors\":[{\"path\":\"epcisBody.eventList[1].eventID\",\"message\":\"eventID must be a UUID URN (urn:uuid:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx) — used for idempotency\"}],\"_sandbox\":t",
+          "outcome": "OTHER_400"
+        }
+      ]
+    },
+    {
+      "name": "trackiq",
+      "summary": {
+        "target": "trackiq",
+        "base": "https://trackiq.apeiro-digital.com",
+        "runId": "cfaabfb4",
+        "totalRequests": 32,
+        "outcomeCounts": {
+          "OTHER_401": 32
+        },
+        "uniqueEventRequests": 30,
+        "uniqueEvent2xx": 0,
+        "http5xx": 0,
+        "outboxPkeySignals": 0,
+        "duplicateSecondStatus": 401,
+        "pass": false
+      },
+      "results": [
+        {
+          "phase": "sequential",
+          "i": 0,
+          "eventID": "urn:uuid:outboxfix-cfaabfb4-000",
+          "status": 401,
+          "ms": 126,
+          "body": "{\"message\":\"Invalid API key\",\"error\":\"Unauthorized\",\"statusCode\":401}",
+          "outcome": "OTHER_401"
+        },
+        {
+          "phase": "sequential",
+          "i": 1,
+          "eventID": "urn:uuid:outboxfix-cfaabfb4-001",
+          "status": 401,
+          "ms": 52,
+          "body": "{\"message\":\"Invalid API key\",\"error\":\"Unauthorized\",\"statusCode\":401}",
+          "outcome": "OTHER_401"
+        },
+        {
+          "phase": "sequential",
+          "i": 2,
+          "eventID": "urn:uuid:outboxfix-cfaabfb4-002",
+          "status": 401,
+          "ms": 38,
+          "body": "{\"message\":\"Invalid API key\",\"error\":\"Unauthorized\",\"statusCode\":401}",
+          "outcome": "OTHER_401"
+        },
+        {
+          "phase": "sequential",
+          "i": 3,
+          "eventID": "urn:uuid:outboxfix-cfaabfb4-003",
+          "status": 401,
+          "ms": 33,
+          "body": "{\"message\":\"Invalid API key\",\"error\":\"Unauthorized\",\"statusCode\":401}",
+          "outcome": "OTHER_401"
+        },
+        {
+          "phase": "sequential",
+          "i": 4,
+          "eventID": "urn:uuid:outboxfix-cfaabfb4-004",
+          "status": 401,
+          "ms": 45,
+          "body": "{\"message\":\"Invalid API key\",\"error\":\"Unauthorized\",\"statusCode\":401}",
+          "outcome": "OTHER_401"
+        },
+        {
+          "phase": "sequential",
+          "i": 5,
+          "eventID": "urn:uuid:outboxfix-cfaabfb4-005",
+          "status": 401,
+          "ms": 49,
+          "body": "{\"message\":\"Invalid API key\",\"error\":\"Unauthorized\",\"statusCode\":401}",
+          "outcome": "OTHER_401"
+        },
+        {
+          "phase": "sequential",
+          "i": 6,
+          "eventID": "urn:uuid:outboxfix-cfaabfb4-006",
+          "status": 401,
+          "ms": 29,
+          "body": "{\"message\":\"Invalid API key\",\"error\":\"Unauthorized\",\"statusCode\":401}",
+          "outcome": "OTHER_401"
+        },
+        {
+          "phase": "sequential",
+          "i": 7,
+          "eventID": "urn:uuid:outboxfix-cfaabfb4-007",
+          "status": 401,
+          "ms": 27,
+          "body": "{\"message\":\"Invalid API key\",\"error\":\"Unauthorized\",\"statusCode\":401}",
+          "outcome": "OTHER_401"
+        },
+        {
+          "phase": "sequential",
+          "i": 8,
+          "eventID": "urn:uuid:outboxfix-cfaabfb4-008",
+          "status": 401,
+          "ms": 75,
+          "body": "{\"message\":\"Invalid API key\",\"error\":\"Unauthorized\",\"statusCode\":401}",
+          "outcome": "OTHER_401"
+        },
+        {
+          "phase": "sequential",
+          "i": 9,
+          "eventID": "urn:uuid:outboxfix-cfaabfb4-009",
+          "status": 401,
+          "ms": 54,
+          "body": "{\"message\":\"Invalid API key\",\"error\":\"Unauthorized\",\"statusCode\":401}",
+          "outcome": "OTHER_401"
+        },
+        {
+          "phase": "sequential",
+          "i": 10,
+          "eventID": "urn:uuid:outboxfix-cfaabfb4-010",
+          "status": 401,
+          "ms": 110,
+          "body": "{\"message\":\"Invalid API key\",\"error\":\"Unauthorized\",\"statusCode\":401}",
+          "outcome": "OTHER_401"
+        },
+        {
+          "phase": "sequential",
+          "i": 11,
+          "eventID": "urn:uuid:outboxfix-cfaabfb4-011",
+          "status": 401,
+          "ms": 58,
+          "body": "{\"message\":\"Invalid API key\",\"error\":\"Unauthorized\",\"statusCode\":401}",
+          "outcome": "OTHER_401"
+        },
+        {
+          "phase": "sequential",
+          "i": 12,
+          "eventID": "urn:uuid:outboxfix-cfaabfb4-012",
+          "status": 401,
+          "ms": 35,
+          "body": "{\"message\":\"Invalid API key\",\"error\":\"Unauthorized\",\"statusCode\":401}",
+          "outcome": "OTHER_401"
+        },
+        {
+          "phase": "sequential",
+          "i": 13,
+          "eventID": "urn:uuid:outboxfix-cfaabfb4-013",
+          "status": 401,
+          "ms": 33,
+          "body": "{\"message\":\"Invalid API key\",\"error\":\"Unauthorized\",\"statusCode\":401}",
+          "outcome": "OTHER_401"
+        },
+        {
+          "phase": "sequential",
+          "i": 14,
+          "eventID": "urn:uuid:outboxfix-cfaabfb4-014",
+          "status": 401,
+          "ms": 33,
+          "body": "{\"message\":\"Invalid API key\",\"error\":\"Unauthorized\",\"statusCode\":401}",
+          "outcome": "OTHER_401"
+        },
+        {
+          "phase": "sequential",
+          "i": 15,
+          "eventID": "urn:uuid:outboxfix-cfaabfb4-015",
+          "status": 401,
+          "ms": 51,
+          "body": "{\"message\":\"Invalid API key\",\"error\":\"Unauthorized\",\"statusCode\":401}",
+          "outcome": "OTHER_401"
+        },
+        {
+          "phase": "sequential",
+          "i": 16,
+          "eventID": "urn:uuid:outboxfix-cfaabfb4-016",
+          "status": 401,
+          "ms": 39,
+          "body": "{\"message\":\"Invalid API key\",\"error\":\"Unauthorized\",\"statusCode\":401}",
+          "outcome": "OTHER_401"
+        },
+        {
+          "phase": "sequential",
+          "i": 17,
+          "eventID": "urn:uuid:outboxfix-cfaabfb4-017",
+          "status": 401,
+          "ms": 31,
+          "body": "{\"message\":\"Invalid API key\",\"error\":\"Unauthorized\",\"statusCode\":401}",
+          "outcome": "OTHER_401"
+        },
+        {
+          "phase": "sequential",
+          "i": 18,
+          "eventID": "urn:uuid:outboxfix-cfaabfb4-018",
+          "status": 401,
+          "ms": 73,
+          "body": "{\"message\":\"Invalid API key\",\"error\":\"Unauthorized\",\"statusCode\":401}",
+          "outcome": "OTHER_401"
+        },
+        {
+          "phase": "sequential",
+          "i": 19,
+          "eventID": "urn:uuid:outboxfix-cfaabfb4-019",
+          "status": 401,
+          "ms": 67,
+          "body": "{\"message\":\"Invalid API key\",\"error\":\"Unauthorized\",\"statusCode\":401}",
+          "outcome": "OTHER_401"
+        },
+        {
+          "phase": "sequential",
+          "i": 20,
+          "eventID": "urn:uuid:outboxfix-cfaabfb4-020",
+          "status": 401,
+          "ms": 56,
+          "body": "{\"message\":\"Invalid API key\",\"error\":\"Unauthorized\",\"statusCode\":401}",
+          "outcome": "OTHER_401"
+        },
+        {
+          "phase": "sequential",
+          "i": 21,
+          "eventID": "urn:uuid:outboxfix-cfaabfb4-021",
+          "status": 401,
+          "ms": 67,
+          "body": "{\"message\":\"Invalid API key\",\"error\":\"Unauthorized\",\"statusCode\":401}",
+          "outcome": "OTHER_401"
+        },
+        {
+          "phase": "sequential",
+          "i": 22,
+          "eventID": "urn:uuid:outboxfix-cfaabfb4-022",
+          "status": 401,
+          "ms": 51,
+          "body": "{\"message\":\"Invalid API key\",\"error\":\"Unauthorized\",\"statusCode\":401}",
+          "outcome": "OTHER_401"
+        },
+        {
+          "phase": "sequential",
+          "i": 23,
+          "eventID": "urn:uuid:outboxfix-cfaabfb4-023",
+          "status": 401,
+          "ms": 73,
+          "body": "{\"message\":\"Invalid API key\",\"error\":\"Unauthorized\",\"statusCode\":401}",
+          "outcome": "OTHER_401"
+        },
+        {
+          "phase": "sequential",
+          "i": 24,
+          "eventID": "urn:uuid:outboxfix-cfaabfb4-024",
+          "status": 401,
+          "ms": 48,
+          "body": "{\"message\":\"Invalid API key\",\"error\":\"Unauthorized\",\"statusCode\":401}",
+          "outcome": "OTHER_401"
+        },
+        {
+          "phase": "concurrent",
+          "i": 0,
+          "eventID": "urn:uuid:outboxfix-cfaabfb4-c0",
+          "status": 401,
+          "ms": 95,
+          "body": "{\"message\":\"Invalid API key\",\"error\":\"Unauthorized\",\"statusCode\":401}",
+          "outcome": "OTHER_401"
+        },
+        {
+          "phase": "concurrent",
+          "i": 1,
+          "eventID": "urn:uuid:outboxfix-cfaabfb4-c1",
+          "status": 401,
+          "ms": 225,
+          "body": "{\"message\":\"Invalid API key\",\"error\":\"Unauthorized\",\"statusCode\":401}",
+          "outcome": "OTHER_401"
+        },
+        {
+          "phase": "concurrent",
+          "i": 2,
+          "eventID": "urn:uuid:outboxfix-cfaabfb4-c2",
+          "status": 401,
+          "ms": 224,
+          "body": "{\"message\":\"Invalid API key\",\"error\":\"Unauthorized\",\"statusCode\":401}",
+          "outcome": "OTHER_401"
+        },
+        {
+          "phase": "concurrent",
+          "i": 3,
+          "eventID": "urn:uuid:outboxfix-cfaabfb4-c3",
+          "status": 401,
+          "ms": 166,
+          "body": "{\"message\":\"Invalid API key\",\"error\":\"Unauthorized\",\"statusCode\":401}",
+          "outcome": "OTHER_401"
+        },
+        {
+          "phase": "concurrent",
+          "i": 4,
+          "eventID": "urn:uuid:outboxfix-cfaabfb4-c4",
+          "status": 401,
+          "ms": 241,
+          "body": "{\"message\":\"Invalid API key\",\"error\":\"Unauthorized\",\"statusCode\":401}",
+          "outcome": "OTHER_401"
+        },
+        {
+          "phase": "duplicate-first",
+          "eventID": "urn:uuid:outboxfix-cfaabfb4-dup",
+          "status": 401,
+          "ms": 49,
+          "body": "{\"message\":\"Invalid API key\",\"error\":\"Unauthorized\",\"statusCode\":401}",
+          "outcome": "OTHER_401"
+        },
+        {
+          "phase": "duplicate-second",
+          "eventID": "urn:uuid:outboxfix-cfaabfb4-dup",
+          "status": 401,
+          "ms": 56,
+          "body": "{\"message\":\"Invalid API key\",\"error\":\"Unauthorized\",\"statusCode\":401}",
+          "outcome": "OTHER_401"
+        }
+      ]
+    }
+  ]
+}

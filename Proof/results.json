@@ -1,0 +1,92 @@
+[
+  {
+    "shot": "21a",
+    "file": "C:/Users/Collins/Desktop/uploads/csv-20/CSV-21a_utf8_bom.csv",
+    "status": 202,
+    "sent": true,
+    "importEnabled": true,
+    "summary": "{\"async\":true,\"correlation_id\":\"b313cb1a-09bd-497c-8e54-f2c4cdda8d69\",\"status_url\":\"/api/manufacturer/epcis-events/csv-import/status/b313cb1a-09bd-497c-8e54-f2c4cdda8d69\",\"accepted\":true,\"message\":\"EPCIS Event CSV accepted for asynchronous processing. Poll status_url for outcomes.\"} STATUS: {\"correlation_id\":\"b313cb1a-09bd-497c-8e54-f2c4cdda8d69\",\"status\":\"succeeded\",\"result_http_status\":200,\"part",
+    "body": "{\"async\":true,\"correlation_id\":\"b313cb1a-09bd-497c-8e54-f2c4cdda8d69\",\"status_url\":\"/api/manufacturer/epcis-events/csv-import/status/b313cb1a-09bd-497c-8e54-f2c4cdda8d69\",\"accepted\":true,\"message\":\"EPCIS Event CSV accepted for asynchronous processing. Poll status_url for outcomes.\"}\nSTATUS: {\"correlation_id\":\"b313cb1a-09bd-497c-8e54-f2c4cdda8d69\",\"status\":\"succeeded\",\"result_http_status\":200,\"partial\":false,\"event_ids\":[\"urn:uuid:dfa208c7-2d63-4807-8683-588796fbb3b5\",\"urn:uuid:a2bc0c67-0a86-47ff-822a-b1935eff4fb4\"],\"accepted_count\":2,\"error_code\":null,\"error_message\":null,\"result_summary\":{\"ok\":true,\"message\":\"EPCIS events accepted\",\"success\":true,\"byte_size\":1320,\"epc_count\":6,\"event_ids\":[\"urn:uuid:dfa208c7-2d63-4807-8683-588796fbb3b5\",\"urn:uuid:a2bc0c67-0a86-47ff-822a-b1935eff4fb4\"],\"object_key\":\"epcis/ingest/2026/11/04/b313cb1a-09bd-497c-8e54-f2c4cdda8d69.jsonld\",\"event_count\":2,\"http_status\":200,\"content_type\":\"application/ld+json\",\"warning_codes\":[\"UNKNOWN_SGLN\",\"INVALID_LOT\"],\"warning_count\":3,\"accepted_count\":2,\"estimated_epcs\":6,\"processing_mode\":\"ASYNC\",\"events_processed\":2},\"accepted_at\":\"2026-11-04 07:01:18.394+00\",\"created_at\":\"2026-11-04 07:01:18.394+00\",\"updated_at\":\"2026-11-04 07:01:18.875+00\",\"completed_at\":\"2026-11-04 07:01:18.875+00\"}",
+    "dialog": "Bulk CSV — EPCIS Events\nSelect CSV file (max 2 MB, 500 rows)\nHow EPCIS Event CSV works\n\nCSV-21a_utf8_bom.csv · 0.7 KB\n\nUpload successful\n\n2 EPCIS unit(s) were ingested.\n\nCorrelation: b313cb1a-09bd-497c-8e54-f2c4cdda8d69\n\nClose"
+  },
+  {
+    "shot": "21b",
+    "file": "C:/Users/Collins/Desktop/uploads/csv-20/CSV-21b_utf16.csv",
+    "status": 400,
+    "sent": true,
+    "importEnabled": true,
+    "summary": "{\"error\":\"Bad Request\",\"message\":\"File content is not plain CSV/text. Upload rejected.\"}",
+    "body": "{\"error\":\"Bad Request\",\"message\":\"File content is not plain CSV/text. Upload rejected.\"}",
+    "dialog": "Bulk CSV — EPCIS Events\nSelect CSV file (max 2 MB, 500 rows)\nHow EPCIS Event CSV works\n\nCSV-21b_utf16.csv · 1.5 KB\n\nImport did not complete successfully\n\nFile content is not plain CSV/text. Upload rejected.\n\nClose\nImport"
+  },
+  {
+    "shot": "21c",
+    "file": "C:/Users/Collins/Desktop/uploads/csv-20/CSV-21c_latin1.csv",
+    "status": 202,
+    "sent": true,
+    "importEnabled": true,
+    "summary": "{\"async\":true,\"correlation_id\":\"e7755032-a258-48cb-ba4a-153d44336aac\",\"status_url\":\"/api/manufacturer/epcis-events/csv-import/status/e7755032-a258-48cb-ba4a-153d44336aac\",\"accepted\":true,\"message\":\"EPCIS Event CSV accepted for asynchronous processing. Poll status_url for outcomes.\"} STATUS: {\"correlation_id\":\"e7755032-a258-48cb-ba4a-153d44336aac\",\"status\":\"succeeded\",\"result_http_status\":200,\"part",
+    "body": "{\"async\":true,\"correlation_id\":\"e7755032-a258-48cb-ba4a-153d44336aac\",\"status_url\":\"/api/manufacturer/epcis-events/csv-import/status/e7755032-a258-48cb-ba4a-153d44336aac\",\"accepted\":true,\"message\":\"EPCIS Event CSV accepted for asynchronous processing. Poll status_url for outcomes.\"}\nSTATUS: {\"correlation_id\":\"e7755032-a258-48cb-ba4a-153d44336aac\",\"status\":\"succeeded\",\"result_http_status\":200,\"partial\":false,\"event_ids\":[\"urn:uuid:a63345cc-cebd-47de-831d-6ffaf045e750\"],\"accepted_count\":1,\"error_code\":null,\"error_message\":null,\"result_summary\":{\"ok\":true,\"message\":\"EPCIS events accepted\",\"success\":true,\"byte_size\":1370,\"epc_count\":6,\"event_ids\":[\"urn:uuid:a63345cc-cebd-47de-831d-6ffaf045e750\"],\"object_key\":\"epcis/ingest/2026/11/04/e7755032-a258-48cb-ba4a-153d44336aac.jsonld\",\"event_count\":1,\"http_status\":200,\"content_type\":\"application/ld+json\",\"warning_codes\":[\"UNKNOWN_SGLN\",\"INVALID_LOT\"],\"warning_count\":2,\"accepted_count\":1,\"estimated_epcs\":6,\"processing_mode\":\"ASYNC\",\"events_processed\":1},\"accepted_at\":\"2026-11-04 07:01:29.568+00\",\"created_at\":\"2026-11-04 07:01:29.568+00\",\"updated_at\":\"2026-11-04 07:01:29.761+00\",\"completed_at\":\"2026-11-04 07:01:29.761+00\"}",
+    "dialog": "Bulk CSV — EPCIS Events\nSelect CSV file (max 2 MB, 500 rows)\nHow EPCIS Event CSV works\n\nCSV-21c_latin1.csv · 0.8 KB\n\nUpload successful\n\n1 EPCIS unit(s) were ingested.\n\nCorrelation: e7755032-a258-48cb-ba4a-153d44336aac\n\nClose"
+  },
+  {
+    "shot": "21d",
+    "file": "C:/Users/Collins/Desktop/uploads/csv-20/CSV-21d_semicolons.csv",
+    "status": 400,
+    "sent": true,
+    "importEnabled": true,
+    "summary": "{\"message\":\"CSV missing required column \\\"Event_Type\\\". Required core: Event_Type, Identifier_Type, Unit_ID, Event_Timestamp, Event_TimeZone_Offset, BizLocation_GLN.\",\"error\":\"Bad Request\",\"statusCode\":400}",
+    "body": "{\"message\":\"CSV missing required column \\\"Event_Type\\\". Required core: Event_Type, Identifier_Type, Unit_ID, Event_Timestamp, Event_TimeZone_Offset, BizLocation_GLN.\",\"error\":\"Bad Request\",\"statusCode\":400}",
+    "dialog": "Bulk CSV — EPCIS Events\nSelect CSV file (max 2 MB, 500 rows)\nHow EPCIS Event CSV works\n\nCSV-21d_semicolons.csv · 0.7 KB\n\nImport did not complete successfully\n\nCSV missing required column \"Event_Type\". Required core: Event_Type, Identifier_Type, Unit_ID, Event_Timestamp, Event_TimeZone_Offset, BizLocation_GLN.\n\nClose\nImport"
+  },
+  {
+    "shot": "21e",
+    "file": "C:/Users/Collins/Desktop/uploads/csv-20/CSV-21e_missing_column.csv",
+    "status": 400,
+    "sent": true,
+    "importEnabled": true,
+    "summary": "{\"invalid\":{\"count\":2,\"rows\":[{\"row_index\":2,\"row\":{\"Event_Type\":\"COMMISSIONING\",\"Identifier_Type\":\"SGTIN\",\"GTIN\":\"6161102974997\",\"Unit_ID\":\"FGN4Pe1\",\"Parent_ID\":\"\",\"Packaging_Level\":\"Item\",\"Event_Timestamp\":\"2026-11-04T06:35:57\",\"Event_TimeZone_Offset\":\"+03:00\",\"BizLocation_GLN\":\"6164003000000\",\"Lot_Batch_Number\":\"LFGN4Pe\",\"Lot_Manufacturing_Date\":\"2026-11-01\",\"Manufacturing_Origin\":\"DOMESTIC\",\"C",
+    "body": "{\"invalid\":{\"count\":2,\"rows\":[{\"row_index\":2,\"row\":{\"Event_Type\":\"COMMISSIONING\",\"Identifier_Type\":\"SGTIN\",\"GTIN\":\"6161102974997\",\"Unit_ID\":\"FGN4Pe1\",\"Parent_ID\":\"\",\"Packaging_Level\":\"Item\",\"Event_Timestamp\":\"2026-11-04T06:35:57\",\"Event_TimeZone_Offset\":\"+03:00\",\"BizLocation_GLN\":\"6164003000000\",\"Lot_Batch_Number\":\"LFGN4Pe\",\"Lot_Manufacturing_Date\":\"2026-11-01\",\"Manufacturing_Origin\":\"DOMESTIC\",\"Country_of_Origin\":\"KE\",\"Import_Sales_Permit_Ref\":\"\",\"Sender_Owner_GLN\":\"\",\"Sender_Owner_Name\":\"\",\"Sender_Custodian_GLN\":\"\",\"Sender_Location_Name\":\"\",\"Receiver_Owner_GLN\":\"\",\"Receiver_Owner_Name\":\"\",\"Receiver_Custodian_GLN\":\"\",\"Receiver_Location_Name\":\"\",\"LSP_GLN\":\"\",\"LSP_Name\":\"\",\"Transaction_Type\":\"\",\"Transaction_Reference\":\"\"},\"errors\":[\"Missing required field \\\"Lot_Expiry_Date\\\" for COMMISSIONING/SGTIN.\"]},{\"row_index\":3,\"row\":{\"Event_Type\":\"COMMISSIONING\",\"Identifier_Type\":\"SGTIN\",\"GTIN\":\"6161102974997\",\"Unit_ID\":\"FGN4Pe2\",\"Parent_ID\":\"\",\"Packaging_Level\":\"Item\",\"Event_Timestamp\":\"2026-11-04T06:36:57\",\"Event_TimeZone_Offset\":\"+03:00\",\"BizLocation_GLN\":\"6164003000000\",\"Lot_Batch_Number\":\"LFGN4Pe\",\"Lot_Manufacturing_Date\":\"2026-11-01\",\"Manufacturing_Origin\":\"DOMESTIC\",\"Country_of_Origin\":\"KE\",\"Import_Sales_Permit_Ref\":\"\",\"Sender_Owner_GLN\":\"\",\"Sender_Owner_Name\":\"\",\"Sender_Custodian_GLN\":\"\",\"Sender_Location_Name\":\"\",\"Receiver_Owner_GLN\":\"\",\"Receiver_Owner_Name\":\"\",\"Receiver_Custodian_GLN\":\"\",\"Receiver_Location_Name\":\"\",\"LSP_GLN\":\"\",\"LSP_Name\":\"\",\"Transaction_Type\":\"\",\"Transaction_Reference\":\"\"},\"errors\":[\"Missing required field \\\"Lot_Expiry_Date\\\" for COMMISSIONING/SGTIN.\"]}]}}",
+    "dialog": "Bulk CSV — EPCIS Events\nSelect CSV file (max 2 MB, 500 rows)\nHow EPCIS Event CSV works\n\nCSV-21e_missing_column.csv · 0.7 KB\n\n2 row(s) failed — nothing was written. Fix and re-upload.\nDownload errors CSV\nRow 2\nFGN4Pe1\nMissing required field \"Lot_Expiry_Date\" for COMMISSIONING/SGTIN.\nRow 3\nFGN4Pe2\nMissing required field \"Lot_Expiry_Date\" for COMMISSIONING/SGTIN.\nCancel\nImport"
+  },
+  {
+    "shot": "21f",
+    "file": "C:/Users/Collins/Desktop/uploads/csv-20/CSV-21f_renamed_column.csv",
+    "status": 400,
+    "sent": true,
+    "importEnabled": true,
+    "summary": "{\"message\":\"CSV missing required column \\\"Event_Type\\\". Required core: Event_Type, Identifier_Type, Unit_ID, Event_Timestamp, Event_TimeZone_Offset, BizLocation_GLN.\",\"error\":\"Bad Request\",\"statusCode\":400}",
+    "body": "{\"message\":\"CSV missing required column \\\"Event_Type\\\". Required core: Event_Type, Identifier_Type, Unit_ID, Event_Timestamp, Event_TimeZone_Offset, BizLocation_GLN.\",\"error\":\"Bad Request\",\"statusCode\":400}",
+    "dialog": "Bulk CSV — EPCIS Events\nSelect CSV file (max 2 MB, 500 rows)\nHow EPCIS Event CSV works\n\nCSV-21f_renamed_column.csv · 0.7 KB\n\nImport did not complete successfully\n\nCSV missing required column \"Event_Type\". Required core: Event_Type, Identifier_Type, Unit_ID, Event_Timestamp, Event_TimeZone_Offset, BizLocation_GLN.\n\nClose\nImport"
+  },
+  {
+    "shot": "21g",
+    "file": "C:/Users/Collins/Desktop/uploads/csv-20/CSV-21g_reordered_columns.csv",
+    "status": 202,
+    "sent": true,
+    "importEnabled": true,
+    "summary": "{\"async\":true,\"correlation_id\":\"d8ac5949-6050-4cb6-9d4d-c572d771698b\",\"status_url\":\"/api/manufacturer/epcis-events/csv-import/status/d8ac5949-6050-4cb6-9d4d-c572d771698b\",\"accepted\":true,\"message\":\"EPCIS Event CSV accepted for asynchronous processing. Poll status_url for outcomes.\"} STATUS: {\"correlation_id\":\"d8ac5949-6050-4cb6-9d4d-c572d771698b\",\"status\":\"succeeded\",\"result_http_status\":200,\"part",
+    "body": "{\"async\":true,\"correlation_id\":\"d8ac5949-6050-4cb6-9d4d-c572d771698b\",\"status_url\":\"/api/manufacturer/epcis-events/csv-import/status/d8ac5949-6050-4cb6-9d4d-c572d771698b\",\"accepted\":true,\"message\":\"EPCIS Event CSV accepted for asynchronous processing. Poll status_url for outcomes.\"}\nSTATUS: {\"correlation_id\":\"d8ac5949-6050-4cb6-9d4d-c572d771698b\",\"status\":\"succeeded\",\"result_http_status\":200,\"partial\":false,\"event_ids\":[\"urn:uuid:a2da92bd-b466-4333-84e4-53f570d37ad9\",\"urn:uuid:791bea28-f3b2-4a5f-8194-70ae6fc30cac\"],\"accepted_count\":2,\"error_code\":null,\"error_message\":null,\"result_summary\":{\"ok\":true,\"message\":\"EPCIS events accepted\",\"success\":true,\"byte_size\":1320,\"epc_count\":6,\"event_ids\":[\"urn:uuid:a2da92bd-b466-4333-84e4-53f570d37ad9\",\"urn:uuid:791bea28-f3b2-4a5f-8194-70ae6fc30cac\"],\"object_key\":\"epcis/ingest/2026/11/04/d8ac5949-6050-4cb6-9d4d-c572d771698b.jsonld\",\"event_count\":2,\"http_status\":200,\"content_type\":\"application/ld+json\",\"warning_codes\":[\"UNKNOWN_SGLN\",\"INVALID_LOT\"],\"warning_count\":3,\"accepted_count\":2,\"estimated_epcs\":6,\"processing_mode\":\"ASYNC\",\"events_processed\":2},\"accepted_at\":\"2026-11-04 07:01:46.799+00\",\"created_at\":\"2026-11-04 07:01:46.799+00\",\"updated_at\":\"2026-11-04 07:01:47.102+00\",\"completed_at\":\"2026-11-04 07:01:47.102+00\"}",
+    "dialog": "Bulk CSV — EPCIS Events\nSelect CSV file (max 2 MB, 500 rows)\nHow EPCIS Event CSV works\n\nCSV-21g_reordered_columns.csv · 0.7 KB\n\nUpload successful\n\n2 EPCIS unit(s) were ingested.\n\nCorrelation: d8ac5949-6050-4cb6-9d4d-c572d771698b\n\nClose"
+  },
+  {
+    "shot": "21h",
+    "file": "C:/Users/Collins/Desktop/uploads/csv-20/CSV-21h_empty.csv",
+    "status": 400,
+    "sent": true,
+    "importEnabled": true,
+    "summary": "{\"error\":\"Bad Request\",\"message\":\"File is empty\"}",
+    "body": "{\"error\":\"Bad Request\",\"message\":\"File is empty\"}",
+    "dialog": "Bulk CSV — EPCIS Events\nSelect CSV file (max 2 MB, 500 rows)\nHow EPCIS Event CSV works\n\nCSV-21h_empty.csv · 0.0 KB\n\nImport did not complete successfully\n\nFile is empty\n\nClose\nImport"
+  },
+  {
+    "shot": "21i",
+    "file": "C:/Users/Collins/Desktop/uploads/csv-20/CSV-21i_wrong_extension.txt",
+    "status": 202,
+    "sent": true,
+    "importEnabled": true,
+    "summary": "{\"async\":true,\"correlation_id\":\"6d67e8c3-2034-4e17-8c8d-cf745f84e658\",\"status_url\":\"/api/manufacturer/epcis-events/csv-import/status/6d67e8c3-2034-4e17-8c8d-cf745f84e658\",\"accepted\":true,\"message\":\"EPCIS Event CSV accepted for asynchronous processing. Poll status_url for outcomes.\"} STATUS: {\"correlation_id\":\"6d67e8c3-2034-4e17-8c8d-cf745f84e658\",\"status\":\"succeeded\",\"result_http_status\":200,\"part",
+    "body": "{\"async\":true,\"correlation_id\":\"6d67e8c3-2034-4e17-8c8d-cf745f84e658\",\"status_url\":\"/api/manufacturer/epcis-events/csv-import/status/6d67e8c3-2034-4e17-8c8d-cf745f84e658\",\"accepted\":true,\"message\":\"EPCIS Event CSV accepted for asynchronous processing. Poll status_url for outcomes.\"}\nSTATUS: {\"correlation_id\":\"6d67e8c3-2034-4e17-8c8d-cf745f84e658\",\"status\":\"succeeded\",\"result_http_status\":200,\"partial\":false,\"event_ids\":[\"urn:uuid:51008313-c66b-4cfc-839d-07c2fc749af5\",\"urn:uuid:b57af7e9-7703-483c-819f-9cd80371c3e4\"],\"accepted_count\":2,\"error_code\":null,\"error_message\":null,\"result_summary\":{\"ok\":true,\"message\":\"EPCIS events accepted\",\"success\":true,\"byte_size\":1320,\"epc_count\":6,\"event_ids\":[\"urn:uuid:51008313-c66b-4cfc-839d-07c2fc749af5\",\"urn:uuid:b57af7e9-7703-483c-819f-9cd80371c3e4\"],\"object_key\":\"epcis/ingest/2026/11/04/6d67e8c3-2034-4e17-8c8d-cf745f84e658.jsonld\",\"event_count\":2,\"http_status\":200,\"content_type\":\"application/ld+json\",\"warning_codes\":[\"UNKNOWN_SGLN\",\"INVALID_LOT\"],\"warning_count\":3,\"accepted_count\":2,\"estimated_epcs\":6,\"processing_mode\":\"ASYNC\",\"events_processed\":2},\"accepted_at\":\"2026-11-04 07:01:55.905+00\",\"created_at\":\"2026-11-04 07:01:55.905+00\",\"updated_at\":\"2026-11-04 07:01:56.201+00\",\"completed_at\":\"2026-11-04 07:01:56.201+00\"}",
+    "dialog": "Bulk CSV — EPCIS Events\nSelect CSV file (max 2 MB, 500 rows)\nHow EPCIS Event CSV works\n\nCSV-21i_wrong_extension.txt · 0.7 KB\n\nUpload successful\n\n2 EPCIS unit(s) were ingested.\n\nCorrelation: 6d67e8c3-2034-4e17-8c8d-cf745f84e658\n\nClose"
+  }
+]

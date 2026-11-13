@@ -1,0 +1,1058 @@
+[
+  {
+    "label": "Manufacturer suite · fresh data",
+    "runId": "run_1789556185261_45a887",
+    "passed": 23,
+    "total": 24,
+    "rows": [
+      {
+        "label": "Commission",
+        "testId": "API-MFG-COMM-001",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "Commission",
+        "testId": "API-MFG-COMM-001",
+        "variant": "XML",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "Pack",
+        "testId": "API-MFG-PACK-001",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "Pack",
+        "testId": "API-MFG-PACK-001",
+        "variant": "XML",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "Pack SSCC into SSCC",
+        "testId": "API-MFG-PACK-002",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "Pack SSCC into SSCC",
+        "testId": "API-MFG-PACK-002",
+        "variant": "XML",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "Ship",
+        "testId": "API-MFG-SHIP-001",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "Ship",
+        "testId": "API-MFG-SHIP-001",
+        "variant": "XML",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "Return Receiving",
+        "testId": "API-SPEC-RET-002",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "Return Receiving",
+        "testId": "API-SPEC-RET-002",
+        "variant": "XML",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "Destruction",
+        "testId": "API-SPEC-RECALL-003",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "Destruction",
+        "testId": "API-SPEC-RECALL-003",
+        "variant": "XML",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "Damaged",
+        "testId": "API-SPEC-STATUS-001",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "Damaged",
+        "testId": "API-SPEC-STATUS-001",
+        "variant": "XML",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "Stolen",
+        "testId": "API-SPEC-STATUS-004",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "Stolen",
+        "testId": "API-SPEC-STATUS-004",
+        "variant": "XML",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "Lost",
+        "testId": "API-SPEC-STATUS-005",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "Lost",
+        "testId": "API-SPEC-STATUS-005",
+        "variant": "XML",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "Expired",
+        "testId": "API-SPEC-STATUS-006",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "Expired",
+        "testId": "API-SPEC-STATUS-006",
+        "variant": "XML",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "Error Declaration",
+        "testId": "ED-MFG-04-DNO",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": "original event 202"
+      },
+      {
+        "label": "Error Declaration",
+        "testId": "ED-MFG-04-DNO",
+        "variant": "XML",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": "original event 202"
+      },
+      {
+        "label": "Error Declaration",
+        "testId": "ED-MFG-04-INC",
+        "variant": "JSON-LD",
+        "status": 400,
+        "code": "ERROR_DECLARATION_CORRECTIVE_NOT_FOUND",
+        "ok": false,
+        "setup": "original event 202"
+      },
+      {
+        "label": "Error Declaration",
+        "testId": "ED-MFG-04-INC",
+        "variant": "XML",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": "original event 202"
+      }
+    ]
+  },
+  {
+    "label": "Manufacturer suite · registered product",
+    "runId": "run_1789556215606_d83bc8",
+    "passed": 22,
+    "total": 24,
+    "rows": [
+      {
+        "label": "Commission",
+        "testId": "API-MFG-COMM-001",
+        "variant": "JSON-LD",
+        "status": 500,
+        "code": null,
+        "ok": false,
+        "setup": ""
+      },
+      {
+        "label": "Commission",
+        "testId": "API-MFG-COMM-001",
+        "variant": "XML",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "Pack",
+        "testId": "API-MFG-PACK-001",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "Pack",
+        "testId": "API-MFG-PACK-001",
+        "variant": "XML",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "Pack SSCC into SSCC",
+        "testId": "API-MFG-PACK-002",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "Pack SSCC into SSCC",
+        "testId": "API-MFG-PACK-002",
+        "variant": "XML",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "Ship",
+        "testId": "API-MFG-SHIP-001",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "Ship",
+        "testId": "API-MFG-SHIP-001",
+        "variant": "XML",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "Return Receiving",
+        "testId": "API-SPEC-RET-002",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "Return Receiving",
+        "testId": "API-SPEC-RET-002",
+        "variant": "XML",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "Destruction",
+        "testId": "API-SPEC-RECALL-003",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "Destruction",
+        "testId": "API-SPEC-RECALL-003",
+        "variant": "XML",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "Damaged",
+        "testId": "API-SPEC-STATUS-001",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "Damaged",
+        "testId": "API-SPEC-STATUS-001",
+        "variant": "XML",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "Stolen",
+        "testId": "API-SPEC-STATUS-004",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "Stolen",
+        "testId": "API-SPEC-STATUS-004",
+        "variant": "XML",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "Lost",
+        "testId": "API-SPEC-STATUS-005",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "Lost",
+        "testId": "API-SPEC-STATUS-005",
+        "variant": "XML",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "Expired",
+        "testId": "API-SPEC-STATUS-006",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "Expired",
+        "testId": "API-SPEC-STATUS-006",
+        "variant": "XML",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "Error Declaration",
+        "testId": "ED-MFG-04-DNO",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": "original event 202"
+      },
+      {
+        "label": "Error Declaration",
+        "testId": "ED-MFG-04-DNO",
+        "variant": "XML",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": "original event 202"
+      },
+      {
+        "label": "Error Declaration",
+        "testId": "ED-MFG-04-INC",
+        "variant": "JSON-LD",
+        "status": 400,
+        "code": "ERROR_DECLARATION_CORRECTIVE_NOT_FOUND",
+        "ok": false,
+        "setup": "original event 202"
+      },
+      {
+        "label": "Error Declaration",
+        "testId": "ED-MFG-04-INC",
+        "variant": "XML",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": "original event 202"
+      }
+    ]
+  },
+  {
+    "label": "Journey · split",
+    "runId": "run_1789556245900_57e274",
+    "passed": 15,
+    "total": 16,
+    "rows": [
+      {
+        "label": "1. Commission",
+        "testId": "API-MFG-COMM-001",
+        "variant": "JSON-LD",
+        "status": 500,
+        "code": null,
+        "ok": false,
+        "setup": ""
+      },
+      {
+        "label": "2. Pack items into case",
+        "testId": "API-MFG-PACK-001",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "3. Pack cases onto pallet",
+        "testId": "API-MFG-PACK-002",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "4. Ship to distributor",
+        "testId": "API-MFG-SHIP-001",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "5. Receive pallet",
+        "testId": "API-DIST-RECV-001",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "6. Unpack pallet",
+        "testId": "API-DIST-UNPACK-002",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "7. Repack into case",
+        "testId": "API-DIST-PACK-001",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "8. Ship to facility",
+        "testId": "API-DIST-SHIP-001",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "9. Receive case",
+        "testId": "API-FAC-RECV-001",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "10. Unpack case",
+        "testId": "API-FAC-UNPACK-002",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "11. Dispense",
+        "testId": "API-FAC-DISP-001",
+        "variant": "JSON-LD",
+        "status": 201,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "12. Return shipment",
+        "testId": "API-SPEC-RET-001",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "13. Receive return",
+        "testId": "API-SPEC-RET-002",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "14. Return shipment",
+        "testId": "API-SPEC-RET-001",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "15. Receive return",
+        "testId": "API-SPEC-RET-002",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "16. Destruction",
+        "testId": "API-SPEC-RECALL-003",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      }
+    ]
+  },
+  {
+    "label": "Journey · combined",
+    "runId": "run_1789556264222_e363ca",
+    "passed": 12,
+    "total": 16,
+    "rows": [
+      {
+        "label": "1. Commission",
+        "testId": "API-MFG-COMM-001",
+        "variant": "JSON-LD",
+        "status": 500,
+        "code": null,
+        "ok": false,
+        "setup": ""
+      },
+      {
+        "label": "2. Pack items into case",
+        "testId": "API-MFG-PACK-001",
+        "variant": "JSON-LD",
+        "status": 500,
+        "code": null,
+        "ok": false,
+        "setup": ""
+      },
+      {
+        "label": "3. Pack cases onto pallet",
+        "testId": "API-MFG-PACK-002",
+        "variant": "JSON-LD",
+        "status": 500,
+        "code": null,
+        "ok": false,
+        "setup": ""
+      },
+      {
+        "label": "4. Ship to distributor",
+        "testId": "API-MFG-SHIP-001",
+        "variant": "JSON-LD",
+        "status": 500,
+        "code": null,
+        "ok": false,
+        "setup": ""
+      },
+      {
+        "label": "5. Receive pallet",
+        "testId": "API-DIST-RECV-001",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "6. Unpack pallet",
+        "testId": "API-DIST-UNPACK-002",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "7. Repack into case",
+        "testId": "API-DIST-PACK-001",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "8. Ship to facility",
+        "testId": "API-DIST-SHIP-001",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "9. Receive case",
+        "testId": "API-FAC-RECV-001",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "10. Unpack case",
+        "testId": "API-FAC-UNPACK-002",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "11. Dispense",
+        "testId": "API-FAC-DISP-001",
+        "variant": "JSON-LD",
+        "status": 201,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "12. Return shipment",
+        "testId": "API-SPEC-RET-001",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "13. Receive return",
+        "testId": "API-SPEC-RET-002",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "14. Return shipment",
+        "testId": "API-SPEC-RET-001",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "15. Receive return",
+        "testId": "API-SPEC-RET-002",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "16. Destruction",
+        "testId": "API-SPEC-RECALL-003",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      }
+    ]
+  },
+  {
+    "label": "Journey · split · registered product",
+    "runId": "run_1789556273362_b3475a",
+    "passed": 15,
+    "total": 16,
+    "rows": [
+      {
+        "label": "1. Commission",
+        "testId": "API-MFG-COMM-001",
+        "variant": "JSON-LD",
+        "status": 500,
+        "code": null,
+        "ok": false,
+        "setup": ""
+      },
+      {
+        "label": "2. Pack items into case",
+        "testId": "API-MFG-PACK-001",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "3. Pack cases onto pallet",
+        "testId": "API-MFG-PACK-002",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "4. Ship to distributor",
+        "testId": "API-MFG-SHIP-001",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "5. Receive pallet",
+        "testId": "API-DIST-RECV-001",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "6. Unpack pallet",
+        "testId": "API-DIST-UNPACK-002",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "7. Repack into case",
+        "testId": "API-DIST-PACK-001",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "8. Ship to facility",
+        "testId": "API-DIST-SHIP-001",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "9. Receive case",
+        "testId": "API-FAC-RECV-001",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "10. Unpack case",
+        "testId": "API-FAC-UNPACK-002",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "11. Dispense",
+        "testId": "API-FAC-DISP-001",
+        "variant": "JSON-LD",
+        "status": 201,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "12. Return shipment",
+        "testId": "API-SPEC-RET-001",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "13. Receive return",
+        "testId": "API-SPEC-RET-002",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "14. Return shipment",
+        "testId": "API-SPEC-RET-001",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "15. Receive return",
+        "testId": "API-SPEC-RET-002",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "16. Destruction",
+        "testId": "API-SPEC-RECALL-003",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      }
+    ]
+  },
+  {
+    "label": "Journey · combined · registered product",
+    "runId": "run_1789556291610_698256",
+    "passed": 12,
+    "total": 16,
+    "rows": [
+      {
+        "label": "1. Commission",
+        "testId": "API-MFG-COMM-001",
+        "variant": "JSON-LD",
+        "status": 500,
+        "code": null,
+        "ok": false,
+        "setup": ""
+      },
+      {
+        "label": "2. Pack items into case",
+        "testId": "API-MFG-PACK-001",
+        "variant": "JSON-LD",
+        "status": 500,
+        "code": null,
+        "ok": false,
+        "setup": ""
+      },
+      {
+        "label": "3. Pack cases onto pallet",
+        "testId": "API-MFG-PACK-002",
+        "variant": "JSON-LD",
+        "status": 500,
+        "code": null,
+        "ok": false,
+        "setup": ""
+      },
+      {
+        "label": "4. Ship to distributor",
+        "testId": "API-MFG-SHIP-001",
+        "variant": "JSON-LD",
+        "status": 500,
+        "code": null,
+        "ok": false,
+        "setup": ""
+      },
+      {
+        "label": "5. Receive pallet",
+        "testId": "API-DIST-RECV-001",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "6. Unpack pallet",
+        "testId": "API-DIST-UNPACK-002",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "7. Repack into case",
+        "testId": "API-DIST-PACK-001",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "8. Ship to facility",
+        "testId": "API-DIST-SHIP-001",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "9. Receive case",
+        "testId": "API-FAC-RECV-001",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "10. Unpack case",
+        "testId": "API-FAC-UNPACK-002",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "11. Dispense",
+        "testId": "API-FAC-DISP-001",
+        "variant": "JSON-LD",
+        "status": 201,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "12. Return shipment",
+        "testId": "API-SPEC-RET-001",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "13. Receive return",
+        "testId": "API-SPEC-RET-002",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "14. Return shipment",
+        "testId": "API-SPEC-RET-001",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "15. Receive return",
+        "testId": "API-SPEC-RET-002",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      },
+      {
+        "label": "16. Destruction",
+        "testId": "API-SPEC-RECALL-003",
+        "variant": "JSON-LD",
+        "status": 202,
+        "code": null,
+        "ok": true,
+        "setup": ""
+      }
+    ]
+  }
+]

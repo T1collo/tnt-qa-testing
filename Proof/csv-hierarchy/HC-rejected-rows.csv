@@ -1,0 +1,4 @@
+event_id,row_index,code,message,gtin,batch_no,case_group
+urn:uuid:9d72a0a3-2d57-439f-80dd-58efb6158dea,,DUPLICATE_EVENT_ID,"Event ID urn:uuid:9d72a0a3-2d57-439f-80dd-58efb6158dea was already ingested",,,
+urn:uuid:98bd209f-d3a8-4ed7-8868-627349d918cf,,DUPLICATE_EVENT_ID,"Event ID urn:uuid:98bd209f-d3a8-4ed7-8868-627349d918cf was already ingested",,,
+urn:uuid:e1eafc6a-87bc-4afe-8baa-fdb83c1d3358,,DUPLICATE_EVENT_ID,"Event ID urn:uuid:e1eafc6a-87bc-4afe-8baa-fdb83c1d3358 was already ingested",,,

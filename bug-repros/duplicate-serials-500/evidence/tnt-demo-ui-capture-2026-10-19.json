@@ -1,0 +1,58 @@
+{
+  "at": "2026-10-19T08:30:38.365Z",
+  "base": "https://tnt-demo.apeiro-digital.com",
+  "product": "Telmicos 40 mg Oral Tablet",
+  "serial": "DUPMVEZVB6Y",
+  "request": {
+    "method": "POST",
+    "url": "https://tnt-demo.apeiro-digital.com/api/manufacturer/batches",
+    "headers": {
+      ":authority": "tnt-demo.apeiro-digital.com",
+      ":method": "POST",
+      ":path": "/api/manufacturer/batches",
+      ":scheme": "https",
+      "accept": "*/*",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "content-length": "114",
+      "content-type": "application/json",
+      "origin": "https://tnt-demo.apeiro-digital.com",
+      "priority": "u=1, i",
+      "referer": "https://tnt-demo.apeiro-digital.com/manufacturer/batches",
+      "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"HeadlessChrome\";v=\"151\", \"Chromium\";v=\"151\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "sec-fetch-dest": "empty",
+      "sec-fetch-mode": "cors",
+      "sec-fetch-site": "same-origin",
+      "traceparent": "00-953e6cc1bf3ed4daecdb6df5e4e8b9e0-163a46b1a00fccd4-01",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36"
+    },
+    "authHeaders": [
+      "cookie"
+    ],
+    "body": "{\"product_id\":3449,\"package_id\":5012,\"expiry\":\"2028-10-18\",\"qty\":2,\"serial_numbers\":[\"DUPMVEZVB6Y\",\"DUPMVEZVB6Y\"]}"
+  },
+  "response": {
+    "status": 500,
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "access-control-allow-origin": "https://tnt-demo.apeiro-digital.com",
+      "content-length": "52",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Mon, 19 Oct 2026 08:30:35 GMT",
+      "etag": "W/\"34-rlKccw1E+/fV8niQk4oFitDfPro\"",
+      "server": "nginx",
+      "strict-transport-security": "max-age=31536000; includeSubDomains",
+      "vary": "Origin",
+      "x-apisix-upstream-status": "500",
+      "x-content-type-options": "nosniff",
+      "x-frame-options": "SAMEORIGIN",
+      "x-request-id": "a6a27fa8-03bb-4878-9e95-90ed5108298b",
+      "x-xss-protection": "1; mode=block"
+    },
+    "body": "{\"statusCode\":500,\"message\":\"Internal server error\"}"
+  },
+  "cookieNames": [
+    "__Secure-trackiq_user_prod.session_token"
+  ]
+}

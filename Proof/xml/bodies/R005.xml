@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardBusinessDocument xmlns="http://www.unece.org/cefact/namespaces/StandardBusinessDocumentHeader">
+  <StandardBusinessDocumentHeader>
+    <HeaderVersion>1.3</HeaderVersion>
+    <Sender><Identifier Authority="GS1">0614141000010</Identifier></Sender>
+    <Receiver><Identifier Authority="GS1">0619999000020</Identifier></Receiver>
+    <DocumentIdentification>
+      <Standard>EPCglobal</Standard>
+      <TypeVersion></TypeVersion>
+      <InstanceIdentifier>QA-SBDH-4220170625</InstanceIdentifier>
+      <Type>EPCISDocument</Type>
+      <CreationDateAndTime>2026-11-09T10:28:30.000Z</CreationDateAndTime>
+    </DocumentIdentification>
+  </StandardBusinessDocumentHeader>
+  <epcis:EPCISDocument xmlns:epcis="urn:epcglobal:epcis:xsd:1" xmlns:cbvmda="urn:epcglobal:cbv:mda" schemaVersion="1.2" creationDate="2026-11-09T10:28:30.000Z">
+    <EPCISBody><EventList>
+    <ObjectEvent>
+      <eventID>urn:uuid:9e6852e8-3916-4cc9-b80e-af743b77f6cf</eventID>
+      <eventTime>2026-11-09T10:21:30.000Z</eventTime>
+      <eventTimeZoneOffset>+03:00</eventTimeZoneOffset>
+      <epcList>
+        <epc>urn:epc:id:sgtin:0614141.107346.42201706250002089</epc>
+      </epcList>
+      <action>ADD</action>
+      <bizStep>urn:epcglobal:cbv:bizstep:commissioning</bizStep>
+      <disposition>urn:epcglobal:cbv:disp:active</disposition>
+      <readPoint><id>urn:epc:id:sgln:0614141.00001.0</id></readPoint>
+      <bizLocation><id>urn:epc:id:sgln:0614141.00001.0</id></bizLocation>
+      <extension><ilmd><cbvmda:lotNumber>LOT4220170625SB</cbvmda:lotNumber><cbvmda:itemExpirationDate>2028-06-30</cbvmda:itemExpirationDate></ilmd></extension>
+    </ObjectEvent>
+    </EventList></EPCISBody>
+  </epcis:EPCISDocument>
+</StandardBusinessDocument>

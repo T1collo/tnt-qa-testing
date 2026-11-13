@@ -1,0 +1,4 @@
+2c     CSV-02c_check_digits_only.csv -> 500 {"statusCode":500,"message":"Internal server error"}
+14c    CSV-14c_other_placeholders.csv -> 202 {"correlation_id":"aec380d1-7caa-4be4-838e-48b493f9ee77","status":"succeeded","result_http_status":200,"partial":false,"event_ids":["urn:uuid:08736da2-c5e4-4860-89b9-b073db3db5ef","urn:uuid:f27554e9-2
+
+Screenshots and results in c:\Users\Collins\Desktop\TnT\qa-testing-suite\Proof\partner

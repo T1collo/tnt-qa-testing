@@ -1,0 +1,1311 @@
+{
+  "at": "2026-11-13T07:55:18.647Z",
+  "tests": [
+    {
+      "id": "12a",
+      "finding": "A",
+      "src": "CSV-12a_100_rows_one_bad.csv",
+      "what": "100 rows, line 52 has a future Event_Timestamp (2027-01-01)",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-retest\\CSV-12a_retest.csv",
+      "rows": 100,
+      "lots": [
+        "LD2512A"
+      ],
+      "serials": [
+        "SD251200001",
+        "SD251200002",
+        "SD251200003",
+        "SD251200004",
+        "SD251200005",
+        "SD251200006",
+        "SD251200007",
+        "SD251200008",
+        "SD251200009",
+        "SD251200010",
+        "SD251200011",
+        "SD251200012",
+        "SD251200013",
+        "SD251200014",
+        "SD251200015",
+        "SD251200016",
+        "SD251200017",
+        "SD251200018",
+        "SD251200019",
+        "SD251200020",
+        "SD251200021",
+        "SD251200022",
+        "SD251200023",
+        "SD251200024",
+        "SD251200025",
+        "SD251200026",
+        "SD251200027",
+        "SD251200028",
+        "SD251200029",
+        "SD251200030",
+        "SD251200031",
+        "SD251200032",
+        "SD251200033",
+        "SD251200034",
+        "SD251200035",
+        "SD251200036",
+        "SD251200037",
+        "SD251200038",
+        "SD251200039",
+        "SD251200040",
+        "SD251200041",
+        "SD251200042",
+        "SD251200043",
+        "SD251200044",
+        "SD251200045",
+        "SD251200046",
+        "SD251200047",
+        "SD251200048",
+        "SD251200049",
+        "SD251200050",
+        "SD251200051",
+        "SD251200052",
+        "SD251200053",
+        "SD251200054",
+        "SD251200055",
+        "SD251200056",
+        "SD251200057",
+        "SD251200058",
+        "SD251200059",
+        "SD251200060",
+        "SD251200061",
+        "SD251200062",
+        "SD251200063",
+        "SD251200064",
+        "SD251200065",
+        "SD251200066",
+        "SD251200067",
+        "SD251200068",
+        "SD251200069",
+        "SD251200070",
+        "SD251200071",
+        "SD251200072",
+        "SD251200073",
+        "SD251200074",
+        "SD251200075",
+        "SD251200076",
+        "SD251200077",
+        "SD251200078",
+        "SD251200079",
+        "SD251200080",
+        "SD251200081",
+        "SD251200082",
+        "SD251200083",
+        "SD251200084",
+        "SD251200085",
+        "SD251200086",
+        "SD251200087",
+        "SD251200088",
+        "SD251200089",
+        "SD251200090",
+        "SD251200091",
+        "SD251200092",
+        "SD251200093",
+        "SD251200094",
+        "SD251200095",
+        "SD251200096",
+        "SD251200097",
+        "SD251200098",
+        "SD251200099",
+        "SD251200100"
+      ],
+      "validate": {
+        "status": 200,
+        "body": "{\"valid\":{\"count\":100},\"invalid\":{\"count\":0,\"rows\":[]}}"
+      },
+      "import": {
+        "status": 202,
+        "body": "{\"async\":true,\"correlation_id\":\"69898a0c-44d7-4132-a65b-d3600f622d55\",\"status_url\":\"/api/manufacturer/epcis-events/csv-import/status/69898a0c-44d7-4132-a65b-d3600f622d55\",\"accepted\":true,\"message\":\"EPCIS Event CSV accepted for asynchronous processing. Poll status_url for outcomes.\"}"
+      },
+      "final": {
+        "correlation_id": "69898a0c-44d7-4132-a65b-d3600f622d55",
+        "status": "succeeded",
+        "result_http_status": 207,
+        "partial": true,
+        "event_ids": [
+          "urn:uuid:afe005a6-d415-47ee-8d61-6354dcd1c595",
+          "urn:uuid:b3c70a26-1a5e-4af9-89f0-a29585b29091",
+          "urn:uuid:d1649f03-bba7-4cd4-8fea-4c9d9509a86b",
+          "urn:uuid:a70c7dbe-2199-4cd1-84a2-0c0f5b223cbb",
+          "urn:uuid:95e18b88-d092-42fc-8b95-460e72630792",
+          "urn:uuid:af2d49dc-6a7f-4acc-8078-30c5bf035df5",
+          "urn:uuid:7bdceec5-fa1d-4bf2-817a-27246c42c258",
+          "urn:uuid:8aec476b-1209-4e3b-80fd-00ea325687fd",
+          "urn:uuid:ffaf0937-48ae-4550-815c-78f3121a0634",
+          "urn:uuid:64822e26-6086-4ca5-8635-6b6f9131602b",
+          "urn:uuid:8839154f-03af-477c-8ff4-1c7cdb6679d4",
+          "urn:uuid:47d38fba-85f5-403e-8fa6-afe0b3549fae",
+          "urn:uuid:9fcc49c6-215a-45d5-8b31-817a88110a30",
+          "urn:uuid:0697d621-544f-41c1-8be5-c1cc801ed3bd",
+          "urn:uuid:5a8137b6-fc00-4e06-8bfa-e25e0dec8da8",
+          "urn:uuid:939246f0-1736-457b-8318-ac47e6433753",
+          "urn:uuid:fcea0c8f-f197-441f-8701-b63825b81640",
+          "urn:uuid:e97f26a1-6dd7-4a40-8f3e-1fb4ff97214b",
+          "urn:uuid:719b35cc-170a-4b81-816d-10608e0c2e1c",
+          "urn:uuid:1d1dffba-348d-4c8c-8aab-1297e111a8b1"
+        ],
+        "rejected": [
+          {
+            "code": "FUTURE_EVENT_TIME",
+            "message": "Event time 2027-01-01T05:00:00.000Z is more than 5 minutes in the future (reference time: 2026-11-13T07:53:49.329Z)",
+            "event_id": "urn:uuid:5f2ff18c-9dab-418c-85fb-f7982a8eb415",
+            "http_status": 400
+          }
+        ],
+        "accepted_count": 99,
+        "error_code": null,
+        "error_message": null,
+        "result_summary": {
+          "ok": true,
+          "message": "EPCIS events accepted",
+          "partial": true,
+          "success": true,
+          "rejected": [
+            {
+              "code": "FUTURE_EVENT_TIME",
+              "message": "Event time 2027-01-01T05:00:00.000Z is more than 5 minutes in the future (reference time: 2026-11-13T07:53:49.329Z)",
+              "event_id": "urn:uuid:5f2ff18c-9dab-418c-85fb-f7982a8eb415",
+              "http_status": 400
+            }
+          ],
+          "byte_size": 57188,
+          "epc_count": 100,
+          "event_ids": [
+            "urn:uuid:afe005a6-d415-47ee-8d61-6354dcd1c595",
+            "urn:uuid:b3c70a26-1a5e-4af9-89f0-a29585b29091",
+            "urn:uuid:d1649f03-bba7-4cd4-8fea-4c9d9509a86b",
+            "urn:uuid:a70c7dbe-2199-4cd1-84a2-0c0f5b223cbb",
+            "urn:uuid:95e18b88-d092-42fc-8b95-460e72630792",
+            "urn:uuid:af2d49dc-6a7f-4acc-8078-30c5bf035df5",
+            "urn:uuid:7bdceec5-fa1d-4bf2-817a-27246c42c258",
+            "urn:uuid:8aec476b-1209-4e3b-80fd-00ea325687fd",
+            "urn:uuid:ffaf0937-48ae-4550-815c-78f3121a0634",
+            "urn:uuid:64822e26-6086-4ca5-8635-6b6f9131602b",
+            "urn:uuid:8839154f-03af-477c-8ff4-1c7cdb6679d4",
+            "urn:uuid:47d38fba-85f5-403e-8fa6-afe0b3549fae",
+            "urn:uuid:9fcc49c6-215a-45d5-8b31-817a88110a30",
+            "urn:uuid:0697d621-544f-41c1-8be5-c1cc801ed3bd",
+            "urn:uuid:5a8137b6-fc00-4e06-8bfa-e25e0dec8da8",
+            "urn:uuid:939246f0-1736-457b-8318-ac47e6433753",
+            "urn:uuid:fcea0c8f-f197-441f-8701-b63825b81640",
+            "urn:uuid:e97f26a1-6dd7-4a40-8f3e-1fb4ff97214b",
+            "urn:uuid:719b35cc-170a-4b81-816d-10608e0c2e1c",
+            "urn:uuid:1d1dffba-348d-4c8c-8aab-1297e111a8b1"
+          ],
+          "object_key": "epcis/ingest/2026/11/13/69898a0c-44d7-4132-a65b-d3600f622d55.jsonld",
+          "event_count": 100,
+          "http_status": 207,
+          "content_type": "application/ld+json",
+          "warning_codes": [
+            "UNKNOWN_SGLN",
+            "INVALID_LOT"
+          ],
+          "warning_count": 100,
+          "accepted_count": 99,
+          "estimated_epcs": 100,
+          "rejected_codes": [
+            "FUTURE_EVENT_TIME"
+          ],
+          "rejected_count": 1,
+          "processing_mode": "ASYNC",
+          "events_processed": 99,
+          "error_code_totals": {
+            "FUTURE_EVENT_TIME": 1
+          },
+          "rejected_event_ids": [
+            "urn:uuid:5f2ff18c-9dab-418c-85fb-f7982a8eb415"
+          ],
+          "warning_code_totals": {
+            "INVALID_LOT": 1,
+            "UNKNOWN_SGLN": 99
+          },
+          "diagnostics_available": true,
+          "diagnostics_byte_size": 19474,
+          "diagnostics_expires_at": "2027-02-11T07:54:01.173Z",
+          "diagnostics_object_key": "epcis/async-diagnostics/2026/11/13/69898a0c-44d7-4132-a65b-d3600f622d55.ndjson",
+          "diagnostics_event_count": 100
+        },
+        "accepted_at": "2026-11-13 07:53:49.472+00",
+        "created_at": "2026-11-13 07:53:49.472+00",
+        "updated_at": "2026-11-13 07:54:01.2+00",
+        "completed_at": "2026-11-13 07:54:01.2+00"
+      },
+      "stored": [
+        {
+          "lot": "LD2512A",
+          "batch": 10481,
+          "created_at": "2026-11-13T07:53:49.927Z",
+          "manufacturing_date": "2028-11-01",
+          "expiry": "2028-11-01",
+          "qty": "1.00",
+          "serials": [
+            "SD251200001",
+            "SD251200002",
+            "SD251200003",
+            "SD251200004",
+            "SD251200005",
+            "SD251200006",
+            "SD251200007",
+            "SD251200008",
+            "SD251200009",
+            "SD251200010",
+            "SD251200011",
+            "SD251200012",
+            "SD251200013",
+            "SD251200014",
+            "SD251200015",
+            "SD251200016",
+            "SD251200017",
+            "SD251200018",
+            "SD251200019",
+            "SD251200020",
+            "SD251200021",
+            "SD251200022",
+            "SD251200023",
+            "SD251200024",
+            "SD251200025",
+            "SD251200026",
+            "SD251200027",
+            "SD251200028",
+            "SD251200029",
+            "SD251200030",
+            "SD251200031",
+            "SD251200032",
+            "SD251200033",
+            "SD251200034",
+            "SD251200035",
+            "SD251200036",
+            "SD251200037",
+            "SD251200038",
+            "SD251200039",
+            "SD251200040",
+            "SD251200041",
+            "SD251200042",
+            "SD251200043",
+            "SD251200044",
+            "SD251200045",
+            "SD251200046",
+            "SD251200047",
+            "SD251200048",
+            "SD251200049",
+            "SD251200050",
+            "SD251200052",
+            "SD251200053",
+            "SD251200054",
+            "SD251200055",
+            "SD251200056",
+            "SD251200057",
+            "SD251200058",
+            "SD251200059",
+            "SD251200060",
+            "SD251200061",
+            "SD251200062",
+            "SD251200063",
+            "SD251200064",
+            "SD251200065",
+            "SD251200066",
+            "SD251200067",
+            "SD251200068",
+            "SD251200069",
+            "SD251200070",
+            "SD251200071",
+            "SD251200072",
+            "SD251200073",
+            "SD251200074",
+            "SD251200075",
+            "SD251200076",
+            "SD251200077",
+            "SD251200078",
+            "SD251200079",
+            "SD251200080",
+            "SD251200081",
+            "SD251200082",
+            "SD251200083",
+            "SD251200084",
+            "SD251200085",
+            "SD251200086",
+            "SD251200087",
+            "SD251200088",
+            "SD251200089",
+            "SD251200090",
+            "SD251200091",
+            "SD251200092",
+            "SD251200093",
+            "SD251200094",
+            "SD251200095",
+            "SD251200096",
+            "SD251200097",
+            "SD251200098",
+            "SD251200099",
+            "SD251200100"
+          ]
+        }
+      ],
+      "storedSerials": [
+        "SD251200001",
+        "SD251200002",
+        "SD251200003",
+        "SD251200004",
+        "SD251200005",
+        "SD251200006",
+        "SD251200007",
+        "SD251200008",
+        "SD251200009",
+        "SD251200010",
+        "SD251200011",
+        "SD251200012",
+        "SD251200013",
+        "SD251200014",
+        "SD251200015",
+        "SD251200016",
+        "SD251200017",
+        "SD251200018",
+        "SD251200019",
+        "SD251200020",
+        "SD251200021",
+        "SD251200022",
+        "SD251200023",
+        "SD251200024",
+        "SD251200025",
+        "SD251200026",
+        "SD251200027",
+        "SD251200028",
+        "SD251200029",
+        "SD251200030",
+        "SD251200031",
+        "SD251200032",
+        "SD251200033",
+        "SD251200034",
+        "SD251200035",
+        "SD251200036",
+        "SD251200037",
+        "SD251200038",
+        "SD251200039",
+        "SD251200040",
+        "SD251200041",
+        "SD251200042",
+        "SD251200043",
+        "SD251200044",
+        "SD251200045",
+        "SD251200046",
+        "SD251200047",
+        "SD251200048",
+        "SD251200049",
+        "SD251200050",
+        "SD251200052",
+        "SD251200053",
+        "SD251200054",
+        "SD251200055",
+        "SD251200056",
+        "SD251200057",
+        "SD251200058",
+        "SD251200059",
+        "SD251200060",
+        "SD251200061",
+        "SD251200062",
+        "SD251200063",
+        "SD251200064",
+        "SD251200065",
+        "SD251200066",
+        "SD251200067",
+        "SD251200068",
+        "SD251200069",
+        "SD251200070",
+        "SD251200071",
+        "SD251200072",
+        "SD251200073",
+        "SD251200074",
+        "SD251200075",
+        "SD251200076",
+        "SD251200077",
+        "SD251200078",
+        "SD251200079",
+        "SD251200080",
+        "SD251200081",
+        "SD251200082",
+        "SD251200083",
+        "SD251200084",
+        "SD251200085",
+        "SD251200086",
+        "SD251200087",
+        "SD251200088",
+        "SD251200089",
+        "SD251200090",
+        "SD251200091",
+        "SD251200092",
+        "SD251200093",
+        "SD251200094",
+        "SD251200095",
+        "SD251200096",
+        "SD251200097",
+        "SD251200098",
+        "SD251200099",
+        "SD251200100"
+      ],
+      "run": "D25"
+    },
+    {
+      "id": "16",
+      "finding": "A",
+      "src": "CSV-16_broken_rows.csv",
+      "what": "4 rows: one with an extra field, one with a missing field, blank lines",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-retest\\CSV-16_retest.csv",
+      "rows": 4,
+      "lots": [
+        "LD2516A"
+      ],
+      "serials": [
+        "SD251600001",
+        "SD251600002",
+        "SD251600003",
+        "SD251600004"
+      ],
+      "validate": {
+        "status": 200,
+        "body": "{\"valid\":{\"count\":4},\"invalid\":{\"count\":0,\"rows\":[]}}"
+      },
+      "import": {
+        "status": 202,
+        "body": "{\"async\":true,\"correlation_id\":\"a40cd1dc-e97e-47fc-88f3-2fb300c70166\",\"status_url\":\"/api/manufacturer/epcis-events/csv-import/status/a40cd1dc-e97e-47fc-88f3-2fb300c70166\",\"accepted\":true,\"message\":\"EPCIS Event CSV accepted for asynchronous processing. Poll status_url for outcomes.\"}"
+      },
+      "final": {
+        "correlation_id": "a40cd1dc-e97e-47fc-88f3-2fb300c70166",
+        "status": "succeeded",
+        "result_http_status": 207,
+        "partial": true,
+        "event_ids": [
+          "urn:uuid:91ae4259-8381-4543-8b28-639d446639e9",
+          "urn:uuid:5bd35c1f-8f9d-4d93-867c-25e8444a30a5",
+          "urn:uuid:adfc5f2a-ac77-4e44-8eba-9e0130ac3033"
+        ],
+        "rejected": [
+          {
+            "code": "INVALID_JSON_STRUCTURE",
+            "message": "countryOfOrigin must be an ISO 3166-1 alpha-2 code (e.g. KE, IN) (+2 more schema issue(s))",
+            "event_id": "urn:uuid:bdd1ff11-fe72-4deb-83f5-dfb8bf5457ab",
+            "http_status": 400
+          }
+        ],
+        "accepted_count": 3,
+        "error_code": null,
+        "error_message": null,
+        "result_summary": {
+          "ok": true,
+          "message": "EPCIS events accepted",
+          "partial": true,
+          "success": true,
+          "rejected": [
+            {
+              "code": "INVALID_JSON_STRUCTURE",
+              "message": "countryOfOrigin must be an ISO 3166-1 alpha-2 code (e.g. KE, IN) (+2 more schema issue(s))",
+              "event_id": "urn:uuid:bdd1ff11-fe72-4deb-83f5-dfb8bf5457ab",
+              "http_status": 400
+            }
+          ],
+          "byte_size": 2521,
+          "epc_count": 4,
+          "event_ids": [
+            "urn:uuid:91ae4259-8381-4543-8b28-639d446639e9",
+            "urn:uuid:5bd35c1f-8f9d-4d93-867c-25e8444a30a5",
+            "urn:uuid:adfc5f2a-ac77-4e44-8eba-9e0130ac3033"
+          ],
+          "object_key": "epcis/ingest/2026/11/13/a40cd1dc-e97e-47fc-88f3-2fb300c70166.jsonld",
+          "event_count": 4,
+          "http_status": 207,
+          "content_type": "application/ld+json",
+          "warning_codes": [
+            "UNKNOWN_SGLN",
+            "INVALID_LOT"
+          ],
+          "warning_count": 4,
+          "accepted_count": 3,
+          "estimated_epcs": 4,
+          "rejected_codes": [
+            "WARNING",
+            "INVALID_JSON_STRUCTURE"
+          ],
+          "rejected_count": 1,
+          "processing_mode": "ASYNC",
+          "events_processed": 3,
+          "error_code_totals": {
+            "WARNING": 3,
+            "INVALID_JSON_STRUCTURE": 1
+          },
+          "rejected_event_ids": [
+            "urn:uuid:bdd1ff11-fe72-4deb-83f5-dfb8bf5457ab"
+          ],
+          "warning_code_totals": {
+            "INVALID_LOT": 1,
+            "UNKNOWN_SGLN": 3
+          },
+          "diagnostics_available": true,
+          "diagnostics_byte_size": 1218,
+          "diagnostics_expires_at": "2027-02-11T07:54:07.691Z",
+          "diagnostics_object_key": "epcis/async-diagnostics/2026/11/13/a40cd1dc-e97e-47fc-88f3-2fb300c70166.ndjson",
+          "diagnostics_event_count": 4
+        },
+        "accepted_at": "2026-11-13 07:54:07.296+00",
+        "created_at": "2026-11-13 07:54:07.296+00",
+        "updated_at": "2026-11-13 07:54:07.722+00",
+        "completed_at": "2026-11-13 07:54:07.722+00"
+      },
+      "stored": [
+        {
+          "lot": "LD2516A",
+          "batch": 10580,
+          "created_at": "2026-11-13T07:54:07.400Z",
+          "manufacturing_date": "2028-11-01",
+          "expiry": "2028-11-01",
+          "qty": "1.00",
+          "serials": [
+            "SD251600001",
+            "SD251600002",
+            "SD251600003"
+          ]
+        }
+      ],
+      "storedSerials": [
+        "SD251600001",
+        "SD251600002",
+        "SD251600003"
+      ],
+      "run": "D25"
+    },
+    {
+      "id": "4b",
+      "finding": "A",
+      "src": "CSV-04b_without_rejected_rows.csv",
+      "what": "10 rows of values that must pass",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-retest\\CSV-4b_retest.csv",
+      "rows": 10,
+      "lots": [
+        "LD2504A",
+        "LD2504F",
+        "LD2504BBBBBBBBBBBBBB"
+      ],
+      "serials": [
+        "SD250400004",
+        "SD250400005",
+        "061640037604999990",
+        "SD2504AAAAAAAAAAAAAA",
+        "SD2504-45",
+        "SD2504_95",
+        "SD2504.46",
+        "SD2504/47",
+        "SD250400006",
+        "SD250400007"
+      ],
+      "validate": {
+        "status": 200,
+        "body": "{\"valid\":{\"count\":10},\"invalid\":{\"count\":0,\"rows\":[]}}"
+      },
+      "import": {
+        "status": 202,
+        "body": "{\"async\":true,\"correlation_id\":\"2788e55b-157f-4db8-9c14-725a2b4f4767\",\"status_url\":\"/api/manufacturer/epcis-events/csv-import/status/2788e55b-157f-4db8-9c14-725a2b4f4767\",\"accepted\":true,\"message\":\"EPCIS Event CSV accepted for asynchronous processing. Poll status_url for outcomes.\"}"
+      },
+      "final": {
+        "correlation_id": "2788e55b-157f-4db8-9c14-725a2b4f4767",
+        "status": "succeeded",
+        "result_http_status": 207,
+        "partial": true,
+        "event_ids": [
+          "urn:uuid:c683ac7a-8141-4a83-865c-5a3fecc46c96",
+          "urn:uuid:959bae5d-eff8-40fd-8703-6c19bcb1d4d4",
+          "urn:uuid:0b263615-40d6-49f9-80ed-18bad1edf2fb",
+          "urn:uuid:df262f2e-b60c-4d51-8040-2940939ec140",
+          "urn:uuid:f9c38482-c519-4e31-8bd4-c51776a1338c",
+          "urn:uuid:36947f7d-cdaf-45f5-858d-788b36368fad",
+          "urn:uuid:5b1da37d-f649-4631-8b44-d93ee0fc4991",
+          "urn:uuid:7c959fb9-728b-411e-8d1b-215629b2e3b0"
+        ],
+        "rejected": [
+          {
+            "code": "INVALID_GS1_IDENTIFIER",
+            "message": "SGTIN company prefix must be 6–12 digits",
+            "event_id": "urn:uuid:2dd401f9-7d6e-42be-8724-0bbca7e55db3",
+            "http_status": 400
+          },
+          {
+            "code": "INVALID_GS1_IDENTIFIER",
+            "message": "SGTIN serial must be 1–20 GS1-permitted URI characters",
+            "event_id": "urn:uuid:135d051c-71e1-4617-88b2-00e539bd413d",
+            "http_status": 400
+          }
+        ],
+        "accepted_count": 8,
+        "error_code": null,
+        "error_message": null,
+        "result_summary": {
+          "ok": true,
+          "message": "EPCIS events accepted",
+          "partial": true,
+          "success": true,
+          "rejected": [
+            {
+              "code": "INVALID_GS1_IDENTIFIER",
+              "message": "SGTIN company prefix must be 6–12 digits",
+              "event_id": "urn:uuid:2dd401f9-7d6e-42be-8724-0bbca7e55db3",
+              "http_status": 400
+            },
+            {
+              "code": "INVALID_GS1_IDENTIFIER",
+              "message": "SGTIN serial must be 1–20 GS1-permitted URI characters",
+              "event_id": "urn:uuid:135d051c-71e1-4617-88b2-00e539bd413d",
+              "http_status": 400
+            }
+          ],
+          "byte_size": 5912,
+          "epc_count": 10,
+          "event_ids": [
+            "urn:uuid:c683ac7a-8141-4a83-865c-5a3fecc46c96",
+            "urn:uuid:959bae5d-eff8-40fd-8703-6c19bcb1d4d4",
+            "urn:uuid:0b263615-40d6-49f9-80ed-18bad1edf2fb",
+            "urn:uuid:df262f2e-b60c-4d51-8040-2940939ec140",
+            "urn:uuid:f9c38482-c519-4e31-8bd4-c51776a1338c",
+            "urn:uuid:36947f7d-cdaf-45f5-858d-788b36368fad",
+            "urn:uuid:5b1da37d-f649-4631-8b44-d93ee0fc4991",
+            "urn:uuid:7c959fb9-728b-411e-8d1b-215629b2e3b0"
+          ],
+          "object_key": "epcis/ingest/2026/11/13/2788e55b-157f-4db8-9c14-725a2b4f4767.jsonld",
+          "event_count": 10,
+          "http_status": 207,
+          "content_type": "application/ld+json",
+          "warning_codes": [
+            "UNKNOWN_SGLN",
+            "INVALID_LOT"
+          ],
+          "warning_count": 11,
+          "accepted_count": 8,
+          "estimated_epcs": 10,
+          "rejected_codes": [
+            "INVALID_GS1_IDENTIFIER",
+            "WARNING"
+          ],
+          "rejected_count": 2,
+          "processing_mode": "ASYNC",
+          "events_processed": 8,
+          "error_code_totals": {
+            "WARNING": 2,
+            "INVALID_GS1_IDENTIFIER": 2
+          },
+          "rejected_event_ids": [
+            "urn:uuid:2dd401f9-7d6e-42be-8724-0bbca7e55db3",
+            "urn:uuid:135d051c-71e1-4617-88b2-00e539bd413d"
+          ],
+          "warning_code_totals": {
+            "INVALID_LOT": 3,
+            "UNKNOWN_SGLN": 8
+          },
+          "diagnostics_available": true,
+          "diagnostics_byte_size": 2431,
+          "diagnostics_expires_at": "2027-02-11T07:54:17.101Z",
+          "diagnostics_object_key": "epcis/async-diagnostics/2026/11/13/2788e55b-157f-4db8-9c14-725a2b4f4767.ndjson",
+          "diagnostics_event_count": 10
+        },
+        "accepted_at": "2026-11-13 07:54:16.147+00",
+        "created_at": "2026-11-13 07:54:16.147+00",
+        "updated_at": "2026-11-13 07:54:17.131+00",
+        "completed_at": "2026-11-13 07:54:17.131+00"
+      },
+      "stored": [
+        {
+          "lot": "LD2504A",
+          "batch": 10583,
+          "created_at": "2026-11-13T07:54:16.257Z",
+          "manufacturing_date": "2028-11-01",
+          "expiry": "2028-11-01",
+          "qty": "1.00",
+          "serials": [
+            "061640037604999990",
+            "SD2504-45",
+            "SD250400004",
+            "SD250400006",
+            "SD250400007",
+            "SD2504_95"
+          ]
+        },
+        {
+          "lot": "LD2504F",
+          "batch": 10584,
+          "created_at": "2026-11-13T07:54:16.381Z",
+          "manufacturing_date": "2028-11-01",
+          "expiry": "2028-11-01",
+          "qty": "1.00",
+          "serials": [
+            "SD250400005"
+          ]
+        },
+        {
+          "lot": "LD2504BBBBBBBBBBBBBB",
+          "batch": 10586,
+          "created_at": "2026-11-13T07:54:16.579Z",
+          "manufacturing_date": "2028-11-01",
+          "expiry": "2028-11-01",
+          "qty": "1.00",
+          "serials": [
+            "SD2504AAAAAAAAAAAAAA"
+          ]
+        }
+      ],
+      "storedSerials": [
+        "061640037604999990",
+        "SD2504-45",
+        "SD250400004",
+        "SD250400006",
+        "SD250400007",
+        "SD2504_95",
+        "SD250400005",
+        "SD2504AAAAAAAAAAAAAA"
+      ],
+      "run": "D25"
+    },
+    {
+      "id": "6b",
+      "finding": "A",
+      "src": "CSV-06b_without_rejected_rows.csv",
+      "what": "8 rows with duplicates in the file",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-retest\\CSV-6b_retest.csv",
+      "rows": 8,
+      "lots": [
+        "LD2506A"
+      ],
+      "serials": [
+        "SD250600001",
+        "SD250600002",
+        "SD250600003",
+        "SD250600002",
+        "061640037606000014",
+        "SD250600003",
+        "SD250600003",
+        "SD250100001"
+      ],
+      "validate": {
+        "status": 200,
+        "body": "{\"valid\":{\"count\":8},\"invalid\":{\"count\":0,\"rows\":[]}}"
+      },
+      "import": {
+        "status": 202,
+        "body": "{\"async\":true,\"correlation_id\":\"2bece972-65d1-4d66-b5f7-e6b63bb62a9c\",\"status_url\":\"/api/manufacturer/epcis-events/csv-import/status/2bece972-65d1-4d66-b5f7-e6b63bb62a9c\",\"accepted\":true,\"message\":\"EPCIS Event CSV accepted for asynchronous processing. Poll status_url for outcomes.\"}"
+      },
+      "final": {
+        "correlation_id": "2bece972-65d1-4d66-b5f7-e6b63bb62a9c",
+        "status": "succeeded",
+        "result_http_status": 207,
+        "partial": true,
+        "event_ids": [
+          "urn:uuid:fe6e9ab7-5427-41a2-857a-5fcb9ca1c4b6",
+          "urn:uuid:8283d603-38c4-43fd-8e23-50109fcef9f0",
+          "urn:uuid:c6e78f66-e8c1-4a56-8873-36a47b7132c7",
+          "urn:uuid:caab41ef-0fe0-423d-883b-8e7f48a74d74",
+          "urn:uuid:54f27540-e823-4bba-81bb-e267a9966e49",
+          "urn:uuid:2e3b593f-ee59-43ea-8122-b1398ed80d6f"
+        ],
+        "rejected": [
+          {
+            "code": "DUPLICATE_EPC_IN_EVENT",
+            "message": "Event urn:uuid:47c78e1d-5c6b-417a-8927-4e6dc75fbaae: EPC URI \"urn:epc:id:sgtin:6161102974997.SD250600003\" appears more than once in the same event's EPC list",
+            "event_id": "urn:uuid:47c78e1d-5c6b-417a-8927-4e6dc75fbaae",
+            "http_status": 400
+          }
+        ],
+        "accepted_count": 6,
+        "error_code": null,
+        "error_message": null,
+        "result_summary": {
+          "ok": true,
+          "message": "EPCIS events accepted",
+          "partial": true,
+          "success": true,
+          "rejected": [
+            {
+              "code": "DUPLICATE_EPC_IN_EVENT",
+              "message": "Event urn:uuid:47c78e1d-5c6b-417a-8927-4e6dc75fbaae: EPC URI \"urn:epc:id:sgtin:6161102974997.SD250600003\" appears more than once in the same event's EPC list",
+              "event_id": "urn:uuid:47c78e1d-5c6b-417a-8927-4e6dc75fbaae",
+              "http_status": 400
+            }
+          ],
+          "byte_size": 3924,
+          "epc_count": 8,
+          "event_ids": [
+            "urn:uuid:fe6e9ab7-5427-41a2-857a-5fcb9ca1c4b6",
+            "urn:uuid:8283d603-38c4-43fd-8e23-50109fcef9f0",
+            "urn:uuid:c6e78f66-e8c1-4a56-8873-36a47b7132c7",
+            "urn:uuid:caab41ef-0fe0-423d-883b-8e7f48a74d74",
+            "urn:uuid:54f27540-e823-4bba-81bb-e267a9966e49",
+            "urn:uuid:2e3b593f-ee59-43ea-8122-b1398ed80d6f"
+          ],
+          "object_key": "epcis/ingest/2026/11/13/2bece972-65d1-4d66-b5f7-e6b63bb62a9c.jsonld",
+          "event_count": 7,
+          "http_status": 207,
+          "content_type": "application/ld+json",
+          "warning_codes": [
+            "UNKNOWN_SGLN",
+            "INVALID_LOT",
+            "PARENT_NOT_FOUND"
+          ],
+          "warning_count": 9,
+          "accepted_count": 6,
+          "estimated_epcs": 8,
+          "rejected_codes": [
+            "DUPLICATE_EPC_IN_EVENT"
+          ],
+          "rejected_count": 1,
+          "processing_mode": "ASYNC",
+          "events_processed": 6,
+          "error_code_totals": {
+            "DUPLICATE_EPC_IN_EVENT": 1
+          },
+          "rejected_event_ids": [
+            "urn:uuid:47c78e1d-5c6b-417a-8927-4e6dc75fbaae"
+          ],
+          "warning_code_totals": {
+            "INVALID_LOT": 1,
+            "UNKNOWN_SGLN": 6,
+            "PARENT_NOT_FOUND": 2
+          },
+          "diagnostics_available": true,
+          "diagnostics_byte_size": 1862,
+          "diagnostics_expires_at": "2027-02-11T07:54:28.503Z",
+          "diagnostics_object_key": "epcis/async-diagnostics/2026/11/13/2bece972-65d1-4d66-b5f7-e6b63bb62a9c.ndjson",
+          "diagnostics_event_count": 7
+        },
+        "accepted_at": "2026-11-13 07:54:27.74+00",
+        "created_at": "2026-11-13 07:54:27.74+00",
+        "updated_at": "2026-11-13 07:54:28.542+00",
+        "completed_at": "2026-11-13 07:54:28.542+00"
+      },
+      "stored": [
+        {
+          "lot": "LD2506A",
+          "batch": 10591,
+          "created_at": "2026-11-13T07:54:27.871Z",
+          "manufacturing_date": "2028-11-01",
+          "expiry": "2028-11-01",
+          "qty": "1.00",
+          "serials": [
+            "SD250100001",
+            "SD250600001",
+            "SD250600002",
+            "SD250600003"
+          ]
+        }
+      ],
+      "storedSerials": [
+        "SD250100001",
+        "SD250600001",
+        "SD250600002",
+        "SD250600003"
+      ],
+      "run": "D25"
+    },
+    {
+      "id": "21c",
+      "finding": "A",
+      "src": "CSV-21c_latin1.csv",
+      "latin1": true,
+      "what": "2 rows, Latin-1 encoded, one with \"Côte d'Ivoire\"",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-retest\\CSV-21c_retest.csv",
+      "rows": 2,
+      "lots": [
+        "LD2521c"
+      ],
+      "serials": [
+        "D2521c1",
+        "D2521c2"
+      ],
+      "validate": {
+        "status": 200,
+        "body": "{\"valid\":{\"count\":2},\"invalid\":{\"count\":0,\"rows\":[]}}"
+      },
+      "import": {
+        "status": 202,
+        "body": "{\"async\":true,\"correlation_id\":\"5915b334-0f40-4978-80e9-674679ba5a01\",\"status_url\":\"/api/manufacturer/epcis-events/csv-import/status/5915b334-0f40-4978-80e9-674679ba5a01\",\"accepted\":true,\"message\":\"EPCIS Event CSV accepted for asynchronous processing. Poll status_url for outcomes.\"}"
+      },
+      "final": {
+        "correlation_id": "5915b334-0f40-4978-80e9-674679ba5a01",
+        "status": "succeeded",
+        "result_http_status": 207,
+        "partial": true,
+        "event_ids": [
+          "urn:uuid:9b28d518-1b2c-4c75-8575-1d9547f2774f"
+        ],
+        "rejected": [
+          {
+            "code": "INVALID_JSON_STRUCTURE",
+            "message": "countryOfOrigin must be an ISO 3166-1 alpha-2 code (e.g. KE, IN) (+2 more schema issue(s))",
+            "event_id": "urn:uuid:6d966279-24c3-4afe-8a40-343a454c7d5f",
+            "http_status": 400
+          }
+        ],
+        "accepted_count": 1,
+        "error_code": null,
+        "error_message": null,
+        "result_summary": {
+          "ok": true,
+          "message": "EPCIS events accepted",
+          "partial": true,
+          "success": true,
+          "rejected": [
+            {
+              "code": "INVALID_JSON_STRUCTURE",
+              "message": "countryOfOrigin must be an ISO 3166-1 alpha-2 code (e.g. KE, IN) (+2 more schema issue(s))",
+              "event_id": "urn:uuid:6d966279-24c3-4afe-8a40-343a454c7d5f",
+              "http_status": 400
+            }
+          ],
+          "byte_size": 1370,
+          "epc_count": 2,
+          "event_ids": [
+            "urn:uuid:9b28d518-1b2c-4c75-8575-1d9547f2774f"
+          ],
+          "object_key": "epcis/ingest/2026/11/13/5915b334-0f40-4978-80e9-674679ba5a01.jsonld",
+          "event_count": 2,
+          "http_status": 207,
+          "content_type": "application/ld+json",
+          "warning_codes": [
+            "UNKNOWN_SGLN",
+            "INVALID_LOT"
+          ],
+          "warning_count": 2,
+          "accepted_count": 1,
+          "estimated_epcs": 2,
+          "rejected_codes": [
+            "WARNING",
+            "INVALID_JSON_STRUCTURE"
+          ],
+          "rejected_count": 1,
+          "processing_mode": "ASYNC",
+          "events_processed": 1,
+          "error_code_totals": {
+            "WARNING": 3,
+            "INVALID_JSON_STRUCTURE": 1
+          },
+          "rejected_event_ids": [
+            "urn:uuid:6d966279-24c3-4afe-8a40-343a454c7d5f"
+          ],
+          "warning_code_totals": {
+            "INVALID_LOT": 1,
+            "UNKNOWN_SGLN": 1
+          },
+          "diagnostics_available": true,
+          "diagnostics_byte_size": 832,
+          "diagnostics_expires_at": "2027-02-11T07:54:36.661Z",
+          "diagnostics_object_key": "epcis/async-diagnostics/2026/11/13/5915b334-0f40-4978-80e9-674679ba5a01.ndjson",
+          "diagnostics_event_count": 2
+        },
+        "accepted_at": "2026-11-13 07:54:36.167+00",
+        "created_at": "2026-11-13 07:54:36.167+00",
+        "updated_at": "2026-11-13 07:54:36.686+00",
+        "completed_at": "2026-11-13 07:54:36.686+00"
+      },
+      "stored": [
+        {
+          "lot": "LD2521c",
+          "batch": 10595,
+          "created_at": "2026-11-13T07:54:36.496Z",
+          "manufacturing_date": "2028-11-01",
+          "expiry": "2028-11-01",
+          "qty": "1.00",
+          "serials": [
+            "D2521c1"
+          ]
+        }
+      ],
+      "storedSerials": [
+        "D2521c1"
+      ],
+      "run": "D25"
+    },
+    {
+      "id": "14b",
+      "finding": "B",
+      "src": "CSV-14b_placeholders_only.csv",
+      "search": "LXP514",
+      "what": "Placeholder serials 0, NA, DUMMY (fresh lots)",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-retest\\CSV-14b_retest.csv",
+      "rows": 3,
+      "lots": [
+        "LD25140",
+        "LD2514NA",
+        "LD2514DU"
+      ],
+      "serials": [
+        "0",
+        "NA",
+        "DUMMY"
+      ],
+      "validate": {
+        "status": 200,
+        "body": "{\"valid\":{\"count\":3},\"invalid\":{\"count\":0,\"rows\":[]}}"
+      },
+      "import": {
+        "status": 202,
+        "body": "{\"async\":true,\"correlation_id\":\"d63aae51-20cf-4c53-b4d4-d432404bff8c\",\"status_url\":\"/api/manufacturer/epcis-events/csv-import/status/d63aae51-20cf-4c53-b4d4-d432404bff8c\",\"accepted\":true,\"message\":\"EPCIS Event CSV accepted for asynchronous processing. Poll status_url for outcomes.\"}"
+      },
+      "final": {
+        "correlation_id": "d63aae51-20cf-4c53-b4d4-d432404bff8c",
+        "status": "failed",
+        "result_http_status": 400,
+        "partial": false,
+        "rejected": [
+          {
+            "code": "DUPLICATE_EVENT_PAYLOAD",
+            "message": "Duplicate matrix key EPC+bizStep:fdbc39e9b9237ff0256226d5632d6f7fa6b25ffeca73601369f86760f89b2e17 for bizStep=commissioning disposition=active",
+            "event_id": "urn:uuid:63b7acd7-e766-4956-8933-e611d2514f67",
+            "http_status": 409
+          },
+          {
+            "code": "DUPLICATE_EVENT_PAYLOAD",
+            "message": "Duplicate matrix key EPC+bizStep:5cb0c27ac6f751838b74cc7dc2d611ef5e8079fc195d70e84bf81e55b3d7c628 for bizStep=commissioning disposition=active",
+            "event_id": "urn:uuid:ba52209d-4194-4fea-8ffe-19f1afd2bc89",
+            "http_status": 409
+          },
+          {
+            "code": "DUPLICATE_EVENT_PAYLOAD",
+            "message": "Duplicate matrix key EPC+bizStep:2f9453f743ae3147d7dbfde8a217f716b6f7a8e906a8b2f80b213942568bdc19 for bizStep=commissioning disposition=active",
+            "event_id": "urn:uuid:deeac3be-4c9d-41bd-8a37-44fe67619fe8",
+            "http_status": 409
+          }
+        ],
+        "accepted_count": 0,
+        "error_code": "DUPLICATE_EVENT_PAYLOAD",
+        "error_message": "3 event(s) rejected",
+        "result_summary": {
+          "ok": false,
+          "code": "DUPLICATE_EVENT_PAYLOAD",
+          "message": "3 event(s) rejected",
+          "partial": false,
+          "success": false,
+          "category": "SCHEMA_INVALID",
+          "rejected": [
+            {
+              "code": "DUPLICATE_EVENT_PAYLOAD",
+              "message": "Duplicate matrix key EPC+bizStep:fdbc39e9b9237ff0256226d5632d6f7fa6b25ffeca73601369f86760f89b2e17 for bizStep=commissioning disposition=active",
+              "event_id": "urn:uuid:63b7acd7-e766-4956-8933-e611d2514f67",
+              "http_status": 409
+            },
+            {
+              "code": "DUPLICATE_EVENT_PAYLOAD",
+              "message": "Duplicate matrix key EPC+bizStep:5cb0c27ac6f751838b74cc7dc2d611ef5e8079fc195d70e84bf81e55b3d7c628 for bizStep=commissioning disposition=active",
+              "event_id": "urn:uuid:ba52209d-4194-4fea-8ffe-19f1afd2bc89",
+              "http_status": 409
+            },
+            {
+              "code": "DUPLICATE_EVENT_PAYLOAD",
+              "message": "Duplicate matrix key EPC+bizStep:2f9453f743ae3147d7dbfde8a217f716b6f7a8e906a8b2f80b213942568bdc19 for bizStep=commissioning disposition=active",
+              "event_id": "urn:uuid:deeac3be-4c9d-41bd-8a37-44fe67619fe8",
+              "http_status": 409
+            }
+          ],
+          "byte_size": 1875,
+          "epc_count": 3,
+          "object_key": "epcis/ingest/2026/11/13/d63aae51-20cf-4c53-b4d4-d432404bff8c.jsonld",
+          "resolution": "This payload fingerprint has already been ingested. No action needed unless the content is intentionally different — then change eventID and payload.",
+          "event_count": 3,
+          "http_status": 400,
+          "content_type": "application/ld+json",
+          "failure_stage": "processing",
+          "warning_codes": [],
+          "warning_count": 0,
+          "accepted_count": 0,
+          "estimated_epcs": 3,
+          "rejected_codes": [
+            "DUPLICATE_EVENT_PAYLOAD"
+          ],
+          "rejected_count": 3,
+          "events_processed": 0,
+          "error_code_totals": {
+            "DUPLICATE_EVENT_PAYLOAD": 3
+          },
+          "rejected_event_ids": [
+            "urn:uuid:63b7acd7-e766-4956-8933-e611d2514f67",
+            "urn:uuid:ba52209d-4194-4fea-8ffe-19f1afd2bc89",
+            "urn:uuid:deeac3be-4c9d-41bd-8a37-44fe67619fe8"
+          ],
+          "diagnostics_available": true,
+          "diagnostics_byte_size": 900,
+          "diagnostics_expires_at": "2027-02-11T07:54:45.000Z",
+          "diagnostics_object_key": "epcis/async-diagnostics/2026/11/13/d63aae51-20cf-4c53-b4d4-d432404bff8c.ndjson",
+          "diagnostics_event_count": 3
+        },
+        "accepted_at": "2026-11-13 07:54:44.844+00",
+        "created_at": "2026-11-13 07:54:44.844+00",
+        "updated_at": "2026-11-13 07:54:45.035+00",
+        "completed_at": "2026-11-13 07:54:45.035+00"
+      },
+      "stored": [
+        {
+          "lot": "LD25140",
+          "batch": null
+        },
+        {
+          "lot": "LD2514NA",
+          "batch": null
+        },
+        {
+          "lot": "LD2514DU",
+          "batch": null
+        }
+      ],
+      "storedSerials": [],
+      "run": "D25"
+    },
+    {
+      "id": "14n",
+      "finding": "B",
+      "alsoSearch": "LZG914N",
+      "what": "Placeholder serials never used before: NA2, NOSERIALNO, UNASSIGNED, DEFAULT, 11111111",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-retest\\CSV-14n_retest.csv",
+      "rows": 5,
+      "lots": [
+        "LD2514N0",
+        "LD2514N1",
+        "LD2514N2",
+        "LD2514N3",
+        "LD2514N4"
+      ],
+      "serials": [
+        "NA2",
+        "NOSERIALNO",
+        "UNASSIGNED",
+        "DEFAULT",
+        "11111111"
+      ],
+      "validate": {
+        "status": 200,
+        "body": "{\"valid\":{\"count\":5},\"invalid\":{\"count\":0,\"rows\":[]}}"
+      },
+      "import": {
+        "status": 202,
+        "body": "{\"async\":true,\"correlation_id\":\"11345dc1-95a5-474b-812d-5736d90d92cd\",\"status_url\":\"/api/manufacturer/epcis-events/csv-import/status/11345dc1-95a5-474b-812d-5736d90d92cd\",\"accepted\":true,\"message\":\"EPCIS Event CSV accepted for asynchronous processing. Poll status_url for outcomes.\"}"
+      },
+      "final": {
+        "correlation_id": "11345dc1-95a5-474b-812d-5736d90d92cd",
+        "status": "succeeded",
+        "result_http_status": 200,
+        "partial": false,
+        "event_ids": [
+          "urn:uuid:2c7a758b-403f-40e8-8fde-ed592b1bcbc8",
+          "urn:uuid:3fd41842-2ecd-4037-838a-f345e75f6b28",
+          "urn:uuid:6f4c4728-a7d5-4f96-8817-2cd20bc4ece6",
+          "urn:uuid:ba18b8b3-0fbf-4e58-8fa7-e19e5bff3fb8",
+          "urn:uuid:7827561a-47c9-42a6-8486-d98d21c40225"
+        ],
+        "accepted_count": 5,
+        "error_code": null,
+        "error_message": null,
+        "result_summary": {
+          "ok": true,
+          "message": "EPCIS events accepted",
+          "success": true,
+          "byte_size": 3026,
+          "epc_count": 5,
+          "event_ids": [
+            "urn:uuid:2c7a758b-403f-40e8-8fde-ed592b1bcbc8",
+            "urn:uuid:3fd41842-2ecd-4037-838a-f345e75f6b28",
+            "urn:uuid:6f4c4728-a7d5-4f96-8817-2cd20bc4ece6",
+            "urn:uuid:ba18b8b3-0fbf-4e58-8fa7-e19e5bff3fb8",
+            "urn:uuid:7827561a-47c9-42a6-8486-d98d21c40225"
+          ],
+          "object_key": "epcis/ingest/2026/11/13/11345dc1-95a5-474b-812d-5736d90d92cd.jsonld",
+          "event_count": 5,
+          "http_status": 200,
+          "content_type": "application/ld+json",
+          "warning_codes": [
+            "UNKNOWN_SGLN",
+            "INVALID_LOT"
+          ],
+          "warning_count": 10,
+          "accepted_count": 5,
+          "estimated_epcs": 5,
+          "rejected_codes": [],
+          "rejected_count": 0,
+          "processing_mode": "ASYNC",
+          "events_processed": 5,
+          "warning_code_totals": {
+            "INVALID_LOT": 5,
+            "UNKNOWN_SGLN": 5
+          },
+          "diagnostics_available": true,
+          "diagnostics_byte_size": 1470,
+          "diagnostics_expires_at": "2027-02-11T07:54:56.481Z",
+          "diagnostics_object_key": "epcis/async-diagnostics/2026/11/13/11345dc1-95a5-474b-812d-5736d90d92cd.ndjson",
+          "diagnostics_event_count": 5
+        },
+        "accepted_at": "2026-11-13 07:54:55.788+00",
+        "created_at": "2026-11-13 07:54:55.788+00",
+        "updated_at": "2026-11-13 07:54:56.511+00",
+        "completed_at": "2026-11-13 07:54:56.511+00"
+      },
+      "stored": [
+        {
+          "lot": "LD2514N0",
+          "batch": 10596,
+          "created_at": "2026-11-13T07:54:55.956Z",
+          "manufacturing_date": "2028-12-31",
+          "expiry": "2028-12-31",
+          "qty": "1.00",
+          "serials": [
+            "NA2"
+          ]
+        },
+        {
+          "lot": "LD2514N1",
+          "batch": 10597,
+          "created_at": "2026-11-13T07:54:56.051Z",
+          "manufacturing_date": "2028-12-31",
+          "expiry": "2028-12-31",
+          "qty": "1.00",
+          "serials": [
+            "NOSERIALNO"
+          ]
+        },
+        {
+          "lot": "LD2514N2",
+          "batch": 10598,
+          "created_at": "2026-11-13T07:54:56.137Z",
+          "manufacturing_date": "2028-12-31",
+          "expiry": "2028-12-31",
+          "qty": "1.00",
+          "serials": [
+            "UNASSIGNED"
+          ]
+        },
+        {
+          "lot": "LD2514N3",
+          "batch": 10599,
+          "created_at": "2026-11-13T07:54:56.280Z",
+          "manufacturing_date": "2028-12-31",
+          "expiry": "2028-12-31",
+          "qty": "1.00",
+          "serials": [
+            "DEFAULT"
+          ]
+        },
+        {
+          "lot": "LD2514N4",
+          "batch": 10600,
+          "created_at": "2026-11-13T07:54:56.432Z",
+          "manufacturing_date": "2028-12-31",
+          "expiry": "2028-12-31",
+          "qty": "1.00",
+          "serials": [
+            "11111111"
+          ]
+        }
+      ],
+      "storedSerials": [
+        "NA2",
+        "NOSERIALNO",
+        "UNASSIGNED",
+        "DEFAULT",
+        "11111111"
+      ],
+      "run": "D25"
+    }
+  ]
+}

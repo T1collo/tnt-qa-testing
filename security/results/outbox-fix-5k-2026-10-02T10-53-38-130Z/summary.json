@@ -1,0 +1,36 @@
+{
+  "target": "trackiq",
+  "base": "https://trackiq.apeiro-digital.com",
+  "batchId": "batch-5k-req-0ffbe916",
+  "lotNumber": "OUTBOX5K-2026-10-02",
+  "runId": "0ffbe916",
+  "count": 5000,
+  "concurrency": 5,
+  "elapsedMs": 210050,
+  "elapsedSec": 210,
+  "ok2xx": 5000,
+  "http5xx": 0,
+  "outboxPkeySignals": 0,
+  "statusCounts": {
+    "202": 5000
+  },
+  "latencyMs": {
+    "min": 110,
+    "p50": 206,
+    "p95": 274,
+    "p99": 332,
+    "max": 446
+  },
+  "pass": true,
+  "sampleEventIds": {
+    "first": "urn:uuid:8df7e0f2-3e2a-4c9f-9c6d-54e6e1028e69",
+    "mid": "urn:uuid:386d5db0-b8aa-4597-9e66-9fe910c1f868",
+    "last": "urn:uuid:c263ad6c-3aa5-46c2-b4fa-6891b839fa60"
+  },
+  "createdAt": "2026-10-02T10:57:08.184Z",
+  "files": {
+    "eventIds": "event-ids.txt",
+    "results": "results.jsonl",
+    "summary": "summary.json"
+  }
+}

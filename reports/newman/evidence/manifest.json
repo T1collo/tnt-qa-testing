@@ -1,0 +1,418 @@
+[
+  {
+    "id": "TC-S1-001",
+    "name": "TC-S1-001 · INVALID_XML_STRUCTURE — unclosed tag",
+    "failed": false,
+    "setups": 0,
+    "file": "TC-S1-001.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-002",
+    "name": "TC-S1-002 · INVALID_JSON_STRUCTURE — JSON-LD missing @context",
+    "failed": true,
+    "setups": 0,
+    "file": "TC-S1-002.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-003",
+    "name": "TC-S1-003 · MISSING_EPCIS_BODY — epcisBody absent",
+    "failed": false,
+    "setups": 0,
+    "file": "TC-S1-003.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-004",
+    "name": "TC-S1-004 · MISSING_EVENT_LIST — eventList is a string",
+    "failed": false,
+    "setups": 0,
+    "file": "TC-S1-004.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-005",
+    "name": "TC-S1-005 · INVALID_SBDH — SBDH with empty StandardVersion",
+    "failed": true,
+    "setups": 0,
+    "file": "TC-S1-005.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-006",
+    "name": "TC-S1-006 · MESSAGE_SIZE_EXCEEDED — sync dispense over the 1 MB cap",
+    "failed": true,
+    "setups": 0,
+    "file": "TC-S1-006.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-007",
+    "name": "TC-S1-007 · TOO_MANY_SERIALS — 50001 serials (cap is 50000)",
+    "failed": false,
+    "setups": 0,
+    "file": "TC-S1-007.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-008",
+    "name": "TC-S1-008 · INVALID_EXPIRY_FORMAT — expiry as MM/YYYY",
+    "failed": false,
+    "setups": 0,
+    "file": "TC-S1-008.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-009",
+    "name": "TC-S1-009 · INVALID_GS1_IDENTIFIER — SGTIN digit count != 13",
+    "failed": false,
+    "setups": 0,
+    "file": "TC-S1-009.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-010",
+    "name": "TC-S1-010 · FUTURE_EVENT_TIME — eventTime +10 minutes",
+    "failed": false,
+    "setups": 0,
+    "file": "TC-S1-010.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-011",
+    "name": "TC-S1-011 · MISSING_NEEDED_FIELDS — bizStep omitted",
+    "failed": false,
+    "setups": 0,
+    "file": "TC-S1-011.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-012",
+    "name": "TC-S1-012 · DUPLICATE_EVENT_ID — same eventID submitted twice",
+    "failed": true,
+    "setups": 1,
+    "file": "TC-S1-012.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-013",
+    "name": "TC-S1-013 · DUPLICATE_EVENT_PAYLOAD — identical content, new eventID",
+    "failed": true,
+    "setups": 1,
+    "file": "TC-S1-013.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-014",
+    "name": "TC-S1-014 · DUPLICATE_EPC_IN_EVENT — same EPC twice in epcList",
+    "failed": false,
+    "setups": 0,
+    "file": "TC-S1-014.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-015",
+    "name": "TC-S1-015 · IMPOSSIBLE_SENSOR_VALUES — min 30 > max 10",
+    "failed": false,
+    "setups": 0,
+    "file": "TC-S1-015.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-016",
+    "name": "TC-S1-016 · ERROR_DECLARATION_BEFORE_EVENT — declarationTime 1h before eventTime",
+    "failed": false,
+    "setups": 1,
+    "file": "TC-S1-016.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-017",
+    "name": "TC-S1-017 · ERROR_DECLARATION_ORIGINAL_NOT_FOUND — declaration against unknown eventID",
+    "failed": false,
+    "setups": 0,
+    "file": "TC-S1-017.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-018",
+    "name": "TC-S1-018 · ERROR_DECLARATION_CONTENT_MISMATCH — epcList changed on resubmit",
+    "failed": false,
+    "setups": 1,
+    "file": "TC-S1-018.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-019",
+    "name": "TC-S1-019 · ERROR_DECLARATION_INVALID_REASON — reason outside CBV vocabulary",
+    "failed": false,
+    "setups": 1,
+    "file": "TC-S1-019.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-020",
+    "name": "TC-S1-020 · ERROR_DECLARATION_CORRECTIVE_NOT_FOUND — correctiveEventIDs points at nothing",
+    "failed": false,
+    "setups": 1,
+    "file": "TC-S1-020.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-021",
+    "name": "TC-S1-021 · UNKNOWN_SGTIN — uncommissioned serial observed",
+    "failed": true,
+    "setups": 0,
+    "file": "TC-S1-021.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-022",
+    "name": "TC-S1-022 · UNKNOWN_SGLN — location not in registry",
+    "failed": true,
+    "setups": 0,
+    "file": "TC-S1-022.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-023",
+    "name": "TC-S1-023 · INACTIVE_SGLN — registered but inactive location (needs fixture)",
+    "failed": true,
+    "setups": 0,
+    "file": "TC-S1-023.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-024",
+    "name": "TC-S1-024 · INVALID_GTIN_CHECK_DIGIT — GTIN Mod-10 failure",
+    "failed": false,
+    "setups": 0,
+    "file": "TC-S1-024.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-025",
+    "name": "TC-S1-025 · INVALID_GLN_CHECK_DIGIT — GLN check digit failure",
+    "failed": true,
+    "setups": 0,
+    "file": "TC-S1-025.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-026",
+    "name": "TC-S1-026 · INVALID_SSCC_CHECK_DIGIT — SSCC check digit failure",
+    "failed": true,
+    "setups": 0,
+    "file": "TC-S1-026.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-027",
+    "name": "TC-S1-027 · INVALID_LOT — lot not registered under GTIN",
+    "failed": false,
+    "setups": 0,
+    "file": "TC-S1-027.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-028",
+    "name": "TC-S1-028 · INVENTORY_SIGHTING_MISMATCH — sighted at a different location",
+    "failed": false,
+    "setups": 1,
+    "file": "TC-S1-028.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-029",
+    "name": "TC-S1-029 · NO_REGULATORY_APPROVAL — shipping without PPB approval",
+    "failed": false,
+    "setups": 1,
+    "file": "TC-S1-029.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-030",
+    "name": "TC-S1-030 · UNAUTHORIZED_INSPECTING_EVENT — inspecting from a non-regulatory actor",
+    "failed": false,
+    "setups": 0,
+    "file": "TC-S1-030.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-031",
+    "name": "TC-S1-031 · EXPIRING_SOON — expiry in 45 days",
+    "failed": false,
+    "setups": 0,
+    "file": "TC-S1-031.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-032",
+    "name": "TC-S1-032 · SERIAL_ALREADY_DISPENSED — event on an already-dispensed serial",
+    "failed": true,
+    "setups": 2,
+    "file": "TC-S1-032.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-033",
+    "name": "TC-S1-033 · SERIAL_ALREADY_DESTROYED — event on a destroyed serial",
+    "failed": false,
+    "setups": 2,
+    "file": "TC-S1-033.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-034",
+    "name": "TC-S1-034 · INVALID_DISPOSITION — illegal dispensed -> active transition",
+    "failed": false,
+    "setups": 2,
+    "file": "TC-S1-034.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-035",
+    "name": "TC-S1-035 · INVALID_BIZSTEP — bizStep outside the CBV vocabulary",
+    "failed": false,
+    "setups": 0,
+    "file": "TC-S1-035.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-036",
+    "name": "TC-S1-036 · INVALID_TERMINAL_STATE — lifecycle action on a terminal serial",
+    "failed": true,
+    "setups": 2,
+    "file": "TC-S1-036.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-037",
+    "name": "TC-S1-037 · INVALID_PARENT_CHILD_RELATION — SSCC nested under SSCC",
+    "failed": true,
+    "setups": 0,
+    "file": "TC-S1-037.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-038",
+    "name": "TC-S1-038 · PARENT_NOT_FOUND — ADD against an unknown parent SSCC",
+    "failed": false,
+    "setups": 0,
+    "file": "TC-S1-038.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-039",
+    "name": "TC-S1-039 · CHILD_ALREADY_AGGREGATED — child re-aggregated under a second SSCC",
+    "failed": false,
+    "setups": 2,
+    "file": "TC-S1-039.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-040",
+    "name": "TC-S1-040 · INVALID_EVENT_SEQUENCE — receiving before any shipping",
+    "failed": true,
+    "setups": 1,
+    "file": "TC-S1-040.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-041",
+    "name": "TC-S1-041 · SSCC_AT_DISPENSING — SSCC used in a dispensing event",
+    "failed": true,
+    "setups": 0,
+    "file": "TC-S1-041.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-042",
+    "name": "TC-S1-042 · EXPIRED_PRODUCT — expiry in the past",
+    "failed": false,
+    "setups": 0,
+    "file": "TC-S1-042.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-043",
+    "name": "TC-S1-043 · RECALL_ACTIVE — product under active recall (needs fixture)",
+    "failed": true,
+    "setups": 0,
+    "file": "TC-S1-043.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-044",
+    "name": "TC-S1-044 · RECEIVING_WITHOUT_SHIPPING — receiving with no prior shipping",
+    "failed": false,
+    "setups": 1,
+    "file": "TC-S1-044.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-045",
+    "name": "TC-S1-045 · UNPACK_WITHOUT_AGGREGATION — unpack with no prior pack",
+    "failed": false,
+    "setups": 0,
+    "file": "TC-S1-045.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-046",
+    "name": "TC-S1-046 · STALE_EVENT_TIME — eventTime 8 days old",
+    "failed": false,
+    "setups": 0,
+    "file": "TC-S1-046.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-047",
+    "name": "TC-S1-047 · UNCOMMISSIONED_CHILD — aggregating uncommissioned children",
+    "failed": false,
+    "setups": 0,
+    "file": "TC-S1-047.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-048",
+    "name": "TC-S1-048 · SHIPPING_WITHOUT_COMMISSIONING — shipping a never-commissioned serial",
+    "failed": false,
+    "setups": 0,
+    "file": "TC-S1-048.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-049",
+    "name": "TC-S1-049 · DUPLICATE_SSCC_IN_MESSAGE — same parent SSCC twice in one document",
+    "failed": true,
+    "setups": 0,
+    "file": "TC-S1-049.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-050",
+    "name": "TC-S1-050 · DUPLICATE_SSCC_CROSS_MESSAGE — SSCC re-introduced as parent in a later message",
+    "failed": true,
+    "setups": 1,
+    "file": "TC-S1-050.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-051",
+    "name": "TC-S1-051 · INCOMPLETE_ERROR_DECLARATION — incorrect_data with no correctiveEventIDs",
+    "failed": false,
+    "setups": 1,
+    "file": "TC-S1-051.png",
+    "croppedAt": null
+  },
+  {
+    "id": "TC-S1-052",
+    "name": "TC-S1-052 · ERROR_DECLARATION_WITHOUT_REASON — declarationTime present, reason absent",
+    "failed": false,
+    "setups": 1,
+    "file": "TC-S1-052.png",
+    "croppedAt": null
+  }
+]

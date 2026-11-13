@@ -1,0 +1,12 @@
+[
+  {
+    "shot": "11f",
+    "file": "C:/Users/Collins/Desktop/uploads/csv-partner/CSV-11f_zomep_commission.csv",
+    "status": 202,
+    "sent": true,
+    "importEnabled": true,
+    "summary": "{\"correlation_id\":\"273ab983-8177-4909-9440-9a1041e07ef6\",\"status\":\"succeeded\",\"result_http_status\":200,\"partial\":false,\"event_ids\":[\"urn:uuid:7fc501aa-6b20-4f1f-8743-b439a2b57942\",\"urn:uuid:6b4fac63-87dd-4ae6-8bcd-df62586e4a03\"],\"accepted_count\":2,\"error_code\":null,\"error_message\":null,\"result_summary\":{\"ok\":true,\"message\":\"EPCIS events accepted\",\"sandbox\":true,\"success\":true,\"byte_size\":1328,\"epc",
+    "body": "{\"async\":true,\"accepted\":true,\"correlation_id\":\"273ab983-8177-4909-9440-9a1041e07ef6\",\"request_id\":\"273ab983-8177-4909-9440-9a1041e07ef6\",\"status\":\"accepted\",\"message\":\"Sandbox event accepted for asynchronous processing\",\"processing_mode\":\"ASYNC_QUEUE\",\"endpoint\":\"/integration/manufacturer/events/async\"}\nSTATUS: {\"correlation_id\":\"273ab983-8177-4909-9440-9a1041e07ef6\",\"status\":\"succeeded\",\"result_http_status\":200,\"partial\":false,\"event_ids\":[\"urn:uuid:7fc501aa-6b20-4f1f-8743-b439a2b57942\",\"urn:uuid:6b4fac63-87dd-4ae6-8bcd-df62586e4a03\"],\"accepted_count\":2,\"error_code\":null,\"error_message\":null,\"result_summary\":{\"ok\":true,\"message\":\"EPCIS events accepted\",\"sandbox\":true,\"success\":true,\"byte_size\":1328,\"epc_count\":6,\"event_ids\":[\"urn:uuid:7fc501aa-6b20-4f1f-8743-b439a2b57942\",\"urn:uuid:6b4fac63-87dd-4ae6-8bcd-df62586e4a03\"],\"object_key\":\"epcis/ingest/2026/11/05/273ab983-8177-4909-9440-9a1041e07ef6.jsonld\",\"event_count\":2,\"http_status\":200,\"content_type\":\"application/ld+json\",\"warning_codes\":[\"UNKNOWN_SGLN\",\"INVALID_LOT\"],\"warning_count\":3,\"accepted_count\":2,\"estimated_epcs\":6,\"processing_mode\":\"ASYNC\",\"events_processed\":2},\"accepted_at\":\"2026-11-05T07:57:00.665Z\",\"updated_at\":\"2026-11-05T07:57:01.167Z\",\"completed_at\":\"2026-11-05T07:57:01.167Z\"}",
+    "dialog": "Bulk CSV — EPCIS Events\nManufacturer API key\n\nRequired for external async ingest. Keys are not stored by this dialog.\n\nSelect CSV file (max 2 MB, 500 rows)\nHow EPCIS Event CSV works\n\nCSV-11f_zomep_commission.csv · 0.7 KB\n\nUpload successful\n\n2 EPCIS unit(s) were ingested via external async.\n\nCorrelation: 273ab983-8177-4909-9440-9a1041e07ef6 · Open Async submissions\n\nClose"
+  }
+]

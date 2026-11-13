@@ -1,0 +1,38 @@
+{
+  "correlation_id": "8990f389-c86c-49c3-987f-8ab0346e05fc",
+  "status": "succeeded",
+  "result_http_status": 200,
+  "partial": false,
+  "event_ids": [
+    "urn:uuid:371d4c5c-f6ac-4de2-8843-aab3241b7158",
+    "urn:uuid:79ecee9e-80c7-4323-818f-0fe51e5343ac",
+    "urn:uuid:2054daeb-94a0-4f52-8f73-226c4da3579e"
+  ],
+  "rejected": [],
+  "accepted_count": 3,
+  "rejected_count": 0,
+  "error_code": null,
+  "error_message": null,
+  "result_summary": {
+    "message": "EPCIS events accepted",
+    "partial": false,
+    "rejected": [],
+    "byte_size": 146,
+    "event_ids": [
+      "urn:uuid:371d4c5c-f6ac-4de2-8843-aab3241b7158",
+      "urn:uuid:79ecee9e-80c7-4323-818f-0fe51e5343ac",
+      "urn:uuid:2054daeb-94a0-4f52-8f73-226c4da3579e"
+    ],
+    "event_count": 3,
+    "content_type": "text/csv",
+    "accepted_count": 3,
+    "estimated_epcs": 3,
+    "rejected_count": 0,
+    "events_processed": 3,
+    "parse_rejected_count": 0
+  },
+  "accepted_at": "2026-11-13T08:20:56.796Z",
+  "updated_at": "2026-11-13T08:20:57.335Z",
+  "completed_at": "2026-11-13T08:20:57.335Z",
+  "endpoint": "/partners/hierarchy-bulk/csv-import/async"
+}

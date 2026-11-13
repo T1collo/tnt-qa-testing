@@ -1,0 +1,3595 @@
+{
+  "at": "2026-11-13T08:03:49.517Z",
+  "run": "OTCM656",
+  "tests": [
+    {
+      "id": "H12",
+      "finding": "A",
+      "what": "100 rows, row 52 (data row 51) has Expiry \"not-a-date\"",
+      "expect": "partial: 99 accepted, the bad row rejected with its row number",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-hierarchy\\H12_OTCM656.csv",
+      "rows": 100,
+      "batches": [
+        "BOTCM65612001",
+        "BOTCM65612002",
+        "BOTCM65612003",
+        "BOTCM65612004",
+        "BOTCM65612005",
+        "BOTCM65612006",
+        "BOTCM65612007",
+        "BOTCM65612008",
+        "BOTCM65612009",
+        "BOTCM65612010",
+        "BOTCM65612011",
+        "BOTCM65612012",
+        "BOTCM65612013",
+        "BOTCM65612014",
+        "BOTCM65612015",
+        "BOTCM65612016",
+        "BOTCM65612017",
+        "BOTCM65612018",
+        "BOTCM65612019",
+        "BOTCM65612020",
+        "BOTCM65612021",
+        "BOTCM65612022",
+        "BOTCM65612023",
+        "BOTCM65612024",
+        "BOTCM65612025",
+        "BOTCM65612026",
+        "BOTCM65612027",
+        "BOTCM65612028",
+        "BOTCM65612029",
+        "BOTCM65612030",
+        "BOTCM65612031",
+        "BOTCM65612032",
+        "BOTCM65612033",
+        "BOTCM65612034",
+        "BOTCM65612035",
+        "BOTCM65612036",
+        "BOTCM65612037",
+        "BOTCM65612038",
+        "BOTCM65612039",
+        "BOTCM65612040",
+        "BOTCM65612041",
+        "BOTCM65612042",
+        "BOTCM65612043",
+        "BOTCM65612044",
+        "BOTCM65612045",
+        "BOTCM65612046",
+        "BOTCM65612047",
+        "BOTCM65612048",
+        "BOTCM65612049",
+        "BOTCM65612050",
+        "BOTCM65612051",
+        "BOTCM65612052",
+        "BOTCM65612053",
+        "BOTCM65612054",
+        "BOTCM65612055",
+        "BOTCM65612056",
+        "BOTCM65612057",
+        "BOTCM65612058",
+        "BOTCM65612059",
+        "BOTCM65612060",
+        "BOTCM65612061",
+        "BOTCM65612062",
+        "BOTCM65612063",
+        "BOTCM65612064",
+        "BOTCM65612065",
+        "BOTCM65612066",
+        "BOTCM65612067",
+        "BOTCM65612068",
+        "BOTCM65612069",
+        "BOTCM65612070",
+        "BOTCM65612071",
+        "BOTCM65612072",
+        "BOTCM65612073",
+        "BOTCM65612074",
+        "BOTCM65612075",
+        "BOTCM65612076",
+        "BOTCM65612077",
+        "BOTCM65612078",
+        "BOTCM65612079",
+        "BOTCM65612080",
+        "BOTCM65612081",
+        "BOTCM65612082",
+        "BOTCM65612083",
+        "BOTCM65612084",
+        "BOTCM65612085",
+        "BOTCM65612086",
+        "BOTCM65612087",
+        "BOTCM65612088",
+        "BOTCM65612089",
+        "BOTCM65612090",
+        "BOTCM65612091",
+        "BOTCM65612092",
+        "BOTCM65612093",
+        "BOTCM65612094",
+        "BOTCM65612095",
+        "BOTCM65612096",
+        "BOTCM65612097",
+        "BOTCM65612098",
+        "BOTCM65612099",
+        "BOTCM65612100"
+      ],
+      "serials": [
+        "SOTCM65612001",
+        "SOTCM65612002",
+        "SOTCM65612003",
+        "SOTCM65612004",
+        "SOTCM65612005",
+        "SOTCM65612006",
+        "SOTCM65612007",
+        "SOTCM65612008",
+        "SOTCM65612009",
+        "SOTCM65612010",
+        "SOTCM65612011",
+        "SOTCM65612012",
+        "SOTCM65612013",
+        "SOTCM65612014",
+        "SOTCM65612015",
+        "SOTCM65612016",
+        "SOTCM65612017",
+        "SOTCM65612018",
+        "SOTCM65612019",
+        "SOTCM65612020",
+        "SOTCM65612021",
+        "SOTCM65612022",
+        "SOTCM65612023",
+        "SOTCM65612024",
+        "SOTCM65612025",
+        "SOTCM65612026",
+        "SOTCM65612027",
+        "SOTCM65612028",
+        "SOTCM65612029",
+        "SOTCM65612030",
+        "SOTCM65612031",
+        "SOTCM65612032",
+        "SOTCM65612033",
+        "SOTCM65612034",
+        "SOTCM65612035",
+        "SOTCM65612036",
+        "SOTCM65612037",
+        "SOTCM65612038",
+        "SOTCM65612039",
+        "SOTCM65612040",
+        "SOTCM65612041",
+        "SOTCM65612042",
+        "SOTCM65612043",
+        "SOTCM65612044",
+        "SOTCM65612045",
+        "SOTCM65612046",
+        "SOTCM65612047",
+        "SOTCM65612048",
+        "SOTCM65612049",
+        "SOTCM65612050",
+        "SOTCM65612051",
+        "SOTCM65612052",
+        "SOTCM65612053",
+        "SOTCM65612054",
+        "SOTCM65612055",
+        "SOTCM65612056",
+        "SOTCM65612057",
+        "SOTCM65612058",
+        "SOTCM65612059",
+        "SOTCM65612060",
+        "SOTCM65612061",
+        "SOTCM65612062",
+        "SOTCM65612063",
+        "SOTCM65612064",
+        "SOTCM65612065",
+        "SOTCM65612066",
+        "SOTCM65612067",
+        "SOTCM65612068",
+        "SOTCM65612069",
+        "SOTCM65612070",
+        "SOTCM65612071",
+        "SOTCM65612072",
+        "SOTCM65612073",
+        "SOTCM65612074",
+        "SOTCM65612075",
+        "SOTCM65612076",
+        "SOTCM65612077",
+        "SOTCM65612078",
+        "SOTCM65612079",
+        "SOTCM65612080",
+        "SOTCM65612081",
+        "SOTCM65612082",
+        "SOTCM65612083",
+        "SOTCM65612084",
+        "SOTCM65612085",
+        "SOTCM65612086",
+        "SOTCM65612087",
+        "SOTCM65612088",
+        "SOTCM65612089",
+        "SOTCM65612090",
+        "SOTCM65612091",
+        "SOTCM65612092",
+        "SOTCM65612093",
+        "SOTCM65612094",
+        "SOTCM65612095",
+        "SOTCM65612096",
+        "SOTCM65612097",
+        "SOTCM65612098",
+        "SOTCM65612099",
+        "SOTCM65612100"
+      ],
+      "upload": {
+        "status": 202,
+        "body": "{\"async\":true,\"accepted\":true,\"correlation_id\":\"4cce2d7e-7949-4363-b35a-bd3123062225\",\"request_id\":\"4cce2d7e-7949-4363-b35a-bd3123062225\",\"status_url\":\"/partners/hierarchy-bulk/csv-import/status/4cce2d7e-7949-4363-b35a-bd3123062225\",\"message\":\"Hierarchy Bulk CSV accepted for asynchronous manufacturer event processing. Poll status_url.\",\"estimated_epcs\":297,\"event_count\":297,\"parse_rejected_count\":1}"
+      },
+      "requestId": "4cce2d7e-7949-4363-b35a-bd3123062225",
+      "final": {
+        "correlation_id": "4cce2d7e-7949-4363-b35a-bd3123062225",
+        "status": "succeeded",
+        "result_http_status": 207,
+        "partial": true,
+        "event_ids": [
+          "urn:uuid:1dda269d-e613-412f-8245-033b153cf802",
+          "urn:uuid:c25f8e53-8353-41b6-89c4-2b33bd6ccbcc",
+          "urn:uuid:03d97c03-6d4a-4758-8033-9a7089a74214",
+          "urn:uuid:9a2888e3-6c65-465d-8898-8417e74fbdd4",
+          "urn:uuid:37d4005d-c4d6-485b-8c2c-3002aa58ff10",
+          "urn:uuid:63140baf-90a1-4730-830d-ae3e35201d9a",
+          "urn:uuid:30b6b766-d4c9-437b-8320-74f935a975fd",
+          "urn:uuid:f97bd7d1-9c05-4f26-88b1-90123e7660ab",
+          "urn:uuid:1522ad5b-6f14-490a-89b2-c8ba03a4cc92",
+          "urn:uuid:87947483-4e1b-4958-83a1-ce9f6621f4e8",
+          "urn:uuid:a7fc7e8f-47e5-45a9-8079-4216837b72c6",
+          "urn:uuid:6126c932-c59a-4144-8e08-bdd36d6aefd3",
+          "urn:uuid:71cc1e18-2eb2-45e5-88da-e6ef1353e79f",
+          "urn:uuid:e93c3aed-a50c-4846-8f76-3aacf538d125",
+          "urn:uuid:d6f10bc5-909b-45b0-8348-581b58b4d94b",
+          "urn:uuid:ed45712e-66c5-45ec-8e6f-406a7185c9f1",
+          "urn:uuid:b9e74527-cdf9-4527-8720-de81a1f62cb5",
+          "urn:uuid:602039f8-5025-496a-8823-ab8d0f76c53a",
+          "urn:uuid:4393e613-a993-4de9-8961-6bd3107180b7",
+          "urn:uuid:6905b9ce-b3ec-4bec-8c36-31a99dbe2790",
+          "urn:uuid:aac379bb-6fb3-40a7-8f0e-07d8fafe04f8",
+          "urn:uuid:a7956a0f-0209-4d81-81f2-93bea7dc7fc8",
+          "urn:uuid:b531d98c-0b42-4fa6-80a1-6e8728b819ca",
+          "urn:uuid:fe3c5239-964d-4cff-8de3-a3d08f19d07a",
+          "urn:uuid:41493b01-84e5-4b3e-8fc0-40f5ab689b79",
+          "urn:uuid:a74cead5-8ffb-4c99-8715-af5a8e97ed4d",
+          "urn:uuid:34dd73a6-0f1b-45f8-804b-7b8880eb6fc2",
+          "urn:uuid:0b3386e2-9682-4904-8c54-e2e34d072689",
+          "urn:uuid:72238bb2-b128-4653-865d-b54e3bb4c818",
+          "urn:uuid:fb0d463b-1599-4798-83c5-cdb8c433464c",
+          "urn:uuid:8a688dac-3e45-4bc1-8e2e-1d761375a992",
+          "urn:uuid:f6dfd743-a0c9-4fdb-8055-59060108a094",
+          "urn:uuid:38cfe399-8e40-4106-8d1b-16816ef7f2f5",
+          "urn:uuid:5fc10ca1-fe9f-4244-847a-113920e0a495",
+          "urn:uuid:5f8fa6f4-4bc7-456d-8acb-4bd144fff0d6",
+          "urn:uuid:caf5a0c6-f364-46fc-83b6-52b5adebef1a",
+          "urn:uuid:a3f1c205-f34b-49f3-80f1-0e844d8d1822",
+          "urn:uuid:dce42653-2108-478e-8d16-9b78c2f34726",
+          "urn:uuid:d2b7cd4c-5a34-43f0-8d21-643d862a27cd",
+          "urn:uuid:7d991d4d-111b-464c-89bf-fad73d082aef",
+          "urn:uuid:f7225a45-798f-46c7-8790-0654c743d58c",
+          "urn:uuid:177d9f97-865c-4c08-87ce-872d67de0b9e",
+          "urn:uuid:473b54b4-8708-4f13-8ec1-2b98c978a8ec",
+          "urn:uuid:1610d980-ebf8-492f-8c94-77559d3cf6e7",
+          "urn:uuid:623405a3-96e1-4f00-8083-9960a0dd5003",
+          "urn:uuid:1e2783c9-7684-4580-8e62-8199cbcdb05c",
+          "urn:uuid:ab155418-6de5-4d49-8d61-6452a4308e92",
+          "urn:uuid:3b08a908-50fc-4ef9-8077-9aac7e7da6fe",
+          "urn:uuid:2274e17c-6898-49ec-8626-cb13fa3d39b6",
+          "urn:uuid:764325d9-70fc-4af6-8b78-0e97cca1103d",
+          "urn:uuid:76340fa8-0d4e-4274-87ca-4f02feda9c03",
+          "urn:uuid:e6407aca-3148-49d9-8de7-637f9f83b1fc",
+          "urn:uuid:dbadaf70-9e21-407d-824d-0d810ece91d5",
+          "urn:uuid:ac0f1d0d-9711-461b-8ac7-3ac2770349c4",
+          "urn:uuid:a12cd33f-3921-4b13-8009-aefeb2e9b4c4",
+          "urn:uuid:e6e93559-376b-462e-8d14-c4aaaf4a0fd7",
+          "urn:uuid:a485d279-57a9-4753-8577-9e0ab1458ba3",
+          "urn:uuid:e3862285-41cc-4910-82af-780c5f14099f",
+          "urn:uuid:cd3bfb35-0adf-4e33-8417-46ba39373a0b",
+          "urn:uuid:571ffe52-c127-4969-8673-a3fb53efd010",
+          "urn:uuid:2dd7428d-3b34-4691-8f74-820420e6fa3f",
+          "urn:uuid:29e6c534-c970-40f7-8893-c51c6cdc462d",
+          "urn:uuid:0ecf7c3a-1cb0-4a17-823a-7035cda2922f",
+          "urn:uuid:6c0e431a-9cac-4a3c-8d53-41c99a9aa49a",
+          "urn:uuid:5314b633-f487-463e-885f-991cc9211466",
+          "urn:uuid:7e2e225d-c852-4ec0-8779-eacbfa99a20e",
+          "urn:uuid:a963f25b-461f-47a7-811a-ae3c0c2035e5",
+          "urn:uuid:72889a50-bd3f-453f-8747-56e2770b4772",
+          "urn:uuid:826a2282-d4b6-400f-8486-6c1e1e2d0f9f",
+          "urn:uuid:0ae19622-763b-42f7-8e90-0afd4eba5e54",
+          "urn:uuid:d1a1059d-2ea9-4085-88f8-09b4d61edac6",
+          "urn:uuid:c54c4f0c-1beb-4e82-8298-bf312bc35bad",
+          "urn:uuid:83f1d542-13f9-4970-8af5-730e3655e85f",
+          "urn:uuid:08281a66-058b-4682-8bbb-574fa5f85c6d",
+          "urn:uuid:7cee49f2-4dfc-4747-8291-b1b7a477c13a",
+          "urn:uuid:d9d8da3d-accf-4a79-86bc-5b03b51822c8",
+          "urn:uuid:df83e624-0d99-47f2-8ca0-3fac4ae273b1",
+          "urn:uuid:d3e9348f-0a1d-4f0b-820b-504bf4c8b821",
+          "urn:uuid:cd8d41a9-5379-4083-8c17-c759d309f785",
+          "urn:uuid:20a1d195-33e4-4b73-8d1c-2b71f258e02a",
+          "urn:uuid:4b077664-3589-46b5-8d82-ba4f197a4821",
+          "urn:uuid:6dbe00b7-8f81-4133-8d43-17d0f7ae47f0",
+          "urn:uuid:94daf7e7-6586-4c2b-830a-65af680fc724",
+          "urn:uuid:d12d716a-c3e5-488c-8437-56c6823e2188",
+          "urn:uuid:1d21919d-0626-48a1-8caa-d6f4d089dd38",
+          "urn:uuid:bbfdc0f0-2f94-4b76-84ed-be3286563625",
+          "urn:uuid:0b45a70a-bfc5-4717-89d3-5695f0c017e5",
+          "urn:uuid:14cd7b66-9ed4-49c5-8ea1-7402cc73c96a",
+          "urn:uuid:a7c6cd87-411e-4861-8736-9599dcd2fc1e",
+          "urn:uuid:4dde140d-7c11-443a-81e2-c8338ad5f217",
+          "urn:uuid:68909b9b-a7c9-457f-8d02-88fb1c70022e",
+          "urn:uuid:9286cd06-fd84-4e41-8fbd-45f55c972cc1",
+          "urn:uuid:09cf12a0-433c-4ec7-8757-3cd570e43493",
+          "urn:uuid:0c30f095-c8ca-408c-83b7-04d644605b96",
+          "urn:uuid:03bf2e10-58d6-48df-8e3b-12fa9b8869a0",
+          "urn:uuid:8fb19040-b68a-44c1-8d68-4bf15b1e2212",
+          "urn:uuid:69515a9a-acdd-49af-80b0-a6b225c0c70e",
+          "urn:uuid:5df1c98f-ef95-4b9e-8e1c-653d1b037222",
+          "urn:uuid:03d745d1-c8ae-4a8c-823b-6ac142fa8c06",
+          "urn:uuid:0e0b16b6-c69d-48ed-8451-419e7fc4a512",
+          "urn:uuid:a916c6ee-0b74-47c8-866c-43c2cae01b8d",
+          "urn:uuid:f45b0732-81df-473d-8aca-11428fead9a1",
+          "urn:uuid:01f74c4c-f4b9-4b49-8677-34c63b3e9743",
+          "urn:uuid:b121d4b0-a2b0-42b4-8dd4-099473265712",
+          "urn:uuid:8ef6f55c-21cb-42aa-89c5-af2f534a4e57",
+          "urn:uuid:397933c6-4ebe-4a73-82d2-f3c7b8ec2d3a",
+          "urn:uuid:1da076ba-2a4c-4f30-889a-b4c54d6070bc",
+          "urn:uuid:f43554a5-614f-4e1b-86f9-f0a1ff38cc74",
+          "urn:uuid:7c6aa0ee-c970-4a03-864e-d4f17f186996",
+          "urn:uuid:c2702328-d0d1-4071-84a9-dc059aa8bed9",
+          "urn:uuid:881f12d6-c6eb-4997-8e7e-52fc9de14246",
+          "urn:uuid:5b481c4f-3c46-4fd2-870c-60a50bf9beae",
+          "urn:uuid:28607d3f-1b26-4c99-8388-6df0b629196e",
+          "urn:uuid:5bebd1a4-5c47-4a95-8d00-4277b55a22db",
+          "urn:uuid:cd7cce68-b3fb-4e7f-8d4c-ac2b8d1e6077",
+          "urn:uuid:8017bec2-4b34-4079-8080-ca29b34f6051",
+          "urn:uuid:74a9ae6b-0ff4-4841-881f-bd9f4f0fe177",
+          "urn:uuid:ceb316f1-a2ee-4ea8-8494-7e0f2d836f06",
+          "urn:uuid:47344387-860c-4c87-898f-e2b6a90479bb",
+          "urn:uuid:5df75e32-d90f-4e11-83a3-6efec81cf0b0",
+          "urn:uuid:e0bc5468-24e2-4a29-815f-0460c16fa9f4",
+          "urn:uuid:30ca36fe-9848-47ae-88ac-cbe7e0018bf3",
+          "urn:uuid:2bb785a1-e4fc-4f97-8a63-c2985a3751ba",
+          "urn:uuid:8ae9369f-b92e-4b32-8c24-9a65dbcd65c4",
+          "urn:uuid:0a47d477-3f07-4d1e-8d3f-dfac94b2779b",
+          "urn:uuid:c5167761-16cf-4fa9-8d7a-891d86de8745",
+          "urn:uuid:8b7ae5e8-39c8-43c0-8263-ba69c2bdafb0",
+          "urn:uuid:bfdaaf38-2061-4f65-819b-4a51c78c4bd1",
+          "urn:uuid:37fa8ea5-3e44-4f24-80e1-d359af58b41a",
+          "urn:uuid:95b01cdd-664a-4259-8a0e-8662e4abf1f6",
+          "urn:uuid:74d79249-056a-478f-8ded-efee45810dd2",
+          "urn:uuid:0d1e4810-c631-4588-8000-f31da4a8fd36",
+          "urn:uuid:0f0b608a-06c7-4528-8852-8831fc0bc8da",
+          "urn:uuid:736b9a02-6835-4765-8a2d-6d38444ef74f",
+          "urn:uuid:c61a96c4-2eac-4598-80a0-9007eda6aa65",
+          "urn:uuid:84b6a6dc-0c0b-4459-8692-e26709a94227",
+          "urn:uuid:91407f68-e541-4a2b-8c91-f5c91b0cbc31",
+          "urn:uuid:5458bd5e-ec61-4b41-81e4-637d0088dba9",
+          "urn:uuid:527d2f3e-8a2f-4cc8-8464-19aeee3e5c59",
+          "urn:uuid:4a3426e0-308d-49d3-8704-f0534f8a3a1c",
+          "urn:uuid:2d64921b-9e9a-478e-8bf2-edc705fd6517",
+          "urn:uuid:6fb67b90-4942-47f4-8c2b-096f5ffc0ad7",
+          "urn:uuid:7dcba36c-d83d-423a-800f-5394f3dceed3",
+          "urn:uuid:efeff223-09d6-4d19-8d49-f40d2f08f032",
+          "urn:uuid:0fd5091f-60a5-4f05-89a4-64351fa00840",
+          "urn:uuid:1822d952-1bc3-45de-8119-2a9ab38f3c77",
+          "urn:uuid:7d1f23a0-2930-41bb-8eec-e91e3f80d163",
+          "urn:uuid:b62ee9c7-3913-4ecb-8f07-b6bb2f26cf8f",
+          "urn:uuid:91ac30a5-9f4a-4259-8c77-79d4f06e2c1c",
+          "urn:uuid:8f297efd-c00b-453f-8136-71bd6cee5f23",
+          "urn:uuid:ab830359-e651-40e1-896a-cfdaa1558d62",
+          "urn:uuid:46c33bbc-6fbc-48e5-8011-f17ebc08093a",
+          "urn:uuid:1dba1043-0d62-46a1-8869-0f5ce7c524e6",
+          "urn:uuid:598276c9-0f1e-4cc8-8a92-b228401b32fe",
+          "urn:uuid:8a1383bb-853d-453d-817f-4d48c0c31451",
+          "urn:uuid:248c9f8b-fa14-4a24-8879-5a48e2fc89f6",
+          "urn:uuid:e7a9de37-a898-4768-88cf-ec1595cb8fbf",
+          "urn:uuid:a85f1187-c1c6-4806-8c23-d02bf3a1ef39",
+          "urn:uuid:2f8731b5-2337-41f6-8a9d-78ed2b1abbcb",
+          "urn:uuid:6db2876c-c10c-441f-8867-4f6e9b19f3f0",
+          "urn:uuid:cec0f95e-eac4-4224-8e9d-24f4f106251a",
+          "urn:uuid:00e88667-95b6-4ead-8743-3691434846d6",
+          "urn:uuid:fcfe739b-0bb6-4647-8c29-4617f7c93163",
+          "urn:uuid:2b3f7936-d463-4d7e-81aa-511ab5c6ffda",
+          "urn:uuid:1e25b1a0-40e4-4f18-8a81-5e15b523a076",
+          "urn:uuid:2f00e941-b7b6-4329-8b74-8f620162d49e",
+          "urn:uuid:7ed2714a-c5a3-434a-8705-ce109c611d98",
+          "urn:uuid:70e51807-8ca4-49a1-8627-f6958e47bcdf",
+          "urn:uuid:35e75f92-c9e8-44e4-8fdf-2867de5052f8",
+          "urn:uuid:42fedada-9459-4570-89f1-ef155687c9cc",
+          "urn:uuid:18acdbf0-bda9-49e2-8c67-67bf6469bec7",
+          "urn:uuid:ca65a57d-e3ab-450b-89c0-a57a08871407",
+          "urn:uuid:e4d75317-45f0-4927-86bb-1459352811e2",
+          "urn:uuid:d642d982-6bd5-4607-8f32-7f529da48617",
+          "urn:uuid:9aaa53ca-1d34-4723-8916-fe6ae44e9e0b",
+          "urn:uuid:764911f2-8fe0-4860-8585-fe753dec2a9e",
+          "urn:uuid:8d4b523f-19b5-4987-8f59-a2cb2af74db4",
+          "urn:uuid:4e0f380f-ef81-4332-8074-dabe3edcc06f",
+          "urn:uuid:fae1b161-7bde-4b94-8eb3-19704b7bae9c",
+          "urn:uuid:d78cc593-6705-4369-879e-782ff7738d77",
+          "urn:uuid:b2673a4a-e26c-41a8-8c7f-f22b91e9ad58",
+          "urn:uuid:573d020d-2325-40d8-8e72-9f7b0303408a",
+          "urn:uuid:bd472cc5-7de0-44dd-8932-7bb150e76164",
+          "urn:uuid:9e3526be-7874-4014-8535-d26373ce4c90",
+          "urn:uuid:cb4b2f89-ba7e-4ac2-8dd9-3ec9b09d5878",
+          "urn:uuid:032b580f-89bb-4293-846d-6a04389fc275",
+          "urn:uuid:6f4e2eb1-c4f7-432e-869e-2b52d5fb2953",
+          "urn:uuid:3660c10d-d831-443c-85f6-4ec05fad8d48",
+          "urn:uuid:d0d72ea1-da8e-4a54-829e-990a1fe127dd",
+          "urn:uuid:d8eff025-3400-4fdc-8b39-445be7987e94",
+          "urn:uuid:78f95732-3adf-411a-8ebf-96b01af83064",
+          "urn:uuid:b8762bb0-eda9-4e05-80cd-12b8f5332041",
+          "urn:uuid:99ed3186-ba7c-4d35-8350-b4ba96b934b1",
+          "urn:uuid:944116b5-37c5-49c0-89e4-3935b3976698",
+          "urn:uuid:884b6489-cc03-47b6-80c8-b4d58ff737cd",
+          "urn:uuid:29ae29a1-8f2f-4217-8d5c-f0fbce328618",
+          "urn:uuid:5e47891a-69ea-41b9-8060-4211233bb709",
+          "urn:uuid:94b2e9f5-54b7-4e1f-8f4c-51b49aea2a13"
+        ],
+        "rejected": [
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "not-a-date",
+              "batch_no": "BOTCM65612051",
+              "case_sscc": "",
+              "case_group": "C1251",
+              "package_sscc": "",
+              "package_group": "P1251",
+              "serial_numbers": "SOTCM65612051"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "expiry \"not-a-date\" is not a valid date. Use ISO 8601 format, e.g. 2027-06-30.",
+            "event_id": "hierarchy-csv-row:52",
+            "row_index": 52
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.267244413",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:3fce6404-746d-45d9-86ae-f7133d2b3c67 was already ingested",
+            "event_id": "urn:uuid:3fce6404-746d-45d9-86ae-f7133d2b3c67",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.390910049",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:a2775660-57cf-4f2b-808f-e3b8e0a0eb22 was already ingested",
+            "event_id": "urn:uuid:a2775660-57cf-4f2b-808f-e3b8e0a0eb22",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.967503292",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:cb186d90-886e-47fa-872d-bdaf56ae38ba was already ingested",
+            "event_id": "urn:uuid:cb186d90-886e-47fa-872d-bdaf56ae38ba",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.225345459",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:b4f0331e-3808-4031-8868-663a2609ed64 was already ingested",
+            "event_id": "urn:uuid:b4f0331e-3808-4031-8868-663a2609ed64",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.446538357",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:274e3245-cad8-4199-834e-55633877a371 was already ingested",
+            "event_id": "urn:uuid:274e3245-cad8-4199-834e-55633877a371",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.923715325",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:67d6b97d-0f61-4be5-8736-7b83af5d8d25 was already ingested",
+            "event_id": "urn:uuid:67d6b97d-0f61-4be5-8736-7b83af5d8d25",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.252555357",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:3761df5d-9d53-4804-85a0-ad4239d17883 was already ingested",
+            "event_id": "urn:uuid:3761df5d-9d53-4804-85a0-ad4239d17883",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.747402487",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:ca1baac3-c3ca-47a2-81b1-e5136ed9887a was already ingested",
+            "event_id": "urn:uuid:ca1baac3-c3ca-47a2-81b1-e5136ed9887a",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.992894419",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:95180c74-d500-4b95-81c3-bde0c54790ad was already ingested",
+            "event_id": "urn:uuid:95180c74-d500-4b95-81c3-bde0c54790ad",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.245621601",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:53836ae8-427e-4a23-883b-c61f81220ff1 was already ingested",
+            "event_id": "urn:uuid:53836ae8-427e-4a23-883b-c61f81220ff1",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.875137039",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:1025654e-7a50-4297-8950-afa05196a54a was already ingested",
+            "event_id": "urn:uuid:1025654e-7a50-4297-8950-afa05196a54a",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.079540642",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:2770b35b-96dc-42d6-847b-a4ed1ca40fc4 was already ingested",
+            "event_id": "urn:uuid:2770b35b-96dc-42d6-847b-a4ed1ca40fc4",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.774392584",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:5e60e7fc-68e6-4bbc-8b56-9b10f7be2920 was already ingested",
+            "event_id": "urn:uuid:5e60e7fc-68e6-4bbc-8b56-9b10f7be2920",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.371535346",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:edec3f6d-88cb-4eca-8499-0b068dc97e94 was already ingested",
+            "event_id": "urn:uuid:edec3f6d-88cb-4eca-8499-0b068dc97e94",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.079014594",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:25526dbe-44e2-4aed-8a9f-4d91f5381c49 was already ingested",
+            "event_id": "urn:uuid:25526dbe-44e2-4aed-8a9f-4d91f5381c49",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.125226841",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:01d0602b-202b-43e9-89dd-4b9d5d2109ac was already ingested",
+            "event_id": "urn:uuid:01d0602b-202b-43e9-89dd-4b9d5d2109ac",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.708004910",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:f7cd24fb-a737-4916-8bda-4fcc2cabb1a1 was already ingested",
+            "event_id": "urn:uuid:f7cd24fb-a737-4916-8bda-4fcc2cabb1a1",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.351487450",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:0aa4c33e-eca4-4f52-8ff1-a1763f190740 was already ingested",
+            "event_id": "urn:uuid:0aa4c33e-eca4-4f52-8ff1-a1763f190740",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.311204745",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:b4a4a58b-79c1-4fcb-81a0-1eca38a7a79a was already ingested",
+            "event_id": "urn:uuid:b4a4a58b-79c1-4fcb-81a0-1eca38a7a79a",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.002291023",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:3108dd03-49c5-43e8-81f4-be1acc9fa64c was already ingested",
+            "event_id": "urn:uuid:3108dd03-49c5-43e8-81f4-be1acc9fa64c",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.523132546",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:0d2de89c-64ad-4e69-8217-1dfd2d75f32c was already ingested",
+            "event_id": "urn:uuid:0d2de89c-64ad-4e69-8217-1dfd2d75f32c",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.725307964",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:6367fc98-37ed-4268-8732-75eaa27bc02a was already ingested",
+            "event_id": "urn:uuid:6367fc98-37ed-4268-8732-75eaa27bc02a",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.129845161",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:eac1e5d4-533c-4d54-8622-281098ac38a1 was already ingested",
+            "event_id": "urn:uuid:eac1e5d4-533c-4d54-8622-281098ac38a1",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.491515150",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:b521a888-cc48-4ecc-8942-26fa68e02a06 was already ingested",
+            "event_id": "urn:uuid:b521a888-cc48-4ecc-8942-26fa68e02a06",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.466136359",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:f547bbe0-e8ea-4872-8d8c-28cd08eba1c1 was already ingested",
+            "event_id": "urn:uuid:f547bbe0-e8ea-4872-8d8c-28cd08eba1c1",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.437053913",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:493f092d-99d0-4a3d-87c4-ff924f27b608 was already ingested",
+            "event_id": "urn:uuid:493f092d-99d0-4a3d-87c4-ff924f27b608",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.042100255",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:a5ff33a2-76b8-429c-8ea7-beb54975d4aa was already ingested",
+            "event_id": "urn:uuid:a5ff33a2-76b8-429c-8ea7-beb54975d4aa",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.953020871",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:af811307-2808-4097-8fa1-003a07453b57 was already ingested",
+            "event_id": "urn:uuid:af811307-2808-4097-8fa1-003a07453b57",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.628503494",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:9823a80c-4614-4502-8680-cd137f5e7fd4 was already ingested",
+            "event_id": "urn:uuid:9823a80c-4614-4502-8680-cd137f5e7fd4",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.150012440",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:fc5521a2-8cb6-4570-811a-0241e9f586be was already ingested",
+            "event_id": "urn:uuid:fc5521a2-8cb6-4570-811a-0241e9f586be",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.954403178",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:92915cd6-d83b-45d1-84dd-9be69ae2f3fe was already ingested",
+            "event_id": "urn:uuid:92915cd6-d83b-45d1-84dd-9be69ae2f3fe",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.125208533",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:8a46b1e4-7846-45ab-8a56-342087125e11 was already ingested",
+            "event_id": "urn:uuid:8a46b1e4-7846-45ab-8a56-342087125e11",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.876545246",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:e83ef9be-ae46-4a19-86f2-eab4401397ba was already ingested",
+            "event_id": "urn:uuid:e83ef9be-ae46-4a19-86f2-eab4401397ba",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.019891308",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:92e77a03-064e-4726-8d62-63c6dee6a3e8 was already ingested",
+            "event_id": "urn:uuid:92e77a03-064e-4726-8d62-63c6dee6a3e8",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.125033586",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:79bf5b49-f6aa-4590-824c-585644115411 was already ingested",
+            "event_id": "urn:uuid:79bf5b49-f6aa-4590-824c-585644115411",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.541474468",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:948770ff-06be-40c1-891b-a862a5b7a4af was already ingested",
+            "event_id": "urn:uuid:948770ff-06be-40c1-891b-a862a5b7a4af",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.700290441",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:a5d241bc-a5c4-4348-852a-f5c34b854637 was already ingested",
+            "event_id": "urn:uuid:a5d241bc-a5c4-4348-852a-f5c34b854637",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.798402696",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:cbdbed4a-471d-4bb3-85d5-42b23ea0e0c3 was already ingested",
+            "event_id": "urn:uuid:cbdbed4a-471d-4bb3-85d5-42b23ea0e0c3",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.482981155",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:5f8d1b08-68f5-4bd9-8f4e-c95e307bb423 was already ingested",
+            "event_id": "urn:uuid:5f8d1b08-68f5-4bd9-8f4e-c95e307bb423",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.505101430",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:34e4b7ac-21b4-4f1c-8a88-f7d164322e0e was already ingested",
+            "event_id": "urn:uuid:34e4b7ac-21b4-4f1c-8a88-f7d164322e0e",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.214510677",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:f2b27f26-8841-4885-8a1f-836c337818dd was already ingested",
+            "event_id": "urn:uuid:f2b27f26-8841-4885-8a1f-836c337818dd",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.113014597",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:73ffd8cd-07e4-4e29-8801-788ee9ebbad8 was already ingested",
+            "event_id": "urn:uuid:73ffd8cd-07e4-4e29-8801-788ee9ebbad8",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.091074651",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:9c26b189-fd69-4942-8d12-fddb6b3b67bd was already ingested",
+            "event_id": "urn:uuid:9c26b189-fd69-4942-8d12-fddb6b3b67bd",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.310178825",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:a23481e4-ebbf-4987-86c5-0315939e047d was already ingested",
+            "event_id": "urn:uuid:a23481e4-ebbf-4987-86c5-0315939e047d",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.744431800",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:5a438655-d561-4d57-8529-30a2ce9882fd was already ingested",
+            "event_id": "urn:uuid:5a438655-d561-4d57-8529-30a2ce9882fd",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.497504158",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:8a4dd4ec-5c81-4fd2-86a0-57e0dab1d17c was already ingested",
+            "event_id": "urn:uuid:8a4dd4ec-5c81-4fd2-86a0-57e0dab1d17c",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.410463166",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:918a3922-eec4-41b1-8002-09adb83dad6e was already ingested",
+            "event_id": "urn:uuid:918a3922-eec4-41b1-8002-09adb83dad6e",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.264151028",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:18562bc9-2b1a-4608-8c51-725396f01db4 was already ingested",
+            "event_id": "urn:uuid:18562bc9-2b1a-4608-8c51-725396f01db4",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.981803538",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:72f03df2-53a8-4d39-8e74-94c851bb4cb5 was already ingested",
+            "event_id": "urn:uuid:72f03df2-53a8-4d39-8e74-94c851bb4cb5",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.081212537",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:05c24a6e-6aec-4562-8008-3c3cd2ac2989 was already ingested",
+            "event_id": "urn:uuid:05c24a6e-6aec-4562-8008-3c3cd2ac2989",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.514893500",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:33a6e568-fd76-46a3-8e50-1eb719ce70f1 was already ingested",
+            "event_id": "urn:uuid:33a6e568-fd76-46a3-8e50-1eb719ce70f1",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.614205944",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:aa978df5-43d8-4547-881b-a938b9d59393 was already ingested",
+            "event_id": "urn:uuid:aa978df5-43d8-4547-881b-a938b9d59393",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.315079066",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:8430c5dd-7aa8-49e0-8425-b44e68447ec8 was already ingested",
+            "event_id": "urn:uuid:8430c5dd-7aa8-49e0-8425-b44e68447ec8",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.990459535",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:2a3b4ba1-f205-4a4d-83eb-e4d729f83530 was already ingested",
+            "event_id": "urn:uuid:2a3b4ba1-f205-4a4d-83eb-e4d729f83530",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.838324025",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:b0b85992-c4a9-4cce-84fc-26abe36e9431 was already ingested",
+            "event_id": "urn:uuid:b0b85992-c4a9-4cce-84fc-26abe36e9431",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.710089028",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:5f56ab05-61e1-479c-80f5-8ac5b1a5b467 was already ingested",
+            "event_id": "urn:uuid:5f56ab05-61e1-479c-80f5-8ac5b1a5b467",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.859001288",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:7d6ce240-5477-4ebb-88b7-52f5950910c1 was already ingested",
+            "event_id": "urn:uuid:7d6ce240-5477-4ebb-88b7-52f5950910c1",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.375300209",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:cf17fedd-5382-41c5-8dfe-1e940b573f7c was already ingested",
+            "event_id": "urn:uuid:cf17fedd-5382-41c5-8dfe-1e940b573f7c",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.063402222",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:4e288bc3-94d4-48ef-848a-31efa27338bf was already ingested",
+            "event_id": "urn:uuid:4e288bc3-94d4-48ef-848a-31efa27338bf",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.155584188",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:5360c9e6-e3dd-4d3d-8102-25c34c8af512 was already ingested",
+            "event_id": "urn:uuid:5360c9e6-e3dd-4d3d-8102-25c34c8af512",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.028970551",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:baaac215-d6e0-4db0-8f64-01200a5c7ea9 was already ingested",
+            "event_id": "urn:uuid:baaac215-d6e0-4db0-8f64-01200a5c7ea9",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.998248452",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:456cb7e9-7d61-4f86-8042-7678b76505cb was already ingested",
+            "event_id": "urn:uuid:456cb7e9-7d61-4f86-8042-7678b76505cb",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.074738464",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:e0cd6d23-f4bf-4300-8e15-2e1b52332d70 was already ingested",
+            "event_id": "urn:uuid:e0cd6d23-f4bf-4300-8e15-2e1b52332d70",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.032217826",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:5dd0a132-7a81-4711-800b-fc6feadd51cf was already ingested",
+            "event_id": "urn:uuid:5dd0a132-7a81-4711-800b-fc6feadd51cf",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.110344277",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:f5637217-df2e-423f-83ab-9b57cad7ca23 was already ingested",
+            "event_id": "urn:uuid:f5637217-df2e-423f-83ab-9b57cad7ca23",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.658073028",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:26e94462-eb4c-4616-8dbd-aab9945d13f9 was already ingested",
+            "event_id": "urn:uuid:26e94462-eb4c-4616-8dbd-aab9945d13f9",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.411039100",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:b8dfdf0e-2bda-4eba-838b-f35ceaf5e525 was already ingested",
+            "event_id": "urn:uuid:b8dfdf0e-2bda-4eba-838b-f35ceaf5e525",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.823093561",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:78fff232-214b-4a44-8655-5bc0217ae5c6 was already ingested",
+            "event_id": "urn:uuid:78fff232-214b-4a44-8655-5bc0217ae5c6",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.081237134",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:d0bdbf51-d76a-48a3-81aa-9b77165f7393 was already ingested",
+            "event_id": "urn:uuid:d0bdbf51-d76a-48a3-81aa-9b77165f7393",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.189431779",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:3dc055dc-0966-427e-8d77-8fa36a56eaab was already ingested",
+            "event_id": "urn:uuid:3dc055dc-0966-427e-8d77-8fa36a56eaab",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.113352781",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:47cab0d8-36e7-466b-8f7d-fbbb0aa759e7 was already ingested",
+            "event_id": "urn:uuid:47cab0d8-36e7-466b-8f7d-fbbb0aa759e7",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.845123512",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:5de4d47e-4498-4de3-8bf3-5c186aa7efb4 was already ingested",
+            "event_id": "urn:uuid:5de4d47e-4498-4de3-8bf3-5c186aa7efb4",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.103937509",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:cec349f8-9020-44a1-891a-9b8e9421da0e was already ingested",
+            "event_id": "urn:uuid:cec349f8-9020-44a1-891a-9b8e9421da0e",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.755252036",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:f3b50e87-e674-4e41-8c88-e0fd802889d1 was already ingested",
+            "event_id": "urn:uuid:f3b50e87-e674-4e41-8c88-e0fd802889d1",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.453257845",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:c574ca05-a76b-4c5c-80f8-289720f7d1fc was already ingested",
+            "event_id": "urn:uuid:c574ca05-a76b-4c5c-80f8-289720f7d1fc",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.165335046",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:0a60c0c1-4c9b-44c5-86d5-408f04b0353d was already ingested",
+            "event_id": "urn:uuid:0a60c0c1-4c9b-44c5-86d5-408f04b0353d",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.804655153",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:9ca93e07-4f37-487d-8ab6-25877f899897 was already ingested",
+            "event_id": "urn:uuid:9ca93e07-4f37-487d-8ab6-25877f899897",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.332213160",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:b66ffe29-4402-465d-8ace-5da9abf2c123 was already ingested",
+            "event_id": "urn:uuid:b66ffe29-4402-465d-8ace-5da9abf2c123",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.134091324",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:c494b43c-4b33-4364-86ab-a49f0ab8db9e was already ingested",
+            "event_id": "urn:uuid:c494b43c-4b33-4364-86ab-a49f0ab8db9e",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.942615439",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:6343cbeb-87f2-43a2-88c8-7fdebea0e4e4 was already ingested",
+            "event_id": "urn:uuid:6343cbeb-87f2-43a2-88c8-7fdebea0e4e4",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.959672746",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:a1046d8c-ff4f-42aa-82a2-6349c795e6f2 was already ingested",
+            "event_id": "urn:uuid:a1046d8c-ff4f-42aa-82a2-6349c795e6f2",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.114835023",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:0259a570-b093-481f-878b-715f3ca9e40b was already ingested",
+            "event_id": "urn:uuid:0259a570-b093-481f-878b-715f3ca9e40b",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.522515227",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:6fbfdf8b-3766-4874-82b5-da76b7b15a6e was already ingested",
+            "event_id": "urn:uuid:6fbfdf8b-3766-4874-82b5-da76b7b15a6e",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.485133438",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:395bf31b-35af-4be5-86f7-7c1a285f5049 was already ingested",
+            "event_id": "urn:uuid:395bf31b-35af-4be5-86f7-7c1a285f5049",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.270695011",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:92138414-aa9e-4fa8-8ed5-26a987bdaa6d was already ingested",
+            "event_id": "urn:uuid:92138414-aa9e-4fa8-8ed5-26a987bdaa6d",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.802765557",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:fc8bf524-3ae4-4af4-88db-a4aab472b7ec was already ingested",
+            "event_id": "urn:uuid:fc8bf524-3ae4-4af4-88db-a4aab472b7ec",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.754281419",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:3eaf2c9d-d620-4142-8d3f-5af27a0cdc83 was already ingested",
+            "event_id": "urn:uuid:3eaf2c9d-d620-4142-8d3f-5af27a0cdc83",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.836150640",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:10401012-2564-4744-8dce-d3d8d5c65384 was already ingested",
+            "event_id": "urn:uuid:10401012-2564-4744-8dce-d3d8d5c65384",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.424539468",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:85cbe1e6-8d8d-4f7b-8857-d4f73c887d87 was already ingested",
+            "event_id": "urn:uuid:85cbe1e6-8d8d-4f7b-8857-d4f73c887d87",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.234241216",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:854c6ba3-d469-4402-8143-4eec6f07f758 was already ingested",
+            "event_id": "urn:uuid:854c6ba3-d469-4402-8143-4eec6f07f758",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.162610085",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:e102e1f7-403b-46fe-89da-7c26747944e0 was already ingested",
+            "event_id": "urn:uuid:e102e1f7-403b-46fe-89da-7c26747944e0",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.248707128",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:deeda34b-a6bf-40b5-8cab-c5c46fdc3abd was already ingested",
+            "event_id": "urn:uuid:deeda34b-a6bf-40b5-8cab-c5c46fdc3abd",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.149524794",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:c1a28c42-5187-4bb2-8e45-34bc78dbf2ce was already ingested",
+            "event_id": "urn:uuid:c1a28c42-5187-4bb2-8e45-34bc78dbf2ce",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.245740357",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:a9272643-918c-41a9-8e74-9dff3dfffe19 was already ingested",
+            "event_id": "urn:uuid:a9272643-918c-41a9-8e74-9dff3dfffe19",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.629003856",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:b3b2d167-41c4-42b3-80cd-fea64f5f7a0c was already ingested",
+            "event_id": "urn:uuid:b3b2d167-41c4-42b3-80cd-fea64f5f7a0c",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.980955382",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:e66db71b-ec63-4128-89e1-77d71e0b4895 was already ingested",
+            "event_id": "urn:uuid:e66db71b-ec63-4128-89e1-77d71e0b4895",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.980115908",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:046ee596-481d-4982-861d-7d363b2fca49 was already ingested",
+            "event_id": "urn:uuid:046ee596-481d-4982-861d-7d363b2fca49",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.676855415",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:d9486be3-e5cf-495d-8408-22fb0ecaea89 was already ingested",
+            "event_id": "urn:uuid:d9486be3-e5cf-495d-8408-22fb0ecaea89",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.144522573",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:bebf2358-022f-4b16-84bb-f0b45d93e44d was already ingested",
+            "event_id": "urn:uuid:bebf2358-022f-4b16-84bb-f0b45d93e44d",
+            "http_status": 409
+          }
+        ],
+        "accepted_count": 198,
+        "rejected_count": 100,
+        "error_code": null,
+        "error_message": null,
+        "result_summary": {
+          "message": "EPCIS events accepted",
+          "partial": true,
+          "rejected": [
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "not-a-date",
+                "batch_no": "BOTCM65612051",
+                "case_sscc": "",
+                "case_group": "C1251",
+                "package_sscc": "",
+                "package_group": "P1251",
+                "serial_numbers": "SOTCM65612051"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "expiry \"not-a-date\" is not a valid date. Use ISO 8601 format, e.g. 2027-06-30.",
+              "event_id": "hierarchy-csv-row:52",
+              "row_index": 52
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.267244413",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:3fce6404-746d-45d9-86ae-f7133d2b3c67 was already ingested",
+              "event_id": "urn:uuid:3fce6404-746d-45d9-86ae-f7133d2b3c67",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.390910049",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:a2775660-57cf-4f2b-808f-e3b8e0a0eb22 was already ingested",
+              "event_id": "urn:uuid:a2775660-57cf-4f2b-808f-e3b8e0a0eb22",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.967503292",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:cb186d90-886e-47fa-872d-bdaf56ae38ba was already ingested",
+              "event_id": "urn:uuid:cb186d90-886e-47fa-872d-bdaf56ae38ba",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.225345459",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:b4f0331e-3808-4031-8868-663a2609ed64 was already ingested",
+              "event_id": "urn:uuid:b4f0331e-3808-4031-8868-663a2609ed64",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.446538357",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:274e3245-cad8-4199-834e-55633877a371 was already ingested",
+              "event_id": "urn:uuid:274e3245-cad8-4199-834e-55633877a371",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.923715325",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:67d6b97d-0f61-4be5-8736-7b83af5d8d25 was already ingested",
+              "event_id": "urn:uuid:67d6b97d-0f61-4be5-8736-7b83af5d8d25",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.252555357",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:3761df5d-9d53-4804-85a0-ad4239d17883 was already ingested",
+              "event_id": "urn:uuid:3761df5d-9d53-4804-85a0-ad4239d17883",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.747402487",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:ca1baac3-c3ca-47a2-81b1-e5136ed9887a was already ingested",
+              "event_id": "urn:uuid:ca1baac3-c3ca-47a2-81b1-e5136ed9887a",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.992894419",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:95180c74-d500-4b95-81c3-bde0c54790ad was already ingested",
+              "event_id": "urn:uuid:95180c74-d500-4b95-81c3-bde0c54790ad",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.245621601",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:53836ae8-427e-4a23-883b-c61f81220ff1 was already ingested",
+              "event_id": "urn:uuid:53836ae8-427e-4a23-883b-c61f81220ff1",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.875137039",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:1025654e-7a50-4297-8950-afa05196a54a was already ingested",
+              "event_id": "urn:uuid:1025654e-7a50-4297-8950-afa05196a54a",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.079540642",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:2770b35b-96dc-42d6-847b-a4ed1ca40fc4 was already ingested",
+              "event_id": "urn:uuid:2770b35b-96dc-42d6-847b-a4ed1ca40fc4",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.774392584",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:5e60e7fc-68e6-4bbc-8b56-9b10f7be2920 was already ingested",
+              "event_id": "urn:uuid:5e60e7fc-68e6-4bbc-8b56-9b10f7be2920",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.371535346",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:edec3f6d-88cb-4eca-8499-0b068dc97e94 was already ingested",
+              "event_id": "urn:uuid:edec3f6d-88cb-4eca-8499-0b068dc97e94",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.079014594",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:25526dbe-44e2-4aed-8a9f-4d91f5381c49 was already ingested",
+              "event_id": "urn:uuid:25526dbe-44e2-4aed-8a9f-4d91f5381c49",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.125226841",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:01d0602b-202b-43e9-89dd-4b9d5d2109ac was already ingested",
+              "event_id": "urn:uuid:01d0602b-202b-43e9-89dd-4b9d5d2109ac",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.708004910",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:f7cd24fb-a737-4916-8bda-4fcc2cabb1a1 was already ingested",
+              "event_id": "urn:uuid:f7cd24fb-a737-4916-8bda-4fcc2cabb1a1",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.351487450",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:0aa4c33e-eca4-4f52-8ff1-a1763f190740 was already ingested",
+              "event_id": "urn:uuid:0aa4c33e-eca4-4f52-8ff1-a1763f190740",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.311204745",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:b4a4a58b-79c1-4fcb-81a0-1eca38a7a79a was already ingested",
+              "event_id": "urn:uuid:b4a4a58b-79c1-4fcb-81a0-1eca38a7a79a",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.002291023",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:3108dd03-49c5-43e8-81f4-be1acc9fa64c was already ingested",
+              "event_id": "urn:uuid:3108dd03-49c5-43e8-81f4-be1acc9fa64c",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.523132546",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:0d2de89c-64ad-4e69-8217-1dfd2d75f32c was already ingested",
+              "event_id": "urn:uuid:0d2de89c-64ad-4e69-8217-1dfd2d75f32c",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.725307964",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:6367fc98-37ed-4268-8732-75eaa27bc02a was already ingested",
+              "event_id": "urn:uuid:6367fc98-37ed-4268-8732-75eaa27bc02a",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.129845161",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:eac1e5d4-533c-4d54-8622-281098ac38a1 was already ingested",
+              "event_id": "urn:uuid:eac1e5d4-533c-4d54-8622-281098ac38a1",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.491515150",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:b521a888-cc48-4ecc-8942-26fa68e02a06 was already ingested",
+              "event_id": "urn:uuid:b521a888-cc48-4ecc-8942-26fa68e02a06",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.466136359",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:f547bbe0-e8ea-4872-8d8c-28cd08eba1c1 was already ingested",
+              "event_id": "urn:uuid:f547bbe0-e8ea-4872-8d8c-28cd08eba1c1",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.437053913",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:493f092d-99d0-4a3d-87c4-ff924f27b608 was already ingested",
+              "event_id": "urn:uuid:493f092d-99d0-4a3d-87c4-ff924f27b608",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.042100255",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:a5ff33a2-76b8-429c-8ea7-beb54975d4aa was already ingested",
+              "event_id": "urn:uuid:a5ff33a2-76b8-429c-8ea7-beb54975d4aa",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.953020871",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:af811307-2808-4097-8fa1-003a07453b57 was already ingested",
+              "event_id": "urn:uuid:af811307-2808-4097-8fa1-003a07453b57",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.628503494",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:9823a80c-4614-4502-8680-cd137f5e7fd4 was already ingested",
+              "event_id": "urn:uuid:9823a80c-4614-4502-8680-cd137f5e7fd4",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.150012440",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:fc5521a2-8cb6-4570-811a-0241e9f586be was already ingested",
+              "event_id": "urn:uuid:fc5521a2-8cb6-4570-811a-0241e9f586be",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.954403178",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:92915cd6-d83b-45d1-84dd-9be69ae2f3fe was already ingested",
+              "event_id": "urn:uuid:92915cd6-d83b-45d1-84dd-9be69ae2f3fe",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.125208533",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:8a46b1e4-7846-45ab-8a56-342087125e11 was already ingested",
+              "event_id": "urn:uuid:8a46b1e4-7846-45ab-8a56-342087125e11",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.876545246",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:e83ef9be-ae46-4a19-86f2-eab4401397ba was already ingested",
+              "event_id": "urn:uuid:e83ef9be-ae46-4a19-86f2-eab4401397ba",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.019891308",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:92e77a03-064e-4726-8d62-63c6dee6a3e8 was already ingested",
+              "event_id": "urn:uuid:92e77a03-064e-4726-8d62-63c6dee6a3e8",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.125033586",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:79bf5b49-f6aa-4590-824c-585644115411 was already ingested",
+              "event_id": "urn:uuid:79bf5b49-f6aa-4590-824c-585644115411",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.541474468",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:948770ff-06be-40c1-891b-a862a5b7a4af was already ingested",
+              "event_id": "urn:uuid:948770ff-06be-40c1-891b-a862a5b7a4af",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.700290441",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:a5d241bc-a5c4-4348-852a-f5c34b854637 was already ingested",
+              "event_id": "urn:uuid:a5d241bc-a5c4-4348-852a-f5c34b854637",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.798402696",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:cbdbed4a-471d-4bb3-85d5-42b23ea0e0c3 was already ingested",
+              "event_id": "urn:uuid:cbdbed4a-471d-4bb3-85d5-42b23ea0e0c3",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.482981155",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:5f8d1b08-68f5-4bd9-8f4e-c95e307bb423 was already ingested",
+              "event_id": "urn:uuid:5f8d1b08-68f5-4bd9-8f4e-c95e307bb423",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.505101430",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:34e4b7ac-21b4-4f1c-8a88-f7d164322e0e was already ingested",
+              "event_id": "urn:uuid:34e4b7ac-21b4-4f1c-8a88-f7d164322e0e",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.214510677",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:f2b27f26-8841-4885-8a1f-836c337818dd was already ingested",
+              "event_id": "urn:uuid:f2b27f26-8841-4885-8a1f-836c337818dd",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.113014597",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:73ffd8cd-07e4-4e29-8801-788ee9ebbad8 was already ingested",
+              "event_id": "urn:uuid:73ffd8cd-07e4-4e29-8801-788ee9ebbad8",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.091074651",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:9c26b189-fd69-4942-8d12-fddb6b3b67bd was already ingested",
+              "event_id": "urn:uuid:9c26b189-fd69-4942-8d12-fddb6b3b67bd",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.310178825",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:a23481e4-ebbf-4987-86c5-0315939e047d was already ingested",
+              "event_id": "urn:uuid:a23481e4-ebbf-4987-86c5-0315939e047d",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.744431800",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:5a438655-d561-4d57-8529-30a2ce9882fd was already ingested",
+              "event_id": "urn:uuid:5a438655-d561-4d57-8529-30a2ce9882fd",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.497504158",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:8a4dd4ec-5c81-4fd2-86a0-57e0dab1d17c was already ingested",
+              "event_id": "urn:uuid:8a4dd4ec-5c81-4fd2-86a0-57e0dab1d17c",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.410463166",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:918a3922-eec4-41b1-8002-09adb83dad6e was already ingested",
+              "event_id": "urn:uuid:918a3922-eec4-41b1-8002-09adb83dad6e",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.264151028",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:18562bc9-2b1a-4608-8c51-725396f01db4 was already ingested",
+              "event_id": "urn:uuid:18562bc9-2b1a-4608-8c51-725396f01db4",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.981803538",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:72f03df2-53a8-4d39-8e74-94c851bb4cb5 was already ingested",
+              "event_id": "urn:uuid:72f03df2-53a8-4d39-8e74-94c851bb4cb5",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.081212537",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:05c24a6e-6aec-4562-8008-3c3cd2ac2989 was already ingested",
+              "event_id": "urn:uuid:05c24a6e-6aec-4562-8008-3c3cd2ac2989",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.514893500",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:33a6e568-fd76-46a3-8e50-1eb719ce70f1 was already ingested",
+              "event_id": "urn:uuid:33a6e568-fd76-46a3-8e50-1eb719ce70f1",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.614205944",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:aa978df5-43d8-4547-881b-a938b9d59393 was already ingested",
+              "event_id": "urn:uuid:aa978df5-43d8-4547-881b-a938b9d59393",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.315079066",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:8430c5dd-7aa8-49e0-8425-b44e68447ec8 was already ingested",
+              "event_id": "urn:uuid:8430c5dd-7aa8-49e0-8425-b44e68447ec8",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.990459535",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:2a3b4ba1-f205-4a4d-83eb-e4d729f83530 was already ingested",
+              "event_id": "urn:uuid:2a3b4ba1-f205-4a4d-83eb-e4d729f83530",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.838324025",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:b0b85992-c4a9-4cce-84fc-26abe36e9431 was already ingested",
+              "event_id": "urn:uuid:b0b85992-c4a9-4cce-84fc-26abe36e9431",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.710089028",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:5f56ab05-61e1-479c-80f5-8ac5b1a5b467 was already ingested",
+              "event_id": "urn:uuid:5f56ab05-61e1-479c-80f5-8ac5b1a5b467",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.859001288",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:7d6ce240-5477-4ebb-88b7-52f5950910c1 was already ingested",
+              "event_id": "urn:uuid:7d6ce240-5477-4ebb-88b7-52f5950910c1",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.375300209",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:cf17fedd-5382-41c5-8dfe-1e940b573f7c was already ingested",
+              "event_id": "urn:uuid:cf17fedd-5382-41c5-8dfe-1e940b573f7c",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.063402222",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:4e288bc3-94d4-48ef-848a-31efa27338bf was already ingested",
+              "event_id": "urn:uuid:4e288bc3-94d4-48ef-848a-31efa27338bf",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.155584188",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:5360c9e6-e3dd-4d3d-8102-25c34c8af512 was already ingested",
+              "event_id": "urn:uuid:5360c9e6-e3dd-4d3d-8102-25c34c8af512",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.028970551",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:baaac215-d6e0-4db0-8f64-01200a5c7ea9 was already ingested",
+              "event_id": "urn:uuid:baaac215-d6e0-4db0-8f64-01200a5c7ea9",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.998248452",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:456cb7e9-7d61-4f86-8042-7678b76505cb was already ingested",
+              "event_id": "urn:uuid:456cb7e9-7d61-4f86-8042-7678b76505cb",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.074738464",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:e0cd6d23-f4bf-4300-8e15-2e1b52332d70 was already ingested",
+              "event_id": "urn:uuid:e0cd6d23-f4bf-4300-8e15-2e1b52332d70",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.032217826",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:5dd0a132-7a81-4711-800b-fc6feadd51cf was already ingested",
+              "event_id": "urn:uuid:5dd0a132-7a81-4711-800b-fc6feadd51cf",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.110344277",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:f5637217-df2e-423f-83ab-9b57cad7ca23 was already ingested",
+              "event_id": "urn:uuid:f5637217-df2e-423f-83ab-9b57cad7ca23",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.658073028",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:26e94462-eb4c-4616-8dbd-aab9945d13f9 was already ingested",
+              "event_id": "urn:uuid:26e94462-eb4c-4616-8dbd-aab9945d13f9",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.411039100",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:b8dfdf0e-2bda-4eba-838b-f35ceaf5e525 was already ingested",
+              "event_id": "urn:uuid:b8dfdf0e-2bda-4eba-838b-f35ceaf5e525",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.823093561",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:78fff232-214b-4a44-8655-5bc0217ae5c6 was already ingested",
+              "event_id": "urn:uuid:78fff232-214b-4a44-8655-5bc0217ae5c6",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.081237134",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:d0bdbf51-d76a-48a3-81aa-9b77165f7393 was already ingested",
+              "event_id": "urn:uuid:d0bdbf51-d76a-48a3-81aa-9b77165f7393",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.189431779",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:3dc055dc-0966-427e-8d77-8fa36a56eaab was already ingested",
+              "event_id": "urn:uuid:3dc055dc-0966-427e-8d77-8fa36a56eaab",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.113352781",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:47cab0d8-36e7-466b-8f7d-fbbb0aa759e7 was already ingested",
+              "event_id": "urn:uuid:47cab0d8-36e7-466b-8f7d-fbbb0aa759e7",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.845123512",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:5de4d47e-4498-4de3-8bf3-5c186aa7efb4 was already ingested",
+              "event_id": "urn:uuid:5de4d47e-4498-4de3-8bf3-5c186aa7efb4",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.103937509",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:cec349f8-9020-44a1-891a-9b8e9421da0e was already ingested",
+              "event_id": "urn:uuid:cec349f8-9020-44a1-891a-9b8e9421da0e",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.755252036",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:f3b50e87-e674-4e41-8c88-e0fd802889d1 was already ingested",
+              "event_id": "urn:uuid:f3b50e87-e674-4e41-8c88-e0fd802889d1",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.453257845",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:c574ca05-a76b-4c5c-80f8-289720f7d1fc was already ingested",
+              "event_id": "urn:uuid:c574ca05-a76b-4c5c-80f8-289720f7d1fc",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.165335046",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:0a60c0c1-4c9b-44c5-86d5-408f04b0353d was already ingested",
+              "event_id": "urn:uuid:0a60c0c1-4c9b-44c5-86d5-408f04b0353d",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.804655153",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:9ca93e07-4f37-487d-8ab6-25877f899897 was already ingested",
+              "event_id": "urn:uuid:9ca93e07-4f37-487d-8ab6-25877f899897",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.332213160",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:b66ffe29-4402-465d-8ace-5da9abf2c123 was already ingested",
+              "event_id": "urn:uuid:b66ffe29-4402-465d-8ace-5da9abf2c123",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.134091324",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:c494b43c-4b33-4364-86ab-a49f0ab8db9e was already ingested",
+              "event_id": "urn:uuid:c494b43c-4b33-4364-86ab-a49f0ab8db9e",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.942615439",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:6343cbeb-87f2-43a2-88c8-7fdebea0e4e4 was already ingested",
+              "event_id": "urn:uuid:6343cbeb-87f2-43a2-88c8-7fdebea0e4e4",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.959672746",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:a1046d8c-ff4f-42aa-82a2-6349c795e6f2 was already ingested",
+              "event_id": "urn:uuid:a1046d8c-ff4f-42aa-82a2-6349c795e6f2",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.114835023",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:0259a570-b093-481f-878b-715f3ca9e40b was already ingested",
+              "event_id": "urn:uuid:0259a570-b093-481f-878b-715f3ca9e40b",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.522515227",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:6fbfdf8b-3766-4874-82b5-da76b7b15a6e was already ingested",
+              "event_id": "urn:uuid:6fbfdf8b-3766-4874-82b5-da76b7b15a6e",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.485133438",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:395bf31b-35af-4be5-86f7-7c1a285f5049 was already ingested",
+              "event_id": "urn:uuid:395bf31b-35af-4be5-86f7-7c1a285f5049",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.270695011",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:92138414-aa9e-4fa8-8ed5-26a987bdaa6d was already ingested",
+              "event_id": "urn:uuid:92138414-aa9e-4fa8-8ed5-26a987bdaa6d",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.802765557",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:fc8bf524-3ae4-4af4-88db-a4aab472b7ec was already ingested",
+              "event_id": "urn:uuid:fc8bf524-3ae4-4af4-88db-a4aab472b7ec",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.754281419",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:3eaf2c9d-d620-4142-8d3f-5af27a0cdc83 was already ingested",
+              "event_id": "urn:uuid:3eaf2c9d-d620-4142-8d3f-5af27a0cdc83",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.836150640",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:10401012-2564-4744-8dce-d3d8d5c65384 was already ingested",
+              "event_id": "urn:uuid:10401012-2564-4744-8dce-d3d8d5c65384",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.424539468",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:85cbe1e6-8d8d-4f7b-8857-d4f73c887d87 was already ingested",
+              "event_id": "urn:uuid:85cbe1e6-8d8d-4f7b-8857-d4f73c887d87",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.234241216",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:854c6ba3-d469-4402-8143-4eec6f07f758 was already ingested",
+              "event_id": "urn:uuid:854c6ba3-d469-4402-8143-4eec6f07f758",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.162610085",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:e102e1f7-403b-46fe-89da-7c26747944e0 was already ingested",
+              "event_id": "urn:uuid:e102e1f7-403b-46fe-89da-7c26747944e0",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.248707128",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:deeda34b-a6bf-40b5-8cab-c5c46fdc3abd was already ingested",
+              "event_id": "urn:uuid:deeda34b-a6bf-40b5-8cab-c5c46fdc3abd",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.149524794",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:c1a28c42-5187-4bb2-8e45-34bc78dbf2ce was already ingested",
+              "event_id": "urn:uuid:c1a28c42-5187-4bb2-8e45-34bc78dbf2ce",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.245740357",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:a9272643-918c-41a9-8e74-9dff3dfffe19 was already ingested",
+              "event_id": "urn:uuid:a9272643-918c-41a9-8e74-9dff3dfffe19",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.629003856",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:b3b2d167-41c4-42b3-80cd-fea64f5f7a0c was already ingested",
+              "event_id": "urn:uuid:b3b2d167-41c4-42b3-80cd-fea64f5f7a0c",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.980955382",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:e66db71b-ec63-4128-89e1-77d71e0b4895 was already ingested",
+              "event_id": "urn:uuid:e66db71b-ec63-4128-89e1-77d71e0b4895",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.980115908",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:046ee596-481d-4982-861d-7d363b2fca49 was already ingested",
+              "event_id": "urn:uuid:046ee596-481d-4982-861d-7d363b2fca49",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.676855415",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:d9486be3-e5cf-495d-8408-22fb0ecaea89 was already ingested",
+              "event_id": "urn:uuid:d9486be3-e5cf-495d-8408-22fb0ecaea89",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.144522573",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:bebf2358-022f-4b16-84bb-f0b45d93e44d was already ingested",
+              "event_id": "urn:uuid:bebf2358-022f-4b16-84bb-f0b45d93e44d",
+              "http_status": 409
+            }
+          ],
+          "byte_size": 6772,
+          "event_ids": [
+            "urn:uuid:1dda269d-e613-412f-8245-033b153cf802",
+            "urn:uuid:c25f8e53-8353-41b6-89c4-2b33bd6ccbcc",
+            "urn:uuid:03d97c03-6d4a-4758-8033-9a7089a74214",
+            "urn:uuid:9a2888e3-6c65-465d-8898-8417e74fbdd4",
+            "urn:uuid:37d4005d-c4d6-485b-8c2c-3002aa58ff10",
+            "urn:uuid:63140baf-90a1-4730-830d-ae3e35201d9a",
+            "urn:uuid:30b6b766-d4c9-437b-8320-74f935a975fd",
+            "urn:uuid:f97bd7d1-9c05-4f26-88b1-90123e7660ab",
+            "urn:uuid:1522ad5b-6f14-490a-89b2-c8ba03a4cc92",
+            "urn:uuid:87947483-4e1b-4958-83a1-ce9f6621f4e8",
+            "urn:uuid:a7fc7e8f-47e5-45a9-8079-4216837b72c6",
+            "urn:uuid:6126c932-c59a-4144-8e08-bdd36d6aefd3",
+            "urn:uuid:71cc1e18-2eb2-45e5-88da-e6ef1353e79f",
+            "urn:uuid:e93c3aed-a50c-4846-8f76-3aacf538d125",
+            "urn:uuid:d6f10bc5-909b-45b0-8348-581b58b4d94b",
+            "urn:uuid:ed45712e-66c5-45ec-8e6f-406a7185c9f1",
+            "urn:uuid:b9e74527-cdf9-4527-8720-de81a1f62cb5",
+            "urn:uuid:602039f8-5025-496a-8823-ab8d0f76c53a",
+            "urn:uuid:4393e613-a993-4de9-8961-6bd3107180b7",
+            "urn:uuid:6905b9ce-b3ec-4bec-8c36-31a99dbe2790",
+            "urn:uuid:aac379bb-6fb3-40a7-8f0e-07d8fafe04f8",
+            "urn:uuid:a7956a0f-0209-4d81-81f2-93bea7dc7fc8",
+            "urn:uuid:b531d98c-0b42-4fa6-80a1-6e8728b819ca",
+            "urn:uuid:fe3c5239-964d-4cff-8de3-a3d08f19d07a",
+            "urn:uuid:41493b01-84e5-4b3e-8fc0-40f5ab689b79",
+            "urn:uuid:a74cead5-8ffb-4c99-8715-af5a8e97ed4d",
+            "urn:uuid:34dd73a6-0f1b-45f8-804b-7b8880eb6fc2",
+            "urn:uuid:0b3386e2-9682-4904-8c54-e2e34d072689",
+            "urn:uuid:72238bb2-b128-4653-865d-b54e3bb4c818",
+            "urn:uuid:fb0d463b-1599-4798-83c5-cdb8c433464c",
+            "urn:uuid:8a688dac-3e45-4bc1-8e2e-1d761375a992",
+            "urn:uuid:f6dfd743-a0c9-4fdb-8055-59060108a094",
+            "urn:uuid:38cfe399-8e40-4106-8d1b-16816ef7f2f5",
+            "urn:uuid:5fc10ca1-fe9f-4244-847a-113920e0a495",
+            "urn:uuid:5f8fa6f4-4bc7-456d-8acb-4bd144fff0d6",
+            "urn:uuid:caf5a0c6-f364-46fc-83b6-52b5adebef1a",
+            "urn:uuid:a3f1c205-f34b-49f3-80f1-0e844d8d1822",
+            "urn:uuid:dce42653-2108-478e-8d16-9b78c2f34726",
+            "urn:uuid:d2b7cd4c-5a34-43f0-8d21-643d862a27cd",
+            "urn:uuid:7d991d4d-111b-464c-89bf-fad73d082aef",
+            "urn:uuid:f7225a45-798f-46c7-8790-0654c743d58c",
+            "urn:uuid:177d9f97-865c-4c08-87ce-872d67de0b9e",
+            "urn:uuid:473b54b4-8708-4f13-8ec1-2b98c978a8ec",
+            "urn:uuid:1610d980-ebf8-492f-8c94-77559d3cf6e7",
+            "urn:uuid:623405a3-96e1-4f00-8083-9960a0dd5003",
+            "urn:uuid:1e2783c9-7684-4580-8e62-8199cbcdb05c",
+            "urn:uuid:ab155418-6de5-4d49-8d61-6452a4308e92",
+            "urn:uuid:3b08a908-50fc-4ef9-8077-9aac7e7da6fe",
+            "urn:uuid:2274e17c-6898-49ec-8626-cb13fa3d39b6",
+            "urn:uuid:764325d9-70fc-4af6-8b78-0e97cca1103d",
+            "urn:uuid:76340fa8-0d4e-4274-87ca-4f02feda9c03",
+            "urn:uuid:e6407aca-3148-49d9-8de7-637f9f83b1fc",
+            "urn:uuid:dbadaf70-9e21-407d-824d-0d810ece91d5",
+            "urn:uuid:ac0f1d0d-9711-461b-8ac7-3ac2770349c4",
+            "urn:uuid:a12cd33f-3921-4b13-8009-aefeb2e9b4c4",
+            "urn:uuid:e6e93559-376b-462e-8d14-c4aaaf4a0fd7",
+            "urn:uuid:a485d279-57a9-4753-8577-9e0ab1458ba3",
+            "urn:uuid:e3862285-41cc-4910-82af-780c5f14099f",
+            "urn:uuid:cd3bfb35-0adf-4e33-8417-46ba39373a0b",
+            "urn:uuid:571ffe52-c127-4969-8673-a3fb53efd010",
+            "urn:uuid:2dd7428d-3b34-4691-8f74-820420e6fa3f",
+            "urn:uuid:29e6c534-c970-40f7-8893-c51c6cdc462d",
+            "urn:uuid:0ecf7c3a-1cb0-4a17-823a-7035cda2922f",
+            "urn:uuid:6c0e431a-9cac-4a3c-8d53-41c99a9aa49a",
+            "urn:uuid:5314b633-f487-463e-885f-991cc9211466",
+            "urn:uuid:7e2e225d-c852-4ec0-8779-eacbfa99a20e",
+            "urn:uuid:a963f25b-461f-47a7-811a-ae3c0c2035e5",
+            "urn:uuid:72889a50-bd3f-453f-8747-56e2770b4772",
+            "urn:uuid:826a2282-d4b6-400f-8486-6c1e1e2d0f9f",
+            "urn:uuid:0ae19622-763b-42f7-8e90-0afd4eba5e54",
+            "urn:uuid:d1a1059d-2ea9-4085-88f8-09b4d61edac6",
+            "urn:uuid:c54c4f0c-1beb-4e82-8298-bf312bc35bad",
+            "urn:uuid:83f1d542-13f9-4970-8af5-730e3655e85f",
+            "urn:uuid:08281a66-058b-4682-8bbb-574fa5f85c6d",
+            "urn:uuid:7cee49f2-4dfc-4747-8291-b1b7a477c13a",
+            "urn:uuid:d9d8da3d-accf-4a79-86bc-5b03b51822c8",
+            "urn:uuid:df83e624-0d99-47f2-8ca0-3fac4ae273b1",
+            "urn:uuid:d3e9348f-0a1d-4f0b-820b-504bf4c8b821",
+            "urn:uuid:cd8d41a9-5379-4083-8c17-c759d309f785",
+            "urn:uuid:20a1d195-33e4-4b73-8d1c-2b71f258e02a",
+            "urn:uuid:4b077664-3589-46b5-8d82-ba4f197a4821",
+            "urn:uuid:6dbe00b7-8f81-4133-8d43-17d0f7ae47f0",
+            "urn:uuid:94daf7e7-6586-4c2b-830a-65af680fc724",
+            "urn:uuid:d12d716a-c3e5-488c-8437-56c6823e2188",
+            "urn:uuid:1d21919d-0626-48a1-8caa-d6f4d089dd38",
+            "urn:uuid:bbfdc0f0-2f94-4b76-84ed-be3286563625",
+            "urn:uuid:0b45a70a-bfc5-4717-89d3-5695f0c017e5",
+            "urn:uuid:14cd7b66-9ed4-49c5-8ea1-7402cc73c96a",
+            "urn:uuid:a7c6cd87-411e-4861-8736-9599dcd2fc1e",
+            "urn:uuid:4dde140d-7c11-443a-81e2-c8338ad5f217",
+            "urn:uuid:68909b9b-a7c9-457f-8d02-88fb1c70022e",
+            "urn:uuid:9286cd06-fd84-4e41-8fbd-45f55c972cc1",
+            "urn:uuid:09cf12a0-433c-4ec7-8757-3cd570e43493",
+            "urn:uuid:0c30f095-c8ca-408c-83b7-04d644605b96",
+            "urn:uuid:03bf2e10-58d6-48df-8e3b-12fa9b8869a0",
+            "urn:uuid:8fb19040-b68a-44c1-8d68-4bf15b1e2212",
+            "urn:uuid:69515a9a-acdd-49af-80b0-a6b225c0c70e",
+            "urn:uuid:5df1c98f-ef95-4b9e-8e1c-653d1b037222",
+            "urn:uuid:03d745d1-c8ae-4a8c-823b-6ac142fa8c06",
+            "urn:uuid:0e0b16b6-c69d-48ed-8451-419e7fc4a512",
+            "urn:uuid:a916c6ee-0b74-47c8-866c-43c2cae01b8d",
+            "urn:uuid:f45b0732-81df-473d-8aca-11428fead9a1",
+            "urn:uuid:01f74c4c-f4b9-4b49-8677-34c63b3e9743",
+            "urn:uuid:b121d4b0-a2b0-42b4-8dd4-099473265712",
+            "urn:uuid:8ef6f55c-21cb-42aa-89c5-af2f534a4e57",
+            "urn:uuid:397933c6-4ebe-4a73-82d2-f3c7b8ec2d3a",
+            "urn:uuid:1da076ba-2a4c-4f30-889a-b4c54d6070bc",
+            "urn:uuid:f43554a5-614f-4e1b-86f9-f0a1ff38cc74",
+            "urn:uuid:7c6aa0ee-c970-4a03-864e-d4f17f186996",
+            "urn:uuid:c2702328-d0d1-4071-84a9-dc059aa8bed9",
+            "urn:uuid:881f12d6-c6eb-4997-8e7e-52fc9de14246",
+            "urn:uuid:5b481c4f-3c46-4fd2-870c-60a50bf9beae",
+            "urn:uuid:28607d3f-1b26-4c99-8388-6df0b629196e",
+            "urn:uuid:5bebd1a4-5c47-4a95-8d00-4277b55a22db",
+            "urn:uuid:cd7cce68-b3fb-4e7f-8d4c-ac2b8d1e6077",
+            "urn:uuid:8017bec2-4b34-4079-8080-ca29b34f6051",
+            "urn:uuid:74a9ae6b-0ff4-4841-881f-bd9f4f0fe177",
+            "urn:uuid:ceb316f1-a2ee-4ea8-8494-7e0f2d836f06",
+            "urn:uuid:47344387-860c-4c87-898f-e2b6a90479bb",
+            "urn:uuid:5df75e32-d90f-4e11-83a3-6efec81cf0b0",
+            "urn:uuid:e0bc5468-24e2-4a29-815f-0460c16fa9f4",
+            "urn:uuid:30ca36fe-9848-47ae-88ac-cbe7e0018bf3",
+            "urn:uuid:2bb785a1-e4fc-4f97-8a63-c2985a3751ba",
+            "urn:uuid:8ae9369f-b92e-4b32-8c24-9a65dbcd65c4",
+            "urn:uuid:0a47d477-3f07-4d1e-8d3f-dfac94b2779b",
+            "urn:uuid:c5167761-16cf-4fa9-8d7a-891d86de8745",
+            "urn:uuid:8b7ae5e8-39c8-43c0-8263-ba69c2bdafb0",
+            "urn:uuid:bfdaaf38-2061-4f65-819b-4a51c78c4bd1",
+            "urn:uuid:37fa8ea5-3e44-4f24-80e1-d359af58b41a",
+            "urn:uuid:95b01cdd-664a-4259-8a0e-8662e4abf1f6",
+            "urn:uuid:74d79249-056a-478f-8ded-efee45810dd2",
+            "urn:uuid:0d1e4810-c631-4588-8000-f31da4a8fd36",
+            "urn:uuid:0f0b608a-06c7-4528-8852-8831fc0bc8da",
+            "urn:uuid:736b9a02-6835-4765-8a2d-6d38444ef74f",
+            "urn:uuid:c61a96c4-2eac-4598-80a0-9007eda6aa65",
+            "urn:uuid:84b6a6dc-0c0b-4459-8692-e26709a94227",
+            "urn:uuid:91407f68-e541-4a2b-8c91-f5c91b0cbc31",
+            "urn:uuid:5458bd5e-ec61-4b41-81e4-637d0088dba9",
+            "urn:uuid:527d2f3e-8a2f-4cc8-8464-19aeee3e5c59",
+            "urn:uuid:4a3426e0-308d-49d3-8704-f0534f8a3a1c",
+            "urn:uuid:2d64921b-9e9a-478e-8bf2-edc705fd6517",
+            "urn:uuid:6fb67b90-4942-47f4-8c2b-096f5ffc0ad7",
+            "urn:uuid:7dcba36c-d83d-423a-800f-5394f3dceed3",
+            "urn:uuid:efeff223-09d6-4d19-8d49-f40d2f08f032",
+            "urn:uuid:0fd5091f-60a5-4f05-89a4-64351fa00840",
+            "urn:uuid:1822d952-1bc3-45de-8119-2a9ab38f3c77",
+            "urn:uuid:7d1f23a0-2930-41bb-8eec-e91e3f80d163",
+            "urn:uuid:b62ee9c7-3913-4ecb-8f07-b6bb2f26cf8f",
+            "urn:uuid:91ac30a5-9f4a-4259-8c77-79d4f06e2c1c",
+            "urn:uuid:8f297efd-c00b-453f-8136-71bd6cee5f23",
+            "urn:uuid:ab830359-e651-40e1-896a-cfdaa1558d62",
+            "urn:uuid:46c33bbc-6fbc-48e5-8011-f17ebc08093a",
+            "urn:uuid:1dba1043-0d62-46a1-8869-0f5ce7c524e6",
+            "urn:uuid:598276c9-0f1e-4cc8-8a92-b228401b32fe",
+            "urn:uuid:8a1383bb-853d-453d-817f-4d48c0c31451",
+            "urn:uuid:248c9f8b-fa14-4a24-8879-5a48e2fc89f6",
+            "urn:uuid:e7a9de37-a898-4768-88cf-ec1595cb8fbf",
+            "urn:uuid:a85f1187-c1c6-4806-8c23-d02bf3a1ef39",
+            "urn:uuid:2f8731b5-2337-41f6-8a9d-78ed2b1abbcb",
+            "urn:uuid:6db2876c-c10c-441f-8867-4f6e9b19f3f0",
+            "urn:uuid:cec0f95e-eac4-4224-8e9d-24f4f106251a",
+            "urn:uuid:00e88667-95b6-4ead-8743-3691434846d6",
+            "urn:uuid:fcfe739b-0bb6-4647-8c29-4617f7c93163",
+            "urn:uuid:2b3f7936-d463-4d7e-81aa-511ab5c6ffda",
+            "urn:uuid:1e25b1a0-40e4-4f18-8a81-5e15b523a076",
+            "urn:uuid:2f00e941-b7b6-4329-8b74-8f620162d49e",
+            "urn:uuid:7ed2714a-c5a3-434a-8705-ce109c611d98",
+            "urn:uuid:70e51807-8ca4-49a1-8627-f6958e47bcdf",
+            "urn:uuid:35e75f92-c9e8-44e4-8fdf-2867de5052f8",
+            "urn:uuid:42fedada-9459-4570-89f1-ef155687c9cc",
+            "urn:uuid:18acdbf0-bda9-49e2-8c67-67bf6469bec7",
+            "urn:uuid:ca65a57d-e3ab-450b-89c0-a57a08871407",
+            "urn:uuid:e4d75317-45f0-4927-86bb-1459352811e2",
+            "urn:uuid:d642d982-6bd5-4607-8f32-7f529da48617",
+            "urn:uuid:9aaa53ca-1d34-4723-8916-fe6ae44e9e0b",
+            "urn:uuid:764911f2-8fe0-4860-8585-fe753dec2a9e",
+            "urn:uuid:8d4b523f-19b5-4987-8f59-a2cb2af74db4",
+            "urn:uuid:4e0f380f-ef81-4332-8074-dabe3edcc06f",
+            "urn:uuid:fae1b161-7bde-4b94-8eb3-19704b7bae9c",
+            "urn:uuid:d78cc593-6705-4369-879e-782ff7738d77",
+            "urn:uuid:b2673a4a-e26c-41a8-8c7f-f22b91e9ad58",
+            "urn:uuid:573d020d-2325-40d8-8e72-9f7b0303408a",
+            "urn:uuid:bd472cc5-7de0-44dd-8932-7bb150e76164",
+            "urn:uuid:9e3526be-7874-4014-8535-d26373ce4c90",
+            "urn:uuid:cb4b2f89-ba7e-4ac2-8dd9-3ec9b09d5878",
+            "urn:uuid:032b580f-89bb-4293-846d-6a04389fc275",
+            "urn:uuid:6f4e2eb1-c4f7-432e-869e-2b52d5fb2953",
+            "urn:uuid:3660c10d-d831-443c-85f6-4ec05fad8d48",
+            "urn:uuid:d0d72ea1-da8e-4a54-829e-990a1fe127dd",
+            "urn:uuid:d8eff025-3400-4fdc-8b39-445be7987e94",
+            "urn:uuid:78f95732-3adf-411a-8ebf-96b01af83064",
+            "urn:uuid:b8762bb0-eda9-4e05-80cd-12b8f5332041",
+            "urn:uuid:99ed3186-ba7c-4d35-8350-b4ba96b934b1",
+            "urn:uuid:944116b5-37c5-49c0-89e4-3935b3976698",
+            "urn:uuid:884b6489-cc03-47b6-80c8-b4d58ff737cd",
+            "urn:uuid:29ae29a1-8f2f-4217-8d5c-f0fbce328618",
+            "urn:uuid:5e47891a-69ea-41b9-8060-4211233bb709",
+            "urn:uuid:94b2e9f5-54b7-4e1f-8f4c-51b49aea2a13"
+          ],
+          "event_count": 297,
+          "content_type": "text/csv",
+          "accepted_count": 198,
+          "estimated_epcs": 297,
+          "rejected_count": 100,
+          "events_processed": 198,
+          "parse_rejected_count": 1
+        },
+        "accepted_at": "2026-11-13T08:01:07.569Z",
+        "updated_at": "2026-11-13T08:01:31.897Z",
+        "completed_at": "2026-11-13T08:01:31.897Z",
+        "endpoint": "/partners/hierarchy-bulk/csv-import/async"
+      },
+      "pageText": "Upload Manufacturer partners can submit EPCIS XML or hierarchy Bulk CSV for asynchronous validation and ingest. Outcomes appear here and under Async submissions. Supported limits Now: Hierarchy Bulk CSV (.csv) → manufacturer commissioning + aggregation events (partial) Also available: EPCIS 1.2 XML — switch to XML mode Coming later: JSON-LD (.json, .jsonld) Max size 10.00 MB Processing: async (session auth — no API key paste) Hierarchy Bulk CSV XML available CSV available JSON-LD soon Download CSV template Drop a .csv file here, or click to browse Max 10.00 MB · Hierarchy Bulk CSV (batches → cases → packages) H12_OTCM656.csv 6.6 KB Upload CSV Live status succeeded Correlation ID 4cce2d7e-7949-4363-b35a-bd3123062225 Events (accepted / rejected) 198 / 100 Partial · 198 event(s) accepted · 100 rejected VALIDATION_FAILED · row 52 · hierarchy-csv-row:52 expiry \"not-a-date\" is not a valid date. Use ISO 8601 format, e.g. 2027-06-30. DUPLICATE_EVENT_ID · urn:uuid:3fce6404-746d-45d9-86ae-f7133d2b3c67 Event ID urn:uuid:3fce6404-746d-45d9-86ae-f7133d2b3c67 was already ingested DUPLICATE_EVENT_ID · urn:uuid:a2775660-57cf-4f2b-808f-e3b8e0a0eb22 Event ID urn:uuid:a2775660-57cf-4f2b-808f-e3b8e0a0eb22 was already ingested DUPLICATE_EVENT_ID · urn:uuid:cb186d90-886e-47fa-872d-bdaf56ae38ba Event ID urn:uuid:cb186d90-886e-47fa-872d-bdaf56ae38ba was already ingested DUPLICATE_EVENT_ID · urn:uuid:b4f0331e-3808-4031-8868-663a2609ed64 Event ID urn:uuid:b4f0331e-3808-4031-8868-663a2609ed64 was already ingested DUPLICATE_EVENT_ID · urn:uuid:274e3245-cad8-4199-834e-55633877a371 Event ID urn:uuid:274e3245-cad8-4199-834e-55633877a371 was already ingested DUPLICATE_EVENT_ID · urn:uuid:67d6b97d-0f61-4be5-8736-7b83af5d8d25 Event ID urn:uuid:67d6b97d-0f61-4be5-8736-7b83af5d8d25 was already ingested DUPLICATE_EVENT_ID · urn:uuid:3761df5d-9d53-4804-85a0-ad4239d17883 Event ID urn:uuid:3761df5d-9d53-4804-85a0-ad4239d17883 was already ingested DUPLICATE_EVENT_ID · urn:uuid:ca1baac3-c3ca-47a2-81b1-e5136ed9887a Event ID urn:uuid:ca1baac3-c3ca-47a2-81b1-e5136ed9887a was already ingested DUPLICATE_EVENT_ID · urn:uuid:95180c74-d500-4b95-81c3-bde0c54790ad Event ID urn:uuid:95180c74-d500-4b95-81c3-bde0c54790ad was already ingested DUPLICATE_EVENT_ID · urn:uuid:53836ae8-427e-4a23-883b-c61f81220ff1 Event ID urn:uuid:53836ae8-427e-4a23-883b-c61f81220ff1 was already ingested DUPLICATE_EVENT_ID · urn:uuid:1025654e-7a50-4297-8950-afa05196a54a Event ID urn:uuid:1025654e-7a50-4297-8950-afa05196a54a was already ingested DUPLICATE_EVENT_ID · urn:uuid:2770b35b-96dc-42d6-847b-a4ed1ca40fc4 Event ID urn:uuid:2770b35b-96dc-42d6-847b-a4ed1ca40fc4 was already ingested DUPLICATE_EVENT_ID · urn:uuid:5e60e7fc-68e6-4bbc-8b56-9b10f7be2920 Event ID urn:uuid:5e60e7fc-68e6-4bbc-8b56-9b10f7be2920 was already ingested DUPLICATE_EVENT_ID · urn:uuid:edec3f6d-88cb-4eca-8499-0b068dc97e94 Event ID urn:uuid:edec3f6d-88cb-4eca-8499-0b068dc97e94 was already ingested DUPLICATE_EVENT_ID · urn:uuid:25526dbe-44e2-4aed-8a9f-4d91",
+      "rejectedRowsFile": "H12-rejected-rows.csv",
+      "detailsText": "Succeeded manufacturer Accepted 13/11/2026, 11:01:07 · Completed 13/11/2026, 11:01:31 Overview Outcome Events Payload Copy the Request ID and share it with the integration team when you need help diagnosing this submission. Open the Outcome tab for processing details. Submission details Request ID 4cce2d7e-7949-4363-b35a-bd3123062225 Endpoint /partners/hierarchy-bulk/csv-import/async Role manufacturer Accept HTTP 202 Result HTTP 207 Format text/csv Size 6.6 KB Events 297 EPCs 297 Timeline Accepted 13/11/2026, 11:01:07 Updated 13/11/2026, 11:01:31 Completed 13/11/2026, 11:01:31",
+      "stored": [
+        {
+          "batch": "BOTCM65612001",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612002",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612003",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612004",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612005",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612006",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612007",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612008",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612009",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612010",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612011",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612012",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612013",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612014",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612015",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612016",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612017",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612018",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612019",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612020",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612021",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612022",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612023",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612024",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612025",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612026",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612027",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612028",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612029",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612030",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612031",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612032",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612033",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612034",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612035",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612036",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612037",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612038",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612039",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612040",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612041",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612042",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612043",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612044",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612045",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612046",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612047",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612048",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612049",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612050",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612051",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612052",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612053",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612054",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612055",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612056",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612057",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612058",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612059",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612060",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612061",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612062",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612063",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612064",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612065",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612066",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612067",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612068",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612069",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612070",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612071",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612072",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612073",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612074",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612075",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612076",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612077",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612078",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612079",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612080",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612081",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612082",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612083",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612084",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612085",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612086",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612087",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612088",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612089",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612090",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612091",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612092",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612093",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612094",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612095",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612096",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612097",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612098",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612099",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65612100",
+          "found": false
+        }
+      ]
+    },
+    {
+      "id": "H16",
+      "finding": "A",
+      "what": "4 rows: one with an extra field, one with a missing field, plus blank lines",
+      "expect": "partial: the 2 good rows accepted, both broken rows rejected with row numbers",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-hierarchy\\H16_OTCM656.csv",
+      "rows": 4,
+      "batches": [
+        "BOTCM65616001",
+        "BOTCM65616002",
+        "BOTCM65616003",
+        "BOTCM65616004"
+      ],
+      "serials": [
+        "SOTCM65616001",
+        "SOTCM65616002",
+        "SOTCM65616003",
+        "SOTCM65616004"
+      ],
+      "upload": {
+        "status": 202,
+        "body": "{\"async\":true,\"accepted\":true,\"correlation_id\":\"ceab2fe9-250e-4a01-8d53-e71ec8b9b109\",\"request_id\":\"ceab2fe9-250e-4a01-8d53-e71ec8b9b109\",\"status_url\":\"/partners/hierarchy-bulk/csv-import/status/ceab2fe9-250e-4a01-8d53-e71ec8b9b109\",\"message\":\"Hierarchy Bulk CSV accepted for asynchronous manufacturer event processing. Poll status_url.\",\"estimated_epcs\":9,\"event_count\":9,\"parse_rejected_count\":1}"
+      },
+      "requestId": "ceab2fe9-250e-4a01-8d53-e71ec8b9b109",
+      "final": {
+        "correlation_id": "ceab2fe9-250e-4a01-8d53-e71ec8b9b109",
+        "status": "succeeded",
+        "result_http_status": 207,
+        "partial": true,
+        "event_ids": [
+          "urn:uuid:d69c88aa-b2f5-4ef0-8177-594fd207e17c",
+          "urn:uuid:c292abb9-630b-40cb-8cf3-2b7cb85f75cc",
+          "urn:uuid:04ea81cc-4b80-4ff7-8390-a2442f304d81",
+          "urn:uuid:9fece8ba-ba01-4bb1-81ca-b933a49ff44a",
+          "urn:uuid:7b431b51-96b6-4b32-8163-fd52a485dd2a",
+          "urn:uuid:bde576be-ea82-4a33-8339-6729b1d67775"
+        ],
+        "rejected": [
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "BOTCM65616003",
+              "case_sscc": "",
+              "case_group": "C163",
+              "package_sscc": "",
+              "package_group": "",
+              "serial_numbers": "SOTCM65616003"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "package_group is required",
+            "event_id": "hierarchy-csv-row:4",
+            "row_index": 4
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.593433154",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:6ec632aa-a119-4416-8989-a25597236547 was already ingested",
+            "event_id": "urn:uuid:6ec632aa-a119-4416-8989-a25597236547",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.192303667",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:b7740bcf-641f-4fb7-813b-c1b89d72ff71 was already ingested",
+            "event_id": "urn:uuid:b7740bcf-641f-4fb7-813b-c1b89d72ff71",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.572325326",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:c81ad8d1-0d0d-4655-8a72-c3284d88ce78 was already ingested",
+            "event_id": "urn:uuid:c81ad8d1-0d0d-4655-8a72-c3284d88ce78",
+            "http_status": 409
+          }
+        ],
+        "accepted_count": 6,
+        "rejected_count": 4,
+        "error_code": null,
+        "error_message": null,
+        "result_summary": {
+          "message": "EPCIS events accepted",
+          "partial": true,
+          "rejected": [
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "BOTCM65616003",
+                "case_sscc": "",
+                "case_group": "C163",
+                "package_sscc": "",
+                "package_group": "",
+                "serial_numbers": "SOTCM65616003"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "package_group is required",
+              "event_id": "hierarchy-csv-row:4",
+              "row_index": 4
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.593433154",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:6ec632aa-a119-4416-8989-a25597236547 was already ingested",
+              "event_id": "urn:uuid:6ec632aa-a119-4416-8989-a25597236547",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.192303667",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:b7740bcf-641f-4fb7-813b-c1b89d72ff71 was already ingested",
+              "event_id": "urn:uuid:b7740bcf-641f-4fb7-813b-c1b89d72ff71",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.572325326",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:c81ad8d1-0d0d-4655-8a72-c3284d88ce78 was already ingested",
+              "event_id": "urn:uuid:c81ad8d1-0d0d-4655-8a72-c3284d88ce78",
+              "http_status": 409
+            }
+          ],
+          "byte_size": 349,
+          "event_ids": [
+            "urn:uuid:d69c88aa-b2f5-4ef0-8177-594fd207e17c",
+            "urn:uuid:c292abb9-630b-40cb-8cf3-2b7cb85f75cc",
+            "urn:uuid:04ea81cc-4b80-4ff7-8390-a2442f304d81",
+            "urn:uuid:9fece8ba-ba01-4bb1-81ca-b933a49ff44a",
+            "urn:uuid:7b431b51-96b6-4b32-8163-fd52a485dd2a",
+            "urn:uuid:bde576be-ea82-4a33-8339-6729b1d67775"
+          ],
+          "event_count": 9,
+          "content_type": "text/csv",
+          "accepted_count": 6,
+          "estimated_epcs": 9,
+          "rejected_count": 4,
+          "events_processed": 6,
+          "parse_rejected_count": 1
+        },
+        "accepted_at": "2026-11-13T08:01:51.119Z",
+        "updated_at": "2026-11-13T08:01:51.897Z",
+        "completed_at": "2026-11-13T08:01:51.897Z",
+        "endpoint": "/partners/hierarchy-bulk/csv-import/async"
+      },
+      "pageText": "Upload Manufacturer partners can submit EPCIS XML or hierarchy Bulk CSV for asynchronous validation and ingest. Outcomes appear here and under Async submissions. Supported limits Now: Hierarchy Bulk CSV (.csv) → manufacturer commissioning + aggregation events (partial) Also available: EPCIS 1.2 XML — switch to XML mode Coming later: JSON-LD (.json, .jsonld) Max size 10.00 MB Processing: async (session auth — no API key paste) Hierarchy Bulk CSV XML available CSV available JSON-LD soon Download CSV template Drop a .csv file here, or click to browse Max 10.00 MB · Hierarchy Bulk CSV (batches → cases → packages) H16_OTCM656.csv 349 B Upload CSV Live status succeeded Correlation ID ceab2fe9-250e-4a01-8d53-e71ec8b9b109 Events (accepted / rejected) 6 / 4 Partial · 6 event(s) accepted · 4 rejected VALIDATION_FAILED · row 4 · hierarchy-csv-row:4 package_group is required DUPLICATE_EVENT_ID · urn:uuid:6ec632aa-a119-4416-8989-a25597236547 Event ID urn:uuid:6ec632aa-a119-4416-8989-a25597236547 was already ingested DUPLICATE_EVENT_ID · urn:uuid:b7740bcf-641f-4fb7-813b-c1b89d72ff71 Event ID urn:uuid:b7740bcf-641f-4fb7-813b-c1b89d72ff71 was already ingested DUPLICATE_EVENT_ID · urn:uuid:c81ad8d1-0d0d-4655-8a72-c3284d88ce78 Event ID urn:uuid:c81ad8d1-0d0d-4655-8a72-c3284d88ce78 was already ingested Download rejected CSV View full details Open in Async submissions Refresh status National Track & Trace System — Partner Portal Need help? Contact trackandtrace@apeiro.digital",
+      "rejectedRowsFile": "H16-rejected-rows.csv",
+      "detailsText": "Succeeded manufacturer Accepted 13/11/2026, 11:01:51 · Completed 13/11/2026, 11:01:51 Overview Outcome Events Payload Copy the Request ID and share it with the integration team when you need help diagnosing this submission. Open the Outcome tab for processing details. Submission details Request ID ceab2fe9-250e-4a01-8d53-e71ec8b9b109 Endpoint /partners/hierarchy-bulk/csv-import/async Role manufacturer Accept HTTP 202 Result HTTP 207 Format text/csv Size 349 B Events 9 EPCs 9 Timeline Accepted 13/11/2026, 11:01:51 Updated 13/11/2026, 11:01:51 Completed 13/11/2026, 11:01:51",
+      "stored": [
+        {
+          "batch": "BOTCM65616001",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65616002",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65616003",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65616004",
+          "found": false
+        }
+      ]
+    },
+    {
+      "id": "H06",
+      "finding": "A",
+      "what": "3 rows; file rows 3 and 4 carry the same serial",
+      "expect": "partial: the duplicate rejected with its row number, the rest accepted",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-hierarchy\\H06_OTCM656.csv",
+      "rows": 3,
+      "batches": [
+        "BOTCM65606001",
+        "BOTCM65606002",
+        "BOTCM65606003"
+      ],
+      "serials": [
+        "SOTCM65606001",
+        "SOTCM65606002",
+        "SOTCM65606002"
+      ],
+      "upload": {
+        "status": 202,
+        "body": "{\"async\":true,\"accepted\":true,\"correlation_id\":\"cec2c1f5-a96f-4bf5-839f-c8411552dceb\",\"request_id\":\"cec2c1f5-a96f-4bf5-839f-c8411552dceb\",\"status_url\":\"/partners/hierarchy-bulk/csv-import/status/cec2c1f5-a96f-4bf5-839f-c8411552dceb\",\"message\":\"Hierarchy Bulk CSV accepted for asynchronous manufacturer event processing. Poll status_url.\",\"estimated_epcs\":6,\"event_count\":6,\"parse_rejected_count\":1}"
+      },
+      "requestId": "cec2c1f5-a96f-4bf5-839f-c8411552dceb",
+      "final": {
+        "correlation_id": "cec2c1f5-a96f-4bf5-839f-c8411552dceb",
+        "status": "succeeded",
+        "result_http_status": 207,
+        "partial": true,
+        "event_ids": [
+          "urn:uuid:8a2d4d11-0185-4e31-8cea-24a3e8fb5037",
+          "urn:uuid:2978516f-3baf-4dfa-8055-81b5dca4e0d0",
+          "urn:uuid:c9a924bb-4d96-451d-8989-d0c40afd23da",
+          "urn:uuid:c4d3046d-1111-4226-8362-6ed157b4ad66"
+        ],
+        "rejected": [
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "BOTCM65606003",
+              "case_sscc": "",
+              "case_group": "C063",
+              "package_sscc": "",
+              "package_group": "P063",
+              "serial_numbers": "SOTCM65606002"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Serial number \"SOTCM65606002\" (GTIN: 6161102974997) already appears in row 3 of this CSV.",
+            "event_id": "hierarchy-csv-row:4",
+            "row_index": 4
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.071954232",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:dc27aa04-5ff3-4b02-84da-9ae3124f1168 was already ingested",
+            "event_id": "urn:uuid:dc27aa04-5ff3-4b02-84da-9ae3124f1168",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.115063340",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:12308344-b0cc-4dd8-8e1c-f7d36d546c75 was already ingested",
+            "event_id": "urn:uuid:12308344-b0cc-4dd8-8e1c-f7d36d546c75",
+            "http_status": 409
+          }
+        ],
+        "accepted_count": 4,
+        "rejected_count": 3,
+        "error_code": null,
+        "error_message": null,
+        "result_summary": {
+          "message": "EPCIS events accepted",
+          "partial": true,
+          "rejected": [
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "BOTCM65606003",
+                "case_sscc": "",
+                "case_group": "C063",
+                "package_sscc": "",
+                "package_group": "P063",
+                "serial_numbers": "SOTCM65606002"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Serial number \"SOTCM65606002\" (GTIN: 6161102974997) already appears in row 3 of this CSV.",
+              "event_id": "hierarchy-csv-row:4",
+              "row_index": 4
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.071954232",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:dc27aa04-5ff3-4b02-84da-9ae3124f1168 was already ingested",
+              "event_id": "urn:uuid:dc27aa04-5ff3-4b02-84da-9ae3124f1168",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.115063340",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:12308344-b0cc-4dd8-8e1c-f7d36d546c75 was already ingested",
+              "event_id": "urn:uuid:12308344-b0cc-4dd8-8e1c-f7d36d546c75",
+              "http_status": 409
+            }
+          ],
+          "byte_size": 283,
+          "event_ids": [
+            "urn:uuid:8a2d4d11-0185-4e31-8cea-24a3e8fb5037",
+            "urn:uuid:2978516f-3baf-4dfa-8055-81b5dca4e0d0",
+            "urn:uuid:c9a924bb-4d96-451d-8989-d0c40afd23da",
+            "urn:uuid:c4d3046d-1111-4226-8362-6ed157b4ad66"
+          ],
+          "event_count": 6,
+          "content_type": "text/csv",
+          "accepted_count": 4,
+          "estimated_epcs": 6,
+          "rejected_count": 3,
+          "events_processed": 4,
+          "parse_rejected_count": 1
+        },
+        "accepted_at": "2026-11-13T08:02:07.788Z",
+        "updated_at": "2026-11-13T08:02:08.266Z",
+        "completed_at": "2026-11-13T08:02:08.266Z",
+        "endpoint": "/partners/hierarchy-bulk/csv-import/async"
+      },
+      "pageText": "Upload Manufacturer partners can submit EPCIS XML or hierarchy Bulk CSV for asynchronous validation and ingest. Outcomes appear here and under Async submissions. Supported limits Now: Hierarchy Bulk CSV (.csv) → manufacturer commissioning + aggregation events (partial) Also available: EPCIS 1.2 XML — switch to XML mode Coming later: JSON-LD (.json, .jsonld) Max size 10.00 MB Processing: async (session auth — no API key paste) Hierarchy Bulk CSV XML available CSV available JSON-LD soon Download CSV template Drop a .csv file here, or click to browse Max 10.00 MB · Hierarchy Bulk CSV (batches → cases → packages) H06_OTCM656.csv 283 B Upload CSV Live status succeeded Correlation ID cec2c1f5-a96f-4bf5-839f-c8411552dceb Events (accepted / rejected) 4 / 3 Partial · 4 event(s) accepted · 3 rejected VALIDATION_FAILED · row 4 · hierarchy-csv-row:4 Serial number \"SOTCM65606002\" (GTIN: 6161102974997) already appears in row 3 of this CSV. DUPLICATE_EVENT_ID · urn:uuid:dc27aa04-5ff3-4b02-84da-9ae3124f1168 Event ID urn:uuid:dc27aa04-5ff3-4b02-84da-9ae3124f1168 was already ingested DUPLICATE_EVENT_ID · urn:uuid:12308344-b0cc-4dd8-8e1c-f7d36d546c75 Event ID urn:uuid:12308344-b0cc-4dd8-8e1c-f7d36d546c75 was already ingested Download rejected CSV View full details Open in Async submissions Refresh status National Track & Trace System — Partner Portal Need help? Contact trackandtrace@apeiro.digital",
+      "rejectedRowsFile": "H06-rejected-rows.csv",
+      "detailsText": "Succeeded manufacturer Accepted 13/11/2026, 11:02:07 · Completed 13/11/2026, 11:02:08 Overview Outcome Events Payload Copy the Request ID and share it with the integration team when you need help diagnosing this submission. Open the Outcome tab for processing details. Submission details Request ID cec2c1f5-a96f-4bf5-839f-c8411552dceb Endpoint /partners/hierarchy-bulk/csv-import/async Role manufacturer Accept HTTP 202 Result HTTP 207 Format text/csv Size 283 B Events 6 EPCs 6 Timeline Accepted 13/11/2026, 11:02:07 Updated 13/11/2026, 11:02:08 Completed 13/11/2026, 11:02:08",
+      "stored": [
+        {
+          "batch": "BOTCM65606001",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65606002",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65606003",
+          "found": false
+        }
+      ]
+    },
+    {
+      "id": "H21",
+      "finding": "A",
+      "latin1": true,
+      "what": "Latin-1 encoded file; row 3 batch number contains \"É\"",
+      "expect": "whole file rejected as not UTF-8, or every row handled; never a row silently missing",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-hierarchy\\H21_OTCM656.csv",
+      "rows": 2,
+      "batches": [
+        "BOTCM65621001",
+        "BOTCM65621É02"
+      ],
+      "serials": [
+        "SOTCM65621001",
+        "SOTCM65621002"
+      ],
+      "upload": {
+        "status": 202,
+        "body": "{\"async\":true,\"accepted\":true,\"correlation_id\":\"c1129a3f-0e74-4014-bcba-9f6da9aa4ac7\",\"request_id\":\"c1129a3f-0e74-4014-bcba-9f6da9aa4ac7\",\"status_url\":\"/partners/hierarchy-bulk/csv-import/status/c1129a3f-0e74-4014-bcba-9f6da9aa4ac7\",\"message\":\"Hierarchy Bulk CSV accepted for asynchronous manufacturer event processing. Poll status_url.\",\"estimated_epcs\":6,\"event_count\":6,\"parse_rejected_count\":0}"
+      },
+      "requestId": "c1129a3f-0e74-4014-bcba-9f6da9aa4ac7",
+      "final": {
+        "correlation_id": "c1129a3f-0e74-4014-bcba-9f6da9aa4ac7",
+        "status": "succeeded",
+        "result_http_status": 207,
+        "partial": true,
+        "event_ids": [
+          "urn:uuid:3d34d028-b4a9-466c-8272-aa61251b0b59",
+          "urn:uuid:00456543-7cbc-493e-8b24-6b2fa53ba0cf",
+          "urn:uuid:2b33da04-495a-4667-84ff-291a3557a8fb"
+        ],
+        "rejected": [
+          {
+            "epc": "urn:epc:id:sgtin:6161102974997.SOTCM65621002",
+            "code": "INVALID_JSON_STRUCTURE",
+            "errors": [
+              {
+                "path": "epcisBody.eventList[1].ilmd.cbvmda:lotNumber",
+                "message": "lotNumber contains characters outside the GS1 AI(10) permitted set"
+              },
+              {
+                "path": "epcisBody.eventList[1].ilmd.lotNumber",
+                "message": "lotNumber contains characters outside the GS1 AI(10) permitted set"
+              }
+            ],
+            "message": "lotNumber contains characters outside the GS1 AI(10) permitted set (+1 more schema issue(s))",
+            "event_id": "urn:uuid:e3c0e996-8818-4a2f-85b9-6505ae193b77",
+            "http_status": 400
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.533233202",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:39ef1fee-0045-41df-87dc-181d1e2b8acb was already ingested",
+            "event_id": "urn:uuid:39ef1fee-0045-41df-87dc-181d1e2b8acb",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.232290957",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:03226f61-ad13-48e4-863d-2831aee19330 was already ingested",
+            "event_id": "urn:uuid:03226f61-ad13-48e4-863d-2831aee19330",
+            "http_status": 409
+          }
+        ],
+        "accepted_count": 3,
+        "rejected_count": 3,
+        "error_code": null,
+        "error_message": null,
+        "result_summary": {
+          "message": "EPCIS events accepted",
+          "partial": true,
+          "rejected": [
+            {
+              "epc": "urn:epc:id:sgtin:6161102974997.SOTCM65621002",
+              "code": "INVALID_JSON_STRUCTURE",
+              "errors": [
+                {
+                  "path": "epcisBody.eventList[1].ilmd.cbvmda:lotNumber",
+                  "message": "lotNumber contains characters outside the GS1 AI(10) permitted set"
+                },
+                {
+                  "path": "epcisBody.eventList[1].ilmd.lotNumber",
+                  "message": "lotNumber contains characters outside the GS1 AI(10) permitted set"
+                }
+              ],
+              "message": "lotNumber contains characters outside the GS1 AI(10) permitted set (+1 more schema issue(s))",
+              "event_id": "urn:uuid:e3c0e996-8818-4a2f-85b9-6505ae193b77",
+              "http_status": 400
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.533233202",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:39ef1fee-0045-41df-87dc-181d1e2b8acb was already ingested",
+              "event_id": "urn:uuid:39ef1fee-0045-41df-87dc-181d1e2b8acb",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.232290957",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:03226f61-ad13-48e4-863d-2831aee19330 was already ingested",
+              "event_id": "urn:uuid:03226f61-ad13-48e4-863d-2831aee19330",
+              "http_status": 409
+            }
+          ],
+          "byte_size": 218,
+          "event_ids": [
+            "urn:uuid:3d34d028-b4a9-466c-8272-aa61251b0b59",
+            "urn:uuid:00456543-7cbc-493e-8b24-6b2fa53ba0cf",
+            "urn:uuid:2b33da04-495a-4667-84ff-291a3557a8fb"
+          ],
+          "event_count": 6,
+          "content_type": "text/csv",
+          "accepted_count": 3,
+          "estimated_epcs": 6,
+          "rejected_count": 3,
+          "events_processed": 3,
+          "parse_rejected_count": 0
+        },
+        "accepted_at": "2026-11-13T08:02:24.321Z",
+        "updated_at": "2026-11-13T08:02:24.782Z",
+        "completed_at": "2026-11-13T08:02:24.782Z",
+        "endpoint": "/partners/hierarchy-bulk/csv-import/async"
+      },
+      "pageText": "Upload Manufacturer partners can submit EPCIS XML or hierarchy Bulk CSV for asynchronous validation and ingest. Outcomes appear here and under Async submissions. Supported limits Now: Hierarchy Bulk CSV (.csv) → manufacturer commissioning + aggregation events (partial) Also available: EPCIS 1.2 XML — switch to XML mode Coming later: JSON-LD (.json, .jsonld) Max size 10.00 MB Processing: async (session auth — no API key paste) Hierarchy Bulk CSV XML available CSV available JSON-LD soon Download CSV template Drop a .csv file here, or click to browse Max 10.00 MB · Hierarchy Bulk CSV (batches → cases → packages) H21_OTCM656.csv 218 B Upload CSV Live status succeeded Correlation ID c1129a3f-0e74-4014-bcba-9f6da9aa4ac7 Events (accepted / rejected) 3 / 3 Partial · 3 event(s) accepted · 3 rejected INVALID_JSON_STRUCTURE · urn:uuid:e3c0e996-8818-4a2f-85b9-6505ae193b77 lotNumber contains characters outside the GS1 AI(10) permitted set (+1 more schema issue(s)) DUPLICATE_EVENT_ID · urn:uuid:39ef1fee-0045-41df-87dc-181d1e2b8acb Event ID urn:uuid:39ef1fee-0045-41df-87dc-181d1e2b8acb was already ingested DUPLICATE_EVENT_ID · urn:uuid:03226f61-ad13-48e4-863d-2831aee19330 Event ID urn:uuid:03226f61-ad13-48e4-863d-2831aee19330 was already ingested Download rejected CSV View full details Open in Async submissions Refresh status National Track & Trace System — Partner Portal Need help? Contact trackandtrace@apeiro.digital",
+      "rejectedRowsFile": "H21-rejected-rows.csv",
+      "detailsText": "Succeeded manufacturer Accepted 13/11/2026, 11:02:24 · Completed 13/11/2026, 11:02:24 Overview Outcome Events Payload Copy the Request ID and share it with the integration team when you need help diagnosing this submission. Open the Outcome tab for processing details. Submission details Request ID c1129a3f-0e74-4014-bcba-9f6da9aa4ac7 Endpoint /partners/hierarchy-bulk/csv-import/async Role manufacturer Accept HTTP 202 Result HTTP 207 Format text/csv Size 218 B Events 6 EPCs 6 Timeline Accepted 13/11/2026, 11:02:24 Updated 13/11/2026, 11:02:24 Completed 13/11/2026, 11:02:24",
+      "stored": [
+        {
+          "batch": "BOTCM65621001",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65621É02",
+          "found": false
+        }
+      ]
+    },
+    {
+      "id": "H04",
+      "finding": "A",
+      "what": "Serials with characters the portal lists as allowed (- _ . /) and a 20-character serial",
+      "expect": "all 5 rows accepted",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-hierarchy\\H04_OTCM656.csv",
+      "rows": 5,
+      "batches": [
+        "BOTCM65604001",
+        "BOTCM65604002",
+        "BOTCM65604003",
+        "BOTCM65604004",
+        "BOTCM65604005"
+      ],
+      "serials": [
+        "OTCM656-45",
+        "OTCM656_95",
+        "OTCM656.46",
+        "OTCM656/47",
+        "SOTCM656AAAAAAAAAAAA"
+      ],
+      "upload": {
+        "status": 202,
+        "body": "{\"async\":true,\"accepted\":true,\"correlation_id\":\"9520d883-7a36-45b3-b186-ff6a23e64fde\",\"request_id\":\"9520d883-7a36-45b3-b186-ff6a23e64fde\",\"status_url\":\"/partners/hierarchy-bulk/csv-import/status/9520d883-7a36-45b3-b186-ff6a23e64fde\",\"message\":\"Hierarchy Bulk CSV accepted for asynchronous manufacturer event processing. Poll status_url.\",\"estimated_epcs\":15,\"event_count\":15,\"parse_rejected_count\":0}"
+      },
+      "requestId": "9520d883-7a36-45b3-b186-ff6a23e64fde",
+      "final": {
+        "correlation_id": "9520d883-7a36-45b3-b186-ff6a23e64fde",
+        "status": "succeeded",
+        "result_http_status": 207,
+        "partial": true,
+        "event_ids": [
+          "urn:uuid:88ae6080-bf31-4ead-8d5c-e049377f4d1a",
+          "urn:uuid:aa4beb07-0a11-449c-8208-596559779c63",
+          "urn:uuid:62bcd1ec-4e9c-4f7d-8f33-7f3a5b65a0e5",
+          "urn:uuid:957b118d-6eab-4271-8b56-8b70585dc483",
+          "urn:uuid:a2d586c0-90fd-448f-8966-e8148d4f3abe",
+          "urn:uuid:5f5cd6c7-42b1-496f-8faa-fc65552cbd3e"
+        ],
+        "rejected": [
+          {
+            "epc": "urn:epc:id:sgtin:6161102974997.OTCM656.46",
+            "code": "INVALID_GS1_IDENTIFIER",
+            "errors": [
+              {
+                "path": "epcisBody.eventList[1].epcList[1]",
+                "message": "SGTIN company prefix must be 6–12 digits"
+              }
+            ],
+            "message": "SGTIN company prefix must be 6–12 digits",
+            "event_id": "urn:uuid:8d81585d-94b7-442f-804d-c2180976e524",
+            "http_status": 400
+          },
+          {
+            "epc": "urn:epc:id:sgtin:6161102974997.OTCM656/47",
+            "code": "INVALID_GS1_IDENTIFIER",
+            "errors": [
+              {
+                "path": "epcisBody.eventList[1].epcList[1]",
+                "message": "SGTIN serial must be 1–20 GS1-permitted URI characters"
+              }
+            ],
+            "message": "SGTIN serial must be 1–20 GS1-permitted URI characters",
+            "event_id": "urn:uuid:aa10e599-5c70-4277-84f8-a4280bc652d5",
+            "http_status": 400
+          },
+          {
+            "epc": "urn:epc:id:sgtin:6161102974997.OTCM656.46",
+            "code": "INVALID_GS1_IDENTIFIER",
+            "errors": [
+              {
+                "path": "epcisBody.eventList[1].childEPCs[1]",
+                "message": "SGTIN company prefix must be 6–12 digits"
+              }
+            ],
+            "message": "SGTIN company prefix must be 6–12 digits",
+            "event_id": "urn:uuid:c10f5e90-6ef1-41ac-8df7-fd181c858f41",
+            "http_status": 400
+          },
+          {
+            "epc": "urn:epc:id:sgtin:6161102974997.OTCM656/47",
+            "code": "INVALID_GS1_IDENTIFIER",
+            "errors": [
+              {
+                "path": "epcisBody.eventList[1].childEPCs[1]",
+                "message": "SGTIN serial must be 1–20 GS1-permitted URI characters"
+              }
+            ],
+            "message": "SGTIN serial must be 1–20 GS1-permitted URI characters",
+            "event_id": "urn:uuid:66f09f79-6592-4a08-838b-9c6936bcf0ae",
+            "http_status": 400
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.263204701",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:eb5c7bb3-9428-4449-86b4-531ca84ded4f was already ingested",
+            "event_id": "urn:uuid:eb5c7bb3-9428-4449-86b4-531ca84ded4f",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.301434329",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:a7da2913-33a8-4438-803a-b3c878eda94f was already ingested",
+            "event_id": "urn:uuid:a7da2913-33a8-4438-803a-b3c878eda94f",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.124474007",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:c6442a90-0c18-48ae-8ca3-63ca7a8795a1 was already ingested",
+            "event_id": "urn:uuid:c6442a90-0c18-48ae-8ca3-63ca7a8795a1",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.681531434",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:e98dc049-7329-4819-8e1b-f7843eb9ed26 was already ingested",
+            "event_id": "urn:uuid:e98dc049-7329-4819-8e1b-f7843eb9ed26",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.918517019",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:6dae965d-f0d1-4c34-883d-d0694f575867 was already ingested",
+            "event_id": "urn:uuid:6dae965d-f0d1-4c34-883d-d0694f575867",
+            "http_status": 409
+          }
+        ],
+        "accepted_count": 6,
+        "rejected_count": 9,
+        "error_code": null,
+        "error_message": null,
+        "result_summary": {
+          "message": "EPCIS events accepted",
+          "partial": true,
+          "rejected": [
+            {
+              "epc": "urn:epc:id:sgtin:6161102974997.OTCM656.46",
+              "code": "INVALID_GS1_IDENTIFIER",
+              "errors": [
+                {
+                  "path": "epcisBody.eventList[1].epcList[1]",
+                  "message": "SGTIN company prefix must be 6–12 digits"
+                }
+              ],
+              "message": "SGTIN company prefix must be 6–12 digits",
+              "event_id": "urn:uuid:8d81585d-94b7-442f-804d-c2180976e524",
+              "http_status": 400
+            },
+            {
+              "epc": "urn:epc:id:sgtin:6161102974997.OTCM656/47",
+              "code": "INVALID_GS1_IDENTIFIER",
+              "errors": [
+                {
+                  "path": "epcisBody.eventList[1].epcList[1]",
+                  "message": "SGTIN serial must be 1–20 GS1-permitted URI characters"
+                }
+              ],
+              "message": "SGTIN serial must be 1–20 GS1-permitted URI characters",
+              "event_id": "urn:uuid:aa10e599-5c70-4277-84f8-a4280bc652d5",
+              "http_status": 400
+            },
+            {
+              "epc": "urn:epc:id:sgtin:6161102974997.OTCM656.46",
+              "code": "INVALID_GS1_IDENTIFIER",
+              "errors": [
+                {
+                  "path": "epcisBody.eventList[1].childEPCs[1]",
+                  "message": "SGTIN company prefix must be 6–12 digits"
+                }
+              ],
+              "message": "SGTIN company prefix must be 6–12 digits",
+              "event_id": "urn:uuid:c10f5e90-6ef1-41ac-8df7-fd181c858f41",
+              "http_status": 400
+            },
+            {
+              "epc": "urn:epc:id:sgtin:6161102974997.OTCM656/47",
+              "code": "INVALID_GS1_IDENTIFIER",
+              "errors": [
+                {
+                  "path": "epcisBody.eventList[1].childEPCs[1]",
+                  "message": "SGTIN serial must be 1–20 GS1-permitted URI characters"
+                }
+              ],
+              "message": "SGTIN serial must be 1–20 GS1-permitted URI characters",
+              "event_id": "urn:uuid:66f09f79-6592-4a08-838b-9c6936bcf0ae",
+              "http_status": 400
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.263204701",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:eb5c7bb3-9428-4449-86b4-531ca84ded4f was already ingested",
+              "event_id": "urn:uuid:eb5c7bb3-9428-4449-86b4-531ca84ded4f",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.301434329",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:a7da2913-33a8-4438-803a-b3c878eda94f was already ingested",
+              "event_id": "urn:uuid:a7da2913-33a8-4438-803a-b3c878eda94f",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.124474007",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:c6442a90-0c18-48ae-8ca3-63ca7a8795a1 was already ingested",
+              "event_id": "urn:uuid:c6442a90-0c18-48ae-8ca3-63ca7a8795a1",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.681531434",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:e98dc049-7329-4819-8e1b-f7843eb9ed26 was already ingested",
+              "event_id": "urn:uuid:e98dc049-7329-4819-8e1b-f7843eb9ed26",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.918517019",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:6dae965d-f0d1-4c34-883d-d0694f575867 was already ingested",
+              "event_id": "urn:uuid:6dae965d-f0d1-4c34-883d-d0694f575867",
+              "http_status": 409
+            }
+          ],
+          "byte_size": 408,
+          "event_ids": [
+            "urn:uuid:88ae6080-bf31-4ead-8d5c-e049377f4d1a",
+            "urn:uuid:aa4beb07-0a11-449c-8208-596559779c63",
+            "urn:uuid:62bcd1ec-4e9c-4f7d-8f33-7f3a5b65a0e5",
+            "urn:uuid:957b118d-6eab-4271-8b56-8b70585dc483",
+            "urn:uuid:a2d586c0-90fd-448f-8966-e8148d4f3abe",
+            "urn:uuid:5f5cd6c7-42b1-496f-8faa-fc65552cbd3e"
+          ],
+          "event_count": 15,
+          "content_type": "text/csv",
+          "accepted_count": 6,
+          "estimated_epcs": 15,
+          "rejected_count": 9,
+          "events_processed": 6,
+          "parse_rejected_count": 0
+        },
+        "accepted_at": "2026-11-13T08:02:41.752Z",
+        "updated_at": "2026-11-13T08:02:42.590Z",
+        "completed_at": "2026-11-13T08:02:42.590Z",
+        "endpoint": "/partners/hierarchy-bulk/csv-import/async"
+      },
+      "pageText": "Upload Manufacturer partners can submit EPCIS XML or hierarchy Bulk CSV for asynchronous validation and ingest. Outcomes appear here and under Async submissions. Supported limits Now: Hierarchy Bulk CSV (.csv) → manufacturer commissioning + aggregation events (partial) Also available: EPCIS 1.2 XML — switch to XML mode Coming later: JSON-LD (.json, .jsonld) Max size 10.00 MB Processing: async (session auth — no API key paste) Hierarchy Bulk CSV XML available CSV available JSON-LD soon Download CSV template Drop a .csv file here, or click to browse Max 10.00 MB · Hierarchy Bulk CSV (batches → cases → packages) H04_OTCM656.csv 408 B Upload CSV Live status succeeded Correlation ID 9520d883-7a36-45b3-b186-ff6a23e64fde Events (accepted / rejected) 6 / 9 Partial · 6 event(s) accepted · 9 rejected INVALID_GS1_IDENTIFIER · urn:uuid:8d81585d-94b7-442f-804d-c2180976e524 SGTIN company prefix must be 6–12 digits INVALID_GS1_IDENTIFIER · urn:uuid:aa10e599-5c70-4277-84f8-a4280bc652d5 SGTIN serial must be 1–20 GS1-permitted URI characters INVALID_GS1_IDENTIFIER · urn:uuid:c10f5e90-6ef1-41ac-8df7-fd181c858f41 SGTIN company prefix must be 6–12 digits INVALID_GS1_IDENTIFIER · urn:uuid:66f09f79-6592-4a08-838b-9c6936bcf0ae SGTIN serial must be 1–20 GS1-permitted URI characters DUPLICATE_EVENT_ID · urn:uuid:eb5c7bb3-9428-4449-86b4-531ca84ded4f Event ID urn:uuid:eb5c7bb3-9428-4449-86b4-531ca84ded4f was already ingested DUPLICATE_EVENT_ID · urn:uuid:a7da2913-33a8-4438-803a-b3c878eda94f Event ID urn:uuid:a7da2913-33a8-4438-803a-b3c878eda94f was already ingested DUPLICATE_EVENT_ID · urn:uuid:c6442a90-0c18-48ae-8ca3-63ca7a8795a1 Event ID urn:uuid:c6442a90-0c18-48ae-8ca3-63ca7a8795a1 was already ingested DUPLICATE_EVENT_ID · urn:uuid:e98dc049-7329-4819-8e1b-f7843eb9ed26 Event ID urn:uuid:e98dc049-7329-4819-8e1b-f7843eb9ed26 was already ingested DUPLICATE_EVENT_ID · urn:uuid:6dae965d-f0d1-4c34-883d-d0694f575867 Event ID urn:uuid:6dae965d-f0d1-4c34-883d-d0694f575867 was already ingested Download rejected CSV View full details Open in Async submissions Refresh status National Track & Trace System — Partner Portal Need help? Contact trackandtrace@apeiro.digital",
+      "rejectedRowsFile": "H04-rejected-rows.csv",
+      "detailsText": "Succeeded manufacturer Accepted 13/11/2026, 11:02:41 · Completed 13/11/2026, 11:02:42 Overview Outcome Events Payload Copy the Request ID and share it with the integration team when you need help diagnosing this submission. Open the Outcome tab for processing details. Submission details Request ID 9520d883-7a36-45b3-b186-ff6a23e64fde Endpoint /partners/hierarchy-bulk/csv-import/async Role manufacturer Accept HTTP 202 Result HTTP 207 Format text/csv Size 408 B Events 15 EPCs 15 Timeline Accepted 13/11/2026, 11:02:41 Updated 13/11/2026, 11:02:42 Completed 13/11/2026, 11:02:42",
+      "stored": [
+        {
+          "batch": "BOTCM65604001",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65604002",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65604003",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65604004",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65604005",
+          "found": false
+        }
+      ]
+    },
+    {
+      "id": "H14a",
+      "finding": "B",
+      "what": "Placeholder serials 0, NA, DUMMY",
+      "expect": "rejected as placeholders (not stored as serials)",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-hierarchy\\H14a_OTCM656.csv",
+      "rows": 3,
+      "batches": [
+        "BOTCM65614A0",
+        "BOTCM65614A1",
+        "BOTCM65614A2"
+      ],
+      "serials": [
+        "0",
+        "NA",
+        "DUMMY"
+      ],
+      "upload": {
+        "status": 400,
+        "body": "{\"error\":\"no_valid_rows\",\"message\":\"No valid hierarchy CSV rows to import.\",\"invalid\":{\"count\":3,\"rows\":[{\"row_index\":2,\"row\":{\"gtin\":\"6161102974997\",\"batch_no\":\"BOTCM65614A0\",\"expiry\":\"2028-12-31\",\"serial_numbers\":\"0\",\"case_group\":\"C14A0\",\"package_group\":\"P14A0\",\"case_sscc\":\"\",\"package_sscc\":\"\"},\"errors\":[\"Serial number \\\"0\\\" is a reserved placeholder and cannot be commissioned.\"]},{\"row_index\":3,\"row\":{\"gtin\":\"6161102974997\",\"batch_no\":\"BOTCM65614A1\",\"expiry\":\"2028-12-31\",\"serial_numbers\":\"NA\",\"case_group\":\"C14A1\",\"package_group\":\"P14A1\",\"case_sscc\":\"\",\"package_sscc\":\"\"},\"errors\":[\"Serial number \\\"NA\\\" is a reserved placeholder and cannot be commissioned.\"]},{\"row_index\":4,\"row\":{\"gtin\":\"6161102974997\",\"batch_no\":\"BOTCM65614A2\",\"expiry\":\"2028-12-31\",\"serial_numbers\":\"DUMMY\",\"case_group\":\"C14A2\",\"package_group\":\"P14A2\",\"case_sscc\":\"\",\"package_sscc\":\"\"},\"errors\":[\"Serial number \\\"DUMMY\\\" is a reserved placeholder and cannot be commissioned.\"]}]}}"
+      },
+      "requestId": null,
+      "pageText": "Upload Manufacturer partners can submit EPCIS XML or hierarchy Bulk CSV for asynchronous validation and ingest. Outcomes appear here and under Async submissions. Supported limits Now: Hierarchy Bulk CSV (.csv) → manufacturer commissioning + aggregation events (partial) Also available: EPCIS 1.2 XML — switch to XML mode Coming later: JSON-LD (.json, .jsonld) Max size 10.00 MB Processing: async (session auth — no API key paste) Hierarchy Bulk CSV XML available CSV available JSON-LD soon Download CSV template Drop a .csv file here, or click to browse Max 10.00 MB · Hierarchy Bulk CSV (batches → cases → packages) H14a_OTCM656.csv 255 B No valid hierarchy CSV rows to import. Upload CSV National Track & Trace System — Partner Portal Need help? Contact trackandtrace@apeiro.digital",
+      "stored": [
+        {
+          "batch": "BOTCM65614A0",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65614A1",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65614A2",
+          "found": false
+        }
+      ]
+    },
+    {
+      "id": "H14b",
+      "finding": "B",
+      "what": "Placeholder serials never used before: PLACEHOLDER, NOTAVAILABLE, NULLSERIAL, TOBEASSIGNED, XXXXXXXXXX",
+      "expect": "rejected as placeholders (not stored as serials)",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-hierarchy\\H14b_OTCM656.csv",
+      "rows": 5,
+      "batches": [
+        "BOTCM65614B0",
+        "BOTCM65614B1",
+        "BOTCM65614B2",
+        "BOTCM65614B3",
+        "BOTCM65614B4"
+      ],
+      "serials": [
+        "PLACEHOLDER",
+        "NOTAVAILABLE",
+        "NULLSERIAL",
+        "TOBEASSIGNED",
+        "XXXXXXXXXX"
+      ],
+      "upload": {
+        "status": 202,
+        "body": "{\"async\":true,\"accepted\":true,\"correlation_id\":\"6b9de49e-505f-47e6-aead-f3aaffd57472\",\"request_id\":\"6b9de49e-505f-47e6-aead-f3aaffd57472\",\"status_url\":\"/partners/hierarchy-bulk/csv-import/status/6b9de49e-505f-47e6-aead-f3aaffd57472\",\"message\":\"Hierarchy Bulk CSV accepted for asynchronous manufacturer event processing. Poll status_url.\",\"estimated_epcs\":15,\"event_count\":15,\"parse_rejected_count\":0}"
+      },
+      "requestId": "6b9de49e-505f-47e6-aead-f3aaffd57472",
+      "final": {
+        "correlation_id": "6b9de49e-505f-47e6-aead-f3aaffd57472",
+        "status": "failed",
+        "result_http_status": 500,
+        "partial": false,
+        "rejected": [],
+        "rejected_count": 0,
+        "error_code": "INGEST_FAILED",
+        "error_message": "15 event(s) rejected",
+        "result_summary": {
+          "byte_size": 408,
+          "event_count": 15,
+          "content_type": "text/csv",
+          "estimated_epcs": 15,
+          "parse_rejected_count": 0
+        },
+        "accepted_at": "2026-11-13T08:03:03.429Z",
+        "updated_at": "2026-11-13T08:03:04.046Z",
+        "completed_at": "2026-11-13T08:03:04.046Z",
+        "endpoint": "/partners/hierarchy-bulk/csv-import/async"
+      },
+      "pageText": "Upload Manufacturer partners can submit EPCIS XML or hierarchy Bulk CSV for asynchronous validation and ingest. Outcomes appear here and under Async submissions. Supported limits Now: Hierarchy Bulk CSV (.csv) → manufacturer commissioning + aggregation events (partial) Also available: EPCIS 1.2 XML — switch to XML mode Coming later: JSON-LD (.json, .jsonld) Max size 10.00 MB Processing: async (session auth — no API key paste) Hierarchy Bulk CSV XML available CSV available JSON-LD soon Download CSV template Drop a .csv file here, or click to browse Max 10.00 MB · Hierarchy Bulk CSV (batches → cases → packages) H14b_OTCM656.csv 408 B Upload CSV Live status failed Correlation ID 6b9de49e-505f-47e6-aead-f3aaffd57472 Events (accepted / rejected) — / 0 15 event(s) rejected View full details Open in Async submissions Refresh status National Track & Trace System — Partner Portal Need help? Contact trackandtrace@apeiro.digital",
+      "detailsText": "Failed manufacturer Accepted 13/11/2026, 11:03:03 · Completed 13/11/2026, 11:03:04 Overview Outcome Events Payload Copy the Request ID and share it with the integration team when you need help diagnosing this submission. Open the Outcome tab for processing details. Submission details Request ID 6b9de49e-505f-47e6-aead-f3aaffd57472 Endpoint /partners/hierarchy-bulk/csv-import/async Role manufacturer Accept HTTP 202 Result HTTP 500 Format text/csv Size 408 B Events 15 EPCs 15 Timeline Accepted 13/11/2026, 11:03:03 Updated 13/11/2026, 11:03:04 Completed 13/11/2026, 11:03:04",
+      "stored": [
+        {
+          "batch": "BOTCM65614B0",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65614B1",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65614B2",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65614B3",
+          "found": false
+        },
+        {
+          "batch": "BOTCM65614B4",
+          "found": false
+        }
+      ]
+    },
+    {
+      "id": "HC",
+      "finding": "C",
+      "what": "Mixed/upper-case serials AbOTCM656c1, UPOTCM656C2, MiXeDOTCM6563",
+      "expect": "accepted, stored exactly as sent",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-hierarchy\\HC_OTCM656.csv",
+      "rows": 3,
+      "batches": [
+        "BOTCM656CA001",
+        "BOTCM656CA002",
+        "BOTCM656CA003"
+      ],
+      "serials": [
+        "AbOTCM656c1",
+        "UPOTCM656C2",
+        "MiXeDOTCM6563"
+      ],
+      "upload": {
+        "status": 202,
+        "body": "{\"async\":true,\"accepted\":true,\"correlation_id\":\"a0ba72fd-77ab-46ca-8168-b5fe7ea22771\",\"request_id\":\"a0ba72fd-77ab-46ca-8168-b5fe7ea22771\",\"status_url\":\"/partners/hierarchy-bulk/csv-import/status/a0ba72fd-77ab-46ca-8168-b5fe7ea22771\",\"message\":\"Hierarchy Bulk CSV accepted for asynchronous manufacturer event processing. Poll status_url.\",\"estimated_epcs\":9,\"event_count\":9,\"parse_rejected_count\":0}"
+      },
+      "requestId": "a0ba72fd-77ab-46ca-8168-b5fe7ea22771",
+      "final": {
+        "correlation_id": "a0ba72fd-77ab-46ca-8168-b5fe7ea22771",
+        "status": "succeeded",
+        "result_http_status": 207,
+        "partial": true,
+        "event_ids": [
+          "urn:uuid:f6777afd-f262-4a8d-82ce-55424f1fc70c",
+          "urn:uuid:a8720d3d-3430-4bcf-842f-9fe366916c90",
+          "urn:uuid:199c0637-c227-49f2-86e3-9c38ba7c4852",
+          "urn:uuid:38e36b53-89a3-4f0b-8149-0b1867a4a416",
+          "urn:uuid:7f367cac-3f54-4b92-8267-1c492ec5a78c",
+          "urn:uuid:5c04f0a8-fdd9-47bf-8bbf-548cb92b864d"
+        ],
+        "rejected": [
+          {
+            "epc": "urn:epc:id:sscc:06199990.027742401",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:9d72a0a3-2d57-439f-80dd-58efb6158dea was already ingested",
+            "event_id": "urn:uuid:9d72a0a3-2d57-439f-80dd-58efb6158dea",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.341115813",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:98bd209f-d3a8-4ed7-8868-627349d918cf was already ingested",
+            "event_id": "urn:uuid:98bd209f-d3a8-4ed7-8868-627349d918cf",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.000334517",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:e1eafc6a-87bc-4afe-8baa-fdb83c1d3358 was already ingested",
+            "event_id": "urn:uuid:e1eafc6a-87bc-4afe-8baa-fdb83c1d3358",
+            "http_status": 409
+          }
+        ],
+        "accepted_count": 6,
+        "rejected_count": 3,
+        "error_code": null,
+        "error_message": null,
+        "result_summary": {
+          "message": "EPCIS events accepted",
+          "partial": true,
+          "rejected": [
+            {
+              "epc": "urn:epc:id:sscc:06199990.027742401",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:9d72a0a3-2d57-439f-80dd-58efb6158dea was already ingested",
+              "event_id": "urn:uuid:9d72a0a3-2d57-439f-80dd-58efb6158dea",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.341115813",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:98bd209f-d3a8-4ed7-8868-627349d918cf was already ingested",
+              "event_id": "urn:uuid:98bd209f-d3a8-4ed7-8868-627349d918cf",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.000334517",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:e1eafc6a-87bc-4afe-8baa-fdb83c1d3358 was already ingested",
+              "event_id": "urn:uuid:e1eafc6a-87bc-4afe-8baa-fdb83c1d3358",
+              "http_status": 409
+            }
+          ],
+          "byte_size": 279,
+          "event_ids": [
+            "urn:uuid:f6777afd-f262-4a8d-82ce-55424f1fc70c",
+            "urn:uuid:a8720d3d-3430-4bcf-842f-9fe366916c90",
+            "urn:uuid:199c0637-c227-49f2-86e3-9c38ba7c4852",
+            "urn:uuid:38e36b53-89a3-4f0b-8149-0b1867a4a416",
+            "urn:uuid:7f367cac-3f54-4b92-8267-1c492ec5a78c",
+            "urn:uuid:5c04f0a8-fdd9-47bf-8bbf-548cb92b864d"
+          ],
+          "event_count": 9,
+          "content_type": "text/csv",
+          "accepted_count": 6,
+          "estimated_epcs": 9,
+          "rejected_count": 3,
+          "events_processed": 6,
+          "parse_rejected_count": 0
+        },
+        "accepted_at": "2026-11-13T08:03:20.295Z",
+        "updated_at": "2026-11-13T08:03:21.142Z",
+        "completed_at": "2026-11-13T08:03:21.142Z",
+        "endpoint": "/partners/hierarchy-bulk/csv-import/async"
+      },
+      "pageText": "Upload Manufacturer partners can submit EPCIS XML or hierarchy Bulk CSV for asynchronous validation and ingest. Outcomes appear here and under Async submissions. Supported limits Now: Hierarchy Bulk CSV (.csv) → manufacturer commissioning + aggregation events (partial) Also available: EPCIS 1.2 XML — switch to XML mode Coming later: JSON-LD (.json, .jsonld) Max size 10.00 MB Processing: async (session auth — no API key paste) Hierarchy Bulk CSV XML available CSV available JSON-LD soon Download CSV template Drop a .csv file here, or click to browse Max 10.00 MB · Hierarchy Bulk CSV (batches → cases → packages) HC_OTCM656.csv 279 B Upload CSV Live status succeeded Correlation ID a0ba72fd-77ab-46ca-8168-b5fe7ea22771 Events (accepted / rejected) 6 / 3 Partial · 6 event(s) accepted · 3 rejected DUPLICATE_EVENT_ID · urn:uuid:9d72a0a3-2d57-439f-80dd-58efb6158dea Event ID urn:uuid:9d72a0a3-2d57-439f-80dd-58efb6158dea was already ingested DUPLICATE_EVENT_ID · urn:uuid:98bd209f-d3a8-4ed7-8868-627349d918cf Event ID urn:uuid:98bd209f-d3a8-4ed7-8868-627349d918cf was already ingested DUPLICATE_EVENT_ID · urn:uuid:e1eafc6a-87bc-4afe-8baa-fdb83c1d3358 Event ID urn:uuid:e1eafc6a-87bc-4afe-8baa-fdb83c1d3358 was already ingested Download rejected CSV View full details Open in Async submissions Refresh status National Track & Trace System — Partner Portal Need help? Contact trackandtrace@apeiro.digital",
+      "rejectedRowsFile": "HC-rejected-rows.csv",
+      "detailsText": "Succeeded manufacturer Accepted 13/11/2026, 11:03:20 · Completed 13/11/2026, 11:03:21 Overview Outcome Events Payload Copy the Request ID and share it with the integration team when you need help diagnosing this submission. Open the Outcome tab for processing details. Submission details Request ID a0ba72fd-77ab-46ca-8168-b5fe7ea22771 Endpoint /partners/hierarchy-bulk/csv-import/async Role manufacturer Accept HTTP 202 Result HTTP 207 Format text/csv Size 279 B Events 9 EPCs 9 Timeline Accepted 13/11/2026, 11:03:20 Updated 13/11/2026, 11:03:21 Completed 13/11/2026, 11:03:21",
+      "stored": [
+        {
+          "batch": "BOTCM656CA001",
+          "found": false
+        },
+        {
+          "batch": "BOTCM656CA002",
+          "found": false
+        },
+        {
+          "batch": "BOTCM656CA003",
+          "found": false
+        }
+      ]
+    },
+    {
+      "id": "HC2",
+      "finding": "C",
+      "what": "The same three serials in lower case, new batches",
+      "expect": "accepted (different serials: GS1 serials are case-sensitive); a duplicate rejection means case is still folded",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-hierarchy\\HC2_OTCM656.csv",
+      "rows": 3,
+      "batches": [
+        "BOTCM656CB001",
+        "BOTCM656CB002",
+        "BOTCM656CB003"
+      ],
+      "serials": [
+        "abotcm656c1",
+        "upotcm656c2",
+        "mixedotcm6563"
+      ],
+      "upload": {
+        "status": 202,
+        "body": "{\"async\":true,\"accepted\":true,\"correlation_id\":\"3ca113f8-d6c2-4c56-81b2-b6ab59ce779f\",\"request_id\":\"3ca113f8-d6c2-4c56-81b2-b6ab59ce779f\",\"status_url\":\"/partners/hierarchy-bulk/csv-import/status/3ca113f8-d6c2-4c56-81b2-b6ab59ce779f\",\"message\":\"Hierarchy Bulk CSV accepted for asynchronous manufacturer event processing. Poll status_url.\",\"estimated_epcs\":9,\"event_count\":9,\"parse_rejected_count\":0}"
+      },
+      "requestId": "3ca113f8-d6c2-4c56-81b2-b6ab59ce779f",
+      "final": {
+        "correlation_id": "3ca113f8-d6c2-4c56-81b2-b6ab59ce779f",
+        "status": "succeeded",
+        "result_http_status": 207,
+        "partial": true,
+        "event_ids": [
+          "urn:uuid:ba9a2d8e-55ef-438f-82b9-6cc362543b75",
+          "urn:uuid:4bf8ae9d-ce2b-4284-868e-283e7fbbfee4",
+          "urn:uuid:aeb1a9bb-1804-437d-89ef-ce94104f3ed0"
+        ],
+        "rejected": [
+          {
+            "epc": "urn:epc:id:sgtin:6161102974997.abotcm656c1",
+            "code": "DUPLICATE_EVENT_PAYLOAD",
+            "message": "Duplicate matrix key EPC+bizStep:0ad7461b3bafcfc77111f569387d16e4040c59f207292472d8379f24200716dc for bizStep=commissioning disposition=active",
+            "event_id": "urn:uuid:e547152e-77f4-4587-85c6-5197f63dabc2",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sgtin:6161102974997.upotcm656c2",
+            "code": "DUPLICATE_EVENT_PAYLOAD",
+            "message": "Duplicate matrix key EPC+bizStep:43319a17f45a4e79cf9ab801a4b53ee861e63fdd9c4d57fbf7a9194627b74951 for bizStep=commissioning disposition=active",
+            "event_id": "urn:uuid:8664cd03-157b-4e3a-808f-0a4e59e7bbd8",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sgtin:6161102974997.mixedotcm6563",
+            "code": "DUPLICATE_EVENT_PAYLOAD",
+            "message": "Duplicate matrix key EPC+bizStep:5f1cbd3f9ca3191d524956decdcd8aa15636a8ed2e85a6b53473b666e0be70f1 for bizStep=commissioning disposition=active",
+            "event_id": "urn:uuid:7a03134e-eedb-45f5-8910-ec1c911227df",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.631051210",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:151c0d21-3e42-4eb3-8eb4-2fb3d77f0ac2 was already ingested",
+            "event_id": "urn:uuid:151c0d21-3e42-4eb3-8eb4-2fb3d77f0ac2",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.633802148",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:48748b35-53c6-4192-8394-545c89e406da was already ingested",
+            "event_id": "urn:uuid:48748b35-53c6-4192-8394-545c89e406da",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sscc:06199990.115173216",
+            "code": "DUPLICATE_EVENT_ID",
+            "message": "Event ID urn:uuid:2399bba6-a12f-4962-8c84-716f62499322 was already ingested",
+            "event_id": "urn:uuid:2399bba6-a12f-4962-8c84-716f62499322",
+            "http_status": 409
+          }
+        ],
+        "accepted_count": 3,
+        "rejected_count": 6,
+        "error_code": null,
+        "error_message": null,
+        "result_summary": {
+          "message": "EPCIS events accepted",
+          "partial": true,
+          "rejected": [
+            {
+              "epc": "urn:epc:id:sgtin:6161102974997.abotcm656c1",
+              "code": "DUPLICATE_EVENT_PAYLOAD",
+              "message": "Duplicate matrix key EPC+bizStep:0ad7461b3bafcfc77111f569387d16e4040c59f207292472d8379f24200716dc for bizStep=commissioning disposition=active",
+              "event_id": "urn:uuid:e547152e-77f4-4587-85c6-5197f63dabc2",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sgtin:6161102974997.upotcm656c2",
+              "code": "DUPLICATE_EVENT_PAYLOAD",
+              "message": "Duplicate matrix key EPC+bizStep:43319a17f45a4e79cf9ab801a4b53ee861e63fdd9c4d57fbf7a9194627b74951 for bizStep=commissioning disposition=active",
+              "event_id": "urn:uuid:8664cd03-157b-4e3a-808f-0a4e59e7bbd8",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sgtin:6161102974997.mixedotcm6563",
+              "code": "DUPLICATE_EVENT_PAYLOAD",
+              "message": "Duplicate matrix key EPC+bizStep:5f1cbd3f9ca3191d524956decdcd8aa15636a8ed2e85a6b53473b666e0be70f1 for bizStep=commissioning disposition=active",
+              "event_id": "urn:uuid:7a03134e-eedb-45f5-8910-ec1c911227df",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.631051210",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:151c0d21-3e42-4eb3-8eb4-2fb3d77f0ac2 was already ingested",
+              "event_id": "urn:uuid:151c0d21-3e42-4eb3-8eb4-2fb3d77f0ac2",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.633802148",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:48748b35-53c6-4192-8394-545c89e406da was already ingested",
+              "event_id": "urn:uuid:48748b35-53c6-4192-8394-545c89e406da",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sscc:06199990.115173216",
+              "code": "DUPLICATE_EVENT_ID",
+              "message": "Event ID urn:uuid:2399bba6-a12f-4962-8c84-716f62499322 was already ingested",
+              "event_id": "urn:uuid:2399bba6-a12f-4962-8c84-716f62499322",
+              "http_status": 409
+            }
+          ],
+          "byte_size": 279,
+          "event_ids": [
+            "urn:uuid:ba9a2d8e-55ef-438f-82b9-6cc362543b75",
+            "urn:uuid:4bf8ae9d-ce2b-4284-868e-283e7fbbfee4",
+            "urn:uuid:aeb1a9bb-1804-437d-89ef-ce94104f3ed0"
+          ],
+          "event_count": 9,
+          "content_type": "text/csv",
+          "accepted_count": 3,
+          "estimated_epcs": 9,
+          "rejected_count": 6,
+          "events_processed": 3,
+          "parse_rejected_count": 0
+        },
+        "accepted_at": "2026-11-13T08:03:36.529Z",
+        "updated_at": "2026-11-13T08:03:36.969Z",
+        "completed_at": "2026-11-13T08:03:36.969Z",
+        "endpoint": "/partners/hierarchy-bulk/csv-import/async"
+      },
+      "pageText": "Upload Manufacturer partners can submit EPCIS XML or hierarchy Bulk CSV for asynchronous validation and ingest. Outcomes appear here and under Async submissions. Supported limits Now: Hierarchy Bulk CSV (.csv) → manufacturer commissioning + aggregation events (partial) Also available: EPCIS 1.2 XML — switch to XML mode Coming later: JSON-LD (.json, .jsonld) Max size 10.00 MB Processing: async (session auth — no API key paste) Hierarchy Bulk CSV XML available CSV available JSON-LD soon Download CSV template Drop a .csv file here, or click to browse Max 10.00 MB · Hierarchy Bulk CSV (batches → cases → packages) HC2_OTCM656.csv 279 B Upload CSV Live status succeeded Correlation ID 3ca113f8-d6c2-4c56-81b2-b6ab59ce779f Events (accepted / rejected) 3 / 6 Partial · 3 event(s) accepted · 6 rejected DUPLICATE_EVENT_PAYLOAD · urn:uuid:e547152e-77f4-4587-85c6-5197f63dabc2 Duplicate matrix key EPC+bizStep:0ad7461b3bafcfc77111f569387d16e4040c59f207292472d8379f24200716dc for bizStep=commissioning disposition=active DUPLICATE_EVENT_PAYLOAD · urn:uuid:8664cd03-157b-4e3a-808f-0a4e59e7bbd8 Duplicate matrix key EPC+bizStep:43319a17f45a4e79cf9ab801a4b53ee861e63fdd9c4d57fbf7a9194627b74951 for bizStep=commissioning disposition=active DUPLICATE_EVENT_PAYLOAD · urn:uuid:7a03134e-eedb-45f5-8910-ec1c911227df Duplicate matrix key EPC+bizStep:5f1cbd3f9ca3191d524956decdcd8aa15636a8ed2e85a6b53473b666e0be70f1 for bizStep=commissioning disposition=active DUPLICATE_EVENT_ID · urn:uuid:151c0d21-3e42-4eb3-8eb4-2fb3d77f0ac2 Event ID urn:uuid:151c0d21-3e42-4eb3-8eb4-2fb3d77f0ac2 was already ingested DUPLICATE_EVENT_ID · urn:uuid:48748b35-53c6-4192-8394-545c89e406da Event ID urn:uuid:48748b35-53c6-4192-8394-545c89e406da was already ingested DUPLICATE_EVENT_ID · urn:uuid:2399bba6-a12f-4962-8c84-716f62499322 Event ID urn:uuid:2399bba6-a12f-4962-8c84-716f62499322 was already ingested Download rejected CSV View full details Open in Async submissions Refresh status National Track & Trace System — Partner Portal Need help? Contact trackandtrace@apeiro.digital",
+      "rejectedRowsFile": "HC2-rejected-rows.csv",
+      "detailsText": "Succeeded manufacturer Accepted 13/11/2026, 11:03:36 · Completed 13/11/2026, 11:03:36 Overview Outcome Events Payload Copy the Request ID and share it with the integration team when you need help diagnosing this submission. Open the Outcome tab for processing details. Submission details Request ID 3ca113f8-d6c2-4c56-81b2-b6ab59ce779f Endpoint /partners/hierarchy-bulk/csv-import/async Role manufacturer Accept HTTP 202 Result HTTP 207 Format text/csv Size 279 B Events 9 EPCs 9 Timeline Accepted 13/11/2026, 11:03:36 Updated 13/11/2026, 11:03:36 Completed 13/11/2026, 11:03:36",
+      "stored": [
+        {
+          "batch": "BOTCM656CB001",
+          "found": false
+        },
+        {
+          "batch": "BOTCM656CB002",
+          "found": false
+        },
+        {
+          "batch": "BOTCM656CB003",
+          "found": false
+        }
+      ]
+    }
+  ]
+}

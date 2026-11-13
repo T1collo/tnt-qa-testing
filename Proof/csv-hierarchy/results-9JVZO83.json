@@ -1,0 +1,3341 @@
+{
+  "at": "2026-11-12T08:06:16.806Z",
+  "run": "9JVZO83",
+  "tests": [
+    {
+      "id": "H12",
+      "finding": "A",
+      "what": "100 serials in one batch (10 cases), row 52 has Expiry \"not-a-date\"",
+      "expect": "partial: 99 accepted, row 52 rejected with its row number",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-hierarchy\\H12_9JVZO83.csv",
+      "rows": 100,
+      "batches": [
+        "B9JVZO8312"
+      ],
+      "serials": [
+        "S9JVZO83120001",
+        "S9JVZO83120002",
+        "S9JVZO83120003",
+        "S9JVZO83120004",
+        "S9JVZO83120005",
+        "S9JVZO83120006",
+        "S9JVZO83120007",
+        "S9JVZO83120008",
+        "S9JVZO83120009",
+        "S9JVZO83120010",
+        "S9JVZO83120011",
+        "S9JVZO83120012",
+        "S9JVZO83120013",
+        "S9JVZO83120014",
+        "S9JVZO83120015",
+        "S9JVZO83120016",
+        "S9JVZO83120017",
+        "S9JVZO83120018",
+        "S9JVZO83120019",
+        "S9JVZO83120020",
+        "S9JVZO83120021",
+        "S9JVZO83120022",
+        "S9JVZO83120023",
+        "S9JVZO83120024",
+        "S9JVZO83120025",
+        "S9JVZO83120026",
+        "S9JVZO83120027",
+        "S9JVZO83120028",
+        "S9JVZO83120029",
+        "S9JVZO83120030",
+        "S9JVZO83120031",
+        "S9JVZO83120032",
+        "S9JVZO83120033",
+        "S9JVZO83120034",
+        "S9JVZO83120035",
+        "S9JVZO83120036",
+        "S9JVZO83120037",
+        "S9JVZO83120038",
+        "S9JVZO83120039",
+        "S9JVZO83120040",
+        "S9JVZO83120041",
+        "S9JVZO83120042",
+        "S9JVZO83120043",
+        "S9JVZO83120044",
+        "S9JVZO83120045",
+        "S9JVZO83120046",
+        "S9JVZO83120047",
+        "S9JVZO83120048",
+        "S9JVZO83120049",
+        "S9JVZO83120050",
+        "S9JVZO83120051",
+        "S9JVZO83120052",
+        "S9JVZO83120053",
+        "S9JVZO83120054",
+        "S9JVZO83120055",
+        "S9JVZO83120056",
+        "S9JVZO83120057",
+        "S9JVZO83120058",
+        "S9JVZO83120059",
+        "S9JVZO83120060",
+        "S9JVZO83120061",
+        "S9JVZO83120062",
+        "S9JVZO83120063",
+        "S9JVZO83120064",
+        "S9JVZO83120065",
+        "S9JVZO83120066",
+        "S9JVZO83120067",
+        "S9JVZO83120068",
+        "S9JVZO83120069",
+        "S9JVZO83120070",
+        "S9JVZO83120071",
+        "S9JVZO83120072",
+        "S9JVZO83120073",
+        "S9JVZO83120074",
+        "S9JVZO83120075",
+        "S9JVZO83120076",
+        "S9JVZO83120077",
+        "S9JVZO83120078",
+        "S9JVZO83120079",
+        "S9JVZO83120080",
+        "S9JVZO83120081",
+        "S9JVZO83120082",
+        "S9JVZO83120083",
+        "S9JVZO83120084",
+        "S9JVZO83120085",
+        "S9JVZO83120086",
+        "S9JVZO83120087",
+        "S9JVZO83120088",
+        "S9JVZO83120089",
+        "S9JVZO83120090",
+        "S9JVZO83120091",
+        "S9JVZO83120092",
+        "S9JVZO83120093",
+        "S9JVZO83120094",
+        "S9JVZO83120095",
+        "S9JVZO83120096",
+        "S9JVZO83120097",
+        "S9JVZO83120098",
+        "S9JVZO83120099",
+        "S9JVZO83120100"
+      ],
+      "upload": {
+        "status": 202,
+        "body": "{\"async\":true,\"accepted\":true,\"correlation_id\":\"bfe77f9a-79e9-4a51-b315-d8dcbcd2258b\",\"request_id\":\"bfe77f9a-79e9-4a51-b315-d8dcbcd2258b\",\"status_url\":\"/partners/hierarchy-bulk/csv-import/status/bfe77f9a-79e9-4a51-b315-d8dcbcd2258b\",\"message\":\"Hierarchy Bulk CSV accepted for asynchronous manufacturer event processing. Poll status_url.\",\"estimated_epcs\":3,\"event_count\":3,\"parse_rejected_count\":99}"
+      },
+      "requestId": "bfe77f9a-79e9-4a51-b315-d8dcbcd2258b",
+      "final": {
+        "correlation_id": "bfe77f9a-79e9-4a51-b315-d8dcbcd2258b",
+        "status": "succeeded",
+        "result_http_status": 207,
+        "partial": true,
+        "event_ids": [
+          "urn:uuid:4da49e70-4406-4bfe-8f3f-732f4ea22516",
+          "urn:uuid:db4d698c-23d9-49fa-8bca-8e8ed06422ba",
+          "urn:uuid:16d37358-7e74-4301-8c8f-f7f08599a5a0"
+        ],
+        "rejected": [
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C120",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120002"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:3",
+            "row_index": 3
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C120",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120003"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:4",
+            "row_index": 4
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C120",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120004"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:5",
+            "row_index": 5
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C120",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120005"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:6",
+            "row_index": 6
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C120",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120006"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:7",
+            "row_index": 7
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C120",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120007"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:8",
+            "row_index": 8
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C120",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120008"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:9",
+            "row_index": 9
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C120",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120009"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:10",
+            "row_index": 10
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C120",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120010"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:11",
+            "row_index": 11
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C121",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120011"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:12",
+            "row_index": 12
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C121",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120012"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:13",
+            "row_index": 13
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C121",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120013"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:14",
+            "row_index": 14
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C121",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120014"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:15",
+            "row_index": 15
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C121",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120015"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:16",
+            "row_index": 16
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C121",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120016"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:17",
+            "row_index": 17
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C121",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120017"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:18",
+            "row_index": 18
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C121",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120018"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:19",
+            "row_index": 19
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C121",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120019"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:20",
+            "row_index": 20
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C121",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120020"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:21",
+            "row_index": 21
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C122",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120021"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:22",
+            "row_index": 22
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C122",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120022"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:23",
+            "row_index": 23
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C122",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120023"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:24",
+            "row_index": 24
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C122",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120024"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:25",
+            "row_index": 25
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C122",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120025"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:26",
+            "row_index": 26
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C122",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120026"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:27",
+            "row_index": 27
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C122",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120027"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:28",
+            "row_index": 28
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C122",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120028"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:29",
+            "row_index": 29
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C122",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120029"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:30",
+            "row_index": 30
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C122",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120030"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:31",
+            "row_index": 31
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C123",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120031"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:32",
+            "row_index": 32
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C123",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120032"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:33",
+            "row_index": 33
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C123",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120033"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:34",
+            "row_index": 34
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C123",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120034"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:35",
+            "row_index": 35
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C123",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120035"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:36",
+            "row_index": 36
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C123",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120036"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:37",
+            "row_index": 37
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C123",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120037"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:38",
+            "row_index": 38
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C123",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120038"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:39",
+            "row_index": 39
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C123",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120039"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:40",
+            "row_index": 40
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C123",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120040"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:41",
+            "row_index": 41
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C124",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120041"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:42",
+            "row_index": 42
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C124",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120042"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:43",
+            "row_index": 43
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C124",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120043"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:44",
+            "row_index": 44
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C124",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120044"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:45",
+            "row_index": 45
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C124",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120045"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:46",
+            "row_index": 46
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C124",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120046"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:47",
+            "row_index": 47
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C124",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120047"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:48",
+            "row_index": 48
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C124",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120048"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:49",
+            "row_index": 49
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C124",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120049"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:50",
+            "row_index": 50
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C124",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120050"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:51",
+            "row_index": 51
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C125",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120051"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:52",
+            "row_index": 52
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "not-a-date",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C125",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120052"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "expiry \"not-a-date\" is not a valid date. Use ISO 8601 format, e.g. 2027-06-30.; Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:53",
+            "row_index": 53
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C125",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120053"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:54",
+            "row_index": 54
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C125",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120054"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:55",
+            "row_index": 55
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C125",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120055"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:56",
+            "row_index": 56
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C125",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120056"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:57",
+            "row_index": 57
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C125",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120057"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:58",
+            "row_index": 58
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C125",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120058"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:59",
+            "row_index": 59
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C125",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120059"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:60",
+            "row_index": 60
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C125",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120060"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:61",
+            "row_index": 61
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C126",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120061"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:62",
+            "row_index": 62
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C126",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120062"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:63",
+            "row_index": 63
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C126",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120063"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:64",
+            "row_index": 64
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C126",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120064"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:65",
+            "row_index": 65
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C126",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120065"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:66",
+            "row_index": 66
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C126",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120066"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:67",
+            "row_index": 67
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C126",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120067"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:68",
+            "row_index": 68
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C126",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120068"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:69",
+            "row_index": 69
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C126",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120069"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:70",
+            "row_index": 70
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C126",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120070"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:71",
+            "row_index": 71
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C127",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120071"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:72",
+            "row_index": 72
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C127",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120072"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:73",
+            "row_index": 73
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C127",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120073"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:74",
+            "row_index": 74
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C127",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120074"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:75",
+            "row_index": 75
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C127",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120075"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:76",
+            "row_index": 76
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C127",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120076"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:77",
+            "row_index": 77
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C127",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120077"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:78",
+            "row_index": 78
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C127",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120078"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:79",
+            "row_index": 79
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C127",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120079"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:80",
+            "row_index": 80
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C127",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120080"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:81",
+            "row_index": 81
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C128",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120081"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:82",
+            "row_index": 82
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C128",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120082"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:83",
+            "row_index": 83
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C128",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120083"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:84",
+            "row_index": 84
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C128",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120084"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:85",
+            "row_index": 85
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C128",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120085"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:86",
+            "row_index": 86
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C128",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120086"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:87",
+            "row_index": 87
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C128",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120087"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:88",
+            "row_index": 88
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C128",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120088"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:89",
+            "row_index": 89
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C128",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120089"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:90",
+            "row_index": 90
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C128",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120090"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:91",
+            "row_index": 91
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C129",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120091"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:92",
+            "row_index": 92
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C129",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120092"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:93",
+            "row_index": 93
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C129",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120093"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:94",
+            "row_index": 94
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C129",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120094"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:95",
+            "row_index": 95
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C129",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120095"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:96",
+            "row_index": 96
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C129",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120096"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:97",
+            "row_index": 97
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C129",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120097"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:98",
+            "row_index": 98
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C129",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120098"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:99",
+            "row_index": 99
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C129",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120099"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:100",
+            "row_index": 100
+          },
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9JVZO8312",
+              "case_sscc": "",
+              "case_group": "C129",
+              "package_sscc": "",
+              "package_group": "P12",
+              "serial_numbers": "S9JVZO83120100"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+            "event_id": "hierarchy-csv-row:101",
+            "row_index": 101
+          }
+        ],
+        "accepted_count": 3,
+        "rejected_count": 99,
+        "error_code": null,
+        "error_message": null,
+        "result_summary": {
+          "message": "EPCIS events accepted",
+          "partial": true,
+          "success": true,
+          "rejected": [
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C120",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120002"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:3",
+              "row_index": 3
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C120",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120003"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:4",
+              "row_index": 4
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C120",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120004"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:5",
+              "row_index": 5
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C120",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120005"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:6",
+              "row_index": 6
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C120",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120006"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:7",
+              "row_index": 7
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C120",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120007"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:8",
+              "row_index": 8
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C120",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120008"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:9",
+              "row_index": 9
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C120",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120009"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:10",
+              "row_index": 10
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C120",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120010"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:11",
+              "row_index": 11
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C121",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120011"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:12",
+              "row_index": 12
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C121",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120012"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:13",
+              "row_index": 13
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C121",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120013"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:14",
+              "row_index": 14
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C121",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120014"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:15",
+              "row_index": 15
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C121",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120015"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:16",
+              "row_index": 16
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C121",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120016"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:17",
+              "row_index": 17
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C121",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120017"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:18",
+              "row_index": 18
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C121",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120018"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:19",
+              "row_index": 19
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C121",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120019"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:20",
+              "row_index": 20
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C121",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120020"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:21",
+              "row_index": 21
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C122",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120021"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:22",
+              "row_index": 22
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C122",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120022"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:23",
+              "row_index": 23
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C122",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120023"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:24",
+              "row_index": 24
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C122",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120024"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:25",
+              "row_index": 25
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C122",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120025"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:26",
+              "row_index": 26
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C122",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120026"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:27",
+              "row_index": 27
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C122",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120027"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:28",
+              "row_index": 28
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C122",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120028"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:29",
+              "row_index": 29
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C122",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120029"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:30",
+              "row_index": 30
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C122",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120030"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:31",
+              "row_index": 31
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C123",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120031"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:32",
+              "row_index": 32
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C123",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120032"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:33",
+              "row_index": 33
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C123",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120033"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:34",
+              "row_index": 34
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C123",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120034"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:35",
+              "row_index": 35
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C123",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120035"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:36",
+              "row_index": 36
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C123",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120036"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:37",
+              "row_index": 37
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C123",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120037"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:38",
+              "row_index": 38
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C123",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120038"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:39",
+              "row_index": 39
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C123",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120039"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:40",
+              "row_index": 40
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C123",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120040"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:41",
+              "row_index": 41
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C124",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120041"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:42",
+              "row_index": 42
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C124",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120042"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:43",
+              "row_index": 43
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C124",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120043"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:44",
+              "row_index": 44
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C124",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120044"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:45",
+              "row_index": 45
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C124",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120045"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:46",
+              "row_index": 46
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C124",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120046"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:47",
+              "row_index": 47
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C124",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120047"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:48",
+              "row_index": 48
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C124",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120048"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:49",
+              "row_index": 49
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C124",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120049"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:50",
+              "row_index": 50
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C124",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120050"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:51",
+              "row_index": 51
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C125",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120051"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:52",
+              "row_index": 52
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "not-a-date",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C125",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120052"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "expiry \"not-a-date\" is not a valid date. Use ISO 8601 format, e.g. 2027-06-30.; Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:53",
+              "row_index": 53
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C125",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120053"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:54",
+              "row_index": 54
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C125",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120054"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:55",
+              "row_index": 55
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C125",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120055"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:56",
+              "row_index": 56
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C125",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120056"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:57",
+              "row_index": 57
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C125",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120057"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:58",
+              "row_index": 58
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C125",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120058"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:59",
+              "row_index": 59
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C125",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120059"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:60",
+              "row_index": 60
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C125",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120060"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:61",
+              "row_index": 61
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C126",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120061"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:62",
+              "row_index": 62
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C126",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120062"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:63",
+              "row_index": 63
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C126",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120063"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:64",
+              "row_index": 64
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C126",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120064"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:65",
+              "row_index": 65
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C126",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120065"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:66",
+              "row_index": 66
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C126",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120066"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:67",
+              "row_index": 67
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C126",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120067"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:68",
+              "row_index": 68
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C126",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120068"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:69",
+              "row_index": 69
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C126",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120069"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:70",
+              "row_index": 70
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C126",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120070"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:71",
+              "row_index": 71
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C127",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120071"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:72",
+              "row_index": 72
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C127",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120072"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:73",
+              "row_index": 73
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C127",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120073"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:74",
+              "row_index": 74
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C127",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120074"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:75",
+              "row_index": 75
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C127",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120075"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:76",
+              "row_index": 76
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C127",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120076"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:77",
+              "row_index": 77
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C127",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120077"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:78",
+              "row_index": 78
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C127",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120078"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:79",
+              "row_index": 79
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C127",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120079"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:80",
+              "row_index": 80
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C127",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120080"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:81",
+              "row_index": 81
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C128",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120081"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:82",
+              "row_index": 82
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C128",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120082"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:83",
+              "row_index": 83
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C128",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120083"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:84",
+              "row_index": 84
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C128",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120084"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:85",
+              "row_index": 85
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C128",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120085"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:86",
+              "row_index": 86
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C128",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120086"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:87",
+              "row_index": 87
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C128",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120087"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:88",
+              "row_index": 88
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C128",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120088"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:89",
+              "row_index": 89
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C128",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120089"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:90",
+              "row_index": 90
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C128",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120090"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:91",
+              "row_index": 91
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C129",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120091"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:92",
+              "row_index": 92
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C129",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120092"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:93",
+              "row_index": 93
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C129",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120093"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:94",
+              "row_index": 94
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C129",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120094"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:95",
+              "row_index": 95
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C129",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120095"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:96",
+              "row_index": 96
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C129",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120096"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:97",
+              "row_index": 97
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C129",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120097"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:98",
+              "row_index": 98
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C129",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120098"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:99",
+              "row_index": 99
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C129",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120099"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:100",
+              "row_index": 100
+            },
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9JVZO8312",
+                "case_sscc": "",
+                "case_group": "C129",
+                "package_sscc": "",
+                "package_group": "P12",
+                "serial_numbers": "S9JVZO83120100"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Batch number \"B9JVZO8312\" already appears in row 2 of this CSV.",
+              "event_id": "hierarchy-csv-row:101",
+              "row_index": 101
+            }
+          ],
+          "byte_size": 6288,
+          "event_ids": [
+            "urn:uuid:4da49e70-4406-4bfe-8f3f-732f4ea22516",
+            "urn:uuid:db4d698c-23d9-49fa-8bca-8e8ed06422ba",
+            "urn:uuid:16d37358-7e74-4301-8c8f-f7f08599a5a0"
+          ],
+          "event_count": 3,
+          "content_type": "text/csv",
+          "accepted_count": 3,
+          "estimated_epcs": 3,
+          "rejected_count": 99,
+          "events_processed": 3,
+          "parse_rejected_count": 99
+        },
+        "accepted_at": "2026-11-12T08:06:04.862Z",
+        "updated_at": "2026-11-12T08:06:05.471Z",
+        "completed_at": "2026-11-12T08:06:05.471Z",
+        "endpoint": "/partners/hierarchy-bulk/csv-import/async"
+      },
+      "pageText": "Upload Manufacturer partners can submit EPCIS XML or hierarchy Bulk CSV for asynchronous validation and ingest. Outcomes appear here and under Async submissions. Supported limits Now: Hierarchy Bulk CSV (.csv) → manufacturer commissioning + aggregation events (partial) Also available: EPCIS 1.2 XML — switch to XML mode Coming later: JSON-LD (.json, .jsonld) Max size 10.00 MB Processing: async (session auth — no API key paste) Hierarchy Bulk CSV XML available CSV available JSON-LD soon Download CSV template Drop a .csv file here, or click to browse Max 10.00 MB · Hierarchy Bulk CSV (batches → cases → packages) H12_9JVZO83.csv 6.1 KB Upload CSV Live status succeeded Correlation ID bfe77f9a-79e9-4a51-b315-d8dcbcd2258b Events (accepted / rejected) 3 / 99 Partial · 3 event(s) accepted · 99 rejected VALIDATION_FAILED · row 3 · hierarchy-csv-row:3 Batch number \"B9JVZO8312\" already appears in row 2 of this CSV. VALIDATION_FAILED · row 4 · hierarchy-csv-row:4 Batch number \"B9JVZO8312\" already appears in row 2 of this CSV. VALIDATION_FAILED · row 5 · hierarchy-csv-row:5 Batch number \"B9JVZO8312\" already appears in row 2 of this CSV. VALIDATION_FAILED · row 6 · hierarchy-csv-row:6 Batch number \"B9JVZO8312\" already appears in row 2 of this CSV. VALIDATION_FAILED · row 7 · hierarchy-csv-row:7 Batch number \"B9JVZO8312\" already appears in row 2 of this CSV. VALIDATION_FAILED · row 8 · hierarchy-csv-row:8 Batch number \"B9JVZO8312\" already appears in row 2 of this CSV. VALIDATION_FAILED · row 9 · hierarchy-csv-row:9 Batch number \"B9JVZO8312\" already appears in row 2 of this CSV. VALIDATION_FAILED · row 10 · hierarchy-csv-row:10 Batch number \"B9JVZO8312\" already appears in row 2 of this CSV. VALIDATION_FAILED · row 11 · hierarchy-csv-row:11 Batch number \"B9JVZO8312\" already appears in row 2 of this CSV. VALIDATION_FAILED · row 12 · hierarchy-csv-row:12 Batch number \"B9JVZO8312\" already appears in row 2 of this CSV. VALIDATION_FAILED · row 13 · hierarchy-csv-row:13 Batch number \"B9JVZO8312\" already appears in row 2 of this CSV. VALIDATION_FAILED · row 14 · hierarchy-csv-row:14 Batch number \"B9JVZO8312\" already appears in row 2 of this CSV. VALIDATION_FAILED · row 15 · hierarchy-csv-row:15 Batch number \"B9JVZO8312\" already appears in row 2 of this CSV. VALIDATION_FAILED · row 16 · hierarchy-csv-row:16 Batch number \"B9JVZO8312\" already appears in row 2 of this CSV. VALIDATION_FAILED · row 17 · hierarchy-csv-row:17 Batch number \"B9JVZO8312\" already appears in row 2 of this CSV. VALIDATION_FAILED · row 18 · hierarchy-csv-row:18 Batch number \"B9JVZO8312\" already appears in row 2 of this CSV. VALIDATION_FAILED · row 19 · hierarchy-csv-row:19 Batch number \"B9JVZO8312\" already appears in row 2 of this CSV. VALIDATION_FAILED · row 20 · hierarchy-csv-row:20 Batch number \"B9JVZO8312\" already appears in row 2 of this CSV. VALIDATION_FAILED · row 21 · hierarchy-csv-row:21 Batch number \"B9JVZO8312\" already appears in row 2 of this CSV. VALIDATION_FAILED · row 22 · hierarchy-csv-",
+      "rejectedRowsFile": "H12-rejected-rows.csv",
+      "stored": [
+        {
+          "batch": "B9JVZO8312",
+          "found": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+TL-1839 — QA test scenarios: Partner Portal API Log Enhancement
+
+Build under test: trackiq-core publish-db-nest-1.0.42-kafka · trackiq-kenya PR 52 (merged to demo) · branch TL-1839
+Environment: https://tnt-demo.apeiro-digital.com · portal login /partners/login
+Auth header: x-api-key
+Endpoints: POST /api/integration/manufacturer/events, /supplier/events, /facility/events, /facility/events/dispense
+Method: L5 first — generate traffic in Postman, recording every status, response body and send time. L4 second — verify the portal log viewer displays that traffic truthfully against those records.
+Preconditions: two partner organisations with valid keys (tenant isolation), one partner with zero prior API calls (empty state), bulk collection TnT-Bulk-5000-Events for the volume scenario.
+
+------------------------------------------------------------
+
+SC-01 — Request and response fidelity
+
+Send a known payload to POST /api/integration/manufacturer/events with a valid key, then open the matching portal entry and compare it field by field against the Postman record. Run across three shapes: a success (202), a forced duplicate (409), and oversized payloads (a 500-event document, and an event with 1,000 serials in one epcList). Confirms the portal shows what actually crossed the wire — no dropped or re-ordered fields, no generic success message substituted for the real response body, failures not omitted from the list, and any display truncation visibly signposted rather than silent.
+
+Evidence:
+
+------------------------------------------------------------
+
+SC-02 — EPCIS event attachment
+
+Open a log entry for an event submission and inspect the attached EPCIS event, confirming eventID, bizStep, disposition, eventTime, epcList and bizLocation all match what was submitted — and that it is the stored event rather than a re-render of the request body. Repeat with a 10-event document to confirm every event is individually reachable and the count matches, not just the first. Then submit a call carrying no valid event (malformed JSON, or an empty event list) and confirm an explicit "no event attached" state rather than a blank panel, stuck spinner or crash.
+
+Evidence:
+
+------------------------------------------------------------
+
+SC-03 — Partner context and error legibility
+
+Confirm each entry shows environment, token/key identity, outcome and timestamp, all correct for that call. Then trigger the full failure range and read the error text in each entry: 400 malformed JSON body, 401 missing x-api-key, 403 wrong-role key (supplier key on a manufacturer endpoint), 409 duplicate eventID, 422 schema violation or missing required field. Each should give one readable sentence naming the actual cause — the 422 naming the offending field — with no stack traces, exception class names, internal table or column names, or bare codes without explanation. Also confirm the noise removal did not overshoot: HTTP methods, long raw URLs and internal routing identifiers should be gone, but the endpoint called must still be identifiable in plain terms, or the log cannot be used for diagnosis.
+
+Evidence:
+
+------------------------------------------------------------
+
+SC-04 — Timestamp accuracy in East Africa Time
+
+Record the exact local send time of a call and compare it against the timestamp shown in the portal. Displayed time must equal the send time in EAT (UTC+3), with no UTC labelled as local, no doubled offset and no drift. Raised as an explicit scenario rather than assumed because timezone display regressed previously under TL-1794, and this feature is entirely a timestamped record — a wrong clock breaks correlation between a partner reporting "it failed around 2pm" and the matching log entry.
+
+Evidence:
+
+------------------------------------------------------------
+
+SC-05 — Request ID as a working support handle
+
+Tests the ticket's core promise as a three-link chain. First, confirm every entry carries a Request ID, that the copy control works by mouse and keyboard, and that the pasted value is complete — no ellipsis, truncation, label text or stray whitespace. Second, make three near-identical calls and confirm three distinct IDs, each unchanged after refresh and across sessions; if the API response returns a correlation header such as x-request-id, confirm it equals the ID shown in the portal, since that lets a partner quote it without logging in. Third, hand one success ID and one failure ID to the observability side and confirm both resolve to the full request log and trace. An ID that copies cleanly but does not resolve on the backend is cosmetic, and the support-triage justification for the ticket fails with it.
+
+Evidence:
+
+------------------------------------------------------------
+
+SC-06 — Tenant isolation and secret exposure
+
+Not stated in the ticket, which is why it is tested: this change makes previously hidden request and response data visible through a multi-tenant portal. Log in as a second partner organisation and confirm only their own calls are listed; if entries are addressable by ID or URL, attempt to open Partner A's entry while authenticated as Partner B and confirm a 403 or 404 rather than a render. Separately, inspect the request view and any headers section for the x-api-key value, passwords, bearer tokens and session cookies — "token context" must mean a label or identifier for the key used, never the secret itself. Check both the rendered page and the underlying API response behind it; masking in the UI while the JSON still carries the full key is a real finding. Either failure here blocks release regardless of every other result.
+
+Evidence:
+
+------------------------------------------------------------
+
+SC-07 — Role-based access to API Logs
+
+Request and response payloads are more sensitive than most portal content, so confirm which roles within a single partner organisation can reach API Logs, and that the restriction is enforced on the route and not only hidden in the navigation — a role that should not have access must see no menu entry and be refused on direct navigation. Currently blocked pending confirmation of the intended role matrix; see open questions.
+
+Evidence:
+
+------------------------------------------------------------
+
+SC-08 — List behaviour at zero and at volume
+
+Tests the two ends of the data range where log viewers typically fail. Log in as a partner that has never called the API and confirm a clear self-explanatory empty state rather than a permanent spinner, error or blank page. Then run the 5,000-event bulk collection and confirm ordering is reliably newest-first, that pagination, sorting and filtering return consistent results with no duplicated or skipped rows across pages, and that first-page load time holds up rather than degrading as history accumulates.
+
+Evidence:
+
+------------------------------------------------------------
+
+SC-09 — Logging of rejected authentication
+
+Call an endpoint with (a) no key, (b) a malformed key and (c) a revoked key, then check whether and where each appears in API Logs. With no authenticated partner to attribute the call to, any consistent answer is defensible but an inconsistent one is not — and a call bearing an unrecognised key must never surface in another partner's log, which would be a tenant leak by a second route. Worth a product decision: showing these to the key's owner would make "my key stopped working" self-serviceable, which it currently is not.
+
+Evidence:
+
+------------------------------------------------------------
+
+SC-10 — Portal regression sweep
+
+The code is already merged to demo, so confirming nothing else broke is part of sign-off. Exercise partner login, batch creation at /manufacturer/batches, serial lookup and the partner dashboard, and confirm all behave as before the merge. Note for the record: the GTIN-13 serial lookup defect on tnt-demo — 13-digit-GTIN products such as Telmicos returning UNKNOWN_SGTIN — is pre-existing and tracked separately, and will be encountered during this sweep. It is not a TL-1839 regression.
+
+Evidence:
+
+------------------------------------------------------------
+
+Open questions before sign-off
+
+1. Role matrix (SC-07): which portal roles are intended to see API Logs? This is the only item that stops a scenario from being scorable.
+2. Retention: how long are API logs kept, and is there a documented limit to verify against?
+3. Bad-key visibility (SC-09): should authentication failures be visible to the partner whose key was misused?
+4. Display truncation (SC-01): is there a payload size cap for display, and what is the intended behaviour above it?
+
+Verdict
+
+Result: (to be completed on execution)
+Blockers: (a cross-tenant leak or secret exposure in SC-06 blocks release regardless of other results)

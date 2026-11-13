@@ -4,4 +4,12 @@ test-results/
 playwright-report/
 output/
 run_data/
+exports/
 *.log
+# Saved TrackIQ partner-portal session (login cookie) - a secret
+playwright/.auth/
+
+# Test-account credentials (passwords) - never commit
+new/*creds*.xlsx
+new/*Credentials*.xlsx
+new/*_Results.json

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<epcis:EPCISDocument xmlns:epcis="urn:epcglobal:epcis:xsd:1"
+  schemaVersion="1.2" creationDate="2026-11-09T06:53:31.715Z">
+  <EPCISBody><EventList>
+    <AggregationEvent>
+      <eventID>urn:uuid:a3935f27-8da0-480e-833b-e870e784e722</eventID>
+      <eventTime>2026-11-09T06:43:31.715Z</eventTime>
+      <eventTimeZoneOffset>+03:00</eventTimeZoneOffset>
+      <parentID>urn:epc:id:sscc:0123456.1964376519</parentID>
+      <childEPCs>
+        <epc>urn:epc:id:sgtin:0123456.305512.42072117150003931</epc>
+        <epc>urn:epc:id:sgtin:0123456.305512.42072117150004059</epc>
+      </childEPCs>
+      <action>DELETE</action>
+      <bizStep>urn:epcglobal:cbv:bizstep:unpacking</bizStep>
+      <disposition>urn:epcglobal:cbv:disp:active</disposition>
+      <readPoint><id>urn:epc:id:sgln:0123456.77777.0</id></readPoint>
+      <bizLocation><id>urn:epc:id:sgln:0123456.77777.0</id></bizLocation>
+    </AggregationEvent>
+  </EventList></EPCISBody>
+</epcis:EPCISDocument>

@@ -1,0 +1,10 @@
+event_id,row_index,code,message,gtin,batch_no,case_group
+urn:uuid:8d81585d-94b7-442f-804d-c2180976e524,,INVALID_GS1_IDENTIFIER,"SGTIN company prefix must be 6–12 digits",,,
+urn:uuid:aa10e599-5c70-4277-84f8-a4280bc652d5,,INVALID_GS1_IDENTIFIER,"SGTIN serial must be 1–20 GS1-permitted URI characters",,,
+urn:uuid:c10f5e90-6ef1-41ac-8df7-fd181c858f41,,INVALID_GS1_IDENTIFIER,"SGTIN company prefix must be 6–12 digits",,,
+urn:uuid:66f09f79-6592-4a08-838b-9c6936bcf0ae,,INVALID_GS1_IDENTIFIER,"SGTIN serial must be 1–20 GS1-permitted URI characters",,,
+urn:uuid:eb5c7bb3-9428-4449-86b4-531ca84ded4f,,DUPLICATE_EVENT_ID,"Event ID urn:uuid:eb5c7bb3-9428-4449-86b4-531ca84ded4f was already ingested",,,
+urn:uuid:a7da2913-33a8-4438-803a-b3c878eda94f,,DUPLICATE_EVENT_ID,"Event ID urn:uuid:a7da2913-33a8-4438-803a-b3c878eda94f was already ingested",,,
+urn:uuid:c6442a90-0c18-48ae-8ca3-63ca7a8795a1,,DUPLICATE_EVENT_ID,"Event ID urn:uuid:c6442a90-0c18-48ae-8ca3-63ca7a8795a1 was already ingested",,,
+urn:uuid:e98dc049-7329-4819-8e1b-f7843eb9ed26,,DUPLICATE_EVENT_ID,"Event ID urn:uuid:e98dc049-7329-4819-8e1b-f7843eb9ed26 was already ingested",,,
+urn:uuid:6dae965d-f0d1-4c34-883d-d0694f575867,,DUPLICATE_EVENT_ID,"Event ID urn:uuid:6dae965d-f0d1-4c34-883d-d0694f575867 was already ingested",,,

@@ -1,0 +1,4 @@
+event_id,row_index,code,message,gtin,batch_no,case_group
+urn:uuid:e3c0e996-8818-4a2f-85b9-6505ae193b77,,INVALID_JSON_STRUCTURE,"lotNumber contains characters outside the GS1 AI(10) permitted set (+1 more schema issue(s))",,,
+urn:uuid:39ef1fee-0045-41df-87dc-181d1e2b8acb,,DUPLICATE_EVENT_ID,"Event ID urn:uuid:39ef1fee-0045-41df-87dc-181d1e2b8acb was already ingested",,,
+urn:uuid:03226f61-ad13-48e4-863d-2831aee19330,,DUPLICATE_EVENT_ID,"Event ID urn:uuid:03226f61-ad13-48e4-863d-2831aee19330 was already ingested",,,

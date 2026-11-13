@@ -1,0 +1,388 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/* Radar UI: its theme comes first so the console tokens below keep their own values. */
+@import "@skyhook-io/k8s-ui/theme/variables.css";
+@import "@skyhook-io/k8s-ui/theme/tailwind-theme.css";
+@import "@skyhook-io/k8s-ui/theme/components.css";
+@import "@skyhook-io/k8s-ui/topology.css";
+@source "../node_modules/@skyhook-io/k8s-ui/src";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-dm-sans);
+  --font-mono: var(--font-dm-mono);
+  --font-heading: var(--font-dm-sans);
+  --color-selected: var(--selected);
+  --color-flow-ok: #22c55e;
+  --color-flow-warn: #eab308;
+  --color-flow-fail: #ef4444;
+  --color-flow-stopped: #3b82f6;
+  --color-group-border: var(--group-border);
+  --color-group-header: var(--group-header);
+  --color-group-label: var(--group-label);
+  --color-group-icon: var(--group-icon);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-highlight: var(--highlight);
+  /* One motion scale for the whole console, so every state change shares a rhythm instead
+     of each component inventing its own timing. Exit is ~70% of enter - leaving should feel
+     quicker than arriving. The ease is a decelerating curve: fast out of the gate, settling
+     at the end, which reads as "arriving" rather than "sliding". */
+  --duration-quick: 120ms;
+  --duration-enter: 220ms;
+  --duration-exit: 160ms;
+  --ease-emphasis: cubic-bezier(0.32, 0.72, 0, 1);
+  --animate-collapsible-down: collapsible-down var(--duration-enter) var(--ease-emphasis);
+  --animate-collapsible-up: collapsible-up var(--duration-exit) var(--ease-emphasis);
+  /* Marching dashes along a connection, showing direction of data flow. Linear and
+     continuous: this is a constant-rate indicator, not an arrival, so an easing curve would
+     make it pulse rather than travel. */
+  --animate-flow: flow-dash 1.1s linear infinite;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+  --color-chart-scale-pattern-color: var(--chart-scale-pattern-color);
+  --color-chart-scale-05: var(--chart-scale-05);
+  --color-chart-scale-04: var(--chart-scale-04);
+  --color-chart-scale-03: var(--chart-scale-03);
+  --color-chart-scale-02: var(--chart-scale-02);
+  --color-chart-scale-01: var(--chart-scale-01);
+  --color-chart-label: var(--chart-label);
+  --color-chart-marker-foreground: var(--chart-marker-foreground);
+  --color-chart-marker-border: var(--chart-marker-border);
+  --color-chart-marker-background: var(--chart-marker-background);
+  --color-chart-tooltip-muted: var(--chart-tooltip-muted);
+  --color-chart-tooltip-foreground: var(--chart-tooltip-foreground);
+  --color-chart-tooltip-background: var(--chart-tooltip-background);
+  --chart-brush-border: var(--chart-brush-border);
+  --color-chart-grid: var(--chart-grid);
+  --color-chart-crosshair: var(--chart-crosshair);
+  --chart-line-secondary: var(--chart-line-secondary);
+  --chart-line-primary: var(--chart-line-primary);
+  --color-chart-foreground-muted: var(--chart-foreground-muted);
+  --color-chart-foreground: var(--chart-foreground);
+  --color-chart-background: var(--chart-background);
+}
+
+:root {
+  /* Palette: blue data + amber highlights (ui-ux-pro-max colour domain), on a cool off-white
+     ground. Every foreground below is contrast-checked against the surface it sits on. */
+  --background: #F0F3F9;
+  --foreground: #1A1C20;
+  --card: #F8FBFE;
+  --card-foreground: #1A1C20;
+  --popover: #F8FBFE;
+  --popover-foreground: #1A1C20;
+  /* #1E40AF - 8.6:1 on white */
+  --primary: #3B66A8;
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: #E6ECF5;
+  --secondary-foreground: #1A1C20;
+  --muted: #E6ECF5;
+  --muted-foreground: #555860;
+  --accent: #DDE5F2;
+  --accent-foreground: #1A1C20;
+  --destructive: oklch(0.55 0.21 27);
+  --border: #D8E0EE;
+  --input: #CDD6E8;
+  --ring: #3B66A8;
+  --radius: 0.5rem;
+  --sidebar: #E7ECF5;
+  --sidebar-foreground: #1A1C20;
+  --sidebar-primary: #3B66A8;
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: #DDE5F2;
+  --sidebar-accent-foreground: #1A1C20;
+  --sidebar-border: #D8E0EE;
+  --sidebar-ring: #3B66A8;
+  --selected: #3B66A8;
+  /* Green 5.0:1, amber 4.7:1 on white; the two non-blue states. */
+  --success: oklch(0.52 0.14 150);
+  --warning: oklch(0.55 0.13 75);
+  /* #D97706 - the one highlight hue, for emphasis that is not a status. */
+  --highlight: oklch(0.62 0.15 62);
+  --chart-1: #3B66A8;
+  --chart-2: oklch(0.6 0.12 200);
+  --chart-3: oklch(0.62 0.15 62);
+  --chart-4: oklch(0.52 0.14 150);
+  --chart-5: oklch(0.55 0.21 27);
+  --chart-background: oklch(1 0 0);
+  --chart-foreground: oklch(0.145 0.004 285);
+  --chart-foreground-muted: oklch(0.55 0.014 260);
+  /* Pass/fail-aligned series colors for Bklit charts on Dashboard + Health. */
+  --chart-line-primary: var(--success);
+  --chart-line-secondary: var(--destructive);
+  --chart-crosshair: oklch(0.4 0.1828 274.34);
+  --chart-grid: oklch(0.9 0 0);
+  --chart-brush-border: var(--chart-grid);
+  --chart-tooltip-background: oklch(0.21 0.006 285 / 0.8);
+  --chart-tooltip-foreground: oklch(0.985 0 0);
+  --chart-tooltip-muted: oklch(0.65 0.01 260);
+  --chart-marker-background: oklch(0.97 0.005 260);
+  --chart-marker-border: oklch(0.85 0.01 260);
+  --chart-marker-foreground: oklch(0.3 0.01 260);
+  --chart-label: oklch(0.45 0.01 260);
+  --chart-scale-01: oklch(0.98 0.003 106);
+  --chart-scale-02: oklch(0.92 0.008 106);
+  --chart-scale-03: oklch(0.82 0.015 106);
+  --chart-scale-04: oklch(0.68 0.02 106);
+  --chart-scale-05: oklch(0.55 0.025 106);
+  --chart-scale-pattern-color: oklch(0.96 0.005 106);
+  --group-border: rgba(16, 185, 129, 0.3);
+  --group-header: rgba(16, 185, 129, 0.15);
+  --group-label: #047857;
+  --group-icon: #059669;
+}
+
+.dark {
+  --background: #0B0F1E;
+  --foreground: #F5F6F8;
+  --card: #14192A;
+  --card-foreground: #F5F6F8;
+  --popover: #14192A;
+  --popover-foreground: #F5F6F8;
+  --primary: #6A9FE0;
+  --primary-foreground: oklch(0.18 0.03 262);
+  --secondary: #1E2338;
+  --secondary-foreground: #F5F6F8;
+  --muted: #1E2338;
+  --muted-foreground: #B0B5C0;
+  --accent: #282E48;
+  --accent-foreground: #F5F6F8;
+  --destructive: oklch(0.7 0.19 22);
+  --border: #222840;
+  --input: #2C324A;
+  --ring: #6A9FE0;
+  --sidebar: #080B16;
+  --sidebar-foreground: #F5F6F8;
+  --sidebar-primary: #6A9FE0;
+  --sidebar-primary-foreground: oklch(0.18 0.03 262);
+  --sidebar-accent: #282E48;
+  --sidebar-accent-foreground: #F5F6F8;
+  --sidebar-border: #222840;
+  --sidebar-ring: #6A9FE0;
+  --selected: #6A9FE0;
+  --success: oklch(0.76 0.17 150);
+  --warning: oklch(0.8 0.15 80);
+  --highlight: oklch(0.78 0.14 68);
+  --chart-1: #6A9FE0;
+  --chart-2: oklch(0.7 0.1 200);
+  --chart-3: oklch(0.78 0.14 68);
+  --chart-4: oklch(0.76 0.17 150);
+  --chart-5: oklch(0.7 0.19 22);
+  --chart-background: oklch(0.145 0 0);
+  --chart-foreground: oklch(0.45 0 0);
+  --chart-foreground-muted: oklch(0.65 0.01 260);
+  --chart-crosshair: oklch(0.45 0 0);
+  --chart-grid: oklch(0.25 0 0);
+  --chart-brush-border: var(--chart-grid);
+  --chart-marker-background: oklch(0.25 0.01 260);
+  --chart-marker-border: oklch(0.4 0.01 260);
+  --chart-marker-foreground: oklch(0.9 0 0);
+  --chart-label: oklch(0.75 0.01 260);
+  --chart-scale-01: oklch(0.28 0.03 270);
+  --chart-scale-02: oklch(0.38 0.04 270);
+  --chart-scale-03: oklch(0.48 0.05 270);
+  --chart-scale-04: oklch(0.58 0.06 270);
+  --chart-scale-05: oklch(0.68 0.07 270);
+  --chart-scale-pattern-color: oklch(0.145 0 0);
+  --group-border: rgba(16, 185, 129, 0.4);
+  --group-header: rgba(16, 185, 129, 0.2);
+  --group-label: #6ee7b7;
+  --group-icon: #34d399;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+/* Expand/collapse. Radix measures the panel and publishes its height as a custom property,
+   which is what makes a real height animation possible here - a transform can't do this one
+   without distorting the text it is revealing, so height is animated deliberately, on a
+   short, contained, non-repeating curve. Opacity carries the rest of the effect. */
+@keyframes collapsible-down {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: var(--radix-collapsible-content-height);
+    opacity: 1;
+  }
+}
+
+@keyframes collapsible-up {
+  from {
+    height: var(--radix-collapsible-content-height);
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+/* Anyone who has asked their OS for less motion gets the end state immediately. Kept as a
+   near-zero duration rather than `animation: none` so animationend still fires and Radix
+   doesn't leave a panel stuck mid-transition. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Connection flow. stroke-dashoffset is a deliberate exception to the transform/opacity
+   rule: an SVG path has no transform that moves dashes along its own length, and the
+   alternative (translating a masked overlay) costs a composited layer per edge for the same
+   result. One property, no layout, no paint outside the stroke. The dash pattern is set on
+   the element so this animation stays generic. */
+@keyframes flow-dash {
+  from {
+    stroke-dashoffset: 24;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Workflow canvas (Connections) — dark dotted board inspired by n8n-style automation UX. */
+.n8n-canvas {
+  background: #1e1e24;
+}
+.n8n-canvas .react-flow__node {
+  cursor: grab;
+}
+.n8n-canvas .react-flow__node:active {
+  cursor: grabbing;
+}
+.n8n-canvas .react-flow__attribution {
+  display: none;
+}
+
+/* The collapsing sidebar is the one place a size animation is unavoidable: the page content
+   beside it reflows as it narrows, so there is no transform that stands in for it. Scoped to
+   the two elements that carry the width (the spacer and the fixed panel), kept to the app's
+   own enter duration, and skipped entirely under prefers-reduced-motion. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-slot="sidebar-gap"],
+  [data-slot="sidebar-container"] {
+    transition-property: width, left, right;
+    transition-duration: var(--duration-enter);
+    transition-timing-function: var(--ease-emphasis);
+  }
+
+  /* The labels fade as the rail narrows rather than clipping mid-word. */
+  [data-slot="sidebar-menu-button"] > span:last-child,
+  [data-slot="sidebar-group-label"] {
+    transition-property: opacity, transform;
+    transition-duration: var(--duration-quick);
+    transition-timing-function: var(--ease-emphasis);
+  }
+}
+
+/* Tab panels arrive rather than appearing. */
+[data-slot="tabs-content"][data-state="active"] {
+  animation: tab-in var(--duration-enter) var(--ease-emphasis);
+}
+
+@keyframes tab-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* React Flow rules from Radar's web/src/index.css, which the package does not ship. */
+.react-flow__pane {
+  cursor: grab;
+}
+.react-flow__pane:active {
+  cursor: grabbing;
+}
+.react-flow__node,
+.react-flow__node:active {
+  cursor: pointer !important;
+}
+.react-flow .react-flow__controls {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: 8px;
+  box-shadow: var(--shadow-md);
+}
+.react-flow .react-flow__controls-button {
+  background: var(--bg-surface);
+  border: none;
+  border-bottom: 1px solid var(--border-default);
+  color: var(--text-tertiary);
+  width: 28px;
+  height: 28px;
+  padding: 5px;
+}
+.react-flow .react-flow__controls-button:hover {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+}
+.react-flow .react-flow__controls-button:last-child {
+  border-bottom: none;
+}
+.react-flow .react-flow__controls-button svg {
+  fill: currentColor;
+}
+.react-flow__attribution {
+  background: transparent;
+}

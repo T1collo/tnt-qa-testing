@@ -16,7 +16,8 @@ function readLog() {
 
 function logEntity(entry) {
   const log = readLog();
-  log.push({ timestamp: new Date().toISOString(), ...entry });
+  // The environment is recorded so cleanup targets the right system (tests run on both).
+  log.push({ timestamp: new Date().toISOString(), environment: process.env.BASE_URL || null, ...entry });
   fs.mkdirSync(path.dirname(LOG_PATH), { recursive: true });
   fs.writeFileSync(LOG_PATH, JSON.stringify(log, null, 2), 'utf-8');
   console.log(`[datalog] ${entry.type}: ${entry.identifier}${entry.testId ? ` (from ${entry.testId})` : ''}`);

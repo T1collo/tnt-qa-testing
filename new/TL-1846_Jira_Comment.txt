@@ -1,0 +1,44 @@
+h3. TL-1846 — Partner registration / login load + rate-limit check (tnt-demo)
+
+*Environment:* https://tnt-demo.apeiro-digital.com
+*Paths exercised:*
+* Register UI: {{/partners/register}} → {{POST /api/auth/register}}
+* Login UI: {{/partners/login}} → {{POST /api/auth/user/sign-in/email}}
+
+*Password:* {{Password-123}} (plain {{password}} rejected by UI — minimum 12 characters)
+*Organization type:* Domestic Manufacturer ({{MANUFACTURER_DOMESTIC}}), country {{KE}}
+
+h4. Manual seed (row 1)
+* Email: {{qatest001@test.com}}
+* Org: {{QA-Test001}}
+* GLN: {{0614141000005}}
+* Signup: Accepted
+* Login: Passed
+
+h4. Automated batch (50 new orgs = rows 2–51)
+* Signup Accepted: *50 / 50* (no registration 429s observed)
+* Signup rate-limited: 0
+* First-pass login (tight sequential loop): Passed 12/50, Rate-limited 38/50
+* After throttle window + paced re-login: Login Passed *51 / 51* overall; still 429: 0; other failures: 0
+* Blank GLN on register → auto test GLNs ({{999000…}}) returned on every Accepted signup
+
+h4. Dedicated login rate-limit burst
+30 rapid sign-in calls against {{qatest001@test.com}} immediately after the batch.
+* Statuses: 429
+* 429 count: *30 / 30*
+* Header: {{x-retry-after: 10}}
+* First attempt already 429 (limiter still open from the batch)
+
+h4. Rate-limit behaviour (observed)
+* Partner *registration* handled 50 creates without 429 in this run.
+* Partner *login* is rate-limited (~3 successful logins, then ~10s cool-down; {{x-retry-after: 10}}).
+* 429 means the credentials were not evaluated in that window — not an invalid password.
+
+h4. Evidence
+* Credentials (51 rows): {{new/TL-1846_Partner_Register_Login_Credentials.xlsx}}
+* Raw JSON: {{new/TL-1846_Partner_Register_Login_Results.json}}
+
+h4. Verdict
+*PASS* for registration under this load (50/50 Accepted).
+*PASS* for login rate limiting (429 + {{x-retry-after: 10}} confirmed under burst and during sequential logins).
+Accounts that only saw 429 on first pass were re-checked after the window; see Login column in the workbook.

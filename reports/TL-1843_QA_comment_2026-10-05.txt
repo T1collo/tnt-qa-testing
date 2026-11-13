@@ -1,0 +1,28 @@
+TL-1843 QA update (TrackIQ) — tied to comment 53529
+
+What was tested (Partner API only — Postman-equivalent):
+• Happy path + 100 sequential + 20 concurrent manufacturer event posts
+• Duplicates (same event ID / same product code)
+• Auth (no key, bad key, wrong-role keys)
+• Validation & payload edge cases (bad JSON, wrong content type, empty list, etc.)
+• Multi-event documents (10 / 100 / 500) and 1,000 serials in one event
+• Prior volume proof: 5,000 single-event posts (not re-run this session)
+
+Batches:
+• Edge matrix: batch-edge-c33de4dd
+• Volume (5k): batch-5k-req-0ffbe916 (lot OUTBOX5K-2026-10-02)
+
+Findings:
+• Outbox / intermittent-500 issue: PASS — 0 × HTTP 500, no outbox primary-key errors in responses
+• Valid events accepted (202); duplicates cleanly rejected (409)
+• One separate finding: invalid eventID format was accepted (202) instead of rejected — not the outbox bug (case D01)
+
+Fix applied (ops, per ticket):
+• Database ID counter for outbox was behind the data after restore/import
+• Ops advanced the counter (and checked other counters) — no app deploy for this incident
+
+Evidence:
+• Excel: reports/TnT_TrackIQ_TL-1843_Outbox_Edge_Matrix_Results_2026-10-05.xlsx
+• Word: reports/TnT_TrackIQ_TL-1843_Outbox_Edge_Matrix_Report_2026-10-05.docx
+• Raw: security\results\outbox-edge-matrix-2026-10-05T05-09-58-227Z
+• Jira: https://apeiro-digital.atlassian.net/browse/TL-1843

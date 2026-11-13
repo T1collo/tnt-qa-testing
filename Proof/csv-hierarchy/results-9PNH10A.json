@@ -1,0 +1,1738 @@
+{
+  "at": "2026-11-12T08:13:05.663Z",
+  "run": "9PNH10A",
+  "tests": [
+    {
+      "id": "H12",
+      "finding": "A",
+      "what": "100 rows, row 52 (data row 51) has Expiry \"not-a-date\"",
+      "expect": "partial: 99 accepted, the bad row rejected with its row number",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-hierarchy\\H12_9PNH10A.csv",
+      "rows": 100,
+      "batches": [
+        "B9PNH10A12001",
+        "B9PNH10A12002",
+        "B9PNH10A12003",
+        "B9PNH10A12004",
+        "B9PNH10A12005",
+        "B9PNH10A12006",
+        "B9PNH10A12007",
+        "B9PNH10A12008",
+        "B9PNH10A12009",
+        "B9PNH10A12010",
+        "B9PNH10A12011",
+        "B9PNH10A12012",
+        "B9PNH10A12013",
+        "B9PNH10A12014",
+        "B9PNH10A12015",
+        "B9PNH10A12016",
+        "B9PNH10A12017",
+        "B9PNH10A12018",
+        "B9PNH10A12019",
+        "B9PNH10A12020",
+        "B9PNH10A12021",
+        "B9PNH10A12022",
+        "B9PNH10A12023",
+        "B9PNH10A12024",
+        "B9PNH10A12025",
+        "B9PNH10A12026",
+        "B9PNH10A12027",
+        "B9PNH10A12028",
+        "B9PNH10A12029",
+        "B9PNH10A12030",
+        "B9PNH10A12031",
+        "B9PNH10A12032",
+        "B9PNH10A12033",
+        "B9PNH10A12034",
+        "B9PNH10A12035",
+        "B9PNH10A12036",
+        "B9PNH10A12037",
+        "B9PNH10A12038",
+        "B9PNH10A12039",
+        "B9PNH10A12040",
+        "B9PNH10A12041",
+        "B9PNH10A12042",
+        "B9PNH10A12043",
+        "B9PNH10A12044",
+        "B9PNH10A12045",
+        "B9PNH10A12046",
+        "B9PNH10A12047",
+        "B9PNH10A12048",
+        "B9PNH10A12049",
+        "B9PNH10A12050",
+        "B9PNH10A12051",
+        "B9PNH10A12052",
+        "B9PNH10A12053",
+        "B9PNH10A12054",
+        "B9PNH10A12055",
+        "B9PNH10A12056",
+        "B9PNH10A12057",
+        "B9PNH10A12058",
+        "B9PNH10A12059",
+        "B9PNH10A12060",
+        "B9PNH10A12061",
+        "B9PNH10A12062",
+        "B9PNH10A12063",
+        "B9PNH10A12064",
+        "B9PNH10A12065",
+        "B9PNH10A12066",
+        "B9PNH10A12067",
+        "B9PNH10A12068",
+        "B9PNH10A12069",
+        "B9PNH10A12070",
+        "B9PNH10A12071",
+        "B9PNH10A12072",
+        "B9PNH10A12073",
+        "B9PNH10A12074",
+        "B9PNH10A12075",
+        "B9PNH10A12076",
+        "B9PNH10A12077",
+        "B9PNH10A12078",
+        "B9PNH10A12079",
+        "B9PNH10A12080",
+        "B9PNH10A12081",
+        "B9PNH10A12082",
+        "B9PNH10A12083",
+        "B9PNH10A12084",
+        "B9PNH10A12085",
+        "B9PNH10A12086",
+        "B9PNH10A12087",
+        "B9PNH10A12088",
+        "B9PNH10A12089",
+        "B9PNH10A12090",
+        "B9PNH10A12091",
+        "B9PNH10A12092",
+        "B9PNH10A12093",
+        "B9PNH10A12094",
+        "B9PNH10A12095",
+        "B9PNH10A12096",
+        "B9PNH10A12097",
+        "B9PNH10A12098",
+        "B9PNH10A12099",
+        "B9PNH10A12100"
+      ],
+      "serials": [
+        "S9PNH10A12001",
+        "S9PNH10A12002",
+        "S9PNH10A12003",
+        "S9PNH10A12004",
+        "S9PNH10A12005",
+        "S9PNH10A12006",
+        "S9PNH10A12007",
+        "S9PNH10A12008",
+        "S9PNH10A12009",
+        "S9PNH10A12010",
+        "S9PNH10A12011",
+        "S9PNH10A12012",
+        "S9PNH10A12013",
+        "S9PNH10A12014",
+        "S9PNH10A12015",
+        "S9PNH10A12016",
+        "S9PNH10A12017",
+        "S9PNH10A12018",
+        "S9PNH10A12019",
+        "S9PNH10A12020",
+        "S9PNH10A12021",
+        "S9PNH10A12022",
+        "S9PNH10A12023",
+        "S9PNH10A12024",
+        "S9PNH10A12025",
+        "S9PNH10A12026",
+        "S9PNH10A12027",
+        "S9PNH10A12028",
+        "S9PNH10A12029",
+        "S9PNH10A12030",
+        "S9PNH10A12031",
+        "S9PNH10A12032",
+        "S9PNH10A12033",
+        "S9PNH10A12034",
+        "S9PNH10A12035",
+        "S9PNH10A12036",
+        "S9PNH10A12037",
+        "S9PNH10A12038",
+        "S9PNH10A12039",
+        "S9PNH10A12040",
+        "S9PNH10A12041",
+        "S9PNH10A12042",
+        "S9PNH10A12043",
+        "S9PNH10A12044",
+        "S9PNH10A12045",
+        "S9PNH10A12046",
+        "S9PNH10A12047",
+        "S9PNH10A12048",
+        "S9PNH10A12049",
+        "S9PNH10A12050",
+        "S9PNH10A12051",
+        "S9PNH10A12052",
+        "S9PNH10A12053",
+        "S9PNH10A12054",
+        "S9PNH10A12055",
+        "S9PNH10A12056",
+        "S9PNH10A12057",
+        "S9PNH10A12058",
+        "S9PNH10A12059",
+        "S9PNH10A12060",
+        "S9PNH10A12061",
+        "S9PNH10A12062",
+        "S9PNH10A12063",
+        "S9PNH10A12064",
+        "S9PNH10A12065",
+        "S9PNH10A12066",
+        "S9PNH10A12067",
+        "S9PNH10A12068",
+        "S9PNH10A12069",
+        "S9PNH10A12070",
+        "S9PNH10A12071",
+        "S9PNH10A12072",
+        "S9PNH10A12073",
+        "S9PNH10A12074",
+        "S9PNH10A12075",
+        "S9PNH10A12076",
+        "S9PNH10A12077",
+        "S9PNH10A12078",
+        "S9PNH10A12079",
+        "S9PNH10A12080",
+        "S9PNH10A12081",
+        "S9PNH10A12082",
+        "S9PNH10A12083",
+        "S9PNH10A12084",
+        "S9PNH10A12085",
+        "S9PNH10A12086",
+        "S9PNH10A12087",
+        "S9PNH10A12088",
+        "S9PNH10A12089",
+        "S9PNH10A12090",
+        "S9PNH10A12091",
+        "S9PNH10A12092",
+        "S9PNH10A12093",
+        "S9PNH10A12094",
+        "S9PNH10A12095",
+        "S9PNH10A12096",
+        "S9PNH10A12097",
+        "S9PNH10A12098",
+        "S9PNH10A12099",
+        "S9PNH10A12100"
+      ],
+      "upload": {
+        "status": 202,
+        "body": "{\"async\":true,\"accepted\":true,\"correlation_id\":\"15681329-456f-431e-813c-1b5ab86f4e13\",\"request_id\":\"15681329-456f-431e-813c-1b5ab86f4e13\",\"status_url\":\"/partners/hierarchy-bulk/csv-import/status/15681329-456f-431e-813c-1b5ab86f4e13\",\"message\":\"Hierarchy Bulk CSV accepted for asynchronous manufacturer event processing. Poll status_url.\",\"estimated_epcs\":297,\"event_count\":297,\"parse_rejected_count\":1}"
+      },
+      "requestId": "15681329-456f-431e-813c-1b5ab86f4e13",
+      "final": {
+        "correlation_id": "15681329-456f-431e-813c-1b5ab86f4e13",
+        "status": "succeeded",
+        "result_http_status": 207,
+        "partial": true,
+        "event_ids": [
+          "urn:uuid:79c88ab7-3424-4e12-86a2-11af87232c91",
+          "urn:uuid:5bbb7a99-80ca-44b4-8b22-669e65167119",
+          "urn:uuid:8c95f65f-9ca4-4dd5-8e75-873801500f45",
+          "urn:uuid:ee9c8e58-ec08-4aa8-899a-6a11764de17b",
+          "urn:uuid:54671cee-80fe-4b3e-8617-49f0754ef250",
+          "urn:uuid:00ee1d72-3cfb-4f69-8a56-05e24847580b",
+          "urn:uuid:9653cc5c-0467-4a3b-816e-5fd2693ff106",
+          "urn:uuid:8ffd2675-4be6-420c-84b8-fca728171294",
+          "urn:uuid:b33e435a-02b6-4ff9-859a-122e8de671d5",
+          "urn:uuid:18e9787f-f7af-4277-8754-3c7aa1ae409b",
+          "urn:uuid:dbac000c-f6a1-4ff1-8dd7-2f1cf215f19b",
+          "urn:uuid:806e7c9f-2c95-4767-8a9e-cb9732c70a27",
+          "urn:uuid:9d966582-8933-4d2f-84de-1d03f09c0c2a",
+          "urn:uuid:c75cc63f-048b-4585-8bc8-c17441aaf799",
+          "urn:uuid:5cd6b748-9245-45e1-8882-3e0b059ac9e3",
+          "urn:uuid:349dd340-9846-4194-82a0-18384bfdf524",
+          "urn:uuid:4b7ce239-1ef0-49ee-80e7-c4d32d6f2376",
+          "urn:uuid:5f629b24-094c-4ba6-87d5-9d46631ca1b8",
+          "urn:uuid:ffead530-0300-426e-803e-4e6fda9123b2",
+          "urn:uuid:de1294b1-bd50-4d4c-88d0-395357d54729"
+        ],
+        "rejected": [
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "not-a-date",
+              "batch_no": "B9PNH10A12051",
+              "case_sscc": "",
+              "case_group": "C1251",
+              "package_sscc": "",
+              "package_group": "P1251",
+              "serial_numbers": "S9PNH10A12051"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "expiry \"not-a-date\" is not a valid date. Use ISO 8601 format, e.g. 2027-06-30.",
+            "event_id": "hierarchy-csv-row:52",
+            "row_index": 52
+          }
+        ],
+        "accepted_count": 297,
+        "rejected_count": 1,
+        "error_code": null,
+        "error_message": null,
+        "result_summary": {
+          "message": "EPCIS events accepted",
+          "partial": true,
+          "success": true,
+          "rejected": [
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "not-a-date",
+                "batch_no": "B9PNH10A12051",
+                "case_sscc": "",
+                "case_group": "C1251",
+                "package_sscc": "",
+                "package_group": "P1251",
+                "serial_numbers": "S9PNH10A12051"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "expiry \"not-a-date\" is not a valid date. Use ISO 8601 format, e.g. 2027-06-30.",
+              "event_id": "hierarchy-csv-row:52",
+              "row_index": 52
+            }
+          ],
+          "byte_size": 6772,
+          "event_ids": [
+            "urn:uuid:79c88ab7-3424-4e12-86a2-11af87232c91",
+            "urn:uuid:5bbb7a99-80ca-44b4-8b22-669e65167119",
+            "urn:uuid:8c95f65f-9ca4-4dd5-8e75-873801500f45",
+            "urn:uuid:ee9c8e58-ec08-4aa8-899a-6a11764de17b",
+            "urn:uuid:54671cee-80fe-4b3e-8617-49f0754ef250",
+            "urn:uuid:00ee1d72-3cfb-4f69-8a56-05e24847580b",
+            "urn:uuid:9653cc5c-0467-4a3b-816e-5fd2693ff106",
+            "urn:uuid:8ffd2675-4be6-420c-84b8-fca728171294",
+            "urn:uuid:b33e435a-02b6-4ff9-859a-122e8de671d5",
+            "urn:uuid:18e9787f-f7af-4277-8754-3c7aa1ae409b",
+            "urn:uuid:dbac000c-f6a1-4ff1-8dd7-2f1cf215f19b",
+            "urn:uuid:806e7c9f-2c95-4767-8a9e-cb9732c70a27",
+            "urn:uuid:9d966582-8933-4d2f-84de-1d03f09c0c2a",
+            "urn:uuid:c75cc63f-048b-4585-8bc8-c17441aaf799",
+            "urn:uuid:5cd6b748-9245-45e1-8882-3e0b059ac9e3",
+            "urn:uuid:349dd340-9846-4194-82a0-18384bfdf524",
+            "urn:uuid:4b7ce239-1ef0-49ee-80e7-c4d32d6f2376",
+            "urn:uuid:5f629b24-094c-4ba6-87d5-9d46631ca1b8",
+            "urn:uuid:ffead530-0300-426e-803e-4e6fda9123b2",
+            "urn:uuid:de1294b1-bd50-4d4c-88d0-395357d54729"
+          ],
+          "event_count": 297,
+          "content_type": "text/csv",
+          "accepted_count": 297,
+          "estimated_epcs": 297,
+          "rejected_count": 1,
+          "events_processed": 297,
+          "parse_rejected_count": 1
+        },
+        "accepted_at": "2026-11-12T08:10:31.113Z",
+        "updated_at": "2026-11-12T08:10:59.818Z",
+        "completed_at": "2026-11-12T08:10:59.818Z",
+        "endpoint": "/partners/hierarchy-bulk/csv-import/async"
+      },
+      "pageText": "Upload Manufacturer partners can submit EPCIS XML or hierarchy Bulk CSV for asynchronous validation and ingest. Outcomes appear here and under Async submissions. Supported limits Now: Hierarchy Bulk CSV (.csv) → manufacturer commissioning + aggregation events (partial) Also available: EPCIS 1.2 XML — switch to XML mode Coming later: JSON-LD (.json, .jsonld) Max size 10.00 MB Processing: async (session auth — no API key paste) Hierarchy Bulk CSV XML available CSV available JSON-LD soon Download CSV template Drop a .csv file here, or click to browse Max 10.00 MB · Hierarchy Bulk CSV (batches → cases → packages) H12_9PNH10A.csv 6.6 KB Upload CSV Live status succeeded Correlation ID 15681329-456f-431e-813c-1b5ab86f4e13 Events (accepted / rejected) 297 / 1 Partial · 297 event(s) accepted · 1 rejected VALIDATION_FAILED · row 52 · hierarchy-csv-row:52 expiry \"not-a-date\" is not a valid date. Use ISO 8601 format, e.g. 2027-06-30. Download rejected CSV Refresh status National Track & Trace System — Partner Portal Need help? Contact trackandtrace@apeiro.digital",
+      "rejectedRowsFile": "H12-rejected-rows.csv",
+      "stored": [
+        {
+          "batch": "B9PNH10A12001",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12002",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12003",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12004",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12005",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12006",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12007",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12008",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12009",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12010",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12011",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12012",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12013",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12014",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12015",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12016",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12017",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12018",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12019",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12020",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12021",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12022",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12023",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12024",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12025",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12026",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12027",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12028",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12029",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12030",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12031",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12032",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12033",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12034",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12035",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12036",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12037",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12038",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12039",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12040",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12041",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12042",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12043",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12044",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12045",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12046",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12047",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12048",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12049",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12050",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12051",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12052",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12053",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12054",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12055",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12056",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12057",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12058",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12059",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12060",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12061",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12062",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12063",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12064",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12065",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12066",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12067",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12068",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12069",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12070",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12071",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12072",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12073",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12074",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12075",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12076",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12077",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12078",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12079",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12080",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12081",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12082",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12083",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12084",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12085",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12086",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12087",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12088",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12089",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12090",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12091",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12092",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12093",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12094",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12095",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12096",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12097",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12098",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12099",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A12100",
+          "found": false
+        }
+      ]
+    },
+    {
+      "id": "H16",
+      "finding": "A",
+      "what": "4 rows: one with an extra field, one with a missing field, plus blank lines",
+      "expect": "partial: the 2 good rows accepted, both broken rows rejected with row numbers",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-hierarchy\\H16_9PNH10A.csv",
+      "rows": 4,
+      "batches": [
+        "B9PNH10A16001",
+        "B9PNH10A16002",
+        "B9PNH10A16003",
+        "B9PNH10A16004"
+      ],
+      "serials": [
+        "S9PNH10A16001",
+        "S9PNH10A16002",
+        "S9PNH10A16003",
+        "S9PNH10A16004"
+      ],
+      "upload": {
+        "status": 202,
+        "body": "{\"async\":true,\"accepted\":true,\"correlation_id\":\"5b0ffce2-79f4-4333-8eb0-32ab0aba92b1\",\"request_id\":\"5b0ffce2-79f4-4333-8eb0-32ab0aba92b1\",\"status_url\":\"/partners/hierarchy-bulk/csv-import/status/5b0ffce2-79f4-4333-8eb0-32ab0aba92b1\",\"message\":\"Hierarchy Bulk CSV accepted for asynchronous manufacturer event processing. Poll status_url.\",\"estimated_epcs\":9,\"event_count\":9,\"parse_rejected_count\":1}"
+      },
+      "requestId": "5b0ffce2-79f4-4333-8eb0-32ab0aba92b1",
+      "final": {
+        "correlation_id": "5b0ffce2-79f4-4333-8eb0-32ab0aba92b1",
+        "status": "succeeded",
+        "result_http_status": 207,
+        "partial": true,
+        "event_ids": [
+          "urn:uuid:04ee6bad-b19b-49bd-838c-bd7a33ca0770",
+          "urn:uuid:56378468-5bc7-4de5-8ee9-9e2cd7f54d9f",
+          "urn:uuid:a8de0f08-8239-471e-81a6-8da827d96c40",
+          "urn:uuid:3a4a642b-0c43-4365-80da-9acd6d418655",
+          "urn:uuid:207986ab-db9f-4a29-84b6-3d5bd3449b97",
+          "urn:uuid:935ee65a-2da7-475a-8376-ed0460d6b325",
+          "urn:uuid:5aeba6a9-490e-43fb-8a79-da1bd15ca441",
+          "urn:uuid:79d29e8b-0300-4ab1-861c-8c0869f9fa5b",
+          "urn:uuid:22e5298e-7078-4cea-8db5-afee6d9b9e8f"
+        ],
+        "rejected": [
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9PNH10A16003",
+              "case_sscc": "",
+              "case_group": "C163",
+              "package_sscc": "",
+              "package_group": "",
+              "serial_numbers": "S9PNH10A16003"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "package_group is required",
+            "event_id": "hierarchy-csv-row:4",
+            "row_index": 4
+          }
+        ],
+        "accepted_count": 9,
+        "rejected_count": 1,
+        "error_code": null,
+        "error_message": null,
+        "result_summary": {
+          "message": "EPCIS events accepted",
+          "partial": true,
+          "success": true,
+          "rejected": [
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9PNH10A16003",
+                "case_sscc": "",
+                "case_group": "C163",
+                "package_sscc": "",
+                "package_group": "",
+                "serial_numbers": "S9PNH10A16003"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "package_group is required",
+              "event_id": "hierarchy-csv-row:4",
+              "row_index": 4
+            }
+          ],
+          "byte_size": 349,
+          "event_ids": [
+            "urn:uuid:04ee6bad-b19b-49bd-838c-bd7a33ca0770",
+            "urn:uuid:56378468-5bc7-4de5-8ee9-9e2cd7f54d9f",
+            "urn:uuid:a8de0f08-8239-471e-81a6-8da827d96c40",
+            "urn:uuid:3a4a642b-0c43-4365-80da-9acd6d418655",
+            "urn:uuid:207986ab-db9f-4a29-84b6-3d5bd3449b97",
+            "urn:uuid:935ee65a-2da7-475a-8376-ed0460d6b325",
+            "urn:uuid:5aeba6a9-490e-43fb-8a79-da1bd15ca441",
+            "urn:uuid:79d29e8b-0300-4ab1-861c-8c0869f9fa5b",
+            "urn:uuid:22e5298e-7078-4cea-8db5-afee6d9b9e8f"
+          ],
+          "event_count": 9,
+          "content_type": "text/csv",
+          "accepted_count": 9,
+          "estimated_epcs": 9,
+          "rejected_count": 1,
+          "events_processed": 9,
+          "parse_rejected_count": 1
+        },
+        "accepted_at": "2026-11-12T08:11:20.667Z",
+        "updated_at": "2026-11-12T08:11:21.626Z",
+        "completed_at": "2026-11-12T08:11:21.626Z",
+        "endpoint": "/partners/hierarchy-bulk/csv-import/async"
+      },
+      "pageText": "Upload Manufacturer partners can submit EPCIS XML or hierarchy Bulk CSV for asynchronous validation and ingest. Outcomes appear here and under Async submissions. Supported limits Now: Hierarchy Bulk CSV (.csv) → manufacturer commissioning + aggregation events (partial) Also available: EPCIS 1.2 XML — switch to XML mode Coming later: JSON-LD (.json, .jsonld) Max size 10.00 MB Processing: async (session auth — no API key paste) Hierarchy Bulk CSV XML available CSV available JSON-LD soon Download CSV template Drop a .csv file here, or click to browse Max 10.00 MB · Hierarchy Bulk CSV (batches → cases → packages) H16_9PNH10A.csv 349 B Upload CSV Live status succeeded Correlation ID 5b0ffce2-79f4-4333-8eb0-32ab0aba92b1 Events (accepted / rejected) 9 / 1 Partial · 9 event(s) accepted · 1 rejected VALIDATION_FAILED · row 4 · hierarchy-csv-row:4 package_group is required Download rejected CSV Refresh status National Track & Trace System — Partner Portal Need help? Contact trackandtrace@apeiro.digital",
+      "rejectedRowsFile": "H16-rejected-rows.csv",
+      "stored": [
+        {
+          "batch": "B9PNH10A16001",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A16002",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A16003",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A16004",
+          "found": false
+        }
+      ]
+    },
+    {
+      "id": "H06",
+      "finding": "A",
+      "what": "3 rows; file rows 3 and 4 carry the same serial",
+      "expect": "partial: the duplicate rejected with its row number, the rest accepted",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-hierarchy\\H06_9PNH10A.csv",
+      "rows": 3,
+      "batches": [
+        "B9PNH10A06001",
+        "B9PNH10A06002",
+        "B9PNH10A06003"
+      ],
+      "serials": [
+        "S9PNH10A06001",
+        "S9PNH10A06002",
+        "S9PNH10A06002"
+      ],
+      "upload": {
+        "status": 202,
+        "body": "{\"async\":true,\"accepted\":true,\"correlation_id\":\"116657b7-346c-49b7-9ee7-3d88f8d6d17f\",\"request_id\":\"116657b7-346c-49b7-9ee7-3d88f8d6d17f\",\"status_url\":\"/partners/hierarchy-bulk/csv-import/status/116657b7-346c-49b7-9ee7-3d88f8d6d17f\",\"message\":\"Hierarchy Bulk CSV accepted for asynchronous manufacturer event processing. Poll status_url.\",\"estimated_epcs\":6,\"event_count\":6,\"parse_rejected_count\":1}"
+      },
+      "requestId": "116657b7-346c-49b7-9ee7-3d88f8d6d17f",
+      "final": {
+        "correlation_id": "116657b7-346c-49b7-9ee7-3d88f8d6d17f",
+        "status": "succeeded",
+        "result_http_status": 207,
+        "partial": true,
+        "event_ids": [
+          "urn:uuid:09379103-c3ff-458f-89ba-730141533654",
+          "urn:uuid:525bbee6-d535-47df-8cd9-92c2d74c4a38",
+          "urn:uuid:f2b49fd3-f6bd-4161-861f-6670a2a3f71b",
+          "urn:uuid:47745744-4a17-40f5-8328-820cf7b3229d",
+          "urn:uuid:ca95c229-c6e9-423f-8d1f-171f87189d32",
+          "urn:uuid:857cae77-815f-4fbb-86e1-ac40c9e195d5"
+        ],
+        "rejected": [
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "B9PNH10A06003",
+              "case_sscc": "",
+              "case_group": "C063",
+              "package_sscc": "",
+              "package_group": "P063",
+              "serial_numbers": "S9PNH10A06002"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Serial number \"S9PNH10A06002\" (GTIN: 6161102974997) already appears in row 3 of this CSV.",
+            "event_id": "hierarchy-csv-row:4",
+            "row_index": 4
+          }
+        ],
+        "accepted_count": 6,
+        "rejected_count": 1,
+        "error_code": null,
+        "error_message": null,
+        "result_summary": {
+          "message": "EPCIS events accepted",
+          "partial": true,
+          "success": true,
+          "rejected": [
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "B9PNH10A06003",
+                "case_sscc": "",
+                "case_group": "C063",
+                "package_sscc": "",
+                "package_group": "P063",
+                "serial_numbers": "S9PNH10A06002"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Serial number \"S9PNH10A06002\" (GTIN: 6161102974997) already appears in row 3 of this CSV.",
+              "event_id": "hierarchy-csv-row:4",
+              "row_index": 4
+            }
+          ],
+          "byte_size": 283,
+          "event_ids": [
+            "urn:uuid:09379103-c3ff-458f-89ba-730141533654",
+            "urn:uuid:525bbee6-d535-47df-8cd9-92c2d74c4a38",
+            "urn:uuid:f2b49fd3-f6bd-4161-861f-6670a2a3f71b",
+            "urn:uuid:47745744-4a17-40f5-8328-820cf7b3229d",
+            "urn:uuid:ca95c229-c6e9-423f-8d1f-171f87189d32",
+            "urn:uuid:857cae77-815f-4fbb-86e1-ac40c9e195d5"
+          ],
+          "event_count": 6,
+          "content_type": "text/csv",
+          "accepted_count": 6,
+          "estimated_epcs": 6,
+          "rejected_count": 1,
+          "events_processed": 6,
+          "parse_rejected_count": 1
+        },
+        "accepted_at": "2026-11-12T08:11:36.096Z",
+        "updated_at": "2026-11-12T08:11:36.646Z",
+        "completed_at": "2026-11-12T08:11:36.646Z",
+        "endpoint": "/partners/hierarchy-bulk/csv-import/async"
+      },
+      "pageText": "Upload Manufacturer partners can submit EPCIS XML or hierarchy Bulk CSV for asynchronous validation and ingest. Outcomes appear here and under Async submissions. Supported limits Now: Hierarchy Bulk CSV (.csv) → manufacturer commissioning + aggregation events (partial) Also available: EPCIS 1.2 XML — switch to XML mode Coming later: JSON-LD (.json, .jsonld) Max size 10.00 MB Processing: async (session auth — no API key paste) Hierarchy Bulk CSV XML available CSV available JSON-LD soon Download CSV template Drop a .csv file here, or click to browse Max 10.00 MB · Hierarchy Bulk CSV (batches → cases → packages) H06_9PNH10A.csv 283 B Upload CSV Live status succeeded Correlation ID 116657b7-346c-49b7-9ee7-3d88f8d6d17f Events (accepted / rejected) 6 / 1 Partial · 6 event(s) accepted · 1 rejected VALIDATION_FAILED · row 4 · hierarchy-csv-row:4 Serial number \"S9PNH10A06002\" (GTIN: 6161102974997) already appears in row 3 of this CSV. Download rejected CSV Refresh status National Track & Trace System — Partner Portal Need help? Contact trackandtrace@apeiro.digital",
+      "rejectedRowsFile": "H06-rejected-rows.csv",
+      "stored": [
+        {
+          "batch": "B9PNH10A06001",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A06002",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A06003",
+          "found": false
+        }
+      ]
+    },
+    {
+      "id": "H21",
+      "finding": "A",
+      "latin1": true,
+      "what": "Latin-1 encoded file; row 3 batch number contains \"É\"",
+      "expect": "whole file rejected as not UTF-8, or every row handled; never a row silently missing",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-hierarchy\\H21_9PNH10A.csv",
+      "rows": 2,
+      "batches": [
+        "B9PNH10A21001",
+        "B9PNH10A21É02"
+      ],
+      "serials": [
+        "S9PNH10A21001",
+        "S9PNH10A21002"
+      ],
+      "upload": {
+        "status": 202,
+        "body": "{\"async\":true,\"accepted\":true,\"correlation_id\":\"d140b415-8bcf-4c5b-a621-1bfa3acacb7d\",\"request_id\":\"d140b415-8bcf-4c5b-a621-1bfa3acacb7d\",\"status_url\":\"/partners/hierarchy-bulk/csv-import/status/d140b415-8bcf-4c5b-a621-1bfa3acacb7d\",\"message\":\"Hierarchy Bulk CSV accepted for asynchronous manufacturer event processing. Poll status_url.\",\"estimated_epcs\":6,\"event_count\":6,\"parse_rejected_count\":0}"
+      },
+      "requestId": "d140b415-8bcf-4c5b-a621-1bfa3acacb7d",
+      "final": {
+        "correlation_id": "d140b415-8bcf-4c5b-a621-1bfa3acacb7d",
+        "status": "succeeded",
+        "result_http_status": 207,
+        "partial": true,
+        "event_ids": [
+          "urn:uuid:903f1b5f-b7b2-4917-8fcc-a36f55913dd9",
+          "urn:uuid:d1a9147d-8c9f-44b1-83f3-caf7ccf114dc",
+          "urn:uuid:5537ff94-1348-45b3-820c-e48e3a0df29e",
+          "urn:uuid:3fbbc12d-0bbc-4322-8cab-e20e1e59dbfb",
+          "urn:uuid:29c9062c-8a9e-4d78-839a-fd2a7ea7ee9b"
+        ],
+        "rejected": [
+          {
+            "epc": "urn:epc:id:sgtin:6161102974997.S9PNH10A21002",
+            "code": "INVALID_JSON_STRUCTURE",
+            "errors": [
+              {
+                "path": "epcisBody.eventList[1].ilmd.cbvmda:lotNumber",
+                "message": "lotNumber contains characters outside the GS1 AI(10) permitted set"
+              },
+              {
+                "path": "epcisBody.eventList[1].ilmd.lotNumber",
+                "message": "lotNumber contains characters outside the GS1 AI(10) permitted set"
+              }
+            ],
+            "message": "lotNumber contains characters outside the GS1 AI(10) permitted set (+1 more schema issue(s))",
+            "event_id": "urn:uuid:f26b4767-1cf4-4790-8c2c-7c8d35ccd49e",
+            "http_status": 400
+          }
+        ],
+        "accepted_count": 5,
+        "rejected_count": 1,
+        "error_code": null,
+        "error_message": null,
+        "result_summary": {
+          "message": "EPCIS events accepted",
+          "partial": true,
+          "success": true,
+          "rejected": [
+            {
+              "epc": "urn:epc:id:sgtin:6161102974997.S9PNH10A21002",
+              "code": "INVALID_JSON_STRUCTURE",
+              "errors": [
+                {
+                  "path": "epcisBody.eventList[1].ilmd.cbvmda:lotNumber",
+                  "message": "lotNumber contains characters outside the GS1 AI(10) permitted set"
+                },
+                {
+                  "path": "epcisBody.eventList[1].ilmd.lotNumber",
+                  "message": "lotNumber contains characters outside the GS1 AI(10) permitted set"
+                }
+              ],
+              "message": "lotNumber contains characters outside the GS1 AI(10) permitted set (+1 more schema issue(s))",
+              "event_id": "urn:uuid:f26b4767-1cf4-4790-8c2c-7c8d35ccd49e",
+              "http_status": 400
+            }
+          ],
+          "byte_size": 218,
+          "event_ids": [
+            "urn:uuid:903f1b5f-b7b2-4917-8fcc-a36f55913dd9",
+            "urn:uuid:d1a9147d-8c9f-44b1-83f3-caf7ccf114dc",
+            "urn:uuid:5537ff94-1348-45b3-820c-e48e3a0df29e",
+            "urn:uuid:3fbbc12d-0bbc-4322-8cab-e20e1e59dbfb",
+            "urn:uuid:29c9062c-8a9e-4d78-839a-fd2a7ea7ee9b"
+          ],
+          "event_count": 6,
+          "content_type": "text/csv",
+          "accepted_count": 5,
+          "estimated_epcs": 6,
+          "rejected_count": 1,
+          "events_processed": 5,
+          "parse_rejected_count": 0
+        },
+        "accepted_at": "2026-11-12T08:11:50.325Z",
+        "updated_at": "2026-11-12T08:11:50.935Z",
+        "completed_at": "2026-11-12T08:11:50.935Z",
+        "endpoint": "/partners/hierarchy-bulk/csv-import/async"
+      },
+      "pageText": "Upload Manufacturer partners can submit EPCIS XML or hierarchy Bulk CSV for asynchronous validation and ingest. Outcomes appear here and under Async submissions. Supported limits Now: Hierarchy Bulk CSV (.csv) → manufacturer commissioning + aggregation events (partial) Also available: EPCIS 1.2 XML — switch to XML mode Coming later: JSON-LD (.json, .jsonld) Max size 10.00 MB Processing: async (session auth — no API key paste) Hierarchy Bulk CSV XML available CSV available JSON-LD soon Download CSV template Drop a .csv file here, or click to browse Max 10.00 MB · Hierarchy Bulk CSV (batches → cases → packages) H21_9PNH10A.csv 218 B Upload CSV Live status succeeded Correlation ID d140b415-8bcf-4c5b-a621-1bfa3acacb7d Events (accepted / rejected) 5 / 1 Partial · 5 event(s) accepted · 1 rejected INVALID_JSON_STRUCTURE · urn:uuid:f26b4767-1cf4-4790-8c2c-7c8d35ccd49e lotNumber contains characters outside the GS1 AI(10) permitted set (+1 more schema issue(s)) Download rejected CSV Refresh status National Track & Trace System — Partner Portal Need help? Contact trackandtrace@apeiro.digital",
+      "rejectedRowsFile": "H21-rejected-rows.csv",
+      "stored": [
+        {
+          "batch": "B9PNH10A21001",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A21É02",
+          "found": false
+        }
+      ]
+    },
+    {
+      "id": "H04",
+      "finding": "A",
+      "what": "Serials with characters the portal lists as allowed (- _ . /) and a 20-character serial",
+      "expect": "all 5 rows accepted",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-hierarchy\\H04_9PNH10A.csv",
+      "rows": 5,
+      "batches": [
+        "B9PNH10A04001",
+        "B9PNH10A04002",
+        "B9PNH10A04003",
+        "B9PNH10A04004",
+        "B9PNH10A04005"
+      ],
+      "serials": [
+        "9PNH10A-45",
+        "9PNH10A_95",
+        "9PNH10A.46",
+        "9PNH10A/47",
+        "S9PNH10AAAAAAAAAAAAA"
+      ],
+      "upload": {
+        "status": 202,
+        "body": "{\"async\":true,\"accepted\":true,\"correlation_id\":\"8b945c7e-4037-4b86-9ccf-67f297dc1a62\",\"request_id\":\"8b945c7e-4037-4b86-9ccf-67f297dc1a62\",\"status_url\":\"/partners/hierarchy-bulk/csv-import/status/8b945c7e-4037-4b86-9ccf-67f297dc1a62\",\"message\":\"Hierarchy Bulk CSV accepted for asynchronous manufacturer event processing. Poll status_url.\",\"estimated_epcs\":15,\"event_count\":15,\"parse_rejected_count\":0}"
+      },
+      "requestId": "8b945c7e-4037-4b86-9ccf-67f297dc1a62",
+      "final": {
+        "correlation_id": "8b945c7e-4037-4b86-9ccf-67f297dc1a62",
+        "status": "succeeded",
+        "result_http_status": 207,
+        "partial": true,
+        "event_ids": [
+          "urn:uuid:cd75e6f7-89bd-4702-8c2a-57de02f4598d",
+          "urn:uuid:8e8fc71c-9ccc-41f8-899c-0a8f60e0988e",
+          "urn:uuid:89647c97-3ee8-4c37-874d-28553c25fe23",
+          "urn:uuid:657d04c0-2867-47da-82db-912cd80484d5",
+          "urn:uuid:5a4801d0-3e36-4423-8214-30f65a0fd81c",
+          "urn:uuid:beb97605-d126-4d43-874c-bb146ee82f5d",
+          "urn:uuid:177e4f6d-8eab-4f8c-8843-cc7f59d4dab6",
+          "urn:uuid:0661dc7b-9696-4cc6-8f94-6ec297881f22",
+          "urn:uuid:e99f5ca8-5f70-4dd9-8388-e83f747cce0a",
+          "urn:uuid:ccdcecea-ef94-40a7-863a-bbdc332c867c",
+          "urn:uuid:6ebff622-9802-4dbd-8582-f4cc7ea1cb0d"
+        ],
+        "rejected": [
+          {
+            "epc": "urn:epc:id:sgtin:6161102974997.9PNH10A.46",
+            "code": "INVALID_GS1_IDENTIFIER",
+            "errors": [
+              {
+                "path": "epcisBody.eventList[1].epcList[1]",
+                "message": "SGTIN company prefix must be 6–12 digits"
+              }
+            ],
+            "message": "SGTIN company prefix must be 6–12 digits",
+            "event_id": "urn:uuid:aaabadd2-6609-40ad-8079-c4260c41a5d3",
+            "http_status": 400
+          },
+          {
+            "epc": "urn:epc:id:sgtin:6161102974997.9PNH10A/47",
+            "code": "INVALID_GS1_IDENTIFIER",
+            "errors": [
+              {
+                "path": "epcisBody.eventList[1].epcList[1]",
+                "message": "SGTIN serial must be 1–20 GS1-permitted URI characters"
+              }
+            ],
+            "message": "SGTIN serial must be 1–20 GS1-permitted URI characters",
+            "event_id": "urn:uuid:fff8abe3-7882-41d0-8bd5-bff7615dc1c9",
+            "http_status": 400
+          },
+          {
+            "epc": "urn:epc:id:sgtin:6161102974997.9PNH10A.46",
+            "code": "INVALID_GS1_IDENTIFIER",
+            "errors": [
+              {
+                "path": "epcisBody.eventList[1].childEPCs[1]",
+                "message": "SGTIN company prefix must be 6–12 digits"
+              }
+            ],
+            "message": "SGTIN company prefix must be 6–12 digits",
+            "event_id": "urn:uuid:58d0417a-3f43-427e-8ed9-155ecd6372e9",
+            "http_status": 400
+          },
+          {
+            "epc": "urn:epc:id:sgtin:6161102974997.9PNH10A/47",
+            "code": "INVALID_GS1_IDENTIFIER",
+            "errors": [
+              {
+                "path": "epcisBody.eventList[1].childEPCs[1]",
+                "message": "SGTIN serial must be 1–20 GS1-permitted URI characters"
+              }
+            ],
+            "message": "SGTIN serial must be 1–20 GS1-permitted URI characters",
+            "event_id": "urn:uuid:ebf8ede2-fd87-47e1-8447-ad51790250af",
+            "http_status": 400
+          }
+        ],
+        "accepted_count": 11,
+        "rejected_count": 4,
+        "error_code": null,
+        "error_message": null,
+        "result_summary": {
+          "message": "EPCIS events accepted",
+          "partial": true,
+          "success": true,
+          "rejected": [
+            {
+              "epc": "urn:epc:id:sgtin:6161102974997.9PNH10A.46",
+              "code": "INVALID_GS1_IDENTIFIER",
+              "errors": [
+                {
+                  "path": "epcisBody.eventList[1].epcList[1]",
+                  "message": "SGTIN company prefix must be 6–12 digits"
+                }
+              ],
+              "message": "SGTIN company prefix must be 6–12 digits",
+              "event_id": "urn:uuid:aaabadd2-6609-40ad-8079-c4260c41a5d3",
+              "http_status": 400
+            },
+            {
+              "epc": "urn:epc:id:sgtin:6161102974997.9PNH10A/47",
+              "code": "INVALID_GS1_IDENTIFIER",
+              "errors": [
+                {
+                  "path": "epcisBody.eventList[1].epcList[1]",
+                  "message": "SGTIN serial must be 1–20 GS1-permitted URI characters"
+                }
+              ],
+              "message": "SGTIN serial must be 1–20 GS1-permitted URI characters",
+              "event_id": "urn:uuid:fff8abe3-7882-41d0-8bd5-bff7615dc1c9",
+              "http_status": 400
+            },
+            {
+              "epc": "urn:epc:id:sgtin:6161102974997.9PNH10A.46",
+              "code": "INVALID_GS1_IDENTIFIER",
+              "errors": [
+                {
+                  "path": "epcisBody.eventList[1].childEPCs[1]",
+                  "message": "SGTIN company prefix must be 6–12 digits"
+                }
+              ],
+              "message": "SGTIN company prefix must be 6–12 digits",
+              "event_id": "urn:uuid:58d0417a-3f43-427e-8ed9-155ecd6372e9",
+              "http_status": 400
+            },
+            {
+              "epc": "urn:epc:id:sgtin:6161102974997.9PNH10A/47",
+              "code": "INVALID_GS1_IDENTIFIER",
+              "errors": [
+                {
+                  "path": "epcisBody.eventList[1].childEPCs[1]",
+                  "message": "SGTIN serial must be 1–20 GS1-permitted URI characters"
+                }
+              ],
+              "message": "SGTIN serial must be 1–20 GS1-permitted URI characters",
+              "event_id": "urn:uuid:ebf8ede2-fd87-47e1-8447-ad51790250af",
+              "http_status": 400
+            }
+          ],
+          "byte_size": 408,
+          "event_ids": [
+            "urn:uuid:cd75e6f7-89bd-4702-8c2a-57de02f4598d",
+            "urn:uuid:8e8fc71c-9ccc-41f8-899c-0a8f60e0988e",
+            "urn:uuid:89647c97-3ee8-4c37-874d-28553c25fe23",
+            "urn:uuid:657d04c0-2867-47da-82db-912cd80484d5",
+            "urn:uuid:5a4801d0-3e36-4423-8214-30f65a0fd81c",
+            "urn:uuid:beb97605-d126-4d43-874c-bb146ee82f5d",
+            "urn:uuid:177e4f6d-8eab-4f8c-8843-cc7f59d4dab6",
+            "urn:uuid:0661dc7b-9696-4cc6-8f94-6ec297881f22",
+            "urn:uuid:e99f5ca8-5f70-4dd9-8388-e83f747cce0a",
+            "urn:uuid:ccdcecea-ef94-40a7-863a-bbdc332c867c",
+            "urn:uuid:6ebff622-9802-4dbd-8582-f4cc7ea1cb0d"
+          ],
+          "event_count": 15,
+          "content_type": "text/csv",
+          "accepted_count": 11,
+          "estimated_epcs": 15,
+          "rejected_count": 4,
+          "events_processed": 11,
+          "parse_rejected_count": 0
+        },
+        "accepted_at": "2026-11-12T08:12:04.315Z",
+        "updated_at": "2026-11-12T08:12:05.273Z",
+        "completed_at": "2026-11-12T08:12:05.273Z",
+        "endpoint": "/partners/hierarchy-bulk/csv-import/async"
+      },
+      "pageText": "Upload Manufacturer partners can submit EPCIS XML or hierarchy Bulk CSV for asynchronous validation and ingest. Outcomes appear here and under Async submissions. Supported limits Now: Hierarchy Bulk CSV (.csv) → manufacturer commissioning + aggregation events (partial) Also available: EPCIS 1.2 XML — switch to XML mode Coming later: JSON-LD (.json, .jsonld) Max size 10.00 MB Processing: async (session auth — no API key paste) Hierarchy Bulk CSV XML available CSV available JSON-LD soon Download CSV template Drop a .csv file here, or click to browse Max 10.00 MB · Hierarchy Bulk CSV (batches → cases → packages) H04_9PNH10A.csv 408 B Upload CSV Live status succeeded Correlation ID 8b945c7e-4037-4b86-9ccf-67f297dc1a62 Events (accepted / rejected) 11 / 4 Partial · 11 event(s) accepted · 4 rejected INVALID_GS1_IDENTIFIER · urn:uuid:aaabadd2-6609-40ad-8079-c4260c41a5d3 SGTIN company prefix must be 6–12 digits INVALID_GS1_IDENTIFIER · urn:uuid:fff8abe3-7882-41d0-8bd5-bff7615dc1c9 SGTIN serial must be 1–20 GS1-permitted URI characters INVALID_GS1_IDENTIFIER · urn:uuid:58d0417a-3f43-427e-8ed9-155ecd6372e9 SGTIN company prefix must be 6–12 digits INVALID_GS1_IDENTIFIER · urn:uuid:ebf8ede2-fd87-47e1-8447-ad51790250af SGTIN serial must be 1–20 GS1-permitted URI characters Download rejected CSV Refresh status National Track & Trace System — Partner Portal Need help? Contact trackandtrace@apeiro.digital",
+      "rejectedRowsFile": "H04-rejected-rows.csv",
+      "stored": [
+        {
+          "batch": "B9PNH10A04001",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A04002",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A04003",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A04004",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A04005",
+          "found": false
+        }
+      ]
+    },
+    {
+      "id": "H14a",
+      "finding": "B",
+      "what": "Placeholder serials 0, NA, DUMMY",
+      "expect": "rejected as placeholders (not stored as serials)",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-hierarchy\\H14a_9PNH10A.csv",
+      "rows": 3,
+      "batches": [
+        "B9PNH10A14A0",
+        "B9PNH10A14A1",
+        "B9PNH10A14A2"
+      ],
+      "serials": [
+        "0",
+        "NA",
+        "DUMMY"
+      ],
+      "upload": {
+        "status": 400,
+        "body": "{\"error\":\"no_valid_rows\",\"message\":\"No valid hierarchy CSV rows to import.\",\"invalid\":{\"count\":3,\"rows\":[{\"row_index\":2,\"row\":{\"gtin\":\"6161102974997\",\"batch_no\":\"B9PNH10A14A0\",\"expiry\":\"2028-12-31\",\"serial_numbers\":\"0\",\"case_group\":\"C14A0\",\"package_group\":\"P14A0\",\"case_sscc\":\"\",\"package_sscc\":\"\"},\"errors\":[\"Serial number \\\"0\\\" is a reserved placeholder and cannot be commissioned.\"]},{\"row_index\":3,\"row\":{\"gtin\":\"6161102974997\",\"batch_no\":\"B9PNH10A14A1\",\"expiry\":\"2028-12-31\",\"serial_numbers\":\"NA\",\"case_group\":\"C14A1\",\"package_group\":\"P14A1\",\"case_sscc\":\"\",\"package_sscc\":\"\"},\"errors\":[\"Serial number \\\"NA\\\" is a reserved placeholder and cannot be commissioned.\"]},{\"row_index\":4,\"row\":{\"gtin\":\"6161102974997\",\"batch_no\":\"B9PNH10A14A2\",\"expiry\":\"2028-12-31\",\"serial_numbers\":\"DUMMY\",\"case_group\":\"C14A2\",\"package_group\":\"P14A2\",\"case_sscc\":\"\",\"package_sscc\":\"\"},\"errors\":[\"Serial number \\\"DUMMY\\\" is a reserved placeholder and cannot be commissioned.\"]}]}}"
+      },
+      "requestId": null,
+      "pageText": "Upload Manufacturer partners can submit EPCIS XML or hierarchy Bulk CSV for asynchronous validation and ingest. Outcomes appear here and under Async submissions. Supported limits Now: Hierarchy Bulk CSV (.csv) → manufacturer commissioning + aggregation events (partial) Also available: EPCIS 1.2 XML — switch to XML mode Coming later: JSON-LD (.json, .jsonld) Max size 10.00 MB Processing: async (session auth — no API key paste) Hierarchy Bulk CSV XML available CSV available JSON-LD soon Download CSV template Drop a .csv file here, or click to browse Max 10.00 MB · Hierarchy Bulk CSV (batches → cases → packages) H14a_9PNH10A.csv 255 B No valid hierarchy CSV rows to import. Upload CSV National Track & Trace System — Partner Portal Need help? Contact trackandtrace@apeiro.digital",
+      "stored": [
+        {
+          "batch": "B9PNH10A14A0",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A14A1",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A14A2",
+          "found": false
+        }
+      ]
+    },
+    {
+      "id": "H14b",
+      "finding": "B",
+      "what": "Placeholder serials never used before: TBC, SAMPLE, BLANK, NOSERIAL, 999999",
+      "expect": "rejected as placeholders (not stored as serials)",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-hierarchy\\H14b_9PNH10A.csv",
+      "rows": 5,
+      "batches": [
+        "B9PNH10A14B0",
+        "B9PNH10A14B1",
+        "B9PNH10A14B2",
+        "B9PNH10A14B3",
+        "B9PNH10A14B4"
+      ],
+      "serials": [
+        "TBC",
+        "SAMPLE",
+        "BLANK",
+        "NOSERIAL",
+        "999999"
+      ],
+      "upload": {
+        "status": 202,
+        "body": "{\"async\":true,\"accepted\":true,\"correlation_id\":\"138d4c0f-0f82-42ec-8a14-73016688732b\",\"request_id\":\"138d4c0f-0f82-42ec-8a14-73016688732b\",\"status_url\":\"/partners/hierarchy-bulk/csv-import/status/138d4c0f-0f82-42ec-8a14-73016688732b\",\"message\":\"Hierarchy Bulk CSV accepted for asynchronous manufacturer event processing. Poll status_url.\",\"estimated_epcs\":15,\"event_count\":15,\"parse_rejected_count\":0}"
+      },
+      "requestId": "138d4c0f-0f82-42ec-8a14-73016688732b",
+      "final": {
+        "correlation_id": "138d4c0f-0f82-42ec-8a14-73016688732b",
+        "status": "succeeded",
+        "result_http_status": 207,
+        "partial": true,
+        "event_ids": [
+          "urn:uuid:18ed1118-96b5-4e1b-8342-a4e5dd05db2e",
+          "urn:uuid:96ab495c-c4aa-4bb9-8a68-de9179db1ad7",
+          "urn:uuid:25289708-4a19-432e-84ed-4a8ecd9c118a",
+          "urn:uuid:0eda7784-13da-406b-8fa8-794bf89b1f8e",
+          "urn:uuid:ad0b0e16-9a3c-4c26-82e8-06f41e8cd114",
+          "urn:uuid:593ce159-e598-46bd-8545-1c4e0967ca97",
+          "urn:uuid:bbb65d94-8672-4c02-8547-eac45af2c60c",
+          "urn:uuid:70b73761-3f29-4cde-884d-e0212d36da7a",
+          "urn:uuid:8a5f2f67-f746-492e-85d7-27ee20b13293",
+          "urn:uuid:b366e55a-f397-438e-85f1-2d282f792917"
+        ],
+        "rejected": [
+          {
+            "epc": "urn:epc:id:sgtin:6161102974997.TBC",
+            "code": "DUPLICATE_EVENT_PAYLOAD",
+            "message": "Duplicate matrix key EPC+bizStep:78e22a55684380193361a988404cdbfdf7e59790fafc02ceeaa79505e3045c4b for bizStep=commissioning disposition=active",
+            "event_id": "urn:uuid:a80eb4ae-4bc0-41d7-836a-b80da1879e72",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sgtin:6161102974997.SAMPLE",
+            "code": "DUPLICATE_EVENT_PAYLOAD",
+            "message": "Duplicate matrix key EPC+bizStep:d5f3a06135b3f7bb37aa37aaa6aed5b5edb5ef8e5cfd063a2c317a2c6677a46c for bizStep=commissioning disposition=active",
+            "event_id": "urn:uuid:1ebfa54d-06ae-4bb1-813e-fa8562437dea",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sgtin:6161102974997.BLANK",
+            "code": "DUPLICATE_EVENT_PAYLOAD",
+            "message": "Duplicate matrix key EPC+bizStep:b633009c874d3b41f85692bf2695da331939896e7ade6bf90b4a49d907735f73 for bizStep=commissioning disposition=active",
+            "event_id": "urn:uuid:ded24c6c-36fc-427d-8bef-3e7efd4b58b6",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sgtin:6161102974997.NOSERIAL",
+            "code": "DUPLICATE_EVENT_PAYLOAD",
+            "message": "Duplicate matrix key EPC+bizStep:08025a6e20e6363f30879b36064262630eb2e4bcdecb86d880c8ef461f63da68 for bizStep=commissioning disposition=active",
+            "event_id": "urn:uuid:f8e00222-7e67-406e-8a53-65a0ba3bad11",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sgtin:6161102974997.999999",
+            "code": "DUPLICATE_EVENT_PAYLOAD",
+            "message": "Duplicate matrix key EPC+bizStep:72faa914cd19abd5bb49fcae2c029f2b64a54f5462f6ee496b2794044800ff3d for bizStep=commissioning disposition=active",
+            "event_id": "urn:uuid:5c038e71-4771-4bb1-8b7c-007e7b650279",
+            "http_status": 409
+          }
+        ],
+        "accepted_count": 10,
+        "rejected_count": 5,
+        "error_code": null,
+        "error_message": null,
+        "result_summary": {
+          "message": "EPCIS events accepted",
+          "partial": true,
+          "success": true,
+          "rejected": [
+            {
+              "epc": "urn:epc:id:sgtin:6161102974997.TBC",
+              "code": "DUPLICATE_EVENT_PAYLOAD",
+              "message": "Duplicate matrix key EPC+bizStep:78e22a55684380193361a988404cdbfdf7e59790fafc02ceeaa79505e3045c4b for bizStep=commissioning disposition=active",
+              "event_id": "urn:uuid:a80eb4ae-4bc0-41d7-836a-b80da1879e72",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sgtin:6161102974997.SAMPLE",
+              "code": "DUPLICATE_EVENT_PAYLOAD",
+              "message": "Duplicate matrix key EPC+bizStep:d5f3a06135b3f7bb37aa37aaa6aed5b5edb5ef8e5cfd063a2c317a2c6677a46c for bizStep=commissioning disposition=active",
+              "event_id": "urn:uuid:1ebfa54d-06ae-4bb1-813e-fa8562437dea",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sgtin:6161102974997.BLANK",
+              "code": "DUPLICATE_EVENT_PAYLOAD",
+              "message": "Duplicate matrix key EPC+bizStep:b633009c874d3b41f85692bf2695da331939896e7ade6bf90b4a49d907735f73 for bizStep=commissioning disposition=active",
+              "event_id": "urn:uuid:ded24c6c-36fc-427d-8bef-3e7efd4b58b6",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sgtin:6161102974997.NOSERIAL",
+              "code": "DUPLICATE_EVENT_PAYLOAD",
+              "message": "Duplicate matrix key EPC+bizStep:08025a6e20e6363f30879b36064262630eb2e4bcdecb86d880c8ef461f63da68 for bizStep=commissioning disposition=active",
+              "event_id": "urn:uuid:f8e00222-7e67-406e-8a53-65a0ba3bad11",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sgtin:6161102974997.999999",
+              "code": "DUPLICATE_EVENT_PAYLOAD",
+              "message": "Duplicate matrix key EPC+bizStep:72faa914cd19abd5bb49fcae2c029f2b64a54f5462f6ee496b2794044800ff3d for bizStep=commissioning disposition=active",
+              "event_id": "urn:uuid:5c038e71-4771-4bb1-8b7c-007e7b650279",
+              "http_status": 409
+            }
+          ],
+          "byte_size": 381,
+          "event_ids": [
+            "urn:uuid:18ed1118-96b5-4e1b-8342-a4e5dd05db2e",
+            "urn:uuid:96ab495c-c4aa-4bb9-8a68-de9179db1ad7",
+            "urn:uuid:25289708-4a19-432e-84ed-4a8ecd9c118a",
+            "urn:uuid:0eda7784-13da-406b-8fa8-794bf89b1f8e",
+            "urn:uuid:ad0b0e16-9a3c-4c26-82e8-06f41e8cd114",
+            "urn:uuid:593ce159-e598-46bd-8545-1c4e0967ca97",
+            "urn:uuid:bbb65d94-8672-4c02-8547-eac45af2c60c",
+            "urn:uuid:70b73761-3f29-4cde-884d-e0212d36da7a",
+            "urn:uuid:8a5f2f67-f746-492e-85d7-27ee20b13293",
+            "urn:uuid:b366e55a-f397-438e-85f1-2d282f792917"
+          ],
+          "event_count": 15,
+          "content_type": "text/csv",
+          "accepted_count": 10,
+          "estimated_epcs": 15,
+          "rejected_count": 5,
+          "events_processed": 10,
+          "parse_rejected_count": 0
+        },
+        "accepted_at": "2026-11-12T08:12:23.557Z",
+        "updated_at": "2026-11-12T08:12:24.990Z",
+        "completed_at": "2026-11-12T08:12:24.990Z",
+        "endpoint": "/partners/hierarchy-bulk/csv-import/async"
+      },
+      "pageText": "Upload Manufacturer partners can submit EPCIS XML or hierarchy Bulk CSV for asynchronous validation and ingest. Outcomes appear here and under Async submissions. Supported limits Now: Hierarchy Bulk CSV (.csv) → manufacturer commissioning + aggregation events (partial) Also available: EPCIS 1.2 XML — switch to XML mode Coming later: JSON-LD (.json, .jsonld) Max size 10.00 MB Processing: async (session auth — no API key paste) Hierarchy Bulk CSV XML available CSV available JSON-LD soon Download CSV template Drop a .csv file here, or click to browse Max 10.00 MB · Hierarchy Bulk CSV (batches → cases → packages) H14b_9PNH10A.csv 381 B Upload CSV Live status succeeded Correlation ID 138d4c0f-0f82-42ec-8a14-73016688732b Events (accepted / rejected) 10 / 5 Partial · 10 event(s) accepted · 5 rejected DUPLICATE_EVENT_PAYLOAD · urn:uuid:a80eb4ae-4bc0-41d7-836a-b80da1879e72 Duplicate matrix key EPC+bizStep:78e22a55684380193361a988404cdbfdf7e59790fafc02ceeaa79505e3045c4b for bizStep=commissioning disposition=active DUPLICATE_EVENT_PAYLOAD · urn:uuid:1ebfa54d-06ae-4bb1-813e-fa8562437dea Duplicate matrix key EPC+bizStep:d5f3a06135b3f7bb37aa37aaa6aed5b5edb5ef8e5cfd063a2c317a2c6677a46c for bizStep=commissioning disposition=active DUPLICATE_EVENT_PAYLOAD · urn:uuid:ded24c6c-36fc-427d-8bef-3e7efd4b58b6 Duplicate matrix key EPC+bizStep:b633009c874d3b41f85692bf2695da331939896e7ade6bf90b4a49d907735f73 for bizStep=commissioning disposition=active DUPLICATE_EVENT_PAYLOAD · urn:uuid:f8e00222-7e67-406e-8a53-65a0ba3bad11 Duplicate matrix key EPC+bizStep:08025a6e20e6363f30879b36064262630eb2e4bcdecb86d880c8ef461f63da68 for bizStep=commissioning disposition=active DUPLICATE_EVENT_PAYLOAD · urn:uuid:5c038e71-4771-4bb1-8b7c-007e7b650279 Duplicate matrix key EPC+bizStep:72faa914cd19abd5bb49fcae2c029f2b64a54f5462f6ee496b2794044800ff3d for bizStep=commissioning disposition=active Download rejected CSV Refresh status National Track & Trace System — Partner Portal Need help? Contact trackandtrace@apeiro.digital",
+      "rejectedRowsFile": "H14b-rejected-rows.csv",
+      "stored": [
+        {
+          "batch": "B9PNH10A14B0",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A14B1",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A14B2",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A14B3",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10A14B4",
+          "found": false
+        }
+      ]
+    },
+    {
+      "id": "HC",
+      "finding": "C",
+      "what": "Mixed/upper-case serials Ab9PNH10Ac1, UP9PNH10AC2, MiXeD9PNH10A3",
+      "expect": "accepted, stored exactly as sent",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-hierarchy\\HC_9PNH10A.csv",
+      "rows": 3,
+      "batches": [
+        "B9PNH10ACA001",
+        "B9PNH10ACA002",
+        "B9PNH10ACA003"
+      ],
+      "serials": [
+        "Ab9PNH10Ac1",
+        "UP9PNH10AC2",
+        "MiXeD9PNH10A3"
+      ],
+      "upload": {
+        "status": 202,
+        "body": "{\"async\":true,\"accepted\":true,\"correlation_id\":\"5cf024b5-c9eb-40fc-a635-f5d53fff616c\",\"request_id\":\"5cf024b5-c9eb-40fc-a635-f5d53fff616c\",\"status_url\":\"/partners/hierarchy-bulk/csv-import/status/5cf024b5-c9eb-40fc-a635-f5d53fff616c\",\"message\":\"Hierarchy Bulk CSV accepted for asynchronous manufacturer event processing. Poll status_url.\",\"estimated_epcs\":9,\"event_count\":9,\"parse_rejected_count\":0}"
+      },
+      "requestId": "5cf024b5-c9eb-40fc-a635-f5d53fff616c",
+      "final": {
+        "correlation_id": "5cf024b5-c9eb-40fc-a635-f5d53fff616c",
+        "status": "succeeded",
+        "result_http_status": 200,
+        "partial": false,
+        "event_ids": [
+          "urn:uuid:f7510ddd-ae3f-46e6-80f7-c2911237d72d",
+          "urn:uuid:9e152532-778d-4c5f-813f-4922cb1e776b",
+          "urn:uuid:8d3904a9-7b95-4097-8d09-dc081569c330",
+          "urn:uuid:ff4900eb-cb80-471b-8a0a-9b52fe268871",
+          "urn:uuid:1d9a8cc8-1bbc-4bd3-848c-e41746c80071",
+          "urn:uuid:e280e1dc-ec6f-498a-86b8-501b11baa6b4",
+          "urn:uuid:c9e67337-5941-42bd-81a6-018c6ca21751",
+          "urn:uuid:8b828843-8708-406f-8cd0-7ff8f6ea259e",
+          "urn:uuid:0be3f136-e5d4-4a00-8629-941f70de26c2"
+        ],
+        "rejected": [],
+        "accepted_count": 9,
+        "rejected_count": 0,
+        "error_code": null,
+        "error_message": null,
+        "result_summary": {
+          "message": "EPCIS events accepted",
+          "partial": false,
+          "success": true,
+          "rejected": [],
+          "byte_size": 279,
+          "event_ids": [
+            "urn:uuid:f7510ddd-ae3f-46e6-80f7-c2911237d72d",
+            "urn:uuid:9e152532-778d-4c5f-813f-4922cb1e776b",
+            "urn:uuid:8d3904a9-7b95-4097-8d09-dc081569c330",
+            "urn:uuid:ff4900eb-cb80-471b-8a0a-9b52fe268871",
+            "urn:uuid:1d9a8cc8-1bbc-4bd3-848c-e41746c80071",
+            "urn:uuid:e280e1dc-ec6f-498a-86b8-501b11baa6b4",
+            "urn:uuid:c9e67337-5941-42bd-81a6-018c6ca21751",
+            "urn:uuid:8b828843-8708-406f-8cd0-7ff8f6ea259e",
+            "urn:uuid:0be3f136-e5d4-4a00-8629-941f70de26c2"
+          ],
+          "event_count": 9,
+          "content_type": "text/csv",
+          "accepted_count": 9,
+          "estimated_epcs": 9,
+          "rejected_count": 0,
+          "events_processed": 9,
+          "parse_rejected_count": 0
+        },
+        "accepted_at": "2026-11-12T08:12:39.374Z",
+        "updated_at": "2026-11-12T08:12:40.470Z",
+        "completed_at": "2026-11-12T08:12:40.470Z",
+        "endpoint": "/partners/hierarchy-bulk/csv-import/async"
+      },
+      "pageText": "Upload Manufacturer partners can submit EPCIS XML or hierarchy Bulk CSV for asynchronous validation and ingest. Outcomes appear here and under Async submissions. Supported limits Now: Hierarchy Bulk CSV (.csv) → manufacturer commissioning + aggregation events (partial) Also available: EPCIS 1.2 XML — switch to XML mode Coming later: JSON-LD (.json, .jsonld) Max size 10.00 MB Processing: async (session auth — no API key paste) Hierarchy Bulk CSV XML available CSV available JSON-LD soon Download CSV template Drop a .csv file here, or click to browse Max 10.00 MB · Hierarchy Bulk CSV (batches → cases → packages) HC_9PNH10A.csv 279 B Upload CSV Live status succeeded Correlation ID 5cf024b5-c9eb-40fc-a635-f5d53fff616c Events (accepted / rejected) 9 / 0 Succeeded · 9 event(s) accepted Refresh status National Track & Trace System — Partner Portal Need help? Contact trackandtrace@apeiro.digital",
+      "stored": [
+        {
+          "batch": "B9PNH10ACA001",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10ACA002",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10ACA003",
+          "found": false
+        }
+      ]
+    },
+    {
+      "id": "HC2",
+      "finding": "C",
+      "what": "The same three serials in lower case, new batches",
+      "expect": "accepted (different serials: GS1 serials are case-sensitive); a duplicate rejection means case is still folded",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-hierarchy\\HC2_9PNH10A.csv",
+      "rows": 3,
+      "batches": [
+        "B9PNH10ACB001",
+        "B9PNH10ACB002",
+        "B9PNH10ACB003"
+      ],
+      "serials": [
+        "ab9pnh10ac1",
+        "up9pnh10ac2",
+        "mixed9pnh10a3"
+      ],
+      "upload": {
+        "status": 202,
+        "body": "{\"async\":true,\"accepted\":true,\"correlation_id\":\"a241a59f-3c1a-43c6-9b68-d3c980ab8b02\",\"request_id\":\"a241a59f-3c1a-43c6-9b68-d3c980ab8b02\",\"status_url\":\"/partners/hierarchy-bulk/csv-import/status/a241a59f-3c1a-43c6-9b68-d3c980ab8b02\",\"message\":\"Hierarchy Bulk CSV accepted for asynchronous manufacturer event processing. Poll status_url.\",\"estimated_epcs\":9,\"event_count\":9,\"parse_rejected_count\":0}"
+      },
+      "requestId": "a241a59f-3c1a-43c6-9b68-d3c980ab8b02",
+      "final": {
+        "correlation_id": "a241a59f-3c1a-43c6-9b68-d3c980ab8b02",
+        "status": "succeeded",
+        "result_http_status": 207,
+        "partial": true,
+        "event_ids": [
+          "urn:uuid:f9c990f8-8eca-4faa-8d9c-7f7ae6e02af9",
+          "urn:uuid:abecaf7b-45b5-4a06-8523-de921864ea5e",
+          "urn:uuid:3b030b52-f3d4-4238-8d7d-1cd857897aba",
+          "urn:uuid:cf93c475-1249-4f26-8f74-3fcf4aa6d287",
+          "urn:uuid:291e89a4-ae40-4638-8d3a-17e899751c25",
+          "urn:uuid:06df3977-5356-45ba-847d-32c7570cd8b2"
+        ],
+        "rejected": [
+          {
+            "epc": "urn:epc:id:sgtin:6161102974997.ab9pnh10ac1",
+            "code": "DUPLICATE_EVENT_PAYLOAD",
+            "message": "Duplicate matrix key EPC+bizStep:ae95f6551f57c0dc05c02fabbeb8ed7bebdce06ef79c71254f9d6409a5395d94 for bizStep=commissioning disposition=active",
+            "event_id": "urn:uuid:819e8c7a-f2d7-40d3-815d-05ffe2325b00",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sgtin:6161102974997.up9pnh10ac2",
+            "code": "DUPLICATE_EVENT_PAYLOAD",
+            "message": "Duplicate matrix key EPC+bizStep:54ae5c8dbdb9b17be9f7f9236be5d61d8a682120a32a2406cc8b0fc120eb4ac5 for bizStep=commissioning disposition=active",
+            "event_id": "urn:uuid:1e137451-416c-4512-8464-b869bffc247d",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sgtin:6161102974997.mixed9pnh10a3",
+            "code": "DUPLICATE_EVENT_PAYLOAD",
+            "message": "Duplicate matrix key EPC+bizStep:e8b982c4a49068ded36fc84b60944121756f1f1a41870cbbfff6d5084bbe6d8f for bizStep=commissioning disposition=active",
+            "event_id": "urn:uuid:e969de21-a1ce-4ebd-88f4-2198b9be7c70",
+            "http_status": 409
+          }
+        ],
+        "accepted_count": 6,
+        "rejected_count": 3,
+        "error_code": null,
+        "error_message": null,
+        "result_summary": {
+          "message": "EPCIS events accepted",
+          "partial": true,
+          "success": true,
+          "rejected": [
+            {
+              "epc": "urn:epc:id:sgtin:6161102974997.ab9pnh10ac1",
+              "code": "DUPLICATE_EVENT_PAYLOAD",
+              "message": "Duplicate matrix key EPC+bizStep:ae95f6551f57c0dc05c02fabbeb8ed7bebdce06ef79c71254f9d6409a5395d94 for bizStep=commissioning disposition=active",
+              "event_id": "urn:uuid:819e8c7a-f2d7-40d3-815d-05ffe2325b00",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sgtin:6161102974997.up9pnh10ac2",
+              "code": "DUPLICATE_EVENT_PAYLOAD",
+              "message": "Duplicate matrix key EPC+bizStep:54ae5c8dbdb9b17be9f7f9236be5d61d8a682120a32a2406cc8b0fc120eb4ac5 for bizStep=commissioning disposition=active",
+              "event_id": "urn:uuid:1e137451-416c-4512-8464-b869bffc247d",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sgtin:6161102974997.mixed9pnh10a3",
+              "code": "DUPLICATE_EVENT_PAYLOAD",
+              "message": "Duplicate matrix key EPC+bizStep:e8b982c4a49068ded36fc84b60944121756f1f1a41870cbbfff6d5084bbe6d8f for bizStep=commissioning disposition=active",
+              "event_id": "urn:uuid:e969de21-a1ce-4ebd-88f4-2198b9be7c70",
+              "http_status": 409
+            }
+          ],
+          "byte_size": 279,
+          "event_ids": [
+            "urn:uuid:f9c990f8-8eca-4faa-8d9c-7f7ae6e02af9",
+            "urn:uuid:abecaf7b-45b5-4a06-8523-de921864ea5e",
+            "urn:uuid:3b030b52-f3d4-4238-8d7d-1cd857897aba",
+            "urn:uuid:cf93c475-1249-4f26-8f74-3fcf4aa6d287",
+            "urn:uuid:291e89a4-ae40-4638-8d3a-17e899751c25",
+            "urn:uuid:06df3977-5356-45ba-847d-32c7570cd8b2"
+          ],
+          "event_count": 9,
+          "content_type": "text/csv",
+          "accepted_count": 6,
+          "estimated_epcs": 9,
+          "rejected_count": 3,
+          "events_processed": 6,
+          "parse_rejected_count": 0
+        },
+        "accepted_at": "2026-11-12T08:12:54.249Z",
+        "updated_at": "2026-11-12T08:12:54.965Z",
+        "completed_at": "2026-11-12T08:12:54.965Z",
+        "endpoint": "/partners/hierarchy-bulk/csv-import/async"
+      },
+      "pageText": "Upload Manufacturer partners can submit EPCIS XML or hierarchy Bulk CSV for asynchronous validation and ingest. Outcomes appear here and under Async submissions. Supported limits Now: Hierarchy Bulk CSV (.csv) → manufacturer commissioning + aggregation events (partial) Also available: EPCIS 1.2 XML — switch to XML mode Coming later: JSON-LD (.json, .jsonld) Max size 10.00 MB Processing: async (session auth — no API key paste) Hierarchy Bulk CSV XML available CSV available JSON-LD soon Download CSV template Drop a .csv file here, or click to browse Max 10.00 MB · Hierarchy Bulk CSV (batches → cases → packages) HC2_9PNH10A.csv 279 B Upload CSV Live status succeeded Correlation ID a241a59f-3c1a-43c6-9b68-d3c980ab8b02 Events (accepted / rejected) 6 / 3 Partial · 6 event(s) accepted · 3 rejected DUPLICATE_EVENT_PAYLOAD · urn:uuid:819e8c7a-f2d7-40d3-815d-05ffe2325b00 Duplicate matrix key EPC+bizStep:ae95f6551f57c0dc05c02fabbeb8ed7bebdce06ef79c71254f9d6409a5395d94 for bizStep=commissioning disposition=active DUPLICATE_EVENT_PAYLOAD · urn:uuid:1e137451-416c-4512-8464-b869bffc247d Duplicate matrix key EPC+bizStep:54ae5c8dbdb9b17be9f7f9236be5d61d8a682120a32a2406cc8b0fc120eb4ac5 for bizStep=commissioning disposition=active DUPLICATE_EVENT_PAYLOAD · urn:uuid:e969de21-a1ce-4ebd-88f4-2198b9be7c70 Duplicate matrix key EPC+bizStep:e8b982c4a49068ded36fc84b60944121756f1f1a41870cbbfff6d5084bbe6d8f for bizStep=commissioning disposition=active Download rejected CSV Refresh status National Track & Trace System — Partner Portal Need help? Contact trackandtrace@apeiro.digital",
+      "rejectedRowsFile": "HC2-rejected-rows.csv",
+      "stored": [
+        {
+          "batch": "B9PNH10ACB001",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10ACB002",
+          "found": false
+        },
+        {
+          "batch": "B9PNH10ACB003",
+          "found": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+2b     CSV-02b_without_offset_row.csv -> 400 {"invalid":{"count":10,"rows":[{"row_index":3,"row":{"Event_Type":"COMMISSIONING","Identifier_Type":"SGTIN","GTIN":"6161102974997","Unit_ID":"SGQ50200002","Parent_ID":"","Packaging_Level":"Item","Even
+4b     CSV-04b_without_rejected_rows.csv -> 202 {"correlation_id":"08b12b8b-9d77-4d63-87d2-4a376387b6e8","status":"succeeded","result_http_status":200,"partial":false,"event_ids":["urn:uuid:2e2cc8d6-f4cb-4d89-806f-4dd409220880","urn:uuid:710c12a6-2
+5b     CSV-05b_without_rejected_rows.csv -> 400 {"message":"Invalid SSCC check digit for Unit_ID \"06164003510500008\". Fix the SSCC before import.","error":"Bad Request","statusCode":400}
+6b     CSV-06b_without_rejected_rows.csv -> 202 {"correlation_id":"b6df5d72-c2ce-4e5a-98ad-6dd3649b3014","status":"succeeded","result_http_status":200,"partial":false,"event_ids":["urn:uuid:ba408c3c-a33c-4b6d-8a4e-ad642afffb68","urn:uuid:056b59bb-c
+8b     CSV-08b_custodian_filled.csv -> 202 {"correlation_id":"74e41c57-2cff-49e0-addd-29f245b20de9","status":"succeeded","result_http_status":200,"partial":false,"event_ids":["urn:uuid:06b29114-f0fa-49f9-8677-6e322f9c1def","urn:uuid:9e81cbb0-a
+10b    CSV-10_after_shipping.csv -> 400 {"invalid":{"count":2,"rows":[{"row_index":2,"row":{"Event_Type":"SHIPPING","Identifier_Type":"SSCC","GTIN":"","Unit_ID":"061640035108000020","Parent_ID":"","Packaging_Level":"Package","Event_Timestam
+9b     CSV-09b_without_rejected_rows.csv -> 202 {"correlation_id":"c2b67c3b-618e-4793-8c87-87436b375ed3","status":"succeeded","result_http_status":200,"partial":false,"event_ids":["urn:uuid:f888b38d-5c2c-4dfe-8bb1-1db40b2707f9","urn:uuid:5f50fa3d-4
+13d    CSV-13d_without_inspection_row.csv -> 202 {"correlation_id":"2d8548ed-113a-4e63-af28-e0888b55b053","status":"succeeded","result_http_status":200,"partial":false,"event_ids":["urn:uuid:c5ad45d9-ccd2-4da8-8b4b-beacbaa5de8e","urn:uuid:55460afa-4
+14b    CSV-14b_placeholders_only.csv -> 202 {"correlation_id":"6321cb52-7fc5-42c9-bcf4-45d5bc2fc0c3","status":"failed","result_http_status":400,"partial":false,"rejected":[{"code":"DUPLICATE_EVENT_PAYLOAD","message":"Duplicate matrix key EPC+bi
+19b    CSV-19b_html_only.csv -> 202 {"correlation_id":"4da20bcc-ff54-479c-b5ce-acb346db584b","status":"failed","result_http_status":400,"partial":false,"error_code":"INVALID_JSON_STRUCTURE","error_message":"countryOfOrigin must be an IS
+
+Screenshots and results in c:\Users\Collins\Desktop\TnT\qa-testing-suite\Proof\partner

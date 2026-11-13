@@ -1,0 +1,290 @@
+h3. TL-1839 — QA test plan: Partner Portal API Log Enhancement
+
+*Build under test:* {{trackiq-core publish-db-nest-1.0.42-kafka}} · {{trackiq-kenya}} PR 52 (merged to demo) · branch {{TL-1839}}
+*Environment:* {{https://tnt-demo.apeiro-digital.com}}
+*Portal login:* {{/partners/login}}
+*API base:* {{https://tnt-demo.apeiro-digital.com}}
+*Auth header:* {{x-api-key}}
+*Endpoints exercised:*
+* {{POST /api/integration/manufacturer/events}}
+* {{POST /api/integration/supplier/events}}
+* {{POST /api/integration/facility/events}}
+* {{POST /api/integration/facility/events/dispense}}
+
+*Test levels:* L5 (Partner API — generate the traffic) then L4 (Portal UI — verify what the log viewer shows)
+
+h4. Preconditions
+# Two partner organisations with valid API keys (needed for the tenant-isolation cases).
+# One partner account with zero prior API calls (needed for the empty-state case).
+# Postman collections {{Kenya TNT - Partner API Partner}} and {{TnT-Bulk-5000-Events}}.
+# Each call's HTTP status, response body and send time recorded client-side before opening the portal, so portal display can be compared against ground truth.
+
+----
+
+h3. A. Request & response visibility
+
+h4. TC-01 — Successful event POST appears in API Logs with the request payload intact
+*Steps:*
+# Postman: {{POST /api/integration/manufacturer/events}} with a valid commissioning event and a valid {{x-api-key}}. Record HTTP status, response body and send time.
+# Portal: log in as the same partner, open API Logs.
+# Locate the newest entry and open it.
+*Expected:* Entry is present. The request payload displayed matches exactly what was sent — same {{eventID}}, same {{epcList}} serials, same lot/GTIN, same nesting. No fields dropped, injected or re-ordered.
+*Actual:*
+*Status:*
+{panel:title=Evidence — TC-01}
+_(screenshot)_
+{panel}
+
+h4. TC-02 — Response shown in the log matches what the client actually received
+*Steps:*
+# Using the TC-01 entry, compare the logged response against the Postman response.
+*Expected:* Identical HTTP status (202) and identical response body. No substitution of a generic success message for the real payload.
+*Actual:*
+*Status:*
+{panel:title=Evidence — TC-02}
+_(screenshot: portal log entry beside the Postman response)_
+{panel}
+
+h4. TC-03 — Failed call shows both the request and the real failure response
+*Steps:*
+# Re-POST the exact event from TC-01 to force a duplicate rejection (409).
+# Open the resulting log entry.
+*Expected:* Entry recorded as a failure. Request payload shown in full; response shows the genuine 409 and its body. The failure is not silently omitted from the list.
+*Actual:*
+*Status:*
+{panel:title=Evidence — TC-03}
+_(screenshot)_
+{panel}
+
+h4. TC-04 — Large payload renders without breaking the viewer
+*Steps:*
+# POST a 500-event document, and separately an event carrying 1,000 serials in one {{epcList}}.
+# Open each log entry and scroll the payload view.
+*Expected:* Viewer renders and scrolls; the page does not hang, blank out or time out. If the payload is truncated for display, the truncation is explicitly signposted and the full payload remains retrievable — silent truncation is a defect, because a partner debugging a bulk upload needs the whole body.
+*Actual:*
+*Status:*
+{panel:title=Evidence — TC-04}
+_(screenshot)_
+{panel}
+
+----
+
+h3. B. EPCIS event attachment
+
+h4. TC-05 — Attached EPCIS event matches the event submitted
+*Steps:*
+# Open the TC-01 log entry and view the attached EPCIS event.
+# Compare against the submitted event.
+*Expected:* {{eventID}}, {{bizStep}}, {{disposition}}, {{eventTime}}, {{epcList}} and {{bizLocation}} all match the submission. The attachment is the real stored event, not a re-render of the request body.
+*Actual:*
+*Status:*
+{panel:title=Evidence — TC-05}
+_(screenshot)_
+{panel}
+
+h4. TC-06 — Multi-event document attaches every event, not just the first
+*Steps:*
+# POST a document containing 10 events.
+# Open the log entry and enumerate the attached events.
+*Expected:* All 10 events are reachable from the single log entry and individually identifiable by {{eventID}}. The count shown matches the count submitted.
+*Actual:*
+*Status:*
+{panel:title=Evidence — TC-06}
+_(screenshot)_
+{panel}
+
+h4. TC-07 — Calls with no EPCIS event degrade gracefully
+*Steps:*
+# Make a call carrying no valid event — malformed JSON body, or an empty event list.
+# Open the log entry and look at the EPCIS section.
+*Expected:* An explicit "no event attached" state. Not a blank panel, a stuck spinner, an error toast or a crash.
+*Actual:*
+*Status:*
+{panel:title=Evidence — TC-07}
+_(screenshot)_
+{panel}
+
+----
+
+h3. C. Clean partner context
+
+h4. TC-08 — Required context fields are present and correct
+*Steps:*
+# Inspect a log entry's metadata.
+*Expected:* Environment, token/key identity, outcome (success or failure) and timestamp are all shown, and all four are correct for that call.
+*Actual:*
+*Status:*
+{panel:title=Evidence — TC-08}
+_(screenshot)_
+{panel}
+
+h4. TC-09 — Error messages are short, accurate and actionable across the failure range
+*Steps:* Trigger each case below, then read the error text in its log entry.
+||Case||Trigger||Expected status||Error text should say||
+|C09.1|Malformed JSON body|400|Body could not be parsed|
+|C09.2|No {{x-api-key}} header|401|Authentication missing|
+|C09.3|Wrong-role key (supplier key on manufacturer endpoint)|403|Not permitted for this endpoint or role|
+|C09.4|Duplicate {{eventID}}|409|Event already received|
+|C09.5|Schema violation / missing required field|422|Which field failed and why|
+*Expected:* Each message is one readable sentence naming the actual cause. No stack traces, no exception class names, no internal table or column names, no bare error codes without explanation.
+*Actual:*
+*Status:*
+{panel:title=Evidence — TC-09}
+_(screenshot: one per case, or a composite)_
+{panel}
+
+h4. TC-10 — Routing noise is genuinely gone
+*Steps:*
+# Inspect the list view and an expanded entry.
+*Expected:* Per the stated intent, no HTTP methods, no long raw URLs and no internal routing identifiers are surfaced to the partner. Cross-check that nothing a partner needs was removed along with the noise — the endpoint being called must still be identifiable in plain terms.
+*Actual:*
+*Status:*
+{panel:title=Evidence — TC-10}
+_(screenshot)_
+{panel}
+
+h4. TC-11 — Timestamps are correct in East Africa Time (regression guard, ref TL-1794)
+*Steps:*
+# Record the exact local send time of a call.
+# Compare against the timestamp shown in the portal.
+*Expected:* Displayed time equals the send time in EAT (UTC+3). No UTC labelled as local, no double offset, no drift. Timezone handling regressed previously under TL-1794, so this is checked explicitly rather than assumed.
+*Actual:*
+*Status:*
+{panel:title=Evidence — TC-11}
+_(screenshot: portal timestamp beside the client-side send time)_
+{panel}
+
+----
+
+h3. D. Support correlation — Request ID
+
+h4. TC-12 — Request ID is present and cleanly copyable
+*Steps:*
+# Open a log entry, use the copy control for the Request ID, paste into a text editor.
+*Expected:* Request ID present on every entry. Copy control works by mouse and by keyboard. The pasted value is the complete ID — no ellipsis, no truncation, no surrounding label text or stray whitespace.
+*Actual:*
+*Status:*
+{panel:title=Evidence — TC-12}
+_(screenshot)_
+{panel}
+
+h4. TC-13 — Request ID is unique per call and stable
+*Steps:*
+# Make three near-identical calls and collect all three Request IDs.
+# Refresh the portal and re-open each entry.
+*Expected:* Three distinct IDs; each unchanged after refresh and across sessions.
+*Actual:*
+*Status:*
+{panel:title=Evidence — TC-13}
+*Note:* If the API response also returns a correlation header such as {{x-request-id}}, confirm it equals the ID shown in the portal — that lets a partner quote the ID without logging in at all.
+{panel}
+
+h4. TC-14 — Request ID resolves to a full trace in the observability stack
+*Steps:*
+# Take one success ID and one failure ID.
+# Hand both to the dev/observability side and request the matching traces.
+*Expected:* Both IDs resolve to the full request log and trace with context. This is the core promise of the ticket — a partner quotes one ID and support finds the exact request — so it is verified end to end rather than inferred from the portal alone.
+*Actual:*
+*Status:*
+{panel:title=Evidence — TC-14}
+_(screenshot: portal Request ID plus the resolved trace)_
+{panel}
+
+----
+
+h3. E. Access control and data safety
+
+h4. TC-15 — A partner cannot see another partner's logs
+*Steps:*
+# Note a log entry belonging to Partner A.
+# Log in as Partner B, a different organisation, and open API Logs.
+# If an entry is addressable by ID or URL, attempt to open Partner A's entry directly as Partner B.
+*Expected:* Partner B sees only their own calls. Direct access to Partner A's entry is refused (403 or 404), not rendered. Any cross-tenant leak is a blocker regardless of every other result.
+*Actual:*
+*Status:*
+{panel:title=Evidence — TC-15}
+_(screenshot: both partners' log lists)_
+{panel}
+
+h4. TC-16 — No secrets are exposed in the log viewer
+*Steps:*
+# Inspect the request view, including any headers section, for a call made with a valid key.
+*Expected:* The {{x-api-key}} value is absent or masked. No passwords, bearer tokens or session cookies are rendered. "Token context" must mean an identifier or label for the key used, never the secret itself. Checked both in the rendered page and in the underlying API response behind it.
+*Actual:*
+*Status:*
+{panel:title=Evidence — TC-16}
+_(screenshot)_
+{panel}
+
+h4. TC-17 — Access to API Logs matches the role specification
+*Steps:*
+# For each portal role available within one organisation, open API Logs.
+*Expected:* Visibility matches spec. A role that should not reach API Logs sees no menu entry and is refused on direct navigation.
+*Actual:*
+*Status:*
+{panel:title=Evidence — TC-17}
+*Note:* Needs the intended role matrix confirmed — raised as an open question below.
+{panel}
+
+----
+
+h3. F. List behaviour, volume and regression
+
+h4. TC-18 — Empty state for a partner with no API calls
+*Steps:*
+# Log in as a partner that has never called the API and open API Logs.
+*Expected:* A clear empty state explaining there are no calls yet. Not a permanent spinner, not an error, not a blank page.
+*Actual:*
+*Status:*
+{panel:title=Evidence — TC-18}
+_(screenshot)_
+{panel}
+
+h4. TC-19 — List holds up under volume
+*Steps:*
+# Run the 5,000-event bulk collection against the partner.
+# Open API Logs, page through, sort and filter, and measure first-page load time.
+*Expected:* Ordering is newest-first and correct. Pagination, sorting and filtering return consistent results with no duplicated or skipped rows across pages. First page loads within an acceptable time rather than degrading as history grows.
+*Actual:*
+*Status:*
+{panel:title=Evidence — TC-19}
+_(screenshot)_
+{panel}
+
+h4. TC-20 — Rejected-authentication calls have defined logging behaviour
+*Steps:*
+# Call an endpoint with (a) no key, (b) a malformed key, (c) a revoked key.
+# Check whether and where each appears in API Logs.
+*Expected:* Behaviour is defined and consistent — either logged against the owning partner, or not logged at all. A call with an unrecognised key must never appear in another partner's log.
+*Actual:*
+*Status:*
+{panel:title=Evidence — TC-20}
+*Note:* Worth an explicit product decision: a partner debugging "my key stopped working" is helped most if these failures *are* visible to them.
+{panel}
+
+h4. TC-21 — No regression in the rest of the portal
+*Steps:*
+# After the merge, exercise partner login, batch creation ({{/manufacturer/batches}}), serial lookup and the partner dashboard.
+*Expected:* All unchanged and working.
+*Actual:*
+*Status:*
+{panel:title=Evidence — TC-21}
+*Note:* The GTIN-13 serial lookup defect on {{tnt-demo}} (13-digit-GTIN products returning {{UNKNOWN_SGTIN}}) is pre-existing and tracked separately — not a TL-1839 regression.
+{panel}
+
+----
+
+h3. Open questions before sign-off
+# *Role matrix (TC-17):* which portal roles are intended to see API Logs?
+# *Retention:* how long are API logs kept, and is there a documented limit to verify against?
+# *Bad-key visibility (TC-20):* should authentication failures be visible to the partner whose key was misused?
+# *Display truncation (TC-04):* is there a payload size cap for display, and what is the intended behaviour above it?
+
+h3. Evidence
+* Screenshots: attached inline per test case above
+* Raw API request/response captures: {{reports/TL-1839/}}
+* Jira: https://apeiro-digital.atlassian.net/browse/TL-1839
+
+h3. Verdict
+*Result:* _(to be completed on execution)_
+*Blockers:* _(a cross-tenant leak in TC-15 or secret exposure in TC-16 blocks release regardless of other results)_

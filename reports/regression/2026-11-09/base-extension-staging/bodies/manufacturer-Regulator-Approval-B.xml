@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<epcis:EPCISDocument xmlns:epcis="urn:epcglobal:epcis:xsd:1"
+  schemaVersion="1.2" creationDate="2026-11-09T06:53:53.062Z">
+  <EPCISBody><EventList>
+    <ObjectEvent>
+      <baseExtension>
+        <eventID>urn:uuid:ed1e0206-f435-4c77-bd22-7d983c268fa8</eventID>
+      </baseExtension>
+      <eventTime>2026-11-09T06:43:53.062Z</eventTime>
+      <eventTimeZoneOffset>+03:00</eventTimeZoneOffset>
+      <epcList>
+        <epc>urn:epc:id:sgtin:0614141.000111.42072330620005714</epc>
+        <epc>urn:epc:id:sgtin:0614141.000111.42072330620005856</epc>
+      </epcList>
+      <action>OBSERVE</action>
+      <bizStep>urn:epcglobal:cbv:bizstep:inspecting</bizStep>
+      <disposition>urn:epcglobal:cbv:disp:active</disposition>
+      <readPoint><id>urn:epc:id:sgln:0614141.00001.0</id></readPoint>
+      <bizLocation><id>urn:epc:id:sgln:0614141.00001.0</id></bizLocation>
+      <bizTransactionList>
+        <bizTransaction type="urn:epcglobal:cbv:btt:cert">
+          urn:epc:id:gdti:4012345.99999.RN-2026-0007
+        </bizTransaction>
+      </bizTransactionList>
+    </ObjectEvent>
+  </EventList></EPCISBody>
+</epcis:EPCISDocument>

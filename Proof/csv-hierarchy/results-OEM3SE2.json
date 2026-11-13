@@ -1,0 +1,2229 @@
+{
+  "at": "2026-11-13T07:53:05.596Z",
+  "run": "OEM3SE2",
+  "tests": [
+    {
+      "id": "H12",
+      "finding": "A",
+      "what": "100 rows, row 52 (data row 51) has Expiry \"not-a-date\"",
+      "expect": "partial: 99 accepted, the bad row rejected with its row number",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-hierarchy\\H12_OEM3SE2.csv",
+      "rows": 100,
+      "batches": [
+        "BOEM3SE212001",
+        "BOEM3SE212002",
+        "BOEM3SE212003",
+        "BOEM3SE212004",
+        "BOEM3SE212005",
+        "BOEM3SE212006",
+        "BOEM3SE212007",
+        "BOEM3SE212008",
+        "BOEM3SE212009",
+        "BOEM3SE212010",
+        "BOEM3SE212011",
+        "BOEM3SE212012",
+        "BOEM3SE212013",
+        "BOEM3SE212014",
+        "BOEM3SE212015",
+        "BOEM3SE212016",
+        "BOEM3SE212017",
+        "BOEM3SE212018",
+        "BOEM3SE212019",
+        "BOEM3SE212020",
+        "BOEM3SE212021",
+        "BOEM3SE212022",
+        "BOEM3SE212023",
+        "BOEM3SE212024",
+        "BOEM3SE212025",
+        "BOEM3SE212026",
+        "BOEM3SE212027",
+        "BOEM3SE212028",
+        "BOEM3SE212029",
+        "BOEM3SE212030",
+        "BOEM3SE212031",
+        "BOEM3SE212032",
+        "BOEM3SE212033",
+        "BOEM3SE212034",
+        "BOEM3SE212035",
+        "BOEM3SE212036",
+        "BOEM3SE212037",
+        "BOEM3SE212038",
+        "BOEM3SE212039",
+        "BOEM3SE212040",
+        "BOEM3SE212041",
+        "BOEM3SE212042",
+        "BOEM3SE212043",
+        "BOEM3SE212044",
+        "BOEM3SE212045",
+        "BOEM3SE212046",
+        "BOEM3SE212047",
+        "BOEM3SE212048",
+        "BOEM3SE212049",
+        "BOEM3SE212050",
+        "BOEM3SE212051",
+        "BOEM3SE212052",
+        "BOEM3SE212053",
+        "BOEM3SE212054",
+        "BOEM3SE212055",
+        "BOEM3SE212056",
+        "BOEM3SE212057",
+        "BOEM3SE212058",
+        "BOEM3SE212059",
+        "BOEM3SE212060",
+        "BOEM3SE212061",
+        "BOEM3SE212062",
+        "BOEM3SE212063",
+        "BOEM3SE212064",
+        "BOEM3SE212065",
+        "BOEM3SE212066",
+        "BOEM3SE212067",
+        "BOEM3SE212068",
+        "BOEM3SE212069",
+        "BOEM3SE212070",
+        "BOEM3SE212071",
+        "BOEM3SE212072",
+        "BOEM3SE212073",
+        "BOEM3SE212074",
+        "BOEM3SE212075",
+        "BOEM3SE212076",
+        "BOEM3SE212077",
+        "BOEM3SE212078",
+        "BOEM3SE212079",
+        "BOEM3SE212080",
+        "BOEM3SE212081",
+        "BOEM3SE212082",
+        "BOEM3SE212083",
+        "BOEM3SE212084",
+        "BOEM3SE212085",
+        "BOEM3SE212086",
+        "BOEM3SE212087",
+        "BOEM3SE212088",
+        "BOEM3SE212089",
+        "BOEM3SE212090",
+        "BOEM3SE212091",
+        "BOEM3SE212092",
+        "BOEM3SE212093",
+        "BOEM3SE212094",
+        "BOEM3SE212095",
+        "BOEM3SE212096",
+        "BOEM3SE212097",
+        "BOEM3SE212098",
+        "BOEM3SE212099",
+        "BOEM3SE212100"
+      ],
+      "serials": [
+        "SOEM3SE212001",
+        "SOEM3SE212002",
+        "SOEM3SE212003",
+        "SOEM3SE212004",
+        "SOEM3SE212005",
+        "SOEM3SE212006",
+        "SOEM3SE212007",
+        "SOEM3SE212008",
+        "SOEM3SE212009",
+        "SOEM3SE212010",
+        "SOEM3SE212011",
+        "SOEM3SE212012",
+        "SOEM3SE212013",
+        "SOEM3SE212014",
+        "SOEM3SE212015",
+        "SOEM3SE212016",
+        "SOEM3SE212017",
+        "SOEM3SE212018",
+        "SOEM3SE212019",
+        "SOEM3SE212020",
+        "SOEM3SE212021",
+        "SOEM3SE212022",
+        "SOEM3SE212023",
+        "SOEM3SE212024",
+        "SOEM3SE212025",
+        "SOEM3SE212026",
+        "SOEM3SE212027",
+        "SOEM3SE212028",
+        "SOEM3SE212029",
+        "SOEM3SE212030",
+        "SOEM3SE212031",
+        "SOEM3SE212032",
+        "SOEM3SE212033",
+        "SOEM3SE212034",
+        "SOEM3SE212035",
+        "SOEM3SE212036",
+        "SOEM3SE212037",
+        "SOEM3SE212038",
+        "SOEM3SE212039",
+        "SOEM3SE212040",
+        "SOEM3SE212041",
+        "SOEM3SE212042",
+        "SOEM3SE212043",
+        "SOEM3SE212044",
+        "SOEM3SE212045",
+        "SOEM3SE212046",
+        "SOEM3SE212047",
+        "SOEM3SE212048",
+        "SOEM3SE212049",
+        "SOEM3SE212050",
+        "SOEM3SE212051",
+        "SOEM3SE212052",
+        "SOEM3SE212053",
+        "SOEM3SE212054",
+        "SOEM3SE212055",
+        "SOEM3SE212056",
+        "SOEM3SE212057",
+        "SOEM3SE212058",
+        "SOEM3SE212059",
+        "SOEM3SE212060",
+        "SOEM3SE212061",
+        "SOEM3SE212062",
+        "SOEM3SE212063",
+        "SOEM3SE212064",
+        "SOEM3SE212065",
+        "SOEM3SE212066",
+        "SOEM3SE212067",
+        "SOEM3SE212068",
+        "SOEM3SE212069",
+        "SOEM3SE212070",
+        "SOEM3SE212071",
+        "SOEM3SE212072",
+        "SOEM3SE212073",
+        "SOEM3SE212074",
+        "SOEM3SE212075",
+        "SOEM3SE212076",
+        "SOEM3SE212077",
+        "SOEM3SE212078",
+        "SOEM3SE212079",
+        "SOEM3SE212080",
+        "SOEM3SE212081",
+        "SOEM3SE212082",
+        "SOEM3SE212083",
+        "SOEM3SE212084",
+        "SOEM3SE212085",
+        "SOEM3SE212086",
+        "SOEM3SE212087",
+        "SOEM3SE212088",
+        "SOEM3SE212089",
+        "SOEM3SE212090",
+        "SOEM3SE212091",
+        "SOEM3SE212092",
+        "SOEM3SE212093",
+        "SOEM3SE212094",
+        "SOEM3SE212095",
+        "SOEM3SE212096",
+        "SOEM3SE212097",
+        "SOEM3SE212098",
+        "SOEM3SE212099",
+        "SOEM3SE212100"
+      ],
+      "upload": {
+        "status": 202,
+        "body": "{\"async\":true,\"accepted\":true,\"correlation_id\":\"43c011c6-8da4-443d-8996-3fc1d209916a\",\"request_id\":\"43c011c6-8da4-443d-8996-3fc1d209916a\",\"status_url\":\"/partners/hierarchy-bulk/csv-import/status/43c011c6-8da4-443d-8996-3fc1d209916a\",\"message\":\"Hierarchy Bulk CSV accepted for asynchronous manufacturer event processing. Poll status_url.\",\"estimated_epcs\":297,\"event_count\":297,\"parse_rejected_count\":1}"
+      },
+      "requestId": "43c011c6-8da4-443d-8996-3fc1d209916a",
+      "final": {
+        "correlation_id": "43c011c6-8da4-443d-8996-3fc1d209916a",
+        "status": "succeeded",
+        "result_http_status": 207,
+        "partial": true,
+        "event_ids": [
+          "urn:uuid:510b5cf3-bd41-41a0-8623-258deb8700a9",
+          "urn:uuid:020e4335-4814-4cc8-8289-2dc05fb0b97b",
+          "urn:uuid:144363c9-21c6-400c-8797-4baf0a63dc47",
+          "urn:uuid:971ebe1b-ad3e-4feb-85c3-57bb55950a6d",
+          "urn:uuid:04ecfc11-5c84-4f44-82bd-f3f66f52ba33",
+          "urn:uuid:53eadc95-1323-4dc7-8c81-39ecb93a2c75",
+          "urn:uuid:fe4731dc-5c4c-47fa-81d5-89aa3a3e84ee",
+          "urn:uuid:be9aa67d-cdbe-4ff1-889c-45416b2b804c",
+          "urn:uuid:9c693636-7bed-43f0-860a-ae8d47561e11",
+          "urn:uuid:411a5046-f708-4ffe-8663-6bfedcbe37bb",
+          "urn:uuid:f7af9b01-06db-49df-8836-e3d9f6b1c40e",
+          "urn:uuid:a2dfcd2b-aec4-4ea0-80c0-35a71b74c74f",
+          "urn:uuid:31c141c6-c2aa-440e-8aa4-7c5213545065",
+          "urn:uuid:b0d03a2f-8421-47a2-86a5-9e42c71e8de5",
+          "urn:uuid:43399c6e-8d64-4494-88b2-dd739bb76689",
+          "urn:uuid:8b1eaa30-797c-4d34-8e7f-eaa3dd865033",
+          "urn:uuid:48b4d4f5-cfd1-4e7d-86bb-3a42a388faa1",
+          "urn:uuid:8989bb44-b2c9-458d-8441-e08290eeb89a",
+          "urn:uuid:39c3adda-b9b5-44e0-8c7f-e3d8b48b47c4",
+          "urn:uuid:85fe67a9-bae2-4956-84eb-ef749e36bbf7",
+          "urn:uuid:2f99e4b1-05b6-4405-8957-297f9b47052a",
+          "urn:uuid:a5425b7b-52f2-4c52-8c19-e6cfd6329cf0",
+          "urn:uuid:e6088893-734e-4a66-8e88-6bd38938ceb8",
+          "urn:uuid:dd246348-a6f0-45c6-88fc-e60571e17e55",
+          "urn:uuid:5a9012e1-5ea8-4c37-89d1-86b8f8119023",
+          "urn:uuid:30d3b02a-8f08-4dad-878f-f70f55d10496",
+          "urn:uuid:e924cd81-8344-40b4-8e4c-a6737d618d1b",
+          "urn:uuid:74dbeff8-f5ce-4a95-82e9-ff9336b58cb9",
+          "urn:uuid:15e2b404-1045-4fc4-8eaa-06d27177aca6",
+          "urn:uuid:a81d9219-a264-4f8a-8cf4-bbb9dafa25c8",
+          "urn:uuid:c7a7ad87-9c91-4ed1-8b89-50d540546535",
+          "urn:uuid:b50d4ee2-f1bb-49f2-89f1-a583448362a2",
+          "urn:uuid:7d4a15f2-a63c-4f8a-8d8c-6c7dd2d36bd4",
+          "urn:uuid:ff3b780b-f40f-4d80-8178-55543d742572",
+          "urn:uuid:9f23c75c-1830-4785-8a2b-ee18473bf961",
+          "urn:uuid:6cfa7d15-38de-4059-8db8-3fe44ae3b782",
+          "urn:uuid:8de829af-be10-4721-8519-45af324991a4",
+          "urn:uuid:37c3eb1d-09e2-447a-80da-562eb11206c0",
+          "urn:uuid:bb52cb75-0434-4e28-8c5d-dc5e0ecfa37d",
+          "urn:uuid:44b315e3-1905-4e4e-87fd-78ee97775760",
+          "urn:uuid:6bf050d5-fa57-4ee7-82db-fc0e895e7109",
+          "urn:uuid:1d60ef36-4bb1-4d31-88be-6267b61f7af3",
+          "urn:uuid:b0617754-02af-496a-8ad3-ebbd4a599cfa",
+          "urn:uuid:367520f9-9347-4d01-817e-288275500426",
+          "urn:uuid:91da6658-bca3-4fa4-8c28-a8578a405f00",
+          "urn:uuid:1190414f-694e-4ca6-878d-2b420962d748",
+          "urn:uuid:9b336ee1-547d-4b92-82fe-cdc6ea70fc8e",
+          "urn:uuid:b4ffd992-5a5f-4642-8961-1259d3e77a7d",
+          "urn:uuid:db24c3d4-442b-4539-8a48-03854a70e0c1",
+          "urn:uuid:1fa2a793-7a9a-483b-828b-b8b576c73405",
+          "urn:uuid:5e2e43db-ab7c-4e05-8f9a-3b6703296e79",
+          "urn:uuid:87609ed0-035f-45f3-828e-0424935798a0",
+          "urn:uuid:51b435d8-46d6-4ea0-8173-1374d3d22068",
+          "urn:uuid:7df3284e-0868-45d4-8e7e-533506a8f16d",
+          "urn:uuid:3f6cc4bb-23b6-4d82-8090-de7f17c7a452",
+          "urn:uuid:4080a99a-15c2-4ba5-8615-2ad08d6f999c",
+          "urn:uuid:871d3aae-3071-4555-8c17-e50bdabe2a92",
+          "urn:uuid:65a118f7-9269-477e-86c1-b578bfbdee92",
+          "urn:uuid:4b72c2ae-1779-4d20-8efb-3465e28540cc",
+          "urn:uuid:ad76be3f-2961-46e2-8110-019c88587ed8",
+          "urn:uuid:612e31d3-dd13-4611-8bdc-9d89c68ecfb8",
+          "urn:uuid:0be08dc6-019a-447e-83e8-d037c8634dda",
+          "urn:uuid:6e842b1e-078d-446f-8884-2128c8895e52",
+          "urn:uuid:883d0f6d-49d0-4907-8267-53fc598ddf86",
+          "urn:uuid:83db1cb3-ce64-4ea7-82de-b5b28332f2e0",
+          "urn:uuid:930e4b7f-a4d3-40a1-86b7-48cea45bf9c1",
+          "urn:uuid:154e4de1-5604-4a89-85e7-92de99fbc1fc",
+          "urn:uuid:57213fea-6b57-4ca0-8810-80867584b4af",
+          "urn:uuid:f1640dea-7a64-454d-8a38-e557fd93c366",
+          "urn:uuid:7693fc7e-a1dd-4999-8b8c-ec9754136f23",
+          "urn:uuid:ca8d0633-0cc4-4ae6-82c5-65375dd9fa39",
+          "urn:uuid:7d66a95f-d31f-4959-81ba-2813566ddddc",
+          "urn:uuid:2ae97a81-7221-4bd9-842d-4c937bdbe681",
+          "urn:uuid:4c0031a1-da72-48c6-8f7c-2fb16811b5af",
+          "urn:uuid:9efd027a-5d9a-4082-84eb-78a905bc10a2",
+          "urn:uuid:f015fe85-fd35-48a0-8011-a92ffb74d2da",
+          "urn:uuid:386212b2-cbcb-4c77-8c90-3c7845a13f99",
+          "urn:uuid:7db11745-8094-4bb9-80ec-9360d9b8230e",
+          "urn:uuid:b4b45e75-eeab-4408-83fd-f36e9134ca3d",
+          "urn:uuid:4e26cceb-c435-4061-848a-987d4fdbaa3d",
+          "urn:uuid:de470abc-737b-4ff7-812f-0dfe8d65bfae",
+          "urn:uuid:1238d4c5-8018-45e7-8ba4-4ccba20e3eb8",
+          "urn:uuid:7c46e46d-736c-4cb0-8dc4-2301576a078c",
+          "urn:uuid:463058c4-7d85-4995-8656-d9c9739bd37c",
+          "urn:uuid:63fdd3a6-0e4d-40e4-8277-c1139d7c7ef0",
+          "urn:uuid:5192d83d-f5ca-48a1-8aa9-921561c74663",
+          "urn:uuid:52f66f2c-73b2-4961-89a2-174d7b0a3888",
+          "urn:uuid:f1f37a74-a2bc-4e65-841c-127fc8ce699d",
+          "urn:uuid:e22c7f47-1e67-4d83-8a91-a88a2f28f559",
+          "urn:uuid:2def4086-5274-4c69-8178-e10542fe2cdc",
+          "urn:uuid:950477be-3ce6-4019-877d-2a3a9a1616fa",
+          "urn:uuid:c3380c4a-31ee-4f0b-87be-47c1f26c008a",
+          "urn:uuid:704e9d34-7f9b-44b5-8ef6-9b1fcf4bf4cf",
+          "urn:uuid:c87565fe-d0de-4294-8074-bf882be8a759",
+          "urn:uuid:9ea6f0e2-7b19-40a3-8345-e2c744fbbf2c",
+          "urn:uuid:67a5fa8a-c94b-4b3c-8f61-efa9ec169c9e",
+          "urn:uuid:e258c184-880e-4166-8992-186db1bbd1de",
+          "urn:uuid:fa8bb2b3-dbc1-40ce-828b-f90fa48535eb",
+          "urn:uuid:1fd883da-408a-47e5-8d61-38b0313e0617",
+          "urn:uuid:6b09bf65-3fe4-41c1-8325-0008319e5a08",
+          "urn:uuid:81423bcf-a9b1-4da3-87c1-0593c4600fbb",
+          "urn:uuid:4ea7ebf2-fbe2-4ee8-81bc-e06993c3e267",
+          "urn:uuid:a3a139c9-4eb7-4841-8541-77ceead2df46",
+          "urn:uuid:1148d935-d5b8-4529-877d-05db8f769429",
+          "urn:uuid:b95863e5-8517-49e8-8f52-e3877962dd5c",
+          "urn:uuid:ed8a8d31-274f-46ea-8a8c-f3f3b31cb138",
+          "urn:uuid:3a66f2ba-4ebb-4e0f-8177-bba18bce41f9",
+          "urn:uuid:a29014bd-4a47-4d8d-8ce1-ce8ddc6f8784",
+          "urn:uuid:810f2dfd-5b54-4301-8c1c-512c45da8946",
+          "urn:uuid:320067a1-2532-49b6-8abb-e0ba244ef62b",
+          "urn:uuid:49ea367a-0bfa-4b5b-8840-822d8b0fe506",
+          "urn:uuid:b8cca277-7159-44de-8383-b47f09f11371",
+          "urn:uuid:47d7f60c-22a4-4efa-8cb1-bba80bab4bf2",
+          "urn:uuid:78ed50cf-62bc-46f8-895b-ab74b9680f26",
+          "urn:uuid:305e0bc6-f8cb-417e-8e40-0cb687d14a57",
+          "urn:uuid:bafdf44e-48f1-4adc-8419-43c382a7d349",
+          "urn:uuid:128d5a3c-4e18-4e79-87ea-3b17abbd49ff",
+          "urn:uuid:ef563ae4-c44a-4ecc-86b4-e62864d15cce",
+          "urn:uuid:8ec6ce2f-b512-4a1f-8a66-6be8e3c3ecd7",
+          "urn:uuid:71b9b5bf-42db-4031-8b9c-b6401e7c4900",
+          "urn:uuid:0ef9433f-1365-4f3d-8fe9-35c305188887",
+          "urn:uuid:56b49744-6318-45d9-85ff-34ae2f90ea5c",
+          "urn:uuid:e73647a9-e966-4d13-86fb-09a4f1d7eed8",
+          "urn:uuid:8df54283-a17e-4f5f-8bc6-8edcb390a1b8",
+          "urn:uuid:d886e7f3-7489-4f13-8c14-45c3d43e3e0d",
+          "urn:uuid:a94b6ae1-3896-495e-874e-4a8c0377ec37",
+          "urn:uuid:f293fbfb-683b-47b7-8805-642d7d2d2784",
+          "urn:uuid:cd3863ec-2871-40cd-8b43-7a4934536d2c",
+          "urn:uuid:848cf764-ccd2-4c4f-899a-67e123ebcfe1",
+          "urn:uuid:0d9aa2be-5b86-412b-8ef9-aafd101bc657",
+          "urn:uuid:b0509cad-8414-4a17-8282-fb497ae519f0",
+          "urn:uuid:dce4ee78-cc4e-4130-8fb7-bbefc0bcd757",
+          "urn:uuid:f5290c5a-a4bc-46d5-887d-453fdf442564",
+          "urn:uuid:58e5c456-fb46-4d07-83c1-a6122960523a",
+          "urn:uuid:94345dc4-fc78-40b5-88d5-145ac61b7bf2",
+          "urn:uuid:f76868b2-c3c6-4177-8260-d77faf0f2161",
+          "urn:uuid:b143bd72-8dcb-4ea7-8da0-5e2e81ffb561",
+          "urn:uuid:394cef13-661e-4c5a-898c-29b1e0666a28",
+          "urn:uuid:94c7fbfc-890f-497b-8f0a-7c1d861a4a13",
+          "urn:uuid:1bd94f6d-5f0b-4c27-893e-b794636e9044",
+          "urn:uuid:0a44cd9b-1958-4d7e-8891-6d39d17f3731",
+          "urn:uuid:80934352-7464-4842-81be-64389addabdb",
+          "urn:uuid:bf0ec633-50de-40bc-84e4-e2f50d8215d3",
+          "urn:uuid:a4caeb15-47b0-4349-827b-08af25f94f43",
+          "urn:uuid:b98d1c89-766e-4397-8a86-23418e5a93dd",
+          "urn:uuid:dc834e7f-9c59-40b8-846f-e41c53b0df9c",
+          "urn:uuid:5535a341-a1c0-4ee6-8c53-0aa1461d1b31",
+          "urn:uuid:176ae1f0-0145-4bfb-8fb0-c12a8d2ea000",
+          "urn:uuid:df2627f3-c0de-4a42-82b8-628768c80384",
+          "urn:uuid:6b0e41b4-85aa-4f37-829e-b3d41c8a693a",
+          "urn:uuid:313631b6-a3c5-4339-8b6d-a1151b71d192",
+          "urn:uuid:644fa793-10fa-44cd-8486-b4bbf69179d8",
+          "urn:uuid:42de00e9-f744-497c-81d3-39e5ec923ecd",
+          "urn:uuid:903e2f17-b075-476a-82cd-112a643669d6",
+          "urn:uuid:c630850b-da77-4771-8555-01b331451852",
+          "urn:uuid:144591f8-5382-49bc-8474-e51f2471c6db",
+          "urn:uuid:35068c58-fc18-42ae-8acb-39d46f3287f2",
+          "urn:uuid:30b158cc-ffc7-417a-8b13-2d73d8ab4925",
+          "urn:uuid:6993d73b-1283-4203-8b15-a42fbc9bf5ef",
+          "urn:uuid:61423fe2-1ab6-418a-81ec-31727a86722b",
+          "urn:uuid:1229fb92-999b-410b-8004-193da7aa71e0",
+          "urn:uuid:ba7843d3-aac8-4edd-8f7d-1a13fb0689d1",
+          "urn:uuid:fc681252-fe9f-442d-848f-d6b1f9bab93e",
+          "urn:uuid:62f2e710-d0f1-4ea5-8ac1-d3521a6def79",
+          "urn:uuid:11469bb9-443b-4272-864b-c941a1392ba6",
+          "urn:uuid:e3c98b96-eade-41c5-863e-a318c3a94aa5",
+          "urn:uuid:9b6b53e2-8019-4d04-82ed-d0c1c88acd2e",
+          "urn:uuid:d6ebd0da-5c74-4b31-80df-793a5ea7d465",
+          "urn:uuid:6b10618f-1c18-4a1f-83a7-73274397680b",
+          "urn:uuid:ca1e2d98-3600-4dad-8ccb-16954c26433c",
+          "urn:uuid:aec573f9-dcb7-431f-8ad6-f2582e94d19b",
+          "urn:uuid:a5b5ae2c-ef80-4f65-8363-6579bfbca8f1",
+          "urn:uuid:f90b167b-8bb5-43b4-8e36-5b51d3ce49ec",
+          "urn:uuid:0a462e37-2964-41d6-8fde-40ebe04e8399",
+          "urn:uuid:c0b7f1b1-0eb1-45a1-888e-cb7dcf56445c",
+          "urn:uuid:9daccfbf-52da-42fb-8b67-28692fea271b",
+          "urn:uuid:3e3f6420-5f61-4593-8d26-17b5645730f5",
+          "urn:uuid:a930904d-27ff-41f0-812a-d2a11903bff2",
+          "urn:uuid:f92ebfbd-9e9c-46f2-87ff-aceb2374b1e2",
+          "urn:uuid:89a9cdbb-0054-4f3a-8dfc-9a374c6c7f29",
+          "urn:uuid:224f6c02-5f7e-484f-8894-034a9b964787",
+          "urn:uuid:0da05d2e-6328-46c9-8987-620e1e45a236",
+          "urn:uuid:6fd747bb-6f2d-490f-8a06-39a6ca481e83",
+          "urn:uuid:6d9a0247-7410-429a-89a2-5612df668048",
+          "urn:uuid:e81b2f02-8fa4-4a8b-8b40-cde9f1a7c6d9",
+          "urn:uuid:3807a1c0-48af-483e-8100-cbda64685c06",
+          "urn:uuid:7c2bc7a8-b8b7-4194-8589-26164f8195a4",
+          "urn:uuid:1290a3d6-9309-4c07-8eda-1f94ce073766",
+          "urn:uuid:86fdadc6-d653-44d3-8cb9-8a0502cc1abf",
+          "urn:uuid:d6772246-ed68-4042-84c6-0acc12b113a9",
+          "urn:uuid:f9b7f9d8-3f27-4150-8cf7-1364d7846e57",
+          "urn:uuid:0c6e2252-878b-446c-8963-3ac7830d9db0",
+          "urn:uuid:43164370-6807-4a30-8e9e-0e108d7232eb",
+          "urn:uuid:21398314-8706-4c8f-80fc-6ce396f54671",
+          "urn:uuid:4bffe0bf-bcc3-419c-8e37-ced773640431",
+          "urn:uuid:0f8de3ff-73bc-477b-849a-bc197c5dde0c",
+          "urn:uuid:28e6ace5-b688-47d2-86fb-edb708cef862",
+          "urn:uuid:f040154f-c4cd-4dd1-8ed6-7ea6cca4f017",
+          "urn:uuid:3fce6404-746d-45d9-86ae-f7133d2b3c67",
+          "urn:uuid:a2775660-57cf-4f2b-808f-e3b8e0a0eb22",
+          "urn:uuid:cb186d90-886e-47fa-872d-bdaf56ae38ba",
+          "urn:uuid:b4f0331e-3808-4031-8868-663a2609ed64",
+          "urn:uuid:274e3245-cad8-4199-834e-55633877a371",
+          "urn:uuid:67d6b97d-0f61-4be5-8736-7b83af5d8d25",
+          "urn:uuid:3761df5d-9d53-4804-85a0-ad4239d17883",
+          "urn:uuid:ca1baac3-c3ca-47a2-81b1-e5136ed9887a",
+          "urn:uuid:95180c74-d500-4b95-81c3-bde0c54790ad",
+          "urn:uuid:53836ae8-427e-4a23-883b-c61f81220ff1",
+          "urn:uuid:1025654e-7a50-4297-8950-afa05196a54a",
+          "urn:uuid:2770b35b-96dc-42d6-847b-a4ed1ca40fc4",
+          "urn:uuid:5e60e7fc-68e6-4bbc-8b56-9b10f7be2920",
+          "urn:uuid:edec3f6d-88cb-4eca-8499-0b068dc97e94",
+          "urn:uuid:25526dbe-44e2-4aed-8a9f-4d91f5381c49",
+          "urn:uuid:01d0602b-202b-43e9-89dd-4b9d5d2109ac",
+          "urn:uuid:f7cd24fb-a737-4916-8bda-4fcc2cabb1a1",
+          "urn:uuid:0aa4c33e-eca4-4f52-8ff1-a1763f190740",
+          "urn:uuid:b4a4a58b-79c1-4fcb-81a0-1eca38a7a79a",
+          "urn:uuid:3108dd03-49c5-43e8-81f4-be1acc9fa64c",
+          "urn:uuid:0d2de89c-64ad-4e69-8217-1dfd2d75f32c",
+          "urn:uuid:6367fc98-37ed-4268-8732-75eaa27bc02a",
+          "urn:uuid:eac1e5d4-533c-4d54-8622-281098ac38a1",
+          "urn:uuid:b521a888-cc48-4ecc-8942-26fa68e02a06",
+          "urn:uuid:f547bbe0-e8ea-4872-8d8c-28cd08eba1c1",
+          "urn:uuid:493f092d-99d0-4a3d-87c4-ff924f27b608",
+          "urn:uuid:a5ff33a2-76b8-429c-8ea7-beb54975d4aa",
+          "urn:uuid:af811307-2808-4097-8fa1-003a07453b57",
+          "urn:uuid:9823a80c-4614-4502-8680-cd137f5e7fd4",
+          "urn:uuid:fc5521a2-8cb6-4570-811a-0241e9f586be",
+          "urn:uuid:92915cd6-d83b-45d1-84dd-9be69ae2f3fe",
+          "urn:uuid:8a46b1e4-7846-45ab-8a56-342087125e11",
+          "urn:uuid:e83ef9be-ae46-4a19-86f2-eab4401397ba",
+          "urn:uuid:92e77a03-064e-4726-8d62-63c6dee6a3e8",
+          "urn:uuid:79bf5b49-f6aa-4590-824c-585644115411",
+          "urn:uuid:948770ff-06be-40c1-891b-a862a5b7a4af",
+          "urn:uuid:a5d241bc-a5c4-4348-852a-f5c34b854637",
+          "urn:uuid:cbdbed4a-471d-4bb3-85d5-42b23ea0e0c3",
+          "urn:uuid:5f8d1b08-68f5-4bd9-8f4e-c95e307bb423",
+          "urn:uuid:34e4b7ac-21b4-4f1c-8a88-f7d164322e0e",
+          "urn:uuid:f2b27f26-8841-4885-8a1f-836c337818dd",
+          "urn:uuid:73ffd8cd-07e4-4e29-8801-788ee9ebbad8",
+          "urn:uuid:9c26b189-fd69-4942-8d12-fddb6b3b67bd",
+          "urn:uuid:a23481e4-ebbf-4987-86c5-0315939e047d",
+          "urn:uuid:5a438655-d561-4d57-8529-30a2ce9882fd",
+          "urn:uuid:8a4dd4ec-5c81-4fd2-86a0-57e0dab1d17c",
+          "urn:uuid:918a3922-eec4-41b1-8002-09adb83dad6e",
+          "urn:uuid:18562bc9-2b1a-4608-8c51-725396f01db4",
+          "urn:uuid:72f03df2-53a8-4d39-8e74-94c851bb4cb5",
+          "urn:uuid:05c24a6e-6aec-4562-8008-3c3cd2ac2989",
+          "urn:uuid:33a6e568-fd76-46a3-8e50-1eb719ce70f1",
+          "urn:uuid:aa978df5-43d8-4547-881b-a938b9d59393",
+          "urn:uuid:8430c5dd-7aa8-49e0-8425-b44e68447ec8",
+          "urn:uuid:2a3b4ba1-f205-4a4d-83eb-e4d729f83530",
+          "urn:uuid:b0b85992-c4a9-4cce-84fc-26abe36e9431",
+          "urn:uuid:5f56ab05-61e1-479c-80f5-8ac5b1a5b467",
+          "urn:uuid:7d6ce240-5477-4ebb-88b7-52f5950910c1",
+          "urn:uuid:cf17fedd-5382-41c5-8dfe-1e940b573f7c",
+          "urn:uuid:4e288bc3-94d4-48ef-848a-31efa27338bf",
+          "urn:uuid:5360c9e6-e3dd-4d3d-8102-25c34c8af512",
+          "urn:uuid:baaac215-d6e0-4db0-8f64-01200a5c7ea9",
+          "urn:uuid:456cb7e9-7d61-4f86-8042-7678b76505cb",
+          "urn:uuid:e0cd6d23-f4bf-4300-8e15-2e1b52332d70",
+          "urn:uuid:5dd0a132-7a81-4711-800b-fc6feadd51cf",
+          "urn:uuid:f5637217-df2e-423f-83ab-9b57cad7ca23",
+          "urn:uuid:26e94462-eb4c-4616-8dbd-aab9945d13f9",
+          "urn:uuid:b8dfdf0e-2bda-4eba-838b-f35ceaf5e525",
+          "urn:uuid:78fff232-214b-4a44-8655-5bc0217ae5c6",
+          "urn:uuid:d0bdbf51-d76a-48a3-81aa-9b77165f7393",
+          "urn:uuid:3dc055dc-0966-427e-8d77-8fa36a56eaab",
+          "urn:uuid:47cab0d8-36e7-466b-8f7d-fbbb0aa759e7",
+          "urn:uuid:5de4d47e-4498-4de3-8bf3-5c186aa7efb4",
+          "urn:uuid:cec349f8-9020-44a1-891a-9b8e9421da0e",
+          "urn:uuid:f3b50e87-e674-4e41-8c88-e0fd802889d1",
+          "urn:uuid:c574ca05-a76b-4c5c-80f8-289720f7d1fc",
+          "urn:uuid:0a60c0c1-4c9b-44c5-86d5-408f04b0353d",
+          "urn:uuid:9ca93e07-4f37-487d-8ab6-25877f899897",
+          "urn:uuid:b66ffe29-4402-465d-8ace-5da9abf2c123",
+          "urn:uuid:c494b43c-4b33-4364-86ab-a49f0ab8db9e",
+          "urn:uuid:6343cbeb-87f2-43a2-88c8-7fdebea0e4e4",
+          "urn:uuid:a1046d8c-ff4f-42aa-82a2-6349c795e6f2",
+          "urn:uuid:0259a570-b093-481f-878b-715f3ca9e40b",
+          "urn:uuid:6fbfdf8b-3766-4874-82b5-da76b7b15a6e",
+          "urn:uuid:395bf31b-35af-4be5-86f7-7c1a285f5049",
+          "urn:uuid:92138414-aa9e-4fa8-8ed5-26a987bdaa6d",
+          "urn:uuid:fc8bf524-3ae4-4af4-88db-a4aab472b7ec",
+          "urn:uuid:3eaf2c9d-d620-4142-8d3f-5af27a0cdc83",
+          "urn:uuid:10401012-2564-4744-8dce-d3d8d5c65384",
+          "urn:uuid:85cbe1e6-8d8d-4f7b-8857-d4f73c887d87",
+          "urn:uuid:854c6ba3-d469-4402-8143-4eec6f07f758",
+          "urn:uuid:e102e1f7-403b-46fe-89da-7c26747944e0",
+          "urn:uuid:deeda34b-a6bf-40b5-8cab-c5c46fdc3abd",
+          "urn:uuid:c1a28c42-5187-4bb2-8e45-34bc78dbf2ce",
+          "urn:uuid:a9272643-918c-41a9-8e74-9dff3dfffe19",
+          "urn:uuid:b3b2d167-41c4-42b3-80cd-fea64f5f7a0c",
+          "urn:uuid:e66db71b-ec63-4128-89e1-77d71e0b4895",
+          "urn:uuid:046ee596-481d-4982-861d-7d363b2fca49",
+          "urn:uuid:d9486be3-e5cf-495d-8408-22fb0ecaea89",
+          "urn:uuid:bebf2358-022f-4b16-84bb-f0b45d93e44d"
+        ],
+        "rejected": [
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "not-a-date",
+              "batch_no": "BOEM3SE212051",
+              "case_sscc": "",
+              "case_group": "C1251",
+              "package_sscc": "",
+              "package_group": "P1251",
+              "serial_numbers": "SOEM3SE212051"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "expiry \"not-a-date\" is not a valid date. Use ISO 8601 format, e.g. 2027-06-30.",
+            "event_id": "hierarchy-csv-row:52",
+            "row_index": 52
+          }
+        ],
+        "accepted_count": 297,
+        "rejected_count": 1,
+        "error_code": null,
+        "error_message": null,
+        "result_summary": {
+          "message": "EPCIS events accepted",
+          "partial": true,
+          "rejected": [
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "not-a-date",
+                "batch_no": "BOEM3SE212051",
+                "case_sscc": "",
+                "case_group": "C1251",
+                "package_sscc": "",
+                "package_group": "P1251",
+                "serial_numbers": "SOEM3SE212051"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "expiry \"not-a-date\" is not a valid date. Use ISO 8601 format, e.g. 2027-06-30.",
+              "event_id": "hierarchy-csv-row:52",
+              "row_index": 52
+            }
+          ],
+          "byte_size": 6772,
+          "event_ids": [
+            "urn:uuid:510b5cf3-bd41-41a0-8623-258deb8700a9",
+            "urn:uuid:020e4335-4814-4cc8-8289-2dc05fb0b97b",
+            "urn:uuid:144363c9-21c6-400c-8797-4baf0a63dc47",
+            "urn:uuid:971ebe1b-ad3e-4feb-85c3-57bb55950a6d",
+            "urn:uuid:04ecfc11-5c84-4f44-82bd-f3f66f52ba33",
+            "urn:uuid:53eadc95-1323-4dc7-8c81-39ecb93a2c75",
+            "urn:uuid:fe4731dc-5c4c-47fa-81d5-89aa3a3e84ee",
+            "urn:uuid:be9aa67d-cdbe-4ff1-889c-45416b2b804c",
+            "urn:uuid:9c693636-7bed-43f0-860a-ae8d47561e11",
+            "urn:uuid:411a5046-f708-4ffe-8663-6bfedcbe37bb",
+            "urn:uuid:f7af9b01-06db-49df-8836-e3d9f6b1c40e",
+            "urn:uuid:a2dfcd2b-aec4-4ea0-80c0-35a71b74c74f",
+            "urn:uuid:31c141c6-c2aa-440e-8aa4-7c5213545065",
+            "urn:uuid:b0d03a2f-8421-47a2-86a5-9e42c71e8de5",
+            "urn:uuid:43399c6e-8d64-4494-88b2-dd739bb76689",
+            "urn:uuid:8b1eaa30-797c-4d34-8e7f-eaa3dd865033",
+            "urn:uuid:48b4d4f5-cfd1-4e7d-86bb-3a42a388faa1",
+            "urn:uuid:8989bb44-b2c9-458d-8441-e08290eeb89a",
+            "urn:uuid:39c3adda-b9b5-44e0-8c7f-e3d8b48b47c4",
+            "urn:uuid:85fe67a9-bae2-4956-84eb-ef749e36bbf7",
+            "urn:uuid:2f99e4b1-05b6-4405-8957-297f9b47052a",
+            "urn:uuid:a5425b7b-52f2-4c52-8c19-e6cfd6329cf0",
+            "urn:uuid:e6088893-734e-4a66-8e88-6bd38938ceb8",
+            "urn:uuid:dd246348-a6f0-45c6-88fc-e60571e17e55",
+            "urn:uuid:5a9012e1-5ea8-4c37-89d1-86b8f8119023",
+            "urn:uuid:30d3b02a-8f08-4dad-878f-f70f55d10496",
+            "urn:uuid:e924cd81-8344-40b4-8e4c-a6737d618d1b",
+            "urn:uuid:74dbeff8-f5ce-4a95-82e9-ff9336b58cb9",
+            "urn:uuid:15e2b404-1045-4fc4-8eaa-06d27177aca6",
+            "urn:uuid:a81d9219-a264-4f8a-8cf4-bbb9dafa25c8",
+            "urn:uuid:c7a7ad87-9c91-4ed1-8b89-50d540546535",
+            "urn:uuid:b50d4ee2-f1bb-49f2-89f1-a583448362a2",
+            "urn:uuid:7d4a15f2-a63c-4f8a-8d8c-6c7dd2d36bd4",
+            "urn:uuid:ff3b780b-f40f-4d80-8178-55543d742572",
+            "urn:uuid:9f23c75c-1830-4785-8a2b-ee18473bf961",
+            "urn:uuid:6cfa7d15-38de-4059-8db8-3fe44ae3b782",
+            "urn:uuid:8de829af-be10-4721-8519-45af324991a4",
+            "urn:uuid:37c3eb1d-09e2-447a-80da-562eb11206c0",
+            "urn:uuid:bb52cb75-0434-4e28-8c5d-dc5e0ecfa37d",
+            "urn:uuid:44b315e3-1905-4e4e-87fd-78ee97775760",
+            "urn:uuid:6bf050d5-fa57-4ee7-82db-fc0e895e7109",
+            "urn:uuid:1d60ef36-4bb1-4d31-88be-6267b61f7af3",
+            "urn:uuid:b0617754-02af-496a-8ad3-ebbd4a599cfa",
+            "urn:uuid:367520f9-9347-4d01-817e-288275500426",
+            "urn:uuid:91da6658-bca3-4fa4-8c28-a8578a405f00",
+            "urn:uuid:1190414f-694e-4ca6-878d-2b420962d748",
+            "urn:uuid:9b336ee1-547d-4b92-82fe-cdc6ea70fc8e",
+            "urn:uuid:b4ffd992-5a5f-4642-8961-1259d3e77a7d",
+            "urn:uuid:db24c3d4-442b-4539-8a48-03854a70e0c1",
+            "urn:uuid:1fa2a793-7a9a-483b-828b-b8b576c73405",
+            "urn:uuid:5e2e43db-ab7c-4e05-8f9a-3b6703296e79",
+            "urn:uuid:87609ed0-035f-45f3-828e-0424935798a0",
+            "urn:uuid:51b435d8-46d6-4ea0-8173-1374d3d22068",
+            "urn:uuid:7df3284e-0868-45d4-8e7e-533506a8f16d",
+            "urn:uuid:3f6cc4bb-23b6-4d82-8090-de7f17c7a452",
+            "urn:uuid:4080a99a-15c2-4ba5-8615-2ad08d6f999c",
+            "urn:uuid:871d3aae-3071-4555-8c17-e50bdabe2a92",
+            "urn:uuid:65a118f7-9269-477e-86c1-b578bfbdee92",
+            "urn:uuid:4b72c2ae-1779-4d20-8efb-3465e28540cc",
+            "urn:uuid:ad76be3f-2961-46e2-8110-019c88587ed8",
+            "urn:uuid:612e31d3-dd13-4611-8bdc-9d89c68ecfb8",
+            "urn:uuid:0be08dc6-019a-447e-83e8-d037c8634dda",
+            "urn:uuid:6e842b1e-078d-446f-8884-2128c8895e52",
+            "urn:uuid:883d0f6d-49d0-4907-8267-53fc598ddf86",
+            "urn:uuid:83db1cb3-ce64-4ea7-82de-b5b28332f2e0",
+            "urn:uuid:930e4b7f-a4d3-40a1-86b7-48cea45bf9c1",
+            "urn:uuid:154e4de1-5604-4a89-85e7-92de99fbc1fc",
+            "urn:uuid:57213fea-6b57-4ca0-8810-80867584b4af",
+            "urn:uuid:f1640dea-7a64-454d-8a38-e557fd93c366",
+            "urn:uuid:7693fc7e-a1dd-4999-8b8c-ec9754136f23",
+            "urn:uuid:ca8d0633-0cc4-4ae6-82c5-65375dd9fa39",
+            "urn:uuid:7d66a95f-d31f-4959-81ba-2813566ddddc",
+            "urn:uuid:2ae97a81-7221-4bd9-842d-4c937bdbe681",
+            "urn:uuid:4c0031a1-da72-48c6-8f7c-2fb16811b5af",
+            "urn:uuid:9efd027a-5d9a-4082-84eb-78a905bc10a2",
+            "urn:uuid:f015fe85-fd35-48a0-8011-a92ffb74d2da",
+            "urn:uuid:386212b2-cbcb-4c77-8c90-3c7845a13f99",
+            "urn:uuid:7db11745-8094-4bb9-80ec-9360d9b8230e",
+            "urn:uuid:b4b45e75-eeab-4408-83fd-f36e9134ca3d",
+            "urn:uuid:4e26cceb-c435-4061-848a-987d4fdbaa3d",
+            "urn:uuid:de470abc-737b-4ff7-812f-0dfe8d65bfae",
+            "urn:uuid:1238d4c5-8018-45e7-8ba4-4ccba20e3eb8",
+            "urn:uuid:7c46e46d-736c-4cb0-8dc4-2301576a078c",
+            "urn:uuid:463058c4-7d85-4995-8656-d9c9739bd37c",
+            "urn:uuid:63fdd3a6-0e4d-40e4-8277-c1139d7c7ef0",
+            "urn:uuid:5192d83d-f5ca-48a1-8aa9-921561c74663",
+            "urn:uuid:52f66f2c-73b2-4961-89a2-174d7b0a3888",
+            "urn:uuid:f1f37a74-a2bc-4e65-841c-127fc8ce699d",
+            "urn:uuid:e22c7f47-1e67-4d83-8a91-a88a2f28f559",
+            "urn:uuid:2def4086-5274-4c69-8178-e10542fe2cdc",
+            "urn:uuid:950477be-3ce6-4019-877d-2a3a9a1616fa",
+            "urn:uuid:c3380c4a-31ee-4f0b-87be-47c1f26c008a",
+            "urn:uuid:704e9d34-7f9b-44b5-8ef6-9b1fcf4bf4cf",
+            "urn:uuid:c87565fe-d0de-4294-8074-bf882be8a759",
+            "urn:uuid:9ea6f0e2-7b19-40a3-8345-e2c744fbbf2c",
+            "urn:uuid:67a5fa8a-c94b-4b3c-8f61-efa9ec169c9e",
+            "urn:uuid:e258c184-880e-4166-8992-186db1bbd1de",
+            "urn:uuid:fa8bb2b3-dbc1-40ce-828b-f90fa48535eb",
+            "urn:uuid:1fd883da-408a-47e5-8d61-38b0313e0617",
+            "urn:uuid:6b09bf65-3fe4-41c1-8325-0008319e5a08",
+            "urn:uuid:81423bcf-a9b1-4da3-87c1-0593c4600fbb",
+            "urn:uuid:4ea7ebf2-fbe2-4ee8-81bc-e06993c3e267",
+            "urn:uuid:a3a139c9-4eb7-4841-8541-77ceead2df46",
+            "urn:uuid:1148d935-d5b8-4529-877d-05db8f769429",
+            "urn:uuid:b95863e5-8517-49e8-8f52-e3877962dd5c",
+            "urn:uuid:ed8a8d31-274f-46ea-8a8c-f3f3b31cb138",
+            "urn:uuid:3a66f2ba-4ebb-4e0f-8177-bba18bce41f9",
+            "urn:uuid:a29014bd-4a47-4d8d-8ce1-ce8ddc6f8784",
+            "urn:uuid:810f2dfd-5b54-4301-8c1c-512c45da8946",
+            "urn:uuid:320067a1-2532-49b6-8abb-e0ba244ef62b",
+            "urn:uuid:49ea367a-0bfa-4b5b-8840-822d8b0fe506",
+            "urn:uuid:b8cca277-7159-44de-8383-b47f09f11371",
+            "urn:uuid:47d7f60c-22a4-4efa-8cb1-bba80bab4bf2",
+            "urn:uuid:78ed50cf-62bc-46f8-895b-ab74b9680f26",
+            "urn:uuid:305e0bc6-f8cb-417e-8e40-0cb687d14a57",
+            "urn:uuid:bafdf44e-48f1-4adc-8419-43c382a7d349",
+            "urn:uuid:128d5a3c-4e18-4e79-87ea-3b17abbd49ff",
+            "urn:uuid:ef563ae4-c44a-4ecc-86b4-e62864d15cce",
+            "urn:uuid:8ec6ce2f-b512-4a1f-8a66-6be8e3c3ecd7",
+            "urn:uuid:71b9b5bf-42db-4031-8b9c-b6401e7c4900",
+            "urn:uuid:0ef9433f-1365-4f3d-8fe9-35c305188887",
+            "urn:uuid:56b49744-6318-45d9-85ff-34ae2f90ea5c",
+            "urn:uuid:e73647a9-e966-4d13-86fb-09a4f1d7eed8",
+            "urn:uuid:8df54283-a17e-4f5f-8bc6-8edcb390a1b8",
+            "urn:uuid:d886e7f3-7489-4f13-8c14-45c3d43e3e0d",
+            "urn:uuid:a94b6ae1-3896-495e-874e-4a8c0377ec37",
+            "urn:uuid:f293fbfb-683b-47b7-8805-642d7d2d2784",
+            "urn:uuid:cd3863ec-2871-40cd-8b43-7a4934536d2c",
+            "urn:uuid:848cf764-ccd2-4c4f-899a-67e123ebcfe1",
+            "urn:uuid:0d9aa2be-5b86-412b-8ef9-aafd101bc657",
+            "urn:uuid:b0509cad-8414-4a17-8282-fb497ae519f0",
+            "urn:uuid:dce4ee78-cc4e-4130-8fb7-bbefc0bcd757",
+            "urn:uuid:f5290c5a-a4bc-46d5-887d-453fdf442564",
+            "urn:uuid:58e5c456-fb46-4d07-83c1-a6122960523a",
+            "urn:uuid:94345dc4-fc78-40b5-88d5-145ac61b7bf2",
+            "urn:uuid:f76868b2-c3c6-4177-8260-d77faf0f2161",
+            "urn:uuid:b143bd72-8dcb-4ea7-8da0-5e2e81ffb561",
+            "urn:uuid:394cef13-661e-4c5a-898c-29b1e0666a28",
+            "urn:uuid:94c7fbfc-890f-497b-8f0a-7c1d861a4a13",
+            "urn:uuid:1bd94f6d-5f0b-4c27-893e-b794636e9044",
+            "urn:uuid:0a44cd9b-1958-4d7e-8891-6d39d17f3731",
+            "urn:uuid:80934352-7464-4842-81be-64389addabdb",
+            "urn:uuid:bf0ec633-50de-40bc-84e4-e2f50d8215d3",
+            "urn:uuid:a4caeb15-47b0-4349-827b-08af25f94f43",
+            "urn:uuid:b98d1c89-766e-4397-8a86-23418e5a93dd",
+            "urn:uuid:dc834e7f-9c59-40b8-846f-e41c53b0df9c",
+            "urn:uuid:5535a341-a1c0-4ee6-8c53-0aa1461d1b31",
+            "urn:uuid:176ae1f0-0145-4bfb-8fb0-c12a8d2ea000",
+            "urn:uuid:df2627f3-c0de-4a42-82b8-628768c80384",
+            "urn:uuid:6b0e41b4-85aa-4f37-829e-b3d41c8a693a",
+            "urn:uuid:313631b6-a3c5-4339-8b6d-a1151b71d192",
+            "urn:uuid:644fa793-10fa-44cd-8486-b4bbf69179d8",
+            "urn:uuid:42de00e9-f744-497c-81d3-39e5ec923ecd",
+            "urn:uuid:903e2f17-b075-476a-82cd-112a643669d6",
+            "urn:uuid:c630850b-da77-4771-8555-01b331451852",
+            "urn:uuid:144591f8-5382-49bc-8474-e51f2471c6db",
+            "urn:uuid:35068c58-fc18-42ae-8acb-39d46f3287f2",
+            "urn:uuid:30b158cc-ffc7-417a-8b13-2d73d8ab4925",
+            "urn:uuid:6993d73b-1283-4203-8b15-a42fbc9bf5ef",
+            "urn:uuid:61423fe2-1ab6-418a-81ec-31727a86722b",
+            "urn:uuid:1229fb92-999b-410b-8004-193da7aa71e0",
+            "urn:uuid:ba7843d3-aac8-4edd-8f7d-1a13fb0689d1",
+            "urn:uuid:fc681252-fe9f-442d-848f-d6b1f9bab93e",
+            "urn:uuid:62f2e710-d0f1-4ea5-8ac1-d3521a6def79",
+            "urn:uuid:11469bb9-443b-4272-864b-c941a1392ba6",
+            "urn:uuid:e3c98b96-eade-41c5-863e-a318c3a94aa5",
+            "urn:uuid:9b6b53e2-8019-4d04-82ed-d0c1c88acd2e",
+            "urn:uuid:d6ebd0da-5c74-4b31-80df-793a5ea7d465",
+            "urn:uuid:6b10618f-1c18-4a1f-83a7-73274397680b",
+            "urn:uuid:ca1e2d98-3600-4dad-8ccb-16954c26433c",
+            "urn:uuid:aec573f9-dcb7-431f-8ad6-f2582e94d19b",
+            "urn:uuid:a5b5ae2c-ef80-4f65-8363-6579bfbca8f1",
+            "urn:uuid:f90b167b-8bb5-43b4-8e36-5b51d3ce49ec",
+            "urn:uuid:0a462e37-2964-41d6-8fde-40ebe04e8399",
+            "urn:uuid:c0b7f1b1-0eb1-45a1-888e-cb7dcf56445c",
+            "urn:uuid:9daccfbf-52da-42fb-8b67-28692fea271b",
+            "urn:uuid:3e3f6420-5f61-4593-8d26-17b5645730f5",
+            "urn:uuid:a930904d-27ff-41f0-812a-d2a11903bff2",
+            "urn:uuid:f92ebfbd-9e9c-46f2-87ff-aceb2374b1e2",
+            "urn:uuid:89a9cdbb-0054-4f3a-8dfc-9a374c6c7f29",
+            "urn:uuid:224f6c02-5f7e-484f-8894-034a9b964787",
+            "urn:uuid:0da05d2e-6328-46c9-8987-620e1e45a236",
+            "urn:uuid:6fd747bb-6f2d-490f-8a06-39a6ca481e83",
+            "urn:uuid:6d9a0247-7410-429a-89a2-5612df668048",
+            "urn:uuid:e81b2f02-8fa4-4a8b-8b40-cde9f1a7c6d9",
+            "urn:uuid:3807a1c0-48af-483e-8100-cbda64685c06",
+            "urn:uuid:7c2bc7a8-b8b7-4194-8589-26164f8195a4",
+            "urn:uuid:1290a3d6-9309-4c07-8eda-1f94ce073766",
+            "urn:uuid:86fdadc6-d653-44d3-8cb9-8a0502cc1abf",
+            "urn:uuid:d6772246-ed68-4042-84c6-0acc12b113a9",
+            "urn:uuid:f9b7f9d8-3f27-4150-8cf7-1364d7846e57",
+            "urn:uuid:0c6e2252-878b-446c-8963-3ac7830d9db0",
+            "urn:uuid:43164370-6807-4a30-8e9e-0e108d7232eb",
+            "urn:uuid:21398314-8706-4c8f-80fc-6ce396f54671",
+            "urn:uuid:4bffe0bf-bcc3-419c-8e37-ced773640431",
+            "urn:uuid:0f8de3ff-73bc-477b-849a-bc197c5dde0c",
+            "urn:uuid:28e6ace5-b688-47d2-86fb-edb708cef862",
+            "urn:uuid:f040154f-c4cd-4dd1-8ed6-7ea6cca4f017",
+            "urn:uuid:3fce6404-746d-45d9-86ae-f7133d2b3c67",
+            "urn:uuid:a2775660-57cf-4f2b-808f-e3b8e0a0eb22",
+            "urn:uuid:cb186d90-886e-47fa-872d-bdaf56ae38ba",
+            "urn:uuid:b4f0331e-3808-4031-8868-663a2609ed64",
+            "urn:uuid:274e3245-cad8-4199-834e-55633877a371",
+            "urn:uuid:67d6b97d-0f61-4be5-8736-7b83af5d8d25",
+            "urn:uuid:3761df5d-9d53-4804-85a0-ad4239d17883",
+            "urn:uuid:ca1baac3-c3ca-47a2-81b1-e5136ed9887a",
+            "urn:uuid:95180c74-d500-4b95-81c3-bde0c54790ad",
+            "urn:uuid:53836ae8-427e-4a23-883b-c61f81220ff1",
+            "urn:uuid:1025654e-7a50-4297-8950-afa05196a54a",
+            "urn:uuid:2770b35b-96dc-42d6-847b-a4ed1ca40fc4",
+            "urn:uuid:5e60e7fc-68e6-4bbc-8b56-9b10f7be2920",
+            "urn:uuid:edec3f6d-88cb-4eca-8499-0b068dc97e94",
+            "urn:uuid:25526dbe-44e2-4aed-8a9f-4d91f5381c49",
+            "urn:uuid:01d0602b-202b-43e9-89dd-4b9d5d2109ac",
+            "urn:uuid:f7cd24fb-a737-4916-8bda-4fcc2cabb1a1",
+            "urn:uuid:0aa4c33e-eca4-4f52-8ff1-a1763f190740",
+            "urn:uuid:b4a4a58b-79c1-4fcb-81a0-1eca38a7a79a",
+            "urn:uuid:3108dd03-49c5-43e8-81f4-be1acc9fa64c",
+            "urn:uuid:0d2de89c-64ad-4e69-8217-1dfd2d75f32c",
+            "urn:uuid:6367fc98-37ed-4268-8732-75eaa27bc02a",
+            "urn:uuid:eac1e5d4-533c-4d54-8622-281098ac38a1",
+            "urn:uuid:b521a888-cc48-4ecc-8942-26fa68e02a06",
+            "urn:uuid:f547bbe0-e8ea-4872-8d8c-28cd08eba1c1",
+            "urn:uuid:493f092d-99d0-4a3d-87c4-ff924f27b608",
+            "urn:uuid:a5ff33a2-76b8-429c-8ea7-beb54975d4aa",
+            "urn:uuid:af811307-2808-4097-8fa1-003a07453b57",
+            "urn:uuid:9823a80c-4614-4502-8680-cd137f5e7fd4",
+            "urn:uuid:fc5521a2-8cb6-4570-811a-0241e9f586be",
+            "urn:uuid:92915cd6-d83b-45d1-84dd-9be69ae2f3fe",
+            "urn:uuid:8a46b1e4-7846-45ab-8a56-342087125e11",
+            "urn:uuid:e83ef9be-ae46-4a19-86f2-eab4401397ba",
+            "urn:uuid:92e77a03-064e-4726-8d62-63c6dee6a3e8",
+            "urn:uuid:79bf5b49-f6aa-4590-824c-585644115411",
+            "urn:uuid:948770ff-06be-40c1-891b-a862a5b7a4af",
+            "urn:uuid:a5d241bc-a5c4-4348-852a-f5c34b854637",
+            "urn:uuid:cbdbed4a-471d-4bb3-85d5-42b23ea0e0c3",
+            "urn:uuid:5f8d1b08-68f5-4bd9-8f4e-c95e307bb423",
+            "urn:uuid:34e4b7ac-21b4-4f1c-8a88-f7d164322e0e",
+            "urn:uuid:f2b27f26-8841-4885-8a1f-836c337818dd",
+            "urn:uuid:73ffd8cd-07e4-4e29-8801-788ee9ebbad8",
+            "urn:uuid:9c26b189-fd69-4942-8d12-fddb6b3b67bd",
+            "urn:uuid:a23481e4-ebbf-4987-86c5-0315939e047d",
+            "urn:uuid:5a438655-d561-4d57-8529-30a2ce9882fd",
+            "urn:uuid:8a4dd4ec-5c81-4fd2-86a0-57e0dab1d17c",
+            "urn:uuid:918a3922-eec4-41b1-8002-09adb83dad6e",
+            "urn:uuid:18562bc9-2b1a-4608-8c51-725396f01db4",
+            "urn:uuid:72f03df2-53a8-4d39-8e74-94c851bb4cb5",
+            "urn:uuid:05c24a6e-6aec-4562-8008-3c3cd2ac2989",
+            "urn:uuid:33a6e568-fd76-46a3-8e50-1eb719ce70f1",
+            "urn:uuid:aa978df5-43d8-4547-881b-a938b9d59393",
+            "urn:uuid:8430c5dd-7aa8-49e0-8425-b44e68447ec8",
+            "urn:uuid:2a3b4ba1-f205-4a4d-83eb-e4d729f83530",
+            "urn:uuid:b0b85992-c4a9-4cce-84fc-26abe36e9431",
+            "urn:uuid:5f56ab05-61e1-479c-80f5-8ac5b1a5b467",
+            "urn:uuid:7d6ce240-5477-4ebb-88b7-52f5950910c1",
+            "urn:uuid:cf17fedd-5382-41c5-8dfe-1e940b573f7c",
+            "urn:uuid:4e288bc3-94d4-48ef-848a-31efa27338bf",
+            "urn:uuid:5360c9e6-e3dd-4d3d-8102-25c34c8af512",
+            "urn:uuid:baaac215-d6e0-4db0-8f64-01200a5c7ea9",
+            "urn:uuid:456cb7e9-7d61-4f86-8042-7678b76505cb",
+            "urn:uuid:e0cd6d23-f4bf-4300-8e15-2e1b52332d70",
+            "urn:uuid:5dd0a132-7a81-4711-800b-fc6feadd51cf",
+            "urn:uuid:f5637217-df2e-423f-83ab-9b57cad7ca23",
+            "urn:uuid:26e94462-eb4c-4616-8dbd-aab9945d13f9",
+            "urn:uuid:b8dfdf0e-2bda-4eba-838b-f35ceaf5e525",
+            "urn:uuid:78fff232-214b-4a44-8655-5bc0217ae5c6",
+            "urn:uuid:d0bdbf51-d76a-48a3-81aa-9b77165f7393",
+            "urn:uuid:3dc055dc-0966-427e-8d77-8fa36a56eaab",
+            "urn:uuid:47cab0d8-36e7-466b-8f7d-fbbb0aa759e7",
+            "urn:uuid:5de4d47e-4498-4de3-8bf3-5c186aa7efb4",
+            "urn:uuid:cec349f8-9020-44a1-891a-9b8e9421da0e",
+            "urn:uuid:f3b50e87-e674-4e41-8c88-e0fd802889d1",
+            "urn:uuid:c574ca05-a76b-4c5c-80f8-289720f7d1fc",
+            "urn:uuid:0a60c0c1-4c9b-44c5-86d5-408f04b0353d",
+            "urn:uuid:9ca93e07-4f37-487d-8ab6-25877f899897",
+            "urn:uuid:b66ffe29-4402-465d-8ace-5da9abf2c123",
+            "urn:uuid:c494b43c-4b33-4364-86ab-a49f0ab8db9e",
+            "urn:uuid:6343cbeb-87f2-43a2-88c8-7fdebea0e4e4",
+            "urn:uuid:a1046d8c-ff4f-42aa-82a2-6349c795e6f2",
+            "urn:uuid:0259a570-b093-481f-878b-715f3ca9e40b",
+            "urn:uuid:6fbfdf8b-3766-4874-82b5-da76b7b15a6e",
+            "urn:uuid:395bf31b-35af-4be5-86f7-7c1a285f5049",
+            "urn:uuid:92138414-aa9e-4fa8-8ed5-26a987bdaa6d",
+            "urn:uuid:fc8bf524-3ae4-4af4-88db-a4aab472b7ec",
+            "urn:uuid:3eaf2c9d-d620-4142-8d3f-5af27a0cdc83",
+            "urn:uuid:10401012-2564-4744-8dce-d3d8d5c65384",
+            "urn:uuid:85cbe1e6-8d8d-4f7b-8857-d4f73c887d87",
+            "urn:uuid:854c6ba3-d469-4402-8143-4eec6f07f758",
+            "urn:uuid:e102e1f7-403b-46fe-89da-7c26747944e0",
+            "urn:uuid:deeda34b-a6bf-40b5-8cab-c5c46fdc3abd",
+            "urn:uuid:c1a28c42-5187-4bb2-8e45-34bc78dbf2ce",
+            "urn:uuid:a9272643-918c-41a9-8e74-9dff3dfffe19",
+            "urn:uuid:b3b2d167-41c4-42b3-80cd-fea64f5f7a0c",
+            "urn:uuid:e66db71b-ec63-4128-89e1-77d71e0b4895",
+            "urn:uuid:046ee596-481d-4982-861d-7d363b2fca49",
+            "urn:uuid:d9486be3-e5cf-495d-8408-22fb0ecaea89",
+            "urn:uuid:bebf2358-022f-4b16-84bb-f0b45d93e44d"
+          ],
+          "event_count": 297,
+          "content_type": "text/csv",
+          "accepted_count": 297,
+          "estimated_epcs": 297,
+          "rejected_count": 1,
+          "events_processed": 297,
+          "parse_rejected_count": 1
+        },
+        "accepted_at": "2026-11-13T07:49:42.047Z",
+        "updated_at": "2026-11-13T07:50:08.131Z",
+        "completed_at": "2026-11-13T07:50:08.131Z",
+        "endpoint": "/partners/hierarchy-bulk/csv-import/async"
+      },
+      "pageText": "Upload Manufacturer partners can submit EPCIS XML or hierarchy Bulk CSV for asynchronous validation and ingest. Outcomes appear here and under Async submissions. Supported limits Now: Hierarchy Bulk CSV (.csv) → manufacturer commissioning + aggregation events (partial) Also available: EPCIS 1.2 XML — switch to XML mode Coming later: JSON-LD (.json, .jsonld) Max size 10.00 MB Processing: async (session auth — no API key paste) Hierarchy Bulk CSV XML available CSV available JSON-LD soon Download CSV template Drop a .csv file here, or click to browse Max 10.00 MB · Hierarchy Bulk CSV (batches → cases → packages) H12_OEM3SE2.csv 6.6 KB Upload CSV Live status succeeded Correlation ID 43c011c6-8da4-443d-8996-3fc1d209916a Events (accepted / rejected) 297 / 1 Partial · 297 event(s) accepted · 1 rejected VALIDATION_FAILED · row 52 · hierarchy-csv-row:52 expiry \"not-a-date\" is not a valid date. Use ISO 8601 format, e.g. 2027-06-30. Download rejected CSV View full details Open in Async submissions Refresh status National Track & Trace System — Partner Portal Need help? Contact trackandtrace@apeiro.digital",
+      "rejectedRowsFile": "H12-rejected-rows.csv",
+      "detailsText": "Succeeded manufacturer Accepted 13/11/2026, 10:49:42 · Completed 13/11/2026, 10:50:08 Overview Outcome Events Payload Copy the Request ID and share it with the integration team when you need help diagnosing this submission. Open the Outcome tab for processing details. Submission details Request ID 43c011c6-8da4-443d-8996-3fc1d209916a Endpoint /partners/hierarchy-bulk/csv-import/async Role manufacturer Accept HTTP 202 Result HTTP 207 Format text/csv Size 6.6 KB Events 297 EPCs 297 Timeline Accepted 13/11/2026, 10:49:42 Updated 13/11/2026, 10:50:08 Completed 13/11/2026, 10:50:08",
+      "stored": [
+        {
+          "batch": "BOEM3SE212001",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212002",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212003",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212004",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212005",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212006",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212007",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212008",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212009",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212010",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212011",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212012",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212013",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212014",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212015",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212016",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212017",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212018",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212019",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212020",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212021",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212022",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212023",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212024",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212025",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212026",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212027",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212028",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212029",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212030",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212031",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212032",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212033",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212034",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212035",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212036",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212037",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212038",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212039",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212040",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212041",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212042",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212043",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212044",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212045",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212046",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212047",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212048",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212049",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212050",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212051",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212052",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212053",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212054",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212055",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212056",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212057",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212058",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212059",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212060",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212061",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212062",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212063",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212064",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212065",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212066",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212067",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212068",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212069",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212070",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212071",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212072",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212073",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212074",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212075",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212076",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212077",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212078",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212079",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212080",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212081",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212082",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212083",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212084",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212085",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212086",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212087",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212088",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212089",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212090",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212091",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212092",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212093",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212094",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212095",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212096",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212097",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212098",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212099",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE212100",
+          "found": false
+        }
+      ]
+    },
+    {
+      "id": "H16",
+      "finding": "A",
+      "what": "4 rows: one with an extra field, one with a missing field, plus blank lines",
+      "expect": "partial: the 2 good rows accepted, both broken rows rejected with row numbers",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-hierarchy\\H16_OEM3SE2.csv",
+      "rows": 4,
+      "batches": [
+        "BOEM3SE216001",
+        "BOEM3SE216002",
+        "BOEM3SE216003",
+        "BOEM3SE216004"
+      ],
+      "serials": [
+        "SOEM3SE216001",
+        "SOEM3SE216002",
+        "SOEM3SE216003",
+        "SOEM3SE216004"
+      ],
+      "upload": {
+        "status": 202,
+        "body": "{\"async\":true,\"accepted\":true,\"correlation_id\":\"c26bcf9e-67b0-419c-97ec-28ffc97a3a44\",\"request_id\":\"c26bcf9e-67b0-419c-97ec-28ffc97a3a44\",\"status_url\":\"/partners/hierarchy-bulk/csv-import/status/c26bcf9e-67b0-419c-97ec-28ffc97a3a44\",\"message\":\"Hierarchy Bulk CSV accepted for asynchronous manufacturer event processing. Poll status_url.\",\"estimated_epcs\":9,\"event_count\":9,\"parse_rejected_count\":1}"
+      },
+      "requestId": "c26bcf9e-67b0-419c-97ec-28ffc97a3a44",
+      "final": {
+        "correlation_id": "c26bcf9e-67b0-419c-97ec-28ffc97a3a44",
+        "status": "succeeded",
+        "result_http_status": 207,
+        "partial": true,
+        "event_ids": [
+          "urn:uuid:4d53c4bd-5952-48e9-8037-90fa33bc3d78",
+          "urn:uuid:d645f4a3-3590-4dcb-84bd-85476ce71d71",
+          "urn:uuid:fca73aa8-d52c-4927-802a-0227b3939fdf",
+          "urn:uuid:07ce2df2-fb18-4a1f-8885-44018c8ba652",
+          "urn:uuid:73b13d2c-96e9-441c-8bab-9dc806be4ea7",
+          "urn:uuid:36b2e0eb-b355-49bb-8795-e78fd5ae983c",
+          "urn:uuid:6ec632aa-a119-4416-8989-a25597236547",
+          "urn:uuid:b7740bcf-641f-4fb7-813b-c1b89d72ff71",
+          "urn:uuid:c81ad8d1-0d0d-4655-8a72-c3284d88ce78"
+        ],
+        "rejected": [
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "BOEM3SE216003",
+              "case_sscc": "",
+              "case_group": "C163",
+              "package_sscc": "",
+              "package_group": "",
+              "serial_numbers": "SOEM3SE216003"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "package_group is required",
+            "event_id": "hierarchy-csv-row:4",
+            "row_index": 4
+          }
+        ],
+        "accepted_count": 9,
+        "rejected_count": 1,
+        "error_code": null,
+        "error_message": null,
+        "result_summary": {
+          "message": "EPCIS events accepted",
+          "partial": true,
+          "rejected": [
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "BOEM3SE216003",
+                "case_sscc": "",
+                "case_group": "C163",
+                "package_sscc": "",
+                "package_group": "",
+                "serial_numbers": "SOEM3SE216003"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "package_group is required",
+              "event_id": "hierarchy-csv-row:4",
+              "row_index": 4
+            }
+          ],
+          "byte_size": 349,
+          "event_ids": [
+            "urn:uuid:4d53c4bd-5952-48e9-8037-90fa33bc3d78",
+            "urn:uuid:d645f4a3-3590-4dcb-84bd-85476ce71d71",
+            "urn:uuid:fca73aa8-d52c-4927-802a-0227b3939fdf",
+            "urn:uuid:07ce2df2-fb18-4a1f-8885-44018c8ba652",
+            "urn:uuid:73b13d2c-96e9-441c-8bab-9dc806be4ea7",
+            "urn:uuid:36b2e0eb-b355-49bb-8795-e78fd5ae983c",
+            "urn:uuid:6ec632aa-a119-4416-8989-a25597236547",
+            "urn:uuid:b7740bcf-641f-4fb7-813b-c1b89d72ff71",
+            "urn:uuid:c81ad8d1-0d0d-4655-8a72-c3284d88ce78"
+          ],
+          "event_count": 9,
+          "content_type": "text/csv",
+          "accepted_count": 9,
+          "estimated_epcs": 9,
+          "rejected_count": 1,
+          "events_processed": 9,
+          "parse_rejected_count": 1
+        },
+        "accepted_at": "2026-11-13T07:50:32.708Z",
+        "updated_at": "2026-11-13T07:50:33.781Z",
+        "completed_at": "2026-11-13T07:50:33.781Z",
+        "endpoint": "/partners/hierarchy-bulk/csv-import/async"
+      },
+      "pageText": "Upload Manufacturer partners can submit EPCIS XML or hierarchy Bulk CSV for asynchronous validation and ingest. Outcomes appear here and under Async submissions. Supported limits Now: Hierarchy Bulk CSV (.csv) → manufacturer commissioning + aggregation events (partial) Also available: EPCIS 1.2 XML — switch to XML mode Coming later: JSON-LD (.json, .jsonld) Max size 10.00 MB Processing: async (session auth — no API key paste) Hierarchy Bulk CSV XML available CSV available JSON-LD soon Download CSV template Drop a .csv file here, or click to browse Max 10.00 MB · Hierarchy Bulk CSV (batches → cases → packages) H16_OEM3SE2.csv 349 B Upload CSV Live status succeeded Correlation ID c26bcf9e-67b0-419c-97ec-28ffc97a3a44 Events (accepted / rejected) 9 / 1 Partial · 9 event(s) accepted · 1 rejected VALIDATION_FAILED · row 4 · hierarchy-csv-row:4 package_group is required Download rejected CSV View full details Open in Async submissions Refresh status National Track & Trace System — Partner Portal Need help? Contact trackandtrace@apeiro.digital",
+      "rejectedRowsFile": "H16-rejected-rows.csv",
+      "detailsText": "Succeeded manufacturer Accepted 13/11/2026, 10:50:32 · Completed 13/11/2026, 10:50:33 Overview Outcome Events Payload Copy the Request ID and share it with the integration team when you need help diagnosing this submission. Open the Outcome tab for processing details. Submission details Request ID c26bcf9e-67b0-419c-97ec-28ffc97a3a44 Endpoint /partners/hierarchy-bulk/csv-import/async Role manufacturer Accept HTTP 202 Result HTTP 207 Format text/csv Size 349 B Events 9 EPCs 9 Timeline Accepted 13/11/2026, 10:50:32 Updated 13/11/2026, 10:50:33 Completed 13/11/2026, 10:50:33",
+      "stored": [
+        {
+          "batch": "BOEM3SE216001",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE216002",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE216003",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE216004",
+          "found": false
+        }
+      ]
+    },
+    {
+      "id": "H06",
+      "finding": "A",
+      "what": "3 rows; file rows 3 and 4 carry the same serial",
+      "expect": "partial: the duplicate rejected with its row number, the rest accepted",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-hierarchy\\H06_OEM3SE2.csv",
+      "rows": 3,
+      "batches": [
+        "BOEM3SE206001",
+        "BOEM3SE206002",
+        "BOEM3SE206003"
+      ],
+      "serials": [
+        "SOEM3SE206001",
+        "SOEM3SE206002",
+        "SOEM3SE206002"
+      ],
+      "upload": {
+        "status": 202,
+        "body": "{\"async\":true,\"accepted\":true,\"correlation_id\":\"e11a2908-5bff-4e5d-ba49-82a015bc40bd\",\"request_id\":\"e11a2908-5bff-4e5d-ba49-82a015bc40bd\",\"status_url\":\"/partners/hierarchy-bulk/csv-import/status/e11a2908-5bff-4e5d-ba49-82a015bc40bd\",\"message\":\"Hierarchy Bulk CSV accepted for asynchronous manufacturer event processing. Poll status_url.\",\"estimated_epcs\":6,\"event_count\":6,\"parse_rejected_count\":1}"
+      },
+      "requestId": "e11a2908-5bff-4e5d-ba49-82a015bc40bd",
+      "final": {
+        "correlation_id": "e11a2908-5bff-4e5d-ba49-82a015bc40bd",
+        "status": "succeeded",
+        "result_http_status": 207,
+        "partial": true,
+        "event_ids": [
+          "urn:uuid:42eb76b0-7b1a-46d2-86f3-c51d7746d241",
+          "urn:uuid:1022d701-1ef7-480a-84ed-64ed80b4b95e",
+          "urn:uuid:af50e0e3-67e8-41b0-8674-a173dd02ad70",
+          "urn:uuid:7c66a9ea-e1d9-4efe-888d-28834256800c",
+          "urn:uuid:dc27aa04-5ff3-4b02-84da-9ae3124f1168",
+          "urn:uuid:12308344-b0cc-4dd8-8e1c-f7d36d546c75"
+        ],
+        "rejected": [
+          {
+            "row": {
+              "gtin": "6161102974997",
+              "expiry": "2028-12-31",
+              "batch_no": "BOEM3SE206003",
+              "case_sscc": "",
+              "case_group": "C063",
+              "package_sscc": "",
+              "package_group": "P063",
+              "serial_numbers": "SOEM3SE206002"
+            },
+            "code": "VALIDATION_FAILED",
+            "message": "Serial number \"SOEM3SE206002\" (GTIN: 6161102974997) already appears in row 3 of this CSV.",
+            "event_id": "hierarchy-csv-row:4",
+            "row_index": 4
+          }
+        ],
+        "accepted_count": 6,
+        "rejected_count": 1,
+        "error_code": null,
+        "error_message": null,
+        "result_summary": {
+          "message": "EPCIS events accepted",
+          "partial": true,
+          "rejected": [
+            {
+              "row": {
+                "gtin": "6161102974997",
+                "expiry": "2028-12-31",
+                "batch_no": "BOEM3SE206003",
+                "case_sscc": "",
+                "case_group": "C063",
+                "package_sscc": "",
+                "package_group": "P063",
+                "serial_numbers": "SOEM3SE206002"
+              },
+              "code": "VALIDATION_FAILED",
+              "message": "Serial number \"SOEM3SE206002\" (GTIN: 6161102974997) already appears in row 3 of this CSV.",
+              "event_id": "hierarchy-csv-row:4",
+              "row_index": 4
+            }
+          ],
+          "byte_size": 283,
+          "event_ids": [
+            "urn:uuid:42eb76b0-7b1a-46d2-86f3-c51d7746d241",
+            "urn:uuid:1022d701-1ef7-480a-84ed-64ed80b4b95e",
+            "urn:uuid:af50e0e3-67e8-41b0-8674-a173dd02ad70",
+            "urn:uuid:7c66a9ea-e1d9-4efe-888d-28834256800c",
+            "urn:uuid:dc27aa04-5ff3-4b02-84da-9ae3124f1168",
+            "urn:uuid:12308344-b0cc-4dd8-8e1c-f7d36d546c75"
+          ],
+          "event_count": 6,
+          "content_type": "text/csv",
+          "accepted_count": 6,
+          "estimated_epcs": 6,
+          "rejected_count": 1,
+          "events_processed": 6,
+          "parse_rejected_count": 1
+        },
+        "accepted_at": "2026-11-13T07:50:50.662Z",
+        "updated_at": "2026-11-13T07:50:51.270Z",
+        "completed_at": "2026-11-13T07:50:51.270Z",
+        "endpoint": "/partners/hierarchy-bulk/csv-import/async"
+      },
+      "pageText": "Upload Manufacturer partners can submit EPCIS XML or hierarchy Bulk CSV for asynchronous validation and ingest. Outcomes appear here and under Async submissions. Supported limits Now: Hierarchy Bulk CSV (.csv) → manufacturer commissioning + aggregation events (partial) Also available: EPCIS 1.2 XML — switch to XML mode Coming later: JSON-LD (.json, .jsonld) Max size 10.00 MB Processing: async (session auth — no API key paste) Hierarchy Bulk CSV XML available CSV available JSON-LD soon Download CSV template Drop a .csv file here, or click to browse Max 10.00 MB · Hierarchy Bulk CSV (batches → cases → packages) H06_OEM3SE2.csv 283 B Upload CSV Live status succeeded Correlation ID e11a2908-5bff-4e5d-ba49-82a015bc40bd Events (accepted / rejected) 6 / 1 Partial · 6 event(s) accepted · 1 rejected VALIDATION_FAILED · row 4 · hierarchy-csv-row:4 Serial number \"SOEM3SE206002\" (GTIN: 6161102974997) already appears in row 3 of this CSV. Download rejected CSV View full details Open in Async submissions Refresh status National Track & Trace System — Partner Portal Need help? Contact trackandtrace@apeiro.digital",
+      "rejectedRowsFile": "H06-rejected-rows.csv",
+      "detailsText": "Succeeded manufacturer Accepted 13/11/2026, 10:50:50 · Completed 13/11/2026, 10:50:51 Overview Outcome Events Payload Copy the Request ID and share it with the integration team when you need help diagnosing this submission. Open the Outcome tab for processing details. Submission details Request ID e11a2908-5bff-4e5d-ba49-82a015bc40bd Endpoint /partners/hierarchy-bulk/csv-import/async Role manufacturer Accept HTTP 202 Result HTTP 207 Format text/csv Size 283 B Events 6 EPCs 6 Timeline Accepted 13/11/2026, 10:50:50 Updated 13/11/2026, 10:50:51 Completed 13/11/2026, 10:50:51",
+      "stored": [
+        {
+          "batch": "BOEM3SE206001",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE206002",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE206003",
+          "found": false
+        }
+      ]
+    },
+    {
+      "id": "H21",
+      "finding": "A",
+      "latin1": true,
+      "what": "Latin-1 encoded file; row 3 batch number contains \"É\"",
+      "expect": "whole file rejected as not UTF-8, or every row handled; never a row silently missing",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-hierarchy\\H21_OEM3SE2.csv",
+      "rows": 2,
+      "batches": [
+        "BOEM3SE221001",
+        "BOEM3SE221É02"
+      ],
+      "serials": [
+        "SOEM3SE221001",
+        "SOEM3SE221002"
+      ],
+      "upload": {
+        "status": 202,
+        "body": "{\"async\":true,\"accepted\":true,\"correlation_id\":\"e473f325-164e-4d1e-88b7-e49a9ddd5f8d\",\"request_id\":\"e473f325-164e-4d1e-88b7-e49a9ddd5f8d\",\"status_url\":\"/partners/hierarchy-bulk/csv-import/status/e473f325-164e-4d1e-88b7-e49a9ddd5f8d\",\"message\":\"Hierarchy Bulk CSV accepted for asynchronous manufacturer event processing. Poll status_url.\",\"estimated_epcs\":6,\"event_count\":6,\"parse_rejected_count\":0}"
+      },
+      "requestId": "e473f325-164e-4d1e-88b7-e49a9ddd5f8d",
+      "final": {
+        "correlation_id": "e473f325-164e-4d1e-88b7-e49a9ddd5f8d",
+        "status": "succeeded",
+        "result_http_status": 207,
+        "partial": true,
+        "event_ids": [
+          "urn:uuid:3a1ec2a0-0d4f-4e62-87e8-d1b75405ca9e",
+          "urn:uuid:7faa346d-9aae-456a-8f39-22f2a479c1b8",
+          "urn:uuid:77bfc108-1b77-4441-8575-0e9748257573",
+          "urn:uuid:39ef1fee-0045-41df-87dc-181d1e2b8acb",
+          "urn:uuid:03226f61-ad13-48e4-863d-2831aee19330"
+        ],
+        "rejected": [
+          {
+            "epc": "urn:epc:id:sgtin:6161102974997.SOEM3SE221002",
+            "code": "INVALID_JSON_STRUCTURE",
+            "errors": [
+              {
+                "path": "epcisBody.eventList[1].ilmd.cbvmda:lotNumber",
+                "message": "lotNumber contains characters outside the GS1 AI(10) permitted set"
+              },
+              {
+                "path": "epcisBody.eventList[1].ilmd.lotNumber",
+                "message": "lotNumber contains characters outside the GS1 AI(10) permitted set"
+              }
+            ],
+            "message": "lotNumber contains characters outside the GS1 AI(10) permitted set (+1 more schema issue(s))",
+            "event_id": "urn:uuid:ee4ad405-e6fb-4b51-8872-40e47d454200",
+            "http_status": 400
+          }
+        ],
+        "accepted_count": 5,
+        "rejected_count": 1,
+        "error_code": null,
+        "error_message": null,
+        "result_summary": {
+          "message": "EPCIS events accepted",
+          "partial": true,
+          "rejected": [
+            {
+              "epc": "urn:epc:id:sgtin:6161102974997.SOEM3SE221002",
+              "code": "INVALID_JSON_STRUCTURE",
+              "errors": [
+                {
+                  "path": "epcisBody.eventList[1].ilmd.cbvmda:lotNumber",
+                  "message": "lotNumber contains characters outside the GS1 AI(10) permitted set"
+                },
+                {
+                  "path": "epcisBody.eventList[1].ilmd.lotNumber",
+                  "message": "lotNumber contains characters outside the GS1 AI(10) permitted set"
+                }
+              ],
+              "message": "lotNumber contains characters outside the GS1 AI(10) permitted set (+1 more schema issue(s))",
+              "event_id": "urn:uuid:ee4ad405-e6fb-4b51-8872-40e47d454200",
+              "http_status": 400
+            }
+          ],
+          "byte_size": 218,
+          "event_ids": [
+            "urn:uuid:3a1ec2a0-0d4f-4e62-87e8-d1b75405ca9e",
+            "urn:uuid:7faa346d-9aae-456a-8f39-22f2a479c1b8",
+            "urn:uuid:77bfc108-1b77-4441-8575-0e9748257573",
+            "urn:uuid:39ef1fee-0045-41df-87dc-181d1e2b8acb",
+            "urn:uuid:03226f61-ad13-48e4-863d-2831aee19330"
+          ],
+          "event_count": 6,
+          "content_type": "text/csv",
+          "accepted_count": 5,
+          "estimated_epcs": 6,
+          "rejected_count": 1,
+          "events_processed": 5,
+          "parse_rejected_count": 0
+        },
+        "accepted_at": "2026-11-13T07:51:09.064Z",
+        "updated_at": "2026-11-13T07:51:09.506Z",
+        "completed_at": "2026-11-13T07:51:09.506Z",
+        "endpoint": "/partners/hierarchy-bulk/csv-import/async"
+      },
+      "pageText": "Upload Manufacturer partners can submit EPCIS XML or hierarchy Bulk CSV for asynchronous validation and ingest. Outcomes appear here and under Async submissions. Supported limits Now: Hierarchy Bulk CSV (.csv) → manufacturer commissioning + aggregation events (partial) Also available: EPCIS 1.2 XML — switch to XML mode Coming later: JSON-LD (.json, .jsonld) Max size 10.00 MB Processing: async (session auth — no API key paste) Hierarchy Bulk CSV XML available CSV available JSON-LD soon Download CSV template Drop a .csv file here, or click to browse Max 10.00 MB · Hierarchy Bulk CSV (batches → cases → packages) H21_OEM3SE2.csv 218 B Upload CSV Live status succeeded Correlation ID e473f325-164e-4d1e-88b7-e49a9ddd5f8d Events (accepted / rejected) 5 / 1 Partial · 5 event(s) accepted · 1 rejected INVALID_JSON_STRUCTURE · urn:uuid:ee4ad405-e6fb-4b51-8872-40e47d454200 lotNumber contains characters outside the GS1 AI(10) permitted set (+1 more schema issue(s)) Download rejected CSV View full details Open in Async submissions Refresh status National Track & Trace System — Partner Portal Need help? Contact trackandtrace@apeiro.digital",
+      "rejectedRowsFile": "H21-rejected-rows.csv",
+      "detailsText": "Succeeded manufacturer Accepted 13/11/2026, 10:51:09 · Completed 13/11/2026, 10:51:09 Overview Outcome Events Payload Copy the Request ID and share it with the integration team when you need help diagnosing this submission. Open the Outcome tab for processing details. Submission details Request ID e473f325-164e-4d1e-88b7-e49a9ddd5f8d Endpoint /partners/hierarchy-bulk/csv-import/async Role manufacturer Accept HTTP 202 Result HTTP 207 Format text/csv Size 218 B Events 6 EPCs 6 Timeline Accepted 13/11/2026, 10:51:09 Updated 13/11/2026, 10:51:09 Completed 13/11/2026, 10:51:09",
+      "stored": [
+        {
+          "batch": "BOEM3SE221001",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE221É02",
+          "found": false
+        }
+      ]
+    },
+    {
+      "id": "H04",
+      "finding": "A",
+      "what": "Serials with characters the portal lists as allowed (- _ . /) and a 20-character serial",
+      "expect": "all 5 rows accepted",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-hierarchy\\H04_OEM3SE2.csv",
+      "rows": 5,
+      "batches": [
+        "BOEM3SE204001",
+        "BOEM3SE204002",
+        "BOEM3SE204003",
+        "BOEM3SE204004",
+        "BOEM3SE204005"
+      ],
+      "serials": [
+        "OEM3SE2-45",
+        "OEM3SE2_95",
+        "OEM3SE2.46",
+        "OEM3SE2/47",
+        "SOEM3SE2AAAAAAAAAAAA"
+      ],
+      "upload": {
+        "status": 202,
+        "body": "{\"async\":true,\"accepted\":true,\"correlation_id\":\"04b6bfe7-c8f1-4f88-bc34-498da7aba64d\",\"request_id\":\"04b6bfe7-c8f1-4f88-bc34-498da7aba64d\",\"status_url\":\"/partners/hierarchy-bulk/csv-import/status/04b6bfe7-c8f1-4f88-bc34-498da7aba64d\",\"message\":\"Hierarchy Bulk CSV accepted for asynchronous manufacturer event processing. Poll status_url.\",\"estimated_epcs\":15,\"event_count\":15,\"parse_rejected_count\":0}"
+      },
+      "requestId": "04b6bfe7-c8f1-4f88-bc34-498da7aba64d",
+      "final": {
+        "correlation_id": "04b6bfe7-c8f1-4f88-bc34-498da7aba64d",
+        "status": "succeeded",
+        "result_http_status": 207,
+        "partial": true,
+        "event_ids": [
+          "urn:uuid:39fabe91-846f-4b8c-82ed-f8539a5ebba7",
+          "urn:uuid:66a114ff-394e-41d3-8684-0b70231ee86c",
+          "urn:uuid:c7f15ab1-dc5b-44d3-8874-b1f10c895d81",
+          "urn:uuid:5db3233e-324c-48c6-8a21-297433601278",
+          "urn:uuid:1c677ef8-aa4c-4ec6-8d33-0d4ab393378f",
+          "urn:uuid:0aeb66d7-e9c9-418f-860a-a374a438d350",
+          "urn:uuid:eb5c7bb3-9428-4449-86b4-531ca84ded4f",
+          "urn:uuid:a7da2913-33a8-4438-803a-b3c878eda94f",
+          "urn:uuid:c6442a90-0c18-48ae-8ca3-63ca7a8795a1",
+          "urn:uuid:e98dc049-7329-4819-8e1b-f7843eb9ed26",
+          "urn:uuid:6dae965d-f0d1-4c34-883d-d0694f575867"
+        ],
+        "rejected": [
+          {
+            "epc": "urn:epc:id:sgtin:6161102974997.OEM3SE2.46",
+            "code": "INVALID_GS1_IDENTIFIER",
+            "errors": [
+              {
+                "path": "epcisBody.eventList[1].epcList[1]",
+                "message": "SGTIN company prefix must be 6–12 digits"
+              }
+            ],
+            "message": "SGTIN company prefix must be 6–12 digits",
+            "event_id": "urn:uuid:75c8076c-a9f2-4ee7-832f-92acbbd2e260",
+            "http_status": 400
+          },
+          {
+            "epc": "urn:epc:id:sgtin:6161102974997.OEM3SE2/47",
+            "code": "INVALID_GS1_IDENTIFIER",
+            "errors": [
+              {
+                "path": "epcisBody.eventList[1].epcList[1]",
+                "message": "SGTIN serial must be 1–20 GS1-permitted URI characters"
+              }
+            ],
+            "message": "SGTIN serial must be 1–20 GS1-permitted URI characters",
+            "event_id": "urn:uuid:5ffc495c-4e9f-47f5-8597-e94629df10ed",
+            "http_status": 400
+          },
+          {
+            "epc": "urn:epc:id:sgtin:6161102974997.OEM3SE2.46",
+            "code": "INVALID_GS1_IDENTIFIER",
+            "errors": [
+              {
+                "path": "epcisBody.eventList[1].childEPCs[1]",
+                "message": "SGTIN company prefix must be 6–12 digits"
+              }
+            ],
+            "message": "SGTIN company prefix must be 6–12 digits",
+            "event_id": "urn:uuid:5314f03c-bcc5-482e-8f72-58af44cfe5fe",
+            "http_status": 400
+          },
+          {
+            "epc": "urn:epc:id:sgtin:6161102974997.OEM3SE2/47",
+            "code": "INVALID_GS1_IDENTIFIER",
+            "errors": [
+              {
+                "path": "epcisBody.eventList[1].childEPCs[1]",
+                "message": "SGTIN serial must be 1–20 GS1-permitted URI characters"
+              }
+            ],
+            "message": "SGTIN serial must be 1–20 GS1-permitted URI characters",
+            "event_id": "urn:uuid:4a7dab4b-0ddb-443c-8d41-deb736a165d8",
+            "http_status": 400
+          }
+        ],
+        "accepted_count": 11,
+        "rejected_count": 4,
+        "error_code": null,
+        "error_message": null,
+        "result_summary": {
+          "message": "EPCIS events accepted",
+          "partial": true,
+          "rejected": [
+            {
+              "epc": "urn:epc:id:sgtin:6161102974997.OEM3SE2.46",
+              "code": "INVALID_GS1_IDENTIFIER",
+              "errors": [
+                {
+                  "path": "epcisBody.eventList[1].epcList[1]",
+                  "message": "SGTIN company prefix must be 6–12 digits"
+                }
+              ],
+              "message": "SGTIN company prefix must be 6–12 digits",
+              "event_id": "urn:uuid:75c8076c-a9f2-4ee7-832f-92acbbd2e260",
+              "http_status": 400
+            },
+            {
+              "epc": "urn:epc:id:sgtin:6161102974997.OEM3SE2/47",
+              "code": "INVALID_GS1_IDENTIFIER",
+              "errors": [
+                {
+                  "path": "epcisBody.eventList[1].epcList[1]",
+                  "message": "SGTIN serial must be 1–20 GS1-permitted URI characters"
+                }
+              ],
+              "message": "SGTIN serial must be 1–20 GS1-permitted URI characters",
+              "event_id": "urn:uuid:5ffc495c-4e9f-47f5-8597-e94629df10ed",
+              "http_status": 400
+            },
+            {
+              "epc": "urn:epc:id:sgtin:6161102974997.OEM3SE2.46",
+              "code": "INVALID_GS1_IDENTIFIER",
+              "errors": [
+                {
+                  "path": "epcisBody.eventList[1].childEPCs[1]",
+                  "message": "SGTIN company prefix must be 6–12 digits"
+                }
+              ],
+              "message": "SGTIN company prefix must be 6–12 digits",
+              "event_id": "urn:uuid:5314f03c-bcc5-482e-8f72-58af44cfe5fe",
+              "http_status": 400
+            },
+            {
+              "epc": "urn:epc:id:sgtin:6161102974997.OEM3SE2/47",
+              "code": "INVALID_GS1_IDENTIFIER",
+              "errors": [
+                {
+                  "path": "epcisBody.eventList[1].childEPCs[1]",
+                  "message": "SGTIN serial must be 1–20 GS1-permitted URI characters"
+                }
+              ],
+              "message": "SGTIN serial must be 1–20 GS1-permitted URI characters",
+              "event_id": "urn:uuid:4a7dab4b-0ddb-443c-8d41-deb736a165d8",
+              "http_status": 400
+            }
+          ],
+          "byte_size": 408,
+          "event_ids": [
+            "urn:uuid:39fabe91-846f-4b8c-82ed-f8539a5ebba7",
+            "urn:uuid:66a114ff-394e-41d3-8684-0b70231ee86c",
+            "urn:uuid:c7f15ab1-dc5b-44d3-8874-b1f10c895d81",
+            "urn:uuid:5db3233e-324c-48c6-8a21-297433601278",
+            "urn:uuid:1c677ef8-aa4c-4ec6-8d33-0d4ab393378f",
+            "urn:uuid:0aeb66d7-e9c9-418f-860a-a374a438d350",
+            "urn:uuid:eb5c7bb3-9428-4449-86b4-531ca84ded4f",
+            "urn:uuid:a7da2913-33a8-4438-803a-b3c878eda94f",
+            "urn:uuid:c6442a90-0c18-48ae-8ca3-63ca7a8795a1",
+            "urn:uuid:e98dc049-7329-4819-8e1b-f7843eb9ed26",
+            "urn:uuid:6dae965d-f0d1-4c34-883d-d0694f575867"
+          ],
+          "event_count": 15,
+          "content_type": "text/csv",
+          "accepted_count": 11,
+          "estimated_epcs": 15,
+          "rejected_count": 4,
+          "events_processed": 11,
+          "parse_rejected_count": 0
+        },
+        "accepted_at": "2026-11-13T07:51:27.612Z",
+        "updated_at": "2026-11-13T07:51:28.484Z",
+        "completed_at": "2026-11-13T07:51:28.484Z",
+        "endpoint": "/partners/hierarchy-bulk/csv-import/async"
+      },
+      "pageText": "Upload Manufacturer partners can submit EPCIS XML or hierarchy Bulk CSV for asynchronous validation and ingest. Outcomes appear here and under Async submissions. Supported limits Now: Hierarchy Bulk CSV (.csv) → manufacturer commissioning + aggregation events (partial) Also available: EPCIS 1.2 XML — switch to XML mode Coming later: JSON-LD (.json, .jsonld) Max size 10.00 MB Processing: async (session auth — no API key paste) Hierarchy Bulk CSV XML available CSV available JSON-LD soon Download CSV template Drop a .csv file here, or click to browse Max 10.00 MB · Hierarchy Bulk CSV (batches → cases → packages) H04_OEM3SE2.csv 408 B Upload CSV Live status succeeded Correlation ID 04b6bfe7-c8f1-4f88-bc34-498da7aba64d Events (accepted / rejected) 11 / 4 Partial · 11 event(s) accepted · 4 rejected INVALID_GS1_IDENTIFIER · urn:uuid:75c8076c-a9f2-4ee7-832f-92acbbd2e260 SGTIN company prefix must be 6–12 digits INVALID_GS1_IDENTIFIER · urn:uuid:5ffc495c-4e9f-47f5-8597-e94629df10ed SGTIN serial must be 1–20 GS1-permitted URI characters INVALID_GS1_IDENTIFIER · urn:uuid:5314f03c-bcc5-482e-8f72-58af44cfe5fe SGTIN company prefix must be 6–12 digits INVALID_GS1_IDENTIFIER · urn:uuid:4a7dab4b-0ddb-443c-8d41-deb736a165d8 SGTIN serial must be 1–20 GS1-permitted URI characters Download rejected CSV View full details Open in Async submissions Refresh status National Track & Trace System — Partner Portal Need help? Contact trackandtrace@apeiro.digital",
+      "rejectedRowsFile": "H04-rejected-rows.csv",
+      "detailsText": "Succeeded manufacturer Accepted 13/11/2026, 10:51:27 · Completed 13/11/2026, 10:51:28 Overview Outcome Events Payload Copy the Request ID and share it with the integration team when you need help diagnosing this submission. Open the Outcome tab for processing details. Submission details Request ID 04b6bfe7-c8f1-4f88-bc34-498da7aba64d Endpoint /partners/hierarchy-bulk/csv-import/async Role manufacturer Accept HTTP 202 Result HTTP 207 Format text/csv Size 408 B Events 15 EPCs 15 Timeline Accepted 13/11/2026, 10:51:27 Updated 13/11/2026, 10:51:28 Completed 13/11/2026, 10:51:28",
+      "stored": [
+        {
+          "batch": "BOEM3SE204001",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE204002",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE204003",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE204004",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE204005",
+          "found": false
+        }
+      ]
+    },
+    {
+      "id": "H14a",
+      "finding": "B",
+      "what": "Placeholder serials 0, NA, DUMMY",
+      "expect": "rejected as placeholders (not stored as serials)",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-hierarchy\\H14a_OEM3SE2.csv",
+      "rows": 3,
+      "batches": [
+        "BOEM3SE214A0",
+        "BOEM3SE214A1",
+        "BOEM3SE214A2"
+      ],
+      "serials": [
+        "0",
+        "NA",
+        "DUMMY"
+      ],
+      "upload": {
+        "status": 400,
+        "body": "{\"error\":\"no_valid_rows\",\"message\":\"No valid hierarchy CSV rows to import.\",\"invalid\":{\"count\":3,\"rows\":[{\"row_index\":2,\"row\":{\"gtin\":\"6161102974997\",\"batch_no\":\"BOEM3SE214A0\",\"expiry\":\"2028-12-31\",\"serial_numbers\":\"0\",\"case_group\":\"C14A0\",\"package_group\":\"P14A0\",\"case_sscc\":\"\",\"package_sscc\":\"\"},\"errors\":[\"Serial number \\\"0\\\" is a reserved placeholder and cannot be commissioned.\"]},{\"row_index\":3,\"row\":{\"gtin\":\"6161102974997\",\"batch_no\":\"BOEM3SE214A1\",\"expiry\":\"2028-12-31\",\"serial_numbers\":\"NA\",\"case_group\":\"C14A1\",\"package_group\":\"P14A1\",\"case_sscc\":\"\",\"package_sscc\":\"\"},\"errors\":[\"Serial number \\\"NA\\\" is a reserved placeholder and cannot be commissioned.\"]},{\"row_index\":4,\"row\":{\"gtin\":\"6161102974997\",\"batch_no\":\"BOEM3SE214A2\",\"expiry\":\"2028-12-31\",\"serial_numbers\":\"DUMMY\",\"case_group\":\"C14A2\",\"package_group\":\"P14A2\",\"case_sscc\":\"\",\"package_sscc\":\"\"},\"errors\":[\"Serial number \\\"DUMMY\\\" is a reserved placeholder and cannot be commissioned.\"]}]}}"
+      },
+      "requestId": null,
+      "pageText": "Upload Manufacturer partners can submit EPCIS XML or hierarchy Bulk CSV for asynchronous validation and ingest. Outcomes appear here and under Async submissions. Supported limits Now: Hierarchy Bulk CSV (.csv) → manufacturer commissioning + aggregation events (partial) Also available: EPCIS 1.2 XML — switch to XML mode Coming later: JSON-LD (.json, .jsonld) Max size 10.00 MB Processing: async (session auth — no API key paste) Hierarchy Bulk CSV XML available CSV available JSON-LD soon Download CSV template Drop a .csv file here, or click to browse Max 10.00 MB · Hierarchy Bulk CSV (batches → cases → packages) H14a_OEM3SE2.csv 255 B No valid hierarchy CSV rows to import. Upload CSV National Track & Trace System — Partner Portal Need help? Contact trackandtrace@apeiro.digital",
+      "stored": [
+        {
+          "batch": "BOEM3SE214A0",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE214A1",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE214A2",
+          "found": false
+        }
+      ]
+    },
+    {
+      "id": "H14b",
+      "finding": "B",
+      "what": "Placeholder serials never used before: PLACEHOLDER, NOTAVAILABLE, NULLSERIAL, TOBEASSIGNED, XXXXXXXXXX",
+      "expect": "rejected as placeholders (not stored as serials)",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-hierarchy\\H14b_OEM3SE2.csv",
+      "rows": 5,
+      "batches": [
+        "BOEM3SE214B0",
+        "BOEM3SE214B1",
+        "BOEM3SE214B2",
+        "BOEM3SE214B3",
+        "BOEM3SE214B4"
+      ],
+      "serials": [
+        "PLACEHOLDER",
+        "NOTAVAILABLE",
+        "NULLSERIAL",
+        "TOBEASSIGNED",
+        "XXXXXXXXXX"
+      ],
+      "upload": {
+        "status": 202,
+        "body": "{\"async\":true,\"accepted\":true,\"correlation_id\":\"c610c930-d546-4436-96d6-061a1c2ee6eb\",\"request_id\":\"c610c930-d546-4436-96d6-061a1c2ee6eb\",\"status_url\":\"/partners/hierarchy-bulk/csv-import/status/c610c930-d546-4436-96d6-061a1c2ee6eb\",\"message\":\"Hierarchy Bulk CSV accepted for asynchronous manufacturer event processing. Poll status_url.\",\"estimated_epcs\":15,\"event_count\":15,\"parse_rejected_count\":0}"
+      },
+      "requestId": "c610c930-d546-4436-96d6-061a1c2ee6eb",
+      "final": {
+        "correlation_id": "c610c930-d546-4436-96d6-061a1c2ee6eb",
+        "status": "succeeded",
+        "result_http_status": 200,
+        "partial": false,
+        "event_ids": [
+          "urn:uuid:4a7a0efc-2b49-4d46-8a9a-870b4915f561",
+          "urn:uuid:16e12705-4c2d-40c2-83ae-fbeea30a5b34",
+          "urn:uuid:f91002e0-c5ae-46fe-8e14-ddc7b68f040c",
+          "urn:uuid:db511c5d-5c7d-42e7-8917-ed08bc285d34",
+          "urn:uuid:a9bb27fa-7d1b-4e75-8ac4-d5daea5dbbe1",
+          "urn:uuid:dc6a0623-1aa2-4fdb-878c-fa19701df064",
+          "urn:uuid:252746bc-3e34-47ec-8072-417de20043b7",
+          "urn:uuid:79fa7648-7cf1-409e-81c9-bb30ace8d86c",
+          "urn:uuid:a19f3498-764f-4feb-89a6-dc32ddea4e50",
+          "urn:uuid:a478cab3-2f34-4777-883a-3b8bf3135910",
+          "urn:uuid:4b705009-0f53-4179-83ad-38cfb10e1c1b",
+          "urn:uuid:e507bf04-dc0a-4c53-86f3-7880b6f20516",
+          "urn:uuid:480cb78e-ec0c-4331-8404-32df475c3976",
+          "urn:uuid:33610bf0-88b8-4111-8ba8-850a9d138e80",
+          "urn:uuid:088ef30a-fbd5-48fb-8914-716784a07f51"
+        ],
+        "rejected": [],
+        "accepted_count": 15,
+        "rejected_count": 0,
+        "error_code": null,
+        "error_message": null,
+        "result_summary": {
+          "message": "EPCIS events accepted",
+          "partial": false,
+          "rejected": [],
+          "byte_size": 408,
+          "event_ids": [
+            "urn:uuid:4a7a0efc-2b49-4d46-8a9a-870b4915f561",
+            "urn:uuid:16e12705-4c2d-40c2-83ae-fbeea30a5b34",
+            "urn:uuid:f91002e0-c5ae-46fe-8e14-ddc7b68f040c",
+            "urn:uuid:db511c5d-5c7d-42e7-8917-ed08bc285d34",
+            "urn:uuid:a9bb27fa-7d1b-4e75-8ac4-d5daea5dbbe1",
+            "urn:uuid:dc6a0623-1aa2-4fdb-878c-fa19701df064",
+            "urn:uuid:252746bc-3e34-47ec-8072-417de20043b7",
+            "urn:uuid:79fa7648-7cf1-409e-81c9-bb30ace8d86c",
+            "urn:uuid:a19f3498-764f-4feb-89a6-dc32ddea4e50",
+            "urn:uuid:a478cab3-2f34-4777-883a-3b8bf3135910",
+            "urn:uuid:4b705009-0f53-4179-83ad-38cfb10e1c1b",
+            "urn:uuid:e507bf04-dc0a-4c53-86f3-7880b6f20516",
+            "urn:uuid:480cb78e-ec0c-4331-8404-32df475c3976",
+            "urn:uuid:33610bf0-88b8-4111-8ba8-850a9d138e80",
+            "urn:uuid:088ef30a-fbd5-48fb-8914-716784a07f51"
+          ],
+          "event_count": 15,
+          "content_type": "text/csv",
+          "accepted_count": 15,
+          "estimated_epcs": 15,
+          "rejected_count": 0,
+          "events_processed": 15,
+          "parse_rejected_count": 0
+        },
+        "accepted_at": "2026-11-13T07:51:55.663Z",
+        "updated_at": "2026-11-13T07:51:57.419Z",
+        "completed_at": "2026-11-13T07:51:57.419Z",
+        "endpoint": "/partners/hierarchy-bulk/csv-import/async"
+      },
+      "pageText": "Upload Manufacturer partners can submit EPCIS XML or hierarchy Bulk CSV for asynchronous validation and ingest. Outcomes appear here and under Async submissions. Supported limits Now: Hierarchy Bulk CSV (.csv) → manufacturer commissioning + aggregation events (partial) Also available: EPCIS 1.2 XML — switch to XML mode Coming later: JSON-LD (.json, .jsonld) Max size 10.00 MB Processing: async (session auth — no API key paste) Hierarchy Bulk CSV XML available CSV available JSON-LD soon Download CSV template Drop a .csv file here, or click to browse Max 10.00 MB · Hierarchy Bulk CSV (batches → cases → packages) H14b_OEM3SE2.csv 408 B Upload CSV Live status succeeded Correlation ID c610c930-d546-4436-96d6-061a1c2ee6eb Events (accepted / rejected) 15 / 0 Succeeded · 15 event(s) accepted View full details Open in Async submissions Refresh status National Track & Trace System — Partner Portal Need help? Contact trackandtrace@apeiro.digital",
+      "detailsText": "Succeeded manufacturer Accepted 13/11/2026, 10:51:55 · Completed 13/11/2026, 10:51:57 Overview Outcome Events Payload Copy the Request ID and share it with the integration team when you need help diagnosing this submission. Open the Outcome tab for processing details. Submission details Request ID c610c930-d546-4436-96d6-061a1c2ee6eb Endpoint /partners/hierarchy-bulk/csv-import/async Role manufacturer Accept HTTP 202 Result HTTP 200 Format text/csv Size 408 B Events 15 EPCs 15 Timeline Accepted 13/11/2026, 10:51:55 Updated 13/11/2026, 10:51:57 Completed 13/11/2026, 10:51:57",
+      "stored": [
+        {
+          "batch": "BOEM3SE214B0",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE214B1",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE214B2",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE214B3",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE214B4",
+          "found": false
+        }
+      ]
+    },
+    {
+      "id": "HC",
+      "finding": "C",
+      "what": "Mixed/upper-case serials AbOEM3SE2c1, UPOEM3SE2C2, MiXeDOEM3SE23",
+      "expect": "accepted, stored exactly as sent",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-hierarchy\\HC_OEM3SE2.csv",
+      "rows": 3,
+      "batches": [
+        "BOEM3SE2CA001",
+        "BOEM3SE2CA002",
+        "BOEM3SE2CA003"
+      ],
+      "serials": [
+        "AbOEM3SE2c1",
+        "UPOEM3SE2C2",
+        "MiXeDOEM3SE23"
+      ],
+      "upload": {
+        "status": 202,
+        "body": "{\"async\":true,\"accepted\":true,\"correlation_id\":\"41d6c03c-b6ab-4be7-b58b-edf5d75fdfd4\",\"request_id\":\"41d6c03c-b6ab-4be7-b58b-edf5d75fdfd4\",\"status_url\":\"/partners/hierarchy-bulk/csv-import/status/41d6c03c-b6ab-4be7-b58b-edf5d75fdfd4\",\"message\":\"Hierarchy Bulk CSV accepted for asynchronous manufacturer event processing. Poll status_url.\",\"estimated_epcs\":9,\"event_count\":9,\"parse_rejected_count\":0}"
+      },
+      "requestId": "41d6c03c-b6ab-4be7-b58b-edf5d75fdfd4",
+      "final": {
+        "correlation_id": "41d6c03c-b6ab-4be7-b58b-edf5d75fdfd4",
+        "status": "succeeded",
+        "result_http_status": 200,
+        "partial": false,
+        "event_ids": [
+          "urn:uuid:53635459-164d-45c6-8749-0814338a7c06",
+          "urn:uuid:a15b6073-0165-49fa-8fdb-b537a87cf339",
+          "urn:uuid:227224c2-2597-4e4d-81a9-5dbb1e789c7e",
+          "urn:uuid:eed6a6c6-c021-4a19-8fc0-1aabd16680e5",
+          "urn:uuid:714babdb-ab3b-4680-8374-1d2fd89eb89b",
+          "urn:uuid:6bd8b53f-387a-4f31-84af-3ca64c53911f",
+          "urn:uuid:9d72a0a3-2d57-439f-80dd-58efb6158dea",
+          "urn:uuid:98bd209f-d3a8-4ed7-8868-627349d918cf",
+          "urn:uuid:e1eafc6a-87bc-4afe-8baa-fdb83c1d3358"
+        ],
+        "rejected": [],
+        "accepted_count": 9,
+        "rejected_count": 0,
+        "error_code": null,
+        "error_message": null,
+        "result_summary": {
+          "message": "EPCIS events accepted",
+          "partial": false,
+          "rejected": [],
+          "byte_size": 279,
+          "event_ids": [
+            "urn:uuid:53635459-164d-45c6-8749-0814338a7c06",
+            "urn:uuid:a15b6073-0165-49fa-8fdb-b537a87cf339",
+            "urn:uuid:227224c2-2597-4e4d-81a9-5dbb1e789c7e",
+            "urn:uuid:eed6a6c6-c021-4a19-8fc0-1aabd16680e5",
+            "urn:uuid:714babdb-ab3b-4680-8374-1d2fd89eb89b",
+            "urn:uuid:6bd8b53f-387a-4f31-84af-3ca64c53911f",
+            "urn:uuid:9d72a0a3-2d57-439f-80dd-58efb6158dea",
+            "urn:uuid:98bd209f-d3a8-4ed7-8868-627349d918cf",
+            "urn:uuid:e1eafc6a-87bc-4afe-8baa-fdb83c1d3358"
+          ],
+          "event_count": 9,
+          "content_type": "text/csv",
+          "accepted_count": 9,
+          "estimated_epcs": 9,
+          "rejected_count": 0,
+          "events_processed": 9,
+          "parse_rejected_count": 0
+        },
+        "accepted_at": "2026-11-13T07:52:20.619Z",
+        "updated_at": "2026-11-13T07:52:21.504Z",
+        "completed_at": "2026-11-13T07:52:21.504Z",
+        "endpoint": "/partners/hierarchy-bulk/csv-import/async"
+      },
+      "pageText": "Upload Manufacturer partners can submit EPCIS XML or hierarchy Bulk CSV for asynchronous validation and ingest. Outcomes appear here and under Async submissions. Supported limits Now: Hierarchy Bulk CSV (.csv) → manufacturer commissioning + aggregation events (partial) Also available: EPCIS 1.2 XML — switch to XML mode Coming later: JSON-LD (.json, .jsonld) Max size 10.00 MB Processing: async (session auth — no API key paste) Hierarchy Bulk CSV XML available CSV available JSON-LD soon Download CSV template Drop a .csv file here, or click to browse Max 10.00 MB · Hierarchy Bulk CSV (batches → cases → packages) HC_OEM3SE2.csv 279 B Upload CSV Live status succeeded Correlation ID 41d6c03c-b6ab-4be7-b58b-edf5d75fdfd4 Events (accepted / rejected) 9 / 0 Succeeded · 9 event(s) accepted View full details Open in Async submissions Refresh status National Track & Trace System — Partner Portal Need help? Contact trackandtrace@apeiro.digital",
+      "detailsText": "Succeeded manufacturer Accepted 13/11/2026, 10:52:20 · Completed 13/11/2026, 10:52:21 Overview Outcome Events Payload Copy the Request ID and share it with the integration team when you need help diagnosing this submission. Open the Outcome tab for processing details. Submission details Request ID 41d6c03c-b6ab-4be7-b58b-edf5d75fdfd4 Endpoint /partners/hierarchy-bulk/csv-import/async Role manufacturer Accept HTTP 202 Result HTTP 200 Format text/csv Size 279 B Events 9 EPCs 9 Timeline Accepted 13/11/2026, 10:52:20 Updated 13/11/2026, 10:52:21 Completed 13/11/2026, 10:52:21",
+      "stored": [
+        {
+          "batch": "BOEM3SE2CA001",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE2CA002",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE2CA003",
+          "found": false
+        }
+      ]
+    },
+    {
+      "id": "HC2",
+      "finding": "C",
+      "what": "The same three serials in lower case, new batches",
+      "expect": "accepted (different serials: GS1 serials are case-sensitive); a duplicate rejection means case is still folded",
+      "file": "C:\\Users\\Collins\\Desktop\\uploads\\csv-hierarchy\\HC2_OEM3SE2.csv",
+      "rows": 3,
+      "batches": [
+        "BOEM3SE2CB001",
+        "BOEM3SE2CB002",
+        "BOEM3SE2CB003"
+      ],
+      "serials": [
+        "aboem3se2c1",
+        "upoem3se2c2",
+        "mixedoem3se23"
+      ],
+      "upload": {
+        "status": 202,
+        "body": "{\"async\":true,\"accepted\":true,\"correlation_id\":\"eea5c09a-6718-4d11-9c4d-6212d51ce218\",\"request_id\":\"eea5c09a-6718-4d11-9c4d-6212d51ce218\",\"status_url\":\"/partners/hierarchy-bulk/csv-import/status/eea5c09a-6718-4d11-9c4d-6212d51ce218\",\"message\":\"Hierarchy Bulk CSV accepted for asynchronous manufacturer event processing. Poll status_url.\",\"estimated_epcs\":9,\"event_count\":9,\"parse_rejected_count\":0}"
+      },
+      "requestId": "eea5c09a-6718-4d11-9c4d-6212d51ce218",
+      "final": {
+        "correlation_id": "eea5c09a-6718-4d11-9c4d-6212d51ce218",
+        "status": "succeeded",
+        "result_http_status": 207,
+        "partial": true,
+        "event_ids": [
+          "urn:uuid:117f5dce-a7c8-43fe-8af1-0a5986ad0663",
+          "urn:uuid:776507a6-5b99-452a-8b6a-d18a6e55c7d3",
+          "urn:uuid:acfcd810-fef3-43d2-8e87-78fa0b745a6f",
+          "urn:uuid:151c0d21-3e42-4eb3-8eb4-2fb3d77f0ac2",
+          "urn:uuid:48748b35-53c6-4192-8394-545c89e406da",
+          "urn:uuid:2399bba6-a12f-4962-8c84-716f62499322"
+        ],
+        "rejected": [
+          {
+            "epc": "urn:epc:id:sgtin:6161102974997.aboem3se2c1",
+            "code": "DUPLICATE_EVENT_PAYLOAD",
+            "message": "Duplicate matrix key EPC+bizStep:ba5579b9f3d40516f0d39f147c67dcb03abc9275516409e8f3ab940433219816 for bizStep=commissioning disposition=active",
+            "event_id": "urn:uuid:8092e819-4b23-4df2-87e3-aacb6dc47f31",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sgtin:6161102974997.upoem3se2c2",
+            "code": "DUPLICATE_EVENT_PAYLOAD",
+            "message": "Duplicate matrix key EPC+bizStep:0ddd9014bd6c7aa454d1073ec43e400f1cb76fbd0fe25a5c07556cd0513dbfe3 for bizStep=commissioning disposition=active",
+            "event_id": "urn:uuid:08c857b9-6238-47a3-8bb0-d87a3a70b804",
+            "http_status": 409
+          },
+          {
+            "epc": "urn:epc:id:sgtin:6161102974997.mixedoem3se23",
+            "code": "DUPLICATE_EVENT_PAYLOAD",
+            "message": "Duplicate matrix key EPC+bizStep:e9c6bd27a141d9cd371cd251db952ed021196f69c28d7fb79a53e0dadaf68a20 for bizStep=commissioning disposition=active",
+            "event_id": "urn:uuid:4b43ed36-20f9-4199-8f71-c81d7bce3224",
+            "http_status": 409
+          }
+        ],
+        "accepted_count": 6,
+        "rejected_count": 3,
+        "error_code": null,
+        "error_message": null,
+        "result_summary": {
+          "message": "EPCIS events accepted",
+          "partial": true,
+          "rejected": [
+            {
+              "epc": "urn:epc:id:sgtin:6161102974997.aboem3se2c1",
+              "code": "DUPLICATE_EVENT_PAYLOAD",
+              "message": "Duplicate matrix key EPC+bizStep:ba5579b9f3d40516f0d39f147c67dcb03abc9275516409e8f3ab940433219816 for bizStep=commissioning disposition=active",
+              "event_id": "urn:uuid:8092e819-4b23-4df2-87e3-aacb6dc47f31",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sgtin:6161102974997.upoem3se2c2",
+              "code": "DUPLICATE_EVENT_PAYLOAD",
+              "message": "Duplicate matrix key EPC+bizStep:0ddd9014bd6c7aa454d1073ec43e400f1cb76fbd0fe25a5c07556cd0513dbfe3 for bizStep=commissioning disposition=active",
+              "event_id": "urn:uuid:08c857b9-6238-47a3-8bb0-d87a3a70b804",
+              "http_status": 409
+            },
+            {
+              "epc": "urn:epc:id:sgtin:6161102974997.mixedoem3se23",
+              "code": "DUPLICATE_EVENT_PAYLOAD",
+              "message": "Duplicate matrix key EPC+bizStep:e9c6bd27a141d9cd371cd251db952ed021196f69c28d7fb79a53e0dadaf68a20 for bizStep=commissioning disposition=active",
+              "event_id": "urn:uuid:4b43ed36-20f9-4199-8f71-c81d7bce3224",
+              "http_status": 409
+            }
+          ],
+          "byte_size": 279,
+          "event_ids": [
+            "urn:uuid:117f5dce-a7c8-43fe-8af1-0a5986ad0663",
+            "urn:uuid:776507a6-5b99-452a-8b6a-d18a6e55c7d3",
+            "urn:uuid:acfcd810-fef3-43d2-8e87-78fa0b745a6f",
+            "urn:uuid:151c0d21-3e42-4eb3-8eb4-2fb3d77f0ac2",
+            "urn:uuid:48748b35-53c6-4192-8394-545c89e406da",
+            "urn:uuid:2399bba6-a12f-4962-8c84-716f62499322"
+          ],
+          "event_count": 9,
+          "content_type": "text/csv",
+          "accepted_count": 6,
+          "estimated_epcs": 9,
+          "rejected_count": 3,
+          "events_processed": 6,
+          "parse_rejected_count": 0
+        },
+        "accepted_at": "2026-11-13T07:52:43.194Z",
+        "updated_at": "2026-11-13T07:52:43.841Z",
+        "completed_at": "2026-11-13T07:52:43.841Z",
+        "endpoint": "/partners/hierarchy-bulk/csv-import/async"
+      },
+      "pageText": "Upload Manufacturer partners can submit EPCIS XML or hierarchy Bulk CSV for asynchronous validation and ingest. Outcomes appear here and under Async submissions. Supported limits Now: Hierarchy Bulk CSV (.csv) → manufacturer commissioning + aggregation events (partial) Also available: EPCIS 1.2 XML — switch to XML mode Coming later: JSON-LD (.json, .jsonld) Max size 10.00 MB Processing: async (session auth — no API key paste) Hierarchy Bulk CSV XML available CSV available JSON-LD soon Download CSV template Drop a .csv file here, or click to browse Max 10.00 MB · Hierarchy Bulk CSV (batches → cases → packages) HC2_OEM3SE2.csv 279 B Upload CSV Live status succeeded Correlation ID eea5c09a-6718-4d11-9c4d-6212d51ce218 Events (accepted / rejected) 6 / 3 Partial · 6 event(s) accepted · 3 rejected DUPLICATE_EVENT_PAYLOAD · urn:uuid:8092e819-4b23-4df2-87e3-aacb6dc47f31 Duplicate matrix key EPC+bizStep:ba5579b9f3d40516f0d39f147c67dcb03abc9275516409e8f3ab940433219816 for bizStep=commissioning disposition=active DUPLICATE_EVENT_PAYLOAD · urn:uuid:08c857b9-6238-47a3-8bb0-d87a3a70b804 Duplicate matrix key EPC+bizStep:0ddd9014bd6c7aa454d1073ec43e400f1cb76fbd0fe25a5c07556cd0513dbfe3 for bizStep=commissioning disposition=active DUPLICATE_EVENT_PAYLOAD · urn:uuid:4b43ed36-20f9-4199-8f71-c81d7bce3224 Duplicate matrix key EPC+bizStep:e9c6bd27a141d9cd371cd251db952ed021196f69c28d7fb79a53e0dadaf68a20 for bizStep=commissioning disposition=active Download rejected CSV View full details Open in Async submissions Refresh status National Track & Trace System — Partner Portal Need help? Contact trackandtrace@apeiro.digital",
+      "rejectedRowsFile": "HC2-rejected-rows.csv",
+      "detailsText": "Succeeded manufacturer Accepted 13/11/2026, 10:52:43 · Completed 13/11/2026, 10:52:43 Overview Outcome Events Payload Copy the Request ID and share it with the integration team when you need help diagnosing this submission. Open the Outcome tab for processing details. Submission details Request ID eea5c09a-6718-4d11-9c4d-6212d51ce218 Endpoint /partners/hierarchy-bulk/csv-import/async Role manufacturer Accept HTTP 202 Result HTTP 207 Format text/csv Size 279 B Events 9 EPCs 9 Timeline Accepted 13/11/2026, 10:52:43 Updated 13/11/2026, 10:52:43 Completed 13/11/2026, 10:52:43",
+      "stored": [
+        {
+          "batch": "BOEM3SE2CB001",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE2CB002",
+          "found": false
+        },
+        {
+          "batch": "BOEM3SE2CB003",
+          "found": false
+        }
+      ]
+    }
+  ]
+}
